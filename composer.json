@@ -1,0 +1,52 @@
+{
+    "name": "yiisoft/yii2-app-basic",
+    "description": "Yii 2 Advanced Project Template",
+    "keywords": ["yii2", "framework", "advanced", "project template"],
+    "homepage": "http://www.yiiframework.com/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
+        "forum": "http://www.yiiframework.com/forum/",
+        "wiki": "http://www.yiiframework.com/wiki/",
+        "irc": "irc://irc.freenode.net/yii",
+        "source": "https://github.com/yiisoft/yii2"
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "~2.0.6",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "codemix/yii2-localeurls": "dev-master",
+        "dizews/yii2-crud-buttons": "0.1.*",
+        "mirocow/yii2-eav": "*",
+        "vakata/jstree": "dev-master",
+        "panix/wgt-jstree": "*",
+        "panix/wgt-tinymce": "*",
+        "panix/mod-shop": "dev-master",
+        "panix/mod-pages": "dev-master",
+        "pistol88/yii2-seo": "*",
+        "vlaim/yii2-file-upload": "dev-master",
+        "trntv/yii2-file-kit": "dev-master",
+        "salopot/yii2-attach-image": "dev-master",
+        "panix/mod-user": "dev-master",
+        "panix/mod-admin": "*"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "codeception/base": "^2.2.3",
+        "codeception/verify": "~0.3.1"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
