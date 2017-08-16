@@ -5,8 +5,8 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
-/vendor/
-/web/assets/*
+vendor/
+web/assets/*
 nbproject/
 
 assets/*
