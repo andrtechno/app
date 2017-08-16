@@ -21,13 +21,13 @@
         "vakata/jstree": "dev-master",
         "panix/wgt-jstree": "*",
         "panix/wgt-tinymce": "*",
-        "panix/mod-shop": "dev-master",
-        "panix/mod-pages": "dev-master",
+        "panix/mod-shop": "*",
+        "panix/mod-pages": "*",
         "pistol88/yii2-seo": "*",
         "vlaim/yii2-file-upload": "dev-master",
         "trntv/yii2-file-kit": "dev-master",
         "salopot/yii2-attach-image": "dev-master",
-        "panix/mod-user": "dev-master",
+        "panix/mod-user": "*",
         "panix/mod-admin": "*"
     },
     "require-dev": {
