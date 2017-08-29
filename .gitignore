@@ -7,6 +7,7 @@ Desktop.ini
 
 vendor/
 web/assets/*
+web/uploads/*
 nbproject/
 
 assets/*
