@@ -15,18 +15,11 @@
         "yiisoft/yii2": "~2.0.6",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
-        "codemix/yii2-localeurls": "dev-master",
-        "mirocow/yii2-eav": "*",
-        "panix/wgt-jstree": "*",
-        "panix/wgt-tinymce": "*",
         "panix/mod-shop": "*",
         "panix/mod-pages": "*",
         "panix/mod-user": "*",
         "panix/mod-admin": "*",
-        "panix/mod-contacts": "dev-master",
-        "panix/lib-google-maps": "*",
-        "panix/wgt-taginput": "dev-master",
-        "panix/wgt-fancybox": "*"
+        "panix/mod-contacts": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
