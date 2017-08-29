@@ -1,6 +1,7 @@
 <?php
 
 return [
+    
     'IN' => 'в',
     'TODAY_IN' => 'Сегодня в {time}',
     'YESTERDAY_IN' => 'Вчера в {time}',

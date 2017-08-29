@@ -73,12 +73,18 @@ AdminAsset::register($this);
                             </ul>
                             <?php //$this->widget('mod.admin.widgets.EngineMainMenu');        ?>
                         </div>
-                        <ul class="navbar-right">
+                        <div class="navbar-right">
+                            
+                        <ul class="navbar-right-menu">
+                            
                             <li><a href="/"><i class="icon-home"></i></a></li>
                             <li><?= Html::a('<i class="icon-locked"></i>', ['/user/logout'], ['data-method' => "post"]) ?></li>
+                            <li><?= \panix\engine\widgets\langSwitcher\LangSwitcher::Widget() ?></li>
                         </ul>
+
                         <!--/.nav-collapse -->
                     </div>
+                        </div>
                 </div>
             </nav>
             <?php

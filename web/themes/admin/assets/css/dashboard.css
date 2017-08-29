@@ -1745,29 +1745,33 @@ ul.pagination li.hidden{
 .navbar  .navbar-right .bootstrap-select{
     margin-top: 3px;
 }
-.navbar  .navbar-right{
-    list-style: none;
-    margin-bottom: 0;
-    margin-right: 15px;
-    position: absolute;
+.navbar  .navbar-right-menu{
+        position: absolute;
     top:0;
     right:15px;
+        margin-bottom: 0;
 
 }
-.navbar .navbar-right > li{
+.navbar  .navbar-right-menu{
+    list-style: none;
+}
+.navbar  .navbar-right-menu .dropdown-menu{
+    min-width:auto;
+}
+.navbar .navbar-right-menu > li{
     float:left;
     margin: 7px 5px;
 }
-.navbar .navbar-right > li:last-child{
+.navbar .navbar-right-menu > li:last-child{
     margin-right: 0;
 }
-.navbar .navbar-right > li > a > span{
+.navbar .navbar-right-menu > li > a > span{
     position: absolute;
     top:-3px;
     right:-3px;
     font-size:9px;
 }
-.navbar .navbar-right > li > a{
+.navbar .navbar-right-menu > li > a{
     display: block;
     width: 35px;
     height: 35px;

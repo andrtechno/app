@@ -33,6 +33,9 @@ $config = [
         ],
     ],
     'components' => [
+        // 'languageSwitcher' => [
+       //     'class' => 'panix\engine\widgets\langSwitcher\LangSwitcher',
+       // ],
         'formatter' => [
             //  'class' => 'panix\engine\i18n\Formatter',
             'locale' => 'ru-RU',
