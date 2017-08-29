@@ -4,7 +4,6 @@ use panix\engine\Html;
 use yii\widgets\Breadcrumbs;
 use app\system\assets\AppAsset;
 
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -14,9 +13,9 @@ AppAsset::register($this);
         <meta charset="<?= Yii::$app->charset ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
-       
+
         <?php $this->head() ?>
-        
+
 
     </head>
     <body>
@@ -36,31 +35,42 @@ AppAsset::register($this);
                     </div>
                     <div id="nav-collapse" class="collapse navbar-collapse">
                         <ul class="navbar-nav navbar-right nav">
-                            <li><?= Html::a(Yii::t('app','HOME'),['/'])?></li>
-                            <li><?= Html::a('About',['/page/about'])?></li>
-                            <li><?= Html::a('Contact',['/page/contact'])?></li>
-                            <li><?= Html::a('User',['/user'])?></li>
-                            <?php if(Yii::$app->user->isGuest){?>
-                            <li><?= Html::a('Login',['/user/login'])?></li>
-                            <?php }else{ //,['username'=>Yii::$app->user->displayName] ?>
-                            <li class="dropdown">
-                                <?= Html::a(Yii::$app->user->displayName.' <span class="caret"></span>','#',['data-toggle'=>'dropdown','class'=>'dropdown-toggle'])?>
-                                <ul class="dropdown-menu">
-                                    
+                            <li><?= Html::a(Yii::t('app', 'HOME'), ['/']) ?></li>
+                            <li><?= Html::a('About', ['/page/about']) ?></li>
+                            <li><?= Html::a('Contact', ['/contacts']) ?></li>
+                            <li><?= Html::a('User', ['/user']) ?></li>
+                            <?php if (Yii::$app->user->isGuest) { ?>
+                                <li><?= Html::a('Login', ['/user/login']) ?></li>
+                            <?php } else { //,['username'=>Yii::$app->user->displayName]  ?>
+                                <li class="dropdown">
+                                    <?= Html::a(Yii::$app->user->displayName . ' <span class="caret"></span>', '#', ['data-toggle' => 'dropdown', 'class' => 'dropdown-toggle']) ?>
+                                    <ul class="dropdown-menu">
 
-                                    <li><?= Html::aIconL('fa-user',Yii::t('app','PROFILE'),['/user/account'])?></li>
-                                    <li><?= Html::aIconL('fa-sign-out',Yii::t('app','LOGOUT'),['/user/logout'],['data-method'=>"post"])?></li>
-                                     <?php if(Yii::$app->user->can('admin')){ ?>
-                                    <li class="divider"></li>
-                                    <li><?= Html::aIconL('fa-wrench',Yii::t('app','ADMIN_PANEL'),['/admin'])?></li>
-                                    <?php } ?>
-                                </ul>
-                            </li>
+
+                                        <li><?= Html::aIconL('icon-user', Yii::t('app', 'PROFILE'), ['/user/account']) ?></li>
+                                        <li><?= Html::aIconL('icon-logout', Yii::t('app', 'LOGOUT'), ['/user/logout'], ['data-method' => "post"]) ?></li>
+                                        <?php if (Yii::$app->user->can('admin')) { ?>
+                                            <li class="divider"></li>
+                                            <li><?= Html::aIconL('icon-tools', Yii::t('app', 'ADMIN_PANEL'), ['/admin']) ?></li>
+                                        <?php } ?>
+                                    </ul>
+                                </li>
                             <?php } ?>
                         </ul>
                     </div>
                 </div>
             </nav>
+
+            <?php if (isset($this->context->breadcrumbs)) { ?>
+
+                <?php
+                echo Breadcrumbs::widget([
+                    'links' => $this->context->breadcrumbs,
+                    'options' => ['class' => 'breadcrumbs pull-left']
+                ]);
+                ?>
+            <?php } ?>
+
             <?php
             /* NavBar::begin([
               'brandLabel' => 'CORNER CMS',
@@ -89,32 +99,26 @@ AppAsset::register($this);
             ?>
 
             <div class="container">
-                <?=
-                Breadcrumbs::widget([
-                    'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                ])
-                ?>
+                <?php if (isset($this->context->breadcrumbs)) { ?>
 
+                    <?php
+                    echo Breadcrumbs::widget([
+                        'links' => $this->context->breadcrumbs,
+                    ]);
+                    ?>
+                <?php } ?>
 
-                <?php
-
-                use app\cms\widgets\lang\LangSwitcher;
-                ?>
-
-                <?//= LangSwitcher::widget(); ?>
-
-<?= $content ?>
+                <?= $content ?>
             </div>
         </div>
 
         <footer class="footer">
             <div class="container">
-                <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-                <p class="pull-right"><?= Yii::powered() ?></p>
+                <p class="text-center"><?= Yii::$app->powered() ?></p>
             </div>
         </footer>
 
-<?php $this->endBody() ?>
+        <?php $this->endBody() ?>
     </body>
 </html>
 <?php $this->endPage() ?>

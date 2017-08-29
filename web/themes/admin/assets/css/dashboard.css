@@ -6,6 +6,9 @@
  * .glyphicon
  * 
 */
+.vakata-context {
+    z-index:999 !important;
+}
 div.required label:after {
     content: " *";
     color: red;
@@ -192,7 +195,6 @@ label{
 .has-success .checkbox,
 .has-success .checkbox-inline,
 .has-success .control-label,
-.has-success .help-block,
 .has-success .radio,
 .has-success .radio-inline,
 .has-success.checkbox label,
@@ -204,7 +206,6 @@ label{
 .has-error .checkbox,
 .has-error .checkbox-inline,
 .has-error .control-label,
-.has-error .help-block,
 .has-error .radio,
 .has-error .radio-inline,
 .has-error.checkbox label,

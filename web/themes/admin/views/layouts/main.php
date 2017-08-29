@@ -3,7 +3,7 @@
 use app\system\assets\AdminAsset;
 use panix\engine\Html;
 use yii\widgets\Breadcrumbs;
-
+\panix\engine\assets\CommonAsset::register($this);
 AdminAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -18,6 +18,21 @@ AdminAsset::register($this);
     </head>
     <body class="no-radius">
         <?php $this->beginBody() ?>
+        <script>
+            $(function () {
+                $(".panel-heading .grid-toggle").click(function (e) {
+                    e.preventDefault();
+                    $(this).find('i').toggleClass("fa-chevron-down");
+                });
+                $("#menu-toggle").click(function (e) {
+                    e.preventDefault();
+                    $("#wrapper").toggleClass("active");
+
+
+                });
+                $('.fadeOut-time').delay(2000).fadeOut(2000);
+            });
+        </script>
         <div id="wrapper-tpl">
             <nav class="navbar navbar-inverse navbar-fixed-top">
 
@@ -66,27 +81,31 @@ AdminAsset::register($this);
                     </div>
                 </div>
             </nav>
-
-            <div id="wrapper">
+            <?php
+            $class = '';
+            $class .= (!isset($this->context->module->nav)) ? ' full-page' : '';
+            if (isset($_COOKIE['wrapper'])) {
+                $class .= ($_COOKIE['wrapper'] == 'true') ? ' active' : '';
+            }
+            ?>
+            <div id="wrapper" class="<?= $class ?>">
 
                 <!-- Sidebar -->
                 <div id="sidebar-wrapper">
 
 
-                    <ul id="sidebar_menu" class="sidebar-nav">
-                        <li class="sidebar-header">
-                            <div id="menu-toggle">
-                                <b><?= Yii::$app->user->displayName ?> <span class="caret"></span></b>
-                                <i class="icon-menu"></i>
-                            </div>
-
-                        </li>
-                    </ul>
-
                     <?php if (isset($this->context->module->nav)) { ?>
-                        <ul class="sidebar-nav">
+                        <ul class="sidebar-nav" id="menu">
+                            <li class="sidebar-header">
+
+                                <b><?= Yii::$app->user->displayName ?></b>
+
+
+                            </li>
+                            <li><?= Html::a('<i class="icon-menu"></i>', '#', ['id' => 'menu-toggle']) ?></li>
                             <?php foreach ($this->context->module->nav as $nav) { ?>
-                                <li><?= Html::a($nav['label'] . '<i class="' . $nav['icon'] . '"></i>', $nav['url'], $nav['htmlOptions']) ?></li>
+
+                                <li><?= Html::a($nav['label'] . '1<i class="' . $nav['icon'] . '"></i>', $nav['url'], (isset($nav['options']))?$nav['options']:[]) ?></li>
                             <?php } ?>
                         </ul>
                     <?php } ?>
@@ -101,15 +120,25 @@ AdminAsset::register($this);
                             <div class="col-lg-12 module-header">
                                 <div class="pull-left">
 
-                                    <h1>
-                                        <i class="<?= $this->context->module->info['icon'] ?>"></i>
+                                    <h1 class="hidden-xs">
+                                        <?php
+                                        if (isset($this->context->icon)) {
+                                            echo '<i class="' . $this->context->icon . '"></i>';
+                                        } else {
+                                            echo '<i class="' . $this->context->module->info['icon'] . '"></i>';
+                                        }
+                                        ?>
+
+
                                         <?= Html::encode($this->context->pageName) ?>
                                     </h1>
                                 </div>
 
 
                                 <div class="pull-right">
+                                    
                                     <?php
+            
                                     if (!isset($this->context->buttons)) {
                                         echo Html::a(Yii::t('app', 'CREATE'), ['create'], ['title' => Yii::t('app', 'CREATE'), 'class' => 'btn btn-success']);
                                     } else {
@@ -117,7 +146,7 @@ AdminAsset::register($this);
                                             if (is_array($this->context->buttons)) {
                                                 foreach ($this->context->buttons as $button) {
                                                     if (isset($button['icon'])) {
-                                                        $icon = '<i class="fa ' . $button['icon'] . '"></i>';
+                                                        $icon = '<i class="' . $button['icon'] . '"></i> ';
                                                     } else {
                                                         $icon = '';
                                                     }
@@ -137,6 +166,10 @@ AdminAsset::register($this);
                                 <div id="page-nav">
                                     <?php
                                     echo Breadcrumbs::widget([
+                                        'homeLink' => [
+                                            'label' => Yii::t('yii', 'Home'),
+                                            'url' => ['/admin']
+                                        ],
                                         'links' => $this->context->breadcrumbs,
                                         'options' => ['class' => 'breadcrumbs pull-left']
                                     ]);
@@ -178,33 +211,31 @@ AdminAsset::register($this);
 
 
 
-<?php
-
-
-/*Yii::$app->mailer->compose()
-    ->setFrom('andrew.panix@gmail.com')
-    ->setTo('andrew.panix@gmail.com')
-    ->setSubject('Тема сообщения')
-    ->setTextBody('Текст сообщения')
-    ->setHtmlBody('<b>текст сообщения в формате HTML</b>')
-    ->send();
+                                <?php
+                                /* Yii::$app->mailer->compose()
+                                  ->setFrom('andrew.panix@gmail.com')
+                                  ->setTo('andrew.panix@gmail.com')
+                                  ->setSubject('Тема сообщения')
+                                  ->setTextBody('Текст сообщения')
+                                  ->setHtmlBody('<b>текст сообщения в формате HTML</b>')
+                                  ->send();
 
 
 
-$send = Yii::$app->mailer->compose('test',['imageFileName' => 'uploads/test.jpg']) // здесь устанавливается результат рендеринга вида в тело сообщения
-    ->setFrom('from@domain.com')
-    ->setTo('andrew.panix@gmail.com')
-    ->setSubject('Message subject')
-    //->attach('uploads/test.doc')
-    ->attachContent('Attachment content', ['fileName' => 'uploads/test.doc', 'contentType' => 'text/plain'])
-        ->attachContent('Attachment content', ['fileName' => 'uploads/test.doc', 'contentType' => 'text/plain'])
-    ->send();
-if($send){
-    echo 'sended';
-}else{
-    echo 'error sended';
-}*/
-?>
+                                  $send = Yii::$app->mailer->compose('test',['imageFileName' => 'uploads/test.jpg']) // здесь устанавливается результат рендеринга вида в тело сообщения
+                                  ->setFrom('from@domain.com')
+                                  ->setTo('andrew.panix@gmail.com')
+                                  ->setSubject('Message subject')
+                                  //->attach('uploads/test.doc')
+                                  ->attachContent('Attachment content', ['fileName' => 'uploads/test.doc', 'contentType' => 'text/plain'])
+                                  ->attachContent('Attachment content', ['fileName' => 'uploads/test.doc', 'contentType' => 'text/plain'])
+                                  ->send();
+                                  if($send){
+                                  echo 'sended';
+                                  }else{
+                                  echo 'error sended';
+                                  } */
+                                ?>
 
                                 <?= $content ?>
                             </div>
@@ -217,29 +248,11 @@ if($send){
             </div>
             <footer class="footer">
                 <p class="col-md-12 text-center">
-                    <?=
-                    Yii::t('app', 'COPYRIGHT', [
-                        'year' => date('Y'),
-                        'v' => '0.0.1b'
-                    ]);
-                    ?>
+                    <?= Yii::$app->powered() ?> - 
+                    <?= Yii::$app->version ?>
                 </p>
             </footer>
-            <script>
-                $(function () {
-                    $(".panel-heading .grid-toggle").click(function (e) {
-                        e.preventDefault();
-                        $(this).find('i').toggleClass("fa-chevron-down");
-                    });
-                    $("#menu-toggle").click(function (e) {
-                        e.preventDefault();
-                        $("#wrapper").toggleClass("active");
 
-
-                    });
-                    $('.fadeOut-time').delay(2000).fadeOut(2000);
-                });
-            </script>
         </div>
         <?php $this->endBody() ?>
     </body>

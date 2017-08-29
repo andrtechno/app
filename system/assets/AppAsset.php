@@ -23,11 +23,11 @@ class AppAsset extends AssetBundle {
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        '//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'
+        'web/themes/admin/assets/css/corner-icons.css',
     ];
     public $js = [
         'js/app.js',
-        'js/cart.js',
+            //'js/cart.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

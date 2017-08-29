@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+//Timezone
+date_default_timezone_set("UTC");
 
 // comment out the following two lines when deployed to production
 defined('YII_DEBUG') or define('YII_DEBUG', true);

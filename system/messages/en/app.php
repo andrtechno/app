@@ -7,7 +7,7 @@ return [
     'YESTERDAY_IN' => 'Вчера в {time}',
     'DELETE_ITEM' => 'Вы уверены, что хотите удалить этот элемент?',
     'GRID_SWITCH' => 'Скрыть/показать',
-    'COPYRIGHT' => '&copy 2013-{year} CORNER CMS',
+    'COPYRIGHT' => '&copy 2013-{year} CORNER CMS EN',
     'HOME' => 'Главная',
     'SUCCESS_CREATE' => 'Запись успаешно создана!',
     'SUCCESS_UPDATE' => 'Изменение успешно сохранены.',

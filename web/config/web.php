@@ -8,22 +8,66 @@ $config = [
     'name' => 'CORNER CMS',
     'basePath' => dirname(__DIR__) . '/../',
     'language' => 'ru',
+    'sourceLanguage'=>'en',
     // 'runtimePath'=>'runtime',
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'maintenanceMode'],
     'modules' => [
-        'user' => ['class' => 'panix\user\Module'],
-        'admin' => ['class' => 'panix\admin\Module'],
-        'pages' => ['class' => 'panix\pages\Module'],
-        'shop' => ['class' => 'panix\shop\Module'],
-        // 'shop' => ['class' => 'app\system\modules\shop\Module'],
-        // 'shop' => ['class' => 'panix\module-shop\Module'],
-        'cart' => ['class' => 'app\system\modules\cart\Module'], //app\system\modules\cart\Module
+        'user' => ['class' => 'panix\mod\user\Module'],
+        'admin' => ['class' => 'panix\mod\admin\Module'],
+        'pages' => ['class' => 'panix\mod\pages\Module'],
+        'shop' => ['class' => 'panix\mod\shop\Module'],
+        //'news' => ['class' => 'panix\mod\news\Module'],
+        'contacts' => ['class' => 'panix\mod\contacts\Module'],
+        //'cart' => ['class' => 'panix\mod\cart\Module'], //app\system\modules\cart\Module
         'eav' => ['class' => 'mirocow\eav\Module'],
-
+        
+              'yii2images' => [
+            'class' => 'rico\yii2images\Module',
+            //be sure, that permissions ok 
+            //if you cant avoid permission errors you have to create "images" folder in web root manually and set 777 permissions
+            'imagesStorePath' => 'images/store', //path to origin images
+            'imagesCachePath' => 'images/cache', //path to resized copies
+            'graphicsLibrary' => 'GD', //but really its better to use 'Imagick' 
+            'placeHolderPath' => '@webroot/uploads/watermark.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
+            'imageCompressionQuality' => 100, // Optional. Default value is 85.
+            'waterMark'=>'@webroot/uploads/watermark.png'
+        ],
+        
     ],
     'components' => [
-        'currency' => ['class' => 'panix\shop\components\CurrencyManager'],
-        'cart' => ['class' => 'panix\cart\components\Cart'],
+        'formatter' => [
+          //  'class' => 'panix\engine\i18n\Formatter',
+            'locale'=>'ru-RU',
+            'dateFormat' => 'd.MM.Y',
+            'timeFormat' => 'H:mm:ss',
+          // 'datetimeFormat' => 'd.MM.Y HH:mm',
+            'datetimeFormat' => 'php:Y-m-d H:i:s',
+               //'decimalSeparator' => ',',
+       // 'thousandSeparator' => ' ',
+        'currencyCode' => 'UAH',
+        ],
+        'currency' => ['class' => 'panix\mod\shop\components\CurrencyManager'],
+        'cart' => ['class' => 'panix\mod\cart\components\Cart'],
+        'maintenanceMode' => [
+            'class' => 'panix\engine\maintenance\MaintenanceMode',
+            // Allowed roles
+            'roles' => [
+            //    'admin',
+            ],
+            //Retry-After header
+            'retryAfter' => 120 //or Wed, 21 Oct 2015 07:28:00 GMT for example
+        ],
+        'assetManager' => [
+            'bundles' => [
+                'panix\lib\google\maps\MapAsset' => [
+                    'options' => [
+                        'key' => 'AIzaSyAqDp9tu6LqlD6I1chjuZNV3yS6HNB_3Q0 ',
+                        'language' => 'ru',
+                        'version' => '3.1.18'
+                    ]
+                ]
+            ]
+        ],
         /* 'assetManager' => [
           'forceCopy' => YII_DEBUG,
           'linkAssets'=>true,
@@ -40,8 +84,17 @@ $config = [
         'view' => [
             'class' => 'panix\engine\View',
             'theme' => [
-                'pathMap' => ['@app/views' => '@webroot/themes/corner/views'],
+                'pathMap' => [
+                    '@app/views' => '@webroot/themes/corner/views',
+                    '@app/modules' => '@webroot/themes/corner/modules',
+                    '@app/widgets' => '@webroot/themes/corner/widgets'
+                ],
                 'baseUrl' => '@web/themes/corner',
+            ],
+            'renderers' => [
+                'tpl' => [
+                    'class' => 'yii\smarty\ViewRenderer',
+                ],
             ],
         ],
         'i18n' => [
@@ -53,6 +106,7 @@ $config = [
                         'app' => 'app.php',
                         'app/admin' => 'admin.php',
                         'app/month' => 'month.php',
+                        'app/error' => 'error.php',
                     ],
                 ],
                 'eav' => [
@@ -76,7 +130,7 @@ $config = [
         // 'class' => 'yii\caching\ApcCache',
         ],
         'user' => [
-            'class' => 'panix\user\components\User',
+            'class' => 'panix\mod\user\components\User',
         // 'identityClass' => 'app\models\User',
         // 'enableAutoLogin' => false,
         ],

@@ -16,19 +16,17 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "codemix/yii2-localeurls": "dev-master",
-        "dizews/yii2-crud-buttons": "0.1.*",
         "mirocow/yii2-eav": "*",
-        "vakata/jstree": "dev-master",
         "panix/wgt-jstree": "*",
         "panix/wgt-tinymce": "*",
         "panix/mod-shop": "*",
         "panix/mod-pages": "*",
-        "pistol88/yii2-seo": "*",
-        "vlaim/yii2-file-upload": "dev-master",
-        "trntv/yii2-file-kit": "dev-master",
-        "salopot/yii2-attach-image": "dev-master",
         "panix/mod-user": "*",
-        "panix/mod-admin": "*"
+        "panix/mod-admin": "*",
+        "panix/mod-contacts": "dev-master",
+        "panix/lib-google-maps": "*",
+        "panix/wgt-taginput": "dev-master",
+        "panix/wgt-fancybox": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -40,10 +38,10 @@
     "config": {
         "process-timeout": 1800
     },
-    "extra": {
-        "asset-installer-paths": {
-            "npm-asset-library": "vendor/npm",
-            "bower-asset-library": "vendor/bower"
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
-    }
+    ]
 }
