@@ -8,7 +8,7 @@ $config = [
     'name' => 'CORNER CMS',
     'basePath' => dirname(__DIR__) . '/../',
     'language' => 'ru',
-    'sourceLanguage'=>'en',
+    //'sourceLanguage'=>'en',
     // 'runtimePath'=>'runtime',
     'bootstrap' => ['log', 'maintenanceMode'],
     'modules' => [
@@ -20,31 +20,29 @@ $config = [
         'contacts' => ['class' => 'panix\mod\contacts\Module'],
         //'cart' => ['class' => 'panix\mod\cart\Module'], //app\system\modules\cart\Module
         'eav' => ['class' => 'mirocow\eav\Module'],
-        
-              'yii2images' => [
-            'class' => 'rico\yii2images\Module',
+        'images' => [
+            'class' => 'panix\mod\images\Module',
             //be sure, that permissions ok 
             //if you cant avoid permission errors you have to create "images" folder in web root manually and set 777 permissions
-            'imagesStorePath' => 'images/store', //path to origin images
-            'imagesCachePath' => 'images/cache', //path to resized copies
+            'imagesStorePath' => 'uploads/store', //path to origin images
+            'imagesCachePath' => 'uploads/cache', //path to resized copies
             'graphicsLibrary' => 'GD', //but really its better to use 'Imagick' 
             'placeHolderPath' => '@webroot/uploads/watermark.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
             'imageCompressionQuality' => 100, // Optional. Default value is 85.
-            'waterMark'=>'@webroot/uploads/watermark.png'
+            'waterMark' => '@webroot/uploads/watermark.png'
         ],
-        
     ],
     'components' => [
         'formatter' => [
-          //  'class' => 'panix\engine\i18n\Formatter',
-            'locale'=>'ru-RU',
+            //  'class' => 'panix\engine\i18n\Formatter',
+            'locale' => 'ru-RU',
             'dateFormat' => 'd.MM.Y',
             'timeFormat' => 'H:mm:ss',
-          // 'datetimeFormat' => 'd.MM.Y HH:mm',
+            // 'datetimeFormat' => 'd.MM.Y HH:mm',
             'datetimeFormat' => 'php:Y-m-d H:i:s',
-               //'decimalSeparator' => ',',
-       // 'thousandSeparator' => ' ',
-        'currencyCode' => 'UAH',
+            //'decimalSeparator' => ',',
+            // 'thousandSeparator' => ' ',
+            'currencyCode' => 'UAH',
         ],
         'currency' => ['class' => 'panix\mod\shop\components\CurrencyManager'],
         'cart' => ['class' => 'panix\mod\cart\components\Cart'],

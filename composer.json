@@ -19,7 +19,8 @@
         "panix/mod-pages": "*",
         "panix/mod-user": "*",
         "panix/mod-admin": "*",
-        "panix/mod-contacts": "*"
+        "panix/mod-contacts": "*",
+        "panix/mod-images": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
