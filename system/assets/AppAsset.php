@@ -27,9 +27,10 @@ class AppAsset extends AssetBundle {
     ];
     public $js = [
         'js/app.js',
-            //'js/cart.js',
+         'js/cart.js',
     ];
     public $depends = [
+        'yii\jui\JuiAsset',
         'yii\web\YiiAsset',
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapPluginAsset',

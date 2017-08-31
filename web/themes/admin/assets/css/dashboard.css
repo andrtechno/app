@@ -1,3 +1,63 @@
+.attachments{
+    margin-top: 30px;
+}
+
+.attachments .attachment-item-big{
+    float:left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    position:relative;
+    overflow:hidden;
+    width:200px;
+    height:200px;
+}
+
+.attachments .attachment-item-big{
+
+}
+
+.attachments .attachment-item-big:hover .caption,
+.attachments .attachment-item-big:focus .caption{
+    display: block;
+}
+.attachments .attachment-item-big .caption{
+    position:absolute;
+    top:0;
+    right:0;
+    background:rgba(0, 0, 0, 0.50);
+    width:100%;
+    padding:30px 2% 2% 2%;
+    display: block;
+    text-align:center;
+    color:#fff !important;
+    z-index:3;
+}
+.attachments .attachment-item-big .caption,
+.attachments .attachment-item-big > a{
+             height:156px;
+}
+.attachments .attachment-item-big > a{
+
+         display: block;
+}
+
+.attachments .attachment-item-big img{
+    max-height: 152px;
+    margin-bottom: 4px;
+}
+.attachments .iscover{
+    background: #fff;
+    border-radius: 50%;
+    color: green;
+    font-size: 33px;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: 10px;
+    width: 50px;
+}
 /*
  * Bootstrap.css
  * need removed classes

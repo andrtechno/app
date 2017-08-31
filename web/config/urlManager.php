@@ -29,8 +29,9 @@ return [
         ['pattern' => 'admin/<module:\w+>/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>/*', 'route' => '<module>/admin/<controller>/<action>'],
         //Frontend rolues
         ['pattern' => '<module:\w+>', 'route' => '<module>/default'],
-        ['pattern' => '<module:\w+>/<controller:\w+>', 'route' => '<module>/<controller>/index'],
         ['pattern' => '<module:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/default/<action>'],
+        //['pattern' => '<module:\w+>/<controller:\w+>', 'route' => '<module>/<controller>/index'],
+        
         ['pattern' => '<module:\w+>/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/<controller>/<action>'],
         ['pattern' => '<module:\w+>/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>/*', 'route' => '<module>/<controller>/<action>'],
     ],

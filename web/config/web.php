@@ -18,7 +18,7 @@ $config = [
         'shop' => ['class' => 'panix\mod\shop\Module'],
         //'news' => ['class' => 'panix\mod\news\Module'],
         'contacts' => ['class' => 'panix\mod\contacts\Module'],
-        //'cart' => ['class' => 'panix\mod\cart\Module'], //app\system\modules\cart\Module
+        'cart' => ['class' => 'panix\mod\cart\Module'], //app\system\modules\cart\Module
         'eav' => ['class' => 'mirocow\eav\Module'],
         'images' => [
             'class' => 'panix\mod\images\Module',

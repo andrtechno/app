@@ -150,6 +150,10 @@ AdminAsset::register($this);
                                     } else {
                                         if ($this->context->buttons == true) {
                                             if (is_array($this->context->buttons)) {
+                                                
+                                                if(count($this->context->buttons)>1){
+                                                    echo Html::beginTag('div',['class'=>'btn-group']);
+                                                }
                                                 foreach ($this->context->buttons as $button) {
                                                     if (isset($button['icon'])) {
                                                         $icon = '<i class="' . $button['icon'] . '"></i> ';
@@ -157,6 +161,9 @@ AdminAsset::register($this);
                                                         $icon = '';
                                                     }
                                                     echo Html::a($icon . $button['label'], $button['url'], $button['options']);
+                                                }
+                                                   if(count($this->context->buttons)>1){
+                                                    echo Html::endTag('div');
                                                 }
                                             }
                                         }

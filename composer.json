@@ -20,7 +20,10 @@
         "panix/mod-user": "*",
         "panix/mod-admin": "*",
         "panix/mod-contacts": "*",
-        "panix/mod-images": "*"
+        "panix/mod-images": "*",
+        "abeautifulsite/simpleimage": "3.3.2",
+        "panix/wgt-cropper": "*",
+        "panix/mod-cart": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -33,7 +33,7 @@ AppAsset::register($this);
                         </button>
                         <a class="navbar-brand" href="/">CORNER CMS</a>
                     </div>
-                    <?= \panix\engine\widgets\langSwitcher\LangSwitcher::Widget() ?>
+       
                     <div id="nav-collapse" class="collapse navbar-collapse">
                         <ul class="navbar-nav navbar-right nav">
                             <li><?= Html::a(Yii::t('app', 'HOME'), ['/']) ?></li>
