@@ -10,7 +10,7 @@ class ThemeAsset extends AssetBundle {
 
     public function init() {
         $this->_theme = \Yii::$app->settings->get('app', 'theme');
-        $this->sourcePath = "@app/web/themes/{$this->_theme}/assets";
+        $this->sourcePath = "@webroot/themes/{$this->_theme}/assets";
         parent::init();
     }
 
