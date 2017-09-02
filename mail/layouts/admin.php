@@ -1,5 +1,7 @@
 <?php
 use yii\helpers\Html;
+
+$request = Yii::$app->request;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -12,6 +14,11 @@ use yii\helpers\Html;
 <body>
     <?php $this->beginBody() ?>
     <?= $content ?>
+    
+    <p>------------------------------------------------------</p>
+    <p><b>IP address:</b> <?= $request->userIP; ?></p>
+    <p><b>UserAgent:</b> <?= $request->userAgent; ?></p>
+
     <?php $this->endBody() ?>
 </body>
 </html>

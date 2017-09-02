@@ -23,7 +23,8 @@
         "panix/mod-images": "*",
         "abeautifulsite/simpleimage": "3.3.2",
         "panix/wgt-cropper": "*",
-        "panix/mod-cart": "dev-master"
+        "panix/mod-cart": "dev-master",
+        "aksi0/yii2-novaposhta": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

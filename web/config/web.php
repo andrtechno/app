@@ -10,7 +10,11 @@ $config = [
     'language' => 'ru',
     //'sourceLanguage'=>'en',
     // 'runtimePath'=>'runtime',
+    // 'controllerNamespace' => 'panix\engine\controllers',
     'bootstrap' => ['log', 'maintenanceMode'],
+    //'controllerMap' => [
+   //     'webtest' => 'panix\engine\controllers\WebController',
+   // ],
     'modules' => [
         'user' => ['class' => 'panix\mod\user\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],
@@ -34,8 +38,8 @@ $config = [
     ],
     'components' => [
         // 'languageSwitcher' => [
-       //     'class' => 'panix\engine\widgets\langSwitcher\LangSwitcher',
-       // ],
+        //     'class' => 'panix\engine\widgets\langSwitcher\LangSwitcher',
+        // ],
         'formatter' => [
             //  'class' => 'panix\engine\i18n\Formatter',
             'locale' => 'ru-RU',
@@ -59,6 +63,7 @@ $config = [
             'retryAfter' => 120 //or Wed, 21 Oct 2015 07:28:00 GMT for example
         ],
         'assetManager' => [
+            'forceCopy' => YII_DEBUG,
             'bundles' => [
                 'panix\lib\google\maps\MapAsset' => [
                     'options' => [
@@ -67,30 +72,19 @@ $config = [
                         'version' => '3.1.18'
                     ]
                 ]
-            ]
+            ],
+            //'linkAssets' => true,
+            'appendTimestamp' => false
         ],
-        /* 'assetManager' => [
-          'forceCopy' => YII_DEBUG,
-          'linkAssets'=>true,
-          'bundles' => [
-          'yii\web\JqueryAsset' => [
-          //'sourcePath' => null,   // do not publish the bundle
-          'css' => ['themes/dot-luv/jquery-ui.css'],
-          'js' => [
-          YII_ENV_DEV ? 'jquery.js' : 'jquery.min.js'
-          ]
-          ],
-          ],
-          ], */
         'view' => [
             'class' => 'panix\engine\View',
             'theme' => [
-                'pathMap' => [
-                    '@app/views' => '@webroot/themes/corner/views',
-                    '@app/modules' => '@webroot/themes/corner/modules',
-                    '@app/widgets' => '@webroot/themes/corner/widgets'
-                ],
-                'baseUrl' => '@web/themes/corner',
+                'class' => 'panix\engine\base\Theme',
+                /*'pathMap' => [
+                    '@app/views' => "@webroot/web/themes/corner/views",
+                    '@app/modules' => "@webroot/web/themes/corner/modules",
+                    '@app/widgets' => "@webroot/themes/corner/widgets"
+                ],*/
             ],
             'renderers' => [
                 'tpl' => [
@@ -102,7 +96,7 @@ $config = [
             'translations' => [
                 'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@app/system/messages',
+                    'basePath' => '@vendor/panix/engine/messages',
                     'fileMap' => [
                         'app' => 'app.php',
                         'app/admin' => 'admin.php',
@@ -154,13 +148,15 @@ $config = [
             ],
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            //'errorAction' => 'site/error',
+           // 'errorAction' => 'webtest/error',
+           'errorView'=>'@webroot/themes/corner/views/layouts/error.php'
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             //'useFileTransport' => true,
             'messageConfig' => [
-                'from' => ['dev@corner-cms.com' => 'Admin'], // this is needed for sending emails
+                //    'from' => ['dev@corner-cms.com' => 'Admin'], // this is needed for sending emails
                 'charset' => 'UTF-8',
             ]
         ],

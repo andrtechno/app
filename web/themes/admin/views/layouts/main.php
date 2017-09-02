@@ -1,10 +1,10 @@
 <?php
 
-use app\system\assets\AdminAsset;
+
 use panix\engine\Html;
 use yii\widgets\Breadcrumbs;
-\panix\engine\assets\CommonAsset::register($this);
-AdminAsset::register($this);
+//\panix\engine\assets\CommonAsset::register($this);
+panix\mod\admin\assets\AdminAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -189,6 +189,8 @@ AdminAsset::register($this);
                                     ?>
                                 <?php } ?>
 
+
+                                    <?php echo $this->render('partials/_addonsMenu'); ?>
                                 <div class="clearfix"></div>
                             </div>
 
