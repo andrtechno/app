@@ -70,12 +70,20 @@ class SiteController extends Controller {
     }
 
     public function actionPlaceholder() {
-        header("Content-type: image/png");
+  
 
         // Dimensions
         $getsize = isset($_GET['size']) ? $_GET['size'] : '100x100';
         $dimensions = explode('x', $getsize);
-
+        
+        if(empty($dimensions[0])){
+            $dimensions[0] = $dimensions[1];
+        }
+        if(empty($dimensions[1])){
+            $dimensions[1] = $dimensions[0];
+        }
+   
+              header("Content-type: image/png");
         // Create image
         $image = imagecreate($dimensions[0], $dimensions[1]);
 
