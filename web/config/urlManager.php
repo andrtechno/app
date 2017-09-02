@@ -17,6 +17,7 @@ return [
     ],
     'rules' => [
         '' => 'site/index',
+        'placeholder' => 'site/placeholder',
         //Backend rules
         ['pattern' => 'admin/auth', 'route' => 'admin/auth'],
         ['pattern' => 'admin/app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
