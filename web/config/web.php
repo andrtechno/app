@@ -1,5 +1,7 @@
 <?php
 
+use panix\engine\pdf\Pdf;
+
 //Yii::setAlias('@runtime', '@webroot/web/runtime');
 $params = require(__DIR__ . '/params.php');
 $db = YII_DEBUG ? __DIR__ . '/db_local.php' : __DIR__ . '/db.php';
@@ -11,10 +13,11 @@ $config = [
     //'sourceLanguage'=>'en',
     // 'runtimePath'=>'runtime',
     // 'controllerNamespace' => 'panix\engine\controllers',
+    'defaultRoute' => 'main/index',
     'bootstrap' => ['log', 'maintenanceMode'],
-    //'controllerMap' => [
-   //     'webtest' => 'panix\engine\controllers\WebController',
-   // ],
+    'controllerMap' => [
+         'main' => 'panix\engine\controllers\WebController',
+     ],
     'modules' => [
         'user' => ['class' => 'panix\mod\user\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],
@@ -37,6 +40,14 @@ $config = [
         ],
     ],
     'components' => [
+        'pdf' => [
+            'class' => Pdf::classname(),
+            'format' => Pdf::FORMAT_A4,
+            'orientation' => Pdf::ORIENT_PORTRAIT,
+            'destination' => Pdf::DEST_BROWSER,
+            'mode' => Pdf::MODE_UTF8,
+        // refer settings section for all configuration options
+        ],
         // 'languageSwitcher' => [
         //     'class' => 'panix\engine\widgets\langSwitcher\LangSwitcher',
         // ],
@@ -80,11 +91,6 @@ $config = [
             'class' => 'panix\engine\View',
             'theme' => [
                 'class' => 'panix\engine\base\Theme',
-                /*'pathMap' => [
-                    '@app/views' => "@webroot/web/themes/corner/views",
-                    '@app/modules' => "@webroot/web/themes/corner/modules",
-                    '@app/widgets' => "@webroot/themes/corner/widgets"
-                ],*/
             ],
             'renderers' => [
                 'tpl' => [
@@ -149,12 +155,14 @@ $config = [
         ],
         'errorHandler' => [
             //'errorAction' => 'site/error',
-           // 'errorAction' => 'webtest/error',
-           'errorView'=>'@webroot/themes/corner/views/layouts/error.php'
+            // 'errorAction' => 'webtest/error',
+            'errorView' => '@webroot/themes/corner/views/layouts/error.php'
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             //'useFileTransport' => true,
+            //'layoutsPath' => '@web/mail/layouts',
+            //'viewsPath' => '@web/mail/views',
             'messageConfig' => [
                 //    'from' => ['dev@corner-cms.com' => 'Admin'], // this is needed for sending emails
                 'charset' => 'UTF-8',

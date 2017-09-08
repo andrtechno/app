@@ -1,5 +1,5 @@
-#Options +FollowSymLinks
-#IndexIgnore */*
+Options +FollowSymLinks
+IndexIgnore */*
 RewriteEngine on
 
 RewriteCond %{REQUEST_URI} !^/(web)

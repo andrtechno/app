@@ -1202,8 +1202,11 @@ label.required span.required{
     font-size: 12px;
     margin: 10px 0 5px;
 }
-
+.pagination > li{
+    font-size:12px;
+}
 .pagination > li > a{
+     font-size:12px;
     background: #f9f9f9;
     background: -moz-linear-gradient(top,  #f9f9f9 0%, #eeeeee 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#eeeeee));
