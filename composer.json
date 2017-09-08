@@ -20,16 +20,11 @@
         "panix/mod-user": "*",
         "panix/mod-admin": "*",
         "panix/mod-contacts": "*",
-        "panix/mod-images": "*",
         "abeautifulsite/simpleimage": "3.3.2",
         "panix/wgt-cropper": "*",
-        "panix/mod-cart": "dev-master",
-        "aksi0/yii2-novaposhta": "dev-master",
         "mpdf/mpdf": "dev-master",
         "kop/yii2-scroll-pager": "dev-master",
-        "mazurva/yii2-eav": "dev-master",
-        "panix/mod-discounts": "*",
-        "panix/wgt-colorpicker": "*"
+        "mazurva/yii2-eav": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

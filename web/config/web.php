@@ -35,6 +35,7 @@ $config = [
         'contacts' => ['class' => 'panix\mod\contacts\Module'],
         'cart' => ['class' => 'panix\mod\cart\Module'],
         'discounts' => ['class' => 'panix\mod\discounts\Module'],
+        'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
         'eav' => ['class' => 'mirocow\eav\Module'],
         'images' => [
             'class' => 'panix\mod\images\Module',
