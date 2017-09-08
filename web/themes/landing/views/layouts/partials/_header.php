@@ -21,6 +21,7 @@ use panix\engine\Html;
                 <li><?= Html::a('About', ['/page/about']) ?></li>
                 <li><?= Html::a('Contact', ['/contacts']) ?></li>
                 <li><?= Html::a('User', ['/user']) ?></li>
+                <li><?= Html::a('Shop', ['/shop']) ?></li>
                 <?php if (Yii::$app->user->isGuest) { ?>
                     <li><?= Html::a('Login', ['/user/login']) ?></li>
                 <?php } else { //,['username'=>Yii::$app->user->displayName]    ?>

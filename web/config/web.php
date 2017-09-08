@@ -16,8 +16,16 @@ $config = [
     'defaultRoute' => 'main/index',
     'bootstrap' => ['log', 'maintenanceMode'],
     'controllerMap' => [
-         'main' => 'panix\engine\controllers\WebController',
-     ],
+        'main' => 'panix\engine\controllers\WebController',
+        'migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationNamespaces' => [
+                'app\migrations',
+                'panix\mod\discounts\migrations',
+            ],
+        //'migrationPath' => null, // allows to disable not namespaced migration completely
+        ]
+    ],
     'modules' => [
         'user' => ['class' => 'panix\mod\user\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],
@@ -25,7 +33,8 @@ $config = [
         'shop' => ['class' => 'panix\mod\shop\Module'],
         //'news' => ['class' => 'panix\mod\news\Module'],
         'contacts' => ['class' => 'panix\mod\contacts\Module'],
-        'cart' => ['class' => 'panix\mod\cart\Module'], //app\system\modules\cart\Module
+        'cart' => ['class' => 'panix\mod\cart\Module'],
+        'discounts' => ['class' => 'panix\mod\discounts\Module'],
         'eav' => ['class' => 'mirocow\eav\Module'],
         'images' => [
             'class' => 'panix\mod\images\Module',
