@@ -6,7 +6,7 @@ ehthumbs.db
 Desktop.ini
 
 vendor/
-web/assets/
+web/assets
 web/uploads/
 nbproject/
 
