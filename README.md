@@ -10,7 +10,7 @@ CORNER CMS Web application [CORNER CMS](http://www.corner-cms.com)
 
 After installing Composer, run the following command to install the [Composer Asset Plugin](https://github.com/fxpio/composer-asset-plugin)
 ```
-php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"
+php composer global require "fxp/composer-asset-plugin:^1.2.0"
 ```
 
 Either run
