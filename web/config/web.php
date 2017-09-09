@@ -31,7 +31,6 @@ $config = [
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'pages' => ['class' => 'panix\mod\pages\Module'],
         'shop' => ['class' => 'panix\mod\shop\Module'],
-        //'news' => ['class' => 'panix\mod\news\Module'],
         'contacts' => ['class' => 'panix\mod\contacts\Module'],
         'cart' => ['class' => 'panix\mod\cart\Module'],
         'discounts' => ['class' => 'panix\mod\discounts\Module'],

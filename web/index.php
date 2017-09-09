@@ -13,4 +13,5 @@ $config = require(__DIR__ . '/config/web.php');
 //use yii\web\Application;
 use panix\engine\Application;
 $app = new Application($config);
+Yii::setAlias('@bower', dirname(__DIR__) . '/vendor/bower-asset');
 $app->run();
