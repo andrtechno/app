@@ -2,7 +2,7 @@
 
 use panix\engine\Html;
 use yii\widgets\Breadcrumbs;
-use yii\bootstrap\Alert;
+
 
 \app\web\themes\corner\assets\ThemeAsset::register($this);
 \panix\engine\assets\ErrorAsset::register($this);
@@ -28,16 +28,10 @@ use yii\bootstrap\Alert;
                     ]);
                     ?>
                 <?php } ?>
-                <h1><?= $exception->statusCode; ?></h1>
-                <?php
-                echo Alert::widget([
-                    'options' => ['class' => 'alert-danger'],
-                    'body' => $exception->getMessage(),
-                    'closeButton' => false
-                ]);
-                ?>
+
+
 <?php
-print_r($_GET);
+echo $content;
 ?>
             </div>
         </div>

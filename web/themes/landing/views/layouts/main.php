@@ -23,6 +23,16 @@ $this->registerJs("
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <?php $this->head() ?>
+        
+        <?php
+    /*if (is_null(Yii::$app->seo->block('title'))) {
+        echo '<title>' . Html::encode($this->title) . '</title>';
+    } else {
+        echo '<title>' . Html::encode(Yii::$app->seo->block('title')) . '</title>';
+    }*/
+    ?>
+        
+        
     </head>
     <body>
         <?php $this->beginBody() ?>
@@ -65,9 +75,13 @@ $this->registerJs("
                     ]);
                     ?>
                 <?php } ?>
+                <?php
 
+                
+                echo Yii::t('app','IN'); ?>
                 <?= $content ?>
-
+<?php print_r($_GET);?>
+                <?php print_r(Yii::$app->language);?>
                 
             </div>
         </div>

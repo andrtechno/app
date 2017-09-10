@@ -10,11 +10,11 @@ $config = [
     'name' => 'CORNER CMS',
     'basePath' => dirname(__DIR__) . '/../',
     'language' => 'ru',
-    //'sourceLanguage'=>'en',
+    //'sourceLanguage'=>'ru',
     // 'runtimePath'=>'runtime',
     // 'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'main/index',
-    'bootstrap' => ['log', 'maintenanceMode'],
+    'bootstrap' => ['webcontrol', 'log', 'maintenanceMode'],//, 'seo'
     'controllerMap' => [
         'main' => 'panix\engine\controllers\WebController',
         'migrate' => [
@@ -36,6 +36,9 @@ $config = [
         'discounts' => ['class' => 'panix\mod\discounts\Module'],
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
         'eav' => ['class' => 'mirocow\eav\Module'],
+        'seo' => [
+            'class' => 'aquy\seo\module\Meta'
+        ],
         'images' => [
             'class' => 'panix\mod\images\Module',
             //be sure, that permissions ok 
@@ -49,6 +52,12 @@ $config = [
         ],
     ],
     'components' => [
+        'webcontrol' => [
+            'class' => 'panix\engine\widgets\webcontrol\WebInlineControl'
+        ],
+       // 'seo' => [
+       //     'class' => 'aquy\seo\components\Seo'
+       // ],
         'pdf' => [
             'class' => Pdf::classname(),
             'format' => Pdf::FORMAT_A4,
@@ -126,7 +135,10 @@ $config = [
             ],
         ],
         'session' => [
-            'class' => 'yii\web\Session',
+            'class' => 'yii\web\DbSession',
+            //'sessionTable'=>'{{%session}}',
+            // 'timeout'=> 5,
+            'useCookies' => true
         ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
@@ -135,8 +147,10 @@ $config = [
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
-            'cachePath' => '@runtime/cache',
+         //   'class' => 'yii\caching\FileCache',
+       'class' => 'yii\caching\DummyCache',
+           // 'class' => 'yii\caching\DbCache',
+        // 'cachePath' => '@runtime/cache',
         // 'class' => 'yii\caching\ApcCache',
         ],
         'user' => [
@@ -163,9 +177,10 @@ $config = [
             ],
         ],
         'errorHandler' => [
+            //'class'=>'panix\engine\base\ErrorHandler'
             //'errorAction' => 'site/error',
-            // 'errorAction' => 'webtest/error',
-            'errorView' => '@webroot/themes/corner/views/layouts/error.php'
+            'errorAction' => 'main/error',
+           // 'errorView' => '@webroot/themes/corner/views/layouts/error.php'
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -196,6 +211,7 @@ if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug']['class'] = 'yii\debug\Module';
+    //$config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
     //$config['modules']['debug']['dataPath'] = '@runtime/debug';
 
     $config['bootstrap'][] = 'gii';
