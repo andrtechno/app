@@ -75,13 +75,12 @@ $this->registerJs("
                     ]);
                     ?>
                 <?php } ?>
-                <?php
 
                 
-                echo Yii::t('app','IN'); ?>
+   
                 <?= $content ?>
-<?php print_r($_GET);?>
-                <?php print_r(Yii::$app->language);?>
+
+
                 
             </div>
         </div>

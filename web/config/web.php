@@ -12,9 +12,9 @@ $config = [
     'language' => 'ru',
     //'sourceLanguage'=>'ru',
     // 'runtimePath'=>'runtime',
-    // 'controllerNamespace' => 'panix\engine\controllers',
+    'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'main/index',
-    'bootstrap' => ['webcontrol', 'log', 'maintenanceMode'],//, 'seo'
+    'bootstrap' => ['webcontrol', 'log', 'maintenanceMode'], //, 'seo'
     'controllerMap' => [
         'main' => 'panix\engine\controllers\WebController',
         'migrate' => [
@@ -35,10 +35,9 @@ $config = [
         'cart' => ['class' => 'panix\mod\cart\Module'],
         'discounts' => ['class' => 'panix\mod\discounts\Module'],
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
+        'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
         'eav' => ['class' => 'mirocow\eav\Module'],
-        'seo' => [
-            'class' => 'aquy\seo\module\Meta'
-        ],
+        'seo' => ['class' => 'aquy\seo\module\Meta'],
         'images' => [
             'class' => 'panix\mod\images\Module',
             //be sure, that permissions ok 
@@ -55,9 +54,9 @@ $config = [
         'webcontrol' => [
             'class' => 'panix\engine\widgets\webcontrol\WebInlineControl'
         ],
-       // 'seo' => [
-       //     'class' => 'aquy\seo\components\Seo'
-       // ],
+        // 'seo' => [
+        //     'class' => 'aquy\seo\components\Seo'
+        // ],
         'pdf' => [
             'class' => Pdf::classname(),
             'format' => Pdf::FORMAT_A4,
@@ -147,9 +146,9 @@ $config = [
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
         'cache' => [
-         //   'class' => 'yii\caching\FileCache',
-       'class' => 'yii\caching\DummyCache',
-           // 'class' => 'yii\caching\DbCache',
+            //   'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\DummyCache',
+        // 'class' => 'yii\caching\DbCache',
         // 'cachePath' => '@runtime/cache',
         // 'class' => 'yii\caching\ApcCache',
         ],
@@ -180,7 +179,7 @@ $config = [
             //'class'=>'panix\engine\base\ErrorHandler'
             //'errorAction' => 'site/error',
             'errorAction' => 'main/error',
-           // 'errorView' => '@webroot/themes/corner/views/layouts/error.php'
+        // 'errorView' => '@webroot/themes/corner/views/layouts/error.php'
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

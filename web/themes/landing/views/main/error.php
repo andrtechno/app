@@ -26,7 +26,7 @@ foreach($exception->getTrace() as $trace){ ?>
     <div class="">Функция: <?=$trace['function']?></div>
     <div class="">class: <?=$trace['class']?></div>
     <?php foreach($trace['args'] as $args){ ?>
-    <?php print_r($args); ?>
+    <?php //print_r($args); ?>
     <?php } ?>
 </div>
     
