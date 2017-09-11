@@ -133,7 +133,12 @@ $config = [
                 ],
             ],
         ],
-        'session' => [
+         'session' => [
+        'class' => '\panix\engine\web\DbUserSession',
+
+        'sessionTable' => '{{%session_user}}', // session table name. Defaults to 'session'.
+    ], 
+        'session22' => [
             'class' => 'yii\web\DbSession',
             //'sessionTable'=>'{{%session}}',
             // 'timeout'=> 5,
@@ -154,6 +159,7 @@ $config = [
         ],
         'user' => [
             'class' => 'panix\mod\user\components\User',
+
         // 'identityClass' => 'app\models\User',
         // 'enableAutoLogin' => false,
         ],

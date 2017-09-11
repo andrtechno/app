@@ -20,12 +20,12 @@ class ThemeAsset extends AssetBundle {
 
     public $css = [
         'css/style.css',
-        'css/shop.css'
+        //'css/shop.css'
     ];
 
     public $depends = [
         'panix\engine\assets\CommonAsset',
-        'panix\mod\cart\assets\CartAsset',
+        'panix\mod\shop\assets\WebAsset',
     ];
 
 }
