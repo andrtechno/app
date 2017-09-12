@@ -2,7 +2,7 @@
 
 use panix\engine\Html;
 ?>
-<nav class="navbar-inverse navbar-fixed-top navbar" role="navigation" id="nav">
+<nav class="navbar-inverse navbar-fixed-top2 navbar" role="navigation" id="nav">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-collapse"><span class="sr-only">Toggle navigation</span>

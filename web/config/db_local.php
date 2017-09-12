@@ -8,5 +8,6 @@ return [
     'charset' => 'utf8',
     'tablePrefix' => 'cms_',
     'serverStatusCache' => !YII_DEBUG ? 0 : 3600,
-    'enableSchemaCache' => !YII_DEBUG ? 0 : 3600
+    'enableSchemaCache' => !YII_DEBUG ? 0 : 3600,
+    'schemaCacheDuration'=>!YII_DEBUG ? 0 : 3600,
 ];
