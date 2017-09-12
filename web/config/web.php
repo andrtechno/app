@@ -13,7 +13,7 @@ $config = [
     //'sourceLanguage'=>'ru',
     // 'runtimePath'=>'runtime',
     'controllerNamespace' => 'panix\engine\controllers',
-    'defaultRoute' => 'main/index',
+    'defaultRoute' => 'main/main',
     'bootstrap' => ['webcontrol', 'log', 'maintenanceMode'], //, 'seo'
     'controllerMap' => [
         'main' => 'panix\engine\controllers\WebController',
@@ -36,6 +36,7 @@ $config = [
         'discounts' => ['class' => 'panix\mod\discounts\Module'],
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
         'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
+        'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
         'eav' => ['class' => 'mirocow\eav\Module'],
         'seo' => ['class' => 'aquy\seo\module\Meta'],
         'images' => [

@@ -2,7 +2,51 @@ html,
 body {
     height: 100%;
 }
+#header .header-top{
 
+    background: #f9f9f9 ;
+    border-bottom:1px solid #cdcdcd;
+}
+#header .header-center{
+    padding: 20px 0;
+}
+#header .header-top .nav-pills > li > a{
+    border-radius:0;
+}
+#header .header-top .nav > li > a,
+#header .header-top .nav > li > a{
+    padding: 5px 10px;
+}
+#header .header-top .nav > li > a:hover,
+#header .header-top .nav > li > a:focus{
+
+}
+.logo{
+    font-family:Corner;
+    font-size:30px;
+    position:relative;
+    padding-left:50px;
+    display:block;
+    width:200px;
+    height:50px;
+    line-height:50px;
+}
+.logo:before{
+    position:absolute;
+    content:"\f002";
+    left:0;
+    top:0;
+    font-size:40px;
+}
+input.loading{
+    background-image: url(../images/s-loading.gif);
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: auto;
+
+
+}
+/* ------------------ */
 .wrap {
     min-height: 100%;
     height: auto;
