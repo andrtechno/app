@@ -31,9 +31,10 @@ use panix\engine\Html;
     </div>
     <div class="header-center container">
         <div class="row">
-            <div class="col-sm-4"><?= Html::a('CORNER', '/', ['class' => 'logo']); ?></div>
+            <div class="col-sm-3"><?= Html::a('CORNER', '/', ['class' => 'logo']); ?></div>
             <div class="col-sm-4"><?php echo \panix\mod\shop\widgets\search\SearchWidget::widget([]); ?></div>
-            <div class="col-sm-4"><?php echo \panix\mod\cart\widgets\cart\CartWidget::widget(['skin'=>'dropdown']); ?></div>
+            <div class="col-sm-3">+3 (077) 777-77-77<br/>+3 (077) 777-77-77</div>
+            <div class="col-sm-2"><?php echo \panix\mod\cart\widgets\cart\CartWidget::widget(['skin'=>'dropdown']); ?></div>
         </div>
     </div>
     <div class="header-menu">
