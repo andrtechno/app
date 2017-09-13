@@ -37,8 +37,7 @@ $config = [
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
         'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
         'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
-        'eav' => ['class' => 'mirocow\eav\Module'],
-        'seo' => ['class' => 'aquy\seo\module\Meta'],
+        //'seo' => ['class' => 'aquy\seo\module\Meta'],
         'images' => [
             'class' => 'panix\mod\images\Module',
             //be sure, that permissions ok 
