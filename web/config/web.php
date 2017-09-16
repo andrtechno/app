@@ -37,6 +37,10 @@ $config = [
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
         'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
         'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
+        'csv' => ['class' => 'panix\mod\csv\Module'],
+        //'csv' => ['class' => 'panix\mod\csv\Module'],
+        //'csv' => ['class' => 'panix\mod\csv\Module'],
+        'delivery' => ['class' => 'panix\mod\delivery\Module'],
         //'seo' => ['class' => 'aquy\seo\module\Meta'],
         'images' => [
             'class' => 'panix\mod\images\Module',
@@ -63,7 +67,6 @@ $config = [
             'orientation' => Pdf::ORIENT_PORTRAIT,
             'destination' => Pdf::DEST_BROWSER,
             'mode' => Pdf::MODE_UTF8,
-        // refer settings section for all configuration options
         ],
         // 'languageSwitcher' => [
         //     'class' => 'panix\engine\widgets\langSwitcher\LangSwitcher',
@@ -106,14 +109,10 @@ $config = [
         ],
         'view' => [
             'class' => 'panix\engine\View',
-            'theme' => [
-                'class' => 'panix\engine\base\Theme',
+            'as Layout' => [
+                'class' => \panix\engine\behaviors\LayoutBehavior::className(),
             ],
-            'renderers' => [
-                'tpl' => [
-                    'class' => 'yii\smarty\ViewRenderer',
-                ],
-            ],
+            'theme' => ['class' => 'panix\engine\base\Theme'],
         ],
         'i18n' => [
             'translations' => [
@@ -133,11 +132,10 @@ $config = [
                 ],
             ],
         ],
-         'session' => [
-        'class' => '\panix\engine\web\DbUserSession',
-
-        'sessionTable' => '{{%session_user}}', // session table name. Defaults to 'session'.
-    ], 
+        'session' => [
+            'class' => '\panix\engine\web\DbUserSession',
+            'sessionTable' => '{{%session_user}}', // session table name. Defaults to 'session'.
+        ],
         'session22' => [
             'class' => 'yii\web\DbSession',
             //'sessionTable'=>'{{%session}}',
@@ -159,7 +157,6 @@ $config = [
         ],
         'user' => [
             'class' => 'panix\mod\user\components\User',
-
         // 'identityClass' => 'app\models\User',
         // 'enableAutoLogin' => false,
         ],
@@ -167,7 +164,9 @@ $config = [
             'class' => 'yii\authclient\Collection',
             'clients' => [
                 'google' => [
-                    'class' => 'yii\authclient\clients\GoogleOpenId'
+                    'class' => 'yii\authclient\clients\Google',
+                    'clientId' => '323564730067-0guk795ucs29o9l86db8tocj8sijn130.apps.googleusercontent.com',
+                    'clientSecret' => 'cQp5F8dX5ww0uLnAbAMt9BFu',
                 ],
                 'facebook' => [
                     'class' => 'yii\authclient\clients\Facebook',

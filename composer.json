@@ -17,7 +17,15 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "yiisoft/yii2-jui": "*",
         "panix/engine": "*",
-        "aquy/yii2-seo": "*"
+        "aquy/yii2-seo": "*",
+        "kop/yii2-scroll-pager": "dev-master",
+        "panix/wgt-jstree": "*",
+        "panix/wgt-taginput": "*",
+        "yiisoft/yii2-authclient": "~2.1.0",
+        "panix/mod-csv": "*",
+        "panix/mod-delivery": "*",
+        "panix/mod-xml": "*",
+        "panix/mod-yandexmarket": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

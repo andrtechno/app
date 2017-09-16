@@ -36,10 +36,10 @@ $this->registerJs("
     </head>
     <body>
         <?php $this->beginBody() ?>
-        <div class="wrap">
+        <div class="wrap">SHOP LAYOUT111111111111111111111111111111111111111111111111
             <?= $this->render('partials/_header'); ?>
 
-main
+
             <?php
             /* NavBar::begin([
               'brandLabel' => 'CORNER CMS',

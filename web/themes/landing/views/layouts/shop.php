@@ -39,7 +39,7 @@ $this->registerJs("
         <div class="wrap">
             <?= $this->render('partials/_header'); ?>
 
-main
+main shop
             <?php
             /* NavBar::begin([
               'brandLabel' => 'CORNER CMS',

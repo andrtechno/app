@@ -14,6 +14,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 
 
-RewriteCond %{REQUEST_URI} !^/(phpinfo).*$
+RewriteCond %{REQUEST_URI} !^/(phpinfo|requirements).*$
 
 RewriteRule . /web/index.php
