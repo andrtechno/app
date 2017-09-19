@@ -39,8 +39,9 @@ $config = [
         'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
         'csv' => ['class' => 'panix\mod\csv\Module'],
         //'csv' => ['class' => 'panix\mod\csv\Module'],
-        //'csv' => ['class' => 'panix\mod\csv\Module'],
+        'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
         'delivery' => ['class' => 'panix\mod\delivery\Module'],
+        'forum' => ['class' => 'panix\mod\forum\Module'],
         //'seo' => ['class' => 'aquy\seo\module\Meta'],
         'images' => [
             'class' => 'panix\mod\images\Module',
@@ -55,9 +56,8 @@ $config = [
         ],
     ],
     'components' => [
-        'webcontrol' => [
-            'class' => 'panix\engine\widgets\webcontrol\WebInlineControl'
-        ],
+        'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
+        'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
         // 'seo' => [
         //     'class' => 'aquy\seo\components\Seo'
         // ],
@@ -72,15 +72,7 @@ $config = [
         //     'class' => 'panix\engine\widgets\langSwitcher\LangSwitcher',
         // ],
         'formatter' => [
-            //  'class' => 'panix\engine\i18n\Formatter',
-            'locale' => 'ru-RU',
-            'dateFormat' => 'd.MM.Y',
-            'timeFormat' => 'H:mm:ss',
-            // 'datetimeFormat' => 'd.MM.Y HH:mm',
-            'datetimeFormat' => 'php:Y-m-d H:i:s',
-            //'decimalSeparator' => ',',
-            // 'thousandSeparator' => ' ',
-            'currencyCode' => 'UAH',
+            'class' => 'panix\engine\i18n\Formatter',
         ],
         'currency' => ['class' => 'panix\mod\shop\components\CurrencyManager'],
         'cart' => ['class' => 'panix\mod\cart\components\Cart'],
@@ -96,6 +88,11 @@ $config = [
         'assetManager' => [
             'forceCopy' => YII_DEBUG,
             'bundles' => [
+                'yii\jui\JuiAsset' => [
+                    'js' => [
+                        'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
+                    ]
+                ],
                 'panix\lib\google\maps\MapAsset' => [
                     'options' => [
                         'key' => 'AIzaSyAqDp9tu6LqlD6I1chjuZNV3yS6HNB_3Q0 ',
@@ -112,6 +109,12 @@ $config = [
             'as Layout' => [
                 'class' => \panix\engine\behaviors\LayoutBehavior::className(),
             ],
+            'renderers' => [
+                'tpl' => [
+                    'class' => 'yii\smarty\ViewRenderer',
+                //'cachePath' => '@runtime/Smarty/cache',
+                ],
+            ],
             'theme' => ['class' => 'panix\engine\base\Theme'],
         ],
         'i18n' => [
@@ -124,6 +127,8 @@ $config = [
                         'app/admin' => 'admin.php',
                         'app/month' => 'month.php',
                         'app/error' => 'error.php',
+                        'app/geoip_country' => 'geoip_country.php',
+                        'app/geoip_city' => 'geoip_city.php',
                     ],
                 ],
                 'eav' => [
@@ -217,9 +222,8 @@ if (YII_ENV_DEV) {
     $config['modules']['debug']['class'] = 'yii\debug\Module';
     //$config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
     //$config['modules']['debug']['dataPath'] = '@runtime/debug';
-
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = 'yii\gii\Module';
+    //$config['bootstrap'][] = 'gii';
+    //$config['modules']['gii'] = 'yii\gii\Module';
 }
 
 return $config;
