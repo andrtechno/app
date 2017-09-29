@@ -40,9 +40,7 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
 
 
         <div class="panel-footer text-center">
-
-            <?= Html::submitButton(Html::icon('check') . ' ' . Yii::t('app', 'SAVE'), ['class' => 'btn btn-success']) ?>
-
+            <?= Html::submitButton(Yii::t('install/default', 'NEXT'), ['class' => 'btn btn-success']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

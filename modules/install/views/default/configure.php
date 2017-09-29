@@ -28,8 +28,8 @@ use panix\engine\behaviors\wizard\WizardMenu;
 
 
         <div class="panel-footer text-center">
-
-            <?= Html::submitButton(Html::icon('check') . ' ' . Yii::t('app', 'SAVE'), ['class' => 'btn btn-success']) ?>
+<?= Html::a(Yii::t('install/default', 'BACK'), [Yii::$app->controller->id . '/index', 'step' => 'db'], ['class' => 'btn btn-link']) ?>
+            <?= Html::submitButton(Yii::t('install/default', 'NEXT'), ['class' => 'btn btn-success']) ?>
 
         </div>
 

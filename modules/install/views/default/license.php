@@ -2,7 +2,6 @@
 
 use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
-
 use panix\engine\behaviors\wizard\WizardMenu;
 use yii\helpers\Markdown;
 
@@ -11,7 +10,6 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
             'current' => $event->sender->currentStepIndex,
             'count' => $event->sender->stepCount
         ));
-
 ?>
 
 <div class="col-sm-3">
@@ -32,7 +30,7 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
                 <div class=" license-box">
 
                     <?php
-                    $lang =  strtoupper(Yii::$app->language);
+                    $lang = strtoupper(Yii::$app->language);
                     echo Markdown::process(file_get_contents(Yii::getAlias('@app/modules/install') . DIRECTORY_SEPARATOR . "LICENSE_{$lang}.md"), 'gfm');
                     ?>
                 </div>
@@ -45,9 +43,8 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
 
 
         <div class="panel-footer text-center">
-
-            <?= Html::submitButton(Html::icon('check') . ' ' . Yii::t('app', 'SAVE'), ['class' => 'btn btn-success']) ?>
-
+            <?= Html::a(Yii::t('install/default', 'BACK'), [Yii::$app->controller->id . '/index', 'step' => 'chooseLanguage'], ['class' => 'btn btn-link']) ?>
+            <?= Html::submitButton(Yii::t('install/default', 'NEXT'), ['class' => 'btn btn-success']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

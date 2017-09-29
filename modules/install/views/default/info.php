@@ -129,8 +129,8 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
         ?>
 
         <div class="panel-footer text-center">
-
-            <?= Html::submitButton(Html::icon('check') . ' ' . Yii::t('app', 'SAVE'), ['class' => 'btn btn-success']) ?>
+<?= Html::a(Yii::t('install/default', 'BACK'), [Yii::$app->controller->id . '/index', 'step' => 'license'], ['class' => 'btn btn-link']) ?>
+            <?= Html::submitButton(Yii::t('install/default', 'NEXT'), ['class' => 'btn btn-success']) ?>
 
         </div>
 

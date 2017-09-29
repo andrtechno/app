@@ -211,11 +211,8 @@ ul.nav > li.active a{
     color:green;
 
 }
-ul.nav > li > span{
-    color:#ADADAD;
-}
-ul.nav > li > a,
-ul.nav > li > span{
+
+ul.nav > li > a{
     padding:5px 25px 5px 40px;
     border-bottom:1px solid #cdcdcd;
     position:relative;
@@ -236,7 +233,13 @@ ul.nav > li > a:after{
 ul.nav > li.success a:after{
     content:"\f055";
 }
+ul.nav > li  a i{
 
+    position: absolute;
+    right:10px;
+    
+    top:5px;
+}
 ul.nav > li:nth-child(1) > a:after{
     content:"\f024";
 }
@@ -259,7 +262,9 @@ ul.nav > li:nth-child(6) > a:after{
     content:"\f011";
 }
 
-
+ul.nav > li > a[href="#"]{
+    color:#c0c0c0;
+}
 
 .alert-danger,
 .alert-success,
