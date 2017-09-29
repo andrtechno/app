@@ -6,11 +6,12 @@ use panix\engine\bootstrap\ActiveForm;
 use panix\engine\behaviors\wizard\WizardMenu;
 use yii\helpers\Markdown;
 
-/* $this->title = $event->sender->getStepLabel($event->step); */
+$this->title = $event->sender->getStepLabel($event->step);
 $this->context->process = Yii::t('install/default', 'STEP', array(
-            'current' => $event->sender->currentStep,
+            'current' => $event->sender->currentStepIndex,
             'count' => $event->sender->stepCount
         ));
+
 ?>
 
 <div class="col-sm-3">
@@ -31,7 +32,8 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
                 <div class=" license-box">
 
                     <?php
-                    echo Markdown::process(file_get_contents(Yii::getAlias('@app') . DIRECTORY_SEPARATOR . 'LICENSE.md'), 'gfm');
+                    $lang =  strtoupper(Yii::$app->language);
+                    echo Markdown::process(file_get_contents(Yii::getAlias('@app/modules/install') . DIRECTORY_SEPARATOR . "LICENSE_{$lang}.md"), 'gfm');
                     ?>
                 </div>
             </div>
