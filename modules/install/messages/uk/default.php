@@ -1,6 +1,7 @@
 <?php
 
-return array(
+return [
+        'CMS' => 'Content management system',
     'ACCESS_FILE_DIR' => 'Права доступу до файлів і папок',
     'CHMOD_ERROR' => 'Змініть права доступу CHMOD - <b>{chmod}</b>',
     'LICENSE_CHECK_INFO' => 'Вкажіть ліцензійний ключ.',
@@ -40,4 +41,4 @@ return array(
     'ERRORS' => 'Помилки',
     'LANG' => 'Мова',
     'LICENSE_KEY' => 'Ліцензійний ключ'
-);
+];

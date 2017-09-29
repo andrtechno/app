@@ -29,7 +29,7 @@ $this->beginPage() ?>
         <div class="content">
             <div class="text-center auth-logo ">
                 <a href="//corner-cms.com" target="_blank">CORNER</a>
-                <div class="auth-logo-hint"><?= Yii::t('app', 'CMS') ?></div>
+                <div class="auth-logo-hint"><?= Yii::t('install/default', 'CMS') ?></div>
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading">

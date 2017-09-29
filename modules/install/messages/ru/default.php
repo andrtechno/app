@@ -1,6 +1,7 @@
 <?php
 
-return array(
+return [
+    'CMS' => 'Система управління сайтом',
     'ACCESS_FILE_DIR' => 'Права доступа к файлам и папкам',
     'CHMOD_ERROR' => 'Установите нужные права доступа CHMOD - <b>{chmod}</b>',
     'LICENSE_CHECK_INFO' => 'Укажите лицензионный ключ.',
@@ -40,4 +41,4 @@ return array(
     'ERRORS' => 'Ошибки',
     'LANG' => 'Язык',
     'LICENSE_KEY' => 'Лицензионный ключ'
-);
+];

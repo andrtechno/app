@@ -8,7 +8,6 @@ use panix\engine\behaviors\wizard\Event;
 
 class DefaultController extends \yii\web\Controller {
 
-
     public $layout = '@app/modules/install/views/layouts/install';
     public $process;
     public $title;
@@ -18,9 +17,9 @@ class DefaultController extends \yii\web\Controller {
 
         $config = array(
             'steps' => array(
-               // Yii::t('install/default', 'STEP_START') => 'chooseLanguage',
-               // Yii::t('install/default', 'STEP_LICENSE') => 'license',
-               // Yii::t('install/default', 'STEP_INFO') => 'info',
+                Yii::t('install/default', 'STEP_START') => 'chooseLanguage',
+                Yii::t('install/default', 'STEP_LICENSE') => 'license',
+                Yii::t('install/default', 'STEP_INFO') => 'info',
                 Yii::t('install/default', 'STEP_DB') => 'db',
                 Yii::t('install/default', 'STEP_CONFIGURE') => 'configure',
             ),
@@ -41,6 +40,7 @@ class DefaultController extends \yii\web\Controller {
 
         $this->process($step);
     }
+
     public function actionError() {
         $exception = Yii::$app->errorHandler->exception;
 
@@ -89,7 +89,7 @@ class DefaultController extends \yii\web\Controller {
         if ($event->step === true)
             echo $this->render('@app/modules/install/views/default/completed', compact('event'));
         else
-           echo $this->render('@app/modules/install/views/default/finished', compact('event'));
+            echo $this->render('@app/modules/install/views/default/finished', compact('event'));
 
         $event->sender->reset();
         Yii::$app->end();
@@ -103,9 +103,9 @@ class DefaultController extends \yii\web\Controller {
     public function wizardProcessStep($event) {
         $read = $event->sender->read();
 
-         if (isset($read['chooseLanguage'])) {
-             Yii::$app->language = $read['chooseLanguage']['lang'];
-         }
+        if (isset($read['chooseLanguage'])) {
+            Yii::$app->language = $read['chooseLanguage']['lang'];
+        }
 
 
         $modelName = 'app\\modules\\install\\forms\\' . ucfirst($event->step);
@@ -133,7 +133,7 @@ class DefaultController extends \yii\web\Controller {
                 if (isset($_POST['Configure'])) {
                     $model->attributes = $_POST['Configure'];
                     if ($model->validate()) {
-                       $model->install($data['license']['license_key']);
+                        $model->install($data['license']['license_key']);
                     }
                 }
                 break;
@@ -146,18 +146,11 @@ class DefaultController extends \yii\web\Controller {
             $event->sender->save($model->attributes);
             $event->handled = true;
         } else {
-           // if ($event->step == 'info') {
-           //     echo $this->render('form', compact('event'));
-           // } else {
-                //if (file_exists(Yii::getPathOfAlias('mod.install.views.default') . DS . $event->step . '.php')) {
-                //    $this->render($event->step, compact('event', 'form'));
-                //} else {
-                echo $this->render('@app/modules/install/views/default/'.$event->step, [
-                    'event' => $event,
-                    'model'=>$model,
-                        ]);
-                // }
-            //}
+            echo $this->render('@app/modules/install/views/default/' . $event->step, [
+                'event' => $event,
+                'model' => $model,
+            ]);
+
         }
     }
 

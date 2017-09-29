@@ -1,6 +1,7 @@
 <?php
 
-return array(
+return [
+    'CMS' => 'Content management system',
     'ACCESS_FILE_DIR' => 'Access rights for files and folders',
     'CHMOD_ERROR' => 'Set the desired permissions CHMOD - <b>{chmod}</b>',
     'LICENSE_CHECK_INFO' => 'Enter the license key.',
@@ -40,4 +41,4 @@ return array(
     'ERRORS' => 'Errors',
     'LANG' => 'Language',
     'LICENSE_KEY' => 'License key'
-);
+];
