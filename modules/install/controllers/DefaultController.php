@@ -4,7 +4,7 @@ namespace app\modules\install\controllers;
 
 use Yii;
 use panix\engine\behaviors\wizard\WizardBehavior;
-use panix\engine\behaviors\wizard\Event;
+use panix\engine\behaviors\wizard\WizardEvent;
 
 class DefaultController extends \yii\web\Controller {
 
@@ -25,10 +25,10 @@ class DefaultController extends \yii\web\Controller {
             ),
             'autoAdvance' => false,
             'events' => array(
-                Event::WIZARD_START => 'wizardStart',
-                Event::WIZARD_PROCESS_STEP => 'wizardProcessStep',
-                Event::WIZARD_FINISHED => 'wizardFinished',
-                Event::WIZARD_INVALID_STEP => 'wizardInvalidStep',
+                WizardEvent::WIZARD_START => 'wizardStart',
+                WizardEvent::WIZARD_PROCESS_STEP => 'wizardProcessStep',
+                WizardEvent::WIZARD_FINISHED => 'wizardFinished',
+                WizardEvent::WIZARD_INVALID_STEP => 'wizardInvalidStep',
             ),
         );
         if (!empty($config)) {
@@ -60,7 +60,7 @@ class DefaultController extends \yii\web\Controller {
         }
     }
 
-    // Wizard Behavior Event Handlers
+    // Wizard Behavior WizardEvent Handlers
     /**
      * Raised when the wizard starts; before any steps are processed.
      * MUST set $event->handled=true for the wizard to continue.

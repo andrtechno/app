@@ -42,7 +42,9 @@ $this->beginPage() ?>
                 </div>
                 <div class="panel-body2 clearfix"><?php echo $content ?></div>
             </div>
+            <div class="text-center">{copyright}</div>
         </div>
+        
              <?php $this->endBody() ?>
     </body>
 </html>
