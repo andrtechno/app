@@ -2,7 +2,6 @@
 
 use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
-use yii\bootstrap\Alert;
 use panix\engine\behaviors\wizard\WizardMenu;
 ?>
 <div class="col-sm-3">
@@ -19,7 +18,7 @@ use panix\engine\behaviors\wizard\WizardMenu;
         ]);
         ?>
 
-<div class="form-group"><div class="text-center"><h4><?= Yii::t('install/default', 'ADMIN_ACCOUNT')?></h4></div></div>
+        <div class="form-group"><div class="text-center"><h4><?= Yii::t('install/default', 'ADMIN_ACCOUNT') ?></h4></div></div>
         <?= $form->field($model, 'site_name'); ?>
         <?= $form->field($model, 'admin_login'); ?>
         <?= $form->field($model, 'admin_password'); ?>
@@ -28,7 +27,7 @@ use panix\engine\behaviors\wizard\WizardMenu;
 
 
         <div class="panel-footer text-center">
-<?= Html::a(Yii::t('install/default', 'BACK'), [Yii::$app->controller->id . '/index', 'step' => 'db'], ['class' => 'btn btn-link']) ?>
+            <?= Html::a(Yii::t('install/default', 'BACK'), [Yii::$app->controller->id . '/index', 'step' => 'db'], ['class' => 'btn btn-link']) ?>
             <?= Html::submitButton(Yii::t('install/default', 'NEXT'), ['class' => 'btn btn-success']) ?>
 
         </div>

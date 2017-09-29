@@ -2,7 +2,6 @@
 
 use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
-use yii\bootstrap\Alert;
 use panix\engine\behaviors\wizard\WizardMenu;
 
 $this->title = $event->sender->getStepLabel($event->step);
@@ -38,7 +37,7 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
 
 
         <div class="panel-footer text-center">
-<?= Html::a(Yii::t('install/default', 'BACK'), [Yii::$app->controller->id . '/index', 'step' => 'info'], ['class' => 'btn btn-link']) ?>
+            <?= Html::a(Yii::t('install/default', 'BACK'), [Yii::$app->controller->id . '/index', 'step' => 'info'], ['class' => 'btn btn-link']) ?>
             <?= Html::submitButton(Yii::t('install/default', 'NEXT'), ['class' => 'btn btn-success']) ?>
 
         </div>
