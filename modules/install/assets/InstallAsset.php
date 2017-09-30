@@ -9,7 +9,7 @@ class InstallAsset extends AssetBundle {
 
     public function init() {
 
-        $this->sourcePath = "@install/assets";
+        $this->sourcePath = "@app/modules/install/assets";
         parent::init();
     }
 

@@ -19,7 +19,7 @@ class DefaultController extends \yii\web\Controller {
             'steps' => array(
                 Yii::t('install/default', 'STEP_START') => 'chooseLanguage',
                 Yii::t('install/default', 'STEP_LICENSE') => 'license',
-                Yii::t('install/default', 'STEP_INFO') => 'info',
+              //  Yii::t('install/default', 'STEP_INFO') => 'info',
                 Yii::t('install/default', 'STEP_DB') => 'db',
                 Yii::t('install/default', 'STEP_CONFIGURE') => 'configure',
             ),
@@ -129,11 +129,11 @@ class DefaultController extends \yii\web\Controller {
                 //FileSystem::fs('assets', Yii::getPathOfAlias('webroot'))->cleardir();
                 break;
             case 'configure':
-                $data = $event->sender->read();
+              //  $data = $event->sender->read();
                 if (isset($_POST['Configure'])) {
                     $model->attributes = $_POST['Configure'];
                     if ($model->validate()) {
-                        $model->install($data['license']['license_key']);
+                        $model->install($read['license']['license_key']);
                     }
                 }
                 break;

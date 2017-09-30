@@ -14,11 +14,12 @@ class Db extends \yii\base\Model {
     public $db_prefix = 'cms_';
     public $db_charset = 'utf8';
     public $db_type = 'mysql';
+    protected $connection;
 
     public function rules() {
         return [
             [['db_host', 'db_name', 'db_user', 'db_prefix', 'db_charset', 'db_type'], 'required'],
-            ['db_password', 'checkDbConnection'],
+                //    ['db_password', 'checkDbConnection'],
         ];
     }
 
@@ -39,38 +40,74 @@ class Db extends \yii\base\Model {
             return false;
 
         Yii::$app->cache->flush();
-       // $conn = new Connection($this->getDsn(), $this->db_user, $this->db_password);
-
-                    $conn = new Connection([
+        
+        
+       /* $this->connection = new Connection([
             'dsn' => $this->getDsn(),
             'username' => $this->db_user,
             'password' => $this->db_password,
+            'charset' => $this->db_charset,
+            'tablePrefix' => $this->db_prefix
+        ]);
+        $this->connection->open();*/
+
+Yii::$app->set('db', [
+                    'class'    => 'panix\engine\db\Connection',
+            'dsn' => $this->getDsn(),
+            'username' => $this->db_user,
+            'password' => $this->db_password,
+            'charset' => $this->db_charset,
+            'tablePrefix' => $this->db_prefix
                 ]);
-        $conn->charset = $this->db_charset;
-        $conn->tablePrefix = $this->db_prefix;
-        //Yii::$app->setComponent('db', $conn);
+        $this->writeConnectionSettings();
+       // Yii::$app->db->open();
         $this->importSqlDump();
-        $this->writeConnectionSettings('_db');
+       // $this->importModulesSql();
+
+        // $this->connection->close();
+        /*foreach (Yii::$app->getModules() as $mod => $data) {
+          
+            if ($mod != 'install') {
+ 
+                $module = Yii::$app->getModule($mod);
+                print_r($module);die;
+                if ($module instanceof \panix\engine\WebModule) {
+                    if (method_exists($module, 'afterInstall')) {
+                        $module->afterInstall();
+                    }
+
+                    Yii::$app->db->createCommand()->insert('{{%modules}}', array(
+                        'name' => $mod,
+                        'access' => 0,
+                    ))->execute();
+                }
+            }
+        }*/
     }
 
-    public function ____install() {
-        if ($this->hasErrors())
-            return false;
+    public function importModulesSql() {
 
+        foreach (Yii::$app->getModules() as $id => $module) {
+            Yii::$app->getModule($id)->afterInstall();
+        }
+    }
 
-                    $conn = new Connection([
-            'dsn' => $this->getDsn(),
-            'username' => $this->db_user,
-            'password' => $this->db_password,
-                ]);
-      //  $conn = new Connection($this->getDsn(), $this->db_user, $this->db_password);
-        $conn->charset = $this->db_charset;
-        $conn->tablePrefix = $this->db_prefix;
-        //Yii::$app->setComponent('db', $conn);
-        $this->importSqlDump();
-        $this->writeConnectionSettings();
-        // Activate languages
-        Yii::$app->languageManager->setActive();
+    public function getDbCharset() {
+        return [
+            'utf8' => 'UTF-8',
+            'cp1251' => 'cp1251',
+            'latin1' => 'latin1'
+        ];
+    }
+
+    public function getDbTypes() {
+        return [
+            "mysql" => 'MySQL/MariaDB',
+            "sqlite" => 'SQLite',
+            "pgsql" => 'PostgreSQL',
+            "mssql" => 'SQL Server',
+            "oci" => 'Oracle'
+        ];
     }
 
     public function getDsn() {
@@ -98,18 +135,17 @@ class Db extends \yii\base\Model {
         }
     }
 
-    public function checkDbConnection() {
+    public function ___checkDbConnection() {
         if (!$this->hasErrors()) {
-            die('mo err');
-                    $connection = new Connection([
-            'dsn' => $this->getDsn(),
-            'username' => $this->db_user,
-            'password' => $this->db_password,
-                ]);
-                    
-          //  $connection = new Connection($this->getDsn(), $this->db_user, $this->db_password);
+            $connection = new Connection([
+                'dsn' => $this->getDsn(),
+                'username' => $this->db_user,
+                'password' => $this->db_password,
+            ]);
+
+            //  $connection = new Connection($this->getDsn(), $this->db_user, $this->db_password);
             try {
-                $connection->connectionStatus;
+                // $connection->connectionStatus;
             } catch (\yii\db\Exception $e) {
                 $this->addError('db_password', Yii::t('install/default', 'ERROR_CONNECT_DB'));
             }
@@ -117,56 +153,36 @@ class Db extends \yii\base\Model {
     }
 
     private function writeConnectionSettings() {
-        $configFile = Yii::getAlias('@webroot/config') . DIRECTORY_SEPARATOR . 'db.php';
+       // $configFile = Yii::getAlias('@webroot/config') . DIRECTORY_SEPARATOR . 'db.php';
 
-        $content = file_get_contents($configFile);
+        $content = file_get_contents(DB_FILE);
         $content = preg_replace("/\'dsn\'\s*\=\>\s*\'.*\'/", "'dsn'=>'{$this->getDsn()}'", $content);
         $content = preg_replace("/\'username\'\s*\=\>\s*\'.*\'/", "'username'=>'{$this->db_user}'", $content);
         $content = preg_replace("/\'password\'\s*\=\>\s*\'.*\'/", "'password'=>'{$this->db_password}'", $content);
         $content = preg_replace("/\'tablePrefix\'\s*\=\>\s*\'.*\'/", "'tablePrefix'=>'{$this->db_prefix}'", $content);
         $content = preg_replace("/\'charset\'\s*\=\>\s*\'.*\'/", "'charset'=>'{$this->db_charset}'", $content);
-        file_put_contents($configFile, $content);
-
+        file_put_contents(DB_FILE, $content);
     }
 
     private function importSqlDump() {
-
-        $sqlDumpPath = Yii::getAlias('@app/modules/install/data') . DIRECTORY_SEPARATOR . 'dump.sql';
+        $sqlDumpPath = Yii::getAlias('@app/modules/install/migrations') . DIRECTORY_SEPARATOR . 'scheme.sql';
         $sqlRows = preg_split("/--\s*?--.*?\s*--\s*/", file_get_contents($sqlDumpPath));
-
-        //$connection = new Connection($this->getDsn(), $this->db_user, $this->db_password);
-        $connection = new Connection([
-            'dsn' => $this->getDsn(),
-            'username' => $this->db_user,
-            'password' => $this->db_password,
-                ]);
-        $connection->charset = $this->db_charset;
-        $connection->open();
-        // $connection->active = true;
-
-        $connection->createCommand("SET NAMES '" . $this->db_charset . "';");
-       // var_dump($connection->isActive);
-       // echo $this->getDsn();
-       // die;
+        Yii::$app->db->createCommand("SET NAMES '" . $this->db_charset . "';");
         foreach ($sqlRows as $q) {
             $q = trim($q);
             if (!empty($q)) {
-                //$q = str_replace("{prefix}", $this->db_prefix, $stringdump[$i]);
                 $q = str_replace("{prefix}", $this->db_prefix, $q);
                 $q = str_replace("{charset}", $this->db_charset, $q);
-                // $q = str_replace("{charset}", $this->db_charset, $q);
                 if (strpos($q, 'DROP TABLE IF EXISTS') === false) {
-
-                    $connection->createCommand($q)->execute();
+                    Yii::$app->db->createCommand($q)->execute();
                 } else {
                     $lines = preg_split("/(\r?\n)+/", $q);
                     $dropQuery = $lines[0];
                     array_shift($lines);
                     $query = implode('', $lines);
 
-
-                    $connection->createCommand($dropQuery)->execute();
-                    $connection->createCommand($query)->execute();
+                    Yii::$app->db->createCommand($dropQuery)->execute();
+                    Yii::$app->db->createCommand($query)->execute();
                 }
             }
         }

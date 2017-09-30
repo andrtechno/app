@@ -3,8 +3,11 @@
 namespace app\modules\install;
 
 class Module extends \panix\engine\WebModule {
-        public $routes = [
+
+    public $routes = [
         'install' => 'install/default/index',
     ];
+
+
 
 }
