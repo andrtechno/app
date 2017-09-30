@@ -87,7 +87,7 @@ class Configure extends \yii\base\Model {
             }
         }
 
-      /*  $model = User::findOne(1);
+        $model = User::findOne(1);
 
         if (!$model)
             $model = new User;
@@ -95,12 +95,12 @@ class Configure extends \yii\base\Model {
         // Set user data
         $model->username = $this->admin_login;
         $model->email = $this->admin_email;
-        $model->password = $this->admin_password;
+        $model->password = Yii::$app->security->generatePasswordHash($this->admin_password);
         // $model->date_registration = date('Y-m-d H:i:s');
         // $model->last_login = date('Y-m-d H:i:s');
         $model->status = 2;
         $model->role_id = 1; // 1 to admin
-        $model->save(false);*/
+        $model->save(false);
 
 
 

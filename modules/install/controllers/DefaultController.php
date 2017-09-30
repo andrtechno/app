@@ -19,7 +19,7 @@ class DefaultController extends \yii\web\Controller {
             'steps' => array(
                 Yii::t('install/default', 'STEP_START') => 'chooseLanguage',
                 Yii::t('install/default', 'STEP_LICENSE') => 'license',
-              //  Yii::t('install/default', 'STEP_INFO') => 'info',
+                Yii::t('install/default', 'STEP_INFO') => 'info',
                 Yii::t('install/default', 'STEP_DB') => 'db',
                 Yii::t('install/default', 'STEP_CONFIGURE') => 'configure',
             ),
@@ -112,7 +112,6 @@ class DefaultController extends \yii\web\Controller {
         $model = new $modelName();
         $model->attributes = $event->data;
         $post = Yii::$app->request->post();
-        // $form = $model->getForm();
 
         switch ($event->step) {
             case 'db':
@@ -129,7 +128,6 @@ class DefaultController extends \yii\web\Controller {
                 //FileSystem::fs('assets', Yii::getPathOfAlias('webroot'))->cleardir();
                 break;
             case 'configure':
-              //  $data = $event->sender->read();
                 if (isset($_POST['Configure'])) {
                     $model->attributes = $_POST['Configure'];
                     if ($model->validate()) {
@@ -142,7 +140,6 @@ class DefaultController extends \yii\web\Controller {
         }
 
         if ($model->load($post) && $model->validate()) {
-
             $event->sender->save($model->attributes);
             $event->handled = true;
         } else {
@@ -150,7 +147,6 @@ class DefaultController extends \yii\web\Controller {
                 'event' => $event,
                 'model' => $model,
             ]);
-
         }
     }
 

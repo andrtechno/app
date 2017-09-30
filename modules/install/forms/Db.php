@@ -3,7 +3,8 @@
 namespace app\modules\install\forms;
 
 use Yii;
-use panix\engine\db\Connection;
+
+//use panix\engine\db\Connection;
 
 class Db extends \yii\base\Model {
 
@@ -14,13 +15,27 @@ class Db extends \yii\base\Model {
     public $db_prefix = 'cms_';
     public $db_charset = 'utf8';
     public $db_type = 'mysql';
-    protected $connection;
 
     public function rules() {
         return [
             [['db_host', 'db_name', 'db_user', 'db_prefix', 'db_charset', 'db_type'], 'required'],
-                //    ['db_password', 'checkDbConnection'],
+            ['db_password', 'checkDbConnection'],
         ];
+    }
+
+    public function checkDbConnection($attribute) {
+        if (!$this->hasErrors()) {
+            $connection = new \yii\db\Connection([
+                'dsn' => $this->getDsn(),
+                'username' => $this->db_user,
+                'password' => $this->db_password,
+            ]);
+            try {
+                $connection->open();
+            } catch (\yii\db\Exception $e) {
+                $this->addError($attribute, Yii::t('install/default', 'ERROR_CONNECT_DB'));
+            }
+        }
     }
 
     public function attributeLabels() {
@@ -40,56 +55,18 @@ class Db extends \yii\base\Model {
             return false;
 
         Yii::$app->cache->flush();
-        
-        
-       /* $this->connection = new Connection([
+
+
+        Yii::$app->set('db', [
+            'class' => 'panix\engine\db\Connection',
             'dsn' => $this->getDsn(),
             'username' => $this->db_user,
             'password' => $this->db_password,
             'charset' => $this->db_charset,
             'tablePrefix' => $this->db_prefix
         ]);
-        $this->connection->open();*/
-
-Yii::$app->set('db', [
-                    'class'    => 'panix\engine\db\Connection',
-            'dsn' => $this->getDsn(),
-            'username' => $this->db_user,
-            'password' => $this->db_password,
-            'charset' => $this->db_charset,
-            'tablePrefix' => $this->db_prefix
-                ]);
         $this->writeConnectionSettings();
-       // Yii::$app->db->open();
         $this->importSqlDump();
-       // $this->importModulesSql();
-
-        // $this->connection->close();
-        /*foreach (Yii::$app->getModules() as $mod => $data) {
-          
-            if ($mod != 'install') {
- 
-                $module = Yii::$app->getModule($mod);
-                print_r($module);die;
-                if ($module instanceof \panix\engine\WebModule) {
-                    if (method_exists($module, 'afterInstall')) {
-                        $module->afterInstall();
-                    }
-
-                    Yii::$app->db->createCommand()->insert('{{%modules}}', array(
-                        'name' => $mod,
-                        'access' => 0,
-                    ))->execute();
-                }
-            }
-        }*/
-    }
-
-    public function importModulesSql() {
-
-        foreach (Yii::$app->getModules() as $id => $module) {
-            Yii::$app->getModule($id)->afterInstall();
-        }
     }
 
     public function getDbCharset() {
@@ -135,26 +112,7 @@ Yii::$app->set('db', [
         }
     }
 
-    public function ___checkDbConnection() {
-        if (!$this->hasErrors()) {
-            $connection = new Connection([
-                'dsn' => $this->getDsn(),
-                'username' => $this->db_user,
-                'password' => $this->db_password,
-            ]);
-
-            //  $connection = new Connection($this->getDsn(), $this->db_user, $this->db_password);
-            try {
-                // $connection->connectionStatus;
-            } catch (\yii\db\Exception $e) {
-                $this->addError('db_password', Yii::t('install/default', 'ERROR_CONNECT_DB'));
-            }
-        }
-    }
-
     private function writeConnectionSettings() {
-       // $configFile = Yii::getAlias('@webroot/config') . DIRECTORY_SEPARATOR . 'db.php';
-
         $content = file_get_contents(DB_FILE);
         $content = preg_replace("/\'dsn\'\s*\=\>\s*\'.*\'/", "'dsn'=>'{$this->getDsn()}'", $content);
         $content = preg_replace("/\'username\'\s*\=\>\s*\'.*\'/", "'username'=>'{$this->db_user}'", $content);
