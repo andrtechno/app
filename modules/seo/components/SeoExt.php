@@ -190,35 +190,38 @@ class SeoExt extends \yii\base\Component {
     private function getSeoparam($pdata) {
 
         $urls = Yii::$app->request->url;
+
         $data = explode("/", $urls);
         $id = $data[count($data) - 1];
         /* если есть символ ">>" значит параметр по связи */
         $param = $pdata->obj;
-        $tpl = $pdata->param;
-        if (strstr($param, ".")) {
-            $paramType = true;
-            $data = explode(".", $param);
-            $param = explode("/", $data[0]);
-        } else {
-            $paramType = false;
-            $param = explode("/", $param);
-        }
+      //  $tpl = $pdata->param;
+       // if (strstr($param, ".")) {
+        //    $paramType = true;
+        //    $data = explode(".", $param);
+        //    $param = explode("/", $data[0]);
+       // } else {
+           // $paramType = false;
+            //$param = explode("/", $param);
+       // }
 
-        if (class_exists($param[0], false)) {
-            $item = new $param[0];
+        if (class_exists($pdata->modelClass, false)) {
+            $item = new $pdata->modelClass;
             if (is_string($id)) {
-                $item = $item->findByAttributes(array('seo_alias' => $id));
+                $item = $item->find()->where(['seo_alias' => $id])->one();
             } else {
-                $item = $item->findByPk($id);
+                $item = $item->findOne($id);
             }
 
+            //echo $item['seo_alias'];die;
             if (count($item)) {
                 return array(
-                    'tpl' => $tpl,
-                    'item' => ($paramType) ? $item[$param[1]][$data[1]] : $item[$param[1]],
+                    'tpl' => $pdata->param,
+                    'item' => $item[$param],
                 );
             }
         } else {
+            die('no class');
             return false;
         }
     }

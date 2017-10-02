@@ -1,6 +1,7 @@
 <?php
 namespace app\modules\seo\models;
 use Yii;
+use app\modules\seo\models\SeoParams;
 class SeoUrl extends \panix\engine\db\ActiveRecord {
 
 
@@ -29,16 +30,10 @@ class SeoUrl extends \panix\engine\db\ActiveRecord {
         ];
     }
 
-    /**
-     * @return array relational rules.
-     */
-    public function relations() {
-        return array(
-            //'seoMains' => array(self::HAS_MANY, 'SeoMain', 'url'),
-            'params' => array(self::HAS_MANY, 'SeoParams', 'url_id'),
-        );
-    }
 
+    public function getParams() {
+        return $this->hasMany(SeoParams::className(), ['url_id' => 'id']);
+    }
     /**
      * @return array customized attribute labels (name=>label)
      */
