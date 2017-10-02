@@ -1,5 +1,6 @@
 <?php
 use app\modules\seo\models\SeoParams;
+use panix\engine\Html;
 ?>
 
 <table class="table table-striped table-bordered table-condensed table-responsive" id="container-param-<?= $model->id ?>" style="margin-top:30px">
@@ -16,12 +17,12 @@ use app\modules\seo\models\SeoParams;
         ?>
         <tr id="<?= $paramrep . $model->id ?>">
             <td>
-                <?php echo Html::hiddenField("param[$model->id][$param->obj]", $param->param); ?>
+                <?php echo Html::hiddenInput("param[$model->id][$param->obj]", $param->param); ?>
                 <?php //echo Html::hiddenField("param[$model->id][$model->name][]",$param->obj);?>
                 <?php echo $param->param ?> 
             </td>
             <td class="text-center">
-                <a href="javascript:void(0);" onclick="removeParam(this);" class="btn btn-xs btn-danger"><i class="icon-delete"></i></a>
+                <a href="javascript:void(0);" class="btn btn-xs btn-danger deleteproperty"><i class="icon-delete"></i></a>
             </td>
         </tr>
     <?php } ?>

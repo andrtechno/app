@@ -49,7 +49,7 @@ $(document).ready(function(){
         var $this = $(this);
         console.log(count);
         $.ajax( {
-            url: '/admin/seo/default/addmetaproperty',
+            url: '/admin/seo/default/add-meta-property',
             type: 'POST',
             data: {count : count},
             success: function (msg) {
@@ -72,12 +72,12 @@ $(document).ready(function(){
             }
             else{
                 $.ajax( {
-                    url: '/admin/seo/default/deletemetaproperty',
+                    url: '/admin/seo/default/delete-meta-property',
                     type: 'POST',
                     data: {id : id},
                     success: function (msg) {
                         $this.parent().fadeOut(500,function(){
-                            $this.parent().remove();
+                            $this.parent().parent().remove();
                         });
                     }
                 });

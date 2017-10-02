@@ -2,8 +2,11 @@
 use yii\helpers\Html;
 use panix\engine\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
+use panix\ext\taginput\TagInput;
+use panix\ext\tinymce\TinyMce;
 
-//Yii::app()->clientScript->registerScriptFile($this->module->assetsUrl . '/js/seo.js');
+\app\modules\seo\assets\SeoAsset::register($this);
+
 ?>
 
 
@@ -30,7 +33,7 @@ use yii\helpers\ArrayHelper;
     });
 
     function removeParam(that) {
-        $(that).parent().remove();
+        $(that).parent().parent().remove();
     }
 </script>
 
@@ -43,7 +46,13 @@ use yii\helpers\ArrayHelper;
                 <?= $form->field($model, 'url')->textInput() ?>
                 <?= $form->field($model, 'title')->textInput() ?>
                 <?= $form->field($model, 'description')->textInput() ?>
-                <?= $form->field($model, 'keywords')->textInput()->hint(Yii::t('seo/default','KEYWORDS_HINT')) ?>
+<?= $form->field($model, 'keywords')->widget(TagInput::className(), [
+])->hint(Yii::t('seo/default','KEYWORDS_HINT'));
+?>
+<?= $form->field($model, 'text')->widget(TinyMce::className(), [
+    'options' => ['rows' => 6],
+
+]);?>
 
 
 <div class="form-group">

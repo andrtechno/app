@@ -6,7 +6,7 @@ use Yii;
 use panix\engine\Html;
 use app\modules\seo\models\SeoUrl;
 use app\modules\seo\models\search\SeoUrlSearch;
-
+use app\modules\seo\models\SeoParams;
 class DefaultController extends \panix\engine\controllers\AdminController {
 
     public function actions() {
@@ -100,11 +100,11 @@ class DefaultController extends \panix\engine\controllers\AdminController {
 
                 $i = 0;
                 foreach ($object as $key => $item) {
-                    $variant = SeoParams::model()->findByAttributes(array(
+                    $variant = SeoParams::find()->where(array(
                         'url_id' => $main_id,
                         'param' => $item,
                         'obj' => $key
-                    ));
+                    ))->one();
                     // If not - create new.
                     if (!$variant)
                         $variant = new SeoParams();
@@ -115,19 +115,21 @@ class DefaultController extends \panix\engine\controllers\AdminController {
                         'obj' => $key,
                             ), false);
 
-                    $variant->save(false, false, false);
+                    $variant->save(false);
                     array_push($dontDelete, $variant->id);
                     $i++;
                 }
 
 
                 if (!empty($dontDelete)) {
-                    $cr = new CDbCriteria;
-                    $cr->addNotInCondition('id', $dontDelete);
-                    $cr->addCondition('url_id=' . $main_id);
-                    SeoParams::model()->deleteAll($cr);
-                } else
-                    SeoParams::model()->deleteAllByAttributes(array('url_id' => $main_id));
+         
+                    
+                    SeoParams::deleteAll(
+                            ['AND', 'url_id=:id',['NOT IN', 'id', $dontDelete]], [':id' => $main_id]);
+                } else{
+
+                    SeoParams::find()->where(['url_id'=>$main_id])->deleteAll();
+                }
             }
         }
         //   die;
@@ -340,7 +342,7 @@ class DefaultController extends \panix\engine\controllers\AdminController {
      * delete MetaProperty
      */
 
-    public function actionDeletemetaproperty() {
+    public function actionDeleteMetaProperty() {
         SeoParams::model()->findByPk($_POST['id'])->delete();
     }
 

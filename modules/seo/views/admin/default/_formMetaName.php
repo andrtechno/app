@@ -16,9 +16,9 @@
             ?>
 
         <?php } else { ?>
-            <?= CHtml::activeTextField($model, "[$model->name]content", array("size" => 60, 'class' => 'form-control')); ?>
+            <?= Html::activeTextField($model, "[$model->name]content", array("size" => 60, 'class' => 'form-control')); ?>
         <?php } ?>
-        <?php echo CHtml::error($model, "[$model->name]content"); ?></div>
+        <?php echo Html::error($model, "[$model->name]content"); ?></div>
 </div>
 
 <div class="form-group">

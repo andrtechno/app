@@ -15,8 +15,6 @@ use panix\engine\grid\GridView;
 
 Pjax::begin([
     'id' => 'pjax-container',
-    'enablePushState' => false,
-    'linkSelector' => 'a:not(.linkTarget)'
 ]);
 ?>
 <?=
