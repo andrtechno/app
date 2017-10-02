@@ -13,9 +13,9 @@ DROP TABLE IF EXISTS `{prefix}settings`;
 CREATE TABLE `{prefix}settings` (
   `id` int(4) unsigned NOT NULL AUTO_INCREMENT,
   `category` varchar(255) DEFAULT '',
-  `key` varchar(255) DEFAULT '',
+  `param` varchar(255) DEFAULT '',
   `value` text,
   PRIMARY KEY (`id`),
   KEY `category` (`category`),
-  KEY `key` (`key`)
+  KEY `param` (`param`)
 ) ENGINE=InnoDB DEFAULT CHARSET={charset};

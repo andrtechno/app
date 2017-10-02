@@ -19,7 +19,7 @@ class Db extends \yii\base\Model {
     public function rules() {
         return [
             [['db_host', 'db_name', 'db_user', 'db_prefix', 'db_charset', 'db_type'], 'required'],
-            ['db_password', 'checkDbConnection'],
+            [['db_password'], 'checkDbConnection'],
         ];
     }
 
@@ -30,10 +30,12 @@ class Db extends \yii\base\Model {
                 'username' => $this->db_user,
                 'password' => $this->db_password,
             ]);
+
+            var_dump($connection->open());die;
             try {
-                $connection->open();
+                $connection->initConnection();
             } catch (\yii\db\Exception $e) {
-                $this->addError($attribute, Yii::t('install/default', 'ERROR_CONNECT_DB'));
+                $this->addError($attribute, ($e->getCode()==1045)?$e->getMessage():Yii::t('install/default', 'ERROR_CONNECT_DB')); //
             }
         }
     }
