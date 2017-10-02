@@ -3,6 +3,7 @@
 namespace app\modules\seo\controllers\admin;
 
 use Yii;
+use panix\engine\Html;
 use app\modules\seo\models\SettingsForm;
 
 class SettingsController extends \panix\engine\controllers\AdminController {
@@ -27,7 +28,7 @@ class SettingsController extends \panix\engine\controllers\AdminController {
             array(
                 'label' => Yii::t('seo/default', 'REDIRECTS'),
                 'url' => array('/admin/seo/redirects'),
-                'icon' => 'icon-refresh',
+                'icon' => Html::icon('refresh'),
 
             ),
         );

@@ -1,5 +1,6 @@
 <?php
 namespace app\modules\seo\models;
+use Yii;
 class SeoUrl extends \panix\engine\db\ActiveRecord {
 
 
@@ -22,7 +23,7 @@ class SeoUrl extends \panix\engine\db\ActiveRecord {
     public function rules() {
         return [
             ['url', 'required'],
-            ['url', 'UniqueAttributesValidator', 'with' => 'url'],
+           // ['url', 'UniqueAttributesValidator', 'with' => 'url'],
             [['title', 'description', 'keywords', 'text'], 'string'],
             ['title', 'string', 'max' => 150],
         ];

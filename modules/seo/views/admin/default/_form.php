@@ -1,6 +1,9 @@
 <?php
+use yii\helpers\Html;
+use panix\engine\bootstrap\ActiveForm;
+use yii\helpers\ArrayHelper;
 
-Yii::app()->clientScript->registerScriptFile($this->module->assetsUrl . '/js/seo.js');
+//Yii::app()->clientScript->registerScriptFile($this->module->assetsUrl . '/js/seo.js');
 ?>
 
 
@@ -32,98 +35,33 @@ Yii::app()->clientScript->registerScriptFile($this->module->assetsUrl . '/js/seo
 </script>
 
 
-<?php
-Yii::app()->tpl->openWidget(array(
-    'title' => $this->pageName,
-));
-
-$form = $this->beginWidget('CActiveForm', array(
-    'id' => 'seo-url-form',
-    'enableAjaxValidation' => false,
-    'htmlOptions' => array('class' => 'form-horizontal')
-        ));
-?>
+                <?php
+                $form = ActiveForm::begin();
+                ?>
 
 
+                <?= $form->field($model, 'url')->textInput() ?>
+                <?= $form->field($model, 'title')->textInput() ?>
+                <?= $form->field($model, 'description')->textInput() ?>
+                <?= $form->field($model, 'keywords')->textInput()->hint(Yii::t('seo/default','KEYWORDS_HINT')) ?>
 
 
-
-<div class="form-group">
-    <div class="col-sm-4"><?php echo $form->labelEx($model, 'url', array('class' => 'control-label')); ?></div>
-    <div class="col-sm-8">
-        <?php echo $form->textField($model, 'url', array('size' => 60, 'class' => 'form-control')); ?>
-        <?php echo $form->error($model, 'url'); ?>
-    </div>
-</div>
-
-
-
-<div class="form-group">
-    <div class="col-sm-4"><?php echo $form->labelEx($model, 'title', array('class' => 'control-label')); ?></div>
-    <div class="col-sm-8">
-        <?php echo $form->textField($model, 'title', array('class' => 'form-control')); ?>
-        <?php echo $form->error($model, 'title'); ?>
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-4"><?php echo $form->labelEx($model, 'description', array('class' => 'control-label')); ?></div>
-    <div class="col-sm-8">
-        <?php echo $form->textArea($model, 'description', array('class' => 'form-control')); ?>
-        <?php echo $form->error($model, 'description'); ?>
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-4"><?php echo $form->labelEx($model, 'keywords', array('class' => 'control-label')); ?></div>
-    <div class="col-sm-8">
-        <?php
-        $this->widget('ext.taginput.TagInput', array(
-            'attribute' => 'keywords',
-            'model' => $model
-        ));
-        ?>
-        <div class="help-block"><?=Yii::t('SeoModule.default','KEYWORDS_HINT'); ?></div>
-        <?php echo $form->error($model, 'keywords'); ?>
-    </div>
-</div>
-
-<div class="form-group">
-    <div class="col-sm-4"><?php echo $form->labelEx($model, 'text', array('class' => 'control-label')); ?></div>
-    <div class="col-sm-8">
-        <?php
-        $this->widget('ext.tinymce.TinymceArea', array(
-            'attribute' => 'text',
-            'model' => $model
-        ));
-        ?>
-
-        <?php echo $form->error($model, 'text'); ?>
-    </div>
-</div>
 <div class="form-group">
     <div class="col-sm-4"></div>
-    <div class="col-sm-8"><?php echo CHtml::dropDownList('title_param', "[$model->keywords]param", CHtml::listData($this->getParams(), "value", "name", "group"), array("empty" => "Свойства", 'class' => 'selectpicker addparams', 'data-id' => $model->id)); ?>
-        <?php echo $this->renderPartial('_formMetaParams', array('model' => $model)); ?></div>
+    <div class="col-sm-8"><?php echo Html::dropDownList('title_param', "[$model->keywords]param", ArrayHelper::map($this->context->getParams(), "value", "name",'group'), array("empty" => "Свойства", 'class' => 'selectpicker addparams', 'data-id' => $model->id)); ?>
+        <?php echo $this->render('_formMetaParams', array('model' => $model)); ?></div>
 </div>
 <div class="form-group" style="display:none;">
-    <div class="col-sm-4"><?php echo CHtml::dropDownList("name", "", array("robots" => "robots", "author" => "author", "copyright" => "copyright"), array("empty" => "change")) ?>
+    <div class="col-sm-4"><?php echo Html::dropDownList("name", "", array("robots" => "robots", "author" => "author", "copyright" => "copyright"), array("empty" => "change")) ?>
 </div>
     <div class="col-sm-8">
-        <?php echo CHtml::button("add meta name", array('class' => "meta-name")); ?>
+        <?php echo Html::button("add meta name", array('class' => "meta-name")); ?>
     <span id="load-meta-name"></span>
     </div>
 </div>
 
+                <div class="form-group text-center">
+                    <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'CREATE') : Yii::t('app', 'UPDATE'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+                </div>
 
-
-<div class="form-group text-center">
-<?php echo CHtml::submitButton(Yii::t('app', 'SAVE'), array('class' => 'btn btn-success')); ?>
-</div>
-
-
-
-<?php
-$this->endWidget();
-Yii::app()->tpl->closeWidget();
-?>
-
-
+                <?php ActiveForm::end(); ?>

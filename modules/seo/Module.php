@@ -3,7 +3,7 @@ namespace app\modules\seo;
 use Yii;
 class Module extends \panix\engine\WebModule {
 
-    public $icon ='icon-seo-monitor';
+    public $icon ='seo-monitor';
 
 
     public function afterInstall() {

@@ -1,6 +1,11 @@
 <?php
+
 namespace app\modules\seo\controllers\admin;
+
+use Yii;
+use panix\engine\Html;
 use app\modules\seo\models\SeoUrl;
+use app\modules\seo\models\search\SeoUrlSearch;
 
 class DefaultController extends \panix\engine\controllers\AdminController {
 
@@ -30,12 +35,12 @@ class DefaultController extends \panix\engine\controllers\AdminController {
                     }
                 }
 
-                $this->redirect(array("index"));
+                return $this->redirect(array("index"));
             }
         }
 
-        $this->render('create', array(
-            'model' => $model,
+        return $this->render('create', array(
+                    'model' => $model,
         ));
     }
 
@@ -76,12 +81,12 @@ class DefaultController extends \panix\engine\controllers\AdminController {
 
 
 
-                $this->redirect(array("index"));
+                return $this->redirect(array("index"));
             }
         }
 
-        $this->render('update', array(
-            'model' => $model,
+        return $this->render('update', array(
+                    'model' => $model,
         ));
     }
 
@@ -132,17 +137,19 @@ class DefaultController extends \panix\engine\controllers\AdminController {
      * Manages all models.
      */
     public function actionIndex() {
-
-        $model = new SeoUrl('search');
-        $model->unsetAttributes();
-        $this->pageName = Yii::t('seo/default', 'MODULE_NAME');
-        if (isset($_GET['SeoUrl'])) {
-            $model->attributes = $_GET['SeoUrl'];
-        }
-
-        $this->render('index', array(
-            'model' => $model,
-        ));
+        $this->buttons = [
+            [
+                'label' => Yii::t('seo/default', 'CREATE'),
+                'url' => ['/admin/seo/default/create'],
+                'options' => ['class' => 'btn btn-success']
+            ]
+        ];
+        $searchModel = new SeoUrlSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+        return $this->render('index', [
+                    'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+        ]);
     }
 
     /**
@@ -151,10 +158,10 @@ class DefaultController extends \panix\engine\controllers\AdminController {
      * @param integer the ID of the model to be loaded
      */
     public function loadModel($id) {
-        $model = SeoUrl::model()->findByPk($id);
+        $model = SeoUrl::findOne($id);
 
         if ($model === null)
-            throw new CHttpException(404, 'The requested page does not exist.');
+            $this->error404();
         return $model;
     }
 
@@ -162,46 +169,59 @@ class DefaultController extends \panix\engine\controllers\AdminController {
      * Получение списка всех моделей в проекте
      */
     public function getModels() {
-        $file_list = array();
+        $file_list = [];
         //путь к директории с проектами
         //$file_list = scandir(Yii::getPathOfAlias('application.modules.news.models'));
         //$file_list = scandir(Yii::getPathOfAlias('mod.*.models'));
         $models = null;
 
-        foreach (Yii::app()->getModules() as $mod => $obj) {
-            //echo $mod;
-            if (!in_array($mod, array('admin', 'rights', 'seo', 'users', 'install', 'stats', 'license'))) {
-                if (file_exists(Yii::getPathOfAlias("mod.{$mod}.models"))) {
-                    $file_list[$mod] = scandir(Yii::getPathOfAlias("mod.{$mod}.models"));
+        foreach (Yii::$app->getModules() as $mod => $obj) {
+
+            if (!in_array($mod, ['admin', 'seo', 'user', 'install', 'stats'])) {
+                if (file_exists(Yii::getAlias("@vendor/panix/mod-{$mod}/models"))) {
+                    $file_list[$mod] = scandir(Yii::getAlias("@vendor/panix/mod-{$mod}/models"));
                 }
             }
-
+         /*   if (!in_array($mod, ['admin', 'seo', 'user', 'install', 'stats'])) {
+                if (file_exists(Yii::getAlias("@vendor/panix/mod-{$mod}/models"))) {
+                    $file_list[$mod] = \yii\helpers\FileHelper::findFiles(Yii::getAlias("@vendor/panix/mod-{$mod}/models"), [
+                                'only' => ['*.php'],
+                        'recursive'=>false
+                    ]);
+                }
+            }*/
 
             //если найдены файлы
-            if(isset($file_list[$mod])){
-            if (count($file_list[$mod])) {
-                foreach ($file_list[$mod] as $file) {
-                    if ($file != '.' && $file != '..' && !preg_match('/Translate/', $file)) {// исключаем папки с назварием '.' и '..'
-                        // Yii::import("mod.{$mod}.models.{$file}");
-                        $ext = explode(".", $file);
-                        $model = $ext[0];
-                        //if (new $model instanceof ActiveRecord) {
-                        //проверяем чтобы модели были с расширением php
-                        if(isset($ext[1])){
-                        if ($ext[1] == "php") {
-                            $models[] = array(
-                                'model' => $model,
-                                'path' => "mod.{$mod}.models"
-                            );
-                            //  $models[] = "mod.{$mod}.models";
+            if (isset($file_list[$mod])) {
+                if (count($file_list[$mod])) {
+                    foreach ($file_list[$mod] as $file) {
+
+                       if ($file != '.' && $file != '..' && !preg_match('/Translate|Query|Node|Search/', $file)) {// исключаем папки с назварием '.' и '..'
+                            // Yii::import("mod.{$mod}.models.{$file}");
+                            $ext = explode(".", $file);
+   
+                            $model = $ext[0];
+                             $className= "\\panix\\mod\\{$mod}\\models\\{$model}";
+                            //  $run = new $className;
+                            //  if ($run instanceof \panix\engine\db\ActiveRecord) {
+                            //проверяем чтобы модели были с расширением php
+                            if (isset($ext[1])) {
+                                if ($ext[1] == "php") {
+                                    $models[] = array(
+                                        'model' => $model,
+                                            //  'path' => "//panix//mod//{$mod}//models",
+                                            'className'=>$className
+                                    );
+                                    //  $models[] = "mod.{$mod}.models";
+                                }
+                            }
+                            //  }
                         }
-                        }
-                        // }
                     }
                 }
             }
         }
-        }
+
         return $models;
     }
 
@@ -216,62 +236,65 @@ class DefaultController extends \panix\engine\controllers\AdminController {
 
 
         if (count($models)) {
+          //  print_r($models);
+          //  die;
             foreach ($models as $model) {
-                $mdl = $model['model'];
+                $className = $model['className'];
+                $mdl = new $className;
+                $modelName = $model['model'];
+
 
                 //$modelNew = new $mdl();
-                if ($mdl instanceof ActiveRecord || $mdl instanceof CActiveRecord) {
-                    //if($mdl!='ShopCategoryNode'){
+                if ($mdl instanceof \panix\engine\db\ActiveRecord || $mdl instanceof \yii\db\ActiveRecord) {
+
+
+//if($mdl!='ShopCategoryNode'){
                     // }
                     /* проверяем существует ли в данном классе функция "tableName"
                      * если она существует, то скорее всего эта модель CActiveRecord
                      * таким образом отсеиваем модели, которые были предназначены для валидации форм не работающих с Базой Данных
                      */
-                    Yii::import("{$model['path']}.{$mdl}");
                     //if($mdl!='ShopCategoryNode'){
-                    $modelNew = new $mdl(null);
-                    if (method_exists($modelNew, "tableName")) {
+                    //   $modelNew = new $model['className'];
+                    //if (method_exists($mdl, "tableName")) {
+                    //$tableName = $mdl::tableName();
+                    //if (($table = $modelNew->getDb()->getSchema()->getTableNames($tableName)) !== null) {
+                    //  $item = new $mdl;
 
-                        $tableName = $modelNew->tableName();
+                    foreach ($mdl as $attr => $val) {
 
-                        if (($table = $modelNew->getDbConnection()->getSchema()->getTable($tableName)) !== null) {
-
-                            //  $item = new $mdl;
-
-                            foreach ($modelNew as $attr => $val) {
-
-                                $params[$i]['group'] = $mdl;
-                                $params[$i]['name'] = $attr;
-                                $params[$i++]['value'] = $mdl . '/' . $attr;
-                            }
-
-                            /*
-                             * проверяем есть ли связи у данной модели
-                             */
-                            if (method_exists($modelNew, "relations")) {
-                                if (count($modelNew->relations())) {
-                                    $relation = $modelNew->relations();
-                                    foreach ($relation as $key => $rel) {
-                                        // выбираем связи один к одному или многие к одному
-                                        if (($rel[0] == "CHasOneRelation") || ($rel[0] == "CBelongsToRelation")) {
-
-                                            if (!in_array($rel[1], array('CategoriesModel'))) {
-
-                                                Yii::import("{$model['path']}.{$rel[1]}");
-                                                // echo $model['path'];
-                                                $newRel = new $rel[1];
-                                                foreach ($newRel as $attr => $nR) {
-                                                    $params[$i]['group'] = $mdl;
-                                                    $params[$i]['name'] = $key . "." . $attr;
-                                                    $params[$i++]['value'] = $mdl . "/" . $key . "." . $attr;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        $params[$i]['group'] = $modelName;
+                        $params[$i]['name'] = $attr;
+                        $params[$i++]['value'] = $modelName . '/' . $attr;
                     }
+
+                    /*
+                     * проверяем есть ли связи у данной модели
+                     */
+                    /* if (method_exists($mdl, "relations")) {
+                      if (count($mdl->relations())) {
+                      $relation = $mdl->relations();
+                      foreach ($relation as $key => $rel) {
+                      // выбираем связи один к одному или многие к одному
+                      if (($rel[0] == "CHasOneRelation") || ($rel[0] == "CBelongsToRelation")) {
+
+                      if (!in_array($rel[1], array('CategoriesModel'))) {
+
+                      Yii::import("{$model['path']}.{$rel[1]}");
+                      // echo $model['path'];
+                      $newRel = new $rel[1];
+                      foreach ($newRel as $attr => $nR) {
+                      $params[$i]['group'] = $mdl;
+                      $params[$i]['name'] = $key . "." . $attr;
+                      $params[$i++]['value'] = $mdl . "/" . $key . "." . $attr;
+                      }
+                      }
+                      }
+                      }
+                      }
+                      } */
+                    //}
+                    //  }
                 }
             }
             /*
@@ -326,14 +349,12 @@ class DefaultController extends \panix\engine\controllers\AdminController {
             array(
                 'label' => Yii::t('app', 'SETTINGS'),
                 'url' => array('/admin/seo/settings'),
-                'icon' => Html::icon('icon-settings'),
-                'visible' => Yii::app()->user->openAccess(array('Seo.Settings.*', 'Seo.Settings.Index')),
+                'icon' => Html::icon('settings'),
             ),
             array(
                 'label' => Yii::t('seo/default', 'REDIRECTS'),
                 'url' => array('/admin/seo/redirects'),
-                'icon' => Html::icon('icon-refresh'),
-                'visible' => Yii::app()->user->openAccess(array('Seo.Redirects.*', 'Seo.Redirects.Index')),
+                'icon' => Html::icon('refresh'),
             ),
         );
     }
