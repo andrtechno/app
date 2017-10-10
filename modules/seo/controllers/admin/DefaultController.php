@@ -100,10 +100,12 @@ class DefaultController extends \panix\engine\controllers\AdminController {
 
                 $i = 0;
                 foreach ($object as $key => $item) {
+                    $ex = explode('|',$item);
                     $variant = SeoParams::find()->where(array(
                         'url_id' => $main_id,
                         'param' => $item,
-                        'obj' => $key
+                        //'obj' => $key,
+                        'modelClass'=>$ex[0]
                     ))->one();
                     // If not - create new.
                     if (!$variant)
@@ -112,7 +114,8 @@ class DefaultController extends \panix\engine\controllers\AdminController {
                     $variant->setAttributes(array(
                         'url_id' => $main_id,
                         'param' => $item,
-                        'obj' => $key,
+                       // 'obj' => $key,
+                        'modelClass'=>$ex[0]
                             ), false);
 
                     $variant->save(false);
@@ -267,7 +270,7 @@ class DefaultController extends \panix\engine\controllers\AdminController {
 
                         $params[$i]['group'] = $modelName;
                         $params[$i]['name'] = $attr;
-                        $params[$i++]['value'] = $modelName . '/' . $attr;
+                        $params[$i++]['value'] = $model['className'] . '|' . $attr;
                     }
 
                     /*

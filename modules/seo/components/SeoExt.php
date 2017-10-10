@@ -85,12 +85,14 @@ class SeoExt extends \yii\base\Component {
         $controller = Yii::$app->controller;
         if ($url->title) {
             if (isset($url->params)) {
+              
                 foreach ($url->params as $paramData) {
                     $param = $this->getSeoparam($paramData);
 
                     if ($param) {
-                        $url->title = str_replace($param['tpl'], $param['item'], $url->title);
+                        $url->title = str_replace('{'.$param['tpl'].'}', $param['item'], $url->title);
                     }
+
                 }
             }
             $this->printMeta('title', $url->title);
@@ -194,16 +196,17 @@ class SeoExt extends \yii\base\Component {
         $data = explode("/", $urls);
         $id = $data[count($data) - 1];
         /* если есть символ ">>" значит параметр по связи */
-        $param = $pdata->obj;
-      //  $tpl = $pdata->param;
-       // if (strstr($param, ".")) {
-        //    $paramType = true;
-        //    $data = explode(".", $param);
-        //    $param = explode("/", $data[0]);
-       // } else {
-           // $paramType = false;
-            //$param = explode("/", $param);
-       // }
+
+       // $param = $pdata->obj;
+        $tpl = $pdata->param;
+        if (strstr($tpl, ".")) {
+            $paramType = true;
+            $data = explode(".", $tpl);
+            $tpl2 = explode("/", $data[0]);
+        } else {
+            $paramType = false;
+            $tpl2 = explode("/", $tpl);
+        }
 
         if (class_exists($pdata->modelClass, false)) {
             $item = new $pdata->modelClass;
@@ -215,13 +218,18 @@ class SeoExt extends \yii\base\Component {
 
             //echo $item['seo_alias'];die;
             if (count($item)) {
-                return array(
-                    'tpl' => $pdata->param,
-                    'item' => $item[$param],
-                );
+               // var_dump($pdata->param);
+               // var_dump($pdata->obj);die;
+               // if($pdata->obj){
+       
+                return [
+                    'tpl' =>  $tpl,
+                    'item' => ($paramType) ? $item[$tpl2[1]][$data[1]] : $item[$tpl2[0]],
+                ];
+               // }
             }
         } else {
-            die('no class');
+
             return false;
         }
     }

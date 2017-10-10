@@ -17,9 +17,9 @@ use panix\engine\Html;
         ?>
         <tr id="<?= $paramrep . $model->id ?>">
             <td>
-                <?php echo Html::hiddenInput("param[$model->id][$param->obj]", $param->param); ?>
+                <?php echo Html::hiddenInput("param[$model->id][$param->obj]", $param->modelClass); ?>
                 <?php //echo Html::hiddenField("param[$model->id][$model->name][]",$param->obj);?>
-                <?php echo $param->param ?> 
+                <code>{<?= $param->param ?>}</code>
             </td>
             <td class="text-center">
                 <a href="javascript:void(0);" class="btn btn-xs btn-danger deleteproperty"><i class="icon-delete"></i></a>
