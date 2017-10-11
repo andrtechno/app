@@ -8,12 +8,14 @@ use panix\engine\behaviors\nestedsets\NestedSetsBehavior;
 use panix\engine\behaviors\MenuArrayBehavior;
 use panix\mod\shop\models\translate\CategoryTranslate;
 use panix\mod\shop\models\query\CategoryQuery;
+use panix\mod\shop\models\ProductCategoryRef;
 
 class Category extends \panix\engine\db\ActiveRecord {
 
     const MODULE_ID = 'shop';
     const route = '/shop/admin/category';
-    public $parent_id;
+
+    public $parent_id; //NOT
 
     public static function tableName() {
         return '{{%shop_category}}';
@@ -51,15 +53,27 @@ class Category extends \panix\engine\db\ActiveRecord {
             ),
             'tree' => [
                 'class' => NestedSetsBehavior::className(),
-            // 'treeAttribute' => 'tree',
-            // 'leftAttribute' => 'lft',
-            // 'rightAttribute' => 'rgt',
-            //'levelAttribute' => 'level',
             ],
         ];
     }
 
+    public function transactions2() {
+        return [
+            self::SCENARIO_DEFAULT => self::OP_ALL,
+        ];
+    }
 
+    public function getCountProducts() {
+        return $this->hasMany(ProductCategoryRef::className(), ['category' => 'id'])
+                        //->where('switch=1')
+                        ->count();
+    }
+
+    public function getProducts() {
+        return $this->hasMany(ShopProduct::className(), ['category' => 'id'])->count();
+    }
+
+    //'products' => array(self::MANY_MANY, 'ShopProduct', Yii::app()->db->tablePrefix . 'shop_product_category_ref(product, category)'), //array('product' => 'category')
     public function getTranslations() {
         return $this->hasMany(CategoryTranslate::className(), ['object_id' => 'id']);
     }

@@ -7,11 +7,14 @@ use panix\engine\WebModule;
 
 class Module extends WebModule {
 
-    public $icon = 'portfolio';
+
     public $routes = [
         'product/<seo_alias>' => 'shop/default/view',
     ];
-
+    public function init(){
+        $this->setIcon('images');
+        parent::init();
+    }
     public function getAdminMenu() {
         return [
             'modules' => [
@@ -19,7 +22,7 @@ class Module extends WebModule {
                     [
                         'label' => Yii::t('portfolio/admin', 'portfolio'),
                         "url" => ['/admin/portfolio'],
-                        'icon' => 'folder-open'
+                        'icon' => 'images'
                     ],
                     [
                         'label' => Yii::t('app', 'SETTINGS'),

@@ -2,6 +2,11 @@
 
 namespace app\modules\seo\components;
 
+use Yii;
+use yii\db\ActiveRecord;
+use app\modules\seo\models\SeoMain;
+use app\modules\seo\models\SeoUrl;
+
 class SeoBehavior extends \yii\base\Behavior {
 
     /**
@@ -25,18 +30,28 @@ class SeoBehavior extends \yii\base\Behavior {
         parent::attach($owner);
     }
 
-    public function afterSave($event) {
-        $model = $this->owner;
-        if ($model->isNewRecord) {
+    public function events() {
+        return [
+            ActiveRecord::EVENT_AFTER_DELETE => 'afterDelete',
+            ActiveRecord::EVENT_AFTER_INSERT => 'afterSave',
+            ActiveRecord::EVENT_AFTER_UPDATE => 'afterSave',
+        ];
+    }
+
+    public function afterSave() {
+        $owner = $this->owner;
+        if ($owner->isNewRecord) {
             $seo = new SeoUrl;
         } else {
-            $seo = SeoUrl::model()->findByAttributes(array('url' => (string) $model->getUrl()));
+
+
+            $seo = SeoUrl::find()->where(['url' => Yii::$app->urlManager->createUrl($owner->getUrl())])->one();
             if (!$seo) {
                 $seo = new SeoUrl;
             }
         }
-        $seo->attributes = Yii::app()->request->getPost('SeoUrl');
-        $seo->url = (string) $model->getUrl();
+        $seo->attributes = Yii::$app->request->post('SeoUrl');
+        $seo->url = Yii::$app->urlManager->createUrl($owner->getUrl());
         $seo->save(false);
         return true;
     }
@@ -45,16 +60,18 @@ class SeoBehavior extends \yii\base\Behavior {
      * @param CEvent $event
      * @return mixed
      */
-    public function afterDelete($event) {
-        SeoUrl::model()->deleteAllByAttributes(array(
-            'url' => $this->url,
-        ));
-        SeoMain::model()->deleteAllByAttributes(array(
-            'url_id' => $this->url,
-        ));
+    public function afterDelete() {
+        SeoUrl::deleteAll(['url' => Yii::$app->urlManager->createUrl($this->url)]);
+      //  SeoMain::deleteAll(['url' => Yii::$app->urlManager->createUrl($this->url)]);
+        /* SeoUrl::model()->deleteAllByAttributes(array(
+          'url' => $this->url,
+          ));
 
-        return parent::afterDelete($event);
+          SeoMain::model()->deleteAllByAttributes(array(
+          'url_id' => $this->url,
+          )); */
+
+        return parent::afterDelete();
     }
-
 
 }

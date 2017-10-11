@@ -19,3 +19,13 @@ CREATE TABLE `{prefix}settings` (
   KEY `category` (`category`),
   KEY `param` (`param`)
 ) ENGINE=InnoDB DEFAULT CHARSET={charset};
+
+
+DROP TABLE IF EXISTS `{prefix}chat`;
+CREATE TABLE `{prefix}chat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `message` text,
+  `date_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT;

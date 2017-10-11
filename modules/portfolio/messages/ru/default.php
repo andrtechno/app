@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'MODULE_NAME' => 'Магазин',
+    'MODULE_NAME' => 'Портфолио',
     'MODULE_DESC' => 'Управление магазином',
     'CATALOG' => 'Каталог',
     'RESET_FILTERS_BTN' => 'Сбросить фильтры',

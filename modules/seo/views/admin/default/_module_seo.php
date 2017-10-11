@@ -1,10 +1,13 @@
 <?php
-Yii::import('mod.seo.SeoModule');
-Yii::import('mod.seo.models.*');
+
+use app\modules\seo\models\SeoUrl;
+use panix\engine\Html;
+use panix\ext\taginput\TagInput;
+
 if ($model->isNewRecord) {
     $modelseo = new SeoUrl;
 } else {
-    $modelseo = SeoUrl::model()->findByAttributes(array('url' => $model->getUrl()));
+    $modelseo = SeoUrl::find()->where(['url' => Yii::$app->urlManager->createUrl($model->getUrl())])->one();
     if (!$modelseo) {
         $modelseo = new SeoUrl;
     }
@@ -12,30 +15,30 @@ if ($model->isNewRecord) {
 ?>
 
 <div class="form-group">
-    <div class="col-sm-4"><?php echo Html::activeLabelEx($modelseo, 'title', array('class' => 'control-label')); ?></div>
+    <div class="col-sm-4"><?= Html::activeLabel($modelseo, 'title', ['class' => 'control-label']); ?></div>
     <div class="col-sm-8">
-        <?php echo Html::activeTextField($modelseo, 'title', array('class' => 'form-control')); ?>
-        <?php echo Html::error($modelseo, 'title'); ?>
+        <?= Html::activeTextInput($modelseo, 'title', ['class' => 'form-control']); ?>
+        <?= Html::error($modelseo, 'title'); ?>
     </div>
 </div>
 <div class="form-group">
-    <div class="col-sm-4"><?php echo Html::activeLabelEx($modelseo, 'description', array('class' => 'control-label')); ?></div>
+    <div class="col-sm-4"><?= Html::activeLabel($modelseo, 'description', ['class' => 'control-label']); ?></div>
     <div class="col-sm-8">
-        <?php echo Html::activeTextArea($modelseo, 'description', array('class' => 'form-control')); ?>
-        <?php echo Html::error($modelseo, 'description'); ?>
+        <?= Html::activeTextarea($modelseo, 'description', ['class' => 'form-control']); ?>
+        <?= Html::error($modelseo, 'description'); ?>
     </div>
 </div>
 <div class="form-group">
-    <div class="col-sm-4"><?php echo Html::activeLabelEx($modelseo, 'keywords', array('class' => 'control-label')); ?></div>
+    <div class="col-sm-4"><?= Html::activeLabel($modelseo, 'keywords', ['class' => 'control-label']); ?></div>
     <div class="col-sm-8">
-        <?php
-        $this->widget('ext.taginput.TagInput',array(
-            'attribute'=>'keywords',
-            'model'=>$modelseo
-        ));
+        <?=
+        TagInput::widget([
+            'model' => $modelseo,
+            'attribute' => 'keywords'
+        ]);
         ?>
-        <div class="help-block"><?=Yii::t('SeoModule.default','KEYWORDS_HINT'); ?></div>
-        <?php //echo Html::activeTextField($modelseo, 'keywords', array('class' => 'form-control')); ?>
-        <?php //echo Html::error($modelseo, 'title'); ?>
+
+        <div class="help-block"><?= Yii::t('seo/default', 'KEYWORDS_HINT'); ?></div>
+        <?= Html::error($modelseo, 'keywords'); ?>
     </div>
 </div>
