@@ -62,16 +62,7 @@ class SeoBehavior extends \yii\base\Behavior {
      */
     public function afterDelete() {
         SeoUrl::deleteAll(['url' => Yii::$app->urlManager->createUrl($this->url)]);
-      //  SeoMain::deleteAll(['url' => Yii::$app->urlManager->createUrl($this->url)]);
-        /* SeoUrl::model()->deleteAllByAttributes(array(
-          'url' => $this->url,
-          ));
-
-          SeoMain::model()->deleteAllByAttributes(array(
-          'url_id' => $this->url,
-          )); */
-
-        return parent::afterDelete();
+        return true;
     }
 
 }
