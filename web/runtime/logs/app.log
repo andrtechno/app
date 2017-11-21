@@ -1,0 +1,306 @@
+2017-09-23 19:41:19 [127.0.0.1][-][-][error][ReflectionException] exception 'ReflectionException' with message 'Class app\modules\install\controllers\DefaultController does not exist' in E:\OpenServer\domains\app\vendor\yiisoft\yii2\di\Container.php:427
+Stack trace:
+#0 E:\OpenServer\domains\app\vendor\yiisoft\yii2\di\Container.php(427): ReflectionClass->__construct('app\\modules\\ins...')
+#1 E:\OpenServer\domains\app\vendor\yiisoft\yii2\di\Container.php(365): yii\di\Container->getDependencies('app\\modules\\ins...')
+#2 E:\OpenServer\domains\app\vendor\yiisoft\yii2\di\Container.php(156): yii\di\Container->build('app\\modules\\ins...', Array, Array)
+#3 E:\OpenServer\domains\app\vendor\yiisoft\yii2\BaseYii.php(345): yii\di\Container->get('app\\modules\\ins...', Array)
+#4 E:\OpenServer\domains\app\vendor\yiisoft\yii2\base\Module.php(583): yii\BaseYii::createObject('app\\modules\\ins...', Array)
+#5 E:\OpenServer\domains\app\vendor\yiisoft\yii2\base\Module.php(522): yii\base\Module->createController('install/registr...')
+#6 E:\OpenServer\domains\app\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('install/registr...', Array)
+#7 E:\OpenServer\domains\app\vendor\yiisoft\yii2\base\Application.php(386): yii\web\Application->handleRequest(Object(panix\engine\WebRequest))
+#8 E:\OpenServer\domains\app\web\install.php(79): yii\base\Application->run()
+#9 {main}
+2017-09-23 19:41:19 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'install/registration'
+    'step' => 'profile'
+]
+
+$_COOKIE = [
+    '_identity' => 'c2eebba9cfab2a3e2fdb59fd25107cbd7f8c93bff56985a332898cea02b4d7fba:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"ezYuIFcR9wkcBHVxtDIDUQWt8SGYG-Jk\",2592000]\";}'
+    'webpanel' => 'true'
+    'PHPSESSID' => 'uf2in1bv7leb3579hof62nnrt3'
+    '_csrf' => 'a794f27810a6eb072cf98fe8138b623bc7a6052b21604b0b887d4630ab3abd3fa:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"Ö“@vcP}–
+TÅÂDêŒ~ADxéèL¨Ê~0óa“\";}'
+    'language' => '43f716b5ec19717f3aa173ccd8516dbe470c684850f3bf4b7d1302c9d7018695a:2:{i:0;s:8:\"language\";i:1;s:2:\"en\";}'
+]
+
+$_SERVER = [
+    'HTTP_HOST' => 'app'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:55.0) Gecko/20100101 Firefox/55.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_COOKIE' => '_identity=c2eebba9cfab2a3e2fdb59fd25107cbd7f8c93bff56985a332898cea02b4d7fba%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22ezYuIFcR9wkcBHVxtDIDUQWt8SGYG-Jk%22%2C2592000%5D%22%3B%7D; webpanel=true; PHPSESSID=uf2in1bv7leb3579hof62nnrt3; _csrf=a794f27810a6eb072cf98fe8138b623bc7a6052b21604b0b887d4630ab3abd3fa%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22%D6%93%40%13v%1BcP%7D%96%0AT%C5%C2D%EA%8C%7EADx%E9%E8L%A8%CA%7E0%F3a%10%93%22%3B%7D; language=43f716b5ec19717f3aa173ccd8516dbe470c684850f3bf4b7d1302c9d7018695a%3A2%3A%7Bi%3A0%3Bs%3A8%3A%22language%22%3Bi%3A1%3Bs%3A2%3A%22en%22%3B%7D'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => 'e:\\openserver\\modules\\php\\PHP-5.6\\ext;e:\\openserver\\modules\\php\\PHP-5.6\\pear;e:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;e:\\openserver\\modules\\php\\PHP-5.6;e:\\openserver\\modules\\imagemagick;e:\\openserver\\modules\\wget\\bin;e:\\openserver\\modules\\git;e:\\openserver\\modules\\git\\bin;e:\\openserver\\modules\\git\\mingw\\bin;e:\\openserver\\modules\\git\\cmd;e:\\openserver\\modules\\database\\MySQL-5.5\\bin;e:\\openserver\\modules\\memcached\\Memcached-1.4;e:\\openserver\\modules\\http\\Apache-2.4\\bin;e:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;E:\\OpenServer\\domains\\modules\\phpunit;C:\\adb;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => ''
+    'SERVER_SOFTWARE' => 'Apache'
+    'SERVER_NAME' => 'app'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'E:/OpenServer/domains/app'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'E:/OpenServer/domains/app'
+    'SERVER_ADMIN' => '[no address given]'
+    'SCRIPT_FILENAME' => 'E:/OpenServer/domains/app/web/install.php'
+    'REMOTE_PORT' => '3874'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=install%2Fregistration&step=profile'
+    'REQUEST_URI' => '/web/install.php?r=install%2Fregistration&step=profile'
+    'SCRIPT_NAME' => '/web/install.php'
+    'PHP_SELF' => '/web/install.php'
+    'REQUEST_TIME_FLOAT' => 1506184879.174
+    'REQUEST_TIME' => 1506184879
+    'argv' => [
+        0 => 'r=install%2Fregistration&step=profile'
+    ]
+    'argc' => 1
+]
+2017-11-21 03:17:08 [-][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'Invalid path alias: @Klisl/Statistics/migrations' in E:\OpenServer\domains\app\vendor\yiisoft\yii2\BaseYii.php:154
+Stack trace:
+#0 E:\OpenServer\domains\app\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(126): yii\BaseYii::getAlias('@Klisl/Statisti...')
+#1 E:\OpenServer\domains\app\vendor\yiisoft\yii2\console\controllers\MigrateController.php(169): yii\console\controllers\BaseMigrateController->beforeAction(Object(yii\base\InlineAction))
+#2 E:\OpenServer\domains\app\vendor\yiisoft\yii2\base\Controller.php(155): yii\console\controllers\MigrateController->beforeAction(Object(yii\base\InlineAction))
+#3 E:\OpenServer\domains\app\vendor\yiisoft\yii2\console\Controller.php(135): yii\base\Controller->runAction('', Array)
+#4 E:\OpenServer\domains\app\vendor\yiisoft\yii2\base\Module.php(528): yii\console\Controller->runAction('', Array)
+#5 E:\OpenServer\domains\app\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate', Array)
+#6 E:\OpenServer\domains\app\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate', Array)
+#7 E:\OpenServer\domains\app\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#8 E:\OpenServer\domains\app\yii(23): yii\base\Application->run()
+#9 {main}
+2017-11-21 03:17:08 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANSICON' => '114x10000 (114x29)'
+    'ANSICON_DEF' => '7'
+    'APPDATA' => 'C:\\Users\\PAN\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'PAN-ÏÊ'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'ConEmuANSI' => 'ON'
+    'ConEmuAnsiLog' => ''
+    'ConEmuArgs' => '/Single'
+    'ConEmuArgs2' => ''
+    'ConEmuBackHWND' => '0x000B04B0'
+    'ConEmuBaseDir' => 'E:\\openserver\\modules\\conemu\\ConEmu'
+    'ConEmuBuild' => '161206'
+    'ConEmuConfig' => ''
+    'ConEmuDir' => 'E:\\openserver\\modules\\conemu'
+    'ConEmuDrawHWND' => '0x000E0302'
+    'ConEmuDrive' => 'E:'
+    'ConEmuHooks' => 'Enabled'
+    'ConEmuHWND' => '0x0021037A'
+    'ConEmuIsAdmin' => 'ADMIN'
+    'ConEmuPalette' => '<ConEmu>'
+    'ConEmuPID' => '4984'
+    'ConEmuPrompt0' => '$E[m$E[32m$E]9;8;\"USERNAME\"$E\\@$E]9;8;\"COMPUTERNAME\"$E\\$S'
+    'ConEmuPrompt1' => '$E[m$E[32m$E]9;8;\"USERNAME\"$E\\@$E]9;8;\"COMPUTERNAME\"$E\\$S$E[92m$P$E[90m'
+    'ConEmuPrompt2' => '$_$E[90m$$'
+    'ConEmuPrompt3' => '$E[m$S$E]9;12$E\\'
+    'ConEmuServerPID' => '3564'
+    'ConEmuTask' => '{Shells::cmd}'
+    'ConEmuWorkDir' => 'e:\\openserver'
+    'ConEmuWorkDrive' => 'e:'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOME' => 'e:\\openserver'
+    'HOMEDRIVE' => 'e:'
+    'HOMEPATH' => '\\openserver'
+    'LOCALAPPDATA' => 'C:\\Users\\PAN\\AppData\\Local'
+    'LOGONSERVER' => '\\\\PAN-ÏÊ'
+    'MAGICK_CODER_FILTER_PATH' => 'e:\\openserver\\modules\\imagemagick\\modules\\filters'
+    'MAGICK_CODER_MODULE_PATH' => 'e:\\openserver\\modules\\imagemagick\\modules\\coders'
+    'MAGICK_CONFIGURE_PATH' => 'e:\\openserver\\modules\\imagemagick'
+    'MAGICK_HOME' => 'e:\\openserver\\modules\\imagemagick'
+    'MAGICK_TEMPORARY_PATH' => 'e:\\openserver\\userdata\\temp'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OPENSSL_CONF' => 'e:\\openserver\\modules\\http\\Apache-2.4\\conf\\openssl.cnf'
+    'OS' => 'Windows_NT'
+    'Path' => 'E:\\openserver\\modules\\conemu\\ConEmu\\Scripts;E:\\openserver\\modules\\conemu;E:\\openserver\\modules\\conemu\\ConEmu;e:\\openserver\\modules\\php\\PHP-5.6\\ext;e:\\openserver\\modules\\php\\PHP-5.6\\pear;e:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;e:\\openserver\\modules\\php\\PHP-5.6;e:\\openserver\\modules\\imagemagick;e:\\openserver\\modules\\wget\\bin;e:\\openserver\\modules\\git;e:\\openserver\\modules\\git\\bin;e:\\openserver\\modules\\git\\mingw\\bin;e:\\openserver\\modules\\git\\cmd;e:\\openserver\\modules\\database\\MySQL-5.5\\bin;e:\\openserver\\modules\\memcached\\Memcached-1.4;e:\\openserver\\modules\\http\\Apache-2.4\\bin;e:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHPBIN' => 'e:\\openserver\\modules\\php\\PHP-5.6\\php.exe'
+    'PHPDIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\'
+    'PHPRC' => 'e:\\openserver\\modules\\php\\PHP-5.6'
+    'PHP_BIN' => 'e:\\openserver\\modules\\php\\PHP-5.6\\php.exe'
+    'PHP_BINARY' => 'e:\\openserver\\modules\\php\\PHP-5.6\\php.exe'
+    'PHP_BINDIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\'
+    'PHP_COMMAND' => 'php.exe'
+    'PHP_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\'
+    'PHP_INI' => 'e:\\openserver\\modules\\php\\PHP-5.6\\php.ini'
+    'PHP_PEAR_BIN_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR'
+    'PHP_PEAR_DATA_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR\\data'
+    'PHP_PEAR_DOC_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR\\docs'
+    'PHP_PEAR_INSTALL_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR\\pear'
+    'PHP_PEAR_PHP_BIN' => 'e:\\openserver\\modules\\php\\PHP-5.6\\php.exe'
+    'PHP_PEAR_SYSCONF_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR'
+    'PHP_PEAR_TEST_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR\\tests'
+    'PLINK_PROTOCOL' => 'ssh'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 13, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0d'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$E[m$E[32m$E]9;8;\"USERNAME\"$E\\@$E]9;8;\"COMPUTERNAME\"$E\\$S$E[92m$P$E[90m$_$E[90m$$$E[m$S$E]9;12$E\\'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'e:\\openserver\\userdata\\temp'
+    'TERM' => 'msys'
+    'TMP' => 'e:\\openserver\\userdata\\temp'
+    'USERDOMAIN' => 'PAN-ÏÊ'
+    'USERNAME' => 'PAN'
+    'USERPROFILE' => 'C:\\Users\\PAN'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'YII_PATH' => 'e:\\OpenServer\\domains\\app\\'
+    'PHP_SELF' => 'e:\\OpenServer\\domains\\app\\yii'
+    'SCRIPT_NAME' => 'e:\\OpenServer\\domains\\app\\yii'
+    'SCRIPT_FILENAME' => 'e:\\OpenServer\\domains\\app\\yii'
+    'PATH_TRANSLATED' => 'e:\\OpenServer\\domains\\app\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1511223428.0736
+    'REQUEST_TIME' => 1511223428
+    'argv' => [
+        0 => 'e:\\OpenServer\\domains\\app\\yii'
+        1 => 'migrate'
+        2 => '--migrationPath=@Klisl/Statistics/migrations'
+        3 => '--interactive=0'
+    ]
+    'argc' => 4
+]
+2017-11-21 03:19:45 [-][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'Invalid path alias: @Klisl/Statistics/migrations' in E:\OpenServer\domains\app\vendor\yiisoft\yii2\BaseYii.php:154
+Stack trace:
+#0 E:\OpenServer\domains\app\vendor\yiisoft\yii2\console\controllers\BaseMigrateController.php(126): yii\BaseYii::getAlias('@Klisl/Statisti...')
+#1 E:\OpenServer\domains\app\vendor\yiisoft\yii2\console\controllers\MigrateController.php(169): yii\console\controllers\BaseMigrateController->beforeAction(Object(yii\base\InlineAction))
+#2 E:\OpenServer\domains\app\vendor\yiisoft\yii2\base\Controller.php(155): yii\console\controllers\MigrateController->beforeAction(Object(yii\base\InlineAction))
+#3 E:\OpenServer\domains\app\vendor\yiisoft\yii2\console\Controller.php(135): yii\base\Controller->runAction('', Array)
+#4 E:\OpenServer\domains\app\vendor\yiisoft\yii2\base\Module.php(528): yii\console\Controller->runAction('', Array)
+#5 E:\OpenServer\domains\app\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('migrate', Array)
+#6 E:\OpenServer\domains\app\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('migrate', Array)
+#7 E:\OpenServer\domains\app\vendor\yiisoft\yii2\base\Application.php(386): yii\console\Application->handleRequest(Object(yii\console\Request))
+#8 E:\OpenServer\domains\app\yii(23): yii\base\Application->run()
+#9 {main}
+2017-11-21 03:19:45 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANSICON' => '114x10000 (114x29)'
+    'ANSICON_DEF' => '7'
+    'APPDATA' => 'C:\\Users\\PAN\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'PAN-ÏÊ'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'ConEmuANSI' => 'ON'
+    'ConEmuAnsiLog' => ''
+    'ConEmuArgs' => '/Single'
+    'ConEmuArgs2' => ''
+    'ConEmuBackHWND' => '0x000B04B0'
+    'ConEmuBaseDir' => 'E:\\openserver\\modules\\conemu\\ConEmu'
+    'ConEmuBuild' => '161206'
+    'ConEmuConfig' => ''
+    'ConEmuDir' => 'E:\\openserver\\modules\\conemu'
+    'ConEmuDrawHWND' => '0x000E0302'
+    'ConEmuDrive' => 'E:'
+    'ConEmuHooks' => 'Enabled'
+    'ConEmuHWND' => '0x0021037A'
+    'ConEmuIsAdmin' => 'ADMIN'
+    'ConEmuPalette' => '<ConEmu>'
+    'ConEmuPID' => '4984'
+    'ConEmuPrompt0' => '$E[m$E[32m$E]9;8;\"USERNAME\"$E\\@$E]9;8;\"COMPUTERNAME\"$E\\$S'
+    'ConEmuPrompt1' => '$E[m$E[32m$E]9;8;\"USERNAME\"$E\\@$E]9;8;\"COMPUTERNAME\"$E\\$S$E[92m$P$E[90m'
+    'ConEmuPrompt2' => '$_$E[90m$$'
+    'ConEmuPrompt3' => '$E[m$S$E]9;12$E\\'
+    'ConEmuServerPID' => '3564'
+    'ConEmuTask' => '{Shells::cmd}'
+    'ConEmuWorkDir' => 'e:\\openserver'
+    'ConEmuWorkDrive' => 'e:'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOME' => 'e:\\openserver'
+    'HOMEDRIVE' => 'e:'
+    'HOMEPATH' => '\\openserver'
+    'LOCALAPPDATA' => 'C:\\Users\\PAN\\AppData\\Local'
+    'LOGONSERVER' => '\\\\PAN-ÏÊ'
+    'MAGICK_CODER_FILTER_PATH' => 'e:\\openserver\\modules\\imagemagick\\modules\\filters'
+    'MAGICK_CODER_MODULE_PATH' => 'e:\\openserver\\modules\\imagemagick\\modules\\coders'
+    'MAGICK_CONFIGURE_PATH' => 'e:\\openserver\\modules\\imagemagick'
+    'MAGICK_HOME' => 'e:\\openserver\\modules\\imagemagick'
+    'MAGICK_TEMPORARY_PATH' => 'e:\\openserver\\userdata\\temp'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OPENSSL_CONF' => 'e:\\openserver\\modules\\http\\Apache-2.4\\conf\\openssl.cnf'
+    'OS' => 'Windows_NT'
+    'Path' => 'E:\\openserver\\modules\\conemu\\ConEmu\\Scripts;E:\\openserver\\modules\\conemu;E:\\openserver\\modules\\conemu\\ConEmu;e:\\openserver\\modules\\php\\PHP-5.6\\ext;e:\\openserver\\modules\\php\\PHP-5.6\\pear;e:\\openserver\\modules\\php\\PHP-5.6\\pear\\bin;e:\\openserver\\modules\\php\\PHP-5.6;e:\\openserver\\modules\\imagemagick;e:\\openserver\\modules\\wget\\bin;e:\\openserver\\modules\\git;e:\\openserver\\modules\\git\\bin;e:\\openserver\\modules\\git\\mingw\\bin;e:\\openserver\\modules\\git\\cmd;e:\\openserver\\modules\\database\\MySQL-5.5\\bin;e:\\openserver\\modules\\memcached\\Memcached-1.4;e:\\openserver\\modules\\http\\Apache-2.4\\bin;e:\\openserver\\modules\\http\\Apache-2.4;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\system32\\Wbem;C:\\Windows\\SysWOW64;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHPBIN' => 'e:\\openserver\\modules\\php\\PHP-5.6\\php.exe'
+    'PHPDIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\'
+    'PHPRC' => 'e:\\openserver\\modules\\php\\PHP-5.6'
+    'PHP_BIN' => 'e:\\openserver\\modules\\php\\PHP-5.6\\php.exe'
+    'PHP_BINARY' => 'e:\\openserver\\modules\\php\\PHP-5.6\\php.exe'
+    'PHP_BINDIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\'
+    'PHP_COMMAND' => 'php.exe'
+    'PHP_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\'
+    'PHP_INI' => 'e:\\openserver\\modules\\php\\PHP-5.6\\php.ini'
+    'PHP_PEAR_BIN_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR'
+    'PHP_PEAR_DATA_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR\\data'
+    'PHP_PEAR_DOC_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR\\docs'
+    'PHP_PEAR_INSTALL_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR\\pear'
+    'PHP_PEAR_PHP_BIN' => 'e:\\openserver\\modules\\php\\PHP-5.6\\php.exe'
+    'PHP_PEAR_SYSCONF_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR'
+    'PHP_PEAR_TEST_DIR' => 'e:\\openserver\\modules\\php\\PHP-5.6\\PEAR\\tests'
+    'PLINK_PROTOCOL' => 'ssh'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 13, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0d'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$E[m$E[32m$E]9;8;\"USERNAME\"$E\\@$E]9;8;\"COMPUTERNAME\"$E\\$S$E[92m$P$E[90m$_$E[90m$$$E[m$S$E]9;12$E\\'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'e:\\openserver\\userdata\\temp'
+    'TERM' => 'msys'
+    'TMP' => 'e:\\openserver\\userdata\\temp'
+    'USERDOMAIN' => 'PAN-ÏÊ'
+    'USERNAME' => 'PAN'
+    'USERPROFILE' => 'C:\\Users\\PAN'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'YII_PATH' => 'e:\\OpenServer\\domains\\app\\'
+    'PHP_SELF' => 'e:\\OpenServer\\domains\\app\\yii'
+    'SCRIPT_NAME' => 'e:\\OpenServer\\domains\\app\\yii'
+    'SCRIPT_FILENAME' => 'e:\\OpenServer\\domains\\app\\yii'
+    'PATH_TRANSLATED' => 'e:\\OpenServer\\domains\\app\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1511223585.3546
+    'REQUEST_TIME' => 1511223585
+    'argv' => [
+        0 => 'e:\\OpenServer\\domains\\app\\yii'
+        1 => 'migrate'
+        2 => '--migrationPath=@Klisl/Statistics/migrations'
+        3 => '--interactive=0'
+    ]
+    'argc' => 4
+]

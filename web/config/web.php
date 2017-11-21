@@ -14,7 +14,7 @@ $config = [
     // 'runtimePath'=>'runtime',
     'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'main/main',
-    'bootstrap' => ['webcontrol', 'log', 'maintenanceMode'], //, 'seo'
+    'bootstrap' => ['log', 'maintenanceMode'], //'webcontrol', 
     'controllerMap' => [
         'main' => 'panix\engine\controllers\WebController',
         'migrate' => [
@@ -27,6 +27,10 @@ $config = [
         ]
     ],
     'modules' => [
+        'log' => [
+            'class' => 'bariew\logModule\Module'
+        ],
+        'seo' => ['class' => 'app\modules\seo\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'pages' => ['class' => 'panix\mod\pages\Module'],
@@ -35,14 +39,16 @@ $config = [
         'cart' => ['class' => 'panix\mod\cart\Module'],
         'discounts' => ['class' => 'panix\mod\discounts\Module'],
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
+        'comments' => ['class' => 'panix\mod\comments\Module'],
         'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
         'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
         'csv' => ['class' => 'panix\mod\csv\Module'],
+        'blocks' => ['class' => 'profitcode\blocks\Module'],
         //'csv' => ['class' => 'panix\mod\csv\Module'],
         'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
         'delivery' => ['class' => 'panix\mod\delivery\Module'],
         'forum' => ['class' => 'panix\mod\forum\Module'],
-        //'seo' => ['class' => 'aquy\seo\module\Meta'],
+        // 'portfolio' => ['class' => 'app\modules\portfolio\Module'],
         'images' => [
             'class' => 'panix\mod\images\Module',
             //be sure, that permissions ok 
@@ -56,11 +62,9 @@ $config = [
         ],
     ],
     'components' => [
+        'seo' => ['class' => 'app\modules\seo\components\SeoExt'],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
-        // 'seo' => [
-        //     'class' => 'aquy\seo\components\Seo'
-        // ],
         'pdf' => [
             'class' => Pdf::classname(),
             'format' => Pdf::FORMAT_A4,
@@ -68,12 +72,7 @@ $config = [
             'destination' => Pdf::DEST_BROWSER,
             'mode' => Pdf::MODE_UTF8,
         ],
-        // 'languageSwitcher' => [
-        //     'class' => 'panix\engine\widgets\langSwitcher\LangSwitcher',
-        // ],
-        'formatter' => [
-            'class' => 'panix\engine\i18n\Formatter',
-        ],
+        'formatter' => ['class' => 'panix\engine\i18n\Formatter'],
         'currency' => ['class' => 'panix\mod\shop\components\CurrencyManager'],
         'cart' => ['class' => 'panix\mod\cart\components\Cart'],
         'maintenanceMode' => [
@@ -88,11 +87,11 @@ $config = [
         'assetManager' => [
             'forceCopy' => YII_DEBUG,
             'bundles' => [
-                'yii\jui\JuiAsset' => [
-                    'js' => [
-                        'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
-                    ]
-                ],
+                /* 'yii\jui\JuiAsset' => [
+                  'js' => [
+                  'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
+                  ]
+                  ], */
                 'panix\lib\google\maps\MapAsset' => [
                     'options' => [
                         'key' => 'AIzaSyAqDp9tu6LqlD6I1chjuZNV3yS6HNB_3Q0 ',
@@ -130,10 +129,6 @@ $config = [
                         'app/geoip_country' => 'geoip_country.php',
                         'app/geoip_city' => 'geoip_city.php',
                     ],
-                ],
-                'eav' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@mirocow/eav/messages',
                 ],
             ],
         ],
@@ -208,6 +203,21 @@ $config = [
             'levels' => ['error', 'warning'],
                 ]],
         ],
+        /* 'log' => [
+          'targets' => [
+          [
+          'class' => 'yii\log\DbTarget',
+          'levels' => ['error', 'warning'],
+          'logTable' => '{{%log_error}}',
+          'except' => [
+          'yii\web\HttpException:404',
+          'yii\web\HttpException:403',
+          'yii\web\HttpException:400',
+          'yii\i18n\PhpMessageSource::loadMessages'
+          ],
+          ],
+          ]
+          ], */
         'languageManager' => array('class' => 'panix\engine\ManagerLanguage'),
         'settings' => array('class' => 'panix\engine\components\Settings'),
         'urlManager' => require(__DIR__ . '/urlManager.php'),

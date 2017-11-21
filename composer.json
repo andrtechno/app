@@ -12,8 +12,8 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": "~2.0.11",
-        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-bootstrap": "2.0.7",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "yiisoft/yii2-jui": "*",
         "panix/engine": "*",
@@ -25,10 +25,20 @@
         "panix/mod-csv": "*",
         "panix/mod-delivery": "*",
         "panix/mod-xml": "*",
-        "panix/mod-yandexmarket": "*"
+        "panix/mod-yandexmarket": "*",
+        "panix/mod-forum": "*",
+        "lysenkobv/yii2-geoip": "~1.0",
+        "yiisoft/yii2-smarty": "^2.0@dev",
+        "panix/mod-comments": "*",
+        "yii2mod/yii2-star-rating": "*",
+        "profitcode/yii2-blocks": "*",
+        "zhuravljov/yii2-logreader": "*",
+        "bariew/yii2-log-module": "1.0.1",
+        "yiisoft/yii2-debug": "2.0.12",
+        "panix/wgt-owlcarousel": "*",
+        "klisl/yii2-statistics": "*"
     },
     "require-dev": {
-        "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0",
         "codeception/base": "^2.2.3",
