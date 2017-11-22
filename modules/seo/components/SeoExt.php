@@ -72,8 +72,9 @@ class SeoExt extends \yii\base\Component {
                 $titleFlag = true;
             }
         }
-        //if ($titleFlag)
-        //$this->printMeta('title', Html::encode(Yii::$app->controller->pageTitle));
+
+        if ($titleFlag)
+            $this->printMeta('title', Html::encode(Yii::$app->controller->title));
     }
 
     /*
@@ -83,22 +84,20 @@ class SeoExt extends \yii\base\Component {
 
     private function seoName($url) {
         $controller = Yii::$app->controller;
+
         if ($url->title) {
             if (isset($url->params)) {
-              
                 foreach ($url->params as $paramData) {
                     $param = $this->getSeoparam($paramData);
-
                     if ($param) {
                         $url->title = str_replace('{'.$param['tpl'].'}', $param['item'], $url->title);
                     }
-
                 }
             }
             $this->printMeta('title', $url->title);
         } else {
-            if (isset($controller->pageTitle)) {
-                $this->printMeta('title', $controller->pageTitle);
+            if (isset($controller->title)) {
+                $this->printMeta('title', $controller->title);
             } else {
                 $this->printMeta('title', Yii::$app->settings->get('app', 'site_name'));
             }
@@ -114,8 +113,8 @@ class SeoExt extends \yii\base\Component {
             }
             $this->printMeta('keywords', $url->keywords);
         } else {
-            if (isset($controller->pageKeywords))
-                $this->printMeta('keywords', $controller->pageKeywords);
+            if (isset($controller->keywords))
+                $this->printMeta('keywords', $controller->keywords);
         }
         if ($url->description) {
             if (isset($url->params)) {
@@ -128,8 +127,8 @@ class SeoExt extends \yii\base\Component {
             }
             $this->printMeta('description', $url->description);
         } else {
-            if (isset($controller->pageDescription))
-                $this->printMeta('description', $controller->pageDescription);
+            if (isset($controller->description))
+                $this->printMeta('description', $controller->description);
         }
     }
 

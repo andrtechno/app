@@ -87,6 +87,7 @@ $config = [
         'assetManager' => [
             'forceCopy' => YII_DEBUG,
             'bundles' => [
+                'yii\jui\JuiAsset'=>['css'=>[]],
                 /* 'yii\jui\JuiAsset' => [
                   'js' => [
                   'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'

@@ -30,13 +30,11 @@
         "lysenkobv/yii2-geoip": "~1.0",
         "yiisoft/yii2-smarty": "^2.0@dev",
         "panix/mod-comments": "*",
-        "yii2mod/yii2-star-rating": "*",
         "profitcode/yii2-blocks": "*",
         "zhuravljov/yii2-logreader": "*",
         "bariew/yii2-log-module": "1.0.1",
         "yiisoft/yii2-debug": "2.0.12",
-        "panix/wgt-owlcarousel": "*",
-        "klisl/yii2-statistics": "*"
+        "panix/wgt-owlcarousel": "*"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2.0.0",

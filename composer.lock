@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ddf0223235e454450fbde8f4b836907e",
+    "content-hash": "0e8f1d7b57dfcb42aedc73d9144a73a3",
     "packages": [
         {
             "name": "abeautifulsite/simpleimage",
@@ -325,56 +325,6 @@
                 "shasum": null
             },
             "type": "bower-asset"
-        },
-        {
-            "name": "bower-asset/raty",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/wbotelhos/raty.git",
-                "reference": "63be7c37462f079ca0762ef9a1dce31713cf5b74"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/wbotelhos/raty/zipball/63be7c37462f079ca0762ef9a1dce31713cf5b74",
-                "reference": "63be7c37462f079ca0762ef9a1dce31713cf5b74",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery": ">=3.2.1,<4.0.0"
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": "lib/jquery.raty.js",
-                "bower-asset-ignore": [
-                    "**/.*",
-                    "node_modules",
-                    "spec",
-                    "vendor"
-                ],
-                "branch-alias": {
-                    "dev-master": "2.7.1-dev"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "jQuery Raty - A Star Rating Plugin",
-            "keywords": [
-                "classificacao",
-                "classificar",
-                "javascript",
-                "jquery",
-                "library",
-                "plugin",
-                "rating",
-                "raty",
-                "star",
-                "staring",
-                "votar",
-                "voto"
-            ],
-            "time": "2017-05-07T00:25:20+00:00"
         },
         {
             "name": "bower-asset/yii2-pjax",
@@ -784,52 +734,6 @@
                 "image processing"
             ],
             "time": "2015-09-19T16:54:05+00:00"
-        },
-        {
-            "name": "klisl/yii2-statistics",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/klisl/yii2-statistics.git",
-                "reference": "fdaf843a8b196c0536f7262f72243ae763a5a9ef"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/klisl/yii2-statistics/zipball/fdaf843a8b196c0536f7262f72243ae763a5a9ef",
-                "reference": "fdaf843a8b196c0536f7262f72243ae763a5a9ef",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "~2.0.0"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "bootstrap": "Klisl\\Statistics\\Bootstrap"
-            },
-            "autoload": {
-                "psr-4": {
-                    "Klisl\\Statistics\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sergey Klimenchuk",
-                    "email": "ksl80@ukr.net",
-                    "homepage": "https://github.com/klisl/yii2-statistics",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Package for getting statistics by IP for your site in Yii-2",
-            "keywords": [
-                "IP",
-                "statistics",
-                "yii2"
-            ],
-            "time": "2017-08-25T19:46:03+00:00"
         },
         {
             "name": "kop/yii2-scroll-pager",
@@ -2752,58 +2656,17 @@
             "time": "2017-06-29T21:13:27+00:00"
         },
         {
-            "name": "yii2mod/yii2-star-rating",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yii2mod/yii2-star-rating.git",
-                "reference": "16e0c24cfe059834be55c388ee16b5e7c5d23ed2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yii2mod/yii2-star-rating/zipball/16e0c24cfe059834be55c388ee16b5e7c5d23ed2",
-                "reference": "16e0c24cfe059834be55c388ee16b5e7c5d23ed2",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/raty": "*",
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "yii2mod\\rating\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Igor Chepurnoy",
-                    "email": "igorzfort@gmail.com"
-                }
-            ],
-            "description": "Star rating widget based on jQuery Raty https://github.com/wbotelhos/raty",
-            "keywords": [
-                "module",
-                "yii2"
-            ],
-            "time": "2017-08-16T08:33:41+00:00"
-        },
-        {
             "name": "yiisoft/yii2",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "1da39fb1f455f894433ea247eab17d31151ab633"
+                "reference": "ba56c51dcb9e8b8cdaaea109fd4a4727457f085f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/1da39fb1f455f894433ea247eab17d31151ab633",
-                "reference": "1da39fb1f455f894433ea247eab17d31151ab633",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/ba56c51dcb9e8b8cdaaea109fd4a4727457f085f",
+                "reference": "ba56c51dcb9e8b8cdaaea109fd4a4727457f085f",
                 "shasum": ""
             },
             "require": {
@@ -2890,7 +2753,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-09-16T05:52:47+00:00"
+            "time": "2017-11-20T06:20:12+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -3432,7 +3295,7 @@
             "version": "v0.11.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twitter/typeahead.js.git",
+                "url": "git@github.com:twitter/typeahead.js.git",
                 "reference": "588440f66559714280628a4f9799f0c4eb880a4a"
             },
             "dist": {
