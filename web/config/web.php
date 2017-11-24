@@ -62,6 +62,10 @@ $config = [
         ],
     ],
     'components' => [
+        'consoleRunner' => [
+            'class' => 'panix\engine\components\ConsoleRunner',
+            'file' => '@my/path/to/yii' // or an absolute path to console file
+        ],
         'seo' => ['class' => 'app\modules\seo\components\SeoExt'],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
@@ -87,7 +91,7 @@ $config = [
         'assetManager' => [
             'forceCopy' => YII_DEBUG,
             'bundles' => [
-                'yii\jui\JuiAsset'=>['css'=>[]],
+                'yii\jui\JuiAsset' => ['css' => []],
                 /* 'yii\jui\JuiAsset' => [
                   'js' => [
                   'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
