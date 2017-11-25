@@ -27,9 +27,6 @@ $config = [
         ]
     ],
     'modules' => [
-        'log' => [
-            'class' => 'bariew\logModule\Module'
-        ],
         'seo' => ['class' => 'app\modules\seo\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],

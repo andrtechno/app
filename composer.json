@@ -32,7 +32,6 @@
         "panix/mod-comments": "*",
         "profitcode/yii2-blocks": "*",
         "zhuravljov/yii2-logreader": "*",
-        "bariew/yii2-log-module": "1.0.1",
         "yiisoft/yii2-debug": "2.0.12",
         "panix/wgt-owlcarousel": "*"
     },

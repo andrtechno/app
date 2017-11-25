@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e8f1d7b57dfcb42aedc73d9144a73a3",
+    "content-hash": "0f52bbb1d776b9419f307b78dc0441a1",
     "packages": [
         {
             "name": "abeautifulsite/simpleimage",
@@ -84,129 +84,6 @@
                 "yii2"
             ],
             "time": "2016-10-10T11:54:25+00:00"
-        },
-        {
-            "name": "bariew/phpquery",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bariew/phpquery.git",
-                "reference": "233afd67f5d8188fa87b95ae9371e5aadd3dd927"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bariew/phpquery/zipball/233afd67f5d8188fa87b95ae9371e5aadd3dd927",
-                "reference": "233afd67f5d8188fa87b95ae9371e5aadd3dd927",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "phpQuery/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tobiasz Cudnik",
-                    "email": "tobiasz.cudnik@gmail.com",
-                    "homepage": "https://github.com/TobiaszCudnik",
-                    "role": "Developer"
-                },
-                {
-                    "name": "didier Belot",
-                    "role": "Packager"
-                }
-            ],
-            "description": "phpQuery is a server-side, chainable, CSS3 selector driven Document Object Model (DOM) API based on jQuery JavaScript Library",
-            "homepage": "http://code.google.com/p/phpquery/",
-            "time": "2015-12-29T11:19:32+00:00"
-        },
-        {
-            "name": "bariew/yii2-log-module",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bariew/yii2-log-module.git",
-                "reference": "1d1ae1b7b32ab9381f8e8e7c6f0dbe4a7d861199"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bariew/yii2-log-module/zipball/1d1ae1b7b32ab9381f8e8e7c6f0dbe4a7d861199",
-                "reference": "1d1ae1b7b32ab9381f8e8e7c6f0dbe4a7d861199",
-                "shasum": ""
-            },
-            "require": {
-                "bariew/yii2-tools": "dev-master"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "bariew\\logModule\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Bariev Pavel",
-                    "email": "bariew@yandex.ru"
-                }
-            ],
-            "description": "Log management from web views",
-            "keywords": [
-                "log",
-                "module",
-                "yii2"
-            ],
-            "time": "2016-06-28T14:22:29+00:00"
-        },
-        {
-            "name": "bariew/yii2-tools",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/bariew/yii2-tools.git",
-                "reference": "0a1a9d50ce8c31033cae0f3650537047fda8bdf0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/bariew/yii2-tools/zipball/0a1a9d50ce8c31033cae0f3650537047fda8bdf0",
-                "reference": "0a1a9d50ce8c31033cae0f3650537047fda8bdf0",
-                "shasum": ""
-            },
-            "require": {
-                "bariew/phpquery": "dev-master",
-                "yiisoft/yii2-imagine": "~2.0@dev"
-            },
-            "type": "helpers",
-            "autoload": {
-                "psr-4": {
-                    "bariew\\yii2Tools\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Bariev Pavel",
-                    "email": "bariew@yandex.ru"
-                }
-            ],
-            "description": "Tools for yii2 web development",
-            "keywords": [
-                "helpers",
-                "tools",
-                "yii2"
-            ],
-            "time": "2016-09-21T09:38:40+00:00"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -677,63 +554,6 @@
                 "url"
             ],
             "time": "2017-07-17T09:11:21+00:00"
-        },
-        {
-            "name": "imagine/imagine",
-            "version": "v0.6.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/avalanche123/Imagine.git",
-                "reference": "149041d2a1b517107bfe270ca2b1a17aa341715d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/149041d2a1b517107bfe270ca2b1a17aa341715d",
-                "reference": "149041d2a1b517107bfe270ca2b1a17aa341715d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "sami/sami": "dev-master"
-            },
-            "suggest": {
-                "ext-gd": "to use the GD implementation",
-                "ext-gmagick": "to use the Gmagick implementation",
-                "ext-imagick": "to use the Imagick implementation"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-develop": "0.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Imagine": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Bulat Shakirzyanov",
-                    "email": "mallluhuct@gmail.com",
-                    "homepage": "http://avalanche123.com"
-                }
-            ],
-            "description": "Image processing for PHP 5.3",
-            "homepage": "http://imagine.readthedocs.org/",
-            "keywords": [
-                "drawing",
-                "graphics",
-                "image manipulation",
-                "image processing"
-            ],
-            "time": "2015-09-19T16:54:05+00:00"
         },
         {
             "name": "kop/yii2-scroll-pager",
@@ -2996,54 +2816,6 @@
                 "yii2"
             ],
             "time": "2017-07-27T14:36:55+00:00"
-        },
-        {
-            "name": "yiisoft/yii2-imagine",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yiisoft/yii2-imagine.git",
-                "reference": "59dcd0b43c2b0e5495c7e5c0320e2cbc1cd57411"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-imagine/zipball/59dcd0b43c2b0e5495c7e5c0320e2cbc1cd57411",
-                "reference": "59dcd0b43c2b0e5495c7e5c0320e2cbc1cd57411",
-                "shasum": ""
-            },
-            "require": {
-                "imagine/imagine": "~0.6.0",
-                "yiisoft/yii2": "~2.0.0"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "yii\\imagine\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Antonio Ramirez",
-                    "email": "amigo.cobos@gmail.com"
-                }
-            ],
-            "description": "The Imagine integration for the Yii framework",
-            "keywords": [
-                "helper",
-                "image",
-                "imagine",
-                "yii2"
-            ],
-            "time": "2016-11-03T19:28:39+00:00"
         },
         {
             "name": "yiisoft/yii2-jui",
