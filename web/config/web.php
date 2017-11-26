@@ -27,6 +27,7 @@ $config = [
         ]
     ],
     'modules' => [
+        'hosting'=>['class' => 'app\modules\hosting\Module'],
         'seo' => ['class' => 'app\modules\seo\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],

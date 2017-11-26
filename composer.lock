@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f52bbb1d776b9419f307b78dc0441a1",
+    "content-hash": "e96a192221123dc97420688cc2e68375",
     "packages": [
         {
             "name": "abeautifulsite/simpleimage",
@@ -787,18 +787,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mpdf/mpdf.git",
-                "reference": "0c29908967e359768f733ec11004c9226f35c3db"
+                "reference": "3dae51559c57aa6a1aa2356c51abb0cacb9bb907"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/0c29908967e359768f733ec11004c9226f35c3db",
-                "reference": "0c29908967e359768f733ec11004c9226f35c3db",
+                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/3dae51559c57aa6a1aa2356c51abb0cacb9bb907",
+                "reference": "3dae51559c57aa6a1aa2356c51abb0cacb9bb907",
                 "shasum": ""
             },
             "require": {
                 "ext-gd": "*",
                 "ext-mbstring": "*",
-                "paragonie/random_compat": "^2.0",
+                "paragonie/random_compat": "^1.4|^2.0",
                 "php": "^5.6 || ~7.0.0 || ~7.1.0 || ~7.2.0",
                 "psr/log": "^1.0",
                 "setasign/fpdi": "1.6.*"
@@ -823,10 +823,7 @@
             "autoload": {
                 "psr-4": {
                     "Mpdf\\": "src/"
-                },
-                "files": [
-                    "src/functions.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -849,7 +846,7 @@
                 "php",
                 "utf-8"
             ],
-            "time": "2017-09-06T08:49:53+00:00"
+            "time": "2017-11-25T09:13:29+00:00"
         },
         {
             "name": "panix/engine",
@@ -1001,12 +998,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrtechno/mod-cart.git",
-                "reference": "918860c08261b1506fa10114ebd3ab913b3d2225"
+                "reference": "e58b504168dd7795c2b47f0c62e9c75673dbe875"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrtechno/mod-cart/zipball/918860c08261b1506fa10114ebd3ab913b3d2225",
-                "reference": "918860c08261b1506fa10114ebd3ab913b3d2225",
+                "url": "https://api.github.com/repos/andrtechno/mod-cart/zipball/e58b504168dd7795c2b47f0c62e9c75673dbe875",
+                "reference": "e58b504168dd7795c2b47f0c62e9c75673dbe875",
                 "shasum": ""
             },
             "require": {
@@ -1033,7 +1030,7 @@
             ],
             "description": "Коризина",
             "homepage": "https://github.com/andrtechno/mod-cart",
-            "time": "2017-09-12T15:15:12+00:00"
+            "time": "2017-11-25T12:40:38+00:00"
         },
         {
             "name": "panix/mod-comments",
