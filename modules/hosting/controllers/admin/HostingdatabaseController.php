@@ -8,14 +8,18 @@ use app\modules\hosting\components\Api;
 use app\modules\hosting\forms\hosting_database\DatabaseCreateForm;
 use app\modules\hosting\forms\hosting_database\UserPasswordForm;
 use app\modules\hosting\forms\hosting_database\UserPrivilegesForm;
+
 class HostingdatabaseController extends CommonController {
 
     public function actionIndex() {
         return $this->render('index');
     }
-
+    /**
+     * Возвращает информацию о базах данных аккаунта.
+     * 
+     * @return type
+     */
     public function actionInfo() {
-
         $this->buttons[] = [
             'label' => Yii::t('hosting/default', 'BTN_DATABASE_CREATE'),
             'url' => ['database-create']
@@ -24,10 +28,15 @@ class HostingdatabaseController extends CommonController {
         if ($api->response->status == 'success') {
             return $this->render('info', ['response' => $api->response->data]);
         } else {
-            throw new Exception($api->response->message);
+            Yii::$app->session->setFlash('danger', $api->response->message);
+            
         }
     }
-
+    /**
+     * Создание базы данных.
+     * 
+     * @return type
+     */
     public function actionDatabaseCreate() {
         $model = new DatabaseCreateForm();
         $response = false;
@@ -39,13 +48,21 @@ class HostingdatabaseController extends CommonController {
             ]);
             if ($api->response->status == 'success') {
                 $response = $api->response->data;
-                Yii::$app->session->setFlash('success', Yii::t('hosting/default', 'SUCCESS_DATABASE_CREATE', ['db' => $api->response->data->user->login]));
+                Yii::$app->session->setFlash('success', Yii::t('hosting/default', 'SUCCESS_DATABASE_CREATE', ['db' => $model->name]));
+            }else{
+                Yii::$app->session->setFlash('danger', $api->response->message);
+
+                $model->addError('name', $api->response->message);
             }
         }
         return $this->render('database_create', ['model' => $model, 'response' => $response]);
     }
-    
-    
+
+    /**
+     * Смена пароля пользователя базы данных.
+     * 
+     * @return type
+     */
     public function actionUserPassword() {
         $model = new UserPasswordForm();
         $response = false;
@@ -57,13 +74,19 @@ class HostingdatabaseController extends CommonController {
             if ($api->response->status == 'success') {
                 $response = $api->response->data;
                 Yii::$app->session->setFlash('success', Yii::t('hosting/default', 'SUCCESS_DATABASE_USERPASSWORD_UPDATE'));
-            }else{
-               Yii::$app->session->setFlash('danger', $api->response->message);
-               $model->addError('password',$api->response->message);
+            } else {
+                Yii::$app->session->setFlash('danger', $api->response->message);
+                $model->addError('password', $api->response->message);
             }
         }
         return $this->render('user_password', ['model' => $model, 'response' => $response]);
     }
+
+    /**
+     * Изменение привилегий доступа пользователя базы данных к соответствующей базе данных.
+     * 
+     * @return type
+     */
     public function actionUserPrivileges() {
         $model = new UserPrivilegesForm();
         $response = false;
@@ -76,15 +99,20 @@ class HostingdatabaseController extends CommonController {
             ]);
             if ($api->response->status == 'success') {
                 $response = $api->response->data;
-                Yii::$app->session->setFlash('success', Yii::t('hosting/default', 'SUCCESS_DATABASE_USERPRIVILEGES_UPDATE',['user'=>$model->user]));
-            }else{
-               Yii::$app->session->setFlash('danger', $api->response->message);
-               $model->addError('user', ($api->response->message));
+                Yii::$app->session->setFlash('success', Yii::t('hosting/default', 'SUCCESS_DATABASE_USERPRIVILEGES_UPDATE', ['user' => $model->user]));
+            } else {
+                Yii::$app->session->setFlash('danger', $api->response->message);
+                $model->addError('user', ($api->response->message));
             }
         }
         return $this->render('user_privileges', ['model' => $model, 'response' => $response]);
     }
 
+    /**
+     * Удаление базы данных.
+     * 
+     * @return type
+     */
     public function actionDatabaseDelete() {
         if (Yii::$app->request->get('database')) {
             $api = new Api('hosting_database', 'database_delete', [
@@ -98,8 +126,12 @@ class HostingdatabaseController extends CommonController {
         }
         return $this->redirect(['/admin/hosting/hostingdatabase/info']);
     }
-    
-    
+
+    /**
+     * Удаление пользователя базы данных и всех его привилегий.
+     * 
+     * @return type
+     */
     public function actionUserDelete() {
         if (Yii::$app->request->get('user')) {
             $api = new Api('hosting_database', 'user_delete', [

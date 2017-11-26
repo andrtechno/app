@@ -13,6 +13,7 @@ return [
     'SUCCESS_MAILBOX_EDIT' => 'Почта <b>{email}</b> успешно отредактирована.',
     'SUCCESS_HOST_CREATE' => 'Поддомен <b>{subdomain}.{site}</b> успешно создан.',
     'BTN_DATABASE_CREATE' => 'Добавить базу данных',
+    'BTN_FTP_CREATE' => 'Добавить FTP пользователя',
     //breadcrumbs
     'HOSTINGDATABASE' => 'База данных',
     'HOSTINGDATABASE_INFO' => 'Информация баз данных',
@@ -21,6 +22,7 @@ return [
     'HOSTINGDATABASE_USER_PRIVILEGES' => 'Изменение привилегий доступа пользователя базы данных',
     'HOSTINGFTP' => 'FTP-пользователи',
     'HOSTINGFTP_INFO' => 'Информацию о FTP-пользователях',
+    'HOSTINGFTP_CREATE'=>'Создание нового FTP-пользователя',
     'HOSTINGFTP_ACCESS_INFO' => 'Информацию о настройках безопасности FTP',
     'DOMAIN' => 'Домены',
     'DOMAIN_ZONES' => 'Список DNS зон с ценами на них',

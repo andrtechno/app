@@ -9,7 +9,7 @@ $form = ActiveForm::begin();
 <?= $form->field($model, 'collation')->dropDownList($model->collectionArray); ?>
 <?= $form->field($model, 'user_create')->checkbox(); ?>
 
-
+<?= $form->errorSummary($model); ?>
 
 <div class="text-center">
     <?= Html::submitButton(Yii::t('app', 'SAVE'), ['class' => 'btn btn-success']) ?>
