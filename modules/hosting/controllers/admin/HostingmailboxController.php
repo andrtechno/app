@@ -4,7 +4,7 @@ namespace app\modules\hosting\controllers\admin;
 
 use Yii;
 use app\modules\hosting\components\Api;
-use app\modules\hosting\forms\hosting_mailbox\CreateForm;
+use app\modules\hosting\forms\hosting_mailbox\MailCreateForm;
 use yii\base\Exception;
 
 class HostingmailboxController extends CommonController {
@@ -33,7 +33,7 @@ class HostingmailboxController extends CommonController {
     }
 
     public function actionCreate() {
-        $model = new CreateForm();
+        $model = new MailCreateForm();
         $response = false;
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
@@ -69,7 +69,7 @@ class HostingmailboxController extends CommonController {
             'url' => ['create']
         ];
 
-        $model = new CreateForm();
+        $model = new MailCreateForm();
         $response = false;
         $mailbox = Yii::$app->request->get('email');
 

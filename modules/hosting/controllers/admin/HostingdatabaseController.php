@@ -5,8 +5,9 @@ namespace app\modules\hosting\controllers\admin;
 use Yii;
 use yii\base\Exception;
 use app\modules\hosting\components\Api;
-use app\modules\hosting\forms\hosting_database\CreateForm;
-
+use app\modules\hosting\forms\hosting_database\DatabaseCreateForm;
+use app\modules\hosting\forms\hosting_database\UserPasswordForm;
+use app\modules\hosting\forms\hosting_database\UserPrivilegesForm;
 class HostingdatabaseController extends CommonController {
 
     public function actionIndex() {
@@ -28,7 +29,7 @@ class HostingdatabaseController extends CommonController {
     }
 
     public function actionDatabaseCreate() {
-        $model = new CreateForm();
+        $model = new DatabaseCreateForm();
         $response = false;
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $api = new Api('hosting_database', 'database_create', [
@@ -43,6 +44,46 @@ class HostingdatabaseController extends CommonController {
         }
         return $this->render('database_create', ['model' => $model, 'response' => $response]);
     }
+    
+    
+    public function actionUserPassword() {
+        $model = new UserPasswordForm();
+        $response = false;
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $api = new Api('hosting_database', 'user_password', [
+                'user' => Yii::$app->request->get('user'),
+                'password' => $model->password,
+            ]);
+            if ($api->response->status == 'success') {
+                $response = $api->response->data;
+                Yii::$app->session->setFlash('success', Yii::t('hosting/default', 'SUCCESS_DATABASE_USERPASSWORD_UPDATE'));
+            }else{
+               Yii::$app->session->setFlash('danger', $api->response->message);
+               $model->addError('password',$api->response->message);
+            }
+        }
+        return $this->render('user_password', ['model' => $model, 'response' => $response]);
+    }
+    public function actionUserPrivileges() {
+        $model = new UserPrivilegesForm();
+        $response = false;
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+            $api = new Api('hosting_database', 'user_privileges', [
+                'user' => $model->user,
+                'database' => $model->database,
+                'privileges' => $model->privileges,
+            ]);
+            if ($api->response->status == 'success') {
+                $response = $api->response->data;
+                Yii::$app->session->setFlash('success', Yii::t('hosting/default', 'SUCCESS_DATABASE_USERPRIVILEGES_UPDATE',['user'=>$model->user]));
+            }else{
+               Yii::$app->session->setFlash('danger', $api->response->message);
+               $model->addError('user', ($api->response->message));
+            }
+        }
+        return $this->render('user_privileges', ['model' => $model, 'response' => $response]);
+    }
 
     public function actionDatabaseDelete() {
         if (Yii::$app->request->get('database')) {
@@ -53,6 +94,21 @@ class HostingdatabaseController extends CommonController {
                 Yii::$app->session->setFlash('success', Yii::t('hosting/default', 'SUCCESS_DATABASE_DELETE', ['db' => $api->response->data[0]]));
             } else {
                 Yii::$app->session->setFlash('danger', 'error databse_create');
+            }
+        }
+        return $this->redirect(['/admin/hosting/hostingdatabase/info']);
+    }
+    
+    
+    public function actionUserDelete() {
+        if (Yii::$app->request->get('user')) {
+            $api = new Api('hosting_database', 'user_delete', [
+                'user' => Yii::$app->request->get('user'),
+            ]);
+            if ($api->response->status == 'success') {
+                Yii::$app->session->setFlash('success', Yii::t('hosting/default', 'SUCCESS_DATABASE_USER_DELETE', ['user' => Yii::$app->request->get('user')]));
+            } else {
+                Yii::$app->session->setFlash('danger', $api->response->message);
             }
         }
         return $this->redirect(['/admin/hosting/hostingdatabase/info']);

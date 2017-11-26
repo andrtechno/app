@@ -15,11 +15,22 @@ class Api {
         $language = Yii::$app->language;
         $api_config = Yii::$app->settings->get('hosting');
 
-        // if (in_array($method, ['info2'])) {
-        if (isset($api_config['account'])) {
-            $config['account'] = $api_config['account'];
+
+        if (isset($config['account'])) {
+            
+            
+            //if ($config['account']) {
+                if(!is_string($config['account'])){
+                    $config['account']=false;
+                }
+           // }
+        }else{
+                if (isset($api_config['account'])) {
+                    $config['account'] = $api_config['account'];
+                }
         }
-        // }
+
+
 
 
         $ch = curl_init('https://adm.tools/api.php');
@@ -38,7 +49,7 @@ class Api {
         ]);
 
         $this->response = Json::decode(curl_exec($ch), $response_format);
-        if ($response_format) {
+       /* if ($response_format) {
             if ($this->response['status'] == 'error') {
                 throw new InvalidParamException($this->response['message']);
             }
@@ -46,7 +57,7 @@ class Api {
             if ($this->response->status == 'error') {
                 throw new InvalidParamException($this->response->message);
             }
-        }
+        }*/
 
         curl_close($ch);
     }

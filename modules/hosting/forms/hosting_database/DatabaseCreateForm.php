@@ -4,7 +4,7 @@ namespace app\modules\hosting\forms\hosting_database;
 
 use Yii;
 
-class CreateForm extends \panix\engine\base\Model {
+class DatabaseCreateForm extends \panix\engine\base\Model {
 
     protected $module = 'hosting';
     public $name;

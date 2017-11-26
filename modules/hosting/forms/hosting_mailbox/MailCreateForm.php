@@ -4,7 +4,7 @@ namespace app\modules\hosting\forms\hosting_mailbox;
 
 use Yii;
 
-class CreateForm extends \panix\engine\base\Model {
+class MailCreateForm extends \panix\engine\base\Model {
 
     protected $module = 'hosting';
     public $mailbox;
