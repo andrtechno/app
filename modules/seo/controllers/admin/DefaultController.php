@@ -35,7 +35,7 @@ class DefaultController extends \panix\engine\controllers\AdminController {
                     }
                 }
 
-                return $this->redirect(array("index"));
+                return $this->redirect(["index"]);
             }
         }
 

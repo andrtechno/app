@@ -19,6 +19,7 @@ $this->registerJs("
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
     <head>
+        <noscript><meta http-equiv="refresh" content="0; url=no-javascript" /></noscript>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <?php $this->head() ?>

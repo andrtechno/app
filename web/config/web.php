@@ -27,6 +27,7 @@ $config = [
         ]
     ],
     'modules' => [
+        'stats' => ['class' => 'panix\mod\stats\Module'],
         'hosting'=>['class' => 'app\modules\hosting\Module'],
         'seo' => ['class' => 'app\modules\seo\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
@@ -139,30 +140,14 @@ $config = [
             'class' => '\panix\engine\web\DbUserSession',
             'sessionTable' => '{{%session_user}}', // session table name. Defaults to 'session'.
         ],
-        'session22' => [
-            'class' => 'yii\web\DbSession',
-            //'sessionTable'=>'{{%session}}',
-            // 'timeout'=> 5,
-            'useCookies' => true
-        ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
             'baseUrl' => '',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
-        'cache' => [
-            //   'class' => 'yii\caching\FileCache',
-            'class' => 'yii\caching\DummyCache',
-        // 'class' => 'yii\caching\DbCache',
-        // 'cachePath' => '@runtime/cache',
-        // 'class' => 'yii\caching\ApcCache',
-        ],
-        'user' => [
-            'class' => 'panix\mod\user\components\User',
-        // 'identityClass' => 'app\models\User',
-        // 'enableAutoLogin' => false,
-        ],
+        'cache' => ['class' => 'yii\caching\DummyCache'],
+        'user' => ['class' => 'panix\mod\user\components\User'],
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
             'clients' => [
@@ -187,7 +172,7 @@ $config = [
             //'class'=>'panix\engine\base\ErrorHandler'
             //'errorAction' => 'site/error',
             'errorAction' => 'main/error',
-        // 'errorView' => '@webroot/themes/corner/views/layouts/error.php'
+        // 'errorView' => '@webroot/themes/basic/views/layouts/error.php'
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

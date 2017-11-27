@@ -53,7 +53,7 @@ class RedirectsController extends \panix\engine\controllers\AdminController {
             $model->attributes = $_POST['Redirects'];
             if ($model->validate()) {
                 $model->save();
-                $this->redirect(array('/admin/seo/redirects'));
+                $this->redirect(['/admin/seo/redirects']);
             }
         }
         $this->render('update', array('model' => $model));

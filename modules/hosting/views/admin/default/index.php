@@ -13,3 +13,20 @@ echo Html::a('domain', ['/admin/hosting/domain'], ['class' => 'btn btn-default']
 echo Html::a('billing', ['/admin/hosting/billing'], ['class' => 'btn btn-default']);
 echo Html::a('settings', ['/admin/hosting/settings'], ['class' => 'btn btn-success']);
 
+
+echo '<br>';
+echo Html::a('test #','#');
+echo '<br>';
+echo Html::a('test array',['http://adtest']);
+echo '<br>';
+echo Html::a('test http','http://corner-cms.com');
+echo '<br>';
+echo Html::a('test http addoptions "rel"','http://app2',['test'=>'dsa']);
+echo '<br>';
+
+echo Yii::$app->request->serverName;
+if(strpos(Yii::$app->request->serverName,'app')===false){
+    echo 'no';
+}else{
+    echo 'find';
+}

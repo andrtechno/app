@@ -31,6 +31,10 @@ return [
         ['pattern' => '<module:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/default/<action>'],
         ['pattern' => '<module:\w+>/<controller:\w+>', 'route' => '<module>/<controller>/index'],
         ['pattern' => '<module:\w+>/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/<controller>/<action>'],
+        
+        //common
+       // ['pattern' => '<action:[0-9a-zA-Z_\-]+>', 'route' => 'main/<action>'],
+
     ],
 ];
-?>
+
