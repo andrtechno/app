@@ -1,27 +1,39 @@
-
-
 <?php
 
 use panix\engine\Html;
-
-//print_r($response);die;
 ?>
+
+<?php
+$this->registerJs("$('[data-toggle=\"tooltip\"]').tooltip();");
+?>
+
+
+
+
+
 <table class="table table-bordered table-striped">
     <tr>
         <th>ID</th>
         <th>Email</th>
-        <th>password</th>
-        <th>type</th>
-        <th>autospam</th>
-        <th>forward</th>
-        <th>autoresponder</th>
+        <th>Пароль</th>
+        <th>Тип</th>
+        <th>Антиспам</th>
+        <th>Перенапровление</th>
+        <th>Авто ответчик</th>
         <th>Опции</th>
     </tr>
     <?php foreach ($response as $data) { ?>
+
+        <?php $this->registerJs("common.clipboard('#clipboard_{$data->id}');", yii\web\View::POS_READY, 'mailbox' . $data->id); ?>
         <tr>
             <td><?= $data->id ?></td>
-            <td><?= $data->name ?></td>
-            <td><?= $data->password ?></td>
+            <td><?= Html::mailto($data->name, $data->name) ?></td>
+            <td>
+
+                <span id="clipboard_<?= $data->id ?>" data-clipboard-text="<?= $data->password ?>" data-toggle="tooltip" title="Нажмите, чтобы скопировать строку в буфер обмена" style="cursor: pointer;">
+                    <?= $data->password ?>
+                </span>
+            </td>
             <td><?= $data->type ?></td>
             <td><?= $data->autospam ?></td>
             <td><?= implode('<br/>', $data->forward) ?></td>

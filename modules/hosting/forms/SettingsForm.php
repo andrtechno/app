@@ -17,9 +17,8 @@ class SettingsForm extends SettingsModel {
 
     public function rules() {
         return [
-            [['auth_login', 'auth_token','account'], "required"],
-           // [['theme', 'censor_words', 'censor_replace'], "string"],
-           // [['maintenance', 'censor'], 'boolean'],
+            [['auth_login', 'auth_token'], "required"],
+            [['account'], 'string'],
         ];
     }
 
