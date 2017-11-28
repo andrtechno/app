@@ -33,7 +33,8 @@
         "profitcode/yii2-blocks": "*",
         "zhuravljov/yii2-logreader": "*",
         "yiisoft/yii2-debug": "2.0.12",
-        "panix/wgt-owlcarousel": "*"
+        "panix/wgt-owlcarousel": "*",
+        "panix/mod-stats": "*"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2.0.0",

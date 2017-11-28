@@ -10,6 +10,13 @@ $config = [
     'name' => 'CORNER CMS',
     'basePath' => dirname(__DIR__) . '/../',
     'language' => 'ru',
+    
+ 'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+    ],
+    
+    
     //'sourceLanguage'=>'ru',
     // 'runtimePath'=>'runtime',
     'controllerNamespace' => 'panix\engine\controllers',
@@ -61,6 +68,7 @@ $config = [
         ],
     ],
     'components' => [
+        'stats'=>['class'=>'panix\mod\stats\components\Stats'],
         'consoleRunner' => [
             'class' => 'panix\engine\components\ConsoleRunner',
             'file' => '@my/path/to/yii' // or an absolute path to console file
@@ -88,6 +96,7 @@ $config = [
             'retryAfter' => 120 //or Wed, 21 Oct 2015 07:28:00 GMT for example
         ],
         'assetManager' => [
+            
             'forceCopy' => YII_DEBUG,
             'bundles' => [
                 'yii\jui\JuiAsset' => ['css' => []],
@@ -105,7 +114,7 @@ $config = [
                 ]
             ],
             //'linkAssets' => true,
-            'appendTimestamp' => false
+            'appendTimestamp' => true
         ],
         'view' => [
             'class' => 'panix\engine\View',

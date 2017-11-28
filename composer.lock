@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e96a192221123dc97420688cc2e68375",
+    "content-hash": "1a7726bb9f73190600cff98336c36ec5",
     "packages": [
         {
             "name": "abeautifulsite/simpleimage",
@@ -1500,6 +1500,46 @@
                 "module"
             ],
             "time": "2017-09-11T04:52:14+00:00"
+        },
+        {
+            "name": "panix/mod-stats",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andrtechno/mod-stats.git",
+                "reference": "5cae5247922621cd36051293e5ff7bd7deddebea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andrtechno/mod-stats/zipball/5cae5247922621cd36051293e5ff7bd7deddebea",
+                "reference": "5cae5247922621cd36051293e5ff7bd7deddebea",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "panix\\mod\\stats\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CORNER CMS",
+                    "email": "dev@corner-cms.com",
+                    "homepage": "http://www.corner-cms.com/"
+                }
+            ],
+            "description": "Module sitemap",
+            "homepage": "https://github.com/andrtechno/mod-stats",
+            "keywords": [
+                "Sitemap",
+                "corner-cms",
+                "module"
+            ],
+            "time": "2017-11-27T18:24:36+00:00"
         },
         {
             "name": "panix/mod-user",
