@@ -10,6 +10,7 @@
         "source": "https://github.com/andrtechno/app"
     },
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.6",
@@ -17,13 +18,10 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "yiisoft/yii2-jui": "*",
         "yiisoft/yii2-authclient": "~2.1.0",
-        "yiisoft/yii2-smarty": "^2.0@dev",
-        "yiisoft/yii2-debug": "2.0.12",
-        "panix/engine": "*",
-        "lysenkobv/yii2-geoip": "~1.0",
-        "profitcode/yii2-blocks": "*"
+        "yiisoft/yii2-smarty": "^2.0@dev"
     },
     "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0",
         "codeception/base": "^2.2.3",
