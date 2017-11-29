@@ -8,6 +8,25 @@ use panix\engine\WebModule;
 class Module extends WebModule {
 
 
+    public function afterInstall() {
+
+        /* Yii::$app->settings->set('stats', array(
+          'param' => 'param',
+          )); */
+        //Yii::$app->database->import($this->id);
+
+        return parent::afterInstall();
+    }
+
+    public function afterUninstall() {
+        Yii::$app->settings->clear('stats');
+       // Yii::$app->db->createCommand()->dropTable(StatsSurf::model()->tableName());
+       // Yii::$app->db->createCommand()->dropTable(StatsMainp::model()->tableName());
+       // Yii::$app->db->createCommand()->dropTable(StatsMainHistory::model()->tableName());
+
+        return parent::afterUninstall();
+    }
+    
     public $routes = [
         'product/<seo_alias>' => 'shop/default/view',
     ];

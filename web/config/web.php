@@ -31,15 +31,17 @@ $config = [
         ]
     ],
     'modules' => [
-        //'stats' => ['class' => 'panix\mod\stats\Module'],
-        'hosting' => ['class' => 'app\modules\hosting\Module'],
-        'seo' => ['class' => 'app\modules\seo\Module'],
-        'user' => ['class' => 'panix\mod\user\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],
+        'user' => ['class' => 'panix\mod\user\Module'],
+        //'stats' => ['class' => 'panix\mod\stats\Module'],
+        //'hosting' => ['class' => 'app\modules\hosting\Module'],
+        /*'seo' => ['class' => 'app\modules\seo\Module'],
+
+
         'pages' => ['class' => 'panix\mod\pages\Module'],
         'shop' => ['class' => 'panix\mod\shop\Module'],
         'contacts' => ['class' => 'panix\mod\contacts\Module'],
-        'cart' => ['class' => 'panix\mod\cart\Module'],
+       // 'cart' => ['class' => 'panix\mod\cart\Module'],
         'discounts' => ['class' => 'panix\mod\discounts\Module'],
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
         'comments' => ['class' => 'panix\mod\comments\Module'],
@@ -54,15 +56,13 @@ $config = [
         // 'portfolio' => ['class' => 'app\modules\portfolio\Module'],
         'images' => [
             'class' => 'panix\mod\images\Module',
-            //be sure, that permissions ok 
-            //if you cant avoid permission errors you have to create "images" folder in web root manually and set 777 permissions
             'imagesStorePath' => 'uploads/store', //path to origin images
             'imagesCachePath' => 'uploads/cache', //path to resized copies
             'graphicsLibrary' => 'GD', //but really its better to use 'Imagick' 
             'placeHolderPath' => '@webroot/uploads/watermark.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
             'imageCompressionQuality' => 100, // Optional. Default value is 85.
             'waterMark' => '@webroot/uploads/watermark.png'
-        ],
+        ],*/
     ],
     'components' => [
         'stats' => ['class' => 'panix\mod\stats\components\Stats'],

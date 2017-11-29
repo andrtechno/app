@@ -72,8 +72,9 @@ class m150501_061950_init_cms extends Migration {
         $this->createTable($tableName, [
             'id' => $this->primaryKey(),
             'name' => $this->string(15),
+            'className' => $this->string(100),
             'switch' => $this->boolean()->defaultValue(1),
-            'access' => $this->integer(),
+            'access' => $this->smallInteger(8),
                 ], $this->tableOptions);
 
         $this->createIndex('name', $tableName, 'name', false);
