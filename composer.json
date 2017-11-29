@@ -9,7 +9,7 @@
         "issues": "https://github.com/andrtechno/app/issues?state=open",
         "source": "https://github.com/andrtechno/app"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
         "php": ">=5.4.0",
@@ -18,7 +18,8 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "yiisoft/yii2-jui": "*",
         "yiisoft/yii2-authclient": "~2.1.0",
-        "yiisoft/yii2-smarty": "^2.0@dev"
+        "yiisoft/yii2-smarty": "^2.0@dev",
+        "panix/engine": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
