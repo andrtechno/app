@@ -7,6 +7,7 @@ return [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
     'enableStrictParsing' => false,
+    'baseUrl' => '/',
     //'suffix'=>'path',
     //'ruleConfig' => [
     //    'class' => 'panix\engine\LanguageUrlRule' see ___LanguageUrlRule

@@ -74,7 +74,8 @@ class SeoExt extends \yii\base\Component {
         }
 
         if ($titleFlag)
-            $this->printMeta('title', Html::encode(Yii::$app->controller->title));
+            if(isset(Yii::$app->controller->title))
+                $this->printMeta('title', Html::encode(Yii::$app->controller->title));
     }
 
     /*
