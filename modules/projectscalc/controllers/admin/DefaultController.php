@@ -8,7 +8,6 @@ use app\modules\projectscalc\models\search\ProjectsCalcSearch;
 class DefaultController extends \panix\engine\controllers\AdminController {
 
 
-
     public function actionIndex() {
 
         $this->pageName = Yii::t('projectscalc/default', 'MODULE_NAME');
@@ -51,7 +50,7 @@ class DefaultController extends \panix\engine\controllers\AdminController {
 
         $isNewRecord = ($model->isNewRecord) ? true : false;
         $this->breadcrumbs = array(
-            Yii::t('ProjectsCalcModule.default', 'MODULE_NAME') => $this->createUrl('index'),
+            Yii::t('projectscalc/default', 'MODULE_NAME') => $this->createUrl('index'),
             ($model->isNewRecord) ? $model::t('PAGE_TITLE', 0) : CHtml::encode($model->title),
         );
 
@@ -79,14 +78,13 @@ class DefaultController extends \panix\engine\controllers\AdminController {
     }
 
     public function getAddonsMenu() {
-        return array(
-            array(
+        return [
+            [
                 'label' => Yii::t('app', 'Модули'),
-                'url' => array('/admin/projectsCalc/modules/index'),
+                'url' => ['/admin/projectscalc/modules'],
                 //'icon' => 'flaticon-settings',
-                'visible' => true
-            ),
-        );
+            ]
+        ];
     }
 
 }

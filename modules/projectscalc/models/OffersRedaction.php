@@ -1,23 +1,17 @@
 <?php
 
-Yii::import('mod.projectsCalc.models.OffersRedactionTranslate');
+namespace app\modules\projectscalc\models;
+use Yii;
+use panix\engine\behaviors\TranslateBehavior;
+use app\modules\projectscalc\models\translate\OffersRedactionTranslate;
+class OffersRedaction extends \panix\engine\db\ActiveRecord {
 
-class OffersRedaction extends ActiveRecord {
+    const MODULE_ID = 'projectscalc';
+    const route = '/projectscalc/admin/offersRedaction';
 
-    const MODULE_ID = 'projectsCalc';
-    const route = '/projectsCalc/admin/offersRedaction';
 
-    /**
-     * Multilingual attrs
-     */
-    public $text;
 
-    /**
-     * Name of the translations model.
-     */
-    public $translateModelName = 'OffersRedactionTranslate';
-
-    public function getForm() {
+    public function getForm2() {
         Yii::import('ext.bootstrap.selectinput.SelectInput');
         Yii::app()->controller->widget('ext.tinymce.TinymceWidget');
 
@@ -43,7 +37,7 @@ class OffersRedaction extends ActiveRecord {
                 ), $this);
     }
 
-    public function getGridColumns() {
+    public function getGridColumns2() {
         return array(
             array(
                 'name' => 'id',
@@ -74,25 +68,18 @@ class OffersRedaction extends ActiveRecord {
         return 'Редакция предложения №' . $this->id;
     }
 
-    /**
-     * Returns the static model of the specified AR class.
-     * @return Page the static model class
-     */
-    public static function model($className = __CLASS__) {
-        return parent::model($className);
-    }
 
     /**
      * @return string the associated database table name
      */
-    public function tableName() {
-        return '{{offers_redaction}}';
+    public static function tableName() {
+        return '{{%offers_redaction}}';
     }
 
     /**
      * @return array validation rules for model attributes.
      */
-    public function rules() {
+    public function rules2() {
         return array(
             array('text', 'required'),
             array('date_create', 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'),
@@ -103,51 +90,24 @@ class OffersRedaction extends ActiveRecord {
     /**
      * @return array relational rules.
      */
-    public function relations() {
+    public function relations2() {
         return array(
             'offer_translate' => array(self::HAS_ONE, $this->translateModelName, 'object_id'),
         );
     }
 
-    /**
-     * @return array
-     */
-    public function behaviors() {
-        $a = array();
-        $a['timezone'] = array(
-            'class' => 'app.behaviors.TimezoneBehavior',
-            'attributes' => array('date_create', 'date_update'),
-        );
-        $a['TranslateBehavior'] = array(
-            'class' => 'app.behaviors.TranslateBehavior',
-            'relationName' => 'offer_translate',
-            'translateAttributes' => array(
-                'text',
-            ),
-        );
-
-        return $a;
+    public function getTranslations() {
+        return $this->hasMany(OffersRedactionTranslate::className(), ['object_id' => 'id']);
     }
-
-    /**
-     * Retrieves a list of models based on the current search/filter conditions. Used in admin search.
-     * @return ActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-     */
-    public function search() {
-        $criteria = new CDbCriteria;
-
-        $criteria->with = array('offer_translate');
-
-        $criteria->compare('t.id', $this->id);
-        $criteria->compare('translate.text', $this->text, true);
-        $criteria->compare('t.date_create', $this->date_create, true);
-        $criteria->compare('t.date_update', $this->date_update, true);
-
-
-        return new ActiveDataProvider($this, array(
-            'criteria' => $criteria,
-            'pagination' => array('pageVar' => 'page'/* ,'route'=>'/news' */)
-        ));
+    public function behaviors() {
+        return \yii\helpers\ArrayHelper::merge([
+                    'translate' => [ //offer_translate
+                        'class' => TranslateBehavior::className(),
+                        'translationAttributes' => [
+                            'text'
+                        ]
+                    ],
+                        ], parent::behaviors());
     }
 
 }

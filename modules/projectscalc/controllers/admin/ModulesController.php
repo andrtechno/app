@@ -1,12 +1,9 @@
 <?php
 namespace app\modules\projectscalc\controllers\admin;
-/**
- * Контроллер админ-панели статичных страниц
- * 
- * @author CORNER CMS development team <dev@corner-cms.com>
- * @package modules.news.controllers.admin
- * @uses AdminController
- */
+
+use Yii;
+use app\modules\projectscalc\models\ModulesList;
+use app\modules\projectscalc\models\search\ModulesListSearch;
 class ModulesController extends \panix\engine\controllers\AdminController {
 
     public function actions() {
@@ -63,62 +60,97 @@ class ModulesController extends \panix\engine\controllers\AdminController {
     }
 
     public function actionIndex() {
-        $this->pageName = Yii::t('ProjectsCalcModule.default', 'MODULE_NAME');
-        $this->breadcrumbs = array($this->pageName);
-        $model = new ModulesList('search');
-        $model->unsetAttributes();
-        if (!empty($_GET['ModulesList']))
-            $model->attributes = $_GET['ModulesList'];
+        $this->pageName = Yii::t('projectscalc/default', 'MODULE_NAME');
+        $this->buttons = [
+            [
+                'icon' => 'icon-add',
+                'label' => Yii::t('projectscalc/default', 'CREATE_BTN'),
+                'url' => ['create'],
+                'options' => ['class' => 'btn btn-success']
+            ]
+        ];
+        $this->breadcrumbs = [
+            $this->pageName
+        ];
 
-        $this->render('index', array('model' => $model));
+        $searchModel = new ModulesListSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+
+        return $this->render('index', [
+                    'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+        ]);
     }
 
     /**
      * Create or update new page
-     * @param boolean $new
+     * @param boolean $id
      */
-    public function actionUpdate($new = false) {
-        if ($new === true) {
+    public function actionUpdate($id = false) {
+          if ($id === true) {
             $model = new ModulesList;
         } else {
-            $model = ModulesList::model()
-                    ->findByPk($_GET['id']);
+            $model = $this->findModel($id);
         }
 
-        if (!$model)
-            throw new CHttpException(404);
+
+        $this->pageName = ($model->isNewRecord) ? 'New' : $model->title;
 
 
-        $isNewRecord = ($model->isNewRecord) ? true : false;
-        $this->breadcrumbs = array(
-            Yii::t('ProjectsCalcModule.default', 'MODULE_NAME') => $this->createUrl('index'),
-            ($model->isNewRecord) ? $model::t('PAGE_TITLE', 0) : CHtml::encode($model->title),
-        );
+        $this->breadcrumbs = [
+            [
+                'label' => Yii::t('projectscalc/default', 'MODULE_NAME'),
+                'url' => ['/admin/projectscalc']
+            ],
+            [
+                'label' => Yii::t('projectscalc/default', 'AGREEMENTS'),
+                'url' => ['/admin/projectscalc/agreements']
+            ],
+            [
+                'label' => Yii::t('projectscalc/default', 'AGREEMENTS_REDACTION'),
+                'url' => ['index']
+            ],
+            $this->pageName
+        ];
 
-        $this->pageName = ($model->isNewRecord) ? $model::t('PAGE_TITLE', 0) : $model::t('PAGE_TITLE', 1);
 
 
-        if (Yii::app()->request->isPostRequest) {
-            $model->attributes = $_POST['ModulesList'];
-            if ($model->validate()) {
-                $model->save();
-                $this->redirect(array('index'));
-            } else {
-                
+
+        $post = Yii::$app->request->post();
+        if ($model->load($post) && $model->validate()) {
+            $model->save();
+            if (Yii::$app->request->post('redirect', 1)) {
+                Yii::$app->session->setFlash('success', \Yii::t('app', 'SUCCESS_CREATE'));
+                return Yii::$app->getResponse()->redirect(['/admin/projectscalc/agreementsredaction']);
             }
         }
-        $this->render('update', array('model' => $model));
+        return $this->render('update', [
+                    'model' => $model,
+        ]);
+        
+        
+        
+        
+        
+
     }
 
     public function getAddonsMenu() {
         return array(
             array(
-                'label' => Yii::t('ProjectsCalcModule.default', 'MODULE_NAME'),
-                'url' => array('/admin/projectsCalc'),
+                'label' => Yii::t('projectscalc/default', 'MODULE_NAME'),
+                'url' => array('/admin/projectscalc'),
                 //'icon' => 'flaticon-settings',
                 'visible' => true
             ),
         );
     }
-
+    protected function findModel($id) {
+        $model = new ModulesList;
+        if (($model = $model::findOne($id)) !== null) {
+            return $model;
+        } else {
+            $this->error404();
+        }
+    }
 }

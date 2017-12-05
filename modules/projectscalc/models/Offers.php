@@ -1,11 +1,17 @@
 <?php
 
-//Yii::import('mod.projectsCalc.models.AgreementsTranslate');
+namespace app\modules\projectscalc\models;
 
-class Offers extends ActiveRecord {
+use Yii;
+use panix\engine\CMS;
+use panix\engine\Html;
+use app\modules\projectscalc\components\ProjectHelper;
+use app\modules\projectscalc\models\OffersRedaction;
 
-    const MODULE_ID = 'projectsCalc';
-    const route = '/projectsCalc/admin/offers';
+class Offers extends \panix\engine\db\ActiveRecord {
+
+    const MODULE_ID = 'projectscalc';
+    const route = '/admin/projectscalc/offers';
 
     public function getForm() {
         Yii::import('ext.bootstrap.selectinput.SelectInput');
@@ -51,59 +57,56 @@ class Offers extends ActiveRecord {
     }
 
     public function getGridColumns() {
-        return array(
-            array(
-                //'name' => 'id',
-                'header'=>'name',
-                'type' => 'raw',
-                'htmlOptions' => array('class' => 'text-left'),
-                'value' => '$data->gridName',
-            ),
-            array(
-                'name' => 'date_create',
-                'value' => 'CMS::date($data->date_create)',
-            ),
-            array(
-                'name' => 'date_update',
-                'value' => 'CMS::date($data->date_update)',
-            ),
-            'DEFAULT_CONTROL' => array(
-                'class' => 'ButtonColumn',
+        return [
+            [
+                'attribute' => 'id',
+                //'header'=>'name',
+               // 'format' => 'raw',
+                'contentOptions' => array('class' => 'text-left'),
+                //'value' => '$data->gridName',
+            ],
+            [
+                'attribute' => 'date_create',
+                //'value' => 'CMS::date($data->date_create)',
+            ],
+            [
+                'attribute' => 'date_update',
+                //'value' => 'CMS::date($data->date_update)',
+            ],
+            'DEFAULT_CONTROL' => [
+                'class' => 'panix\engine\grid\columns\ActionColumn',
                 'template' => '{print}{update}{delete}',
-                'buttons' => array(
-                    'print' => array(
-                        'icon' => 'icon-print',
-                        'label' => Yii::t('ProjectsCalcModule.default', 'OFFER_PRINT'),
-                        //'visible'=>'Yii::app()->user->openAccess(array("Cart.Default.*", "Cart.Default.Print"))',
-                        'url' => 'Yii::app()->createUrl("/admin/projectsCalc/offers/print", array("id"=>$data->id))',
-                    ),
-                ),
-            ),
-        );
+                'buttons' => [
+                    'print' => function ($url, $model, $key) {
+                        return Html::a('<i class="icon-print"></i>', ['/admin/projectscalc/offer/pdf', 'id' => $model->id], [
+                                    'title' => Yii::t('yii', 'VIEW'),
+                                    'class' => 'btn btn-sm btn-info linkTarget',
+                                    'target' => '_blank'
+                        ]);
+                    },
+                ]
+            ],
+            'DEFAULT_COLUMNS' => [
+                ['class' => 'panix\engine\grid\columns\CheckboxColumn'],
+            ],
+        ];
     }
 
-    /**
-     * Returns the static model of the specified AR class.
-     * @return Page the static model class
-     */
-    public static function model($className = __CLASS__) {
-        return parent::model($className);
-    }
 
     /**
      * @return string the associated database table name
      */
-    public function tableName() {
-        return '{{offers}}';
+    public static function tableName() {
+        return '{{%offers}}';
     }
 
     public function getGridName(){
-        return Yii::t('ProjectsCalcModule.default','OFFER_NAME',array('{client}'=>$this->calc->title));
+        return Yii::t('projectscalc/default','OFFER_NAME',array('client'=>$this->calc->title));
     }
     /**
      * @return array validation rules for model attributes.
      */
-    public function rules() {
+    public function rules2() {
         return array(
             array('redacton_id, calc_id', 'required'),
             array('date_create', 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'),
@@ -116,17 +119,23 @@ class Offers extends ActiveRecord {
     /**
      * @return array relational rules.
      */
-    public function relations() {
+    public function relations2() {
         return array(
             'redaction' => array(self::BELONGS_TO, 'OffersRedaction', 'id'),
             'calc' => array(self::BELONGS_TO, 'ProjectsCalc', 'id'),
         );
     }
+    public function getRedaction() {
+        return $this->hasOne(OffersRedaction::className(), ['id' => 'redaction_id']);
+    }
 
+    public function getCalc() {
+        return $this->hasMany(ProjectsCalc::className(), ['object_id' => 'id']);
+    }
     /**
      * @return array
      */
-    public function behaviors() {
+    public function behaviors2() {
         $a = array();
         $a['timezone'] = array(
             'class' => 'app.behaviors.TimezoneBehavior',
@@ -142,27 +151,6 @@ class Offers extends ActiveRecord {
         return $a;
     }
 
-    /**
-     * Retrieves a list of models based on the current search/filter conditions. Used in admin search.
-     * @return ActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-     */
-    public function search() {
-        $criteria = new CDbCriteria;
-
-        // $criteria->with = array('translate');
-
-        $criteria->compare('t.id', $this->id);
-        $criteria->compare('t.redacton_id', $this->redacton_id);
-        // $criteria->compare('translate.text', $this->text, true);
-        $criteria->compare('t.date_create', $this->date_create, true);
-        $criteria->compare('t.date_update', $this->date_update, true);
-
-
-        return new ActiveDataProvider($this, array(
-            'criteria' => $criteria,
-            'pagination' => array('pageVar' => 'page'/* ,'route'=>'/news' */)
-        ));
-    }
 
     public function renderOffer() {
         $calcs = array();

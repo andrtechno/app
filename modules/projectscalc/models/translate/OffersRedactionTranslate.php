@@ -1,21 +1,11 @@
 <?php
 
-/**
- * Class to access news translations
- *
- * @property int $id
- * @property int $object_id
- * @property int $language_id
- * @property string $text
- */
-class OffersRedactionTranslate extends CActiveRecord {
+namespace app\modules\projectscalc\models\translate;
 
-    public static function model($className = __CLASS__) {
-        return parent::model($className);
-    }
+class OffersRedactionTranslate extends \yii\db\ActiveRecord {
 
-    public function tableName() {
-        return '{{offers_redaction_translate}}';
+    public static function tableName() {
+        return '{{%offers_redaction_translate}}';
     }
 
 }
