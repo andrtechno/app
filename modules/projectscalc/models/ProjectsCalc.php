@@ -36,14 +36,9 @@ class ProjectsCalc extends \panix\engine\db\ActiveRecord {
         }
 
         if (sizeof($dontDelete)) {
-
-
             $optionsToDelete = ProjectsAddons::deleteAll(
                             ['AND', 'project_id=:id', ['NOT IN', 'id', $dontDelete]], [':id' => $this->id]);
         } else {
-            /* $optionsToDelete = ProjectsAddons::model()->findAllByAttributes(array(
-              'product_id' => $model->id
-              )); */
             $optionsToDelete = ProjectsAddons::deleteAll('project_id=:id', [':id' => $this->id]);
         }
         //if (!empty($optionsToDelete)) {

@@ -35,7 +35,7 @@ $tabs[] = [
 
 
 $tabs[] = [
-    'label' => $model::t('TAB_CATEGORIES'),
+    'label' => $model::t('TAB_MODULES'),
     'content' => $this->render('_tab_modules', ['exclude' => $model->id, 'form' => $form, 'model' => $model]),
     'headerOptions' => [],
     'options' => ['id' => 'modules'],

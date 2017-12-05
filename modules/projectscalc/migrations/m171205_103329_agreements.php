@@ -1,0 +1,49 @@
+<?php
+
+class m171205_103329_agreements extends \panix\engine\db\Migration {
+
+    public function up() {
+        $this->createTable('{{%agreements}}', [
+            'id' => $this->primaryKey(),
+            'redaction_id' => $this->integer(),
+            'calc_id' => $this->integer(),
+            'price' => 'float(10,2) DEFAULT NULL',
+            'course' => 'float(10,2) DEFAULT NULL',
+            'customer_is' => $this->boolean()->defaultValue(0),
+            'customer_name' => $this->string(255)->notNull(),
+            'customer_text' => $this->text(),
+            'date' => 'date NOT NULL',
+            'programming_days' => $this->integer(),
+            'layouts_days ' => $this->integer(),
+            'date_create' => $this->timestamp()->defaultValue(null),
+            'date_update' => $this->timestamp()
+        ]);
+
+        $this->createTable('{{%agreements_redaction}}', [
+            'id' => $this->primaryKey(),
+            'performer' => $this->string(255),
+            'date_create' => $this->timestamp()->defaultValue(null),
+            'date_update' => $this->timestamp()
+        ]);
+
+        $this->createTable('{{%agreements_redaction_translate}}', [
+            'id' => $this->primaryKey(),
+            'language_id' => $this->string(2),
+            'object_id' => $this->integer(),
+            'text' => $this->text(),
+        ]);
+        
+        $this->createIndex('redaction_id', '{{%agreements}}', 'redaction_id');
+        $this->createIndex('calc_id', '{{%agreements}}', 'calc_id');
+        
+        $this->createIndex('language_id', '{{%agreements_redaction_translate}}', 'language_id');
+        $this->createIndex('object_id', '{{%agreements_redaction_translate}}', 'object_id');
+    }
+
+    public function down() {
+        $this->dropTable('{{%agreements}}');
+        $this->dropTable('{{%agreements_redaction}}');
+        $this->dropTable('{{%agreements_redaction_translate}}');
+    }
+
+}

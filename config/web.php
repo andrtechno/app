@@ -8,7 +8,8 @@ $db = YII_DEBUG ? __DIR__ . '/db_local.php' : __DIR__ . '/db.php';
 $config = [
     'id' => 'panix',
     'name' => 'CORNER CMS',
-    'basePath' => dirname(__DIR__) . '/../',
+    //'basePath' => dirname(__DIR__) . '/../', //if in web dir
+    'basePath' => dirname(__DIR__),
     'language' => 'ru',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -27,8 +28,16 @@ $config = [
                 '@app\migrations',
             //    'panix\mod\discounts\migrations',
             ],
+            'templateFile'=>'@vendor/panix/engine/views/migration.php',
+            'generatorTemplateFiles' => [
+                'create_table' => '@vendor/panix/engine/views/createTableMigration.php',
+                'drop_table' => '@vendor/panix/engine/views/dropTableMigration.php',
+                'add_column' => '@vendor/panix/engine/views/addColumnMigration.php',
+                'drop_column' => '@vendor/panix/engine/views/dropColumnMigration.php',
+                'create_junction' => '@vendor/panix/engine/views/createTableMigration.php'
+            ],
             'useTablePrefix'=>true,
-        //'migrationPath' => '@app\migrations', // allows to disable not namespaced migration completely
+        //'migrationPath' => '@app/migrations', // allows to disable not namespaced migration completely
         ]
     ],
     'modules' => [

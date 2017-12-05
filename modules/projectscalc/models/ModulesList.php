@@ -89,7 +89,7 @@ class ModulesList extends \panix\engine\db\ActiveRecord {
                         ], parent::behaviors());
     }
 
-    protected static function getTypeList() {
+    public static function getTypeList() {
         return array(
             1 => 'Модуль',
             2 => 'Дополнение',
