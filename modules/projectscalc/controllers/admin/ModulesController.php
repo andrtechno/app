@@ -4,6 +4,9 @@ namespace app\modules\projectscalc\controllers\admin;
 use Yii;
 use app\modules\projectscalc\models\ModulesList;
 use app\modules\projectscalc\models\search\ModulesListSearch;
+use Mpdf\Mpdf;
+
+
 class ModulesController extends \panix\engine\controllers\AdminController {
 
     public function actions() {
@@ -23,40 +26,26 @@ class ModulesController extends \panix\engine\controllers\AdminController {
         $this->render('view', array('model' => $model));
     }
 
-    public function actionPrint($id) {
-        $model = ModulesList::model()
-                ->findByPk($id);
-
-
-
-
-        $mpdf = Yii::app()->pdf->getApi(array(
+    public function actionPdf($id) {
+        $model = ModulesList::findOne($id);
+        $mpdf = new Mpdf([
+            //'mode' => 'utf-8', 
             'default_font_size' => 9,
             'default_font' => 'times',
-            'margin_top' => 30,
+            'margin_top' => 40,
             'margin_bottom' => 9,
             'margin_left' => 10,
             'margin_right' => 10,
             'margin_footer' => 5,
-            'margin_header' => 10,
-        ));
-        //$mpdf = Yii::app()->pdf;
-
-
-       // print_r($mpdf);die;
-        //$mpdf->WriteHTML(file_get_contents(Yii::app()->createAbsoluteUrl($this->baseAssetsUrl . '/css/bootstrap.min.css')), 1);
+            'margin_header' => 5,
+        ]);
         $mpdf->SetTitle('Module');
-        $mpdf->setFooter($this->renderPartial('mod.projectsCalc.views.admin.modules._pdf_footer', array(), true));
-        $mpdf->SetHTMLHeader($this->renderPartial('_pdf_header', array(), true));
-
-        //$mpdf->WriteHTML(file_get_contents(Yii::app()->createAbsoluteUrl($this->baseAssetsUrl . '/css/bootstrap.min.css')), 1);
-
-        
-        //$mpdf->WriteHTML(file_get_contents(Yii::getPathOfAlias('app.assets.css').DS.'bootstrap.min.css'), 1);
-        $mpdf->WriteHTML(file_get_contents(Yii::getPathOfAlias('app.pdf.assets').DS.'mpdf-bootstrap.min.css'), 1);
-
+        $mpdf->setFooter($this->renderPartial('_pdf_footer', ['model'=>$model], true));
+        $mpdf->SetHTMLHeader($this->renderPartial('_pdf_header', ['model'=>$model], true));
+        $mpdf->WriteHTML(file_get_contents(Yii::getAlias('@vendor/panix/engine/pdf/assets/mpdf-bootstrap.min.css')), 1);
         $mpdf->WriteHTML($model->full_text, 2);
-        $mpdf->Output("Module_ID{$model->id}.pdf", 'I');
+        $mpdf->WriteHTML('<b>'.$model->price.'</b>', 4);
+        $mpdf->Output("Module_{$model->title}_ID{$model->id}.pdf", 'I');
     }
 
     public function actionIndex() {
@@ -121,7 +110,7 @@ class ModulesController extends \panix\engine\controllers\AdminController {
             $model->save();
             if (Yii::$app->request->post('redirect', 1)) {
                 Yii::$app->session->setFlash('success', \Yii::t('app', 'SUCCESS_CREATE'));
-                return Yii::$app->getResponse()->redirect(['/admin/projectscalc/agreementsredaction']);
+                return Yii::$app->getResponse()->redirect(['/admin/projectscalc/modules']);
             }
         }
         return $this->render('update', [

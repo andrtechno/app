@@ -1,7 +1,11 @@
 <?php
-$config = Yii::app()->settings->get('contacts');
+
+use panix\engine\Html;
+
+$config = Yii::$app->settings->get('contacts');
+$app = Yii::$app->settings->get('contacts');
 $phones = explode(',', $config['phone']);
-$emails = explode(',', $config['form_emails']);
+$emails = explode(',', $app['email']);
 ?>
 
 <table class="" style="width: 100%;border-bottom: 1px solid #c0c0c0;">
@@ -9,7 +13,7 @@ $emails = explode(',', $config['form_emails']);
 
         <tr>
             <td style="width: 50%;">
-                <?= Html::image(Yii::app()->getModule('admin')->assetsUrl . '/images/favicon.png'); ?>
+                <?php echo Html::img(Yii::$app->getModule('admin')->assetsUrl . '/images/favicon.png'); ?>
             </td>
             <td style="width: 50%;text-align:right;" class="text-right">
                 <?php foreach ($emails as $email) { ?>
@@ -27,4 +31,6 @@ $emails = explode(',', $config['form_emails']);
 
     </tbody>
 </table>
+
+<h1 class="text-center"><?= $model->title ?></h1>
 

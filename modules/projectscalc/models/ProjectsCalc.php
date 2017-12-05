@@ -2,49 +2,78 @@
 
 namespace app\modules\projectscalc\models;
 
-use app\modules\projectscalc\components\ProjectHelper;
+use Yii;
 use panix\engine\behaviors\TranslateBehavior;
+use app\modules\projectscalc\components\ProjectHelper;
 use app\modules\projectscalc\models\translate\ProjectsCalcTranslate;
+use app\modules\projectscalc\models\ModulesList;
+use app\modules\projectscalc\models\ProjectsAddons;
 
 class ProjectsCalc extends \panix\engine\db\ActiveRecord {
 
     const MODULE_ID = 'projectscalc';
     const route = '/admin/projectscalc/default';
 
+    public function setAddons() {
+        $dontDelete = [];
+        if (Yii::$app->request->post('addons')) {
+            foreach (Yii::$app->request->post('addons') as $key => $option) {
+                $record = ProjectsAddons::findOne($key);
+
+                if (!$record) {
+                    $record = new ProjectsAddons();
+                    $record->project_id = $this->id;
+                    $record->name = $option['name'];
+                    $record->price = $option['price'];
+                } else {
+                    $record->name = $option['name'];
+                    $record->price = $option['price'];
+                }
+                $record->save(false);
+                $dontDelete[] = $key;
+                array_push($dontDelete, $record->id);
+            }
+        }
+
+        if (sizeof($dontDelete)) {
+
+
+            $optionsToDelete = ProjectsAddons::deleteAll(
+                            ['AND', 'project_id=:id', ['NOT IN', 'id', $dontDelete]], [':id' => $this->id]);
+        } else {
+            /* $optionsToDelete = ProjectsAddons::model()->findAllByAttributes(array(
+              'product_id' => $model->id
+              )); */
+            $optionsToDelete = ProjectsAddons::deleteAll('project_id=:id', [':id' => $this->id]);
+        }
+        //if (!empty($optionsToDelete)) {
+        //    foreach ($optionsToDelete as $o)
+        //        $o->delete();
+        // }
+    }
+
     public function setCategories(array $categories) {
         $dontDelete = array();
-
-
         foreach ($categories as $c) {
-            $count = ProjectsModules::model()->countByAttributes(array(
-                'mod_id' => $c,
-                'project_id' => $this->id,
-            ));
-
+            $count = ProjectsModules::find()
+                    ->where(['mod_id' => $c, 'project_id' => $this->id])
+                    ->count();
             if ($count == 0) {
                 $record = new ProjectsModules;
                 $record->mod_id = (int) $c;
                 $record->project_id = $this->id;
-                $record->save(false, false, false);
+                $record->save(false);
             }
-
             $dontDelete[] = $c;
         }
 
-
         // Delete not used relations
         if (sizeof($dontDelete) > 0) {
-            $cr = new CDbCriteria;
-            $cr->addNotInCondition('mod_id', $dontDelete);
-
-            ProjectsModules::model()->deleteAllByAttributes(array(
-                'project_id' => $this->id,
-                    ), $cr);
+            ProjectsModules::deleteAll(
+                    ['AND', 'project_id=:id', ['NOT IN', 'mod_id', $dontDelete]], [':id' => $this->id]);
         } else {
             // Delete all relations
-            ProjectsModules::model()->deleteAllByAttributes(array(
-                'project_id' => $this->id,
-            ));
+            ProjectsModules::deleteAll('project_id=:id', [':id' => $this->id]);
         }
     }
 
@@ -157,8 +186,10 @@ class ProjectsCalc extends \panix\engine\db\ActiveRecord {
         }
 
         foreach ($this->modules as $obj) {
-
             $total += $obj->price;
+        }
+        foreach ($this->addons as $addon) {
+            $total += $addon->price;
         }
         $this->total_price = $total;
         return parent::beforeSave($insert);
@@ -167,16 +198,12 @@ class ProjectsCalc extends \panix\engine\db\ActiveRecord {
     /**
      * @return array validation rules for model attributes.
      */
-    public function rules2() {
-        return array(
-            array('full_text, total_price', 'type', 'type' => 'string'),
-            array('title, full_text', 'length', 'min' => 3),
-            array('title, type_id', 'required'),
-            array('date_create, date_update', 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'),
-            array('price_makeup, price_layouts, price_prototype', 'numerical'),
-            array('title', 'length', 'max' => 140),
-            array('id, user_id, title, full_text, date_update, date_create', 'safe', 'on' => 'search'),
-        );
+    public function rules() {
+        return [
+            [['title', 'type_id', 'price_makeup', 'price_layouts', 'price_prototype'], 'required'],
+            [['full_text'], 'string'],
+            [['price_makeup', 'price_layouts', 'price_prototype', 'type_id'], 'integer'],
+        ];
     }
 
     /**
@@ -184,12 +211,24 @@ class ProjectsCalc extends \panix\engine\db\ActiveRecord {
      */
     public function relations2() {
         return array(
-            'translate' => array(self::HAS_ONE, $this->translateModelName, 'object_id'),
+            //'translate' => array(self::HAS_ONE, $this->translateModelName, 'object_id'),
             'mods' => array(self::HAS_MANY, 'ProjectsModulesTranslate', 'project_id'),
             'user' => array(self::BELONGS_TO, 'User', 'user_id'),
-            'modulesList' => array(self::HAS_MANY, 'ProjectsModules', 'project_id'),
-            'modules' => array(self::HAS_MANY, 'ModulesList', array('mod_id' => 'id'), 'through' => 'modulesList'),
+                //'modulesList' => array(self::HAS_MANY, 'ProjectsModules', 'project_id'),
+                // 'modules' => array(self::HAS_MANY, 'ModulesList', array('mod_id' => 'id'), 'through' => 'modulesList'),
         );
+    }
+
+    public function getModulesList() {
+        return $this->hasMany(ProjectsModules::className(), ['project_id' => 'id']);
+    }
+
+    public function getModules() {
+        return $this->hasMany(ModulesList::className(), ['id' => 'mod_id'])->via('modulesList');
+    }
+
+    public function getAddons() {
+        return $this->hasMany(ProjectsAddons::className(), ['project_id' => 'id']);
     }
 
     public function transactions() {

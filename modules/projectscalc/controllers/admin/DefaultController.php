@@ -3,10 +3,10 @@
 namespace app\modules\projectscalc\controllers\admin;
 
 use Yii;
+use app\modules\projectscalc\models\ProjectsCalc;
 use app\modules\projectscalc\models\search\ProjectsCalcSearch;
 
 class DefaultController extends \panix\engine\controllers\AdminController {
-
 
     public function actionIndex() {
 
@@ -34,47 +34,40 @@ class DefaultController extends \panix\engine\controllers\AdminController {
 
     /**
      * Create or update new page
-     * @param boolean $new
+     * @param boolean $id
      */
-    public function actionUpdate($new = false) {
-        if ($new === true) {
+    public function actionUpdate($id = false) {
+        if ($id === true) {
             $model = new ProjectsCalc;
         } else {
-            $model = ProjectsCalc::model()
-                    ->findByPk($_GET['id']);
+            $model = $this->findModel($id);
         }
+        
+        $this->pageName = ($model->isNewRecord)?'New':$model->title;
+                
+        $this->breadcrumbs = [
+            [
+              'label'=>Yii::t('projectscalc/default', 'MODULE_NAME'),
+                'url'=>['/admin/']
+            ],
+            $this->pageName
+        ];
 
-        if (!$model)
-            throw new CHttpException(404);
-
-
-        $isNewRecord = ($model->isNewRecord) ? true : false;
-        $this->breadcrumbs = array(
-            Yii::t('projectscalc/default', 'MODULE_NAME') => $this->createUrl('index'),
-            ($model->isNewRecord) ? $model::t('PAGE_TITLE', 0) : CHtml::encode($model->title),
-        );
-
-        $this->pageName = ($model->isNewRecord) ? $model::t('PAGE_TITLE', 0) : $model::t('PAGE_TITLE', 1);
-
-        $form = new TabForm($model->getForm(), $model);
-        $form->additionalTabs[$model::t('modules')] = array(
-            'content' => $this->renderPartial('_modules', array('model' => $model), true)
-        );
-
-
-        if (Yii::app()->request->isPostRequest) {
-
-            $model->attributes = $_POST['ProjectsCalc'];
-            if ($model->validate()) {
-                if (isset($_POST['mod'])) {
-                    $model->setCategories($_POST['mod']);
-                }
-                $model->save();
-                $this->refresh();
-                //s$this->redirect(array('index'));
+        $post = Yii::$app->request->post();
+        if ($model->load($post) && $model->validate()) {
+            if (Yii::$app->request->post('mod')) {
+                $model->setCategories(Yii::$app->request->post('mod'));
+            }
+            $model->setAddons();
+            $model->save();
+            if (Yii::$app->request->post('redirect', 1)) {
+                Yii::$app->session->setFlash('success', \Yii::t('app', 'SUCCESS_CREATE'));
+               // return Yii::$app->getResponse()->redirect(['/admin/projectscalc']);
             }
         }
-        $this->render('update', array('model' => $model, 'form' => $form));
+        return $this->render('update', [
+                    'model' => $model,
+        ]);
     }
 
     public function getAddonsMenu() {
@@ -82,9 +75,18 @@ class DefaultController extends \panix\engine\controllers\AdminController {
             [
                 'label' => Yii::t('app', 'Модули'),
                 'url' => ['/admin/projectscalc/modules'],
-                //'icon' => 'flaticon-settings',
+            //'icon' => 'flaticon-settings',
             ]
         ];
+    }
+
+    protected function findModel($id) {
+        $model = new ProjectsCalc;
+        if (($model = $model::findOne($id)) !== null) {
+            return $model;
+        } else {
+            $this->error404();
+        }
     }
 
 }
