@@ -1,6 +1,16 @@
 <?php
 
-class m171204_202402_grid_columns extends \panix\engine\db\Migration {
+/**
+ * Generation migrate by CORNER CMS
+ * 
+ * @author CORNER CMS development team <dev@corner-cms.com>
+ * 
+ * Class m171204_202402_grid_columns
+ */
+
+use panix\engine\db\Migration;
+
+class m171204_202402_grid_columns extends Migration {
 
     public $tableName = '{{%grid_columns}}';
 

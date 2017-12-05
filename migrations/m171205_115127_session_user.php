@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Generation migrate by CORNER CMS
+ * 
+ * @author CORNER CMS development team <dev@corner-cms.com>
+ * 
+ * Class m171205_115127_session_user
+ */
+use panix\engine\db\Migration;
+
+class m171205_115127_session_user extends Migration {
+
+    public $tableName = '{{%session_user}}';
+
+    public function up() {
+        $this->createTable($this->tableName, [
+            'id' => $this->primaryKey(),
+            'ip' => $this->string(15),
+            'expire' => $this->integer(1),
+            'user_id' => $this->integer(),
+            'data' => 'LONGBLOB'
+        ]);
+        $this->createIndex('user_id', $this->tableName, 'user_id');
+        $this->createIndex('expire', $this->tableName, 'expire');
+    }
+
+    public function down() {
+        $this->dropTable($this->tableName);
+    }
+
+}
