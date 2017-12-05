@@ -1,7 +1,7 @@
 <?php
 
 use panix\engine\Html;
-use yii\widgets\Breadcrumbs;
+use panix\engine\widgets\Breadcrumbs;
 
 
 \app\web\themes\basic\assets\ThemeAsset::register($this);
