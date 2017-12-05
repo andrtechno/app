@@ -22,23 +22,6 @@ $config = [
     'bootstrap' => ['log', 'maintenanceMode'], //'webcontrol', 
     'controllerMap' => [
         'main' => 'panix\engine\controllers\WebController',
-        'migrate' => [
-            'class' => 'yii\console\controllers\MigrateController',
-            'migrationNamespaces' => [
-                '@app\migrations',
-            //    'panix\mod\discounts\migrations',
-            ],
-            'templateFile'=>'@vendor/panix/engine/views/migration.php',
-            'generatorTemplateFiles' => [
-                'create_table' => '@vendor/panix/engine/views/createTableMigration.php',
-                'drop_table' => '@vendor/panix/engine/views/dropTableMigration.php',
-                'add_column' => '@vendor/panix/engine/views/addColumnMigration.php',
-                'drop_column' => '@vendor/panix/engine/views/dropColumnMigration.php',
-                'create_junction' => '@vendor/panix/engine/views/createTableMigration.php'
-            ],
-            'useTablePrefix'=>true,
-        //'migrationPath' => '@app/migrations', // allows to disable not namespaced migration completely
-        ]
     ],
     'modules' => [
         'admin' => ['class' => 'panix\mod\admin\Module'],
@@ -221,8 +204,8 @@ $config = [
           ],
           ]
           ], */
-        'languageManager' => array('class' => 'panix\engine\ManagerLanguage'),
-        'settings' => array('class' => 'panix\engine\components\Settings'),
+        'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
+        'settings' => ['class' => 'panix\engine\components\Settings'],
         'urlManager' => require(__DIR__ . '/urlManager.php'),
         'db' => require($db),
     ],
