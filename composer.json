@@ -18,7 +18,8 @@
         "yiisoft/yii2-jui": "*",
         "yiisoft/yii2-authclient": "~2.1.0",
         "yiisoft/yii2-smarty": "^2.0@dev",
-        "panix/engine": "*"
+        "panix/engine": "*",
+        "phpoffice/phpword": "v0.13.*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

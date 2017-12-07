@@ -59,6 +59,7 @@ $config = [
     ],
     'components' => [
         'stats' => ['class' => 'panix\mod\stats\components\Stats'],
+        'curl' => ['class' => 'panix\engine\Curl'],
         'consoleRunner' => [
             'class' => 'panix\engine\components\ConsoleRunner',
             'file' => '@my/path/to/yii' // or an absolute path to console file
