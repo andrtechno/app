@@ -1,0 +1,69 @@
+#shop{
+    float: left;
+    width: 74%;
+}
+.catalog{
+    width: 22%;
+    float:left;
+    margin-top: 90px;
+    margin-right: 40px;
+}
+.catalog b{
+    text-transform: uppercase;
+}
+.catalog ul{
+    border-top: 4px solid #000000;
+    list-style: none;
+    margin-top: 25px;
+}
+.catalog ul li{
+    padding: 15px 0;
+}
+.catalog ul li a{
+    background: url(arrow_down.png) no-repeat right center;
+    display: block;
+    color:#656364;
+        position: relative;
+        text-decoration: none;
+        font-weight: 600;
+}
+.catalog ul li ul{
+    display: none;
+    border-top: none;
+}
+.catalog ul li.active a.active{
+    color:#27ba69;
+}
+.catalog ul li.active ul{
+    display: block;
+}
+.catalog ul li ul li{
+    margin: 10px 0 10px 30px;
+    padding: 0;
+}
+.catalog ul li ul li:hover a{
+    color:#ffb504;
+
+}
+.catalog ul li ul li a:before{
+    content:'—';
+    text-decoration: none;
+    position: absolute;
+    left:-16px;
+}
+.catalog ul li:hover a,
+.catalog ul li.active a{
+    background: url(arrow_up.png) no-repeat right center; 
+
+}
+.catalog ul li:hover ul,
+.catalog ul li.active ul{
+    /*display: block;*/
+}
+.catalog ul li ul.button2 li a,
+.catalog ul li ul.button2 li:hover a{
+    background: none;
+}
+.catalog ul li ul li a{
+    font-weight: normal;
+}
