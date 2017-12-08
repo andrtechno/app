@@ -20,7 +20,7 @@ class m171204_202402_grid_columns extends Migration {
     public function up() {
         $this->createTable($this->tableName, [
             'id' => $this->primaryKey(),
-            'modelClass' => $this->string(50)->notNull(),
+            'modelClass' => $this->string(255)->notNull(),
             'column_key' => $this->string(25)->notNull(),
             'ordern' => $this->integer(),
         ]);

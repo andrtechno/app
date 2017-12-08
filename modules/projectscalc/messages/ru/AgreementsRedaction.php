@@ -13,6 +13,6 @@
  */
 return array(
     'PERFORMER' => 'Исполнитель',
-    'CUSTOMER_FIRSTNAME' => 'Имя заказчика',
-
+    'TEXT' => 'Содержание договара',
+    'PERFORMER_TEXT' => 'Данные об исполнитель',
 );

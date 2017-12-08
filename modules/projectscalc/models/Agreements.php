@@ -11,62 +11,6 @@ class Agreements extends \panix\engine\db\ActiveRecord {
     const MODULE_ID = 'projectscalc';
     const route = '/projectscalc/admin/agreements';
 
-    // public static function find() {
-    //    return new AgreementsQuery(get_called_class());
-    // }
-    public function getForm() {
-        Yii::import('ext.bootstrap.selectinput.SelectInput');
-        Yii::app()->controller->widget('ext.tinymce.TinymceWidget');
-        Yii::import('app.jui.JuiDatePicker');
-        return new CMSForm(array(
-            'attributes' => array(
-                'id' => __CLASS__,
-                'class' => 'form-horizontal',
-            ),
-            'showErrorSummary' => true,
-            'elements' => array(
-                'redaction_id' => array(
-                    'type' => 'SelectInput',
-                    'data' => Html::listData(AgreementsRedaction::model()->findAll(), 'id', 'id'),
-                    'htmlOptions' => array('empty' => '&mdash; Выбор &mdash;'),
-                ),
-                'calc_id' => array(
-                    'type' => 'SelectInput',
-                    'data' => Html::listData(ProjectsCalc::model()->findAll(), 'id', 'title'),
-                    'htmlOptions' => array('empty' => '&mdash; Выбор &mdash;'),
-                ),
-                'customer_is' => array(
-                    'type' => 'SelectInput',
-                    'data' => array(0 => 'Физическое лицо', 1 => 'Юридическое лицо'),
-                    'htmlOptions' => array('empty' => '&mdash; Выбор &mdash;'),
-                ),
-                'customer_name' => array('type' => 'text'),
-                'customer_text' => array('type' => 'textarea', 'class' => 'editor'),
-                'customer_firstname' => array('type' => 'text'),
-                'customer_lastname' => array('type' => 'text'),
-                'customer_middlename' => array('type' => 'text'),
-                'customer_passport' => array('type' => 'text'),
-                'customer_address' => array('type' => 'text'),
-                'customer_phone' => array('type' => 'text'),
-                'date' => array(
-                    'type' => 'JuiDatePicker',
-                    'options' => array(
-                        'dateFormat' => 'yy-mm-dd'
-                    )
-                ),
-                'programming_days' => array('type' => 'text'),
-                'layouts_days' => array('type' => 'text'),
-            ),
-            'buttons' => array(
-                'submit' => array(
-                    'type' => 'submit',
-                    'class' => 'btn btn-success',
-                    'label' => $this->isNewRecord ? Yii::t('app', 'CREATE', 0) : Yii::t('app', 'SAVE')
-                )
-            )
-                ), $this);
-    }
-
     //
 
     public function getGridName() {
@@ -113,18 +57,18 @@ class Agreements extends \panix\engine\db\ActiveRecord {
             ],
             'DEFAULT_CONTROL' => [
                 'class' => 'panix\engine\grid\columns\ActionColumn',
-                'template' => '{print}{pdf}{update}{delete}',
+                'template' => '{pdf}{doc}{update}{delete}',
                 'buttons' => [
-                    'print' => function ($url, $model, $key) {
+                    'pdf' => function ($url, $model, $key) {
                         return Html::a('<i class="icon-print"></i>', ['/admin/projectscalc/agreements/pdf', 'id' => $model->id], [
-                                    'title' => Yii::t('yii', 'VIEW'),
+                                    'title' => Yii::t('projectscalc/default', 'VIEW_PDF'),
                                     'class' => 'btn btn-sm btn-info linkTarget',
                                     'target' => '_blank'
                         ]);
                     },
-                    'pdf' => function ($url, $model, $key) {
+                    'doc' => function ($url, $model, $key) {
                         return Html::a('<i class="icon-file-doc"></i>', ['/admin/projectscalc/agreements/doc', 'id' => $model->id], [
-                                    'title' => Yii::t('yii', 'VIEW'),
+                                    'title' => Yii::t('projectscalc/default', 'VIEW_DOC'),
                                     'class' => 'btn btn-sm btn-info linkTarget',
                                     'target' => '_blank'
                         ]);
@@ -172,7 +116,7 @@ class Agreements extends \panix\engine\db\ActiveRecord {
     }
 
     public function getCalc() {
-        return $this->hasMany(ProjectsCalc::className(), ['object_id' => 'id']);
+        return $this->hasOne(ProjectsCalc::className(), ['id' => 'calc_id']);
     }
 
     /**
@@ -204,13 +148,19 @@ class Agreements extends \panix\engine\db\ActiveRecord {
         return $a;
     }
 
-    public function renderAgreement() {
-        $bank = ProjectHelper::privatBank();
+
+    public function getDataRender(){
         if ($this->date) {
             $date = date('d', strtotime($this->date)) . ' ' . Yii::t('app', date('F', strtotime($this->date)), 4) . ' ' . date('Y', strtotime($this->date));
         } else {
             $date = '"___"_________ ' . date('Y', strtotime($this->date_create));
         }
+        return $date;
+    }
+    public function renderAgreement() {
+        $bank = ProjectHelper::privatBank();
+
+
         $replace = array(
             "{agreement_id}" => $this->id,
             "{current_year}" => date('Y', strtotime($this->date_create)),
@@ -227,7 +177,7 @@ class Agreements extends \panix\engine\db\ActiveRecord {
             //"{customer_firstname_cut}" => mb_substr($this->customer_firstname, 0, 1),
             "{layouts_days}" => $this->layouts_days,
             "{programming_days}" => $this->programming_days,
-            "{date}" => $date,
+            "{date}" => $this->getDataRender(),
             //"{price}" => round($this->price * $bank['UAH'], 0) . ' грн.',
             //"{price_text}" => ProjectHelper::num2str(round($this->price * $bank['UAH'], 0))
             "{price}" => ProjectHelper::priceFormat(round($this->price * $bank['UAH'], -2)) . ' грн.',

@@ -2,16 +2,25 @@
 
 namespace app\modules\projectscalc\controllers\admin;
 
+
 use Yii;
 use panix\engine\Html;
+use panix\engine\controllers\AdminController;
 use app\modules\projectscalc\models\search\OffersSearch;
+use app\modules\projectscalc\models\Offers;
+use Mpdf\Mpdf;
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\Shared\Html as WordHtml;
 
-class OffersController extends \panix\engine\controllers\AdminController {
 
-    public function actionView($id) {
+class OffersController extends AdminController
+{
+
+    public function actionView($id)
+    {
         $model = Offers::model()
-                ->with('redaction')
-                ->findByPk($id);
+            ->with('redaction')
+            ->findByPk($id);
         if ($model) {
             if ($model->redaction) {
                 echo $model->renderOffer();
@@ -20,37 +29,75 @@ class OffersController extends \panix\engine\controllers\AdminController {
         die;
     }
 
-    public function actionPrint($id) {
-        $model = Offers::model()
-                ->with(array('redaction', 'calc'))
-                ->findByPk($id);
+
+    public function actionDoc($id)
+    {
+        $model = Offers::find()
+            ->where(['id' => $id])
+            ->one();
+        $phpWord = new PhpWord();
+
+
+        $section = $phpWord->addSection(['name' => 'Times New Roman']);
+
+
+        //$section->addText("Договор №" . $model->id, ['bold' => true, 'size' => 39, 'name' => 'Times New Roman'], ['alignment' => 'center', 'family' => 'Times New Roman']);
+//WordHtml::addHtml($section, '<h1>Договор №1</h1>');
+        //$section->addTextBreak(1);
 
 
 
-        $mpdf = Yii::app()->pdf->getApi([
-            'format' => 'A4',
-            //'mode' => 'utf-8', 
+        WordHtml::addHtml($section, $model->renderOffer());
+
+
+
+        $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+
+        $file = "Offer_{$model->id}.docx";
+        //$objWriter->save($file);
+        header("Content-Description: File Transfer");
+        header('Content-Disposition: attachment; filename="' . $file . '"');
+        header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+        header('Content-Transfer-Encoding: binary');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Expires: 0');
+        $objWriter->save("php://output");
+
+    }
+
+
+    public function actionPdf($id)
+    {
+        $model = Offers::find()->where(['id' => $id])->one();
+
+        $mpdf = new Mpdf([
+            //'mode' => 'utf-8',
             'default_font_size' => 9,
             'default_font' => 'times',
             'margin_top' => 30,
-            'margin_bottom' => 9,
+            'margin_bottom' => 15,
             'margin_left' => 10,
             'margin_right' => 10,
             'margin_footer' => 5,
             'margin_header' => 5,
+            'orientation' => 'P',
+            'mirrorMargins' => 1,
         ]);
+        $mpdf->SetDisplayMode('fullpage');
+        $mpdf->showImageErrors = true;
+        $mpdf->debug = YII_DEBUG;
+        //$mpdf->WriteHTML(file_get_contents(Yii::app()->createAbsoluteUrl($this->baseAssetsUrl . '/css/bootstrap.min.css')), 1);
+        $mpdf->SetTitle("Offer {$model->calc->title}");
+        $mpdf->setFooter($this->renderPartial('@projectscalc/views/admin/modules/_pdf_footer', ['model' => $model]));
+        $mpdf->SetHTMLHeader($this->renderPartial('@projectscalc/views/admin/modules/_pdf_header', ['model' => $model]));
 
         //$mpdf->WriteHTML(file_get_contents(Yii::app()->createAbsoluteUrl($this->baseAssetsUrl . '/css/bootstrap.min.css')), 1);
-        $mpdf->SetTitle('Offer');
-        $mpdf->setFooter($this->renderPartial('mod.projectsCalc.views.admin.modules._pdf_footer', array(), true));
-        $mpdf->SetHTMLHeader($this->renderPartial('mod.projectsCalc.views.admin.modules._pdf_header', array(), true));
-
-        // $mpdf->WriteHTML(file_get_contents(Yii::app()->createAbsoluteUrl($this->baseAssetsUrl . '/css/bootstrap.min.css')), 1);
-        $mpdf->WriteHTML($model->renderOffer(), 2);
+        $mpdf->WriteHTML($model->renderOffer());
         $mpdf->Output("Offer{$model->id}_{$model->calc->title}.pdf", 'I');
     }
 
-    public function actionIndex() {
+    public function actionIndex()
+    {
         $this->pageName = Yii::t('projectscalc/default', 'OFFERS');
         $this->buttons = [
             [
@@ -72,25 +119,23 @@ class OffersController extends \panix\engine\controllers\AdminController {
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 
         return $this->render('index', [
-                    'dataProvider' => $dataProvider,
-                    'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
         ]);
     }
 
     /**
      * Create or update new page
-     * @param boolean $new
+     * @param boolean $id
+     * @return string|\yii\web\Response
      */
-    public function actionUpdate($new = false) {
-        if ($new === true) {
+    public function actionUpdate($id = false)
+    {
+        if ($id === true) {
             $model = new Offers;
         } else {
-            $model = Offers::model()
-                    ->findByPk($_GET['id']);
+            $model = $this->findModel($id);
         }
-
-        if (!$model)
-            throw new CHttpException(404);
 
 
         /* $isNewRecord = ($model->isNewRecord) ? true : false;
@@ -102,19 +147,19 @@ class OffersController extends \panix\engine\controllers\AdminController {
           $this->pageName = ($model->isNewRecord) ? $model::t('PAGE_TITLE', 0) : $model::t('PAGE_TITLE', 1);
          */
 
-        if (Yii::app()->request->isPostRequest) {
-            $model->attributes = $_POST['Offers'];
-            if ($model->validate()) {
-                $model->save();
-                $this->redirect(array('index'));
-            } else {
-                
+        $post = Yii::$app->request->post();
+        if ($model->load($post) && $model->validate()) {
+            $model->save();
+            if (Yii::$app->request->post('redirect', 1)) {
+                Yii::$app->session->setFlash('success', \Yii::t('app', 'SUCCESS_CREATE'));
+                return $this->redirect(['/admin/projectscalc/offers']);
             }
         }
-        $this->render('update', array('model' => $model));
+        return $this->render('update', ['model' => $model]);
     }
 
-    public function getAddonsMenu() {
+    public function getAddonsMenu()
+    {
         return [
             [
                 'label' => Yii::t('projectscalc/default', 'OFFERS_REDACTION'),
@@ -124,4 +169,13 @@ class OffersController extends \panix\engine\controllers\AdminController {
         ];
     }
 
+    protected function findModel($id)
+    {
+        $model = new Offers;
+        if (($model = $model::findOne($id)) !== null) {
+            return $model;
+        } else {
+            $this->error404();
+        }
+    }
 }

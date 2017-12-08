@@ -2,48 +2,53 @@
 
 namespace app\modules\projectscalc;
 
+use panix\engine\WebModule;
 use Yii;
 
-class Module extends \panix\engine\WebModule {
+class Module extends WebModule
+{
 
-    public function getAdminMenu() {
+    public function getAdminMenu()
+    {
 
-        return array(
-            'modules' => array(
-                'items' => array(
-                    array(
+        return [
+            'modules' => [
+                'items' => [
+                    [
                         'label' => Yii::t('projectscalc/default', 'MODULE_NAME'),
                         'url' => ['/admin/projectscalc'],
                         'icon' => 'calculator',
-                        'items' => array(
-                            array(
+                        'items' => [
+                            [
                                 'label' => Yii::t('projectscalc/default', 'MODULE_NAME'),
                                 'url' => ['/admin/projectscalc'],
                                 'icon' => 'calculator',
-                            ),
-                            array(
+                            ],
+                            [
                                 'label' => 'Договора',
                                 'url' => ['/admin/projectscalc/agreements'],
                                 'icon' => 'contract',
-                            ),
-                            array(
+                            ],
+                            [
                                 'label' => 'Предложения',
                                 'url' => ['/admin/projectscalc/offers'],
                                 'icon' => 'offer',
-                            ),
-                        )
-                    ),
-                ),
-            ),
-        );
+                            ],
+                        ]
+                    ]
+                ]
+            ]
+        ];
     }
 
-    public function getAdminSidebar() {
+    public function getAdminSidebar()
+    {
         $items = $this->getAdminMenu();
         return $items['modules']['items'][0]['items'];
     }
 
-    public function getInfo() {
+    public function getInfo()
+    {
         return [
             'label' => Yii::t('projectscalc/default', 'MODULE_NAME'),
             'author' => 'andrew.panix@gmail.com',

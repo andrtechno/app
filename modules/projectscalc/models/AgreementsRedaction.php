@@ -2,59 +2,58 @@
 
 namespace app\modules\projectscalc\models;
 
+
 use Yii;
+use yii\helpers\ArrayHelper;
 use panix\engine\behaviors\TranslateBehavior;
 use app\modules\projectscalc\models\translate\AgreementsRedactionTranslate;
+use app\modules\projectscalc\models\search\AgreementsRedactionSearch;
+use panix\engine\jui\DatePicker;
 
-class AgreementsRedaction extends \panix\engine\db\ActiveRecord {
+class AgreementsRedaction extends \panix\engine\db\ActiveRecord
+{
 
     const MODULE_ID = 'projectscalc';
     const route = '/admin/projectscalc/agreementsredaction';
 
-    public function getForm() {
-        Yii::import('ext.bootstrap.selectinput.SelectInput');
-        Yii::app()->controller->widget('ext.tinymce.TinymceWidget');
-
-        return new CMSForm(array(
-            'attributes' => array(
-                'id' => __CLASS__,
-                'class' => 'form-horizontal',
-            ),
-            'showErrorSummary' => true,
-            'elements' => array(
-                'performer' => array(
-                    'type' => 'text',
-                ),
-                'text' => array(
-                    'type' => 'textarea',
-                    'class' => 'editor'
-                ),
-            ),
-            'buttons' => array(
-                'submit' => array(
-                    'type' => 'submit',
-                    'class' => 'btn btn-success',
-                    'label' => $this->isNewRecord ? Yii::t('app', 'CREATE', 0) : Yii::t('app', 'SAVE')
-                )
-            )
-                ), $this);
-    }
-
-    public function getGridColumns() {
+    public function getGridColumns()
+    {
         return [
             [
-                'name' => 'id',
-                'type' => 'raw',
-                'htmlOptions' => array('class' => 'text-left'),
-                'value' => '$data->getAgreementName()',
+                'attribute' => 'id',
+                'format' => 'raw',
+                'contentOptions' => array('class' => 'text-left'),
+                'value' => function ($model) {
+                    return $model->getAgreementName();
+                }
             ],
             [
-                'name' => 'date_create',
-                'value' => 'CMS::date($data->date_create)',
+                'attribute' => 'date_create',
+                'format' => 'raw',
+                'filter' => DatePicker::widget([
+                    'model' => new AgreementsRedactionSearch(),
+                    'attribute' => 'date_create',
+                    'dateFormat' => 'yyyy-MM-dd',
+                    'options' => ['class' => 'form-control']
+                ]),
+                'contentOptions' => ['class' => 'text-center'],
+                'value' => function ($model) {
+                    return Yii::$app->formatter->asDatetime($model->date_create, 'php:d D Y H:i:s');
+                }
             ],
             [
-                'name' => 'date_update',
-                'value' => 'CMS::date($data->date_update)',
+                'attribute' => 'date_update',
+                'format' => 'raw',
+                'filter' => DatePicker::widget([
+                    'model' => new AgreementsRedactionSearch(),
+                    'attribute' => 'date_update',
+                    'dateFormat' => 'yyyy-MM-dd',
+                    'options' => ['class' => 'form-control']
+                ]),
+                'contentOptions' => ['class' => 'text-center'],
+                'value' => function ($model) {
+                    return Yii::$app->formatter->asDatetime($model->date_update, 'php:d D Y H:i:s');
+                }
             ],
             'DEFAULT_CONTROL' => [
                 'class' => 'panix\engine\grid\columns\ActionColumn',
@@ -65,46 +64,52 @@ class AgreementsRedaction extends \panix\engine\db\ActiveRecord {
         ];
     }
 
-    public function getAgreementName() {
+    public function getAgreementName()
+    {
         return 'Редакция договора №' . $this->id;
     }
 
-    public function getTranslations() {
+    public function getTranslations()
+    {
         return $this->hasMany(AgreementsRedactionTranslate::className(), ['object_id' => 'id']);
     }
 
     /**
      * @return string the associated database table name
      */
-    public static function tableName() {
+    public static function tableName()
+    {
         return '{{%agreements_redaction}}';
     }
 
     /**
      * @return array validation rules for model attributes.
      */
-    public function rules() {
+    public function rules()
+    {
         return [
-            [['text', 'performer'], 'string'],
-            [['text', 'performer'], 'required'],
+            [['text', 'performer', 'performer_text'], 'string'],
+            [['text', 'performer', 'performer_text'], 'required'],
         ];
     }
 
-    public function transactions() {
+    public function transactions()
+    {
         return [
             self::SCENARIO_DEFAULT => self::OP_INSERT | self::OP_UPDATE,
         ];
     }
 
-    public function behaviors() {
-        return \yii\helpers\ArrayHelper::merge([
-                    'translate' => [
-                        'class' => TranslateBehavior::className(),
-                        'translationAttributes' => [
-                            'text'
-                        ]
-                    ],
-                        ], parent::behaviors());
+    public function behaviors()
+    {
+        return ArrayHelper::merge([
+            'translate' => [
+                'class' => TranslateBehavior::className(),
+                'translationAttributes' => [
+                    'text'
+                ]
+            ],
+        ], parent::behaviors());
     }
 
 }

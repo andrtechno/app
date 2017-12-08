@@ -25,5 +25,7 @@ return array(
     'OFFER_PRINT'=>'PDF предложение',
     
     'OFFER_NAME'=>'Предложения для {client}',
-    'AGREEMENTS_NAME'=>'Договор для {client}'
+    'AGREEMENTS_NAME'=>'Договор для {client}',
+    'VIEW_PDF'=>'PDF',
+    'VIEW_DOC'=>'Сохранить в .docx',
 );

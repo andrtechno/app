@@ -5,9 +5,9 @@ return [
     //'dsn' => 'mysql:host=corner2.mysql.tools;dbname=corner2_yii2',
     //'username' => 'corner2_yii2',
     //'password' => 'n96epfku',
-    'dsn'=>'mysql:host=localhost;dbname=yii2',
-    'username'=>'root',
-    'password'=>'',
+    'dsn'=>'mysql:host=corner2.mysql.tools;dbname=corner2_yii2',
+    'username'=>'corner2_yii2',
+    'password'=>'n96epfku',
     'charset' => 'utf8',
     //'on afterOpen' => function($event) {
         //$event->sender->createCommand("SET time_zone = '" . date('P') . "'")->execute();

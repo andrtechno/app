@@ -29,11 +29,13 @@ $this->registerJs("$('[data-toggle=\"tooltip\"]').tooltip();");
                                 ]
                             ]
                 ]);
-                ?>
 
-                <?= $form->field($model, 'performer')->textInput(['maxlength' => 255]) ?>
-                <?=
-                $form->field($model, 'text')->widget(TinyMce::className(), [
+
+                echo $form->field($model, 'performer')->textInput(['maxlength' => 255]);
+                echo $form->field($model, 'performer_text')->widget(TinyMce::className(), [
+                    'options' => ['rows' => 6],
+                ]);
+                echo $form->field($model, 'text')->widget(TinyMce::className(), [
                     'options' => ['rows' => 6],
                 ]);
                 ?>

@@ -1,17 +1,70 @@
 <?php
 
 namespace app\modules\projectscalc\models;
+
+
+use app\modules\projectscalc\models\search\OffersRedactionSearch;
 use Yii;
+use panix\engine\db\ActiveRecord;
 use panix\engine\behaviors\TranslateBehavior;
 use app\modules\projectscalc\models\translate\OffersRedactionTranslate;
-class OffersRedaction extends \panix\engine\db\ActiveRecord {
+use yii\helpers\ArrayHelper;
+use yii\jui\DatePicker;
+
+class OffersRedaction extends ActiveRecord
+{
 
     const MODULE_ID = 'projectscalc';
-    const route = '/projectscalc/admin/offersRedaction';
+    const route = '/admin/projectscalc/offersredaction';
 
-
-
-    public function getForm2() {
+    public function getGridColumns() {
+        return [
+            [
+                'attribute' => 'id',
+                'format' => 'raw',
+                'contentOptions' => ['class' => 'text-left'],
+                'value'=>function($model){
+                    return $model->getOfferName();
+                }
+            ],
+            [
+                'attribute' => 'date_create',
+                'format' => 'raw',
+                'filter' => DatePicker::widget([
+                    'model' => new OffersRedactionSearch(),
+                    'attribute' => 'date_create',
+                    'dateFormat' => 'yyyy-MM-dd',
+                    'options' => ['class' => 'form-control']
+                ]),
+                'contentOptions' => ['class' => 'text-center'],
+                'value' => function($model) {
+                    return Yii::$app->formatter->asDatetime($model->date_create, 'php:d D Y H:i:s');
+                }
+            ],
+            [
+                'attribute' => 'date_update',
+                'format' => 'raw',
+                'filter' => DatePicker::widget([
+                    'model' => new OffersRedactionSearch(),
+                    'attribute' => 'date_update',
+                    'dateFormat' => 'yyyy-MM-dd',
+                    'options' => ['class' => 'form-control']
+                ]),
+                'contentOptions' => ['class' => 'text-center'],
+                'value' => function($model) {
+                    return Yii::$app->formatter->asDatetime($model->date_update, 'php:d D Y H:i:s');
+                }
+            ],
+            'DEFAULT_CONTROL' => [
+                'class' => 'panix\engine\grid\columns\ActionColumn',
+            ],
+            'DEFAULT_COLUMNS' => [
+                ['class' => 'panix\engine\grid\columns\CheckboxColumn'],
+            ],
+        ];
+    }
+    public function getForm2()
+    {
         Yii::import('ext.bootstrap.selectinput.SelectInput');
         Yii::app()->controller->widget('ext.tinymce.TinymceWidget');
 
@@ -34,10 +87,11 @@ class OffersRedaction extends \panix\engine\db\ActiveRecord {
                     'label' => $this->isNewRecord ? Yii::t('app', 'CREATE', 0) : Yii::t('app', 'SAVE')
                 )
             )
-                ), $this);
+        ), $this);
     }
 
-    public function getGridColumns2() {
+    public function getGridColumns2()
+    {
         return array(
             array(
                 'name' => 'id',
@@ -64,7 +118,11 @@ class OffersRedaction extends \panix\engine\db\ActiveRecord {
         );
     }
 
-    public function getOfferName() {
+    /**
+     * @return string
+     */
+    public function getOfferName()
+    {
         return 'Редакция предложения №' . $this->id;
     }
 
@@ -72,42 +130,35 @@ class OffersRedaction extends \panix\engine\db\ActiveRecord {
     /**
      * @return string the associated database table name
      */
-    public static function tableName() {
+    public static function tableName()
+    {
         return '{{%offers_redaction}}';
     }
 
-    /**
-     * @return array validation rules for model attributes.
-     */
-    public function rules2() {
-        return array(
-            array('text', 'required'),
-            array('date_create', 'date', 'format' => 'yyyy-MM-dd HH:mm:ss'),
-            array('id, text, date_update, date_create', 'safe', 'on' => 'search'),
-        );
+
+    public function rules() {
+        return [
+            [['text'], 'string'],
+            [['text'], 'required'],
+        ];
     }
 
-    /**
-     * @return array relational rules.
-     */
-    public function relations2() {
-        return array(
-            'offer_translate' => array(self::HAS_ONE, $this->translateModelName, 'object_id'),
-        );
-    }
-
-    public function getTranslations() {
+    public function getOfferTranslations()
+    {
         return $this->hasMany(OffersRedactionTranslate::className(), ['object_id' => 'id']);
     }
-    public function behaviors() {
-        return \yii\helpers\ArrayHelper::merge([
-                    'translate' => [ //offer_translate
-                        'class' => TranslateBehavior::className(),
-                        'translationAttributes' => [
-                            'text'
-                        ]
-                    ],
-                        ], parent::behaviors());
+
+    public function behaviors()
+    {
+        return ArrayHelper::merge([
+            'translate' => [ //offer_translate
+                'class' => TranslateBehavior::className(),
+                'translationRelation'=>'offerTranslations',
+                'translationAttributes' => [
+                    'text'
+                ]
+            ],
+        ], parent::behaviors());
     }
 
 }

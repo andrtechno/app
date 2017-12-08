@@ -15,14 +15,14 @@ use app\modules\projectscalc\models\AgreementsRedaction;
         $form = ActiveForm::begin([
                     'options' => ['class' => 'form-horizontal'],
         ]);
-        ?>
 
-        <?= $form->field($model, 'customer_name')->textInput(['maxlength' => 255]) ?>
-        <?=
-        $form->field($model, 'customer_text')->widget(TinyMce::className(), [
+
+        echo $form->field($model, 'customer_name')->textInput(['maxlength' => 255]);
+
+        echo $form->field($model, 'customer_text')->widget(TinyMce::className(), [
             'options' => ['rows' => 6],
         ]);
-        
+        //echo $form->field($model, 'customer_text')->textarea();
         echo $form->field($model, 'redaction_id')->dropdownlist(ArrayHelper::map(AgreementsRedaction::find()->all(), 'id', 'id'));
         
         

@@ -2,6 +2,9 @@
 
 namespace app\modules\projectscalc\components;
 use Yii;
+use yii\base\Exception;
+use yii\helpers\Json;
+
 class ProjectHelper {
 
     public static function siteTypeList() {
@@ -28,25 +31,69 @@ class ProjectHelper {
         return number_format($price, 0, ' ', ' ');
     }
 
+
+    public function  test(){
+
+    }
     public static function privatBank() {
-        
-        
-        
-        
-        $curl = new \panix\engine\Curl();
+
+        $lang = Yii::$app->language;
+        $curl = Yii::$app->curl;
+        if ($curl) {
+            $curl->options = array(
+                'timeout' => 320,
+                'setOptions' => array(
+                    CURLOPT_RETURNTRANSFER => TRUE,
+                    CURLOPT_HTTPHEADER => ["Content-Type: application/json; charset={$lang}"],
+                    CURLOPT_HEADER => false,
+                ),
+            );
+
+            $connect = $curl->run('https://api.privatbank.ua/p24api/pubinfo?coursid=5&json=true&exchange=true');
+            if (!$connect->hasErrors()) {
+
+                $result = Json::decode($connect->getData(), false);
+                $curr = array();
+                foreach ($result as $k => $s) {
+                    $curr[$s->base_ccy] = $s->sale;
+                }
+                return $curr;
+            } else {
+                $result = $connect->getErrors();
+                if($result->hasError){
+                    throw new Exception($result->message);
+                }
+            }
+        } else {
+            throw new Exception('error curl component');
+        }
+        return $result;
+
+
+
+
+
+
+
+        /*  $curl = new \panix\engine\Curl();
+
+
+
+
+
 $response = $curl->setGetParams([
         'coursid' => 5,
         'json' => true,
             'exchange' => true
      ])
      ->get('https://api.privatbank.ua/p24api/pubinfo');
-        
+
         switch ($curl->responseCode) {
 
     case 'timeout':
         //timeout error logic here
         break;
-        
+
     case 200:
             $result = \yii\helpers\Json::decode($response);
             $curr = array();
@@ -59,7 +106,7 @@ $response = $curl->setGetParams([
     case 404:
         die('404');
         break;
-}
+}     */
 
     }
 
