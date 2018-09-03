@@ -1,5 +1,5 @@
 <?php
-
+// s
 return [
     'class' => 'panix\engine\db\Connection',
     'dsn'=>'mysql:host=localhost;dbname=yii2',
