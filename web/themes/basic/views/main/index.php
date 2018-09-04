@@ -4,7 +4,7 @@
     <div class="jumbotron">
         <h1>Welcome!</h1>
 
-        <p class="lead">You have successfully created your CORNER CMS application.</p>
+        <p class="lead">You have successfully created your <?= Yii::$app->name?> application.</p>
 
        {block_1}
     </div>

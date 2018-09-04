@@ -46,7 +46,7 @@ use panix\engine\Html;
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">CORNER CMS</a>
+                    <a class="navbar-brand" href="/"><?= Yii::$app->name?></a>
                 </div>
 
 

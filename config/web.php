@@ -68,7 +68,7 @@ $config = [
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
         'pdf' => [
-            'class' => Pdf::classname(),
+            'class' => Pdf::class,
             'format' => Pdf::FORMAT_A4,
             'orientation' => Pdf::ORIENT_PORTRAIT,
             'destination' => Pdf::DEST_BROWSER,
@@ -109,7 +109,7 @@ $config = [
         'view' => [
             'class' => 'panix\engine\View',
             'as Layout' => [
-                'class' => \panix\engine\behaviors\LayoutBehavior::className(),
+                'class' => \panix\engine\behaviors\LayoutBehavior::class,
             ],
             'renderers' => [
                 'tpl' => [
