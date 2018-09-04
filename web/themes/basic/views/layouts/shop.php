@@ -42,7 +42,7 @@ $this->registerJs("
 main shop
             <?php
             /* NavBar::begin([
-              'brandLabel' => 'CORNER CMS',
+              'brandLabel' => 'PIXELION CMS',
               'brandUrl' => Yii::$app->homeUrl,
               'options' => [
               'class' => 'navbar-inverse navbar-fixed-top',

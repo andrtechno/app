@@ -8,7 +8,7 @@ $db = require(__DIR__ . '/db_local.php');
 
 return [
     'id' => 'console',
-    'name' => 'CORNER CMS',
+    'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'gii'],
     'controllerNamespace' => 'app\commands',

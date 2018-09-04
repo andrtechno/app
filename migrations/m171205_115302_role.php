@@ -1,9 +1,10 @@
 <?php
 
 /**
- * Generation migrate by CORNER CMS
- * 
- * @author CORNER CMS development team <dev@corner-cms.com>
+ * Generation migrate by PIXELION CMS
+ *
+ * @author PIXELION CMS development team <dev@pixelion.com.ua>
+ * @link http://pixelion.com.ua PIXELION CMS
  * 
  * Class m171205_115302_role
  */

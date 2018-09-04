@@ -9,7 +9,7 @@ defined('DB_FILE') or define('DB_FILE', YII_DEBUG ? __DIR__ . '/db_local.php' : 
 
 $config = [
     'id' => 'cms-installer',
-    'name' => 'CORNER CMS',
+    'name' => 'PIXELION CMS',
     'language' => 'ru',
     'basePath' => dirname(__DIR__) . '/../',
     'bootstrap' => ['log'],

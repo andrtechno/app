@@ -2,12 +2,9 @@
 
 return [
     'class' => 'panix\engine\db\Connection',
-    //'dsn' => 'mysql:host=corner2.mysql.tools;dbname=corner2_yii2',
-    //'username' => 'corner2_yii2',
-    //'password' => 'n96epfku',
-    'dsn'=>'mysql:host=corner2.mysql.tools;dbname=corner2_yii2',
-    'username'=>'corner2_yii2',
-    'password'=>'n96epfku',
+    'dsn'=>'mysql:host=localhost;dbname=db',
+    'username'=>'user',
+    'password'=>'',
     'charset' => 'utf8',
     //'on afterOpen' => function($event) {
         //$event->sender->createCommand("SET time_zone = '" . date('P') . "'")->execute();
