@@ -1,8 +1,8 @@
 {
     "name": "panix/app",
-    "description": "CORNER CMS",
-    "keywords": ["corner-cms"],
-    "homepage": "http://www.corner-cms.com/",
+    "description": "PIXELION CMS",
+    "keywords": ["pixelion-cms"],
+    "homepage": "https://pixelion.com.ua/",
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
