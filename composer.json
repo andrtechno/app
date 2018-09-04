@@ -13,13 +13,15 @@
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.6",
-        "yiisoft/yii2-bootstrap4": "~1.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "yiisoft/yii2-jui": "*",
         "yiisoft/yii2-authclient": "~2.1.0",
         "yiisoft/yii2-smarty": "^2.0@dev",
         "panix/engine": "*",
-        "phpoffice/phpword": "v0.13.*"
+        "phpoffice/phpword": "v0.13.*",
+        "panix/mod-stats": "*",
+        "panix/mod-delivery": "*",
+        "panix/mod-forum": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
