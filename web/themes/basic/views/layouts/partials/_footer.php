@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="container">
         <p class="text-center">
-<?= Yii::$app->powered() ?><br/>
+            {copyright2}<br/>
 <?= Yii::$app->pageGen() ?>
 
         </p>

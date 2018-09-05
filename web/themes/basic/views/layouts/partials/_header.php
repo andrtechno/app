@@ -31,39 +31,48 @@ use panix\engine\Html;
     </div>
     <div class="header-center container">
         <div class="row">
-            <div class="col-sm-3"><?= Html::a('CORNER', '/', ['class' => 'logo']); ?></div>
+            <div class="col-sm-3"><?= Html::a(Yii::$app->name, '/', ['class' => 'logo']); ?></div>
             <div class="col-sm-4"><?php echo \panix\mod\shop\widgets\search\SearchWidget::widget([]); ?></div>
             <div class="col-sm-3">+3 (077) 777-77-77<br/>+3 (077) 777-77-77</div>
             <div class="col-sm-2"><?php echo \panix\mod\cart\widgets\cart\CartWidget::widget(['skin'=>'dropdown']); ?></div>
         </div>
     </div>
     <div class="header-menu">
-        <nav class="navbar-inverse navbar-fixed-top2 navbar" role="navigation" id="nav">
+
+
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-collapse"><span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/"><?= Yii::$app->name?></a>
-                </div>
+                <a class="navbar-brand" href="/"><?= Yii::$app->name?></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample07">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><?= Html::a(Yii::t('app', 'HOME'), ['/'],['class'=>'nav-link']) ?></li>
+                        <li class="nav-item"><?= Html::a('About', ['/page/about'],['class'=>'nav-link']) ?></li>
+                        <li class="nav-item"><?= Html::a('Contact', ['/contacts'],['class'=>'nav-link']) ?></li>
+                        <li class="nav-item"><?= Html::a('User', ['/user'],['class'=>'nav-link']) ?></li>
+                        <li class="nav-item"><?= Html::a('Shop', ['/shop'],['class'=>'nav-link']) ?></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown07">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
 
 
-
-                <div id="nav-collapse" class="collapse navbar-collapse">
-                    <ul class="navbar-nav navbar-right nav">
-                        <li><?= Html::a(Yii::t('app', 'HOME'), ['/']) ?></li>
-                        <li><?= Html::a('About', ['/page/about']) ?></li>
-                        <li><?= Html::a('Contact', ['/contacts']) ?></li>
-                        <li><?= Html::a('User', ['/user']) ?></li>
-                        <li><?= Html::a('Shop', ['/shop']) ?></li>
-
-
+                            </div>
+                        </li>
                     </ul>
+                    <form class="form-inline my-2 my-md-0">
+                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                    </form>
                 </div>
             </div>
         </nav>
+
     </div>
 </div>
 
