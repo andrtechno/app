@@ -2,8 +2,8 @@
 
 return [
     'class' => 'panix\engine\db\Connection',
-    'dsn'=>'mysql:host=localhost;dbname=db',
-    'username'=>'user',
+    'dsn'=>'mysql:host=localhost;dbname=yii2',
+    'username'=>'root',
     'password'=>'',
     'charset' => 'utf8',
     //'on afterOpen' => function($event) {

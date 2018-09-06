@@ -38,7 +38,7 @@ $this->registerJs("
     <body>
         <?php $this->beginBody() ?>
         <div class="wrap">
-            <?= $this->render('partials/_header'); ?>
+            <?= $this->render('partials/_header2'); ?>
 	
 
             <?php

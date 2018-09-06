@@ -22,5 +22,5 @@ $config = require(__DIR__ . '/../config/web.php');
 use panix\engine\Application;
 
 $app = new Application($config);
-Yii::setAlias('@bower', dirname(__DIR__) . '/vendor/bower-asset');
+//Yii::setAlias('@bower', dirname(__DIR__) . '/vendor/bower-asset');
 $app->run();
