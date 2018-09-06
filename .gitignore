@@ -9,3 +9,6 @@ vendor/
 nbproject/
 config/db.php
 .idea
+
+
+composer.lock
