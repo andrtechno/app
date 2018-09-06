@@ -22,8 +22,12 @@ $config = [
     'bootstrap' => ['log', 'maintenanceMode'], //'webcontrol', 
     'controllerMap' => [
         'main' => 'panix\engine\controllers\WebController',
+
     ],
     'modules' => [
+        'sitemap' => [
+            'class' => 'app\modules\sitemap\Module',
+        ],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
     //'stats' => ['class' => 'panix\mod\stats\Module'],
@@ -58,6 +62,96 @@ $config = [
       ], */
     ],
     'components' => [
+
+
+
+        'robotsTxt' => [
+            'class' => 'app\modules\sitemap\RobotsTxt',
+            'userAgent' => [
+                // Disallow url for all bots
+                '*' => [
+                    'Disallow' => [
+                        ['/api/default/index'],
+                    ],
+                    'Allow' => [
+                        ['/api/doc/index'],
+                    ],
+                ],
+                // Block a specific image from Google Images
+                'Googlebot-Image' => [
+                    'Disallow' => [
+                        // All images on your site from Google Images
+                        '/',
+                        // Files of a specific file type (for example, .gif)
+                        '/*.gif$',
+                    ],
+                ],
+            ],
+        ],
+        'sitemap' => [
+            'class' => 'app\modules\sitemap\Sitemap',
+            'models' => [
+                // your models
+                'app\modules\news\models\News',
+                // or configuration for creating a behavior
+                [
+                    'class' => 'app\modules\news\models\News',
+                    'behaviors' => [
+                        'sitemap' => [
+                            'class' => '\app\modules\sitemap\behaviors\SitemapBehavior',
+                            'scope' => function ($model) {
+                                /** @var \yii\db\ActiveQuery $model */
+                                $model->select(['url', 'lastmod']);
+                                $model->andWhere(['is_deleted' => 0]);
+                            },
+                            'dataClosure' => function ($model) {
+                                /** @var self $model */
+                                return [
+                                    'loc' => Url::to($model->url, true),
+                                    'lastmod' => strtotime($model->lastmod),
+                                    'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
+                                    'priority' => 0.8
+                                ];
+                            }
+                        ],
+                    ],
+                ],
+            ],
+            'urls'=> [
+                // your additional urls
+                [
+                    'loc' => ['/news/default/index'],
+                    //'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
+                    'priority' => 0.8,
+                    'news' => [
+                        'publication'   => [
+                            'name'          => 'Example Blog',
+                            'language'      => 'en',
+                        ],
+                        'access'            => 'Subscription',
+                        'genres'            => 'Blog, UserGenerated',
+                        'publication_date'  => 'YYYY-MM-DDThh:mm:ssTZD',
+                        'title'             => 'Example Title',
+                        'keywords'          => 'example, keywords, comma-separated',
+                        'stock_tickers'     => 'NASDAQ:A, NASDAQ:B',
+                    ],
+                    'images' => [
+                        [
+                            'loc'           => 'http://example.com/image.jpg',
+                            'caption'       => 'This is an example of a caption of an image',
+                            'geo_location'  => 'City, State',
+                            'title'         => 'Example image',
+                            'license'       => 'http://example.com/license',
+                        ],
+                    ],
+                ],
+            ],
+            'enableGzip' => true, // default is false
+            'cacheExpire' => 1, // 1 second. Default is 24 hours,
+            'sortByPriority' => true, // default is false
+        ],
+
+
         'stats' => ['class' => 'panix\mod\stats\components\Stats'],
         'curl' => ['class' => 'panix\engine\Curl'],
         'consoleRunner' => [
@@ -138,7 +232,6 @@ $config = [
         ],
         'session' => [
             'class' => '\panix\engine\web\DbUserSession',
-            'sessionTable' => '{{%session_user}}', // session table name. Defaults to 'session'.
         ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
@@ -146,7 +239,7 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
-        'cache' => ['class' => 'yii\caching\DummyCache'],
+        'cache' => ['class' => 'yii\caching\FileCache'], //DummyCache
         'user' => ['class' => 'panix\mod\user\components\User'],
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
