@@ -1,0 +1,18 @@
+sass --watch dark.scss:dark.css --style expanded
+
+1. cd /d d:/ospane/.etc.
+
+2. ospanel\domains\pixelion.store.loc\themes\pixelion-store\assets
+
+3. sass --watch scss:css --style expanded
+
+//проверить
+sass --watch dark.scss:dark.css --style expanded dark.scss:dark.min.css --style compressed
+
+
+
+style:
+nested
+compact
+expanded
+compressed
