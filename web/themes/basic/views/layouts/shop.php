@@ -68,6 +68,7 @@ main shop
             ?>
 
             <div class="container">
+
                 <?php if (isset($this->context->breadcrumbs)) { ?>
                     <?php
                     echo Breadcrumbs::widget([

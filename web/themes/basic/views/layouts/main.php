@@ -19,8 +19,7 @@ $this->registerJs("
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
     <head>
-        <noscript><meta http-equiv="refresh" content="0; url=no-javascript" /></noscript>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <?= Html::csrfMetaTags() ?>
         <?php $this->head() ?>
 
@@ -38,8 +37,8 @@ $this->registerJs("
     <body>
         <?php $this->beginBody() ?>
         <div class="wrap">
-            <?= $this->render('partials/_header2'); ?>
-	
+            <?= $this->render('partials/_header'); ?>
+
 
             <?php
             /* NavBar::begin([
