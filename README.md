@@ -21,5 +21,5 @@ php composer create-project panix/app . "dev-master"
 
 Either run for prod
 ```
-php composer create-project --prefer-dist --no-dev  --stability=dev panix/app . "dev-master"
+php composer create-project --prefer-dist --no-dev --stability=dev panix/app . "dev-master"
 ```
