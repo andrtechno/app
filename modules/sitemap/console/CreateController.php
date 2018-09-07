@@ -12,6 +12,7 @@ namespace app\modules\sitemap\console;
 
 use Yii;
 use yii\console\Controller;
+use yii\console\ExitCode;
 use yii\helpers\Console;
 
 
@@ -31,7 +32,7 @@ class CreateController extends Controller
     /**
      * @var string folder for sitemaps files
      */
-    public $rootDir = '@webroot/web';
+    public $rootDir = '@webroot';
 
     /**
      * @var string sitemap main file name

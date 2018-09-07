@@ -67,7 +67,7 @@ use yii\helpers\Url;
 
                             <?php if (Yii::$app->user->isGuest) { ?>
                                 <li class="nav-item">
-                                    <?= Html::link(Html::icon('icon-user') . ' ' . Yii::t('common', 'LOG_IN'), array('/user/login'), array('class' => 'nav-link')); ?>
+                                    <?= Html::a(Html::icon('icon-user') . ' ' . Yii::t('app', 'LOG_IN'), array('/user/login'), array('class' => 'nav-link')); ?>
 
                                 </li>
                                 <li class="nav-item">

@@ -68,20 +68,18 @@ return [
                 // your models
                 'panix\mod\shop\models\Product',
                 // or configuration for creating a behavior
-                [
+                /*[
                     'class' => 'panix\mod\shop\models\Product',
                     'behaviors' => [
                         'sitemap' => [
                             'class' => '\app\modules\sitemap\behaviors\SitemapBehavior',
                             'scope' => function ($model) {
-                                /** @var \yii\db\ActiveQuery $model */
                                 $model->select(['seo_alias', 'date_create']);
                                 $model->andWhere(['switch' => 1]);
                             },
                             'dataClosure' => function ($model) {
-                                /** @var self $model */
                                 return [
-                                    'loc' => Url::to($model->url, true),
+                                    'loc' => \yii\helpers\Url::to($model->url, true),
                                     'lastmod' => strtotime($model->date_create),
                                     'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
                                     'priority' => 0.8
@@ -89,7 +87,7 @@ return [
                             }
                         ],
                     ],
-                ],
+                ],*/
             ],
             'urls'=> [
                 // your additional urls
@@ -124,10 +122,20 @@ return [
             'cacheExpire' => 1, // 1 second. Default is 24 hours,
             'sortByPriority' => true, // default is false
         ],
-        'session' => [
+       // 'session' => [
+        //    'class' => 'yii\web\Session'
+        //],
+       // 'user' => ['class' => 'panix\mod\user\components\User'],
+
+        'user' => [
+            'class' => 'panix\mod\user\components\User',
+            'identityClass' => 'panix\mod\user\models\User',
+            //'enableAutoLogin' => true,
+        ],
+        'session' => [ // for use session in console application
             'class' => 'yii\web\Session'
         ],
-        'user' => ['class' => 'panix\mod\user\components\User'],
+
         'settings' => ['class' => 'panix\engine\components\Settings'],
         'cache' => ['class' => 'yii\caching\FileCache'],
         'log' => [
@@ -139,6 +147,17 @@ return [
             ],
         ],
         'db' => $db,
+        /*'urlManager' => [
+            'scriptUrl' => 'http://app.loc',
+            'baseUrl' => '',
+        ],*/
+        'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
+        'urlManager'=>\yii\helpers\ArrayHelper::merge([
+            'scriptUrl' => 'http://app.loc/',
+            'baseUrl' => '',
+            'hostInfo'=>'http://app.loc/',
+
+        ],require(__DIR__ . '/urlManager.php'))
     ],
     'params' => $params,
 ];
