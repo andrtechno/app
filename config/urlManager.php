@@ -34,8 +34,8 @@ return [
         ['pattern' => '<module:\w+>/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/<controller>/<action>'],
 
 
-        ['pattern' => 'sitemap-<id:\d+>', 'route' => '/sitemap/default/index', 'suffix' => '.xml'],
-        ['pattern' => 'sitemap', 'route' => 'sitemap/default/index', 'suffix' => '.xml'],
+       // ['pattern' => 'sitemap-<id:\d+>', 'route' => '/sitemap/default/index', 'suffix' => '.xml'],
+       // ['pattern' => 'sitemap', 'route' => 'sitemap/default/index', 'suffix' => '.xml'],
 
 
         //common

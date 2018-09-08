@@ -19,7 +19,11 @@ $config = [
     // 'runtimePath'=>'runtime',
     'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'main/main',
-    'bootstrap' => ['log', 'maintenanceMode'], //'webcontrol', 
+    'bootstrap' => [
+        'log',
+        'maintenanceMode',
+        //'panix\mod\shop\Module',
+    ], //'webcontrol',
     'controllerMap' => [
         'main' => 'panix\engine\controllers\WebController',
 
@@ -311,7 +315,7 @@ if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug']['class'] = 'yii\debug\Module';
-    //$config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
+    $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
     //$config['modules']['debug']['dataPath'] = '@runtime/debug';
     //$config['bootstrap'][] = 'gii';
     //$config['modules']['gii'] = 'yii\gii\Module';

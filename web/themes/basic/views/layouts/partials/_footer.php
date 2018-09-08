@@ -3,7 +3,7 @@ use panix\engine\Html;
 ?>
 <footer id="footer">
     <?php
-    if ($this->beginCache('tpl_footer', ['duration' => 0])) {  //3600*30
+  //  if ($this->beginCache('tpl_footer', ['duration' => 0])) {  //3600*30
         ?>
 
 
@@ -79,8 +79,8 @@ use panix\engine\Html;
             </div>
         </div>
         <?php
-        $this->endCache();
-    }
+       // $this->endCache();
+   // }
     ?>
     <div class="copyright-bar">
         <div class="container">
