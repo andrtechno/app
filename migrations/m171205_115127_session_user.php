@@ -1,20 +1,24 @@
 <?php
 
+namespace app\migrations;
+
 /**
  * Generation migrate by PIXELION CMS
  *
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
- * 
+ *
  * Class m171205_115127_session_user
  */
 use panix\engine\db\Migration;
 
-class m171205_115127_session_user extends Migration {
+class m171205_115127_session_user extends Migration
+{
 
     public $tableName = '{{%session_user}}';
 
-    public function up() {
+    public function up()
+    {
         $this->createTable($this->tableName, [
             'id' => $this->primaryKey(),
             'ip' => $this->string(15),
@@ -26,7 +30,8 @@ class m171205_115127_session_user extends Migration {
         $this->createIndex('expire', $this->tableName, 'expire');
     }
 
-    public function down() {
+    public function down()
+    {
         $this->dropTable($this->tableName);
     }
 

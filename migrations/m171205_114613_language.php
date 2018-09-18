@@ -1,21 +1,25 @@
 <?php
 
+namespace app\migrations;
+
 /**
  * Generation migrate by PIXELION CMS
  *
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
- * 
+ *
  * Class m171205_114613_language
  */
 use panix\engine\db\Migration;
 
-class m171205_114613_language extends Migration {
+class m171205_114613_language extends Migration
+{
 
     public $tableName = '{{%language}}';
 
     // Use up()/down() to run migration code without a transaction.
-    public function up() {
+    public function up()
+    {
         $this->createTable($this->tableName, [
             'id' => $this->primaryKey(),
             'name' => $this->string(100)->notNull(),
@@ -24,12 +28,13 @@ class m171205_114613_language extends Migration {
             'is_default' => $this->boolean()->defaultValue(0),
             'switch' => $this->boolean()->defaultValue(1),
             'ordern' => $this->integer(),
-                ], $this->tableOptions);
+        ], $this->tableOptions);
         $this->createIndex('switch', $this->tableName, 'switch');
         $this->createIndex('ordern', $this->tableName, 'ordern');
     }
 
-    public function down() {
+    public function down()
+    {
         $this->dropTable($this->tableName);
     }
 
