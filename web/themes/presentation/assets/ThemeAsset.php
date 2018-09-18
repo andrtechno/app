@@ -1,6 +1,6 @@
 <?php
 
-namespace app\web\themes\corner\assets;
+namespace app\web\themes\presentation\assets;
 
 use yii\web\AssetBundle;
 
