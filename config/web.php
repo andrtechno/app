@@ -66,9 +66,13 @@ $config = [
       ], */
     ],
     'components' => [
-
-
-
+        'img' => [
+            'class' => 'panix\engine\components\ImageHandler',
+        ],
+        'fcm' => [
+            'class' => 'understeam\fcm\Client',
+            'apiKey' => 'AIzaSyAbeTCpxK7OGu_lXZDSnJjV1ItkUwPOBbc', // Server API Key (you can get it here: https://firebase.google.com/docs/server/setup#prerequisites)
+        ],
         'robotsTxt' => [
             'class' => 'app\modules\sitemap\RobotsTxt',
             'userAgent' => [
@@ -234,9 +238,9 @@ $config = [
                 ],
             ],
         ],
-        'session' => [
-            'class' => '\panix\engine\web\DbUserSession',
-        ],
+        //'session' => [
+        //    'class' => '\panix\engine\web\DbUserSession',
+       // ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
             'baseUrl' => '',

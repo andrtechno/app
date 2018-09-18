@@ -22,9 +22,11 @@ return [
         ],
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
+           // 'migrationPath' => null,
             'migrationNamespaces' => [
                 'app\migrations',
-            //    'panix\mod\discounts\migrations',
+                //'panix\mod\discounts\migrations',
+                //'panix\mod\shop\migrations',
             ],
             'templateFile' => '@vendor/panix/engine/views/migration.php',
             /* 'generatorTemplateFiles' => [

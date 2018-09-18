@@ -18,6 +18,8 @@ return [
     ],
     'rules' => [
         'placeholder' => 'main/placeholder',
+        'test' => 'web/test',
+        'test2' => 'web/test2',
         //Backend rules
         ['pattern' => 'admin/auth', 'route' => 'admin/auth'],
         ['pattern' => 'admin/app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
