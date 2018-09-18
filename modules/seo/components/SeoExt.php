@@ -25,7 +25,7 @@ class SeoExt extends \yii\base\Component {
 
     public function run() {
         $config = Yii::$app->settings->get('seo');
-        if ($config['canonical']) {
+        if ($config->canonical) {
             //if (Yii::$app->controller->canonical) {
             ////    $canonical = Yii::$app->controller->canonical;
             //} else {

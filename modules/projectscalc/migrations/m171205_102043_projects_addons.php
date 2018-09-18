@@ -1,6 +1,6 @@
 <?php
 
-class m171204_202402_grid_columns extends \panix\engine\db\Migration {
+class m171205_102043_projects_addons extends \panix\engine\db\Migration {
 
     public $tableName = '{{%projects_addons}}';
 
