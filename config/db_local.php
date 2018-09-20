@@ -12,9 +12,9 @@ return [
     //$event->sender->createCommand("SET names utf8")->execute();
     //},
     'tablePrefix' => 'cms_',
-    'serverStatusCache' => !YII_DEBUG ? 0 : 3600,
-    'schemaCacheDuration' => !YII_DEBUG ? 0 : 3600,
-    'enableSchemaCache' => !YII_DEBUG,
+    'serverStatusCache' => YII_DEBUG ? 0 : 3600,
+    'schemaCacheDuration' => YII_DEBUG ? 0 : 3600,
+    'enableSchemaCache' => YII_DEBUG,
     'schemaCache' => 'cache',
 
 ];

@@ -34,38 +34,44 @@ $config = [
         ],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
-    //'stats' => ['class' => 'panix\mod\stats\Module'],
-    //'hosting' => ['class' => 'app\modules\hosting\Module'],
-    /* 'seo' => ['class' => 'app\modules\seo\Module'],
+        //'stats' => ['class' => 'panix\mod\stats\Module'],
+        //'hosting' => ['class' => 'app\modules\hosting\Module'],
+        /* 'seo' => ['class' => 'app\modules\seo\Module'],
 
 
-      'pages' => ['class' => 'panix\mod\pages\Module'],
-      'shop' => ['class' => 'panix\mod\shop\Module'],
-      'contacts' => ['class' => 'panix\mod\contacts\Module'],
-      // 'cart' => ['class' => 'panix\mod\cart\Module'],
-      'discounts' => ['class' => 'panix\mod\discounts\Module'],
-      'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
-      'comments' => ['class' => 'panix\mod\comments\Module'],
-      'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
-      'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
-      'csv' => ['class' => 'panix\mod\csv\Module'],
-      'blocks' => ['class' => 'profitcode\blocks\Module'],
-      //'csv' => ['class' => 'panix\mod\csv\Module'],
-      'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
-      'delivery' => ['class' => 'panix\mod\delivery\Module'],
-      'forum' => ['class' => 'panix\mod\forum\Module'],
-      // 'portfolio' => ['class' => 'app\modules\portfolio\Module'],
-      'images' => [
-      'class' => 'panix\mod\images\Module',
-      'imagesStorePath' => 'uploads/store', //path to origin images
-      'imagesCachePath' => 'uploads/cache', //path to resized copies
-      'graphicsLibrary' => 'GD', //but really its better to use 'Imagick'
-      'placeHolderPath' => '@webroot/uploads/watermark.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
-      'imageCompressionQuality' => 100, // Optional. Default value is 85.
-      'waterMark' => '@webroot/uploads/watermark.png'
-      ], */
+          'pages' => ['class' => 'panix\mod\pages\Module'],
+          'shop' => ['class' => 'panix\mod\shop\Module'],
+          'contacts' => ['class' => 'panix\mod\contacts\Module'],
+          // 'cart' => ['class' => 'panix\mod\cart\Module'],
+          'discounts' => ['class' => 'panix\mod\discounts\Module'],
+          'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
+          'comments' => ['class' => 'panix\mod\comments\Module'],
+          'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
+          'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
+          'csv' => ['class' => 'panix\mod\csv\Module'],
+          'blocks' => ['class' => 'profitcode\blocks\Module'],
+          //'csv' => ['class' => 'panix\mod\csv\Module'],
+          'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
+          'delivery' => ['class' => 'panix\mod\delivery\Module'],
+          'forum' => ['class' => 'panix\mod\forum\Module'],
+          // 'portfolio' => ['class' => 'app\modules\portfolio\Module'],
+          'images' => [
+          'class' => 'panix\mod\images\Module',
+          'imagesStorePath' => 'uploads/store', //path to origin images
+          'imagesCachePath' => 'uploads/cache', //path to resized copies
+          'graphicsLibrary' => 'GD', //but really its better to use 'Imagick'
+          'placeHolderPath' => '@webroot/uploads/watermark.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
+          'imageCompressionQuality' => 100, // Optional. Default value is 85.
+          'waterMark' => '@webroot/uploads/watermark.png'
+          ], */
     ],
     'components' => [
+        'sphinx' => [
+            'class' => 'yii\sphinx\Connection',
+            'dsn' => 'mysql:host=127.0.0.1;port=9306;',
+            'username' => '',
+            'password' => '',
+        ],
         'img' => [
             'class' => 'panix\engine\components\ImageHandler',
         ],
@@ -125,31 +131,31 @@ $config = [
                     ],
                 ],
             ],
-            'urls'=> [
+            'urls' => [
                 // your additional urls
                 [
                     'loc' => ['/news/default/index'],
                     //'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
                     'priority' => 0.8,
                     'news' => [
-                        'publication'   => [
-                            'name'          => 'Example Blog',
-                            'language'      => 'en',
+                        'publication' => [
+                            'name' => 'Example Blog',
+                            'language' => 'en',
                         ],
-                        'access'            => 'Subscription',
-                        'genres'            => 'Blog, UserGenerated',
-                        'publication_date'  => 'YYYY-MM-DDThh:mm:ssTZD',
-                        'title'             => 'Example Title',
-                        'keywords'          => 'example, keywords, comma-separated',
-                        'stock_tickers'     => 'NASDAQ:A, NASDAQ:B',
+                        'access' => 'Subscription',
+                        'genres' => 'Blog, UserGenerated',
+                        'publication_date' => 'YYYY-MM-DDThh:mm:ssTZD',
+                        'title' => 'Example Title',
+                        'keywords' => 'example, keywords, comma-separated',
+                        'stock_tickers' => 'NASDAQ:A, NASDAQ:B',
                     ],
                     'images' => [
                         [
-                            'loc'           => 'http://example.com/image.jpg',
-                            'caption'       => 'This is an example of a caption of an image',
-                            'geo_location'  => 'City, State',
-                            'title'         => 'Example image',
-                            'license'       => 'http://example.com/license',
+                            'loc' => 'http://example.com/image.jpg',
+                            'caption' => 'This is an example of a caption of an image',
+                            'geo_location' => 'City, State',
+                            'title' => 'Example image',
+                            'license' => 'http://example.com/license',
                         ],
                     ],
                 ],
@@ -187,7 +193,7 @@ $config = [
             //    'admin',
             //],
             //Retry-After header
-           // 'retryAfter' => 120 //or Wed, 21 Oct 2015 07:28:00 GMT for example
+            // 'retryAfter' => 120 //or Wed, 21 Oct 2015 07:28:00 GMT for example
         ],
         'assetManager' => [
             'forceCopy' => YII_DEBUG,
@@ -217,7 +223,7 @@ $config = [
             'renderers' => [
                 'tpl' => [
                     'class' => 'yii\smarty\ViewRenderer',
-                //'cachePath' => '@runtime/Smarty/cache',
+                    //'cachePath' => '@runtime/Smarty/cache',
                 ],
             ],
             'theme' => ['class' => 'panix\engine\base\Theme'],
@@ -240,7 +246,7 @@ $config = [
         ],
         //'session' => [
         //    'class' => '\panix\engine\web\DbUserSession',
-       // ],
+        // ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
             'baseUrl' => '',
@@ -273,7 +279,7 @@ $config = [
             //'class'=>'panix\engine\base\ErrorHandler'
             //'errorAction' => 'site/error',
             'errorAction' => 'main/error',
-        // 'errorView' => '@webroot/themes/basic/views/layouts/error.php'
+            // 'errorView' => '@webroot/themes/basic/views/layouts/error.php'
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -287,10 +293,18 @@ $config = [
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [[
-            'class' => 'yii\log\FileTarget',
-            'levels' => ['error', 'warning'],
-                ]],
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                   // 'categories' => ['yii\db\*']
+                ],
+                [
+                    'class' => 'yii\log\DbTarget',
+                    'levels' => ['error', 'warning'],
+                    //'categories' => ['yii\db\*']
+                ],
+            ],
         ],
         /* 'log' => [
           'targets' => [

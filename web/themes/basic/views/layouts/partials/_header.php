@@ -14,7 +14,7 @@ use yii\helpers\Url;
 </script>
 
 <!--ПРЕЛОАДЕР-->
-<div class="loaderArea">
+<div class="loaderArea d-none">
     <div class="loader">
         <div class="cssload-inner cssload-one"></div>
         <div class="cssload-inner cssload-two"></div>

@@ -18,8 +18,15 @@ Either run for dev
 php composer create-project panix/app . "dev-master"
 ```
 
-
 Either run for prod
 ```
 php composer create-project --prefer-dist --no-dev --stability=dev panix/app . "dev-master"
 ```
+
+
+
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
