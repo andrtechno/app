@@ -444,6 +444,9 @@ ul.current-filter-list > li > a.remove:after {
   left: 0;
   top: 50%;
 }
+.price .price-lg {
+  font-size: 33px;
+}
 .price sup,
 .price sub {
   color: gray;
@@ -2383,6 +2386,10 @@ body .ui-tooltip {
   opacity: .3;
   filter: Alpha(Opacity=30);
   border-radius: 8px;
+}
+
+span.required {
+  color: #c55;
 }
 
 .not-set {

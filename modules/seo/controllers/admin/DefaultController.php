@@ -16,10 +16,45 @@ class DefaultController extends \panix\engine\controllers\AdminController {
             ),
         );
     }
+    /**
+     * Manages all models.
+     */
+    public function actionIndex() {
+        $this->pageName = Yii::t('seo/default', 'MODULE_NAME');
+        $this->buttons = [
+            [
+                'label' => Yii::t('seo/default', 'CREATE'),
+                'url' => ['/admin/seo/default/create'],
+                'options' => ['class' => 'btn btn-success']
+            ]
+        ];
+
+
+
+        $this->breadcrumbs[] = [
+            'label' => $this->module->info['label'],
+            'url' => $this->module->info['url'],
+        ];
+
+
+        $this->breadcrumbs[] = $this->pageName;
+
+
+
+        $searchModel = new SeoUrlSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
+        return $this->render('index', [
+            'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+        ]);
+    }
 
     public function actionCreate() {
         $model = new SeoUrl;
         $this->pageName = Yii::t('app', 'CREATE', 1);
+
+
+
         if (isset($_POST['SeoUrl'])) {
             $model->attributes = $_POST['SeoUrl'];
             if ($model->save()) {
@@ -48,6 +83,7 @@ class DefaultController extends \panix\engine\controllers\AdminController {
      * Updates a particular model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
+     * @return string|\yii\web\Response
      */
     public function actionUpdate($id) {
         $model = $this->loadModel($id);
@@ -138,24 +174,6 @@ class DefaultController extends \panix\engine\controllers\AdminController {
         //   die;
     }
 
-    /**
-     * Manages all models.
-     */
-    public function actionIndex() {
-        $this->buttons = [
-            [
-                'label' => Yii::t('seo/default', 'CREATE'),
-                'url' => ['/admin/seo/default/create'],
-                'options' => ['class' => 'btn btn-success']
-            ]
-        ];
-        $searchModel = new SeoUrlSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
-        return $this->render('index', [
-                    'dataProvider' => $dataProvider,
-                    'searchModel' => $searchModel,
-        ]);
-    }
 
     /**
      * Returns the data model based on the primary key given in the GET variable.

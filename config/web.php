@@ -223,7 +223,7 @@ $config = [
             'renderers' => [
                 'tpl' => [
                     'class' => 'yii\smarty\ViewRenderer',
-                    //'cachePath' => '@runtime/Smarty/cache',
+                    'cachePath' => '@runtime/Smarty/cache',
                 ],
             ],
             'theme' => ['class' => 'panix\engine\base\Theme'],
