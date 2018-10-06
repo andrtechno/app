@@ -32,7 +32,7 @@ class Module extends WebModule
                             [
                                 'label' => 'Предложения',
                                 'url' => ['/admin/projectscalc/offers'],
-                                'icon' => 'offer',
+                                'icon' => 'partner',
                             ],
                         ]
                     ]

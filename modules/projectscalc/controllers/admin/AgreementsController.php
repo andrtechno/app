@@ -2,6 +2,7 @@
 
 namespace app\modules\projectscalc\controllers\admin;
 
+use panix\engine\controllers\AdminController;
 use Yii;
 use app\modules\projectscalc\models\search\AgreementsSearch;
 use app\modules\projectscalc\models\Agreements;
@@ -9,7 +10,7 @@ use Mpdf\Mpdf;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Shared\Html as WordHtml;
 
-class AgreementsController extends \panix\engine\controllers\AdminController
+class AgreementsController extends AdminController
 {
 
     public function actionDoc($id)
@@ -161,7 +162,8 @@ class AgreementsController extends \panix\engine\controllers\AdminController
 
     /**
      * Create or update new page
-     * @param boolean $id
+     * @param bool $id
+     * @return string|\yii\web\Response
      */
     public function actionUpdate($id = false)
     {
