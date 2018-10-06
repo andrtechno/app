@@ -3,7 +3,7 @@
 use panix\engine\pdf\Pdf;
 
 //Yii::setAlias('@runtime', '@webroot/web/runtime');
-$params = require(__DIR__ . '/params.php');
+
 $db = YII_DEBUG ? __DIR__ . '/db_local.php' : __DIR__ . '/db.php';
 $config = [
     'id' => 'panix',
@@ -66,6 +66,12 @@ $config = [
           ], */
     ],
     'components' => [
+        'reCaptcha' => [
+            'name' => 'reCaptcha',
+            'class' => 'panix\engine\widgets\recaptcha\ReCaptcha',
+            'siteKey' => '6LeiV24UAAAAANsxGR9ocCgk4Bv-FMBwlF1ycJu4',
+            'secret' => '6LeiV24UAAAAAE92qFgDJZ6hxJak5aut1npbQhfH',
+        ],
         'sphinx' => [
             'class' => 'yii\sphinx\Connection',
             'dsn' => 'mysql:host=127.0.0.1;port=9306;',
@@ -294,16 +300,33 @@ $config = [
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
+                /* [
+                     'class' => 'yii\log\FileTarget',
+                     'levels' => ['error', 'warning'],
+                     'logFile' => '@runtime/logs/app.log'
+                     // 'categories' => ['yii\db\*']
+                 ],*/
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
-                   // 'categories' => ['yii\db\*']
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/db.log',
+                    'categories' => ['yii\db\*']
                 ],
                 [
-                    'class' => 'yii\log\DbTarget',
-                    'levels' => ['error', 'warning'],
-                    //'categories' => ['yii\db\*']
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['warning'],
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/warning.log',
                 ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['info'],
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/info.log',
+                ],
+                // [
+                //     'class' => 'yii\log\DbTarget',
+                //     'levels' => ['error', 'warning'],
+                //'categories' => ['yii\db\*']
+                //],
             ],
         ],
         /* 'log' => [
@@ -326,14 +349,21 @@ $config = [
         'urlManager' => require(__DIR__ . '/urlManager.php'),
         'db' => require($db),
     ],
-    'params' => $params,
+    'params' => require(__DIR__ . '/params.php'),
 ];
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug']['class'] = 'yii\debug\Module';
-    $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
+   // $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
+    $config['modules']['debug']['traceLine'] = function($options, $panel) {
+        $filePath = $options['file'];
+        $filePath = str_replace(Yii::$app->basePath, 'file://~/path/to/your/backend', $filePath);
+        $filePath = str_replace(dirname(Yii::$app->basePath) . '/common' , 'file://~/path/to/your/common', $filePath);
+        $filePath = str_replace(Yii::$app->vendorPath, 'file://~/path/to/your/vendor', $filePath);
+        return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
+    };
     //$config['modules']['debug']['dataPath'] = '@runtime/debug';
     //$config['bootstrap'][] = 'gii';
     //$config['modules']['gii'] = 'yii\gii\Module';
