@@ -28,6 +28,18 @@ class m171205_114749_settings extends Migration
         ]);
         $this->createIndex('param', $this->tableName, 'param');
         $this->createIndex('category', $this->tableName, 'category');
+
+
+
+        $this->batchInsert($this->tableName, ['category', 'param', 'value'], [
+            ['app', 'email', 'dev@pixelion.com.ua'],
+            ['app', 'pagenum', 20],
+            ['app', 'sitename', 'Pixelion'],
+            ['app', 'theme', 'basic'],
+            ['app', 'backup_limit', 10],
+
+        ]);
+
     }
 
     public function down()

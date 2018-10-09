@@ -31,6 +31,15 @@ class m171205_114613_language extends Migration
         ], $this->tableOptions);
         $this->createIndex('switch', $this->tableName, 'switch');
         $this->createIndex('ordern', $this->tableName, 'ordern');
+
+
+        $this->batchInsert($this->tableName, ['name', 'code', 'locale', 'is_default', 'switch', 'ordern'], [
+            ['Русский', 'ru', 'ru-RU', 1, 1, 1],
+            ['English', 'en', 'en-US', 0, 0, 0],
+            ['Український', 'ua', 'uk-UA', 0, 0, 0],
+            ['Deutsch', 'de', 'de', 0, 0, 0],
+        ]);
+
     }
 
     public function down()
