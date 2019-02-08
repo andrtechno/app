@@ -2,16 +2,20 @@
 use panix\engine\Html;
 use yii\helpers\Url;
 
+
+$this->registerJs("
+
+    $(window).on('load', function () {
+        var preloader = $('.loaderArea'),
+            loader = preloader.find('.loader');
+        loader.fadeOut();
+        preloader.delay(350).fadeOut('slow');
+    });
+
+", \yii\web\View::POS_END, 'preloader-js');
 ?>
 
-<script>
-    $(window).on('load', function () {
-        $preloader = $('.loaderArea'),
-            $loader = $preloader.find('.loader');
-        $loader.fadeOut();
-        $preloader.delay(350).fadeOut('slow');
-    });
-</script>
+
 
 <!--ПРЕЛОАДЕР-->
 <div class="loaderArea d-none">
@@ -50,7 +54,7 @@ use yii\helpers\Url;
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
                                 Валюта: <b><?= Yii::$app->currency->active->iso ?></b>
                             </a>
@@ -100,7 +104,7 @@ use yii\helpers\Url;
                                         echo '<div class="dropdown-divider"></div>';
                                     }
                                     ?>
-                                    <?= Html::a(Html::icon('logout') . ' ' . Yii::t('user/default', 'LOGOUT'), ['/user/login'], ['class' => 'dropdown-item', 'data-method' => "post"]); ?>
+                                    <?= Html::a(Html::icon('logout') . ' ' . Yii::t('user/default', 'LOGOUT'), ['/user/logout'], ['class' => 'dropdown-item', 'data-method' => "post"]); ?>
 
                                 </div>
                             </li>
@@ -129,7 +133,9 @@ use yii\helpers\Url;
             <div class="col-lg-3">
 
                 <?php echo \panix\mod\cart\widgets\cart\CartWidget::widget(['skin' => 'dropdown']); ?>
+                <?php
 
+                ?>
             </div>
         </div>
 
@@ -158,7 +164,7 @@ use yii\helpers\Url;
                         <a class="nav-link disabled" href="#">Disabled</a>
                     </li>
                     <li class="nav-item dropdown megamenu-down">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07"
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown07"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown07">
                             <div class="container">

@@ -14,9 +14,6 @@ class ThemeAsset extends AssetBundle {
         parent::init();
     }
 
-   // public $jsOptions = array(
-   //     'position' => \yii\web\View::POS_HEAD
-   // );
 
     public $css = [
         'css/style.css',

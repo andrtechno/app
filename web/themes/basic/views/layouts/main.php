@@ -38,7 +38,7 @@ $this->registerJs("
 <?php $this->beginBody() ?>
 <div class="wrap">
     <?= $this->render('partials/_header'); ?>
-
+    Hello, world!
     main
     <?php
 
