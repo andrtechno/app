@@ -3,6 +3,8 @@
   -moz-border-radius: $radius;
   -ms-border-radius: $radius;
   border-radius: $radius;
+  -o-border-radius: $radius;
+
 }
 
 @mixin hover-focus() {
@@ -27,7 +29,7 @@
   box-shadow: $param;
 }
 
-@mixin gradient($start_color, $end_color,$r:x,$deg: 45deg) {
+@mixin gradient($start_color, $end_color,$deg: 45deg, $r:x) {
 
   @if $r==x {
 

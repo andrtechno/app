@@ -1,6 +1,12 @@
 @import "mixins/base";
 @import "mixins/mixins";
 
+$slider-handle-border-color: $orange-color;
+$slider-handle-bg-color: #fff;
+$slider-range-bg: $orange-color;
+$slider-bg: #E1E1E1;
+$slider-border-color: #E1E1E1;
+
 .ui-widget-overlay {
   position: fixed;
   z-index: 1001;
@@ -65,20 +71,83 @@ $ui-border-color: #ced4da;
 
 }
 
-$ui-slider-handle-size: 25px;
+$ui-slider-handle-size: 23px;
 $ui-slider-handle-border-size: 3px;
-$ui-slider-height: 7px;
+$ui-slider-height: 3px;
+
+.ui-slider.ui-state-disabled .ui-slider-handle, .ui-slider.ui-state-disabled .ui-slider-range {
+  filter: inherit
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+  top: -.3em;
+  margin-left: -.6em
+}
+
+.ui-slider-horizontal .ui-slider-range {
+  top: -1px;
+  height: $ui-slider-height
+}
+
+.ui-slider-horizontal .ui-slider-range-min {
+  left: 0
+}
+
+.ui-slider-horizontal .ui-slider-range-max {
+  right: 0
+}
+
+.ui-slider-vertical {
+  width: .8em;
+  height: 100px
+}
+
+.ui-slider-vertical .ui-slider-handle {
+  left: -.3em;
+  margin-left: 0;
+  margin-bottom: -.6em
+}
+
+.ui-slider-vertical .ui-slider-range {
+  left: 0;
+  width: 100%
+}
+
+.ui-slider-vertical .ui-slider-range-min {
+  bottom: 0
+}
+
+.ui-slider-vertical .ui-slider-range-max {
+  top: 0
+}
+
 .ui-slider {
   height: $ui-slider-height;
-  background: #99c997;
   position: relative;
+  text-align: left;
+  margin: .5rem 0 1rem 0;
+  &.ui-widget-content {
+    border-color: $slider-border-color;
+    background: $slider-bg;
+  }
   .ui-slider-range {
-    background: #49aeb2;
+    background-color: $slider-range-bg;
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+    border: 0;
+    background-position: 0 0;
   }
   .ui-slider-handle {
     cursor: e-resize;
     position: absolute;
     left: 0;
+    z-index: 2;
+    width: 1.2em;
+    height: 1.2em;
+    -ms-touch-action: none;
+    touch-action: none;
     &:focus {
       outline: none;
     }
@@ -86,8 +155,8 @@ $ui-slider-height: 7px;
   &.ui-slider-horizontal {
     .ui-slider-handle {
       border-radius: 50%;
-      border: $ui-slider-handle-border-size solid #f8e07a;
-      background: #49aeb2;
+      border: $ui-slider-handle-border-size solid $slider-handle-border-color;
+      background: $slider-handle-bg-color;
       width: $ui-slider-handle-size;
       height: $ui-slider-handle-size;
       display: block;
@@ -850,76 +919,6 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
   white-space: nowrap
 }
 
-.ui-slider {
-  position: relative;
-  text-align: left
-}
-
-.ui-slider .ui-slider-handle {
-  position: absolute;
-  z-index: 2;
-  width: 1.2em;
-  height: 1.2em;
-  -ms-touch-action: none;
-  touch-action: none
-}
-
-.ui-slider .ui-slider-range {
-  position: absolute;
-  z-index: 1;
-  font-size: .7em;
-  display: block;
-  border: 0;
-  background-position: 0 0
-}
-
-.ui-slider.ui-state-disabled .ui-slider-handle, .ui-slider.ui-state-disabled .ui-slider-range {
-  filter: inherit
-}
-
-
-.ui-slider-horizontal .ui-slider-handle {
-  top: -.3em;
-  margin-left: -.6em
-}
-
-.ui-slider-horizontal .ui-slider-range {
-  top: 0;
-  height: 100%
-}
-
-.ui-slider-horizontal .ui-slider-range-min {
-  left: 0
-}
-
-.ui-slider-horizontal .ui-slider-range-max {
-  right: 0
-}
-
-.ui-slider-vertical {
-  width: .8em;
-  height: 100px
-}
-
-.ui-slider-vertical .ui-slider-handle {
-  left: -.3em;
-  margin-left: 0;
-  margin-bottom: -.6em
-}
-
-.ui-slider-vertical .ui-slider-range {
-  left: 0;
-  width: 100%
-}
-
-.ui-slider-vertical .ui-slider-range-min {
-  bottom: 0
-}
-
-.ui-slider-vertical .ui-slider-range-max {
-  top: 0
-}
-
 .ui-spinner {
   position: relative;
   display: inline-block;
@@ -975,65 +974,97 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
   background-position: -65px -16px
 }
 
+
 .ui-tabs {
   position: relative;
-  padding: 0
-}
-.ui-tabs.ui-widget-content{
-  border:0;
-}
-.ui-tabs .ui-widget-header{
-  background: none;
-  border:0;
-}
-.ui-tabs .ui-tabs-nav {
-  margin: 0;
-  padding: 0
-}
-
-.ui-tabs .ui-tabs-nav li {
-  list-style: none;
-  float: left;
-  position: relative;
-  top: 0;
-  margin: 0;
-  border-bottom-width: 0;
   padding: 0;
-  white-space: nowrap
+
+  &.ui-widget-content {
+    border: 0;
+  }
+  .ui-tabs-panel {
+    display: block;
+    border-width: 0;
+    padding: 1rem 0;
+    background: none;
+    &.ui-widget-content {
+
+    }
+  }
+  .ui-widget-header {
+    background: none;
+    border: 0;
+    font-family: $font-family-second;
+  }
+  .ui-tabs-nav {
+    margin: 0;
+    padding: 0;
+    .ui-tabs-anchor {
+      float: left;
+      padding: .5em 1em;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: 600;
+    }
+    li {
+      font-size: 18px;
+      list-style: none;
+      text-align: center;
+      position: relative;
+      top: 0;
+      margin: 0;
+      border-bottom-width: 0;
+      padding: 0;
+      white-space: nowrap;
+      a {
+        color: $text-color;
+        border-bottom: 2px solid transparent;
+        display: block;
+        width: 100%;
+      }
+      @media (min-width: 768px) {
+        float: left;
+        text-align: left;
+        a {
+          display: inline-block;
+        }
+      }
+      @media (min-width: 992px) {
+        float: left;
+        text-align: left;
+      }
+      @media (min-width: 1200px) {
+        float: left;
+        text-align: left;
+      }
+      &.ui-tabs-active {
+        margin-bottom: -1px;
+        padding-bottom: 1px;
+        a {
+          position: relative;
+          border-bottom: 2px solid #F66718;
+
+        }
+      }
+    }
+  }
 }
 
-.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
-  float: left;
-  padding: .5em 1em;
-  text-decoration: none
-}
-
-.ui-tabs .ui-tabs-nav li.ui-tabs-active {
-  margin-bottom: -1px;
-  padding-bottom: 1px
-}
-
-.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor, .ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor, .ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
-  cursor: text
-}
-
-.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor {
+.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
+.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
+.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
   cursor: pointer
 }
 
-.ui-tabs .ui-tabs-panel {
-  display: block;
-  border-width: 0;
-  padding: 1rem 0;
-  background: none
-}
+
 
 .ui-tabs .ui-state-default,
 .ui-tabs .ui-widget-content .ui-state-default,
-.ui-tabs .ui-widget-header .ui-state-default{
+.ui-tabs .ui-widget-header .ui-state-default {
   background: none;
-  border:0;
+  border: 0;
 }
+
 .ui-tooltip {
   padding: 8px;
   position: absolute;
