@@ -28,7 +28,7 @@ class m171204_202402_grid_columns extends Migration {
             'column_key' => $this->string(25)->notNull(),
             'ordern' => $this->integer(),
         ]);
-        $this->createIndexes(['modelClass', 'column_key', 'ordern']);
+        $this->createIndexes(['modelClass', 'column_key', 'ordern','grid_id']);
         
     }
 
