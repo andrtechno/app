@@ -14,7 +14,8 @@ return [
     'controllerNamespace' => 'app\commands',
     'language' => 'ru',
     'modules' => [
-        'gii' => 'yii\gii\Module',
+        'gii' => ['class' => 'yii\gii\Module'],
+        'shop' => ['class' => 'panix\mod\shop\Module'],
     ],
     'controllerMap' => [
         'sitemap' => [
@@ -25,7 +26,8 @@ return [
            // 'migrationPath' => null,
             'migrationNamespaces' => [
                 'app\migrations',
-                //'panix\mod\discounts\migrations',
+                'panix\mod\discounts\migrations',
+                'lo\plugins\migrations',
                 //'panix\mod\shop\migrations',
             ],
             'templateFile' => '@vendor/panix/engine/views/migration.php',
@@ -44,7 +46,7 @@ return [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['guest', 'user'],
         ],
-        'robotsTxt' => [
+        /*'robotsTxt' => [
             'class' => 'app\modules\sitemap\RobotsTxt',
             'userAgent' => [
                 // Disallow url for all bots
@@ -66,7 +68,7 @@ return [
                     ],
                 ],
             ],
-        ],
+        ],*/
         'sitemap' => [
             'class' => 'app\modules\sitemap\Sitemap',
             'models' => [

@@ -14,6 +14,7 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
+        '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',
     ],
     //'sourceLanguage'=>'ru',
     // 'runtimePath'=>'runtime',
@@ -21,7 +22,9 @@ $config = [
     'defaultRoute' => 'main/main',
     'bootstrap' => [
         'log',
+        'plugins',
         'maintenanceMode',
+        'panix\engine\BootstrapModule'
         //'panix\mod\shop\Module',
     ], //'webcontrol',
     'controllerMap' => [
@@ -29,9 +32,25 @@ $config = [
 
     ],
     'modules' => [
+        'plugins' => [
+            'class' => 'lo\plugins\Module',
+            'pluginsDir' => [
+                '@lo/plugins/core',
+                '@app/backups', // default dir with core plugins
+                // '@common/plugins', // dir with our plugins
+            ]
+        ],
         'sitemap' => [
             'class' => 'app\modules\sitemap\Module',
         ],
+        //'rbac' => [
+        //     'class' => 'yii2mod\rbac\Module',
+            //'class' => 'mdm\admin\Module',
+           // 'class' => 'johnitvn\rbacplus\Module'
+            //'as access' => [
+            //     'class' => yii2mod\rbac\filters\AccessControl::class
+            // ],
+        //],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         //'stats' => ['class' => 'panix\mod\stats\Module'],
@@ -66,11 +85,30 @@ $config = [
           ], */
     ],
     'components' => [
+        // 'plugins' => [
+        //    'class' => 'lo\plugins\components\EventBootstrap',
+        //    'appId' => 'frontend'
+        //],
+        'plugins' => [
+            'class' => lo\plugins\components\PluginsManager::class,
+            'appId' => 1, // lo\plugins\BasePlugin::APP_FRONTEND,
+            // by default
+            'enablePlugins' => true,
+            //'shortcodesParse' => true,
+            //'shortcodesIgnoreBlocks' => [
+            //    '<pre[^>]*>' => '<\/pre>',
+                //'<div class="content[^>]*>' => '<\/div>',
+           // ]
+        ],
         'reCaptcha' => [
             'name' => 'reCaptcha',
             'class' => 'panix\engine\widgets\recaptcha\ReCaptcha',
-            'siteKey' => '6LeiV24UAAAAANsxGR9ocCgk4Bv-FMBwlF1ycJu4',
-            'secret' => '6LeiV24UAAAAAE92qFgDJZ6hxJak5aut1npbQhfH',
+            'siteKey' => '6LfJqpYUAAAAAMKYmNUctjXeTkQrx74R2LHaM0r7',
+            'secret' => '6LfJqpYUAAAAAGOItZcYABLTjDilBvgaAJE7vJL0',
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['guest', 'user'],
         ],
         'sphinx' => [
             'class' => 'yii\sphinx\Connection',
@@ -188,7 +226,9 @@ $config = [
             'destination' => Pdf::DEST_BROWSER,
             'mode' => Pdf::MODE_UTF8,
         ],
-        'formatter' => ['class' => 'panix\engine\i18n\Formatter'],
+        'formatter' => [
+            'class' => 'panix\engine\i18n\Formatter'
+        ],
         'currency' => ['class' => 'panix\mod\shop\components\CurrencyManager'],
         'cart' => ['class' => 'panix\mod\cart\components\Cart'],
         'maintenanceMode' => [
@@ -212,9 +252,9 @@ $config = [
                 ],
                 'panix\lib\google\maps\MapAsset' => [
                     'options' => [
-                        'key' => 'AIzaSyAqDp9tu6LqlD6I1chjuZNV3yS6HNB_3Q0 ',
+                        'key' => 'AIzaSyB5BYRPxlqTN9GwnZHQbmW-eJxT7ZxyAfM',
                         'language' => 'ru',
-                        'version' => '3.1.18'
+                        'version' => '3.39'
                     ]
                 ]
             ],
@@ -222,7 +262,8 @@ $config = [
             'appendTimestamp' => true
         ],
         'view' => [
-            'class' => 'panix\engine\View',
+            // 'class' => 'panix\engine\View',
+            'class' => lo\plugins\components\View::class,
             'as Layout' => [
                 'class' => \panix\engine\behaviors\LayoutBehavior::class,
             ],
@@ -259,7 +300,9 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
-        'cache' => ['class' => 'yii\caching\FileCache'], //DummyCache
+        'cache' => [
+            'class' => 'yii\caching\FileCache', //DummyCache
+        ],
         'user' => ['class' => 'panix\mod\user\components\User'],
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
@@ -349,6 +392,18 @@ $config = [
         'urlManager' => require(__DIR__ . '/urlManager.php'),
         'db' => require($db),
     ],
+    /*'as access' => [
+        'class' => yii2mod\rbac\filters\AccessControl::class,
+        'allowActions' => [
+           // '/*',
+            'admin/*',
+            // The actions listed here will be allowed to everyone including guests.
+            // So, 'admin/*' should not appear here in the production, of course.
+            // But in the earlier stages of your development, you may probably want to
+            // add a lot of actions here until you finally completed setting up rbac,
+            // otherwise you may not even take a first step.
+        ]
+    ],*/
     'params' => require(__DIR__ . '/params.php'),
 ];
 
@@ -356,11 +411,11 @@ if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug']['class'] = 'yii\debug\Module';
-   // $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
-    $config['modules']['debug']['traceLine'] = function($options, $panel) {
+    // $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
+    $config['modules']['debug']['traceLine'] = function ($options, $panel) {
         $filePath = $options['file'];
         $filePath = str_replace(Yii::$app->basePath, 'file://~/path/to/your/backend', $filePath);
-        $filePath = str_replace(dirname(Yii::$app->basePath) . '/common' , 'file://~/path/to/your/common', $filePath);
+        $filePath = str_replace(dirname(Yii::$app->basePath) . '/common', 'file://~/path/to/your/common', $filePath);
         $filePath = str_replace(Yii::$app->vendorPath, 'file://~/path/to/your/vendor', $filePath);
         return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
     };
