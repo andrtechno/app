@@ -90,7 +90,7 @@ $this->registerJs("
                             </li>
                         <?php } else { ?>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false"><?= Yii::$app->user->displayName; ?>
                                 </a>
                                 <div class="dropdown-menu">
@@ -133,9 +133,7 @@ $this->registerJs("
             <div class="col-lg-3">
 
                 <?php echo \panix\mod\cart\widgets\cart\CartWidget::widget(['skin' => 'dropdown']); ?>
-                <?php
 
-                ?>
             </div>
         </div>
 

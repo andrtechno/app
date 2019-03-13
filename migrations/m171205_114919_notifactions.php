@@ -11,14 +11,14 @@ namespace app\migrations;
  * Class m171205_114919_notifactions
  */
 use panix\engine\db\Migration;
+use panix\mod\admin\models\Notifications;
 
-class m171205_114919_notifactions extends Migration
+class m171205_114919_notifications extends Migration
 {
-
-    public $tableName = '{{%notifactions}}';
 
     public function up()
     {
+        $this->tableName = Notifications::tableName();
         $this->createTable($this->tableName, [
             'id' => $this->primaryKey(),
             'type' => "ENUM('default', 'info', 'success', 'danger', 'warning')",
@@ -33,6 +33,7 @@ class m171205_114919_notifactions extends Migration
 
     public function down()
     {
+        $this->tableName = Notifications::tableName();
         $this->dropTable($this->tableName);
     }
 

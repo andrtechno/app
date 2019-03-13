@@ -16,11 +16,13 @@ class ThemeAsset extends AssetBundle {
 
 
     public $css = [
+        'css/app.css',
         'css/style.css',
         //'css/shop.css'
     ];
 
     public $depends = [
+        'panix\engine\assets\JqueryCookieAsset',
         'panix\engine\assets\CommonAsset',
         'panix\mod\shop\assets\WebAsset',
         'panix\mod\comments\assets\WebAsset',
