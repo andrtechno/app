@@ -6,7 +6,7 @@ use panix\engine\pdf\Pdf;
 
 $db = YII_DEBUG ? __DIR__ . '/db_local.php' : __DIR__ . '/db.php';
 $config = [
-    'id' => 'panix',
+    'id' => 'frontend',
     'name' => 'PIXELION CMS',
     //'basePath' => dirname(__DIR__) . '/../', //if in web dir
     'basePath' => dirname(__DIR__),
@@ -17,7 +17,7 @@ $config = [
         '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',
     ],
     //'sourceLanguage'=>'ru',
-    // 'runtimePath'=>'runtime',
+    'runtimePath'=>'@app/web/runtime',
     'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'main/main',
     'bootstrap' => [
@@ -25,11 +25,9 @@ $config = [
         'plugins',
         'maintenanceMode',
         'panix\engine\BootstrapModule'
-        //'panix\mod\shop\Module',
     ], //'webcontrol',
     'controllerMap' => [
         'main' => 'panix\engine\controllers\WebController',
-
     ],
     'modules' => [
         'plugins' => [
@@ -45,11 +43,11 @@ $config = [
         ],
         //'rbac' => [
         //     'class' => 'yii2mod\rbac\Module',
-            //'class' => 'mdm\admin\Module',
-           // 'class' => 'johnitvn\rbacplus\Module'
-            //'as access' => [
-            //     'class' => yii2mod\rbac\filters\AccessControl::class
-            // ],
+        //'class' => 'mdm\admin\Module',
+        // 'class' => 'johnitvn\rbacplus\Module'
+        //'as access' => [
+        //     'class' => yii2mod\rbac\filters\AccessControl::class
+        // ],
         //],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
@@ -97,8 +95,8 @@ $config = [
             //'shortcodesParse' => true,
             //'shortcodesIgnoreBlocks' => [
             //    '<pre[^>]*>' => '<\/pre>',
-                //'<div class="content[^>]*>' => '<\/div>',
-           // ]
+            //'<div class="content[^>]*>' => '<\/div>',
+            // ]
         ],
         'reCaptcha' => [
             'name' => 'reCaptcha',
@@ -229,11 +227,8 @@ $config = [
         'formatter' => [
             'class' => 'panix\engine\i18n\Formatter'
         ],
-        'currency' => ['class' => 'panix\mod\shop\components\CurrencyManager'],
-        'cart' => ['class' => 'panix\mod\cart\components\Cart'],
         'maintenanceMode' => [
             'class' => 'panix\engine\maintenance\MaintenanceMode',
-
             // Allowed roles
             //'roles' => [
             //    'admin',
@@ -246,9 +241,9 @@ $config = [
             'bundles' => [
                 //'yii\jui\JuiAsset' => ['css' => []],
                 'yii\jui\JuiAsset' => [
-                    'js' => [
-                        'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
-                    ]
+                    //'js' => [
+                    //'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
+                    //]
                 ],
                 'panix\lib\google\maps\MapAsset' => [
                     'options' => [
@@ -267,6 +262,7 @@ $config = [
             'as Layout' => [
                 'class' => \panix\engine\behaviors\LayoutBehavior::class,
             ],
+
             'renderers' => [
                 'tpl' => [
                     'class' => 'yii\smarty\ViewRenderer',
@@ -293,17 +289,24 @@ $config = [
         ],
         //'session' => [
         //    'class' => '\panix\engine\web\DbUserSession',
-        // ],
+         //   'name' => 'frontend',
+         //],
         'request' => [
             'class' => 'panix\engine\WebRequest',
             'baseUrl' => '',
+           // 'csrfParam' => '_csrf-frontend',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache', //DummyCache
+
         ],
-        'user' => ['class' => 'panix\mod\user\components\User'],
+        'user' => [
+            'class' => 'panix\mod\user\components\User',
+            //'enableAutoLogin' => true,
+            //'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+        ],
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
             'clients' => [
@@ -343,15 +346,10 @@ $config = [
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
-                /* [
-                     'class' => 'yii\log\FileTarget',
-                     'levels' => ['error', 'warning'],
-                     'logFile' => '@runtime/logs/app.log'
-                     // 'categories' => ['yii\db\*']
-                 ],*/
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
+                    'logVars' => [],
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/db.log',
                     'categories' => ['yii\db\*']
                 ],
@@ -365,28 +363,29 @@ $config = [
                     'levels' => ['info'],
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/info.log',
                 ],
-                // [
-                //     'class' => 'yii\log\DbTarget',
-                //     'levels' => ['error', 'warning'],
-                //'categories' => ['yii\db\*']
-                //],
+                [
+                    'class' => 'yii\log\EmailTarget',
+                    'levels' => ['error'],
+                    'categories' => ['yii\db\*'],
+                    'message' => [
+                        'from' => ['log@pixelion.com.ua'],
+                        'to' => ['dev@pixelion.com.ua'],
+                        'subject' => 'Ошибки базы данных на сайте app',
+                    ],
+                ],
+                /*[
+                    'class' => 'yii\log\DbTarget',
+                    'levels' => ['error', 'warning'],
+                    'logTable' => '{{%log_error}}',
+                    'except' => [
+                        'yii\web\HttpException:404',
+                        'yii\web\HttpException:403',
+                        'yii\web\HttpException:400',
+                        'yii\i18n\PhpMessageSource::loadMessages'
+                    ],
+                ],*/
             ],
         ],
-        /* 'log' => [
-          'targets' => [
-          [
-          'class' => 'yii\log\DbTarget',
-          'levels' => ['error', 'warning'],
-          'logTable' => '{{%log_error}}',
-          'except' => [
-          'yii\web\HttpException:404',
-          'yii\web\HttpException:403',
-          'yii\web\HttpException:400',
-          'yii\i18n\PhpMessageSource::loadMessages'
-          ],
-          ],
-          ]
-          ], */
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
         'settings' => ['class' => 'panix\engine\components\Settings'],
         'urlManager' => require(__DIR__ . '/urlManager.php'),
@@ -409,14 +408,14 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    $config['bootstrap'][] = 'debug';
+    //$config['bootstrap'][] = 'debug';
     $config['modules']['debug']['class'] = 'yii\debug\Module';
     // $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
     $config['modules']['debug']['traceLine'] = function ($options, $panel) {
         $filePath = $options['file'];
-        $filePath = str_replace(Yii::$app->basePath, 'file://~/path/to/your/backend', $filePath);
-        $filePath = str_replace(dirname(Yii::$app->basePath) . '/common', 'file://~/path/to/your/common', $filePath);
-        $filePath = str_replace(Yii::$app->vendorPath, 'file://~/path/to/your/vendor', $filePath);
+        // $filePath = str_replace(Yii::$app->basePath, 'file://~/path/to/your/backend', $filePath);
+        // $filePath = str_replace(dirname(Yii::$app->basePath) . '/common', 'file://~/path/to/your/common', $filePath);
+        /// $filePath = str_replace(Yii::$app->vendorPath, 'file://~/path/to/your/vendor', $filePath);
         return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
     };
     //$config['modules']['debug']['dataPath'] = '@runtime/debug';
