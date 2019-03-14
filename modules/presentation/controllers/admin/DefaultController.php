@@ -2,6 +2,7 @@
 
 namespace app\modules\presentation\controllers\admin;
 
+use panix\engine\controllers\AdminController;
 use Yii;
 use panix\engine\Html;
 use PhpOffice\PhpWord\PhpWord;
@@ -11,7 +12,7 @@ use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\Shared\Html as WordHtml;
 
 
-class DefaultController extends CommonController {
+class DefaultController extends AdminController {
 
     public function actionIndex() {
         return $this->render('index');

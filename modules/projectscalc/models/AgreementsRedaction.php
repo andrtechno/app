@@ -79,7 +79,7 @@ class AgreementsRedaction extends \panix\engine\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%agreements_redaction}}';
+        return '{{%agreements__redaction}}';
     }
 
     /**

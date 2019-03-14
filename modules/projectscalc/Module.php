@@ -16,7 +16,7 @@ class Module extends WebModule
                 'items' => [
                     [
                         'label' => Yii::t('projectscalc/default', 'MODULE_NAME'),
-                        'url' => ['/admin/projectscalc'],
+                        //'url' => ['/admin/projectscalc'],
                         'icon' => 'calculator',
                         'items' => [
                             [

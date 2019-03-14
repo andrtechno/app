@@ -19,14 +19,14 @@ class m171205_103329_agreements extends \panix\engine\db\Migration {
             'date_update' => $this->timestamp()
         ]);
 
-        $this->createTable('{{%agreements_redaction}}', [
+        $this->createTable('{{%agreements__redaction}}', [
             'id' => $this->primaryKey(),
             'performer' => $this->string(255),
             'date_create' => $this->timestamp()->defaultValue(null),
             'date_update' => $this->timestamp()
         ]);
 
-        $this->createTable('{{%agreements_redaction_translate}}', [
+        $this->createTable('{{%agreements__redaction_translate}}', [
             'id' => $this->primaryKey(),
             'language_id' => $this->string(2),
             'object_id' => $this->integer(),
@@ -36,14 +36,14 @@ class m171205_103329_agreements extends \panix\engine\db\Migration {
         $this->createIndex('redaction_id', '{{%agreements}}', 'redaction_id');
         $this->createIndex('calc_id', '{{%agreements}}', 'calc_id');
         
-        $this->createIndex('language_id', '{{%agreements_redaction_translate}}', 'language_id');
-        $this->createIndex('object_id', '{{%agreements_redaction_translate}}', 'object_id');
+        $this->createIndex('language_id', '{{%agreements__redaction_translate}}', 'language_id');
+        $this->createIndex('object_id', '{{%agreements__redaction_translate}}', 'object_id');
     }
 
     public function down() {
         $this->dropTable('{{%agreements}}');
-        $this->dropTable('{{%agreements_redaction}}');
-        $this->dropTable('{{%agreements_redaction_translate}}');
+        $this->dropTable('{{%agreements__redaction}}');
+        $this->dropTable('{{%agreements__redaction_translate}}');
     }
 
 }

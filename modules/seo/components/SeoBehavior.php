@@ -39,25 +39,26 @@ class SeoBehavior extends \yii\base\Behavior {
     }
 
     public function afterSave() {
-        $owner = $this->owner;
-        if ($owner->isNewRecord) {
-            $seo = new SeoUrl;
-        } else {
-
-
-            $seo = SeoUrl::find()->where(['url' => Yii::$app->urlManager->createUrl($owner->getUrl())])->one();
-            if (!$seo) {
+        if (!Yii::$app instanceof \yii\console\Application) {
+            $owner = $this->owner;
+            if ($owner->isNewRecord) {
                 $seo = new SeoUrl;
+            } else {
+
+
+                $seo = SeoUrl::find()->where(['url' => Yii::$app->urlManager->createUrl($owner->getUrl())])->one();
+                if (!$seo) {
+                    $seo = new SeoUrl;
+                }
             }
+            $seo->attributes = Yii::$app->request->post('SeoUrl');
+            $seo->url = Yii::$app->urlManager->createUrl($owner->getUrl());
+            $seo->save(false);
+            return true;
         }
-        $seo->attributes = Yii::$app->request->post('SeoUrl');
-        $seo->url = Yii::$app->urlManager->createUrl($owner->getUrl());
-        $seo->save(false);
-        return true;
     }
 
     /**
-     * @param CEvent $event
      * @return mixed
      */
     public function afterDelete() {

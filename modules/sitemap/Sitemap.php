@@ -173,7 +173,7 @@ class Sitemap extends \yii\base\Component
         }
         $this->renderedUrls = array_map(function($item) {
           //  $item['loc'] = Url::to($item['loc'], true);
-            $item['loc'] = $item['loc'];
+           // $item['loc'] = $item['loc'];
             if (isset($item['lastmod'])) {
                 $item['lastmod'] = Sitemap::dateToW3C($item['lastmod']);
             }
