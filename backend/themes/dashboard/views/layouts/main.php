@@ -36,8 +36,8 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
 
             });
-            $.widget.bridge('uibutton', $.ui.button);
-            $.widget.bridge('uitooltip', $.ui.tooltip);
+            //$.widget.bridge('uibutton', $.ui.button);
+            //$.widget.bridge('uitooltip', $.ui.tooltip);
             $('.fadeOut-time').delay(2000).fadeOut(2000);
             $('.bootstrap-tooltip').tooltip();
         });

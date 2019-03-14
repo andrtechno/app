@@ -16,29 +16,25 @@ return [
     'modules' => [
         'gii' => ['class' => 'yii\gii\Module'],
         'shop' => ['class' => 'panix\mod\shop\Module'],
+        'images' => ['class' => 'panix\mod\images\Module'],
+        'cart' => ['class' => 'panix\mod\cart\Module'],
+        'pages' => ['class' => 'panix\mod\pages\Module'],
+        'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
+        'user' => ['class' => 'panix\mod\user\Module'],
+        'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
+        'admin' => ['class' => 'panix\mod\admin\Module'],
     ],
     'controllerMap' => [
         'sitemap' => [
             'class' => 'app\modules\sitemap\console\CreateController',
         ],
         'migrate' => [
-            'class' => 'yii\console\controllers\MigrateController',
+            'class' => 'panix\engine\console\controllers\MigrateController',
            // 'migrationPath' => null,
             'migrationNamespaces' => [
                 'app\migrations',
-                'panix\mod\discounts\migrations',
                 'lo\plugins\migrations',
-                //'panix\mod\shop\migrations',
             ],
-            'templateFile' => '@vendor/panix/engine/views/migration.php',
-            /* 'generatorTemplateFiles' => [
-              'create_table' => '@vendor/panix/engine/views/createTableMigration.php',
-              'drop_table' => '@vendor/panix/engine/views/dropTableMigration.php',
-              'add_column' => '@vendor/panix/engine/views/addColumnMigration.php',
-              'drop_column' => '@vendor/panix/engine/views/dropColumnMigration.php',
-              'create_junction' => '@vendor/panix/engine/views/createTableMigration.php'
-              ], */
-            'useTablePrefix' => true,
         ]
     ],
     'components' => [
@@ -157,6 +153,22 @@ return [
         /*'urlManager' => [
             'scriptUrl' => 'http://app.loc',
             'baseUrl' => '',
+        ],*/
+        /*'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@vendor/panix/engine/messages',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                        'app/admin' => 'admin.php',
+                        'app/month' => 'month.php',
+                        'app/error' => 'error.php',
+                        'app/geoip_country' => 'geoip_country.php',
+                        'app/geoip_city' => 'geoip_city.php',
+                    ],
+                ],
+            ],
         ],*/
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
         'urlManager'=>\yii\helpers\ArrayHelper::merge([

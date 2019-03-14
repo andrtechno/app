@@ -21,6 +21,8 @@ use panix\engine\widgets\langSwitcher\LangSwitcher;
         ?>
     </div>
     <ul class="navbar-right">
+        <li><?= Html::a(Html::icon('user') .' '. Yii::$app->user->displayName, '/', array('target' => '_blank', 'class' => 'nav-link')) ?></li>
+        <li><?= Html::a(Html::icon('notification'), '/', array('target' => '_blank', 'class' => 'nav-link')) ?></li>
         <li><?= Html::a(Html::icon('home'), '/', array('target' => '_blank', 'class' => 'nav-link')) ?></li>
         <li><?= Html::a(Html::icon('locked'), ['/user/logout'], ['data-method' => "post"]) ?></li>
         <li><?= LangSwitcher::widget() ?></li>

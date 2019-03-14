@@ -208,9 +208,9 @@ $config = [
             'bundles' => [
                 //'yii\jui\JuiAsset' => ['css' => []],
                 'yii\jui\JuiAsset' => [
-                    'js' => [
-                        'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
-                    ]
+                    //'js' => [
+                        //'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
+                    //]
                 ],
                 'panix\lib\google\maps\MapAsset' => [
                     'options' => [
@@ -272,7 +272,7 @@ $config = [
             'class' => 'yii\caching\FileCache', //DummyCache
         ],
         'user' => [
-            'class' => 'panix\mod\user\components\User',
+            'class' => 'panix\mod\user\components\WebUser',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],

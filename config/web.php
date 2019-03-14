@@ -303,7 +303,7 @@ $config = [
 
         ],
         'user' => [
-            'class' => 'panix\mod\user\components\User',
+            'class' => 'panix\mod\user\components\WebUser',
             //'enableAutoLogin' => true,
             //'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
