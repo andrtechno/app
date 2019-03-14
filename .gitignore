@@ -14,3 +14,4 @@ config/db.php
 composer.lock
 
 /web/themes/*/assets/.sass-cache
+/backend/themes/*/assets/.sass-cache
