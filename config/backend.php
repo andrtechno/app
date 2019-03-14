@@ -362,11 +362,11 @@ $config = [
                 ['pattern' => 'auth', 'route' => 'admin/auth'],
                 ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
                 ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/admin/<controller>/<action>'],
-                ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
-                ['pattern' => '<module:\w+>/<controller:\w+>', 'route' => '<module>/admin/<controller>'],
-                ['pattern' => '<module:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/default/<action>'],
-                ['pattern' => '<module:\w+>/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
 
+                ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
+                //['pattern' => '<module:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/default/<action>'],
+                ['pattern' => '<module:\w+>/<controller:\w+>', 'route' => '<module>/admin/<controller>'],
+                ['pattern' => '<module:\w+>/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
 
 
 
