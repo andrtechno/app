@@ -31,10 +31,10 @@ return [
         'migrate' => [
             'class' => 'panix\engine\console\controllers\MigrateController',
            // 'migrationPath' => null,
-            'migrationNamespaces' => [
-                'app\migrations',
-                'lo\plugins\migrations',
-            ],
+            //'migrationNamespaces' => [
+               // 'app\migrations',
+               // 'lo\plugins\migrations',
+           // ],
         ]
     ],
     'components' => [

@@ -2,7 +2,9 @@
 
 use panix\engine\pdf\Pdf;
 //echo dirname(__DIR__),'/backend';die;
-Yii::setAlias('@app', dirname(__DIR__),'/backend');
+Yii::setAlias('@app', dirname(__DIR__).'/backend');
+Yii::setAlias('@frontend', dirname(__DIR__).'/web');
+
 
 $db = YII_DEBUG ? __DIR__ . '/db_local.php' : __DIR__ . '/db.php';
 $config = [
@@ -32,14 +34,16 @@ $config = [
         'sitemap' => [
             'class' => 'app\modules\sitemap\Module',
         ],
-        //'rbac' => [
-        //     'class' => 'yii2mod\rbac\Module',
-        //'class' => 'mdm\admin\Module',
-        // 'class' => 'johnitvn\rbacplus\Module'
-        //'as access' => [
-        //     'class' => yii2mod\rbac\filters\AccessControl::class
-        // ],
-        //],
+
+        'rbac' => [
+            'class' => 'yii2mod\rbac\Module',
+            //'class' => 'mdm\admin\Module',
+            //'class' => 'johnitvn\rbacplus\Module'
+            'as access' => [
+                'class' => yii2mod\rbac\filters\AccessControl::class
+            ],
+        ],
+
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         //'stats' => ['class' => 'panix\mod\stats\Module'],
@@ -365,8 +369,8 @@ $config = [
 
                 ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
                 //['pattern' => '<module:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/default/<action>'],
-                ['pattern' => '<module:\w+>/<controller:\w+>', 'route' => '<module>/admin/<controller>'],
-                ['pattern' => '<module:\w+>/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>'],
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
 
 
 

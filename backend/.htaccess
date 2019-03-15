@@ -1,5 +1,5 @@
-RewriteEngine On
-#RewriteEngine On RewriteBase /admin
+#RewriteEngine On
+RewriteEngine On RewriteBase /admin
 
 
 RewriteCond %{REQUEST_FILENAME} !-f

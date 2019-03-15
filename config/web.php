@@ -17,7 +17,7 @@ $config = [
         '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',
     ],
     //'sourceLanguage'=>'ru',
-    'runtimePath'=>'@app/web/runtime',
+    'runtimePath' => '@app/web/runtime',
     'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'main/main',
     'bootstrap' => [
@@ -41,14 +41,14 @@ $config = [
         'sitemap' => [
             'class' => 'app\modules\sitemap\Module',
         ],
-        //'rbac' => [
-        //     'class' => 'yii2mod\rbac\Module',
-        //'class' => 'mdm\admin\Module',
-        // 'class' => 'johnitvn\rbacplus\Module'
-        //'as access' => [
-        //     'class' => yii2mod\rbac\filters\AccessControl::class
-        // ],
-        //],
+        'rbac' => [
+            'class' => 'yii2mod\rbac\Module',
+            //'class' => 'mdm\admin\Module',
+            //'class' => 'johnitvn\rbacplus\Module'
+            'as access' => [
+                'class' => yii2mod\rbac\filters\AccessControl::class
+            ],
+        ],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         //'stats' => ['class' => 'panix\mod\stats\Module'],
@@ -289,12 +289,12 @@ $config = [
         ],
         //'session' => [
         //    'class' => '\panix\engine\web\DbUserSession',
-         //   'name' => 'frontend',
-         //],
+        //   'name' => 'frontend',
+        //],
         'request' => [
             'class' => 'panix\engine\WebRequest',
             'baseUrl' => '',
-           // 'csrfParam' => '_csrf-frontend',
+            // 'csrfParam' => '_csrf-frontend',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
