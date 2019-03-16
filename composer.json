@@ -25,7 +25,6 @@
         "phpoffice/phpword": "v0.13.*",
         "yii2mod/yii2-rbac": "dev-master",
         "mdmsoft/yii2-admin": "~2.0",
-        "johnitvn/yii2-rbac-plus": "dev-master",
         "loveorigami/yii2-plugins-system": "dev-master",
         "panix/wgt-telinput": "dev-master"
     },
