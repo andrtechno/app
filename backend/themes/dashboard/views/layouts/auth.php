@@ -1,8 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-
-panix\mod\admin\assets\AdminLoginAsset::register($this);
+use app\backend\themes\dashboard\assets\AdminLoginAsset;
+AdminLoginAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

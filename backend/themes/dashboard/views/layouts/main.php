@@ -1,14 +1,9 @@
 <?php
 
 use panix\engine\Html;
-use panix\engine\widgets\Breadcrumbs;
-use Viber\Bot;
-use Viber\Api\Sender;
+use app\backend\themes\dashboard\assets\AdminAsset;
 
-
-use Viber\Client;
-
-panix\mod\admin\assets\AdminAsset::register($this);
+AdminAsset::register($this);
 
 $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : false;
 ?>
@@ -174,7 +169,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                               echo "intl false";
                               } */
 
-                            echo date('Y-m-d H:i:s');
+
                             /*
                               use panix\hosting\Api;
 

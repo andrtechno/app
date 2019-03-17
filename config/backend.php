@@ -1,9 +1,10 @@
 <?php
 
 use panix\engine\pdf\Pdf;
-//echo dirname(__DIR__),'/backend';die;
-Yii::setAlias('@app', dirname(__DIR__).'/backend');
+
+//Yii::setAlias('@app', dirname(__DIR__).'/backend');
 Yii::setAlias('@frontend', dirname(__DIR__).'/web');
+Yii::setAlias('@backend', dirname(__DIR__).'/backend');
 
 
 $db = YII_DEBUG ? __DIR__ . '/db_local.php' : __DIR__ . '/db.php';
