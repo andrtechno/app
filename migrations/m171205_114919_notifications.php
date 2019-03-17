@@ -8,7 +8,7 @@ namespace app\migrations;
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
  *
- * Class m171205_114919_notifactions
+ * Class m171205_114919_notifications
  */
 use panix\engine\db\Migration;
 use panix\mod\admin\models\Notifications;
