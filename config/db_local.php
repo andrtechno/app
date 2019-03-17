@@ -2,9 +2,9 @@
 
 return [
     'class' => 'panix\engine\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2',
+    'dsn' => 'mysql:host=localhost;dbname=db',
     'username' => 'root',
-    'password' => '47228960panix',
+    'password' => '',
     //'charset'=>'utf8',
     'charset' => 'utf8mb4', //utf8_general_ci на utf8mb4_general_ci. FOR Emoji
     //'on afterOpen' => function($event) {
