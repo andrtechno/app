@@ -1,30 +1,99 @@
 <?php
 use panix\engine\Html;
-use panix\engine\bootstrap\Nav;
+use panix\engine\bootstrap\BackendNav;
 use panix\engine\widgets\langSwitcher\LangSwitcher;
+use panix\engine\CMS;
 
 ?>
 <nav class="navbar navbar-expand-lg fixed-top">
 
     <a class="navbar-brand" href="/admin"><span class="d-none d-md-block"><?= strtoupper(Yii::$app->name); ?></span></a>
 
-    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar2">
+    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar">
         <span></span>
         <span></span>
         <span></span>
     </button>
-    <div id="navbar2" class="collapse navbar-collapse mr-auto">
+    <div id="navbar" class="collapse navbar-collapse mr-auto">
         <?php
-        echo Nav::widget([
+        echo BackendNav::widget([
             'options' => ['class' => 'nav navbar-nav mr-auto'],
         ]);
         ?>
     </div>
-    <ul class="navbar-right">
-        <li><?= Html::a(Html::icon('user') .' '. Yii::$app->user->displayName, '/', array('target' => '_blank', 'class' => 'nav-link')) ?></li>
-        <li><?= Html::a(Html::icon('notification'), '/', array('target' => '_blank', 'class' => 'nav-link')) ?></li>
-        <li><?= Html::a(Html::icon('home'), '/', array('target' => '_blank', 'class' => 'nav-link')) ?></li>
-        <li><?= Html::a(Html::icon('locked'), ['/user/logout'], ['data-method' => "post"]) ?></li>
-        <li><?= LangSwitcher::widget() ?></li>
-    </ul>
+
+
+    <?php
+
+
+    $langManager = Yii::$app->languageManager;
+    $languages = $langManager->getLanguages();
+    $currentDataArray = [];
+    foreach ($languages as $l) {
+        $currentDataArray[$l->code] = $l->name;
+    }
+
+    $current = $currentDataArray[Yii::$app->language];
+
+    $langItems = [];
+    if (count($languages) > 0) {
+        foreach ($languages as $lang) {
+
+            $link = ($lang->is_default) ? CMS::currentUrl() : '/' . $lang->code . CMS::currentUrl();
+
+            $langItems[] = [
+                'label' => Html::img($lang->getFlagUrl(), ['alt' => $lang->name]).' '.$lang->name,
+                'url' => $link,
+                'options' => ['class' => ($langManager->active->id == $lang->id) ? 'active' : '']
+            ];
+        }
+    }
+
+    /*foreach ($languages as $lang) {
+
+        $link = ($lang->is_default) ? CMS::currentUrl() : '/' . $lang->code . CMS::currentUrl();
+        $class = ($langManager->active->id == $lang->id) ? 'active' : '';
+        $temp = [];
+        $temp['label'] = $lang->name;
+        $temp['url'] = $link;
+        $temp['options']=['class'=>$class];
+        array_push($items, $temp);
+    }*/
+
+
+    // print_r($langItems);die;
+
+    echo \panix\engine\bootstrap\Nav::widget([
+        'encodeLabels' => false,
+        'items' => [
+            [
+                'label' => Html::icon('user') . ' ' . Yii::$app->user->displayName,
+                'url' => ['/site/index']
+            ],
+            [
+                'label' => Html::icon('notification'),
+                'url' => ['/site/about']
+            ],
+            [
+                'label' => Html::icon('home'),
+                'url' => ['/site/about']
+            ],
+            [
+                'label' => Html::icon('locked'),
+                'url' => ['/user/logout'],
+                'options' => ['data-method' => "post"]
+            ],
+            [
+                'label' => Html::img('/uploads/language/'.$langManager->active->code.'.png', ['alt' => '']),
+                'url' => '#',
+                'items' => $langItems,
+                'submenuOptions'=>['class'=>'dropdown-menu-right']
+
+            ],
+        ],
+        'options' => ['class' => 'navbar-right'],
+    ]);
+    ?>
+
+
 </nav>

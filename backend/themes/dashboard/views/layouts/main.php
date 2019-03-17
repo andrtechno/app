@@ -16,7 +16,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
     <!DOCTYPE html>
     <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=<?= Yii::$app->charset ?>"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=<?= Yii::$app->charset; ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <title><?= Yii::t('app/admin', 'ADMIN_PANEL'); ?></title>
         <?= Html::csrfMetaTags() ?>
@@ -151,7 +151,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                        <div id="page-nav">
+                        <div id="container-breadcrumbs">
                             <?php echo $this->render('partials/_breadcrumbs', ['breadcrumbs' => $this->context->breadcrumbs]); ?>
                             <?php echo $this->render('partials/_addonsMenu'); ?>
                         </div>

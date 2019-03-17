@@ -6,7 +6,7 @@ if (isset($breadcrumbs)) {
     echo Breadcrumbs::widget([
         'homeLink' => [
             'label' => Yii::t('yii', 'Home'),
-            'url' => ['/admin']
+            'url' => ['/']
         ],
         'scheme' => false,
         'links' => $breadcrumbs,

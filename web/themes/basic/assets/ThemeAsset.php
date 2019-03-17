@@ -2,7 +2,7 @@
 
 namespace app\web\themes\basic\assets;
 
-use yii\web\AssetBundle;
+use panix\engine\web\AssetBundle;
 
 class ThemeAsset extends AssetBundle {
 
