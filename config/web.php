@@ -3,6 +3,7 @@
 use panix\engine\pdf\Pdf;
 
 //Yii::setAlias('@runtime', '@webroot/web/runtime');
+Yii::setAlias('@frontend', dirname(__DIR__).'/web');
 
 $db = YII_DEBUG ? __DIR__ . '/db_local.php' : __DIR__ . '/db.php';
 $config = [

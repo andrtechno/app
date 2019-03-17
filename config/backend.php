@@ -267,7 +267,7 @@ $config = [
          ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
-            'baseUrl' => '/',
+            'baseUrl' => '/admin',
             'csrfParam' => '_csrf-backend',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
@@ -355,7 +355,7 @@ $config = [
                 'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
             ],
             'rules' => [
-                'admin/placeholder' => 'main/placeholder',
+                'placeholder' => 'main/placeholder',
 
 
                 //['pattern' => 'debug/<controller:\w+>', 'route' => 'debug/<controller>'],
@@ -367,10 +367,10 @@ $config = [
                 ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
                 ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/admin/<controller>/<action>'],
 
-                ['pattern' => 'admin/<module:\w+>', 'route' => '<module>/admin/default/index'],
+                ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
                 //['pattern' => '<module:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/default/<action>'],
-                ['pattern' => 'admin/<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>'],
-                ['pattern' => 'admin/<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>'],
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
 
 
 
