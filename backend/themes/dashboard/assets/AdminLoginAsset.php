@@ -12,7 +12,9 @@ class AdminLoginAsset extends AssetBundle {
         $this->sourcePath = \Yii::$app->view->theme->basePath . '/assets';
         parent::init();
     }
-
+    public $jsOptions = array(
+        'position' => \yii\web\View::POS_END
+    );
     public $css = [
         'css/dashboard.css',
         'css/login.css',

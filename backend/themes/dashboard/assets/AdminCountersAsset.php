@@ -2,8 +2,12 @@
 
 namespace app\backend\themes\dashboard\assets;
 
-use yii\web\AssetBundle;
+use panix\engine\web\AssetBundle;
 
+/**
+ * Class AdminCountersAsset
+ * @package app\backend\themes\dashboard\assets
+ */
 class AdminCountersAsset extends AssetBundle
 {
 
@@ -13,10 +17,6 @@ class AdminCountersAsset extends AssetBundle
         $this->sourcePath = \Yii::$app->view->theme->basePath . '/assets';
         parent::init();
     }
-
-    public $jsOptions = array(
-        'position' => \yii\web\View::POS_HEAD
-    );
 
     public $js = [
         'js/jquery.playSound.js',

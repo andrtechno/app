@@ -4,6 +4,26 @@ use panix\engine\Html;
 use app\backend\themes\dashboard\assets\AdminAsset;
 
 AdminAsset::register($this);
+$this->registerJs('
+$(document).ready(function () {
+
+    $(".panel-heading .grid-toggle").click(function (e) {
+        e.preventDefault();
+        $(this).find(\'i\').toggleClass("fa-chevron-down");
+    });
+    
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+    });
+    
+    //$.widget.bridge(\'uibutton\', $.ui.button);
+    //$.widget.bridge(\'uitooltip\', $.ui.tooltip);
+    $(\'.fadeOut-time\').delay(2000).fadeOut(2000);
+    $(\'.bootstrap-tooltip\').tooltip();
+});
+', \panix\engine\View::POS_END);
+
 
 $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : false;
 ?>
@@ -11,7 +31,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
     <!DOCTYPE html>
     <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=<?= Yii::$app->charset; ?>"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=<?= \Yii::$app->charset ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <title><?= Yii::t('app/admin', 'ADMIN_PANEL'); ?></title>
         <?= Html::csrfMetaTags() ?>
@@ -20,22 +40,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
     <body class="no-radius">
     <?php $this->beginBody() ?>
     <script>
-        $(document).ready(function () {
-            $(".panel-heading .grid-toggle").click(function (e) {
-                e.preventDefault();
-                $(this).find('i').toggleClass("fa-chevron-down");
-            });
-            $("#menu-toggle").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("active");
 
-
-            });
-            //$.widget.bridge('uibutton', $.ui.button);
-            //$.widget.bridge('uitooltip', $.ui.tooltip);
-            $('.fadeOut-time').delay(2000).fadeOut(2000);
-            $('.bootstrap-tooltip').tooltip();
-        });
     </script>
     <div id="wrapper-tpl">
         <?php echo $this->render('partials/_navbar'); ?>
