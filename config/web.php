@@ -3,7 +3,7 @@
 use panix\engine\pdf\Pdf;
 
 //Yii::setAlias('@runtime', '@webroot/web/runtime');
-Yii::setAlias('@frontend', dirname(__DIR__).'/web');
+Yii::setAlias('@frontend', dirname(__DIR__) . '/web');
 
 $db = YII_DEBUG ? __DIR__ . '/db_local.php' : __DIR__ . '/db.php';
 $config = [
@@ -35,8 +35,7 @@ $config = [
             'class' => 'lo\plugins\Module',
             'pluginsDir' => [
                 '@lo/plugins/core',
-                '@app/backups', // default dir with core plugins
-                // '@common/plugins', // dir with our plugins
+                '@panix/engine/plugins',
             ]
         ],
         'sitemap' => [
@@ -84,20 +83,16 @@ $config = [
           ], */
     ],
     'components' => [
-        // 'plugins' => [
-        //    'class' => 'lo\plugins\components\EventBootstrap',
-        //    'appId' => 'frontend'
-        //],
         'plugins' => [
             'class' => lo\plugins\components\PluginsManager::class,
-            'appId' => 1, // lo\plugins\BasePlugin::APP_FRONTEND,
+            'appId' => lo\plugins\BasePlugin::APP_FRONTEND,
             // by default
             'enablePlugins' => true,
-            //'shortcodesParse' => true,
-            //'shortcodesIgnoreBlocks' => [
-            //    '<pre[^>]*>' => '<\/pre>',
-            //'<div class="content[^>]*>' => '<\/div>',
-            // ]
+            'shortcodesParse' => true,
+            'shortcodesIgnoreBlocks' => [
+                '<pre[^>]*>' => '<\/pre>',
+               // '<div class="content[^>]*>' => '<\/div>',
+            ]
         ],
         'reCaptcha' => [
             'name' => 'reCaptcha',
@@ -264,12 +259,12 @@ $config = [
                 'class' => \panix\engine\behaviors\LayoutBehavior::class,
             ],
 
-            'renderers' => [
+            /*'renderers' => [
                 'tpl' => [
                     'class' => 'yii\smarty\ViewRenderer',
                     'cachePath' => '@runtime/Smarty/cache',
                 ],
-            ],
+            ],*/
             'theme' => ['class' => 'panix\engine\base\Theme'],
         ],
         'i18n' => [
@@ -288,10 +283,9 @@ $config = [
                 ],
             ],
         ],
-        //'session' => [
-        //    'class' => '\panix\engine\web\DbUserSession',
-        //   'name' => 'frontend',
-        //],
+        'session' => [
+            'class' => '\panix\engine\web\DbSession',
+        ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
             'baseUrl' => '',

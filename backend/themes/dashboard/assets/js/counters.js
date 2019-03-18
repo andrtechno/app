@@ -2,9 +2,8 @@ var xhr_notify;
 $(function () {
 
     setInterval(function () {
-        if(xhr_notify === undefined)
             reloadCounters();
-    }, 10000); //10000
+    }, 5000); //10000
 
     function reloadCounters() {
         var notifaction_list = [];

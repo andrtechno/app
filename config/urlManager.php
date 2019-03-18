@@ -12,10 +12,10 @@ return [
     //'ruleConfig' => [
     //    'class' => 'panix\engine\LanguageUrlRule' see ___LanguageUrlRule
     //],
-    //'normalizer' => [
-    //    'class' => 'yii\web\UrlNormalizer',
-    //    'action' => UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
-    //],
+    'normalizer' => [
+        'class' => 'yii\web\UrlNormalizer',
+        'action' => UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
+    ],
     'rules' => [
         'placeholder' => 'main/placeholder',
         // 'test' => 'web/test',

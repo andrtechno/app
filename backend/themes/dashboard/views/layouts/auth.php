@@ -3,6 +3,26 @@
 use yii\helpers\Html;
 use app\backend\themes\dashboard\assets\AdminLoginAsset;
 AdminLoginAsset::register($this);
+
+
+$this->registerJs('
+            $(function () {
+                var h = $(\'.card\').height();
+                var dh = $(window).height();
+                $(\'#loginbox\').css({\'margin-top\': (dh / 2) - h});
+                $(window).resize(function () {
+                    var h = $(\'.card\').height();
+                    var dh = $(window).height();
+                    $(\'#loginbox\').css({\'margin-top\': (dh / 2) - h});
+                });
+                $(\'.auth-logo\').hover(function () {
+                    // $(this).removeClass(\'zoomInDown\').addClass(\'swing\');
+                }, function () {
+                    //  $(this).removeClass(\'swing\');
+                });
+            });
+', \yii\web\View::POS_END);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -16,24 +36,7 @@ AdminLoginAsset::register($this);
     </head>
     <body class="no-radius">
         <?php $this->beginBody() ?>
-        <script>
-            $(function () {
-                var h = $('.card').height();
-                var dh = $(window).height();
-                $('#loginbox').css({'margin-top': (dh / 2) - h});
-                $(window).resize(function () {
-                    var h = $('.card').height();
-                    var dh = $(window).height();
-                    $('#loginbox').css({'margin-top': (dh / 2) - h});
-                });
-                $('.auth-logo').hover(function () {
-                    // $(this).removeClass('zoomInDown').addClass('swing');
-                }, function () {
-                    //  $(this).removeClass('swing');
-                });
-            });
 
-        </script>
         <div class="container">
             <div class="row">
             <div id="login-container" style="margin-top:80px;"

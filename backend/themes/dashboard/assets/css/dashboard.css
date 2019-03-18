@@ -1,4 +1,10 @@
 @charset "UTF-8";
+
+#form-signin .input-group-append{
+  position:absolute;
+  right:0;
+}
+
 .ui-helper-reset {
   margin: 0;
   padding: 0;

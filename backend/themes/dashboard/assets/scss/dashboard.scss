@@ -2,7 +2,10 @@
 @import "mixins";
 @import "ui";
 
-
+#form-signin .input-group-append{
+  position:absolute;
+  right:0;
+}
 .bootstrap-select .btn-light {
   border-color: #c9c9c9;
   background-color: #fff;

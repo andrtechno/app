@@ -246,6 +246,17 @@ $config = [
                 'name'=>'dashboard'
             ],
         ],
+        'plugins' => [
+            'class' => lo\plugins\components\PluginsManager::class,
+            'appId' => lo\plugins\BasePlugin::APP_BACKEND,
+            // by default
+            'enablePlugins' => true,
+            //'shortcodesParse' => true,
+            //'shortcodesIgnoreBlocks' => [
+            //    '<pre[^>]*>' => '<\/pre>',
+            //'<div class="content[^>]*>' => '<\/div>',
+            // ]
+        ],
         'i18n' => [
             'translations' => [
                 'app*' => [
@@ -263,8 +274,9 @@ $config = [
             ],
         ],
         'session' => [
-        //    'class' => '\panix\engine\web\DbUserSession',
-        'name' => 'backend',
+            'class' => '\panix\engine\web\DbSession',
+            //'class' => '\yii\web\DbSession',
+            //'writeCallback'=>['panix\engine\web\DbSession', 'writeFields']
          ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
@@ -315,6 +327,18 @@ $config = [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['info'],
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/info.log',
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['profile'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/profile.log',
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['trace'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/trace.log',
                 ],
                 [
                     'class' => 'yii\log\EmailTarget',
