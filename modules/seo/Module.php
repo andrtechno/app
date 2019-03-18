@@ -1,17 +1,24 @@
 <?php
+
 namespace app\modules\seo;
+
 use Yii;
-class Module extends \panix\engine\WebModule {
+use panix\engine\WebModule;
 
-    public $icon ='seo-monitor';
+class Module extends WebModule
+{
+
+    public $icon = 'seo-monitor';
 
 
-    public function afterInstall() {
+    public function afterInstall2()
+    {
         Yii::$app->db->import($this->id);
         return parent::afterInstall();
     }
 
-    public function afterUninstall() {
+    public function afterUninstall2()
+    {
         //Удаляем таблицу модуля
         Yii::$app->db->createCommand()->dropTable(Redirects::tableName());
         Yii::$app->db->createCommand()->dropTable(SeoMain::tableName());
@@ -19,24 +26,27 @@ class Module extends \panix\engine\WebModule {
         Yii::$app->db->createCommand()->dropTable(SeoUrl::tableName());
         return parent::afterUninstall();
     }
-    public function getInfo() {
+
+    public function getInfo()
+    {
         return [
             'label' => Yii::t('seo/default', 'MODULE_NAME'),
-            'author' => 'andrew.panix@gmail.com',
+            'author' => $this->author,
             'version' => '1.0',
             'icon' => $this->icon,
             'description' => Yii::t('seo/default', 'MODULE_DESC'),
-            'url' => ['/admin/seo'],
+            'url' => ['/seo'],
         ];
     }
 
-    public function getAdminMenu() {
+    public function getAdminMenu()
+    {
         return [
             'system' => [
-                'items' =>[
+                'items' => [
                     [
                         'label' => 'seo',
-                        'url' =>['/admin/seo'],
+                        'url' => ['/seo'],
                         'icon' => $this->icon,
                     ],
                 ],

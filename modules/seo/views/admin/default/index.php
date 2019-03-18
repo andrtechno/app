@@ -8,9 +8,6 @@ use panix\engine\grid\GridView;
 ?>
 
 
-
-
-
 <?php
 
 Pjax::begin([
@@ -25,8 +22,9 @@ GridView::widget([
     'filterModel' => $searchModel,
     'showFooter' => true,
     'footerRowOptions' => ['style' => 'font-weight:bold;', 'class' => 'text-center'],
-
-    'layout' => $this->render('@admin/views/layouts/_grid_layout', ['title' => $this->context->pageName]), //'{items}{pager}{summary}'
+    'layoutOptions' => [
+        'title' => $this->context->pageName
+    ],
     'columns' => [
         [
             'class' => 'yii\grid\SerialColumn',
@@ -37,8 +35,8 @@ GridView::widget([
         [
             'class' => 'panix\engine\grid\columns\ActionColumn',
             'template' => '{update} {switch} {delete}',
-                ]
-            ]
-        ]);
-        ?>
-        <?php Pjax::end(); ?>
+        ]
+    ]
+]);
+?>
+<?php Pjax::end(); ?>

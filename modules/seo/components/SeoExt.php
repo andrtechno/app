@@ -73,9 +73,9 @@ class SeoExt extends \yii\base\Component {
             }
         }
 
-        if ($titleFlag)
-            if(isset(Yii::$app->controller->title))
-                $this->printMeta('title', Html::encode(Yii::$app->controller->title));
+       if ($titleFlag)
+            if(isset(Yii::$app->view->title))
+                $this->printMeta('title', Html::encode(Yii::$app->view->title));
     }
 
     /*
@@ -91,18 +91,21 @@ class SeoExt extends \yii\base\Component {
                 foreach ($url->params as $paramData) {
                     $param = $this->getSeoparam($paramData);
                     if ($param) {
+
                         $url->title = str_replace('{'.$param['tpl'].'}', $param['item'], $url->title);
                     }
                 }
             }
-            $this->printMeta('title', $url->title);
+            Yii::$app->view->title = $url->title.'zzz';
+            //$this->printMeta('title', Yii::$app->view->title);
         } else {
             if (isset($controller->title)) {
-                $this->printMeta('title', $controller->title);
+                Yii::$app->view->title = $controller->title.'zzzzzz2';
             } else {
-                $this->printMeta('title', Yii::$app->settings->get('app', 'site_name'));
+                Yii::$app->view->title = Yii::$app->settings->get('app', 'site_name');
             }
         }
+        $this->printMeta('title', Yii::$app->view->title);
         if ($url->keywords) {
             if (isset($url->params)) {
                 foreach ($url->params as $paramData) {
