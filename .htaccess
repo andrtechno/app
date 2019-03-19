@@ -2,25 +2,30 @@ Options +FollowSymLinks
 IndexIgnore */*
 RewriteEngine On
 
-    # если /admin, то в backend
-    RewriteCond %{REQUEST_URI} ^/(admin)
-    RewriteRule ^admin/assets/(.*)$ backend/assets/$1 [L]
-    RewriteRule ^admin/css/(.*)$ backend/css/$1 [L]
-    RewriteRule ^admin/js/(.*)$ backend/js/$1 [L]
-    RewriteRule ^uploads/(.*)$ web/uploads/$1 [L]
-    #RewriteCond %{REQUEST_URI} !^/backend/(assets|css)/
-    RewriteCond %{REQUEST_URI} ^/(admin)
-    RewriteRule ^.*$ backend/index.php [L]
 
-    RewriteCond %{REQUEST_URI} ^/(assets|css|js|uploads)
-    RewriteRule ^assets/(.*)$ web/assets/$1 [L]
-    RewriteRule ^css/(.*)$ web/css/$1 [L]
-    RewriteRule ^js/(.*)$ web/js/$1 [L]
-    RewriteRule ^uploads/(.*)$ web/uploads/$1 [L]
-    RewriteRule ^(.*)$ web/$1 [L]
 
-    #RewriteCond %{REQUEST_URI} !^/backend/web(assets|css)/
-    RewriteCond %{REQUEST_URI} !index.php
-    RewriteCond %{REQUEST_FILENAME} !-f [OR]
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^.*$ web/index.php
+# если /admin, то в backend
+RewriteCond %{REQUEST_URI} ^/(admin)
+RewriteRule ^admin/assets/(.*)$ backend/assets/$1 [L]
+RewriteRule ^admin/css/(.*)$ backend/css/$1 [L]
+RewriteRule ^admin/js/(.*)$ backend/js/$1 [L]
+RewriteRule ^uploads/(.*)$ web/uploads/$1 [L]
+#RewriteCond %{REQUEST_URI} !^/backend/(assets|css)/
+RewriteCond %{REQUEST_URI} ^/(admin)
+RewriteRule ^.*$ backend/index.php [L]
+
+
+# frontend
+RewriteCond %{REQUEST_URI} ^/(assets|css|js|uploads)
+RewriteRule ^assets/(.*)$ frontend/assets/$1 [L]
+RewriteRule ^css/(.*)$ frontend/css/$1 [L]
+RewriteRule ^js/(.*)$ frontend/js/$1 [L]
+RewriteRule ^uploads/(.*)$ frontend/web/uploads/$1 [L]
+RewriteRule ^(favicon\.ico|robots\.txt|sitemap\.xml)$ frontend/web/$1 [L]
+
+
+#RewriteCond %{REQUEST_URI} !^/frontend/web/(assets|css)/
+RewriteCond %{REQUEST_URI} !index.php
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ frontend/index.php
