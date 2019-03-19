@@ -24,7 +24,6 @@
         "phpoffice/phppresentation": "dev-master",
         "phpoffice/phpword": "v0.13.*",
         "yii2mod/yii2-rbac": "dev-master",
-        "mdmsoft/yii2-admin": "~2.0",
         "panix/wgt-telinput": "dev-master",
         "panix/mod-plugins": "dev-master"
     },
