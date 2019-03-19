@@ -5,6 +5,8 @@ use app\backend\web\themes\dashboard\assets\AdminAsset;
 
 AdminAsset::register($this);
 
+if(!empty($this->context->view->title))
+    $this->context->view->title .= ' '.Yii::t('app/admin', 'ADMIN_PANEL');
 $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : false;
 ?>
 <?php $this->beginPage() ?>
@@ -13,7 +15,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=<?= Yii::$app->charset ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-        <title><?= Yii::t('app/admin', 'ADMIN_PANEL'); ?></title>
+        <title><?= $this->context->view->title; ?></title>
         <?= Html::csrfMetaTags() ?>
         <?php $this->head() ?>
     </head>

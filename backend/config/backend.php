@@ -44,11 +44,9 @@ $config = [
             ]
         ],
         'rbac' => [
-            'class' => 'yii2mod\rbac\Module',
-            //'class' => 'mdm\admin\Module',
-            //'class' => 'johnitvn\rbacplus\Module'
+            'class' => 'panix\mod\rbac\Module',
             'as access' => [
-                'class' => yii2mod\rbac\filters\AccessControl::class
+                'class' => panix\mod\rbac\filters\AccessControl::class
             ],
         ],
 
@@ -298,7 +296,7 @@ $config = [
         'user' => [
             'class' => 'panix\mod\user\components\WebUser',
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+           // 'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'errorHandler' => [
             //'class'=>'panix\engine\base\ErrorHandler'
@@ -413,7 +411,7 @@ $config = [
         'db' => require($db),
     ],
     /*'as access' => [
-        'class' => yii2mod\rbac\filters\AccessControl::class,
+        'class' => panix\mod\rbac\filters\AccessControl::class,
         'allowActions' => [
            // '/*',
             'admin/*',

@@ -46,11 +46,9 @@ $config = [
             'class' => 'app\modules\sitemap\Module',
         ],
         'rbac' => [
-            'class' => 'yii2mod\rbac\Module',
-            //'class' => 'mdm\admin\Module',
-            //'class' => 'johnitvn\rbacplus\Module'
+            'class' => 'panix\mod\rbac\Module',
             'as access' => [
-                'class' => yii2mod\rbac\filters\AccessControl::class
+                'class' => panix\mod\rbac\filters\AccessControl::class
             ],
         ],
         'admin' => ['class' => 'panix\mod\admin\Module'],
@@ -392,9 +390,9 @@ $config = [
         'db' => require($db),
     ],
     /*'as access' => [
-        'class' => yii2mod\rbac\filters\AccessControl::class,
+        'class' => panix\mod\rbac\filters\AccessControl::class,
         'allowActions' => [
-           // '/*',
+            '/*',
             'admin/*',
             // The actions listed here will be allowed to everyone including guests.
             // So, 'admin/*' should not appear here in the production, of course.
