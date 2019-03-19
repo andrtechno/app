@@ -390,16 +390,23 @@ $config = [
                 //['pattern' => 'debug/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'debug/<controller>/<action>'],
 
 
-                ['pattern' => '', 'route' => 'admin/default/index'],
+                /*['pattern' => '', 'route' => 'admin/default/index'],
                 ['pattern' => 'auth', 'route' => 'admin/auth'],
                 ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/<controller>/index'],
                 ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/<controller>/<action>'],
-
                 ['pattern' => '<module:\w+>', 'route' => '<module>/default/index'],
-                //['pattern' => '<module:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/default/<action>'],
                 ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/<controller>/index'],
-                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/<controller>/<action>'],
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/<controller>/<action>'],*/
 
+                ['pattern' => '', 'route' => 'admin/admin/default/index'],
+                ['pattern' => 'auth', 'route' => 'admin/admin/auth'],
+                ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
+                ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/admin/<controller>/<action>'],
+
+
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/index'],
+                ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
 
             ],
         ],
