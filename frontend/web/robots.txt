@@ -1,0 +1,11 @@
+User-Agent: *
+Disallow: /placeholder
+Disallow: /admin/auth
+Disallow: /assets/
+Disallow: /protected/
+Disallow: /themes/
+Disallow: /upgrade/
+
+Host: http://app.loc
+
+Sitemap: http://app.loc/sitemap.xml
