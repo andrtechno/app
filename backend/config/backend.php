@@ -17,7 +17,6 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
-        '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',
     ],
     //'sourceLanguage'=>'ru',
     'runtimePath'=>'@app/backend/runtime',

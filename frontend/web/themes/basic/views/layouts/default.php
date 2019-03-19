@@ -4,7 +4,7 @@ use panix\engine\Html;
 use panix\engine\widgets\Breadcrumbs;
 
 
-\app\web\themes\basic\assets\ThemeAsset::register($this);
+\app\frontend\web\themes\basic\assets\ThemeAsset::register($this);
 
 /*$c = Yii::$app->settings->get('shop');
 

@@ -109,7 +109,6 @@ return [
        // 'session' => [
         //    'class' => 'yii\web\Session'
         //],
-       // 'user' => ['class' => 'panix\mod\user\components\User'],
 
         'user' => [
             'class' => 'panix\mod\user\components\User',

@@ -4,6 +4,8 @@ use panix\engine\pdf\Pdf;
 
 //Yii::setAlias('@runtime', '@webroot/web/runtime');
 Yii::setAlias('@frontend', dirname(__DIR__) . '/web');
+Yii::setAlias('@backend', dirname(__DIR__) . '/../backend/web');
+Yii::setAlias('@console', dirname(__DIR__) . '/../console/web');
 
 
 
@@ -18,7 +20,6 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
-        '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',
     ],
     //'sourceLanguage'=>'ru',
     'runtimePath' => '@app/frontend/runtime',
