@@ -1,29 +1,9 @@
 <?php
 
 use panix\engine\Html;
-use app\backend\themes\dashboard\assets\AdminAsset;
+use app\backend\web\themes\dashboard\assets\AdminAsset;
 
 AdminAsset::register($this);
-$this->registerJs('
-$(document).ready(function () {
-
-    $(".panel-heading .grid-toggle").click(function (e) {
-        e.preventDefault();
-        $(this).find(\'i\').toggleClass("fa-chevron-down");
-    });
-    
-    $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("active");
-    });
-    
-    //$.widget.bridge(\'uibutton\', $.ui.button);
-    //$.widget.bridge(\'uitooltip\', $.ui.tooltip);
-    $(\'.fadeOut-time\').delay(2000).fadeOut(2000);
-    $(\'.bootstrap-tooltip\').tooltip();
-});
-', \panix\engine\View::POS_END);
-
 
 $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : false;
 ?>
@@ -31,7 +11,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
     <!DOCTYPE html>
     <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=<?= \Yii::$app->charset ?>"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=<?= Yii::$app->charset ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <title><?= Yii::t('app/admin', 'ADMIN_PANEL'); ?></title>
         <?= Html::csrfMetaTags() ?>
@@ -40,7 +20,22 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
     <body class="no-radius">
     <?php $this->beginBody() ?>
     <script>
+        $(document).ready(function () {
+            $(".panel-heading .grid-toggle").click(function (e) {
+                e.preventDefault();
+                $(this).find('i').toggleClass("fa-chevron-down");
+            });
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("active");
 
+
+            });
+            $.widget.bridge('uibutton', $.ui.button);
+            $.widget.bridge('uitooltip', $.ui.tooltip);
+            $('.fadeOut-time').delay(2000).fadeOut(2000);
+            $('.bootstrap-tooltip').tooltip();
+        });
     </script>
     <div id="wrapper-tpl">
         <?php echo $this->render('partials/_navbar'); ?>
@@ -151,7 +146,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                        <div id="container-breadcrumbs">
+                        <div id="page-nav">
                             <?php echo $this->render('partials/_breadcrumbs', ['breadcrumbs' => $this->context->breadcrumbs]); ?>
                             <?php echo $this->render('partials/_addonsMenu'); ?>
                         </div>
@@ -164,47 +159,6 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                                     <div class="alert alert-<?= $key ?> fadeOut-time"><?= $message ?></div>
                                 <?php } ?>
                             <?php } ?>
-
-
-                            <?php
-                            /*
-                              if (extension_loaded('intl')) {
-                              echo "intl true";
-                              } else {
-                              echo "intl false";
-                              } */
-
-
-                            /*
-                              use panix\hosting\Api;
-
-                              $api = new Api('hosting_database','info');
-
-
-                              print_r($api); */
-
-
-                            /* use yii\helpers\FileHelper;
-                              $files = FileHelper::findFiles(Yii::getAlias('@shop'),[
-                              'only'=>['*.md'],
-                              'recursive'=>false,
-                              'caseSensitive'=>false
-                              ]);
-                              foreach($files as $file){
-                              echo basename($file,'.md');
-                              }
-                              print_r($files); */
-
-
-                            //use yii\helpers\Markdown;
-                            //$myText = file_get_contents(Yii::getAlias('@shop').DIRECTORY_SEPARATOR.'README.md');
-                            //$myHtml = Markdown::process($myText); // use original markdown flavor
-                            //$myHtml = Markdown::process($myText, 'gfm'); // use github flavored markdown
-                            //$myHtml = Markdown::process($myText, 'extra'); // use markdown extra
-                            //echo $myHtml;
-
-
-                            ?>
 
                             <?= $content ?>
                         </div>

@@ -3,15 +3,16 @@
 use panix\engine\pdf\Pdf;
 
 //Yii::setAlias('@app', dirname(__DIR__).'/backend');
-Yii::setAlias('@frontend', dirname(__DIR__).'/web');
-Yii::setAlias('@backend', dirname(__DIR__).'/backend');
+Yii::setAlias('@frontend', dirname(__DIR__).'/frontend/web');
+Yii::setAlias('@backend', dirname(__DIR__).'/web');
 
 
-$db = YII_DEBUG ? __DIR__ . '/db_local.php' : __DIR__ . '/db.php';
+
+$db = YII_DEBUG ? dirname(__DIR__) . '/../config/db_local.php' : dirname(__DIR__) . '/../config/db.php';
 $config = [
     'id' => 'backend',
     'name' => 'PIXELION CMS',
-    'basePath' => dirname(__DIR__),
+    'basePath' => dirname(__DIR__).'/../',
     'language' => 'ru',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -35,7 +36,13 @@ $config = [
         'sitemap' => [
             'class' => 'app\modules\sitemap\Module',
         ],
-
+        'plugins' => [
+            'class' => 'panix\mod\plugins\Module',
+            'pluginsDir' => [
+               // '@plugins/core',
+                '@panix/engine/plugins',
+            ]
+        ],
         'rbac' => [
             'class' => 'yii2mod\rbac\Module',
             //'class' => 'mdm\admin\Module',
@@ -230,7 +237,7 @@ $config = [
         ],
         'view' => [
             // 'class' => 'panix\engine\View',
-            'class' => lo\plugins\components\View::class,
+            'class' => panix\mod\plugins\components\View::class,
             'as Layout' => [
                 'class' => \panix\engine\behaviors\LayoutBehavior::class,
             ],
@@ -247,15 +254,15 @@ $config = [
             ],
         ],
         'plugins' => [
-            'class' => lo\plugins\components\PluginsManager::class,
-            'appId' => lo\plugins\BasePlugin::APP_BACKEND,
+            'class' => panix\mod\plugins\components\PluginsManager::class,
+            'appId' => panix\mod\plugins\BasePlugin::APP_BACKEND,
             // by default
             'enablePlugins' => true,
-            //'shortcodesParse' => true,
-            //'shortcodesIgnoreBlocks' => [
-            //    '<pre[^>]*>' => '<\/pre>',
-            //'<div class="content[^>]*>' => '<\/div>',
-            // ]
+            'shortcodesParse' => true,
+            'shortcodesIgnoreBlocks' => [
+                '<pre[^>]*>' => '<\/pre>',
+                // '<div class="content[^>]*>' => '<\/div>',
+            ]
         ],
         'i18n' => [
             'translations' => [
@@ -417,7 +424,7 @@ $config = [
             // otherwise you may not even take a first step.
         ]
     ],*/
-    'params' => require(__DIR__ . '/params.php'),
+    'params' => require(dirname(__DIR__) . '/../config/params.php'),
 ];
 
 if (YII_ENV_DEV) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\backend\themes\dashboard\assets;
+namespace app\backend\web\themes\dashboard\assets;
 
 use panix\engine\web\AssetBundle;
 
@@ -21,7 +21,7 @@ class AdminAsset extends AssetBundle
     public $depends = [
         'panix\engine\assets\CommonAsset',
         'panix\engine\assets\ClipboardAsset',
-        'app\backend\themes\dashboard\assets\AdminCountersAsset',
+        'app\backend\web\themes\dashboard\assets\AdminCountersAsset',
     ];
 
     public function init()

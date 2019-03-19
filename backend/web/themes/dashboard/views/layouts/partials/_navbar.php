@@ -76,7 +76,7 @@ use panix\engine\CMS;
             ],
             [
                 'label' => Html::icon('home'),
-                'url' => ['/site/about']
+                'url' => '/'
             ],
             [
                 'label' => Html::icon('locked'),
