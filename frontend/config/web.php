@@ -21,7 +21,7 @@ $config = [
         '@mdm/admin' => '@vendor/mdmsoft/yii2-admin',
     ],
     //'sourceLanguage'=>'ru',
-    'runtimePath' => '@frontend/runtime',
+    'runtimePath' => '@app/frontend/runtime',
     'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'main/main',
     'bootstrap' => [
