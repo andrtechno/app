@@ -125,6 +125,7 @@ return [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
+                    'logVars' => [],
                     'levels' => ['error', 'warning'],
                 ],
             ],

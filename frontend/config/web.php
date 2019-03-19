@@ -3,8 +3,9 @@
 use panix\engine\pdf\Pdf;
 
 //Yii::setAlias('@runtime', '@webroot/web/runtime');
-Yii::setAlias('@frontend', dirname(__DIR__) . '/web');
+//Yii::setAlias('@frontend', dirname(__DIR__) . '/web');
 Yii::setAlias('@backend', dirname(__DIR__) . '/../backend/web');
+Yii::setAlias('@frontend', dirname(__DIR__) . '/../frontend/web');
 Yii::setAlias('@console', dirname(__DIR__) . '/../console/web');
 
 
@@ -14,7 +15,7 @@ $config = [
     //'homeUrl' => '/',
     'id' => 'frontend',
     'name' => 'PIXELION CMS',
-    'basePath' => dirname(__DIR__) . '/../', //if in web dir
+    'basePath' => dirname(__DIR__).'/../', //if in web dir
     //'basePath' => dirname(__DIR__),
     'language' => 'ru',
     'aliases' => [

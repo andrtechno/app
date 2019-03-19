@@ -3,8 +3,11 @@
 use panix\engine\pdf\Pdf;
 
 //Yii::setAlias('@app', dirname(__DIR__).'/backend');
-Yii::setAlias('@frontend', dirname(__DIR__).'/frontend/web');
-Yii::setAlias('@backend', dirname(__DIR__).'/web');
+Yii::setAlias('@frontend', dirname(__DIR__) . '/frontend/web');
+Yii::setAlias('@backend', dirname(__DIR__) . '/web');
+
+
+Yii::setAlias('@root', dirname(dirname(__DIR__)));
 
 
 
@@ -19,9 +22,9 @@ $config = [
         '@npm' => '@vendor/npm-asset',
     ],
     //'sourceLanguage'=>'ru',
-    'runtimePath'=>'@app/backend/runtime',
+    'runtimePath' => '@app/backend/runtime',
     'controllerNamespace' => 'panix\engine\controllers',
-    'defaultRoute' => 'main/main',
+    //'defaultRoute' => 'main/main',
     'bootstrap' => [
         'log',
         'maintenanceMode',
@@ -38,7 +41,7 @@ $config = [
         'plugins' => [
             'class' => 'panix\mod\plugins\Module',
             'pluginsDir' => [
-               // '@plugins/core',
+                // '@plugins/core',
                 '@panix/engine/plugins',
             ]
         ],
@@ -218,7 +221,7 @@ $config = [
                 //'yii\jui\JuiAsset' => ['css' => []],
                 'yii\jui\JuiAsset' => [
                     //'js' => [
-                        //'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
+                    //'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
                     //]
                 ],
                 'panix\lib\google\maps\MapAsset' => [
@@ -247,7 +250,7 @@ $config = [
             ],
             'theme' => [
                 'class' => 'panix\engine\base\Theme',
-                'name'=>'dashboard'
+                'name' => 'dashboard'
             ],
         ],
         'plugins' => [
@@ -281,7 +284,7 @@ $config = [
             'class' => '\panix\engine\web\DbSession',
             //'class' => '\yii\web\DbSession',
             //'writeCallback'=>['panix\engine\web\DbSession', 'writeFields']
-         ],
+        ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
             'baseUrl' => '/admin',
@@ -295,7 +298,7 @@ $config = [
         'user' => [
             'class' => 'panix\mod\user\components\WebUser',
             'enableAutoLogin' => true,
-           // 'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+            // 'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'errorHandler' => [
             //'class'=>'panix\engine\base\ErrorHandler'
@@ -373,16 +376,12 @@ $config = [
             //'class' => 'panix\engine\ManagerUrl',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-           // 'enableStrictParsing' => false,
-             'baseUrl' => '/admin',
-            //'suffix'=>'path',
-            //'ruleConfig' => [
-            //    'class' => 'panix\engine\LanguageUrlRule' see ___LanguageUrlRule
-            //],
-            'normalizer' => [
-                'class' => 'yii\web\UrlNormalizer',
-                'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
-            ],
+            // 'enableStrictParsing' => false,
+            'baseUrl' => '/admin',
+           // 'normalizer' => [
+           //     'class' => 'yii\web\UrlNormalizer',
+           //     'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
+           // ],
             'rules' => [
                 'placeholder' => 'main/placeholder',
 
@@ -391,18 +390,15 @@ $config = [
                 //['pattern' => 'debug/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'debug/<controller>/<action>'],
 
 
-                ['pattern' => '', 'route' => 'admin/admin/default/index'],
+                ['pattern' => '', 'route' => 'admin/default/index'],
                 ['pattern' => 'auth', 'route' => 'admin/auth'],
-                ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
-                ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/admin/<controller>/<action>'],
+                ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/<controller>/index'],
+                ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/<controller>/<action>'],
 
-                ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
+                ['pattern' => '<module:\w+>', 'route' => '<module>/default/index'],
                 //['pattern' => '<module:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/default/<action>'],
-                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>'],
-                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
-
-
-
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/<controller>/index'],
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/<controller>/<action>'],
 
 
             ],
