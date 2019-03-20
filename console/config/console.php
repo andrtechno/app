@@ -3,7 +3,8 @@
 Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
 Yii::setAlias('@webroot', dirname(__DIR__).'/web');
 
-//Yii::setAlias('@frontend', dirname(__DIR__).'/frontend/web');
+Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
+
 
 
 $params = require(dirname(__DIR__) . '/../config/params.php');
@@ -13,12 +14,12 @@ return [
     'id' => 'console',
     'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__).'/../',
-    'bootstrap' => ['log', 'gii','panix\engine\BootstrapModule'],
+    'bootstrap' => ['log', 'panix\engine\BootstrapModule'],
     'controllerNamespace' => 'app\commands',
     'language' => 'ru',
     'runtimePath'=>'@app/console/runtime',
     'modules' => [
-        'gii' => ['class' => 'yii\gii\Module'],
+       // 'gii' => ['class' => 'yii\gii\Module'],
         'shop' => ['class' => 'panix\mod\shop\Module'],
         'images' => ['class' => 'panix\mod\images\Module'],
         'cart' => ['class' => 'panix\mod\cart\Module'],
@@ -106,19 +107,25 @@ return [
             'cacheExpire' => 1, // 1 second. Default is 24 hours,
             'sortByPriority' => true, // default is false
         ],
-       // 'session' => [
-        //    'class' => 'yii\web\Session'
-        //],
-
-        'user' => [
-            'class' => 'panix\mod\user\components\User',
-            'identityClass' => 'panix\mod\user\models\User',
-            //'enableAutoLogin' => true,
-        ],
-        'session' => [ // for use session in console application
+        'session' => [
             'class' => 'yii\web\Session'
         ],
-
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@vendor/panix/engine/messages',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                        'app/admin' => 'admin.php',
+                        'app/month' => 'month.php',
+                        'app/error' => 'error.php',
+                        'app/geoip_country' => 'geoip_country.php',
+                        'app/geoip_city' => 'geoip_city.php',
+                    ],
+                ],
+            ],
+        ],
         'settings' => ['class' => 'panix\engine\components\Settings'],
         'cache' => ['class' => 'yii\caching\FileCache'],
         'log' => [

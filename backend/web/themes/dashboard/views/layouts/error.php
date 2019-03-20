@@ -22,7 +22,7 @@ $(document).ready(function () {
     $(\'.fadeOut-time\').delay(2000).fadeOut(2000);
     $(\'.bootstrap-tooltip\').tooltip();
 });
-', \panix\engine\View::POS_END);
+', \yii\web\View::POS_END);
 if(!empty($this->context->view->title))
     $this->context->view->title .= ' '.Yii::t('app/admin', 'ADMIN_PANEL');
 $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : false;
