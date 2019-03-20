@@ -3,19 +3,18 @@
 use panix\engine\pdf\Pdf;
 
 //Yii::setAlias('@app', dirname(__DIR__).'/backend');
-Yii::setAlias('@frontend', dirname(__DIR__) . '/frontend/web');
+Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
 Yii::setAlias('@backend', dirname(__DIR__) . '/web');
 
 
 Yii::setAlias('@root', dirname(dirname(__DIR__)));
 
 
-
 $db = YII_DEBUG ? dirname(__DIR__) . '/../config/db_local.php' : dirname(__DIR__) . '/../config/db.php';
 $config = [
     'id' => 'backend',
     'name' => 'PIXELION CMS',
-    'basePath' => dirname(__DIR__).'/../',
+    'basePath' => dirname(__DIR__) . '/../',
     'language' => 'ru',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -377,17 +376,17 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             // 'enableStrictParsing' => false,
-            'baseUrl' => '/',
-           // 'normalizer' => [
-           //     'class' => 'yii\web\UrlNormalizer',
-           //     'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
-           // ],
+            'baseUrl' => '/admin',
+            /*'normalizer' => [
+                'class' => 'yii\web\UrlNormalizer',
+                'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
+            ],*/
             'rules' => [
                 'placeholder' => 'main/placeholder',
 
 
-                //['pattern' => 'debug/<controller:\w+>', 'route' => 'debug/<controller>'],
-                //['pattern' => 'debug/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'debug/<controller>/<action>'],
+                //['pattern' => 'admin/debug/<controller:\w+>', 'route' => 'debug/<controller>'],
+                //['pattern' => 'admin/debug/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'debug/<controller>/<action>'],
 
 
                 /*['pattern' => '', 'route' => 'admin/default/index'],
@@ -399,14 +398,15 @@ $config = [
                 ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/<controller>/<action>'],*/
 
                 ['pattern' => '', 'route' => 'admin/admin/default/index'],
-                ['pattern' => 'auth', 'route' => 'admin/admin/auth'],
+                ['pattern' => 'auth', 'route' => 'admin/auth/index'],
                 ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
                 ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/admin/<controller>/<action>'],
-
-
                 ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
                 ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/index'],
                 ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
+
+
+
 
             ],
         ],
