@@ -4,7 +4,25 @@ use panix\engine\Html;
 use app\backend\web\themes\dashboard\assets\AdminAsset;
 
 AdminAsset::register($this);
+$this->registerJs('
+$(document).ready(function () {
 
+    $(".panel-heading .grid-toggle").click(function (e) {
+        e.preventDefault();
+        $(this).find(\'i\').toggleClass("fa-chevron-down");
+    });
+    
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+    });
+    
+    //$.widget.bridge(\'uibutton\', $.ui.button);
+    //$.widget.bridge(\'uitooltip\', $.ui.tooltip);
+    $(\'.fadeOut-time\').delay(2000).fadeOut(2000);
+    $(\'.bootstrap-tooltip\').tooltip();
+});
+', \panix\engine\View::POS_END);
 if(!empty($this->context->view->title))
     $this->context->view->title .= ' '.Yii::t('app/admin', 'ADMIN_PANEL');
 $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : false;
@@ -21,24 +39,6 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
     </head>
     <body class="no-radius">
     <?php $this->beginBody() ?>
-    <script>
-        $(document).ready(function () {
-            $(".panel-heading .grid-toggle").click(function (e) {
-                e.preventDefault();
-                $(this).find('i').toggleClass("fa-chevron-down");
-            });
-            $("#menu-toggle").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("active");
-
-
-            });
-            $.widget.bridge('uibutton', $.ui.button);
-            $.widget.bridge('uitooltip', $.ui.tooltip);
-            $('.fadeOut-time').delay(2000).fadeOut(2000);
-            $('.bootstrap-tooltip').tooltip();
-        });
-    </script>
     <div id="wrapper-tpl">
         <?php echo $this->render('partials/_navbar'); ?>
 
@@ -148,12 +148,12 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                        <div id="page-nav">
+                        <div id="container-breadcrumbs">
                             <?php echo $this->render('partials/_breadcrumbs', ['breadcrumbs' => $this->context->breadcrumbs]); ?>
                             <?php echo $this->render('partials/_addonsMenu'); ?>
                         </div>
 
-                        <div class="col-lg-12">
+                        <div class="container error-page">
 
 
                             <?php if (Yii::$app->session->allFlashes) { ?>

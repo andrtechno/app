@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+.error-page h1{
+  font-size: 50px;
+}
 #form-signin .input-group-append{
   position:absolute;
   right:0;
@@ -1398,7 +1400,7 @@ a.desc:after {
 .ui-dialog-content .alert .warning,
 .ui-dialog-content .alert .failure,
 .ui-dialog-content .alert .success {
-  padding: 10px 10px 10px 50px;
+  padding-left: 50px;
   font-size: 12px;
 }
 

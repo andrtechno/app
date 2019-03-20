@@ -1,41 +1,36 @@
 <?php
 
 use panix\engine\bootstrap\Alert;
+use yii\helpers\Html;
 
-$this->title = $name;
+
 ?>
 
-    <h1><?= $exception->statusCode; ?></h1>
-
-<?php
-echo Alert::widget([
-    'options' => ['class' => 'alert-danger'],
-    'body' => $exception->getMessage(),
-    'closeButton' => false
-]);
-?>
-<?php
-if (YII_DEBUG) {
-
-    foreach ($exception->getTrace() as $trace) { ?>
+<div class="row">
+    <div class="col-12">
+        <div class="text-center">
+            <h1><?= $exception->statusCode; ?></h1>
+            <h2><?= $exception->getMessage(); ?></h2>
+            <p>
+                <?= Html::a('На главную', ['/'], ['class' => 'btn btn-primary']); ?>
+            </p>
+        </div>
+    </div>
+    <div class="col-12">
         <?php
-        Alert::begin([
+        /*Alert::begin([
             'options' => [
-                'class' => 'alert-info',
+                'class' => 'alert-dange2r',
             ],
             'closeButton' => false
-        ]);
+        ]);*/
         ?>
-
-        <div class="">Файл: <?= $trace['file'] ?></div>
-        <div class="">Строка: <?= $trace['line'] ?></div>
-        <div class="">Функция: <?= $trace['function'] ?></div>
-        <div class="">class: <?= $trace['class'] ?></div>
-        <?php foreach ($trace['args'] as $args) { ?>
-            <?php //print_r($args); ?>
+        <?php foreach ($exception->getTrace() as $trace) { ?>
+            <div class=""><strong><?= $trace['file'] ?></strong>(<?= $trace['line'] ?>)</div>
+            <div class=""><?= $trace['class'] ?>::<?= $trace['function'] ?></div>
+            <hr/>
         <?php } ?>
+        <?php //Alert::end(); ?>
 
-        <?php Alert::end(); ?>
-
-    <?php }
-}
+    </div>
+</div>

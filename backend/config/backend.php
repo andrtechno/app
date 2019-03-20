@@ -2,12 +2,8 @@
 
 use panix\engine\pdf\Pdf;
 
-//Yii::setAlias('@app', dirname(__DIR__).'/backend');
 Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
 Yii::setAlias('@backend', dirname(__DIR__) . '/web');
-
-
-Yii::setAlias('@root', dirname(dirname(__DIR__)));
 
 
 $db = YII_DEBUG ? dirname(__DIR__) . '/../config/db_local.php' : dirname(__DIR__) . '/../config/db.php';
@@ -347,14 +343,21 @@ $config = [
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/trace.log',
                 ],
                 [
-                    'class' => 'yii\log\EmailTarget',
-                    'levels' => ['error'],
-                    'categories' => ['yii\db\*'],
-                    'message' => [
+                    'class' => 'panix\engine\log\EmailTarget',
+                    'levels' => ['error', 'warning'],
+                    'enabled' => true,//YII_DEBUG,
+                    'categories' => ['yii\base\*'],
+                    'except' => [
+                        'yii\web\HttpException:404',
+                        'yii\web\HttpException:403',
+                        'yii\web\HttpException:400',
+                        'yii\i18n\PhpMessageSource::loadMessages'
+                    ],
+                    /*'message' => [
                         'from' => ['log@pixelion.com.ua'],
                         'to' => ['dev@pixelion.com.ua'],
                         'subject' => 'Ошибки базы данных на сайте app',
-                    ],
+                    ],*/
                 ],
                 /*[
                     'class' => 'yii\log\DbTarget',
@@ -404,8 +407,6 @@ $config = [
                 ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
                 ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/index'],
                 ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
-
-
 
 
             ],
