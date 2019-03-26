@@ -191,7 +191,9 @@ a:hover,
 .main-icon .small-thumbnail {
   margin-bottom: 30px;
 }
-
+label {
+  margin-bottom: 0;
+}
 form .col-form-label {
   padding-top: 0;
   text-align: right;
