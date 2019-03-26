@@ -1,12 +1,4 @@
 @charset "UTF-8";
-.error-page h1{
-  font-size: 50px;
-}
-#form-signin .input-group-append{
-  position:absolute;
-  right:0;
-}
-
 .ui-helper-reset {
   margin: 0;
   padding: 0;
@@ -268,6 +260,11 @@
   color: #636363;
 }
 
+#form-signin .input-group-append {
+  position: absolute;
+  right: 0;
+}
+
 .bootstrap-select .btn-light {
   border-color: #c9c9c9;
   background-color: #fff;
@@ -458,12 +455,24 @@ a:hover,
 .main-icon .small-thumbnail {
   margin-bottom: 30px;
 }
+
 label {
   margin-bottom: 0;
 }
+
 form .col-form-label {
   padding-top: 0;
-  text-align: right;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  form .col-form-label {
+    text-align: right;
+  }
+}
+@media (min-width: 992px) {
+  form .col-form-label {
+    text-align: right;
+  }
 }
 
 .has-success .form-control,
@@ -1511,6 +1520,40 @@ a.desc:after {
   outline: none;
 }
 
+.navbar-toggler span {
+  background-color: #f6f6f6;
+  display: block;
+  height: 2px;
+  width: 25px;
+  margin: 8px 0;
+  transition-duration: .3s;
+  transition-delay: 0s, 0s, 0s, 0s;
+  -webkit-transform: translateY(0) rotate(0);
+  -ms-transform: translateY(0) rotate(0);
+  transform: translateY(0) rotate(0);
+}
+.navbar-toggler span:nth-child(1) {
+  -webkit-transform: translateY(10px) rotate(45deg);
+  -ms-transform: translateY(10px) rotate(45deg);
+  transform: translateY(10px) rotate(45deg);
+}
+.navbar-toggler span:nth-child(2) {
+  opacity: 0;
+}
+.navbar-toggler span:nth-child(3) {
+  -webkit-transform: translateY(-10px) rotate(-45deg);
+  -ms-transform: translateY(-10px) rotate(-45deg);
+  transform: translateY(-10px) rotate(-45deg);
+}
+.navbar-toggler.collapsed span:nth-child(2) {
+  opacity: 1;
+}
+.navbar-toggler.collapsed span:nth-child(1), .navbar-toggler.collapsed span:nth-child(3) {
+  -webkit-transform: translateY(0) rotate(0);
+  -ms-transform: translateY(0) rotate(0);
+  transform: translateY(0) rotate(0);
+}
+
 .collapse.show .dropdown-menu > .nav-item {
   float: none;
 }
@@ -1564,7 +1607,7 @@ a.desc:after {
 .navbar .navbar-right > li a {
   display: block;
   /*width: 35px;*/
-  padding: 13px 1rem;
+  padding: 13px .5rem;
   /*border-radius: 50%;
   border: 1px solid #555;
   background: #292929;*/
@@ -1575,6 +1618,11 @@ a.desc:after {
   position: absolute;
   top: 5px;
   right: 2px;
+}
+@media (min-width: 768px) {
+  .navbar .navbar-right > li a {
+    padding: 13px 1rem;
+  }
 }
 
 .table-responsive {

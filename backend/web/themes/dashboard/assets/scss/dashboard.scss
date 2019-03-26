@@ -196,7 +196,13 @@ label {
 }
 form .col-form-label {
   padding-top: 0;
-  text-align: right;
+  text-align: left;
+  @media (min-width: 768px) {
+    text-align: right;
+  }
+  @media (min-width: 992px) {
+    text-align: right;
+  }
 }
 
 .has-success .form-control,
@@ -1235,7 +1241,44 @@ a.desc:after {
 .navbar-toggler:focus {
   outline: none;
 }
+.navbar-toggler {
 
+  span {
+    background-color: $toggler-color;
+    display: block;
+    height: 2px;
+    width: 25px;
+    margin: 8px 0;
+    transition-duration: .3s;
+    transition-delay: 0s, 0s, 0s, 0s;
+    -webkit-transform: translateY(0) rotate(0);
+    -ms-transform: translateY(0) rotate(0);
+    transform: translateY(0) rotate(0);
+    &:nth-child(1) {
+      -webkit-transform: translateY(10px) rotate(45deg);
+      -ms-transform: translateY(10px) rotate(45deg);
+      transform: translateY(10px) rotate(45deg)
+    }
+    &:nth-child(2) {
+      opacity: 0
+    }
+    &:nth-child(3) {
+      -webkit-transform: translateY(-10px) rotate(-45deg);
+      -ms-transform: translateY(-10px) rotate(-45deg);
+      transform: translateY(-10px) rotate(-45deg)
+    }
+  }
+  &.collapsed span:nth-child(2) {
+    opacity: 1
+  }
+  &.collapsed span:nth-child(1),
+  &.collapsed span:nth-child(3) {
+    -webkit-transform: translateY(0) rotate(0);
+    -ms-transform: translateY(0) rotate(0);
+    transform: translateY(0) rotate(0)
+  }
+
+}
 .collapse.show .dropdown-menu > .nav-item {
   float: none;
 }
@@ -1290,7 +1333,7 @@ a.desc:after {
     a {
       display: block;
       /*width: 35px;*/
-      padding: 13px 1rem;
+      padding: 13px .5rem;
       /*border-radius: 50%;
       border: 1px solid #555;
       background: #292929;*/
@@ -1301,10 +1344,11 @@ a.desc:after {
         top: 5px;
         right: 2px;
       }
+      @media (min-width: 768px) {
+        padding: 13px 1rem;
+      }
     }
-
   }
-
 }
 
 .table-responsive {

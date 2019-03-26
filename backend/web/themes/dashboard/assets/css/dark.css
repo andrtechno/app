@@ -312,40 +312,6 @@ a:hover {
 }
 
 /* navbar-toggler */
-.navbar-toggler span {
-  background-color: #f6f6f6;
-  display: block;
-  height: 2px;
-  width: 30px;
-  margin: 8px 0;
-  transition-duration: .3s;
-  transition-delay: 0s, 0s, 0s, 0s;
-  -webkit-transform: translateY(0) rotate(0);
-  -ms-transform: translateY(0) rotate(0);
-  transform: translateY(0) rotate(0);
-}
-.navbar-toggler span:nth-child(1) {
-  -webkit-transform: translateY(10px) rotate(45deg);
-  -ms-transform: translateY(10px) rotate(45deg);
-  transform: translateY(10px) rotate(45deg);
-}
-.navbar-toggler span:nth-child(2) {
-  opacity: 0;
-}
-.navbar-toggler span:nth-child(3) {
-  -webkit-transform: translateY(-10px) rotate(-45deg);
-  -ms-transform: translateY(-10px) rotate(-45deg);
-  transform: translateY(-10px) rotate(-45deg);
-}
-.navbar-toggler.collapsed span:nth-child(2) {
-  opacity: 1;
-}
-.navbar-toggler.collapsed span:nth-child(1), .navbar-toggler.collapsed span:nth-child(3) {
-  -webkit-transform: translateY(0) rotate(0);
-  -ms-transform: translateY(0) rotate(0);
-  transform: translateY(0) rotate(0);
-}
-
 .card.bg-light {
   border: 1px solid #c9c9c9;
 }
