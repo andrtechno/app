@@ -5,7 +5,7 @@ use panix\engine\widgets\langSwitcher\LangSwitcher;
 use panix\engine\CMS;
 
 ?>
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg fixed-top bg-dark">
 
     <a class="navbar-brand" href="/admin"><span class="d-none d-md-block"><?= strtoupper(Yii::$app->name); ?></span></a>
 

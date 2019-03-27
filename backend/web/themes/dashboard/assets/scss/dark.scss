@@ -39,7 +39,7 @@ a:hover {
   @if $navbar-gradient {
     @include gradient-y($primary_color, lighten($primary_color, 8%));
   } @else {
-    background-color: $primary_color;
+
   }
 }
 
@@ -366,3 +366,4 @@ form .form-group {
 /*
  * Jquery UI
  */
+@import "bootstrap";
