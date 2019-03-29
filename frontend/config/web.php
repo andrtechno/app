@@ -290,6 +290,7 @@ $config = [
         ],
         'session' => [
             'class' => '\panix\engine\web\DbSession',
+            'timeout'=>1440
         ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
