@@ -52,52 +52,17 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
             <?php if ($sideBar) { ?>
                 <div id="sidebar-wrapper">
-                    <b><?= Yii::$app->user->displayName ?></b>
-
-
-
                     <?php
-                    /*echo \panix\mod\admin\widgets\sidebar\SideBar::widget([
-                        'items' => array_merge([
-                            [
-                                'label' => '',
-                                'url' => '#',
-                                'icon' => 'menu',
-                                'options' => ['class' => 'sidebar-nav', 'id' => 'menu-toggle']
-                            ]
-                        ], $this->context->module->getAdminSidebar())
-                    ]);*/
-
-
                     echo \panix\engine\bootstrap\SiderbarNav::widget([
                         'items' => \yii\helpers\ArrayHelper::merge([
                             [
-                                'label' => 'Home',
+                                'label' => 'Menu',
                                 'url' => '#',
                                 'linkOptions' => ['class' => 'sidebar-nav', 'id' => 'menu-toggle'],
                             ]],$this->context->module->getAdminSidebar()),
-                            /*[
-                                'label' => 'Dropdown',
-                                'items' => [
-                                    ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
-                                    '<li class="divider"></li>',
-                                    '<li class="dropdown-header">Dropdown Header</li>',
-                                    ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
-                                ],
-                            ],
-                            [
-                                'label' => 'Login',
-                                'url' => ['site/login'],
-                                'visible' => Yii::$app->user->isGuest
-                            ],*/
-
                         'options' => ['class' => 'flex-column'],
                     ]);
-
-
                     ?>
-
-
                 </div>
             <?php } ?>
 

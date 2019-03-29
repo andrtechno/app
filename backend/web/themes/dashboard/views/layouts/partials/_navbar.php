@@ -42,7 +42,7 @@ use panix\engine\CMS;
             $link = ($lang->is_default) ? CMS::currentUrl() : '/' . $lang->code . CMS::currentUrl();
 
             $langItems[] = [
-                'label' => Html::img($lang->getFlagUrl(), ['alt' => $lang->name]).' '.$lang->name,
+                'label' => Html::img($lang->getFlagUrl(), ['alt' => $lang->name]) . ' ' . $lang->name,
                 'url' => $link,
                 'options' => ['class' => ($langManager->active->id == $lang->id) ? 'active' : '']
             ];
@@ -72,7 +72,19 @@ use panix\engine\CMS;
             ],
             [
                 'label' => Html::icon('notification'),
-                'url' => ['/site/about']
+                'url' => '#',
+                'items' => [
+                    [
+                        'label' => 'asdasd',
+                    ],
+                    [
+                        'label' => 'asdasd22',
+                    ],
+                    [
+                        'label' => 'asdasd22',
+                    ],
+
+                ]
             ],
             [
                 'label' => Html::icon('home'),
@@ -84,11 +96,10 @@ use panix\engine\CMS;
                 'options' => ['data-method' => "post"]
             ],
             [
-                'label' => Html::img('/uploads/language/'.$langManager->active->code.'.png', ['alt' => '']),
+                'label' => Html::img('/uploads/language/' . $langManager->active->code . '.png', ['alt' => '']),
                 'url' => '#',
                 'items' => $langItems,
-                'submenuOptions'=>['class'=>'dropdown-menu-right']
-
+                'dropdownOptions' => ['class' => 'dropdown-menu-right'],
             ],
         ],
         'options' => ['class' => 'navbar-right'],

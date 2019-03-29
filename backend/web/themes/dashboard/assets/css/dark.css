@@ -383,35 +383,35 @@ form .form-group {
 }
 
 .bg-success {
-  background-color: #35cc62;
+  background-color: #35cc62 !important;
 }
 
 .bg-danger {
-  background-color: #fa6557;
+  background-color: #fa6557 !important;
 }
 
 .bg-info {
-  background-color: #0ecccc;
+  background-color: #0ecccc !important;
 }
 
 .bg-primary {
-  background-color: #007bff;
+  background-color: #007bff !important;
 }
 
 .bg-secondary {
-  background-color: #6c757d;
+  background-color: #6c757d !important;
 }
 
 .bg-warning {
-  background-color: #ffb54c;
+  background-color: #ffb54c !important;
 }
 
 .bg-dark {
-  background-color: #343a40;
+  background-color: #343a40 !important;
 }
 
 .bg-light {
-  background-color: #f8f9fa;
+  background-color: #f8f9fa !important;
 }
 
 .text-success {

@@ -40,7 +40,7 @@ $colors: (
 
 @each $name, $color in $colors {
   .bg-#{$name} {
-    background-color: $color;
+    background-color: $color !important;
   }
 }
 

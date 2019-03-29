@@ -2,10 +2,11 @@
 @import "mixins";
 @import "ui";
 
-#form-signin .input-group-append{
-  position:absolute;
-  right:0;
+#form-signin .input-group-append {
+  position: absolute;
+  right: 0;
 }
+
 .bootstrap-select .btn-light {
   border-color: #c9c9c9;
   background-color: #fff;
@@ -15,11 +16,13 @@
   border-color: red;
   background-color: #fff;
 }
+
 tr.sortable-column-placeholder,
-tr.sortable-column-placeholder td{
+tr.sortable-column-placeholder td {
   height: 130px;
   background: rgba(0, 123, 255, 0.25);
 }
+
 a.btn,
 .navbar-brand,
 .nav-link,
@@ -95,11 +98,11 @@ a:hover,
 .grid-view .badge {
   font-size: 100%;
   margin: 2px;
-  a{
+  a {
     text-decoration: none;
     font-weight: normal;
-    &:hover{
-      color:#fff;
+    &:hover {
+      color: #fff;
     }
   }
 }
@@ -191,9 +194,11 @@ a:hover,
 .main-icon .small-thumbnail {
   margin-bottom: 30px;
 }
+
 label {
   margin-bottom: 0;
 }
+
 form .col-form-label {
   padding-top: 0;
   text-align: left;
@@ -436,9 +441,11 @@ input.loading {
   padding-top: 51px;
   margin-bottom: 51px;
 }
-.lofiversion #wrapper-tpl{
+
+.lofiversion #wrapper-tpl {
   padding-top: 1rem;
 }
+
 /*
 .blur {
   -webkit-filter: grayscale(100%) blur(1px);
@@ -801,14 +808,6 @@ form .form-group {
   color: #636363;
 }
 
-/*
-Топ навигация
-*/
-.fixed-top {
-  border: 0;
-  z-index: 100;
-}
-
 .navbar {
   padding-top: 0;
   padding-bottom: 0;
@@ -835,6 +834,96 @@ form .form-group {
     font-size: 35px;
     font-family: Pixelion;
   }
+}
+
+$sidebar-min-width: 50px;
+$sidebar-item-height: 40px;
+#wrapper {
+  &.active{
+    #sidebar-wrapper {
+      .nav {
+        .dropdown {
+          .dropdown-menu {
+            a {
+              padding-left: 40px;
+            }
+          }
+        }
+      }
+    }
+  }
+  #sidebar-wrapper {
+    z-index: 4;
+    position: fixed;
+    left: 50px;
+    width: 50px;
+    height: 100%;
+    margin-left: -50px;
+    overflow-y: auto;
+    @include transition(.5s, ease);
+    border-right: 1px solid $primary_border_color;
+    .nav {
+      .nav-item {
+        border-bottom: 1px solid #292d32;
+        a {
+          background: transparent;
+          color: #b5bcbf;
+          height: $sidebar-item-height;
+          padding: 0 0 0 12px;
+          line-height: $sidebar-item-height;
+          position: relative;
+          i {
+            position: relative;
+            top: 3px;
+            margin-right: 15px;
+          }
+          [class^="icon-"]:before,
+          [class*=" icon-"]:before {
+            font-size: 23px;
+          }
+          &:before {
+            position: absolute;
+            left: 0;
+            font-size: 20px;
+            text-align: center;
+            width: $sidebar-min-width;
+            line-height: $sidebar-item-height;
+            height: 100%;
+          }
+          &:hover,
+          &:focus {
+            color: #dee1e2;
+            background-color: #2f353a;
+          }
+        }
+
+      }
+      .dropdown {
+        .dropdown-menu {
+          position: static;
+          float: none;
+          width: 100%;
+          border: 0;
+          background: transparent;
+          margin-top: 0;
+        }
+      }
+
+      .dropdown-toggle::after {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+      }
+
+    }
+  }
+}
+
+.show > .dropdown-toggle::after {
+  border-bottom: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-top: 0;
+  border-left: 0.3em solid transparent;
 }
 
 /*
@@ -974,11 +1063,10 @@ form .form-group {
 
 /* Yii */
 form div.required label:after {
-  content:" * ";
-  color:red;
+  content: " * ";
+  color: red;
 
 }
-
 
 .not-set {
   color: #c55;
@@ -996,6 +1084,7 @@ a.asc:after, a.desc:after {
   line-height: 1;
   padding-left: 5px;
 }
+
 a.asc:after {
   content: "\f007";
 }
@@ -1019,7 +1108,6 @@ a.desc:after {
 .sort-ordinal a.desc:after {
   content: "\f008";
 }
-
 
 #dialog_edit_columns {
   padding: 0;
@@ -1241,6 +1329,7 @@ a.desc:after {
 .navbar-toggler:focus {
   outline: none;
 }
+
 .navbar-toggler {
 
   span {
@@ -1279,10 +1368,10 @@ a.desc:after {
   }
 
 }
+
 .collapse.show .dropdown-menu > .nav-item {
   float: none;
 }
-
 
 .dropdown-menu {
   padding: 0;
@@ -1399,19 +1488,6 @@ table .alert {
       }
     }
   }
-}
-
-#sidebar-wrapper {
-  z-index: 4;
-  position: fixed;
-  left: 50px;
-  width: 50px;
-  height: 100%;
-  margin-left: -50px;
-  overflow-y: auto;
-  @include transition(.5s, ease);
-  border-right: 1px solid $primary_border_color;
-
 }
 
 ::-webkit-scrollbar {
