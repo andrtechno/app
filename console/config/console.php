@@ -11,17 +11,18 @@ Yii::setAlias('@common', dirname(dirname(__DIR__)) . '/common');
 $params = require(dirname(__DIR__) . '/../common/config/params.php');
 $db = require(dirname(__DIR__) . '/../common/config/db_local.php');
 
+
 return [
     'id' => 'console',
     'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__) . '/../',
     //'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log','gii'],//, 'panix\engine\BootstrapModule'
+    'bootstrap' => ['log'],
     'controllerNamespace' => 'app/console/commands',
     'language' => 'ru',
-    'runtimePath' => '@app/runtime',
+    'runtimePath' => '@app/console/runtime',
     'modules' => [
-        'gii' => ['class' => 'yii\gii\Module'],
+        //'gii' => ['class' => 'yii\gii\Module'],
         //'shop' => ['class' => 'panix\mod\shop\Module'],
         //'images' => ['class' => 'panix\mod\images\Module'],
         //'cart' => ['class' => 'panix\mod\cart\Module'],
@@ -32,18 +33,19 @@ return [
         //'admin' => ['class' => 'panix\mod\admin\Module'],
     ],
     'controllerMap' => [
+
         'sitemap' => [
             'class' => 'app\modules\sitemap\console\CreateController',
         ],
-        //'migrate' => [
+        'migrate' => [
         // 'class' => 'yii\console\controllers\MigrateController',
-        //'class' => 'panix\engine\console\controllers\MigrateController',
+        'class' => 'panix\engine\console\controllers\MigrateController',
         // 'migrationPath' => null,
         // 'migrationNamespaces' => [
         //  'console\migrations',
         // 'lo\plugins\migrations',
         // ],
-        //]
+        ]
     ],
     'components' => [
         //'authManager' => [
@@ -113,22 +115,6 @@ return [
         'session' => [
             'class' => 'yii\web\Session'
         ],
-        /* 'i18n' => [
-             'translations' => [
-                 'app*' => [
-                     'class' => 'yii\i18n\PhpMessageSource',
-                     'basePath' => '@vendor/panix/engine/messages',
-                     'fileMap' => [
-                         'app' => 'app.php',
-                         'app/admin' => 'admin.php',
-                         'app/month' => 'month.php',
-                         'app/error' => 'error.php',
-                         'app/geoip_country' => 'geoip_country.php',
-                         'app/geoip_city' => 'geoip_city.php',
-                     ],
-                 ],
-             ],
-         ],*/
         'settings' => ['class' => 'panix\engine\components\Settings'],
         'cache' => ['class' => 'yii\caching\FileCache'],
         'log' => [
@@ -140,25 +126,8 @@ return [
                 ],
             ],
         ],
-        'request' => [
-            'class' => 'panix\engine\WebRequest',
-            // 'baseUrl' => '/admin',
-            // 'csrfParam' => '_csrf-console',
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            // 'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
-        ],
         'db' => $db,
-        /*'urlManager' => [
-            'scriptUrl' => 'http://app.loc',
-            'baseUrl' => '',
-        ],*/
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
-        /*'urlManager'=>\yii\helpers\ArrayHelper::merge([
-            'scriptUrl' => 'http://app.loc/',
-            'baseUrl' => '',
-            'hostInfo'=>'http://app.loc/',
-
-        ],require(__DIR__ . '/urlManager.php'))*/
     ],
     'params' => $params,
 ];
