@@ -21,7 +21,6 @@ class m190330_120130_seo_redirect extends Migration {
             'url_to' => $this->string(255)->notNull(),
             'switch' => $this->boolean()->defaultValue(1),
         ], $this->tableOptions);
-        $this->createIndex('url_id', SeoParams::tableName(), 'url_id');
     }
 
     public function down() {
