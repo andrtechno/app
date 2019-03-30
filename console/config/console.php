@@ -53,7 +53,7 @@ return [
         //    'defaultRoles' => ['guest', 'user'],
         //],
         'sitemap' => [
-            'class' => 'app\common\modules\sitemap\Sitemap',
+            'class' => 'app\modules\sitemap\Sitemap',
             'models' => [
                 // your models
                 'panix\mod\shop\models\Product',
@@ -62,7 +62,7 @@ return [
                     'class' => 'panix\mod\shop\models\Product',
                     'behaviors' => [
                         'sitemap' => [
-                            'class' => '\app\common\modules\sitemap\behaviors\SitemapBehavior',
+                            'class' => '\app\modules\sitemap\behaviors\SitemapBehavior',
                             'scope' => function ($model) {
                                 $model->select(['seo_alias', 'date_create']);
                                 $model->andWhere(['switch' => 1]);
@@ -71,7 +71,7 @@ return [
                                 return [
                                     'loc' => \yii\helpers\Url::to($model->url, true),
                                     'lastmod' => strtotime($model->date_create),
-                                    'changefreq' => \app\common\modules\sitemap\Sitemap::DAILY,
+                                    'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
                                     'priority' => 0.8
                                 ];
                             }
@@ -83,7 +83,7 @@ return [
                 // your additional urls
                 [
                     'loc' => ['/news/default/index'],
-                    //'changefreq' => \app\common\modules\sitemap\Sitemap::DAILY,
+                    //'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
                     'priority' => 0.8,
                     'news' => [
                         'publication' => [

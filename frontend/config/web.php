@@ -45,7 +45,7 @@ $config = [
             ]
         ],
         'sitemap' => [
-            'class' => 'app\common\modules\sitemap\Module',
+            'class' => 'app\modules\sitemap\Module',
         ],
         'rbac' => [
             'class' => 'panix\mod\rbac\Module',
@@ -56,8 +56,8 @@ $config = [
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         //'stats' => ['class' => 'panix\mod\stats\Module'],
-        //'hosting' => ['class' => 'app\common\modules\hosting\Module'],
-        /* 'seo' => ['class' => 'app\common\modules\seo\Module'],
+        //'hosting' => ['class' => 'app\modules\hosting\Module'],
+        /* 'seo' => ['class' => 'app\modules\seo\Module'],
 
 
           'pages' => ['class' => 'panix\mod\pages\Module'],
@@ -75,7 +75,7 @@ $config = [
           'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
           'delivery' => ['class' => 'panix\mod\delivery\Module'],
           'forum' => ['class' => 'panix\mod\forum\Module'],
-          // 'portfolio' => ['class' => 'app\common\modules\portfolio\Module'],
+          // 'portfolio' => ['class' => 'app\modules\portfolio\Module'],
           'images' => [
           'class' => 'panix\mod\images\Module',
           'imagesStorePath' => 'uploads/store', //path to origin images
@@ -123,7 +123,7 @@ $config = [
             'apiKey' => 'AIzaSyAbeTCpxK7OGu_lXZDSnJjV1ItkUwPOBbc', // Server API Key (you can get it here: https://firebase.google.com/docs/server/setup#prerequisites)
         ],
         'robotsTxt' => [
-            'class' => 'app\common\modules\sitemap\RobotsTxt',
+            'class' => 'app\modules\sitemap\RobotsTxt',
             'userAgent' => [
                 // Disallow url for all bots
                 '*' => [
@@ -146,16 +146,16 @@ $config = [
             ],
         ],
         'sitemap' => [
-            'class' => 'app\common\modules\sitemap\Sitemap',
+            'class' => 'app\modules\sitemap\Sitemap',
             'models' => [
                 // your models
-                'app\common\modules\news\models\News',
+                'app\modules\news\models\News',
                 // or configuration for creating a behavior
                 [
-                    'class' => 'app\common\modules\news\models\News',
+                    'class' => 'app\modules\news\models\News',
                     'behaviors' => [
                         'sitemap' => [
-                            'class' => '\app\common\modules\sitemap\behaviors\SitemapBehavior',
+                            'class' => '\app\modules\sitemap\behaviors\SitemapBehavior',
                             'scope' => function ($model) {
                                 /** @var \yii\db\ActiveQuery $model */
                                 $model->select(['url', 'lastmod']);
@@ -166,7 +166,7 @@ $config = [
                                 return [
                                     'loc' => Url::to($model->url, true),
                                     'lastmod' => strtotime($model->lastmod),
-                                    'changefreq' => \app\common\modules\sitemap\Sitemap::DAILY,
+                                    'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
                                     'priority' => 0.8
                                 ];
                             }
@@ -178,7 +178,7 @@ $config = [
                 // your additional urls
                 [
                     'loc' => ['/news/default/index'],
-                    //'changefreq' => \app\common\modules\sitemap\Sitemap::DAILY,
+                    //'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
                     'priority' => 0.8,
                     'news' => [
                         'publication' => [
@@ -215,7 +215,7 @@ $config = [
             'class' => 'panix\engine\components\ConsoleRunner',
             'file' => '@my/path/to/yii' // or an absolute path to console file
         ],
-        'seo' => ['class' => 'app\common\modules\seo\components\SeoExt'],
+        'seo' => ['class' => 'app\modules\seo\components\SeoExt'],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
         'pdf' => [

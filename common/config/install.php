@@ -16,10 +16,10 @@ $config = [
     'defaultRoute' => 'install/index',
     // 'controllerNamespace' => 'app\modules\install\controllers',
     'controllerMap' => [
-        'install' => 'app\common\modules\install\controllers\DefaultController',
+        'install' => 'app\modules\install\controllers\DefaultController',
     ],
     'modules' => [
-        'install' => ['class' => 'app\common\modules\install\Module'],
+        'install' => ['class' => 'app\modules\install\Module'],
        // 'portfolio' => ['class' => 'panix\mod\portfolio\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],

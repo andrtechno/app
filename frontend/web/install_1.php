@@ -14,12 +14,12 @@ $config = [
     'basePath' => dirname(__DIR__) . '/../',
     'bootstrap' => ['log'],
     'defaultRoute' => 'install/index',
-    //'controllerNamespace' => 'app\common\modules\install\controllers',
+    //'controllerNamespace' => 'app\modules\install\controllers',
     'controllerMap' => [
-        'main' => 'app\common\modules\install\controllers\DefaultController',
+        'main' => 'app\modules\install\controllers\DefaultController',
     ],
     'modules' => [
-        'install'=>['class'=>'app\common\modules\install\Module'],
+        'install'=>['class'=>'app\modules\install\Module'],
     ],
     'components' => [
         'i18n' => [

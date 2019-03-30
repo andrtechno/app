@@ -31,7 +31,7 @@ $config = [
     ],
     'modules' => [
         'sitemap' => [
-            'class' => 'app\common\modules\sitemap\Module',
+            'class' => 'app\modules\sitemap\Module',
         ],
         'plugins' => [
             'class' => 'panix\mod\plugins\Module',
@@ -99,7 +99,7 @@ $config = [
             'apiKey' => 'AIzaSyAbeTCpxK7OGu_lXZDSnJjV1ItkUwPOBbc', // Server API Key (you can get it here: https://firebase.google.com/docs/server/setup#prerequisites)
         ],
         'robotsTxt' => [
-            'class' => 'app\common\modules\sitemap\RobotsTxt',
+            'class' => 'app\modules\sitemap\RobotsTxt',
             'userAgent' => [
                 // Disallow url for all bots
                 '*' => [
@@ -122,7 +122,7 @@ $config = [
             ],
         ],
         'sitemap' => [
-            'class' => 'app\common\modules\sitemap\Sitemap',
+            'class' => 'app\modules\sitemap\Sitemap',
             'models' => [
                 // your models
                 'app\modules\news\models\News',
@@ -188,7 +188,7 @@ $config = [
             'class' => 'panix\engine\components\ConsoleRunner',
             'file' => '@my/path/to/yii' // or an absolute path to console file
         ],
-        'seo' => ['class' => 'app\common\modules\seo\components\SeoExt'],
+        'seo' => ['class' => 'app\modules\seo\components\SeoExt'],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'pdf' => [
             'class' => Pdf::class,
@@ -379,26 +379,13 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             // 'enableStrictParsing' => false,
-           // 'baseUrl' => '/admin',
+            'baseUrl' => '',
             /*'normalizer' => [
                 'class' => 'yii\web\UrlNormalizer',
                 'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
             ],*/
             'rules' => [
                 'placeholder' => 'main/placeholder',
-
-
-                //['pattern' => 'admin/debug/<controller:\w+>', 'route' => 'debug/<controller>'],
-                //['pattern' => 'admin/debug/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'debug/<controller>/<action>'],
-
-
-                /*['pattern' => '', 'route' => 'admin/default/index'],
-                ['pattern' => 'auth', 'route' => 'admin/auth'],
-                ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/<controller>/index'],
-                ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/<controller>/<action>'],
-                ['pattern' => '<module:\w+>', 'route' => '<module>/default/index'],
-                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/<controller>/index'],
-                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/<controller>/<action>'],*/
 
                 ['pattern' => '', 'route' => 'admin/admin/default/index'],
                 ['pattern' => 'auth', 'route' => 'admin/auth/index'],
