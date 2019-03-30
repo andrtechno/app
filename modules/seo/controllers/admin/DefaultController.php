@@ -200,7 +200,7 @@ class DefaultController extends \panix\engine\controllers\AdminController {
 
         foreach (Yii::$app->getModules() as $mod => $obj) {
 
-            if (!in_array($mod, ['admin', 'seo', 'user', 'install', 'stats'])) {
+            if (!in_array($mod, ['admin', 'seo', 'user', 'rbac', 'stats'])) {
                 if (file_exists(Yii::getAlias("@vendor/panix/mod-{$mod}/models"))) {
                     $file_list[$mod] = scandir(Yii::getAlias("@vendor/panix/mod-{$mod}/models"));
                 }
