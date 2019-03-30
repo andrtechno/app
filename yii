@@ -3,9 +3,9 @@
 
 
 if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
-    defined('YII_DEBUG') or define('YII_DEBUG', true);
+   // defined('YII_DEBUG') or define('YII_DEBUG', true);
 } else {
-    defined('YII_DEBUG') or define('YII_DEBUG', false);
+   // defined('YII_DEBUG') or define('YII_DEBUG', false);
 }
 
 
@@ -19,5 +19,6 @@ require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
 $config = require(__DIR__ . '/console/config/console.php');
 
 $application = new panix\engine\console\Application($config);
+//$application = new \yii\console\Application($config);
 $exitCode = $application->run();
 exit($exitCode);

@@ -6,7 +6,7 @@ Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
 Yii::setAlias('@backend', dirname(__DIR__) . '/web');
 
 
-$db = YII_DEBUG ? dirname(__DIR__) . '/../config/db_local.php' : dirname(__DIR__) . '/../config/db.php';
+$db = YII_DEBUG ? dirname(__DIR__) . '/../common/config/db_local.php' : dirname(__DIR__) . '/../common/config/db.php';
 $config = [
     'id' => 'backend',
     'name' => 'PIXELION CMS',
@@ -31,7 +31,7 @@ $config = [
     ],
     'modules' => [
         'sitemap' => [
-            'class' => 'app\modules\sitemap\Module',
+            'class' => 'app\common\modules\sitemap\Module',
         ],
         'plugins' => [
             'class' => 'panix\mod\plugins\Module',
@@ -99,7 +99,7 @@ $config = [
             'apiKey' => 'AIzaSyAbeTCpxK7OGu_lXZDSnJjV1ItkUwPOBbc', // Server API Key (you can get it here: https://firebase.google.com/docs/server/setup#prerequisites)
         ],
         'robotsTxt' => [
-            'class' => 'app\modules\sitemap\RobotsTxt',
+            'class' => 'app\common\modules\sitemap\RobotsTxt',
             'userAgent' => [
                 // Disallow url for all bots
                 '*' => [
@@ -122,7 +122,7 @@ $config = [
             ],
         ],
         'sitemap' => [
-            'class' => 'app\modules\sitemap\Sitemap',
+            'class' => 'app\common\modules\sitemap\Sitemap',
             'models' => [
                 // your models
                 'app\modules\news\models\News',
@@ -188,7 +188,7 @@ $config = [
             'class' => 'panix\engine\components\ConsoleRunner',
             'file' => '@my/path/to/yii' // or an absolute path to console file
         ],
-        'seo' => ['class' => 'app\modules\seo\components\SeoExt'],
+        'seo' => ['class' => 'app\common\modules\seo\components\SeoExt'],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'pdf' => [
             'class' => Pdf::class,
@@ -425,7 +425,7 @@ $config = [
             // otherwise you may not even take a first step.
         ]
     ],*/
-    'params' => require(dirname(__DIR__) . '/../config/params.php'),
+    'params' => require(dirname(__DIR__) . '/../common/config/params.php'),
 ];
 
 if (YII_ENV_DEV) {

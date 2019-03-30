@@ -8,8 +8,8 @@ Yii::setAlias('@backend', dirname(dirname(__DIR__)) . '/backend/web');
 
 
 
-$params = require(dirname(__DIR__) . '/../config/params.php');
-$db = require(dirname(__DIR__) . '/../config/db_local.php');
+$params = require(dirname(__DIR__) . '/../common/config/params.php');
+$db = require(dirname(__DIR__) . '/../common/config/db_local.php');
 
 return [
     'id' => 'console',
@@ -32,7 +32,7 @@ return [
     ],
     'controllerMap' => [
         'sitemap' => [
-            'class' => 'app\modules\sitemap\console\CreateController',
+            'class' => 'app\common\modules\sitemap\console\CreateController',
         ],
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
@@ -50,7 +50,7 @@ return [
         //    'defaultRoles' => ['guest', 'user'],
         //],
         'sitemap' => [
-            'class' => 'app\modules\sitemap\Sitemap',
+            'class' => 'app\common\modules\sitemap\Sitemap',
             'models' => [
                 // your models
                 'panix\mod\shop\models\Product',
@@ -59,7 +59,7 @@ return [
                     'class' => 'panix\mod\shop\models\Product',
                     'behaviors' => [
                         'sitemap' => [
-                            'class' => '\app\modules\sitemap\behaviors\SitemapBehavior',
+                            'class' => '\app\common\modules\sitemap\behaviors\SitemapBehavior',
                             'scope' => function ($model) {
                                 $model->select(['seo_alias', 'date_create']);
                                 $model->andWhere(['switch' => 1]);
@@ -68,7 +68,7 @@ return [
                                 return [
                                     'loc' => \yii\helpers\Url::to($model->url, true),
                                     'lastmod' => strtotime($model->date_create),
-                                    'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
+                                    'changefreq' => \app\common\modules\sitemap\Sitemap::DAILY,
                                     'priority' => 0.8
                                 ];
                             }
@@ -80,7 +80,7 @@ return [
                 // your additional urls
                 [
                     'loc' => ['/news/default/index'],
-                    //'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
+                    //'changefreq' => \app\common\modules\sitemap\Sitemap::DAILY,
                     'priority' => 0.8,
                     'news' => [
                         'publication'   => [
