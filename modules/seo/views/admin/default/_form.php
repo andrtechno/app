@@ -48,10 +48,11 @@ $form = ActiveForm::begin([
 <?= $form->field($model, 'url')->textInput() ?>
 <?= $form->field($model, 'title')->textInput() ?>
 <?= $form->field($model, 'description')->textInput() ?>
-<?= $form->field($model, 'keywords')->widget(TagInput::className(), [
+<?= $form->field($model, 'keywords')->widget(TagInput::class, [
 ])->hint(Yii::t('seo/default', 'KEYWORDS_HINT'));
 ?>
-<?= $form->field($model, 'text')->widget(TinyMce::className(), [
+<?= $form->field($model, 'h1')->textInput() ?>
+<?= $form->field($model, 'text')->widget(TinyMce::class, [
     'options' => ['rows' => 6],
 
 ]); ?>
