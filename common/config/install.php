@@ -8,7 +8,7 @@ use yii\web\UrlNormalizer;
 defined('DB_FILE') or define('DB_FILE', YII_DEBUG ? __DIR__ . '/db_local.php' : __DIR__ . '/db.php');
 
 $config = [
-    'id' => 'cms-installer',
+    'id' => 'install',
     'name' => 'PIXELION CMS',
     'language' => 'ru',
     'basePath' => dirname(__DIR__) . '/../',
