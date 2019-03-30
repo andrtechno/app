@@ -4,6 +4,7 @@ Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
 Yii::setAlias('@webroot', dirname(__DIR__).'/web');
 
 Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
+Yii::setAlias('@backend', dirname(dirname(__DIR__)) . '/backend/web');
 
 
 
@@ -15,38 +16,39 @@ return [
     'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__).'/../',
     'bootstrap' => ['log', 'panix\engine\BootstrapModule'],
-    'controllerNamespace' => 'app\commands',
+    'controllerNamespace' => 'app\console\commands',
     'language' => 'ru',
     'runtimePath'=>'@app/console/runtime',
     'modules' => [
        // 'gii' => ['class' => 'yii\gii\Module'],
-        'shop' => ['class' => 'panix\mod\shop\Module'],
-        'images' => ['class' => 'panix\mod\images\Module'],
-        'cart' => ['class' => 'panix\mod\cart\Module'],
-        'pages' => ['class' => 'panix\mod\pages\Module'],
-        'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
-        'user' => ['class' => 'panix\mod\user\Module'],
-        'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
-        'admin' => ['class' => 'panix\mod\admin\Module'],
+        //'shop' => ['class' => 'panix\mod\shop\Module'],
+        //'images' => ['class' => 'panix\mod\images\Module'],
+        //'cart' => ['class' => 'panix\mod\cart\Module'],
+        //'pages' => ['class' => 'panix\mod\pages\Module'],
+        //'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
+        //'user' => ['class' => 'panix\mod\user\Module'],
+        //'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
+        //'admin' => ['class' => 'panix\mod\admin\Module'],
     ],
     'controllerMap' => [
         'sitemap' => [
             'class' => 'app\modules\sitemap\console\CreateController',
         ],
         'migrate' => [
-            'class' => 'panix\engine\console\controllers\MigrateController',
+            'class' => 'yii\console\controllers\MigrateController',
+            //'class' => 'panix\engine\console\controllers\MigrateController',
            // 'migrationPath' => null,
-            //'migrationNamespaces' => [
-               // 'app\migrations',
+            'migrationNamespaces' => [
+                'app\console\migrations',
                // 'lo\plugins\migrations',
-           // ],
+            ],
         ]
     ],
     'components' => [
-        'authManager' => [
-            'class' => 'yii\rbac\DbManager',
-            'defaultRoles' => ['guest', 'user'],
-        ],
+        //'authManager' => [
+        //    'class' => 'yii\rbac\DbManager',
+        //    'defaultRoles' => ['guest', 'user'],
+        //],
         'sitemap' => [
             'class' => 'app\modules\sitemap\Sitemap',
             'models' => [
@@ -110,7 +112,7 @@ return [
         'session' => [
             'class' => 'yii\web\Session'
         ],
-        'i18n' => [
+       /* 'i18n' => [
             'translations' => [
                 'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
@@ -125,7 +127,7 @@ return [
                     ],
                 ],
             ],
-        ],
+        ],*/
         'settings' => ['class' => 'panix\engine\components\Settings'],
         'cache' => ['class' => 'yii\caching\FileCache'],
         'log' => [
@@ -136,6 +138,13 @@ return [
                     'levels' => ['error', 'warning'],
                 ],
             ],
+        ],
+        'request' => [
+            'class' => 'panix\engine\WebRequest',
+           // 'baseUrl' => '/admin',
+           // 'csrfParam' => '_csrf-console',
+            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
+           // 'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
         'db' => $db,
         /*'urlManager' => [

@@ -1,0 +1,11 @@
+<?php
+
+namespace app\common\modules\portfolio\models\translate;
+
+class ItemsTranslate extends \yii\db\ActiveRecord {
+
+    public static function tableName() {
+        return '{{%portfolio_item_translate}}';
+    }
+
+}

@@ -10,7 +10,7 @@ Yii::setAlias('@console', dirname(__DIR__) . '/../console/web');
 
 
 
-$db = YII_DEBUG ? dirname(__DIR__) . '/../config/db_local.php' : dirname(__DIR__) . '/../config/db.php';
+$db = YII_DEBUG ? dirname(__DIR__) . '/../common/config/db_local.php' : dirname(__DIR__) . '/../common/config/db.php';
 $config = [
     //'homeUrl' => '/',
     'id' => 'frontend',
@@ -45,7 +45,7 @@ $config = [
             ]
         ],
         'sitemap' => [
-            'class' => 'app\modules\sitemap\Module',
+            'class' => 'app\common\modules\sitemap\Module',
         ],
         'rbac' => [
             'class' => 'panix\mod\rbac\Module',
@@ -56,8 +56,8 @@ $config = [
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         //'stats' => ['class' => 'panix\mod\stats\Module'],
-        //'hosting' => ['class' => 'app\modules\hosting\Module'],
-        /* 'seo' => ['class' => 'app\modules\seo\Module'],
+        //'hosting' => ['class' => 'app\common\modules\hosting\Module'],
+        /* 'seo' => ['class' => 'app\common\modules\seo\Module'],
 
 
           'pages' => ['class' => 'panix\mod\pages\Module'],
@@ -75,7 +75,7 @@ $config = [
           'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
           'delivery' => ['class' => 'panix\mod\delivery\Module'],
           'forum' => ['class' => 'panix\mod\forum\Module'],
-          // 'portfolio' => ['class' => 'app\modules\portfolio\Module'],
+          // 'portfolio' => ['class' => 'app\common\modules\portfolio\Module'],
           'images' => [
           'class' => 'panix\mod\images\Module',
           'imagesStorePath' => 'uploads/store', //path to origin images
@@ -123,7 +123,7 @@ $config = [
             'apiKey' => 'AIzaSyAbeTCpxK7OGu_lXZDSnJjV1ItkUwPOBbc', // Server API Key (you can get it here: https://firebase.google.com/docs/server/setup#prerequisites)
         ],
         'robotsTxt' => [
-            'class' => 'app\modules\sitemap\RobotsTxt',
+            'class' => 'app\common\modules\sitemap\RobotsTxt',
             'userAgent' => [
                 // Disallow url for all bots
                 '*' => [
@@ -146,16 +146,16 @@ $config = [
             ],
         ],
         'sitemap' => [
-            'class' => 'app\modules\sitemap\Sitemap',
+            'class' => 'app\common\modules\sitemap\Sitemap',
             'models' => [
                 // your models
-                'app\modules\news\models\News',
+                'app\common\modules\news\models\News',
                 // or configuration for creating a behavior
                 [
-                    'class' => 'app\modules\news\models\News',
+                    'class' => 'app\common\modules\news\models\News',
                     'behaviors' => [
                         'sitemap' => [
-                            'class' => '\app\modules\sitemap\behaviors\SitemapBehavior',
+                            'class' => '\app\common\modules\sitemap\behaviors\SitemapBehavior',
                             'scope' => function ($model) {
                                 /** @var \yii\db\ActiveQuery $model */
                                 $model->select(['url', 'lastmod']);
@@ -166,7 +166,7 @@ $config = [
                                 return [
                                     'loc' => Url::to($model->url, true),
                                     'lastmod' => strtotime($model->lastmod),
-                                    'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
+                                    'changefreq' => \app\common\modules\sitemap\Sitemap::DAILY,
                                     'priority' => 0.8
                                 ];
                             }
@@ -178,7 +178,7 @@ $config = [
                 // your additional urls
                 [
                     'loc' => ['/news/default/index'],
-                    //'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
+                    //'changefreq' => \app\common\modules\sitemap\Sitemap::DAILY,
                     'priority' => 0.8,
                     'news' => [
                         'publication' => [
@@ -215,7 +215,7 @@ $config = [
             'class' => 'panix\engine\components\ConsoleRunner',
             'file' => '@my/path/to/yii' // or an absolute path to console file
         ],
-        'seo' => ['class' => 'app\modules\seo\components\SeoExt'],
+        'seo' => ['class' => 'app\common\modules\seo\components\SeoExt'],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
         'pdf' => [
@@ -404,7 +404,7 @@ $config = [
             // otherwise you may not even take a first step.
         ]
     ],*/
-    'params' => require(dirname(__DIR__) . '/../config/params.php'),
+    'params' => require(dirname(__DIR__) . '/../common/config/params.php'),
 ];
 
 if (YII_ENV_DEV) {
