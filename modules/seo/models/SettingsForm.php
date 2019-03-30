@@ -1,7 +1,10 @@
 <?php
+
 namespace app\modules\seo\models;
-class SettingsForm extends \panix\engine\SettingsModel {
-    protected $module='seo';
+
+class SettingsForm extends \panix\engine\SettingsModel
+{
+    protected $module = 'seo';
     const NAME = 'seo';
     public $googleanalytics_id;
     public $googletag_id;
@@ -13,7 +16,8 @@ class SettingsForm extends \panix\engine\SettingsModel {
     public $google_site_verification;
     public $yandex_verification;
 
-    public static function defaultSettings() {
+    public static function defaultSettings()
+    {
         return array(
             'googleanalytics_id' => null,
             'googletag_id' => null,
@@ -27,7 +31,8 @@ class SettingsForm extends \panix\engine\SettingsModel {
         );
     }
 
-    public function getForm() {
+    public function getForm()
+    {
         return new TabForm(array(
             'attributes' => array(
                 'id' => __CLASS__,
@@ -70,12 +75,13 @@ class SettingsForm extends \panix\engine\SettingsModel {
                     'label' => Yii::t('app', 'SAVE')
                 )
             )
-                ), $this);
+        ), $this);
     }
 
-    public function rules() {
+    public function rules()
+    {
         return [
-            ['canonical','boolean']
+            ['canonical', 'boolean']
             //('yandexmetrika_clickmap, yandexmetrika_trackLinks, yandexmetrika_webvisor, canonical', 'boolean'),
             //[]'googleanalytics_id, googletag_id, google_site_verification, yandex_verification', 'type', 'type' => 'string'),
             //('yandexmetrika_id', 'numerical', 'integerOnly' => true),

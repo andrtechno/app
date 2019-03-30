@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS `{prefix}seo_url` (
   `title` varchar(150) DEFAULT NULL,
   `keywords` text,
   `description` text,
+  `h1` varchar(255) DEFAULT NULL,
   `text` text,
   PRIMARY KEY (`id`),
   KEY `url` (`url`)
