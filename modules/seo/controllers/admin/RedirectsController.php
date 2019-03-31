@@ -1,5 +1,9 @@
 <?php
 namespace app\modules\seo\controllers\admin;
+
+use app\modules\seo\models\Redirects;
+use Yii;
+
 class RedirectsController extends \panix\engine\controllers\AdminController {
 
     public function actions() {

@@ -9,6 +9,7 @@ Yii::setAlias('@backend', dirname(__DIR__) . '/web');
 $db = YII_DEBUG ? dirname(__DIR__) . '/../common/config/db_local.php' : dirname(__DIR__) . '/../common/config/db.php';
 $config = [
     'id' => 'backend',
+    'homeUrl' => '/admin',
     'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__) . '/../',
     'language' => 'ru',
@@ -375,15 +376,15 @@ $config = [
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
         'settings' => ['class' => 'panix\engine\components\Settings'],
         'urlManager' => [
-            //'class' => 'panix\engine\ManagerUrl',
+            'class' => 'panix\engine\ManagerUrl',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             // 'enableStrictParsing' => false,
             'baseUrl' => '',
-            /*'normalizer' => [
+            'normalizer' => [
                 'class' => 'yii\web\UrlNormalizer',
                 'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
-            ],*/
+            ],
             'rules' => [
                 'placeholder' => 'main/placeholder',
 
@@ -391,11 +392,11 @@ $config = [
                 ['pattern' => 'auth', 'route' => 'admin/auth/index'],
                 ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
                 ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/admin/<controller>/<action>'],
-                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
-                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/index'],
+
+
                 ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
-
-
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/index'],
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
             ],
         ],
         'db' => require($db),
@@ -417,7 +418,6 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    //$config['bootstrap'][] = 'debug';
     $config['modules']['debug']['class'] = 'yii\debug\Module';
     // $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
     $config['modules']['debug']['traceLine'] = function ($options, $panel) {

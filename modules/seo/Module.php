@@ -35,7 +35,7 @@ class Module extends WebModule
             'version' => '1.0',
             'icon' => $this->icon,
             'description' => Yii::t('seo/default', 'MODULE_DESC'),
-            'url' => ['/seo'],
+            'url' => ['/admin/seo'],
         ];
     }
 
@@ -46,7 +46,7 @@ class Module extends WebModule
                 'items' => [
                     [
                         'label' => 'seo',
-                        'url' => ['/seo'],
+                        'url' => ['/admin/seo'],
                         'icon' => $this->icon,
                     ],
                 ],

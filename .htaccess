@@ -4,14 +4,16 @@ RewriteEngine On
 
 
 
+
+
 # если /admin, то в backend
 RewriteRule ^admin/assets/(.*)$ backend/assets/$1 [L]
 RewriteRule ^admin/css/(.*)$ backend/css/$1 [L]
 RewriteRule ^admin/js/(.*)$ backend/js/$1 [L]
 RewriteRule ^uploads/(.*)$ frontend/web/uploads/$1 [L]
-#RewriteCond %{REQUEST_URI} !^/backend/(assets|css)/
+RewriteCond %{REQUEST_URI} !^/backend|/(assets|css)/
 RewriteCond %{REQUEST_URI} ^/(admin)
-RewriteRule ^.*$ backend/index.php [L]
+RewriteRule ^admin/(.*)$ backend/index.php [L]
 
 
 # frontend
