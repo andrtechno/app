@@ -1,11 +1,7 @@
 <?php
-
 use panix\engine\pdf\Pdf;
-
 Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
 Yii::setAlias('@backend', dirname(__DIR__) . '/web');
-
-
 $db = YII_DEBUG ? dirname(__DIR__) . '/../common/config/db_local.php' : dirname(__DIR__) . '/../common/config/db.php';
 $config = [
     'id' => 'backend',
@@ -47,14 +43,11 @@ $config = [
                 'class' => panix\mod\rbac\filters\AccessControl::class
             ],
         ],
-
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         //'stats' => ['class' => 'panix\mod\stats\Module'],
         //'hosting' => ['class' => 'app\modules\hosting\Module'],
         /* 'seo' => ['class' => 'app\modules\seo\Module'],
-
-
           'pages' => ['class' => 'panix\mod\pages\Module'],
           'shop' => ['class' => 'panix\mod\shop\Module'],
           'contacts' => ['class' => 'panix\mod\contacts\Module'],
@@ -237,7 +230,6 @@ $config = [
             'as Layout' => [
                 'class' => \panix\engine\behaviors\LayoutBehavior::class,
             ],
-
             'renderers' => [
                 'tpl' => [
                     'class' => 'yii\smarty\ViewRenderer',
@@ -379,21 +371,18 @@ $config = [
             'class' => 'panix\engine\ManagerUrl',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            // 'enableStrictParsing' => false,
-            'baseUrl' => '',
-            'normalizer' => [
-                'class' => 'yii\web\UrlNormalizer',
-                'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
-            ],
+            'enableStrictParsing' => true,
+           // 'baseUrl' => '/admin',
+            //'normalizer' => [
+            //    'class' => 'yii\web\UrlNormalizer',
+            //    'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
+            //],
             'rules' => [
                 'placeholder' => 'main/placeholder',
-
                 ['pattern' => '', 'route' => 'admin/admin/default/index'],
                 ['pattern' => 'auth', 'route' => 'admin/auth/index'],
                 ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
                 ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/admin/<controller>/<action>'],
-
-
                 ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
                 ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/index'],
                 ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
@@ -415,7 +404,6 @@ $config = [
     ],*/
     'params' => require(dirname(__DIR__) . '/../common/config/params.php'),
 ];
-
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['modules']['debug']['class'] = 'yii\debug\Module';
@@ -427,9 +415,7 @@ if (YII_ENV_DEV) {
         /// $filePath = str_replace(Yii::$app->vendorPath, 'file://~/path/to/your/vendor', $filePath);
         return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
     };
-
     //$config['bootstrap'][] = 'gii';
     //$config['modules']['gii'] = 'yii\gii\Module';
 }
-
 return $config;
