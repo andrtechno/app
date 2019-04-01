@@ -23,9 +23,11 @@
         "panix/mod-forum": "dev-master",
         "phpoffice/phppresentation": "dev-master",
         "phpoffice/phpword": "v0.13.*",
-        "yii2mod/yii2-rbac": "dev-master",
         "panix/wgt-telinput": "dev-master",
-        "panix/mod-plugins": "dev-master"
+        "panix/mod-plugins": "dev-master",
+        "panix/mod-rbac": "dev-master",
+        "linslin/yii2-curl": "dev-master",
+        "panix/wgt-bootstrap-select": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2",
