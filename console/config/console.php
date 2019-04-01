@@ -6,6 +6,7 @@ Yii::setAlias('@webroot', dirname(__DIR__) . '/web');
 Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
 Yii::setAlias('@backend', dirname(dirname(__DIR__)) . '/backend/web');
 Yii::setAlias('@common', dirname(dirname(__DIR__)) . '/common');
+Yii::setAlias('@console', dirname(dirname(__DIR__)) . '/console');
 
 
 $params = require(dirname(__DIR__) . '/../common/config/params.php');
