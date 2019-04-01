@@ -59,7 +59,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                                 'label' => 'Menu',
                                 'url' => '#',
                                 'linkOptions' => ['class' => 'sidebar-nav', 'id' => 'menu-toggle'],
-                            ]],$this->context->module->getAdminSidebar()),
+                            ]], $this->context->module->getAdminSidebar()),
                         'options' => ['class' => 'flex-column'],
                     ]);
                     ?>
@@ -128,9 +128,10 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
                         <div class="col-lg-12">
 
-
                             <?php if (Yii::$app->session->allFlashes) { ?>
-                                <?php foreach (Yii::$app->session->allFlashes as $key => $message) { ?>
+                                <?php foreach (Yii::$app->session->allFlashes as $key => $message) {
+                                    $key = ($key == 'error') ? 'danger' : $key;
+                                    ?>
                                     <div class="alert alert-<?= $key ?> fadeOut-time"><?= $message ?></div>
                                 <?php } ?>
                             <?php } ?>
