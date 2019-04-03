@@ -264,6 +264,12 @@
   right: 0;
 }
 
+/*
+form .form-group input.form-control,
+form .form-group select.form-control,
+form .form-group select.custom-select{
+  width: 60%;
+}*/
 .bootstrap-select .btn-light {
   border-color: #c9c9c9;
   background-color: #fff;

@@ -415,35 +415,35 @@ form .form-group {
 }
 
 .text-success {
-  color: #35cc62;
+  color: #35cc62 !important;
 }
 
 .text-danger {
-  color: #fa6557;
+  color: #fa6557 !important;
 }
 
 .text-info {
-  color: #0ecccc;
+  color: #0ecccc !important;
 }
 
 .text-primary {
-  color: #007bff;
+  color: #007bff !important;
 }
 
 .text-secondary {
-  color: #6c757d;
+  color: #6c757d !important;
 }
 
 .text-warning {
-  color: #ffb54c;
+  color: #ffb54c !important;
 }
 
 .text-dark {
-  color: #343a40;
+  color: #343a40 !important;
 }
 
 .text-light {
-  color: #f8f9fa;
+  color: #f8f9fa !important;
 }
 
 .alert-success {
