@@ -1,4 +1,5 @@
 <?php
+namespace app\modules\seo\migrations;
 /**
  * Generation migrate by PIXELION CMS
  *

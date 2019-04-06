@@ -25,6 +25,7 @@ class m171205_114613_language extends Migration
             'name' => $this->string(100)->notNull(),
             'code' => $this->string(2)->notNull(),
             'locale' => $this->string(5)->notNull(),
+            'flag_name' => $this->string(10)->null(),
             'is_default' => $this->boolean()->defaultValue(0),
             'switch' => $this->boolean()->defaultValue(1),
             'ordern' => $this->integer(),
@@ -33,11 +34,11 @@ class m171205_114613_language extends Migration
         $this->createIndex('ordern', $this->tableName, 'ordern');
 
 
-        $this->batchInsert($this->tableName, ['name', 'code', 'locale', 'is_default', 'switch', 'ordern'], [
-            ['Русский', 'ru', 'ru-RU', 1, 1, 1],
-            ['English', 'en', 'en-US', 0, 0, 0],
-            ['Український', 'ua', 'uk-UA', 0, 0, 0],
-            ['Deutsch', 'de', 'de', 0, 0, 0],
+        $this->batchInsert($this->tableName, ['name', 'code', 'locale', 'flag_name', 'is_default', 'switch', 'ordern'], [
+            ['Русский', 'ru', 'ru-RU', 'ru.png', 1, 1, 1],
+            ['English', 'en', 'en-US', 'en.png', 0, 0, 0],
+            ['Український', 'ua', 'uk-UA', 'ua.png', 0, 0, 0],
+            ['Deutsch', 'de', 'de', 'de.png', 0, 0, 0],
         ]);
 
     }

@@ -1,10 +1,10 @@
 <?php
 
 use panix\engine\Html;
-use panix\engine\widgets\Breadcrumbs;
+use yii\widgets\Breadcrumbs;
 
 
-\app\frontend\web\themes\basic\assets\ThemeAsset::register($this);
+\app\frontend\web\themes\basicnew\assets\ThemeAsset::register($this);
 
 /*$c = Yii::$app->settings->get('shop');
 
@@ -31,16 +31,66 @@ $this->registerJs("
         echo '<title>' . Html::encode(Yii::$app->seo->block('title')) . '</title>';
     }*/
     ?>
-<script charset="UTF-8" src="//cdn.sendpulse.com/js/push/3e9c33d0f25795d8e0a72d77af9e38c6_0.js" async></script>
 
+    <script charset="UTF-8" src="//cdn.sendpulse.com/js/push/3e9c33d0f25795d8e0a72d77af9e38c6_0.js" async></script>
 </head>
 <body>
 <?php $this->beginBody() ?>
 <div class="wrap">
     <?= $this->render('partials/_header'); ?>
+    Hello, world!
+    main
+    lox poc
+    Hello, world!
+    <a href="http://google.com">google.com</a>
 
-    DEFAULT
+    <pre>dsasda Hello, world!</pre>
+    <div class=" tester content test">dsasda Hello, world!
+        [container]
+        [row]
+        [col]col[/col]
+        [col sm=3 xl=4]col[/col]
+        [col md="6"]ads[/col]
+        [col md="6"]ads[/col]
+        [/row]
+        [/container]
+        [tabs type="pills"]
+        [tab title="Home" active="true"]123213[/tab]
+        [tab title="Profile"]123123[/tab]
+        [tab title="Messages"]
+        adads
+        [/tab]
+        [/tabs]
+
+        [accordion]
+        [panel title="Home" active="true"]
+        ...
+        [/panel]
+        [panel title="Profile"]
+        ...
+        [/panel]
+        [panel title="Messages"]
+        ...
+        [/panel]
+        [/accordion]
+
+
+    </div>
+    [alert type="success"] 123 [/alert]
+
+
+    [badge text="hellow"]
+
+    [badge text="hellow" type="secondary"]
+
+
+    [text="test"]sad[/text]
+
+    [link url="/tester?test=1" target="_self"]MyLink[/link]
+    [text color="#c0c0c0"]MyLink[/text]
+    [color="#990000"]MyLink[/color]
     <?php
+
     /* NavBar::begin([
       'brandLabel' => 'CORNER CMS',
       'brandUrl' => Yii::$app->homeUrl,
@@ -73,23 +123,6 @@ $this->registerJs("
             echo Breadcrumbs::widget([
                 'links' => $this->context->breadcrumbs,
             ]);
-        }
-        ?>
-
-        <?php
-
-
-        ?>
-
-        <?php
-        if (Yii::$app->session->allFlashes) {
-            foreach (Yii::$app->session->allFlashes as $key => $message) {
-                echo \panix\engine\bootstrap\Alert::widget([
-                    'options' => ['class' => 'alert alert-' . $key],
-                    'closeButton' => false,
-                    'body' => $message
-                ]);
-            }
         }
         ?>
         <?= $content ?>

@@ -132,7 +132,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                                 <?php foreach (Yii::$app->session->allFlashes as $key => $message) {
                                     $key = ($key == 'error') ? 'danger' : $key;
                                     ?>
-                                    <div class="alert alert-<?= $key ?> fadeOut-time"><?= $message ?></div>
+                                    <div class="alert alert-<?= $key ?> fadeOut2-time"><?= $message ?></div>
                                 <?php } ?>
                             <?php } ?>
 

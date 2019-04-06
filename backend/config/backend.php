@@ -27,9 +27,8 @@ $config = [
         'backend' => 'panix\engine\controllers\AdminController',
     ],
     'modules' => [
-        'sitemap' => [
-            'class' => 'app\modules\sitemap\Module',
-        ],
+        'sitemap' => ['class' => 'app\modules\sitemap\Module'],
+        'sendpulse' => ['class' => 'panix\mod\sendpulse\Module'],
         'plugins' => [
             'class' => 'panix\mod\plugins\Module',
             'pluginsDir' => [

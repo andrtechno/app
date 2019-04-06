@@ -5,7 +5,7 @@ use panix\engine\pdf\Pdf;
 //Yii::setAlias('@runtime', '@webroot/web/runtime');
 //Yii::setAlias('@frontend', dirname(__DIR__) . '/web');
 Yii::setAlias('@backend', dirname(__DIR__) . '/../backend/web');
-Yii::setAlias('@frontend', dirname(__DIR__) . '/../frontend/web');
+Yii::setAlias('@frontend', dirname(__DIR__) . '/web');
 Yii::setAlias('@console', dirname(__DIR__) . '/../console/web');
 
 
@@ -55,6 +55,7 @@ $config = [
         ],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
+        'compare' => ['class' => 'panix\mod\compare\Module'],
         //'stats' => ['class' => 'panix\mod\stats\Module'],
         //'hosting' => ['class' => 'app\modules\hosting\Module'],
         /* 'seo' => ['class' => 'app\modules\seo\Module'],
