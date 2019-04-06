@@ -8,16 +8,8 @@ use yii\helpers\HtmlPurifier;
 <div class="product">
     <div class="product-label-container">
 
-        <div>
-                <span class="product-label-tag danger">
-                    <span>asds</span>
-                </span>
-            <span class="product-label-tag success">
-                    <span>asds</span>
-                </span>
-        </div>
-
-
+        <div><span class="product-label-tag danger"><span>asds</span></span></div>
+        <div><span class="product-label-tag success"><span>asds</span></span></div>
     </div>
 
 

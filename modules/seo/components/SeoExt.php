@@ -12,7 +12,8 @@ class SeoExt extends \yii\base\Component {
     /* массив, который будет наполнятся тэгами, что бы исключать уже найденые теги в ссылках выше по иерархии */
 
     public $exist = array();
-
+    public $h1;
+    public $text;
     public function getData() {
         $urls = $this->getUrls();
         foreach ($urls as $url) {
@@ -66,6 +67,10 @@ class SeoExt extends \yii\base\Component {
 
             if ($urlF !== null) {
                 $this->seoName($urlF);
+                if (!empty($urlF->h1))
+                    $this->h1 = $urlF->h1;
+                if (!empty($urlF->text))
+                    $this->text = $urlF->text;
                 $titleFlag = false;
                 break;
             } else {

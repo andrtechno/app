@@ -27,37 +27,33 @@ use panix\engine\widgets\Breadcrumbs;
 </head>
 <body>
 <?php $this->beginBody() ?>
-<div class="wrap">
-    <?= $this->render('@theme/views/layouts/partials/_header'); ?>
-    <div class="container">
-        <?php
-        if (isset($this->context->breadcrumbs)) {
-            echo Breadcrumbs::widget([
-                'links' => $this->context->breadcrumbs,
+<?= $this->render('@theme/views/layouts/partials/_header'); ?>
+<div class="container">
+    <?php
+    if (isset($this->context->breadcrumbs)) {
+        echo Breadcrumbs::widget([
+            'links' => $this->context->breadcrumbs,
+        ]);
+    }
+    ?>
+    <?php
+
+
+    ?>
+
+    <?php
+    if (Yii::$app->session->allFlashes) {
+        foreach (Yii::$app->session->allFlashes as $key => $message) {
+            echo \panix\engine\bootstrap\Alert::widget([
+                'options' => ['class' => 'alert alert-' . $key],
+                'closeButton' => false,
+                'body' => $message
             ]);
         }
-        ?>
-        <?php
-
-
-        ?>
-
-        <?php
-        if (Yii::$app->session->allFlashes) {
-            foreach (Yii::$app->session->allFlashes as $key => $message) {
-                echo \panix\engine\bootstrap\Alert::widget([
-                    'options' => ['class' => 'alert alert-' . $key],
-                    'closeButton' => false,
-                    'body' => $message
-                ]);
-            }
-        }
-        ?>
-        <?= $content ?>
-
-
-    </div>
+    }
+    ?>
 </div>
+<?= $content ?>
 <?= $this->render('@theme/views/layouts/partials/_footer'); ?>
 <?php $this->endBody() ?>
 </body>
