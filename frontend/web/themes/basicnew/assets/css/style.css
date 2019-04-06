@@ -2573,5 +2573,67 @@ ul.current-filter-list > li > ul > li > a {
     transform: rotate(360deg);
   }
 }
+#comment-list .comment-item {
+  margin-bottom: 1rem;
+}
+#comment-list .comment-user-photo {
+  width: 100px;
+}
+#comment-list .comment-user-name {
+  font-weight: bold;
+  margin-top: 3px;
+}
+#comment-list .card {
+  position: relative;
+}
+#comment-list .card p {
+  margin: 0;
+}
+#comment-list .card .card-body {
+  padding: 1rem;
+}
+#comment-list .card .card-header {
+  padding: .5rem .5rem .5rem 15px;
+}
+#comment-list .card .card-header.card-header:after, #comment-list .card .card-header.card-header:before {
+  position: absolute;
+  top: -18px;
+  left: 48%;
+  right: 100%;
+  width: 0;
+  height: 0;
+  display: block;
+  content: " ";
+  border-color: transparent;
+  border-style: outset solid solid;
+  pointer-events: none;
+}
+#comment-list .card .card-header.card-header:after {
+  border-width: 8px;
+  border-bottom-color: #f7f7f7;
+  margin-top: 2px;
+  margin-left: 1px;
+}
+#comment-list .card .card-header.card-header:before {
+  border-bottom-color: rgba(0, 0, 0, 0.125);
+  border-width: 9px;
+}
+@media (min-width: 576px) {
+  #comment-list .card .card-header.card-header:after, #comment-list .card .card-header.card-header:before {
+    top: 11px;
+    left: -18px;
+    right: 100%;
+    border-color: transparent;
+    border-style: solid solid outset;
+  }
+  #comment-list .card .card-header.card-header:after {
+    border-right-color: #f7f7f7;
+    margin-top: 1px;
+    margin-left: 2px;
+  }
+  #comment-list .card .card-header.card-header:before {
+    border-right-color: rgba(0, 0, 0, 0.125);
+  }
+}
 
 /*# sourceMappingURL=style.css.map */
