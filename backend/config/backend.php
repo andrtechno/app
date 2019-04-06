@@ -2,6 +2,9 @@
 use panix\engine\pdf\Pdf;
 Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
 Yii::setAlias('@backend', dirname(__DIR__) . '/web');
+
+Yii::setAlias('@uploads', dirname(dirname(__DIR__)) . '/frontend/web/uploads');
+
 $db = YII_DEBUG ? dirname(__DIR__) . '/../common/config/db_local.php' : dirname(__DIR__) . '/../common/config/db.php';
 $config = [
     'id' => 'backend',

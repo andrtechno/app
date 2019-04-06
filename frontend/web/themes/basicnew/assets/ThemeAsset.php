@@ -14,11 +14,10 @@ class ThemeAsset extends AssetBundle {
         parent::init();
     }
 
-
     public $css = [
+        '//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Roboto+Slab:400,700&amp;subset=cyrillic',
         'css/app.css',
         'css/style.css',
-        //'css/shop.css'
     ];
 
     public $depends = [

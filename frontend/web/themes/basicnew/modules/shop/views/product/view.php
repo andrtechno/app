@@ -398,7 +398,7 @@ $this->widget('ext.fancybox.Fancybox', array(
                 }
 
 
-                echo yii\bootstrap4\Tabs::widget(['items' => $tabs]);
+                echo \panix\engine\bootstrap\Tabs::widget(['items' => $tabs,'navType'=>'nav-pills justify-content-center']);
                 ?>
             </div>
 

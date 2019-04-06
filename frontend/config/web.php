@@ -8,7 +8,7 @@ Yii::setAlias('@backend', dirname(__DIR__) . '/../backend/web');
 Yii::setAlias('@frontend', dirname(__DIR__) . '/web');
 Yii::setAlias('@console', dirname(__DIR__) . '/../console/web');
 
-
+Yii::setAlias('@uploads', dirname(__DIR__) . '/web/uploads');
 
 $db = YII_DEBUG ? dirname(__DIR__) . '/../common/config/db_local.php' : dirname(__DIR__) . '/../common/config/db.php';
 $config = [
