@@ -3,7 +3,7 @@
 use panix\engine\pdf\Pdf;
 
 //Yii::setAlias('@runtime', '@webroot/web/runtime');
-//Yii::setAlias('@frontend', dirname(__DIR__) . '/web');
+Yii::setAlias('@common', dirname(dirname(__DIR__)) . '/common');
 Yii::setAlias('@backend', dirname(__DIR__) . '/../backend/web');
 Yii::setAlias('@frontend', dirname(__DIR__) . '/web');
 Yii::setAlias('@console', dirname(__DIR__) . '/../console/web');
@@ -302,7 +302,7 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache', //DummyCache
-
+            'cachePath'=>'@common/runtime/cache'
         ],
         'user' => [
             'class' => 'panix\mod\user\components\WebUser',

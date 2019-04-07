@@ -1,5 +1,6 @@
 <?php
 use panix\engine\pdf\Pdf;
+Yii::setAlias('@common', dirname(dirname(__DIR__)) . '/common');
 Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
 Yii::setAlias('@backend', dirname(__DIR__) . '/web');
 Yii::setAlias('@uploads', dirname(dirname(__DIR__)) . '/frontend/web/uploads');
@@ -283,6 +284,7 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache', //DummyCache
+            'cachePath'=>'@common/runtime/cache'
         ],
         'user' => [
             'class' => 'panix\mod\user\components\WebUser',
