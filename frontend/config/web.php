@@ -363,6 +363,7 @@ $config = [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['info'],
+                    'logVars' => [],
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/info.log',
                 ],
                 [
