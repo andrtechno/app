@@ -1,6 +1,8 @@
-﻿@import "base";
+﻿@import "../../../../../../vendor/bower-asset/bootstrap/scss/variables";
 @import "mixins";
+@import "base";
 @import "ui";
+@import "bootstrap";
 
 #form-signin .input-group-append {
   position: absolute;
@@ -1074,7 +1076,7 @@ form div.required label:after {
 }
 
 .not-set {
-  color: #c55;
+  color: $color-danger;
   font-style: italic;
 }
 

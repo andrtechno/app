@@ -24,6 +24,8 @@
 @mixin box-shadow($color,$inset:false) {
   @if $inset {
     $inset: inset;
+  } @else {
+    $inset: null;
   }
   -webkit-box-shadow: $inset 0px 0px 15px -4px $color;
   -moz-box-shadow: $inset 0px 0px 15px -4px $color;

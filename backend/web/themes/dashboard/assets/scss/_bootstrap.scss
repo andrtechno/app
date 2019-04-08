@@ -1,11 +1,4 @@
-$color-success: #35cc62;
-$color-warning: #ffb54c;
-$color-danger: #fa6557;
-$color-info: #0ecccc;
-$color-primary: #007bff;
-$color-secondary: #6c757d;
-$color-dark: #343a40;
-$color-light: #f8f9fa;
+
 
 $colors: (
         success:$color-success,
@@ -17,6 +10,9 @@ $colors: (
         dark:$color-dark,
         light:$color-light,
 );
+.fixed-top{
+  z-index: 1000;
+}
 .invalid-feedback {
   color: $color-danger;
 }
