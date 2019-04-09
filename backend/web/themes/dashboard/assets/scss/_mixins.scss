@@ -21,15 +21,13 @@
   @return mix($color-base, $color, $level * $theme-color-interval);
 }
 
-@mixin box-shadow($color,$inset:false) {
+@mixin box-shadow($color,$smooth:5px,$size:-1px,$inset:null) {
   @if $inset {
     $inset: inset;
-  } @else {
-    $inset: null;
   }
-  -webkit-box-shadow: $inset 0px 0px 15px -4px $color;
-  -moz-box-shadow: $inset 0px 0px 15px -4px $color;
-  box-shadow: $inset 0px 0px 15px -4px $color;
+  -webkit-box-shadow: $inset 0px 0px $smooth $size $color;
+  -moz-box-shadow: $inset 0px 0px $smooth $size $color;
+  box-shadow: $inset 0px 0px $smooth $size $color;
 }
 
 @mixin gradient($start_color, $end_color,$r:x,$deg: 45deg) {
@@ -84,6 +82,7 @@
   padding-left: 0;
   list-style: none;
 }
+
 @mixin transition($speed:1s, $animate:ease-in-out, $style:all) {
   -webkit-transition: $style $speed $animate;
   -moz-transition: $style $speed $animate;

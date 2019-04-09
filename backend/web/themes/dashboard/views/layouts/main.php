@@ -181,7 +181,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                             ?>
 
                             <?php
-                            \yii\jui\Dialog::begin([
+                            /*\yii\jui\Dialog::begin([
                                 'clientOptions' => [
                                     'modal' => true,
                                 ],
@@ -189,7 +189,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
                             echo 'Dialog contents here...';
 
-                            \yii\jui\Dialog::end();
+                            \yii\jui\Dialog::end();*/
 
                             /*
                               use panix\hosting\Api;
@@ -221,7 +221,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
 
                             ?>
-
+<br><br>
                             <?= $content ?>
                         </div>
                     </div>

@@ -1,5 +1,16 @@
+@import "../../../../../../vendor/bower-asset/bootstrap/scss/functions";
+@import "../../../../../../vendor/bower-asset/bootstrap/scss/variables";
 @import "base";
 @import "mixins";
+
+$bg-color:#f2f2f2;
+//breadcrumbs settings
+$breadcrumb-bg: lighten($bg-color, 4%);
+$breadcrumb-item-gradient: true;
+$breadcrumb-item-color-start: $bg-color;
+$breadcrumb-item-color-end: darken($bg-color,10);
+$breadcrumb-item-color-hover-start: lighten($breadcrumb-item-color-start, 10%);
+$breadcrumb-item-color-hover-end: lighten($breadcrumb-item-color-end, 10%);
 
 body {
   background: $bg-color;
@@ -35,7 +46,7 @@ a:hover {
 }
 
 .navbar {
-  border-bottom: 1px solid darken($primary_color, 10%);
+  border-bottom: 1px solid rgba(0,0,0,0.2);
   @if $navbar-gradient {
     @include gradient-y($primary_color, lighten($primary_color, 8%));
   } @else {
@@ -133,7 +144,7 @@ a:hover {
 }
 
 .table > tbody > tr:hover td {
-  background-color: lighten($primary_color, 68%);
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .table > thead > tr > th {
@@ -157,19 +168,19 @@ a:hover {
 }
 
 .table-striped > tbody > tr {
-  background-color: lighten($bg-color, 4%);;
+  background-color: transparent;
   &:nth-of-type(odd) {
-    background-color: lighten($bg-color, 6%);
+    background-color: rgba(0, 0, 0, 0.02);
   }
 }
 
 #container-breadcrumbs {
-  border-top: 1px solid $block-border;
-  border-bottom: 1px solid $block-border;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   > .nav > li {
-    border-right: 1px solid $block-border;
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
     &:first-child {
-      border-left: 1px solid $block-border;
+      border-left: 1px solid rgba(0, 0, 0, 0.125);
     }
   }
 }
@@ -204,9 +215,9 @@ a:hover {
 .navbar-nav > li {
 
   @media (min-width: 992px) {
-    border-right: 1px solid $primary_border_color;
+    border-right: 1px solid rgba(0,0,0,0.2);
     &:first-child {
-      border-left: 1px solid $primary_border_color;
+      border-left: 1px solid rgba(0,0,0,0.2);
     }
   }
 }
@@ -214,16 +225,16 @@ a:hover {
 .navbar-nav .dropdown-menu,
 .navbar-right .dropdown-menu {
   border: 0;
-  background: $primary_color;
+  background: $dark;
   .nav-item {
-    border-bottom: 1px solid $primary_border_color;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
     a {
       color: $primary_text_color;
-      background: $primary_color;
+      background: rgba(0,0,0,0.2);
     }
     &:hover a {
       color: lighten($primary_text_color, 15%);
-      background-color: darken($primary_color, 2%);
+      background-color: rgba(0,0,0,0.2);
     }
     &:last-child {
       border-bottom: 0;
@@ -235,12 +246,12 @@ a:hover {
 
   @media (min-width: 992px) {
     border-top: 0;
-    border-left: 1px solid $primary_border_color;
-    border-right: 1px solid $primary_border_color;
-    border-bottom: 1px solid $primary_border_color;
+    border-left: 1px solid rgba(0,0,0,0.2);
+    border-right: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
     &.show a {
       color: $primary_text_color;
-      background-color: darken($primary_color, 2%);
+      background-color: lighten(rgba(0,0,0,0.2),10);
     }
   }
 
@@ -254,7 +265,7 @@ a:hover {
 .navbar-right > li:hover > a,
 .navbar-right > li:focus > a {
   color: lighten($primary_text_color, 15%);
-  background-color: darken($primary_color, 2%);
+  background-color: lighten(rgba(0,0,0,0.2),10);
 }
 
 .sidebar-nav li.active a:hover i,
@@ -309,7 +320,7 @@ a:hover {
       }
     }
     &:before {
-      border-left-color: $block-border;
+      border-left-color: rgba(0, 0, 0, 0.125);
     }
     &:hover:after {
       @if $breadcrumb-item-gradient {
@@ -325,13 +336,12 @@ a:hover {
 
 .card {
   &.bg-light {
-    border: 1px solid $block-border;
     .card-body{
       background: $card-bg;
     }
   }
   .card-header {
-    @include gradient-x(#f8f8f8, #e8e8e8);
+    /*@include gradient-x(#f8f8f8, #e8e8e8);*/
   }
 }
 

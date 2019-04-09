@@ -2,7 +2,7 @@
 
 use panix\engine\Html;
 ?>
-<div class="card bg-light grid">
+<div class="card grid">
     <div class="grid-loading"></div>
     <div class="card-header">
         <h5 class="clearfix">

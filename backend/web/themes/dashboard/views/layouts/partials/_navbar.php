@@ -88,7 +88,8 @@ use panix\engine\CMS;
             ],
             [
                 'label' => Html::icon('home'),
-                'url' => '/'
+                'url' => '/',
+                'options' => ['class' => "d-none d-md-block"]
             ],
             [
                 'label' => Html::icon('locked'),

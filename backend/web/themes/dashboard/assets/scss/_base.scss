@@ -1,5 +1,5 @@
 $font-family: Arial, Helvetica, sans-serif;
-$font-size: 13px;
+$font-size: 15px;
 
 $color-success: #35cc62;
 $color-warning: #ffb54c;
@@ -28,7 +28,7 @@ $heading-sizes: (
         h6:$h6-font-size
 );
 
-$bg-color: #e8e8e8;
+$bg-color: #fff;
 $block-border: darken($bg-color, 12%);
 $primary_color: #343a40;
 $primary_border_color: #292d32;
@@ -42,14 +42,6 @@ $dropdown-menu-border: $secondary_color;
 $dropdown-item-gradient: false;
 $navbar-gradient: false;
 
-//breadcrumbs settings
-//$breadcrumb-bg: lighten($bg-color, 4%);
-$breadcrumb-bg: lighten($bg-color, 4%);
-$breadcrumb-item-gradient: true;
-$breadcrumb-item-color-start: #eeeeee;
-$breadcrumb-item-color-end: #ddd;
-$breadcrumb-item-color-hover-start: lighten($breadcrumb-item-color-start, 10%);
-$breadcrumb-item-color-hover-end: lighten($breadcrumb-item-color-end, 10%);
 
 //card settings
 $card-bg: lighten($bg-color, 4%);

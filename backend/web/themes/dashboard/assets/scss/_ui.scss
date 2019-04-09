@@ -127,9 +127,9 @@ $datepicker-state-bg: $color-light;
 
 .ui-datepicker {
   padding: 0;
-  z-index: 3;
   width: auto;
   text-align: center;
+  @include box-shadow(rgba(0,0,0,0.1));
   .ui-datepicker-title{
     margin: 0 1.5rem;
   }
@@ -262,7 +262,6 @@ $my-spinner-border-width:1px;
       width: 100%;
       height: 100%;
       text-indent: 0;
-      z-index: 2222;
       left: 0;
       top: 0;
       text-align: center;

@@ -1,4 +1,5 @@
-﻿@import "../../../../../../vendor/bower-asset/bootstrap/scss/variables";
+﻿@import "../../../../../../vendor/bower-asset/bootstrap/scss/functions";
+@import "../../../../../../vendor/bower-asset/bootstrap/scss/variables";
 @import "mixins";
 @import "base";
 @import "ui";
@@ -8,6 +9,7 @@
   position: absolute;
   right: 0;
 }
+
 /*
 form .form-group input.form-control,
 form .form-group select.form-control,
@@ -284,8 +286,11 @@ html {
 body {
   font-size: $font-size;
   font-family: $font-family;
+  @include transition(.5s, ease);
 }
+a{
 
+}
 .form-group {
   position: relative;
 }
@@ -676,10 +681,10 @@ form .form-group {
 
 .card {
   margin-bottom: 2rem;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
+  @include box-shadow(rgba(0,0,0,0.1));
   position: relative;
+  border-width: 1px;
+  border-style: solid;
   .card-footer {
     border-top: 1px solid rgba(0, 0, 0, .125);
     padding: 0.75rem 1rem;
@@ -846,7 +851,7 @@ form .form-group {
 $sidebar-min-width: 50px;
 $sidebar-item-height: 40px;
 #wrapper {
-  &.active{
+  &.active {
     #sidebar-wrapper {
       .nav {
         .dropdown {
@@ -1403,8 +1408,10 @@ a.desc:after {
     padding-top: calc(0.375rem + 1px);
   }
 
-  .navbar-expand-lg .navbar-nav .nav-link {
-    padding: 13px 10px;
+  .navbar-expand-lg .navbar-nav .nav-link,
+  .navbar .navbar-right .nav-link{
+    padding-top: 13px;
+    padding-bottom: 13px;
   }
 
   .navbar-expand-lg .dropdown-menu .nav-link {
@@ -1414,11 +1421,8 @@ a.desc:after {
 }
 
 .navbar .navbar-right {
-  list-style: none;
-  margin-bottom: 0;
   margin-right: 15px;
   position: absolute;
-  top: 0;
   right: 15px;
   > li {
     float: left;
@@ -1427,21 +1431,10 @@ a.desc:after {
       margin-right: 0;
     }
     a {
-      display: block;
-      /*width: 35px;*/
-      padding: 13px .5rem;
-      /*border-radius: 50%;
-      border: 1px solid #555;
-      background: #292929;*/
-      position: relative;
-      font-size: 16px;
       span {
         position: absolute;
         top: 5px;
         right: 2px;
-      }
-      @media (min-width: 768px) {
-        padding: 13px 1rem;
       }
     }
   }
@@ -1659,13 +1652,13 @@ table .alert {
   }
 }
 
-.navbar-nav .nav-link {
+/*.navbar-nav .nav-link {
   padding: 9px 15px;
   @include transition(.3s);
   &:hover {
     @include transition(.3s);
   }
-}
+}*/
 
 @media (min-width: 768px) {
 
