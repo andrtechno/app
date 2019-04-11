@@ -67,7 +67,7 @@ $this->registerJs("
                                         $link = ($lang->is_default) ? CMS::currentUrl() : '/' . $lang->code . CMS::currentUrl();
                                         //Html::link(Html::image('/uploads/language/' . $lang->flag_name, $lang->name), $link, array('title' => $lang->name));
 
-                                        echo Html::a(Html::img('/uploads/language/' . $lang->flag_name, ['alt'=>$lang->name]) . ' ' . $lang->name, $link);
+                                        echo Html::a(Html::img('/uploads/language/' . $lang->flag_name, ['alt'=>$lang->name]) . ' ' . $lang->name, $link,['class'=>'dropdown-item']);
 
 
                                     }

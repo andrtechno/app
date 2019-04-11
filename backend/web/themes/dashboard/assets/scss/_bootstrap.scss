@@ -34,6 +34,7 @@ $colors: (
   box-shadow:none;
 }
 
+
 @each $name, $color in $colors {
   .bg-#{$name} {
     background-color: $color !important;
@@ -64,23 +65,48 @@ $colors: (
 
 
 /*Buttons*/
+.btn{
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1);
+  will-change: box-shadow,transform;
+
+}
+.btn-sm,
+.btn-group-sm .btn{
+  padding-right: .50rem;
+  padding-left: .50rem;
+}
+
 @each $name, $color in $colors {
   .btn-#{$name} {
+
     background-color: $color;
     border-color: $color;
+    box-shadow: 0 2px 2px 0 rgba($color,.14), 0 3px 1px -2px rgba($color,.2), 0 1px 5px 0 rgba($color,.12);
     &:hover{
       border-color: darken($color,5);
       background-color: darken($color,5);
+      box-shadow: 0 7px 7px 0 rgba($color,.14), 0 3px 1px -2px rgba($color,.2), 0 1px 5px 0 rgba($color,.12);
     }
+
     &:focus,
     &.focus {
-      box-shadow: none;
+      box-shadow: 0 2px 2px 0 rgba($color,.14), 0 3px 1px -2px rgba($color,.2), 0 1px 5px 0 rgba($color,.12);
     }
   }
   .btn-#{$name}:not(:disabled):not(.disabled):active:focus,
   .btn-#{$name}:not(:disabled):not(.disabled).active:focus,
   .show > .btn-#{$name}.dropdown-toggle:focus{
-    box-shadow:none;
+    box-shadow: 0 2px 2px 0 rgba($color,.14), 0 3px 1px -2px rgba($color,.2), 0 1px 5px 0 rgba($color,.12);
+  }
+
+  .btn-#{$name}:not(:disabled):not(.disabled):active,
+  .btn-#{$name}:not(:disabled):not(.disabled).active,
+  .show > .btn-#{$name}.dropdown-toggle{
+    border-color: darken($color,5);
+    background-color: darken($color,5);
+    box-shadow: 0 2px 2px 0 rgba($color,.14), 0 3px 1px -2px rgba($color,.2), 0 1px 5px 0 rgba($color,.12);
   }
 }
 
@@ -88,13 +114,15 @@ $colors: (
   .btn-outline-#{$name} {
     border-color: $color;
     color: $color;
+    box-shadow: 0 2px 2px 0 rgba($color,.14), 0 3px 1px -2px rgba($color,.2), 0 1px 5px 0 rgba($color,.12);
     &:hover{
       border-color: darken($color,5);
       background-color: darken($color,5);
     }
     &:focus,
     &.focus {
-      box-shadow: none;
+      box-shadow: 0 2px 2px 0 rgba($color,.14), 0 3px 1px -2px rgba($color,.2), 0 1px 5px 0 rgba($color,.12);
     }
   }
+
 }

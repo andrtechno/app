@@ -71,7 +71,6 @@ $config = [
           'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
           'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
           'csv' => ['class' => 'panix\mod\csv\Module'],
-          'blocks' => ['class' => 'profitcode\blocks\Module'],
           //'csv' => ['class' => 'panix\mod\csv\Module'],
           'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
           'delivery' => ['class' => 'panix\mod\delivery\Module'],

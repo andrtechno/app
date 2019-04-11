@@ -1,4 +1,8 @@
-#RewriteEngine On
+#Options +FollowSymLinks
+#IndexIgnore */*
+#RewriteEngine on
+
+
 RewriteEngine On RewriteBase /admin
 
 

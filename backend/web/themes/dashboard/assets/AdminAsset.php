@@ -12,6 +12,7 @@ class AdminAsset extends AssetBundle
 {
 
     public $css = [
+        '//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic',
         'css/dashboard.css',
         'css/breadcrumbs.css',
         'css/dark.css',

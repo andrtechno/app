@@ -37,7 +37,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
         <?= Html::csrfMetaTags() ?>
         <?php $this->head() ?>
     </head>
-    <body class="no-radius">
+    <body class="no-radius1">
     <?php $this->beginBody() ?>
     <div id="wrapper-tpl">
         <?php echo $this->render('partials/_navbar'); ?>

@@ -3,7 +3,7 @@ $(function () {
 
     setInterval(function () {
             reloadCounters();
-    }, 5000); //10000
+    }, 10000); //10000
 
     function reloadCounters() {
         var notifaction_list = [];

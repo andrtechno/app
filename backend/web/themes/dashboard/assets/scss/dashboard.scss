@@ -5,6 +5,11 @@
 @import "ui";
 @import "bootstrap";
 
+
+.btn-round{
+  @include border-radius(30px);
+}
+
 #form-signin .input-group-append {
   position: absolute;
   right: 0;

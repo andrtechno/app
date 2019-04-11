@@ -1,5 +1,6 @@
 <?php
 use panix\engine\pdf\Pdf;
+
 Yii::setAlias('@common', dirname(dirname(__DIR__)) . '/common');
 Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
 Yii::setAlias('@backend', dirname(__DIR__) . '/web');
@@ -60,7 +61,6 @@ $config = [
           'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
           'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
           'csv' => ['class' => 'panix\mod\csv\Module'],
-          'blocks' => ['class' => 'profitcode\blocks\Module'],
           //'csv' => ['class' => 'panix\mod\csv\Module'],
           'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
           'delivery' => ['class' => 'panix\mod\delivery\Module'],
@@ -284,7 +284,7 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache', //DummyCache
-            'cachePath'=>'@common/runtime/cache'
+            'cachePath' => '@common/runtime/cache'
         ],
         'user' => [
             'class' => 'panix\mod\user\components\WebUser',
@@ -376,21 +376,24 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => true,
             'baseUrl' => '',
-            //'normalizer' => [
-            //    'class' => 'yii\web\UrlNormalizer',
-            //    'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
-            //],
+            'normalizer' => [
+                'class' => 'yii\web\UrlNormalizer',
+                'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
+            ],
             'rules' => [
                 'placeholder' => 'main/placeholder',
                 ['pattern' => '', 'route' => 'admin/admin/default/index'],
                 ['pattern' => 'auth', 'route' => 'admin/auth/index'],
                 ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
                 ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/admin/<controller>/<action>'],
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
                 ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
                 ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/index'],
-                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
+                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>/<page:\d+>', 'route' => '<module>/admin/<controller>/<action>'],
+
             ],
         ],
+       // 'urlManager' => require(__DIR__ . '/../../frontend/config/urlManager.php'),
         'db' => require($db),
     ],
     /*'as access' => [
@@ -409,15 +412,15 @@ $config = [
 ];
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-   // $config['modules']['debug']['class'] = 'yii\debug\Module';
+    // $config['modules']['debug']['class'] = 'yii\debug\Module';
     // $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
-   /* $config['modules']['debug']['traceLine'] = function ($options, $panel) {
-        $filePath = $options['file'];
-        // $filePath = str_replace(Yii::$app->basePath, 'file://~/path/to/your/backend', $filePath);
-        // $filePath = str_replace(dirname(Yii::$app->basePath) . '/common', 'file://~/path/to/your/common', $filePath);
-        /// $filePath = str_replace(Yii::$app->vendorPath, 'file://~/path/to/your/vendor', $filePath);
-        return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
-    };*/
+    /* $config['modules']['debug']['traceLine'] = function ($options, $panel) {
+         $filePath = $options['file'];
+         // $filePath = str_replace(Yii::$app->basePath, 'file://~/path/to/your/backend', $filePath);
+         // $filePath = str_replace(dirname(Yii::$app->basePath) . '/common', 'file://~/path/to/your/common', $filePath);
+         /// $filePath = str_replace(Yii::$app->vendorPath, 'file://~/path/to/your/vendor', $filePath);
+         return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
+     };*/
     //$config['bootstrap'][] = 'gii';
     //$config['modules']['gii'] = 'yii\gii\Module';
 }

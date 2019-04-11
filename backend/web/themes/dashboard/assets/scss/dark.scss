@@ -3,14 +3,17 @@
 @import "base";
 @import "mixins";
 
-$bg-color:#f2f2f2;
+$bg-color: #f6f6f6;
 //breadcrumbs settings
 $breadcrumb-bg: lighten($bg-color, 4%);
 $breadcrumb-item-gradient: true;
 $breadcrumb-item-color-start: $bg-color;
-$breadcrumb-item-color-end: darken($bg-color,10);
+$breadcrumb-item-color-end: darken($bg-color, 10);
 $breadcrumb-item-color-hover-start: lighten($breadcrumb-item-color-start, 10%);
 $breadcrumb-item-color-hover-end: lighten($breadcrumb-item-color-end, 10%);
+
+$gradient-x-color-start: #f6f6f6;
+$gradient-x-color-end: #e8e8e8;
 
 body {
   background: $bg-color;
@@ -46,7 +49,7 @@ a:hover {
 }
 
 .navbar {
-  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   @if $navbar-gradient {
     @include gradient-y($primary_color, lighten($primary_color, 8%));
   } @else {
@@ -81,6 +84,16 @@ a:hover {
   color: #fff;
   background: darken($primary_color, 5%);
 }
+.tab-content {
+  background-color: $bg-color;
+  border-bottom: 1px solid $block-border;
+  border-left: 1px solid $block-border;
+  border-right: 1px solid $block-border;
+}
+.card-body .tab-content {
+  background-color: $bg-color;
+  border:0;
+}
 
 .nav-tabs .nav-item {
 
@@ -92,9 +105,9 @@ a:hover {
     color: $tabs-text-color;
 
     @if $tabs-gradient {
-      @include gradient-x(#f6f6f6, #e8e8e8);
+      @include gradient-x($gradient-x-color-start, $gradient-x-color-end);
     } @else {
-      background-color: red;
+      background-color: $bg-color;
     }
 
     &.active,
@@ -105,7 +118,7 @@ a:hover {
       border-left: 0;
       border-right: 0;
       color: #909090;
-      background: $card-bg;
+      background: darken($bg-color, 5);
     }
     &:hover {
       background: $tabs-text-color-hover;
@@ -128,7 +141,7 @@ a:hover {
   }
   &:last-child .nav-link,
   &:last-child:hover .nav-link,
-  &:last-child .nav-link.active{
+  &:last-child .nav-link.active {
     border-right: 0;
   }
 }
@@ -215,9 +228,9 @@ a:hover {
 .navbar-nav > li {
 
   @media (min-width: 992px) {
-    border-right: 1px solid rgba(0,0,0,0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
     &:first-child {
-      border-left: 1px solid rgba(0,0,0,0.2);
+      border-left: 1px solid rgba(0, 0, 0, 0.2);
     }
   }
 }
@@ -227,14 +240,14 @@ a:hover {
   border: 0;
   background: $dark;
   .nav-item {
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     a {
       color: $primary_text_color;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, 0.2);
     }
     &:hover a {
       color: lighten($primary_text_color, 15%);
-      background-color: rgba(0,0,0,0.2);
+      background-color: rgba(0, 0, 0, 0.2);
     }
     &:last-child {
       border-bottom: 0;
@@ -246,12 +259,12 @@ a:hover {
 
   @media (min-width: 992px) {
     border-top: 0;
-    border-left: 1px solid rgba(0,0,0,0.2);
-    border-right: 1px solid rgba(0,0,0,0.2);
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     &.show a {
       color: $primary_text_color;
-      background-color: lighten(rgba(0,0,0,0.2),10);
+      background-color: lighten(rgba(0, 0, 0, 0.2), 10);
     }
   }
 
@@ -265,7 +278,7 @@ a:hover {
 .navbar-right > li:hover > a,
 .navbar-right > li:focus > a {
   color: lighten($primary_text_color, 15%);
-  background-color: lighten(rgba(0,0,0,0.2),10);
+  background-color: lighten(rgba(0, 0, 0, 0.2), 10);
 }
 
 .sidebar-nav li.active a:hover i,
@@ -336,12 +349,16 @@ a:hover {
 
 .card {
   &.bg-light {
-    .card-body{
+    .card-body {
       background: $card-bg;
     }
   }
   .card-header {
-    /*@include gradient-x(#f8f8f8, #e8e8e8);*/
+    @if true {
+      @include gradient-x($gradient-x-color-start, $gradient-x-color-end);
+    } @else {
+      background-color: $bg-color;
+    }
   }
 }
 
@@ -364,9 +381,15 @@ a:hover {
   }
 }
 
+/*
 form .form-group {
   border-bottom: 1px solid $block-border;
   border-top: 1px solid lighten($block-border, 40%);
+}
+*/
+form .form-group {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-top: 1px solid rgba(255, 255, 255, 1);
 }
 
 .form-error .nav-tabs {

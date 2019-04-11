@@ -2,6 +2,21 @@ $datepicker-active-bg: $color-primary;
 $datepicker-hover-bg: #fff;
 $datepicker-state-bg: $color-light;
 
+/* Common UI */
+$ui-widget-border-color:rgba(0, 0, 0, 0.125);
+
+
+/* Slider */
+$ui-slider-height: 5px;
+$ui-slider-handle-size: 15px;
+$ui-slider-handle-border-size: 1px;
+$ui-slider-handle-border-color: $ui-widget-border-color;
+
+/* Spinner */
+$my-spinner-width-button:30px;
+$ui-spinner-border-width:1px;
+$ui-spinner-button-color:$ui-widget-border-color;
+
 
 .ui-button{
   background: none;
@@ -47,16 +62,16 @@ $datepicker-state-bg: $color-light;
     font-size: inherit;
   }
   color: #5f5f5f;
-  border: 1px solid $block-border;
+  border: 1px solid rgba(0, 0, 0, 0.125);
   font-size: inherit;
   font-family: inherit;
   input,select,textarea,button{
     font-size: inherit;
     font-family: inherit;
   }
-  &.ui-widget-content{
+  /*&.ui-widget-content{
     border: 0;
-  }
+  }*/
   a {
     text-decoration: none;
   }
@@ -73,7 +88,7 @@ $datepicker-state-bg: $color-light;
 .ui-widget-content {
   color: $primary_color;
   background: #fff;
-  border: 1px solid $block-border;
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .ui-widget-header,
 .ui-datepicker .ui-datepicker-header,
@@ -196,9 +211,7 @@ $datepicker-state-bg: $color-light;
   }
 }
 
-$ui-slider-height: 5px;
-$ui-slider-handle-size: 15px;
-$ui-slider-handle-border-size: 1px;
+
 .ui-slider-horizontal {
   height: $ui-slider-height;
 }
@@ -227,15 +240,15 @@ $ui-slider-handle-border-size: 1px;
     height: $ui-slider-handle-size;
     display: block;
     background: $primary_color;
-    border: $ui-slider-handle-border-size solid $primary_border_color;
+    @include border-radius(3px);
+    border: $ui-slider-handle-border-size solid $ui-slider-handle-border-color;
     position: absolute;
     &:focus {
       outline: none;
     }
   }
 }
-$my-spinner-width-button:30px;
-$my-spinner-border-width:1px;
+
 .spinner-my {
   .ui-spinner {
     &.ui-widget-content {
@@ -254,7 +267,7 @@ $my-spinner-border-width:1px;
     cursor: pointer;
     @include border-radius(0);
     width: $my-spinner-width-button;
-    border:$my-spinner-border-width solid $primary_color;
+    border:$ui-spinner-border-width solid $ui-spinner-button-color;
     height: 100%;
 
     &:before{
@@ -289,7 +302,7 @@ $my-spinner-border-width:1px;
 
   &.ui-widget-content {
     background: #fff;
-    border: 1px solid $block-border;
+    border: $ui-spinner-border-width solid $ui-spinner-button-color;
   }
   .ui-spinner-input {
     padding: 0.375rem 0.75rem;
@@ -302,7 +315,7 @@ $my-spinner-border-width:1px;
 
 .ui-tabs {
   padding: 0;
-  border: 1px solid #cdcdcd;
+  border: 1px solid $ui-widget-border-color;
   position: relative;
   .ui-tabs-panel {
     padding: 0;
