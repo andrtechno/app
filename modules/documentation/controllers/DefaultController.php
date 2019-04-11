@@ -20,7 +20,7 @@ class DefaultController extends WebController
     }
 
     /**
-     * @var ShopProduct
+     * @var Product
      */
     public $query;
 

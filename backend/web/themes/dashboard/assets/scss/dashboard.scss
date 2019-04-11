@@ -1081,8 +1081,11 @@ $sidebar-item-height: 40px;
 /* Yii */
 form div.required label:after {
   content: " * ";
-  color: red;
+  color: $color-danger;
 
+}
+.table > thead > tr > th{
+  font-weight: 600;
 }
 
 .not-set {
@@ -1090,15 +1093,19 @@ form div.required label:after {
   font-style: italic;
 }
 
+
 /* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
+a.asc:after,
+a.desc:after,
+.table > thead > tr > th a:after{
   position: relative;
-  top: 1px;
+  top: 0;
   display: inline-block;
   font-family: 'Pixelion';
   font-style: normal;
   font-weight: normal;
   line-height: 1;
+  font-size: 11px;
   padding-left: 5px;
 }
 

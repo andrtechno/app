@@ -33,6 +33,7 @@ $config = [
     'modules' => [
         'sitemap' => ['class' => 'app\modules\sitemap\Module'],
         'sendpulse' => ['class' => 'panix\mod\sendpulse\Module'],
+        //'documentation' => ['class' => 'app\modules\documentation\Module'],
         'plugins' => [
             'class' => 'panix\mod\plugins\Module',
             'pluginsDir' => [
@@ -375,7 +376,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'enableStrictParsing' => true,
-            'baseUrl' => '',
+            'baseUrl' => '/admin',
             'normalizer' => [
                 'class' => 'yii\web\UrlNormalizer',
                 'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,

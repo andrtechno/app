@@ -2,6 +2,7 @@
 
 namespace app\modules\documentation;
 
+use Yii;
 use panix\engine\Html;
 use panix\engine\WebModule;
 
@@ -38,4 +39,15 @@ class Module extends WebModule
         return $items['modules']['items'][0]['items'];
     }
 
+    public function getInfo()
+    {
+        return [
+            'label' => Yii::t('documentation/default', 'MODULE_NAME'),
+            'author' => 'andrew.panix@gmail.com',
+            'version' => '1.0',
+            'icon' => 'icon-documentation',
+            'description' => Yii::t('documentation/default', 'MODULE_DESC'),
+            'url' => ['/admin/documentation'],
+        ];
+    }
 }
