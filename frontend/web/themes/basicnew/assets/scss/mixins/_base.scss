@@ -20,12 +20,12 @@ $color-secondary: #6c757d;
 $color-dark: #343a40;
 $color-light: #f8f9fa;
 
-$h1-font-size: $font-size * 2.5 !default;
-$h2-font-size: $font-size * 2.25 !default;
-$h3-font-size: $font-size * 2 !default;
-$h4-font-size: $font-size * 1.75 !default;
-$h5-font-size: $font-size * 1.50 !default;
-$h6-font-size: $font-size * 1.25 !default;
+$h1-font-size: $font-size * 2 !default;
+$h2-font-size: $font-size * 1.75 !default;
+$h3-font-size: $font-size * 1.50 !default;
+$h4-font-size: $font-size * 1.25 !default;
+$h5-font-size: $font-size * 1 !default;
+$h6-font-size: $font-size * 0.75 !default;
 
 $gradient-color-start: #49aeb2;
 $gradient-color-end: #99c997;
@@ -39,7 +39,7 @@ $heading-sizes: (
         h6:$h6-font-size
 );
 $color-input-border: #D4D4D4;
-$c1-color: #BEBEBE;
+
 $text-color: #505759;
 
 $link-color-hover: $color-warning;
@@ -47,25 +47,9 @@ $link-color-hover: $color-warning;
 $bg-color: #e8e8e8;
 $block-border: darken($bg-color, 12%);
 $primary_color: #343a40;
-$primary_border_color: #292d32;
 $secondary_color: #f6f6f6;
 $primary_text_color: #b5bcbf;
 $link-color: #499ab2;
-
-$toggler-color: $secondary_color;
-
-$dropdown-menu-border: $secondary_color;
-$dropdown-item-gradient: false;
-$navbar-gradient: false;
-
-//breadcrumbs settings
-//$breadcrumb-bg: lighten($bg-color, 4%);
-$breadcrumb-bg: lighten($bg-color, 4%);
-$breadcrumb-item-gradient: true;
-$breadcrumb-item-color-start: #eeeeee;
-$breadcrumb-item-color-end: #ddd;
-$breadcrumb-item-color-hover-start: lighten($breadcrumb-item-color-start, 10%);
-$breadcrumb-item-color-hover-end: lighten($breadcrumb-item-color-end, 10%);
 
 //card settings
 $card-bg: lighten($bg-color, 4%);

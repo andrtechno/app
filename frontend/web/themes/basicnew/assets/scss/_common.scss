@@ -37,7 +37,7 @@
 
 /*APP STYLES*/
 /* Validate form styles */
-.summary {
+/*.summary {
   margin-bottom: 15px;
   text-align: right;
 }
@@ -52,10 +52,14 @@
   color: $color-danger !important;
   font-size: 12px;
   margin-top: .50rem;
-}
+}*/
+form div.required label:after {
+  content: " * ";
+  color: $color-danger;
 
+}
 .has-error label,
-label span.required {
+span.required {
   color: $color-danger !important;
 }
 span.highlight-word{
@@ -166,6 +170,9 @@ span.highlight-word{
   text-shadow: none;
   padding-left: 45px;
   position: relative;
+  ul{
+    padding-left: 0;
+  }
   &:before {
     font-family: $font-family-icon;
     font-style: normal;

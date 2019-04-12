@@ -13,6 +13,7 @@ $colors: (success, $color-success, #fff),
 
 .invalid-feedback {
   color: $color-danger;
+  display: block;
 }
 
 
@@ -80,6 +81,7 @@ $colors: (success, $color-success, #fff),
     color: nth($color, 2) !important;
   }
 }
+
 
 @each $color in $colors {
   .alert-#{nth($color, 1)} {

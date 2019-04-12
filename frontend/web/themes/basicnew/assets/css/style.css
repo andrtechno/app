@@ -10,6 +10,7 @@ input:-webkit-autofill:focus {
 
 .invalid-feedback {
   color: #fa6557;
+  display: block;
 }
 
 .page-link {
@@ -855,54 +856,79 @@ button.close {
   text-transform: uppercase;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
   font-family: "Roboto Slab", serif;
   font-weight: 700;
 }
 
+h1,
+.h1 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+h2,
+.h2 {
+  font-size: 26.25px;
+  margin-bottom: 17.5px;
+}
+
+h3,
+.h3 {
+  font-size: 22.5px;
+  margin-bottom: 15px;
+}
+
+h4,
+.h4 {
+  font-size: 18.75px;
+  margin-bottom: 12.5px;
+}
+
+h5,
+.h5 {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+h6,
+.h6 {
+  font-size: 11.25px;
+  margin-bottom: 7.5px;
+}
+
+/*
 h1 {
   font-size: 20px;
-}
-@media (min-width: 768px) {
-  h1 {
+  @media (min-width: 768px) {
     font-size: 28px;
   }
-}
-@media (min-width: 992px) {
-  h1 {
+  @media (min-width: 992px) {
     font-size: 28px;
   }
-}
-@media (min-width: 1200px) {
-  h1 {
+  @media (min-width: 1200px) {
     font-size: 28px;
   }
 }
 
 h2 {
   font-size: 20px;
-}
-@media (min-width: 768px) {
-  h2 {
+  @media (min-width: 768px) {
+    font-size: 28px;
+  }
+  @media (min-width: 992px) {
+    font-size: 28px;
+  }
+  @media (min-width: 1200px) {
     font-size: 28px;
   }
 }
-@media (min-width: 992px) {
-  h2 {
-    font-size: 28px;
-  }
-}
-@media (min-width: 1200px) {
-  h2 {
-    font-size: 28px;
-  }
-}
-
+*/
 .fancybox-thumbs__list a {
   background-size: contain;
 }
@@ -1601,14 +1627,21 @@ header #header-center {
   color: #BEBEBE;
 }
 
-/*
-#filters .card-header.collapsing:before {
-    animation-name: spin;
-    animation-duration: 5000ms;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    content:"\f042";
-}*/
+.card {
+  border: 0;
+}
+
+.card-header {
+  border-width: 2px;
+  background-color: transparent;
+  padding-left: 0;
+}
+
+.card-body {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 #alert-demo {
   animation-name: fadeDemo;
   animation-duration: 500ms;
@@ -1616,19 +1649,19 @@ header #header-center {
   animation-timing-function: linear;
 }
 
+/*
 .alert {
   position: relative;
-}
-
-.alert-icon.alert {
-  padding-left: 50px;
+  ul{
+    padding-left: 0;
+  }
 }
 
 .alert-icon.alert-info:before,
 .alert-icon.alert-success:before,
 .alert-icon.alert-danger:before,
 .alert-icon.alert-warning:before {
-  font-family: Pixelion;
+  font-family: $font-family-icon;
   font-style: normal;
   line-height: 1;
   left: 13px;
@@ -1649,7 +1682,7 @@ header #header-center {
 .alert-icon.alert-info:before {
   content: "\f054";
 }
-
+*/
 /**/
 @keyframes fadeDemo {
   0% {
@@ -1898,7 +1931,7 @@ p {
 
 /*APP STYLES*/
 /* Validate form styles */
-.summary {
+/*.summary {
   margin-bottom: 15px;
   text-align: right;
 }
@@ -1910,13 +1943,17 @@ p {
 }
 
 .errorMessage {
-  color: #fa6557 !important;
+  color: $color-danger !important;
   font-size: 12px;
   margin-top: .50rem;
+}*/
+form div.required label:after {
+  content: " * ";
+  color: #fa6557;
 }
 
 .has-error label,
-label span.required {
+span.required {
   color: #fa6557 !important;
 }
 
@@ -2026,6 +2063,12 @@ span.highlight-word {
   text-shadow: none;
   padding-left: 45px;
   position: relative;
+}
+.alert-danger ul,
+.alert-success ul,
+.alert-info ul,
+.alert-warning ul {
+  padding-left: 0;
 }
 .alert-danger:before,
 .alert-success:before,
@@ -2254,8 +2297,6 @@ span.highlight-word {
   background-repeat: repeat-x;
   color: #fff;
   text-transform: uppercase;
-  font-size: 18px;
-  font-weight: 700;
 }
 .card-catalog .card-header:before {
   border-top: 2px solid #fff;
@@ -2343,7 +2384,6 @@ span.highlight-word {
 #filters .card .card-header h5 {
   margin: 0;
   cursor: pointer;
-  font-size: 18px;
 }
 #filters .card .card-body {
   margin: 0.75rem 1rem 0.75rem 1rem;
@@ -2640,7 +2680,7 @@ ul.current-filter-list > li > ul > li > a {
   width: 100%;
   height: 100%;
   font-size: 32px;
-  color: #BEBEBE;
+  color: #505759;
   font-family: Pixelion;
   display: flex;
   text-align: center;
