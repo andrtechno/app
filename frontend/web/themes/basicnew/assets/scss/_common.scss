@@ -32,7 +32,7 @@
 }
 
 .gradient {
-  @include gradient-y(#32AEB1, #92C99B);
+  @include gradient($gradient-color-start, $gradient-color-end);
 }
 
 /*APP STYLES*/

@@ -1,9 +1,7 @@
 $font-family-default: 'Open Sans', sans-serif;
 $font-family-second: 'Roboto Slab', serif;
-$font-family-icon:Pixelion;
+$font-family-icon: Pixelion;
 $font-size: 15px;
-
-
 
 $footer-heights: (
         xs: 0,
@@ -12,7 +10,6 @@ $footer-heights: (
         lg: 150px,
         xl: 120px
 );
-
 
 $color-success: #35cc62;
 $color-warning: #F66718;
@@ -23,19 +20,15 @@ $color-secondary: #6c757d;
 $color-dark: #343a40;
 $color-light: #f8f9fa;
 
+$h1-font-size: $font-size * 2.5 !default;
+$h2-font-size: $font-size * 2.25 !default;
+$h3-font-size: $font-size * 2 !default;
+$h4-font-size: $font-size * 1.75 !default;
+$h5-font-size: $font-size * 1.50 !default;
+$h6-font-size: $font-size * 1.25 !default;
 
-
-
-
-$h1-font-size:                $font-size * 2.5 !default;
-$h2-font-size:                $font-size * 2.25 !default;
-$h3-font-size:                $font-size * 2 !default;
-$h4-font-size:                $font-size * 1.75 !default;
-$h5-font-size:                $font-size * 1.50 !default;
-$h6-font-size:                $font-size * 1.25 !default;
-
-$gradient-x-color-start:#49aeb2;
-$gradient-x-color-end:#99c997;
+$gradient-color-start: #49aeb2;
+$gradient-color-end: #99c997;
 
 $heading-sizes: (
         h1:$h1-font-size,
@@ -45,9 +38,12 @@ $heading-sizes: (
         h5:$h5-font-size,
         h6:$h6-font-size
 );
-$color-input-border:#D4D4D4;
-$c1-color:#BEBEBE;
+$color-input-border: #D4D4D4;
+$c1-color: #BEBEBE;
 $text-color: #505759;
+
+$link-color-hover: $color-warning;
+
 $bg-color: #e8e8e8;
 $block-border: darken($bg-color, 12%);
 $primary_color: #343a40;
@@ -61,8 +57,6 @@ $toggler-color: $secondary_color;
 $dropdown-menu-border: $secondary_color;
 $dropdown-item-gradient: false;
 $navbar-gradient: false;
-
-
 
 //breadcrumbs settings
 //$breadcrumb-bg: lighten($bg-color, 4%);
@@ -89,7 +83,7 @@ $tabs-text-color-hover: #f6f6f6;
 
 /*fix google chrome input auto fill*/
 input:-webkit-autofill,
-input:-webkit-autofill:focus{
-  -webkit-box-shadow:0 0 0 50px white inset;
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px white inset;
   //-webkit-text-fill-color: #fff;
 }

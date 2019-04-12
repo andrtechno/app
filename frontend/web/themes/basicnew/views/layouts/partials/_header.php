@@ -12,6 +12,8 @@ $this->registerJs("
         preloader.delay(350).fadeOut('slow');
     });
 
+
+
 ", \yii\web\View::POS_END, 'preloader-js');
 ?>
 
@@ -44,18 +46,18 @@ $this->registerJs("
                 <div class="navbar-collapse">
                     <ul class="nav">
                         <?php if (Yii::$app->hasModule('compare')) {
-                            $count = Html::tag('span',\panix\mod\compare\components\CompareProducts::countSession(),['class'=>'badge badge-secondary','id'=>'countCompare']);
+                            $count = Html::tag('span', \panix\mod\compare\components\CompareProducts::countSession(), ['class' => 'badge badge-secondary', 'id' => 'countCompare']);
                             ?>
                             <li class="nav-item">
-                                <?= Html::a('<span class="d-none d-md-inline">'.Yii::t('compare/default', 'COMPARE').'</span> '.$count, ['/compare'], ['class' => 'top-compare nav-link']) ?>
+                                <?= Html::a('<span class="d-none d-md-inline">' . Yii::t('compare/default', 'COMPARE') . '</span> ' . $count, ['/compare'], ['class' => 'top-compare nav-link']) ?>
                             </li>
                         <?php } ?>
 
                         <?php if (Yii::$app->hasModule('wishlist')) {
-                            $count = Html::tag('span',(new \panix\mod\wishlist\components\WishListComponent)->count(),['class'=>'badge badge-secondary','id'=>'countWishlist']);
+                            $count = Html::tag('span', (new \panix\mod\wishlist\components\WishListComponent)->count(), ['class' => 'badge badge-secondary', 'id' => 'countWishlist']);
                             ?>
                             <li class="nav-item">
-                                <?= Html::a('<span class="d-none d-md-inline">'.Yii::t('wishlist/default', 'WISHLIST').'</span> '.$count, ['/wishlist'], ['class' => 'top-wishlist nav-link']) ?>
+                                <?= Html::a('<span class="d-none d-md-inline">' . Yii::t('wishlist/default', 'WISHLIST') . '</span> ' . $count, ['/wishlist'], ['class' => 'top-wishlist nav-link']) ?>
                             </li>
                         <?php } ?>
 
@@ -142,27 +144,24 @@ $this->registerJs("
     </div>
     <div class="container" id="header-center">
         <div class="row">
-            <div class="col-lg-3"><a class="navbar-brand" href="/"></a></div>
-            <div class="col-lg-2 p-0">
-                <div class="header-phones">
-                    <div><?= Html::tel('+38 (063) 489-26-95', array('class' => 'h6')); ?></div>
-                    <div><a href="tel:+38 (063) 489-26-95" class="h6">+38 (063) 489-26-95</a></div>
+            <div class="col-lg-3 col-md-6 d-flex align-items-center">
+                <a class="navbar-brand   ml-auto mr-auto mb-3" href="/"></a>
+            </div>
+            <div class="col-lg-2 col-md-6 d-flex align-items-center">
+                <div class="header-phones ml-auto mr-auto mb-3">
+                    <?= Html::tel('+38 (063) 489-26-95', ['class' => 'mb-1 phone']); ?>
+                    <?= Html::tel('+38 (063) 489-26-95', ['class' => 'mb-1 phone']); ?>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="d-flex align-items-center">
-                    <?php echo \panix\mod\shop\widgets\search\SearchWidget::widget([]); ?>
-                </div>
+            <div class="col-lg-4 col-md-6 d-flex align-items-center">
+                <?php echo \panix\mod\shop\widgets\search\SearchWidget::widget([]); ?>
             </div>
-            <div class="col-lg-3">
-
-                <?php echo \panix\mod\cart\widgets\cart\CartWidget::widget(['skin' => 'dropdown']); ?>
-
-
+            <div class="col-lg-3 col-md-6 d-flex align-items-center">
+                <div class="m-auto">
+                    <?php echo \panix\mod\cart\widgets\cart\CartWidget::widget(['skin' => 'dropdown']); ?>
+                </div>
             </div>
         </div>
-
-
     </div>
 
 
@@ -176,11 +175,11 @@ $this->registerJs("
                 <span></span>
             </button>
 
-            <div class="collapse navbar-collapse " id="navbar">
-                <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse mr-auto" id="navbar">
+                <ul class="navbar-nav">
                     <li class="nav-item dropdown megamenu-down">
                         <a class="nav-link dropdown-toggle btn btn-secondary" href="#" id="dropdown08"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Каталог</a>
+                           data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">Каталог</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown08">
                             <div class="container pr-0 pl-0">
                                 <div class="row">
@@ -193,12 +192,7 @@ $this->registerJs("
                                             <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"
                                                href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
                                                aria-selected="false">Profile</a>
-                                            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill"
-                                               href="#v-pills-messages" role="tab" aria-controls="v-pills-messages"
-                                               aria-selected="false">Messages</a>
-                                            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill"
-                                               href="#v-pills-settings" role="tab" aria-controls="v-pills-settings"
-                                               aria-selected="false">Settings</a>
+
                                         </div>
                                     </div>
                                     <div class="col-md-9">
@@ -266,15 +260,13 @@ $this->registerJs("
                             </div>
                         </div>
                     </li>
-
-
                 </ul>
-                <form class="form-inline my-2 my-md-0">
-                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                </form>
             </div>
-        </div>
 
+        <div class="navbar-right">
+            <?php echo \panix\mod\shop\widgets\search\SearchWidget::widget(['skin' => 'navbar']); ?>
+        </div>
+        </div>
     </nav>
 
 </header>

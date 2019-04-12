@@ -35,41 +35,19 @@
 
 @mixin gradient($start_color, $end_color,$deg: 45deg, $r:x) {
 
-  @if $r==x {
-
+  @if $start_color == $end_color {
+    background-color: $start_color;
   } @else {
-
+    background-image: -moz-linear-gradient($deg, $start_color 0%, $end_color 100%);
+    background-image: -webkit-gradient(linear, $deg, $deg, color-stop(0%, $start_color), color-stop(100%, $end_color));
+    background-image: -webkit-linear-gradient($deg, $start_color 0%, $end_color 100%);
+    background-image: -o-linear-gradient($deg, $start_color 0%, $end_color 100%);
+    background-image: -ms-linear-gradient($deg, $start_color 0%, $end_color 100%);
+    background-image: linear-gradient($deg, $start_color 0%, $end_color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start_color}', endColorstr=#{$end_color}, GradientType=1);
+    background-repeat: repeat-x;
   }
-  background-image: -moz-linear-gradient(top, $start_color 0%, $end_color 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $start_color), color-stop(100%, $end_color));
-  background-image: -webkit-linear-gradient(top, $start_color 0%, $end_color 100%);
-  background-image: -o-linear-gradient(top, $start_color 0%, $end_color 100%);
-  background-image: -ms-linear-gradient(top, $start_color 0%, $end_color 100%);
-  background-image: linear-gradient(top, $start_color 0%, $end_color 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start_color}', endColorstr=#{$end_color}, GradientType=1);
-  background-repeat: repeat-x;
-}
 
-@mixin gradient-x($start_color, $end_color) {
-  background-image: -moz-linear-gradient(top, $start_color 0%, $end_color 100%);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $start_color), color-stop(100%, $end_color));
-  background-image: -webkit-linear-gradient(top, $start_color 0%, $end_color 100%);
-  background-image: -o-linear-gradient(top, $start_color 0%, $end_color 100%);
-  background-image: -ms-linear-gradient(top, $start_color 0%, $end_color 100%);
-  background-image: linear-gradient(top, $start_color 0%, $end_color 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start_color}', endColorstr=#{$end_color}, GradientType=1);
-  background-repeat: repeat-x;
-}
-
-@mixin gradient-y($start_color, $end_color) {
-  background-image: -webkit-gradient(linear, left top, right bottom, from($start_color), to($end_color));
-  background-image: -webkit-linear-gradient(left, $start_color, $end_color);
-  background-image: -moz-linear-gradient(left, $start_color, $end_color);
-  background-image: -ms-linear-gradient(left, $start_color, $end_color);
-  background-image: -o-linear-gradient(left, $start_color, $end_color);
-  background-image: linear-gradient(to right, $start_color, $end_color);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start_color}', endColorstr=#{$end_color}, GradientType=1);
-  background-repeat: repeat-x;
 }
 
 @mixin size($width, $height: $width) {
@@ -89,15 +67,8 @@
   transition: $style $speed $animate;
 }
 
-@mixin transition-2($param: all 1s ease-in-out) {
-  -webkit-transition: $param;
-  -moz-transition: $param;
-  -o-transition: $param;
-  -ms-transition: $param;
-  transition: $param;
-}
 
-@mixin transform-rotate($deg) {
+@mixin rotate($deg) {
   -moz-transform: rotate($deg);
   -ms-transform: rotate($deg);
   -webkit-transform: rotate($deg);

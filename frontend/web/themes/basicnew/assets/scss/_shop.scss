@@ -179,7 +179,7 @@ $price-color: #666C6E;
   .card-header {
     border: 0;
     @include border-radius(0);
-    @include gradient-y(#32AEB1, #92C99B);
+    @include gradient($gradient-color-start, $gradient-color-end);
     color: #fff;
     text-transform: uppercase;
     font-size: 18px;
@@ -212,11 +212,11 @@ $price-color: #666C6E;
       }
       &:before {
         top: 0.75rem;
-        @include gradient-x(#fff, rgba(255, 255, 255, 0));
+        @include gradient(#fff, rgba(255, 255, 255, 0));
       }
       &:after {
         bottom: 0.75rem;
-        @include gradient-x(rgba(255, 255, 255, 0), #fff);
+        @include gradient(rgba(255, 255, 255, 0), #fff);
       }
     }
   }
@@ -696,8 +696,6 @@ $owl-products-button-width: 42px;
   height: 45px;
   line-height: 45px;
   cursor: pointer;
-  float: right;
-  min-width: 250px;
   &:before {
     font-family: $font-family-icon;
     content: '\f037';
@@ -709,6 +707,7 @@ $owl-products-button-width: 42px;
   }
   .dropdown-menu {
     padding: 0;
+    min-width: 250px;
 
   }
   .cart-empty:after {

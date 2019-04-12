@@ -15,6 +15,41 @@ $colors: (success, $color-success, #fff),
   color: $color-danger;
 }
 
+
+.page-link {
+  color: $text-color;
+  margin: 0 5px;
+  @include border-radius(40px);
+  border-color: lighten($text-color,50);
+  &:hover {
+    color: $link-color-hover;
+    background-color: transparent;
+    border-color: $link-color-hover;
+  }
+}
+
+
+.page-item:first-child .page-link,
+.page-item:last-child .page-link,
+.pagination-lg .page-item:first-child .page-link,
+.pagination-lg .page-item:last-child .page-link,
+.pagination-sm .page-item:first-child .page-link,
+.pagination-sm .page-item:last-child .page-link{
+  @include border-radius(40px);
+}
+.page-item.disabled .page-link{
+  color: lighten($text-color,50);
+}
+.pagination-sm .page-link{
+  padding: 0.25rem .50rem;
+  line-height: 1.3;
+  margin: 0 3px;
+}
+.page-item.active .page-link{
+  background-color: $link-color-hover;
+  border: 1px solid $link-color-hover;
+
+}
 .was-validated .form-control:invalid,
 .form-control.is-invalid {
   border-color: $color-danger;
@@ -111,6 +146,7 @@ $colors: (success, $color-success, #fff),
 @each $color in $colors {
   .btn-outline-#{nth($color, 1)} {
     border-color: nth($color, 2);
+    color: nth($color, 2);
     box-shadow: 0 2px 2px 0 rgba(nth($color, 2), .14), 0 3px 1px -2px rgba(nth($color, 2), .2), 0 1px 5px 0 rgba(nth($color, 2), .12);
     &:hover {
       border-color: nth($color, 2);
