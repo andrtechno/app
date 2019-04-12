@@ -10,13 +10,16 @@ use app\modules\seo\models\SeoParams;
 use yii\db\ActiveRecord;
 use yii\widgets\ActiveForm;
 
-class SeoExt extends \yii\base\Component {
+class SeoExt extends \yii\base\Component
+{
     /* массив, который будет наполнятся тэгами, что бы исключать уже найденые теги в ссылках выше по иерархии */
 
     public $exist = array();
     public $h1;
     public $text;
-    public function getData() {
+
+    public function getData()
+    {
         $urls = $this->getUrls();
         foreach ($urls as $url) {
             $urlF = SeoUrl::find()->where(['url' => $url])->one();
@@ -26,23 +29,24 @@ class SeoExt extends \yii\base\Component {
         }
     }
 
-    public function run() {
+    public function run()
+    {
         $config = Yii::$app->settings->get('seo');
         if ($config->canonical) {
             //if (Yii::$app->controller->canonical) {
             ////    $canonical = Yii::$app->controller->canonical;
             //} else {
-                $canonical = Yii::$app->request->getHostInfo() . '/' . Yii::$app->request->getPathInfo();
-           // }
-       
-           // Yii::$app->clientScript->registerLinkTag('canonical', null, $canonical);
+            $canonical = Yii::$app->request->getHostInfo() . '/' . Yii::$app->request->getPathInfo();
+            // }
+
+            // Yii::$app->clientScript->registerLinkTag('canonical', null, $canonical);
             Yii::$app->view->registerLinkTag(['rel' => 'canonical', 'href' => $canonical]);
         }
-       // if ($config['google_site_verification']) {
-            //Yii::$app->clientScript->registerMetaTag($config['google_site_verification'], 'google-site-verification');
-       // }
+        // if ($config['google_site_verification']) {
+        //Yii::$app->clientScript->registerMetaTag($config['google_site_verification'], 'google-site-verification');
+        // }
         //if ($config['yandex_verification']) {
-            //Yii::$app->clientScript->registerMetaTag($config['yandex_verification'], 'yandex-verification');
+        //Yii::$app->clientScript->registerMetaTag($config['yandex_verification'], 'yandex-verification');
         //}
         /*
          * получаем все возможные сслыки по Иерархии
@@ -80,9 +84,11 @@ class SeoExt extends \yii\base\Component {
             }
         }
 
-       if ($titleFlag)
-            if(isset(Yii::$app->view->title))
+        if ($titleFlag) {
+            if (isset(Yii::$app->view->title)) {
                 $this->printMeta('title', Html::encode(Yii::$app->view->title));
+            }
+        }
     }
 
     /*
@@ -90,7 +96,8 @@ class SeoExt extends \yii\base\Component {
       $url - ссылка по которой будут искаться теги
      */
 
-    private function seoName($url) {
+    private function seoName($url)
+    {
         $controller = Yii::$app->controller;
 
         if ($url->title) {
@@ -99,15 +106,15 @@ class SeoExt extends \yii\base\Component {
                     $param = $this->getSeoparam($paramData);
                     if ($param) {
 
-                        $url->title = str_replace('{'.$param['tpl'].'}', $param['item'], $url->title);
+                        $url->title = str_replace('{' . $param['tpl'] . '}', $param['item'], $url->title);
                     }
                 }
             }
-            Yii::$app->view->title = $url->title.'zzz';
+            Yii::$app->view->title = $url->title . 'zzz';
             //$this->printMeta('title', Yii::$app->view->title);
         } else {
             if (isset($controller->title)) {
-                Yii::$app->view->title = $controller->title.'zzzzzz2';
+                Yii::$app->view->title = $controller->title . 'zzzzzz2';
             } else {
                 Yii::$app->view->title = Yii::$app->settings->get('app', 'site_name');
             }
@@ -148,20 +155,22 @@ class SeoExt extends \yii\base\Component {
      * @param string $name название мета-тега
      * @param string $content значение
      */
-    private function printMeta($name, $content) {
+    private function printMeta($name, $content)
+    {
 
         $content = strip_tags($content);
         if ($name == "keywords")
             $content = str_replace(',', ", ", $content);
         if ($name == "title") {
-            echo "<title>{$content}</title>\n";
+            echo "<title>{$content} </title>\n";
         } else {
             Yii::$app->view->registerMetaTag(['name' => $name, 'content' => $content]);
             // echo "<meta name=\"{$name}\" content=\"{$content}\" />\n";
         }
     }
 
-    private function getUrls() {
+    private function getUrls()
+    {
         $result = null;
         $urls = Yii::$app->request->url;
         if (Yii::$app->languageManager->default->code != Yii::$app->language) {
@@ -198,7 +207,8 @@ class SeoExt extends \yii\base\Component {
      * Существуют два типа параметров прямой (ModelName/attribyte) или по связи (ModelName/relation.attribyte)
      */
 
-    private function getSeoparam($pdata) {
+    private function getSeoparam($pdata)
+    {
 
         $urls = Yii::$app->request->url;
 
@@ -206,7 +216,7 @@ class SeoExt extends \yii\base\Component {
         $id = $data[count($data) - 1];
         /* если есть символ ">>" значит параметр по связи */
 
-       // $param = $pdata->obj;
+        // $param = $pdata->obj;
         $tpl = $pdata->param;
         if (strstr($tpl, ".")) {
             $paramType = true;
@@ -228,23 +238,21 @@ class SeoExt extends \yii\base\Component {
 
             //echo $item['seo_alias'];die;
             if (count($item)) {
-               // var_dump($pdata->param);
-               // var_dump($pdata->obj);die;
-               // if($pdata->obj){
-       
+                // var_dump($pdata->param);
+                // var_dump($pdata->obj);die;
+                // if($pdata->obj){
+
                 return [
-                    'tpl' =>  $tpl,
+                    'tpl' => $tpl,
                     'item' => ($paramType) ? $item[$tpl2[1]][$data[1]] : $item[$tpl2[0]],
                 ];
-               // }
+                // }
             }
         } else {
 
             return false;
         }
     }
-
-
 
 
 }

@@ -1466,7 +1466,7 @@ a[href^="tel:"] {
   }
 }
 header {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 header #header-top {
   padding: 0;
@@ -1496,7 +1496,7 @@ header #header-center {
 .breadcrumb {
   display: block;
   background: none;
-  padding: .75rem 0;
+  padding: 0 0 .75rem 0;
   color: #BEBEBE;
   white-space: nowrap;
   overflow: hidden;
@@ -1746,7 +1746,7 @@ p {
   box-shadow: none;
 }
 .form-control:-moz-placeholder, .form-control:-ms-input-placeholder, .form-control::-moz-placeholder, .form-control::-webkit-input-placeholder {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 /* End Validate form style*/

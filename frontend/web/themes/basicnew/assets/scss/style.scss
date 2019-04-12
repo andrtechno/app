@@ -855,7 +855,7 @@ $header-height-center-desktop: 150px;
 }
 
 header {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   #header-top {
     padding: 0;
     border-bottom: 1px solid rgba(0,0,0,0.125);
@@ -901,7 +901,7 @@ header {
 .breadcrumb {
   display: block;
   background: none;
-  padding: .75rem 0;
+  padding: 0 0 .75rem 0;
   color: #BEBEBE;
   white-space: nowrap;
   overflow: hidden;
@@ -1146,7 +1146,7 @@ p {
   &::-moz-placeholder, /* Firefox 19+ */
   &::-webkit-input-placeholder /* Chrome/Opera/Safari */
   {
-    color: #fff;
+    color: rgba(255,255,255,0.6);
   }
 }
 
