@@ -77,7 +77,7 @@ use yii\helpers\HtmlPurifier;
                 <div class="col-6 col-sm-6 col-lg-6 text-right">
                     <?php
                     if ($model->isAvailable) {
-                        echo Html::a('Купить', 'javascript:cart.add(' . $model->id . ')', array('class' => 'btn btn-secondary btn-buy d-block'));
+                        echo Html::a('Купить', 'javascript:cart.add(' . $model->id . ')', array('class' => 'btn btn-warning btn-buy d-block'));
                     } else {
                         echo Html::a(Yii::t('app', 'NOT_AVAILABLE'), 'javascript:cart.notifier(' . $model->id . ');', array('class' => 'btn btn-danger'));
                     }

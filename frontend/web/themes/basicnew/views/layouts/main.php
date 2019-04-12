@@ -130,6 +130,7 @@ $this->registerJs("
 
     </div>
 </div>
+<?= $this->render('partials/_subscribe'); ?>
 <?= $this->render('partials/_footer'); ?>
 <?php $this->endBody() ?>
 </body>

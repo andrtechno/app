@@ -1,0 +1,131 @@
+$colors: (success, $color-success, #fff),
+        (danger, $color-danger, #fff),
+        (info, $color-info, $primary_color),
+        (primary, $color-primary, #fff),
+        (secondary, $color-secondary, #fff),
+        (warning, $color-warning, #fff),
+        (dark, $color-dark, #fff),
+        (light, $color-light, $primary_color);
+
+.fixed-top {
+  z-index: 1000;
+}
+
+.invalid-feedback {
+  color: $color-danger;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  border-color: $color-danger;
+}
+
+.was-validated .form-control:valid,
+.form-control.is-valid {
+  border-color: $color-success;
+}
+
+.was-validated .form-control:valid:focus,
+.form-control.is-valid:focus,
+.was-validated .form-control:invalid:focus,
+.form-control.is-invalid:focus,
+.form-control:focus,
+.form-control:focus {
+  box-shadow: none;
+}
+
+@each $color in $colors {
+  .bg-#{nth($color, 1)} {
+    background-color: nth($color, 2) !important;
+  }
+}
+
+@each $color in $colors {
+  .text-#{nth($color, 1)} {
+    color: nth($color, 2) !important;
+  }
+}
+
+@each $color in $colors {
+  .alert-#{nth($color, 1)} {
+    background-color: lighten(nth($color, 2), 30);
+    border-color: nth($color, 2);
+    color: darken(nth($color, 2), 10);
+  }
+}
+
+@each $color in $colors {
+  .badge-#{nth($color, 1)} {
+    background-color: nth($color, 2);
+  }
+}
+
+/*Buttons*/
+.btn {
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1);
+  will-change: box-shadow, transform;
+
+}
+
+.btn-sm,
+.btn-group-sm .btn {
+  padding-right: .50rem;
+  padding-left: .50rem;
+}
+
+@each $color in $colors {
+  .btn-#{nth($color, 1)} {
+    color: nth($color, 3);
+    background-color: nth($color, 2);
+    border-color: nth($color, 2);
+    box-shadow: 0 2px 2px 0 rgba(nth($color, 2), .14), 0 3px 1px -2px rgba(nth($color, 2), .2), 0 1px 5px 0 rgba(nth($color, 2), .12);
+    &:hover {
+      color: nth($color, 3);
+      border-color: darken(nth($color, 2), 5);
+      background-color: darken(nth($color, 2), 5);
+      box-shadow: 0 7px 7px 0 rgba(nth($color, 2), .14), 0 3px 1px -2px rgba(nth($color, 2), .2), 0 1px 5px 0 rgba(nth($color, 2), .12);
+    }
+    &:focus,
+    &.focus {
+      color: nth($color, 3);
+      box-shadow: 0 2px 2px 0 rgba(nth($color, 2), .14), 0 3px 1px -2px rgba(nth($color, 2), .2), 0 1px 5px 0 rgba(nth($color, 2), .12);
+    }
+  }
+  .btn-#{nth($color, 1)}:not(:disabled):not(.disabled):active:focus,
+  .btn-#{nth($color, 1)}:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-#{nth($color, 1)}.dropdown-toggle:focus {
+    box-shadow: 0 2px 2px 0 rgba(nth($color, 2), .14), 0 3px 1px -2px rgba(nth($color, 2), .2), 0 1px 5px 0 rgba(nth($color, 2), .12);
+  }
+
+  .btn-#{nth($color, 1)}:not(:disabled):not(.disabled):active,
+  .btn-#{nth($color, 1)}:not(:disabled):not(.disabled).active,
+  .show > .btn-#{nth($color, 1)}.dropdown-toggle {
+    border-color: darken(nth($color, 2), 5);
+    background-color: darken(nth($color, 2), 5);
+    box-shadow: 0 2px 2px 0 rgba(nth($color, 2), .14), 0 3px 1px -2px rgba(nth($color, 2), .2), 0 1px 5px 0 rgba(nth($color, 2), .12);
+  }
+}
+
+@each $color in $colors {
+  .btn-outline-#{nth($color, 1)} {
+    border-color: nth($color, 2);
+    box-shadow: 0 2px 2px 0 rgba(nth($color, 2), .14), 0 3px 1px -2px rgba(nth($color, 2), .2), 0 1px 5px 0 rgba(nth($color, 2), .12);
+    &:hover {
+      border-color: nth($color, 2);
+
+    }
+    &:focus,
+    &.focus {
+      box-shadow: 0 2px 2px 0 rgba(nth($color, 2), .14), 0 3px 1px -2px rgba(nth($color, 2), .2), 0 1px 5px 0 rgba(nth($color, 2), .12);
+    }
+  }
+
+  .btn-outline-#{nth($color, 1)}:not(:disabled):not(.disabled):active:focus,
+  .btn-outline-#{nth($color, 1)}:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-outline-#{nth($color, 1)}.dropdown-toggle:focus {
+    box-shadow: 0 2px 2px 0 rgba(nth($color, 2), .14), 0 3px 1px -2px rgba(nth($color, 2), .2), 0 1px 5px 0 rgba(nth($color, 2), .12);
+  }
+
+}

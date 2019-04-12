@@ -1,7 +1,7 @@
 $font-family-default: 'Open Sans', sans-serif;
 $font-family-second: 'Roboto Slab', serif;
 $font-family-icon:Pixelion;
-$font-size: 13px;
+$font-size: 15px;
 
 
 
@@ -14,7 +14,17 @@ $footer-heights: (
 );
 
 
-$orange-color: #F66718;
+$color-success: #35cc62;
+$color-warning: #F66718;
+$color-danger: #fa6557;
+$color-info: #0ecccc;
+$color-primary: #007bff;
+$color-secondary: #6c757d;
+$color-dark: #343a40;
+$color-light: #f8f9fa;
+
+
+
 
 
 $h1-font-size:                $font-size * 2.5 !default;
@@ -24,6 +34,8 @@ $h4-font-size:                $font-size * 1.75 !default;
 $h5-font-size:                $font-size * 1.50 !default;
 $h6-font-size:                $font-size * 1.25 !default;
 
+$gradient-x-color-start:#49aeb2;
+$gradient-x-color-end:#99c997;
 
 $heading-sizes: (
         h1:$h1-font-size,
@@ -51,8 +63,6 @@ $dropdown-item-gradient: false;
 $navbar-gradient: false;
 
 
-$danger-color:#dc3545;
-$success-color:#28a745;
 
 //breadcrumbs settings
 //$breadcrumb-bg: lighten($bg-color, 4%);

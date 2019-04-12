@@ -43,11 +43,21 @@ $this->registerJs("
             <nav class="navbar-expand">
                 <div class="navbar-collapse">
                     <ul class="nav">
+                        <?php if (Yii::$app->hasModule('compare')) {
+                            $count = Html::tag('span',\panix\mod\compare\components\CompareProducts::countSession(),['class'=>'badge badge-secondary','id'=>'countCompare']);
+                            ?>
+                            <li class="nav-item">
+                                <?= Html::a('<span class="d-none d-md-inline">'.Yii::t('compare/default', 'COMPARE').'</span> '.$count, ['/compare'], ['class' => 'top-compare nav-link']) ?>
+                            </li>
+                        <?php } ?>
 
-
-                        <li class="nav-item"><?= Html::a(Yii::t('compare/default', 'COMPARE', array('c' => \panix\mod\compare\components\CompareProducts::countSession(), 'id' => 's')), array('/compare'), array('class' => 'top-compare nav-link')) ?></li>
-                        <li class="nav-item"><?= Html::a(Yii::t('wishlist/default', 'WISHLIST', array('c' => (new \panix\mod\wishlist\components\WishListComponent)->count())), array('/wishlist'), array('class' => 'top-wishlist nav-link')) ?></li>
-
+                        <?php if (Yii::$app->hasModule('wishlist')) {
+                            $count = Html::tag('span',(new \panix\mod\wishlist\components\WishListComponent)->count(),['class'=>'badge badge-secondary','id'=>'countWishlist']);
+                            ?>
+                            <li class="nav-item">
+                                <?= Html::a('<span class="d-none d-md-inline">'.Yii::t('wishlist/default', 'WISHLIST').'</span> '.$count, ['/wishlist'], ['class' => 'top-wishlist nav-link']) ?>
+                            </li>
+                        <?php } ?>
 
                     </ul>
                     <ul class="nav ml-auto">
@@ -56,7 +66,8 @@ $this->registerJs("
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle"
                                    data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false">
+                                   aria-haspopup="true"
+                                   aria-expanded="false">
                                     Язык: <b><?= Yii::$app->languageManager->active->name ?></b></a>
                                 <div class="dropdown-menu">
                                     <?php
@@ -67,7 +78,7 @@ $this->registerJs("
                                         $link = ($lang->is_default) ? CMS::currentUrl() : '/' . $lang->code . CMS::currentUrl();
                                         //Html::link(Html::image('/uploads/language/' . $lang->flag_name, $lang->name), $link, array('title' => $lang->name));
 
-                                        echo Html::a(Html::img('/uploads/language/' . $lang->flag_name, ['alt'=>$lang->name]) . ' ' . $lang->name, $link,['class'=>'dropdown-item']);
+                                        echo Html::a(Html::img('/uploads/language/' . $lang->flag_name, ['alt' => $lang->name]) . ' ' . $lang->name, $link, ['class' => 'dropdown-item']);
 
 
                                     }
@@ -84,10 +95,10 @@ $this->registerJs("
                             <div class="dropdown-menu">
                                 <?php
                                 foreach (Yii::$app->currency->currencies as $currency) {
-                                    echo Html::a($currency->iso, ['/shop/ajax/currency','id'=>$currency->id], [
+                                    echo Html::a($currency->iso, ['/shop/ajax/currency', 'id' => $currency->id], [
                                         'class' => Yii::$app->currency->active->id === $currency->id ? 'dropdown-item active' : 'dropdown-item',
                                         'id' => 'sw' . $currency->id,
-                                        'onClick'=>'switchCurrency('.$currency->id.'); return false;'
+                                        'onClick' => 'switchCurrency(' . $currency->id . '); return false;'
                                     ]);
                                 }
                                 ?>

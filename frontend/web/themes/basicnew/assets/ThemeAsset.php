@@ -27,6 +27,7 @@ class ThemeAsset extends AssetBundle {
         'panix\mod\comments\assets\WebAsset',
         'panix\mod\cart\assets\CartAsset',
         'panix\mod\wishlist\assets\WishlistAsset',
+        'panix\mod\sendpulse\assets\SendpulseAsset'
     ];
 
 }

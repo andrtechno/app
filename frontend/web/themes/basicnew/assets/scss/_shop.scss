@@ -99,39 +99,6 @@
 
 }
 
-$color: #F66718;
-//NEW
-.btn {
-  border-radius: 0;
-}
-
-.btn-secondary {
-  background-color: $color;
-  border-color: $color;
-  &:focus,
-  &.focus {
-    background-color: $color;
-    box-shadow: 0 0 0 0.2rem rgba($color, .5);
-  }
-  &:hover {
-    background-color: $color;
-    border-color: $color;
-  }
-  &.disabled,
-  &:disabled {
-    color: #fff;
-    background-color: $color;
-    border-color: $color;
-  }
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active,
-  .show > &.dropdown-toggle {
-    background-color: $color;
-    border-color: $color;
-    box-shadow: 0 0 0 0.2rem rgba($color, .5);
-  }
-}
-
 $price-sizes: (
         xs: 0,
         sm: 315px,
@@ -170,13 +137,16 @@ $price-color: #666C6E;
     }
   }
   .discount-sum {
-    color: #F66718;
+    color: $color-danger;
     text-decoration: none;
     font-size: 14px;
     font-weight: 700;
+    margin-left: 10px;
   }
 }
-
+.filters-container{
+  margin-bottom: 1rem;
+}
 //END NEW
 .card-catalog {
   @include border-radius(0);
@@ -406,7 +376,7 @@ ul.current-filter-list {
         position: absolute;
         left: 0;
         top: 2px;
-        color: $danger-color;
+        color: $color-danger;
         font-size: 12px;
         font-family: $font-family-icon;
         content: "\f029";
@@ -453,7 +423,7 @@ ul.current-filter-list > li > ul > li > a {
   font-size: 13px;
   display: inline-block;
   &.success {
-    background: $success-color;
+    background: $color-success;
     color: #fff;
   }
   &.warning {
@@ -462,7 +432,7 @@ ul.current-filter-list > li > ul > li > a {
   }
   &.danger {
     top: 2.5rem;
-    background: $danger-color !important;
+    background: $color-danger !important;
     color: #fff;
   }
 }
@@ -612,7 +582,7 @@ $owl-products-button-width: 42px;
   .owl-nav {
     width: 100%;
     button {
-      color: $orange-color;
+      color: $color-warning;
       width: $owl-products-button-width;
       height: $owl-products-button-width;
       position: absolute;
@@ -627,7 +597,7 @@ $owl-products-button-width: 42px;
         top: 0;
         bottom: 0;
         font-family: $font-family-icon;
-        color: $orange-color;
+        color: $color-warning;
         font-size: 20px;
       }
     }
@@ -663,8 +633,8 @@ $owl-products-button-width: 42px;
   @include transition(.2s);
   &:hover,
   &:focus {
-    border: 3px solid #F66718;
-    @include box-shadow(0px 0px 15px 0px rgba(246, 103, 24, 0.4));
+    border: 3px solid $color-warning;
+    @include box-shadow(0px 0px 10px 0px rgba($color-warning, 0.4));
     -webkit-transform: translateY(-5px);
     -moz-transform: translateY(-5px);
     transform: translateY(-5px);
@@ -797,7 +767,7 @@ $owl-products-button-width: 42px;
       right: 0;
       color: darken(#fff, 30%);
       &:hover {
-        color: $danger-color;
+        color: $color-danger;
       }
     }
   }
@@ -830,10 +800,10 @@ $carousel-dots-size: 15px;
       @include border-radius(50%);
       width: $carousel-dots-size;
       height: $carousel-dots-size;
-      border: 1px solid $orange-color;
+      border: 1px solid $color-warning;
       margin: 0 5px;
       &.active {
-        background: $orange-color;
+        background: $color-warning;
       }
 
     }
@@ -878,7 +848,7 @@ $carousel-dots-size: 15px;
   .owl-nav {
     width: 100%;
     button {
-      color: $orange-color;
+      color: $color-warning;
       width: 42px;
       height: 42px;
       position: absolute;
@@ -893,7 +863,7 @@ $carousel-dots-size: 15px;
         top: 0;
         bottom: 0;
         font-family: $font-family-icon;
-        color: $orange-color;
+        color: $color-warning;
         font-size: 20px;
       }
     }

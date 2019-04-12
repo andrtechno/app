@@ -7,6 +7,8 @@ use panix\engine\Html;
 use app\modules\seo\models\SeoUrl;
 use app\modules\seo\models\SeoMain;
 use app\modules\seo\models\SeoParams;
+use yii\db\ActiveRecord;
+use yii\widgets\ActiveForm;
 
 class SeoExt extends \yii\base\Component {
     /* массив, который будет наполнятся тэгами, что бы исключать уже найденые теги в ссылках выше по иерархии */
@@ -141,12 +143,11 @@ class SeoExt extends \yii\base\Component {
         }
     }
 
-    /*
+    /**
      * функция вывода Мета Тега на страницу
-     * @name - название мета-тега
-     * @content - значение
+     * @param string $name название мета-тега
+     * @param string $content значение
      */
-
     private function printMeta($name, $content) {
 
         $content = strip_tags($content);
@@ -217,6 +218,7 @@ class SeoExt extends \yii\base\Component {
         }
 
         if (class_exists($pdata->modelClass, false)) {
+            /** @var $item ActiveRecord */
             $item = new $pdata->modelClass;
             if (is_string($id)) {
                 $item = $item->find()->where(['seo_alias' => $id])->one();

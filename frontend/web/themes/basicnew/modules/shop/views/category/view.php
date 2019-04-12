@@ -20,7 +20,9 @@ use panix\mod\shop\widgets\filters\FiltersWidget;
         ?>
     </div>
     <div class="catalog-content2 flex-column" style="width: 100%;overflow-x: hidden;margin-left: 1rem">
-        <h1 class="heading-gradient"><?= $this->context->dataModel->name ?></h1>
+        <div class="heading-gradient">
+        <h1><?= $this->context->dataModel->name ?></h1>
+        </div>
         <?php echo $this->render('_sorting', ['itemView' => $itemView]); ?>
 
         <div id="listview-ajax">

@@ -15,10 +15,12 @@ class SettingsForm extends \panix\engine\SettingsModel
     public $canonical;
     public $google_site_verification;
     public $yandex_verification;
+    public $title_prefix;
 
     public static function defaultSettings()
     {
         return array(
+            'title_prefix'=>'/',
             'googleanalytics_id' => null,
             'googletag_id' => null,
             'yandexmetrika_id' => null,
@@ -81,7 +83,8 @@ class SettingsForm extends \panix\engine\SettingsModel
     public function rules()
     {
         return [
-            ['canonical', 'boolean']
+            ['canonical', 'boolean'],
+            ['title_prefix','string']
             //('yandexmetrika_clickmap, yandexmetrika_trackLinks, yandexmetrika_webvisor, canonical', 'boolean'),
             //[]'googleanalytics_id, googletag_id, google_site_verification, yandex_verification', 'type', 'type' => 'string'),
             //('yandexmetrika_id', 'numerical', 'integerOnly' => true),

@@ -23,11 +23,15 @@
   @return mix($color-base, $color, $level * $theme-color-interval);
 }
 
-@mixin box-shadow($param) {
-  -webkit-box-shadow: $param;
-  -moz-box-shadow: $param;
-  box-shadow: $param;
+@mixin box-shadow($color,$smooth:5px,$size:-1px,$inset:null) {
+  @if $inset {
+    $inset: inset;
+  }
+  -webkit-box-shadow: $inset 0px 0px $smooth $size $color;
+  -moz-box-shadow: $inset 0px 0px $smooth $size $color;
+  box-shadow: $inset 0px 0px $smooth $size $color;
 }
+
 
 @mixin gradient($start_color, $end_color,$deg: 45deg, $r:x) {
 

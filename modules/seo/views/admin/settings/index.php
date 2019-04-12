@@ -4,25 +4,18 @@ use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
 ?>
 <?php
-$form = ActiveForm::begin([
-            'options' => ['class' => 'form-horizontal'],
-        ]);
+$form = ActiveForm::begin();
+
 ?>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title"><?= $this->context->pageName ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h5><?= $this->context->pageName ?></h5>
     </div>
-    <div class="panel-body">
-
+    <div class="card-body">
         <?= $form->field($model, 'canonical')->checkbox(); ?>
-
-
-
-
-
-
+        <?= $form->field($model, 'title_prefix'); ?>
     </div>
-    <div class="panel-footer text-center">
+    <div class="card-footer text-center">
         <?= Html::submitButton(Yii::t('app', 'SAVE'), ['class' => 'btn btn-success']) ?>
     </div>
 </div>

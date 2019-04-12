@@ -60,7 +60,7 @@ $this->registerJs("
 
         <div class="col-sm-4 col-md-3 col-lg-3">
 
-            <div class="btn-group btn-group-sm1">
+            <div class="btn-group btn-group-sm">
                 <a class="btn btn-outline-secondary <?php if ($itemView === '_view_grid') echo 'active'; ?>"
                    href="<?= Yii::$app->urlManager->removeUrlParam('/' . Yii::$app->requestedRoute, 'view') ?>"><i
                             class="icon-grid"></i></a>
