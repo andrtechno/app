@@ -6,6 +6,6 @@ Disallow: /protected/
 Disallow: /themes/
 Disallow: /upgrade/
 
-Host: http://app.loc
+Host: http://yii2.pixelion.com.ua
 
-Sitemap: http://app.loc/sitemap.xml
+Sitemap: http://yii2.pixelion.com.ua/sitemap.xml

@@ -147,12 +147,6 @@ $this->widget('ext.fancybox.Fancybox', array(
                     <?php } ?>
                 </h1>
                 <?php
-                //if ($prev = $model->getNextOrPrev('prev')) {
-                //  echo Html::a('prev ' . $prev->name, $prev->getUrl(), ['class' => 'btn btn-default']);
-                //}
-                //if ($next = $model->getNextOrPrev('next')) {
-                //  echo Html::a($next->name . ' next', $next->getUrl(), ['class' => 'btn btn-default']);
-                //}
 
 
                 if ($prev = $model->objectPrev) {
@@ -224,29 +218,29 @@ $this->widget('ext.fancybox.Fancybox', array(
                     echo $this->render('_configurations', array('model' => $model));
                     ?>
                 </div>
-
-                <div class="description-container">
-
-                    text
-                </div>
-
                 <div class="price-container info-container">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="price-box">
-                                    <span class="price price-lg text-success"><span
-                                                id="productPrice"><?= Yii::$app->currency->number_format($model->getFrontPrice()); ?></span> <sub><?= Yii::$app->currency->active->symbol; ?></sub></span>
+
                                 <?php
                                 if (Yii::$app->hasModule('discounts')) {
                                     if ($model->appliedDiscount) {
                                         ?>
-                                        <span class="price-strike"><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?> <?= Yii::$app->currency->active->symbol ?></span>
+                                        <div class=" mb-3">
+                                    <span class="price price-discount">
+                                            <del><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?></del> <sub><?= Yii::$app->currency->active->symbol ?></sub>
+                                        </span>
+                                            <span class="price discount-sum text-warning">-<?= $model->discountSum; ?></span>
+                                        </div>
 
                                         <?php
                                     }
                                 }
                                 ?>
-
+                                <div><span class="price price-lg">
+                                        <span id="productPrice"><?= Yii::$app->currency->number_format($model->getFrontPrice()); ?></span><sub><?= Yii::$app->currency->active->symbol; ?></sub>
+                                </span></div>
                                 <?php if ($model->prices) { ?>
                                     <a class="btn btn-sm btn-link" data-toggle="collapse" href="#prices" role="button"
                                        aria-expanded="false" aria-controls="prices">

@@ -42,10 +42,11 @@ use yii\helpers\HtmlPurifier;
                 <div class="col-6 col-sm-6 col-lg-6 text-right">
                     <?php
                     if (Yii::$app->hasModule('compare')) {
-                        // $this->widget('mod.compare.widgets.CompareWidget', array('pk' => $model->id, 'skin' => 'icon', 'linkOptions' => array('class' => 'btn btn-compare')));
+                        echo \panix\mod\compare\widgets\CompareWidget::widget(['pk' => $model->id, 'skin' => 'icon', 'linkOptions' => ['class' => 'btn btn-compare']]);
                     }
                     if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
-                        // $this->widget('mod.wishlist.widgets.WishlistWidget', array('pk' => $model->id, 'skin' => 'icon', 'linkOptions' => array('class' => 'btn btn-wishlist')));
+                        echo \panix\mod\wishlist\widgets\WishlistWidget::widget(['pk' => $model->id, 'skin' => 'icon', 'linkOptions' => ['class' => 'btn btn-wishlist']]);
+
                     }
                     ?>
                 </div>
@@ -59,9 +60,10 @@ use yii\helpers\HtmlPurifier;
                             if ($model->appliedDiscount) {
                                 ?>
                                 <span class="price price-discount">
-                            <span><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?></span>
+                            <?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?>
                             <sub><?= Yii::$app->currency->active->symbol ?></sub>
-                                    <span class="discount-sum">-<?= $model->discountSum; ?></span>
+                                    <span class="discount-sum">-<?= $model->discountSum; ?>
+                                    </span>
                         </span>
                                 <?php
                             }

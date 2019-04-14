@@ -107,6 +107,7 @@ $price-sizes: (
         xl: 120px
 );
 $price-color: #666C6E;
+$price-font-size: 22px;
 @each $name, $value in $price-sizes {
   .testprice#{$name} {
     font-size: $value;
@@ -114,14 +115,44 @@ $price-color: #666C6E;
   }
 }
 
+
+
+
+
+.price-discount2 {
+  color: #dc3545;
+}
+
+.price-discount {
+  color: #6c757d;
+
+}
+
+.price-discount span {
+  text-decoration: line-through;
+}
+
+
+
 .price {
   color: $price-color;
-  font-size: 18px;
+  font-size: $price-font-size;
   font-weight: 700;
+  line-height: 1;
+  &.price-lg {
+    font-size: $price-font-size + 10;
+    sub,
+    sup {
+      font-size: 14px;
+    }
+  }
+  &.price-sm {
+    font-size: $price-font-size - 5;
+  }
   sub,
   sup {
-    color: $price-color;
     font-weight: 700;
+    font-size: 12px;
   }
   sub {
     bottom: 0;
@@ -131,22 +162,23 @@ $price-color: #666C6E;
   }
   &.price-discount {
     color: rgba($price-color, .5);
-    font-size: 12px;
     sub {
       color: rgba($price-color, .5);
     }
   }
   .discount-sum {
-    color: $color-danger;
+    color: $color-warning;
     text-decoration: none;
     font-size: 14px;
     font-weight: 700;
     margin-left: 10px;
   }
 }
-.filters-container{
+
+.filters-container {
   margin-bottom: 1rem;
 }
+
 //END NEW
 .card-catalog {
   @include border-radius(0);
@@ -192,6 +224,32 @@ $price-color: #666C6E;
 
 /*Store styles*/
 
+#filter-current ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 600;
+  ul{
+    margin-left: 1rem;
+    margin-top: 5px;
+    margin-bottom: 1rem;
+  }
+  a {
+    position: relative;
+    display: inline-block;
+    padding-left: 20px;
+    font-weight: normal;
+    &:before {
+      font-family: $font-family-icon;
+      content: "\f029";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: $color-danger;
+      font-size: 12px;
+    }
+  }
+}
 
 #filters {
   position: relative;
@@ -778,7 +836,7 @@ $owl-products-button-width: 42px;
 
 }
 
-$price-font-size: 20px;
+
 .popover .popover-body {
   max-height: 300px;
   overflow-x: hidden;
@@ -880,50 +938,7 @@ $carousel-dots-size: 15px;
   }
 }
 
-.price2 {
-  font-size: $price-font-size;
-  position: relative;
-  &.price-strike span:after {
-    height: 1px;
-    background: gray;
-    content: '';
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 50%;
 
-  }
-
-  sup,
-  sub {
-    color: gray;
-  }
-  sub {
-    bottom: 0;
-  }
-  sup {
-    top: 0;
-  }
-  &.price-lg {
-    font-size: $price-font-size + 10;
-  }
-  &.price-sm {
-    font-size: $price-font-size - 5;
-  }
-}
-
-.price-discount2 {
-  color: #dc3545;
-}
-
-.price-discount {
-  color: #6c757d;
-
-}
-
-.price-discount span {
-  text-decoration: line-through;
-}
 
 .osahanloading {
   animation: osahanloading 1.5s linear 0s normal none infinite;
