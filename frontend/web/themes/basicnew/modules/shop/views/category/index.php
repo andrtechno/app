@@ -5,8 +5,7 @@ Url::remember(); // сохраняем URL для последующего ис�
 
 ?>
 
-<?php
+<div class="container">
+    <?= CategoriesWidget::widget([]) ?>
+</div>
 
-
-?>
-<?= CategoriesWidget::widget([]) ?>

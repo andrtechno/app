@@ -23,7 +23,15 @@ defined('YII_ENV') or define('YII_ENV', $env);
 
 require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
 require(__DIR__ . '/../vendor/autoload.php');
-$config = require(__DIR__ . '/config/backend.php');
+
+
+$config = yii\helpers\ArrayHelper::merge(
+    require __DIR__ . '/../common/config/common.php',
+    require __DIR__ . '/config/backend.php'
+);
+
+
+//$config = require(__DIR__ . '/config/backend.php');
 //use yii\web\Application;
 
 
