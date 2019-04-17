@@ -42,11 +42,18 @@ use yii\helpers\HtmlPurifier;
                 <div class="col-6 col-sm-6 col-lg-6 text-right">
                     <?php
                     if (Yii::$app->hasModule('compare')) {
-                        echo \panix\mod\compare\widgets\CompareWidget::widget(['pk' => $model->id, 'skin' => 'icon', 'linkOptions' => ['class' => 'btn btn-compare']]);
+                        echo \panix\mod\compare\widgets\CompareWidget::widget([
+                            'pk' => $model->id,
+                            'skin' => 'icon',
+                            'linkOptions' => ['class' => 'btn btn-compare']
+                        ]);
                     }
                     if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
-                        echo \panix\mod\wishlist\widgets\WishlistWidget::widget(['pk' => $model->id, 'skin' => 'icon', 'linkOptions' => ['class' => 'btn btn-wishlist']]);
-
+                        echo \panix\mod\wishlist\widgets\WishlistWidget::widget([
+                            'pk' => $model->id,
+                            'skin' => 'icon',
+                            'linkOptions' => ['class' => 'btn btn-wishlist']
+                        ]);
                     }
                     ?>
                 </div>
@@ -61,7 +68,7 @@ use yii\helpers\HtmlPurifier;
                                 ?>
                                 <span class="price price-discount">
                             <?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?>
-                            <sub><?= Yii::$app->currency->active->symbol ?></sub>
+                                    <sub><?= Yii::$app->currency->active->symbol ?></sub>
                                     <span class="discount-sum">-<?= $model->discountSum; ?>
                                     </span>
                         </span>
@@ -79,9 +86,9 @@ use yii\helpers\HtmlPurifier;
                 <div class="col-6 col-sm-6 col-lg-6 text-right">
                     <?php
                     if ($model->isAvailable) {
-                        echo Html::a('Купить', 'javascript:cart.add(' . $model->id . ')', array('class' => 'btn btn-warning btn-buy d-block'));
+                        echo Html::a(Yii::t('cart/default', 'BUY'), 'javascript:cart.add(' . $model->id . ')', array('class' => 'btn btn-warning btn-buy d-block'));
                     } else {
-                        echo Html::a(Yii::t('app', 'NOT_AVAILABLE'), 'javascript:cart.notifier(' . $model->id . ');', array('class' => 'btn btn-danger'));
+                        echo Html::a($model::t('NOT_AVAILABLE'), 'javascript:cart.notifier(' . $model->id . ');', array('class' => 'text-danger'));
                     }
                     ?>
                 </div>

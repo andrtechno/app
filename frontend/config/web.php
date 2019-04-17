@@ -20,10 +20,7 @@ $config = [
     'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'main/main',
     'bootstrap' => [
-        'log',
         'plugins',
-        'maintenanceMode',
-        'panix\engine\BootstrapModule',
         'panix\engine\plugins\goaway\GoAway'
     ], //'webcontrol',
     'controllerMap' => [
@@ -268,7 +265,6 @@ $config = [
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    //$config['bootstrap'][] = 'debug';
     $config['modules']['debug']['class'] = 'yii\debug\Module';
     // $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
     $config['modules']['debug']['traceLine'] = function ($options, $panel) {

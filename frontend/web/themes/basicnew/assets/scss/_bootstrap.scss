@@ -71,9 +71,11 @@ $colors: (success, $color-success, #fff),
 .form-control:focus {
   box-shadow: none;
 }
-.tab-content{
+
+.tab-content {
   padding-top: 1rem;
 }
+
 .nav-pills {
   .nav-link {
     margin-left: 15px;
@@ -87,12 +89,14 @@ $colors: (success, $color-success, #fff),
     border-bottom: 4px solid transparent;
   }
 }
+
 .nav-pills .nav-link.active,
-.nav-pills .show > .nav-link{
+.nav-pills .show > .nav-link {
   background: transparent;
   border-bottom-color: $color-warning;
-  color:$text-color;
+  color: $text-color;
 }
+
 @each $color in $colors {
   .bg-#{nth($color, 1)} {
     background-color: nth($color, 2) !important;
@@ -125,7 +129,10 @@ $colors: (success, $color-success, #fff),
   padding-left: 1.5rem;
   transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1);
   will-change: box-shadow, transform;
-
+  &:focus,
+  .focus {
+    box-shadow: none;
+  }
 }
 
 .btn-sm,

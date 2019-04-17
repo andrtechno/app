@@ -42,4 +42,5 @@ use panix\mod\shop\widgets\filters\FiltersWidget;
             ?>
         </div>
     </div>
+    <div class="clearfix"></div>
 </div>
