@@ -120,20 +120,6 @@ class SeoExt extends \yii\base\Component
             }
         }
         $this->printMeta('title', Yii::$app->view->title);
-        if ($url->keywords) {
-            if (isset($url->params)) {
-                foreach ($url->params as $paramData) {
-                    $param = $this->getSeoparam($paramData);
-                    if ($param) {
-                        $url->keywords = str_replace($param['tpl'], $param['item'], $url->keywords);
-                    }
-                }
-            }
-            $this->printMeta('keywords', $url->keywords);
-        } else {
-            if (isset($controller->keywords))
-                $this->printMeta('keywords', $controller->keywords);
-        }
         if ($url->description) {
             if (isset($url->params)) {
                 foreach ($url->params as $paramData) {
@@ -159,8 +145,6 @@ class SeoExt extends \yii\base\Component
     {
 
         $content = strip_tags($content);
-        if ($name == "keywords")
-            $content = str_replace(',', ", ", $content);
         if ($name == "title") {
             echo "<title>{$content} </title>\n";
         } else {

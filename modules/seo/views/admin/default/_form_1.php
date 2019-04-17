@@ -70,19 +70,6 @@ $form = $this->beginWidget('CActiveForm', array(
         <?php echo $form->error($model, 'description'); ?>
     </div>
 </div>
-<div class="form-group">
-    <div class="col-sm-4"><?php echo $form->labelEx($model, 'keywords', array('class' => 'control-label')); ?></div>
-    <div class="col-sm-8">
-        <?php
-        $this->widget('ext.taginput.TagInput', array(
-            'attribute' => 'keywords',
-            'model' => $model
-        ));
-        ?>
-        <div class="help-block"><?=Yii::t('SeoModule.default','KEYWORDS_HINT'); ?></div>
-        <?php echo $form->error($model, 'keywords'); ?>
-    </div>
-</div>
 
 <div class="form-group">
     <div class="col-sm-4"><?php echo $form->labelEx($model, 'text', array('class' => 'control-label')); ?></div>
@@ -99,7 +86,7 @@ $form = $this->beginWidget('CActiveForm', array(
 </div>
 <div class="form-group">
     <div class="col-sm-4"></div>
-    <div class="col-sm-8"><?php echo CHtml::dropDownList('title_param', "[$model->keywords]param", CHtml::listData($this->getParams(), "value", "name", "group"), array("empty" => "Свойства", 'class' => 'selectpicker addparams', 'data-id' => $model->id)); ?>
+    <div class="col-sm-8"><?php echo CHtml::dropDownList('title_param', "param", CHtml::listData($this->getParams(), "value", "name", "group"), array("empty" => "Свойства", 'class' => 'selectpicker addparams', 'data-id' => $model->id)); ?>
         <?php echo $this->renderPartial('_formMetaParams', array('model' => $model)); ?></div>
 </div>
 <div class="form-group" style="display:none;">

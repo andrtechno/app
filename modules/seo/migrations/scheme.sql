@@ -12,7 +12,6 @@ CREATE TABLE IF NOT EXISTS `{prefix}seo_url` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(255) DEFAULT NULL,
   `title` varchar(150) DEFAULT NULL,
-  `keywords` text,
   `description` text,
   `h1` varchar(255) DEFAULT NULL,
   `text` text,

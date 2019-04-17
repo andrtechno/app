@@ -25,7 +25,7 @@ class SeoUrl extends \panix\engine\db\ActiveRecord {
         return [
             ['url', 'required'],
            // ['url', 'UniqueAttributesValidator', 'with' => 'url'],
-            [['title', 'description', 'keywords', 'text'], 'string'],
+            [['title', 'description', 'text'], 'string'],
             ['title', 'string', 'max' => 150],
         ];
     }
@@ -42,7 +42,6 @@ class SeoUrl extends \panix\engine\db\ActiveRecord {
             'id' => 'ID',
             'url' => Yii::t('seo/default', 'URL'),
             'text' => Yii::t('seo/default', 'TEXT'),
-            'keywords' => Yii::t('seo/default', 'KEYWORDS'),
             'description' => Yii::t('seo/default', 'DESCRIPTION'),
             'title' => Yii::t('seo/default', 'TITLE'),
         );

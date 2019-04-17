@@ -20,7 +20,6 @@ class m190330_115548_seo_url extends Migration {
             'id' => $this->primaryKey()->unsigned(),
             'url' => $this->string(255)->notNull(),
             'title' => $this->string(150)->null(),
-            'keywords' => $this->text()->null(),
             'description' => $this->text()->null(),
             'h1' => $this->string(255)->null(),
             'text' => $this->text()->null(),

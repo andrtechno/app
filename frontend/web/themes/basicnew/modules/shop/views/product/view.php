@@ -139,33 +139,22 @@ $this->widget('ext.fancybox.Fancybox', array(
         <div class='col-sm-6 col-md-7 product-info-block'>
             <div class="product-info">
                 <h1 class="name heading-gradient">
-
-                    <?php if (Yii::$app->seo->h1) { ?>
-                        <?= Yii::$app->seo->h1; ?>
-                    <?php } else { ?>
-                        <?= Html::encode($model->name); ?>
-                    <?php } ?>
+                    <?= Html::encode((Yii::$app->seo->h1) ? Yii::$app->seo->h1 : $model->name); ?>
                 </h1>
                 <?php
 
-
-
-
                 if ($prev = $model->getPrev()->one()) {
-                    echo Html::a('prev ' . $prev->name, $prev->getUrl(), ['class' => 'btn btn-default']);
+                    echo Html::a('prev ' . $prev->name, $prev->getUrl(), ['class' => 'btn btn-secondary']);
                 }
                 if ($next = $model->getNext()->one()) {
-                    echo Html::a($next->name . ' next', $next->getUrl(), ['class' => 'btn btn-default']);
+                    echo Html::a($next->name . ' next', $next->getUrl(), ['class' => 'btn btn-secondary']);
                 }
 
                 ?>
 
-                <?php echo panix\mod\discounts\widgets\countdown\Countdown::widget(['model' => $model]) ?>
+                <?= panix\mod\discounts\widgets\countdown\Countdown::widget(['model' => $model]) ?>
 
-                <?php
-
-                echo $model->beginCartForm();
-                ?>
+                <?= $model->beginCartForm(); ?>
                 <div class="info-container mt-3">
 
                     <div class="row">

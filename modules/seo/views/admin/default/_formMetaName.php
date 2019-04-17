@@ -4,20 +4,8 @@
     <div class="col-sm-4"><?php echo $model->name; ?></div>
     <div class="col-sm-8">
 
-        <?php if ($model->name == "keywords") { ?>
-            <?php
-            $this->widget('ext.taginput.TagInput', array(
-                'model' => $model,
-                'attribute' => "[$model->name]content",
-                'htmlOptions' => array(
-                    "size" => 60,
-                )
-            ));
-            ?>
-
-        <?php } else { ?>
             <?= Html::activeTextField($model, "[$model->name]content", array("size" => 60, 'class' => 'form-control')); ?>
-        <?php } ?>
+
         <?php echo Html::error($model, "[$model->name]content"); ?></div>
 </div>
 

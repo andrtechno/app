@@ -28,17 +28,3 @@ if ($model->isNewRecord) {
         <?= Html::error($modelseo, 'description'); ?>
     </div>
 </div>
-<div class="form-group row">
-    <div class="col-sm-4"><?= Html::activeLabel($modelseo, 'keywords', ['class' => 'control-label']); ?></div>
-    <div class="col-sm-8">
-        <?=
-        TagInput::widget([
-            'model' => $modelseo,
-            'attribute' => 'keywords'
-        ]);
-        ?>
-
-        <div class="help-block"><?= Yii::t('seo/default', 'KEYWORDS_HINT'); ?></div>
-        <?= Html::error($modelseo, 'keywords'); ?>
-    </div>
-</div>

@@ -7,7 +7,6 @@ return array(
     'URL' => 'Ссылка',
     'TEXT' => 'Текст',
     'H1' => 'Заголовок h1',
-    'KEYWORDS' => 'SEO keywords',
     'KEYWORDS_HINT' => 'Все теги будут отображатся через зяпятую.',
     'DESCRIPTION' => 'SEO description',
     'TITLE' => 'SEO заголовок title',
