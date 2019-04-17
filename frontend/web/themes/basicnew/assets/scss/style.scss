@@ -1,6 +1,7 @@
 @import "mixins/base";
 @import "mixins/mixins";
 @import "bootstrap";
+@import "ui";
 
 html {
   position: relative;
@@ -1182,7 +1183,7 @@ p {
   padding-right: 0;
   padding-left: 0;
   &:focus {
-    border-color: $color-primary;
+    border-color: $color-warning;
     background-color: transparent;
     box-shadow: none;
     //border-color: #fff;
