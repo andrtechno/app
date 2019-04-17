@@ -3,7 +3,7 @@
 #RewriteEngine on
 
 
-RewriteEngine On RewriteBase /admin
+RewriteEngine On
 
 
 RewriteCond %{REQUEST_FILENAME} !-f

@@ -227,23 +227,6 @@ $config = [
             //'linkAssets' => true,
             'appendTimestamp' => true
         ],
-        'view' => [
-            // 'class' => 'panix\engine\View',
-            'class' => panix\mod\plugins\components\View::class,
-            'as Layout' => [
-                'class' => \panix\engine\behaviors\LayoutBehavior::class,
-            ],
-            'renderers' => [
-                'tpl' => [
-                    'class' => 'yii\smarty\ViewRenderer',
-                    'cachePath' => '@runtime/Smarty/cache',
-                ],
-            ],
-            'theme' => [
-                'class' => 'panix\engine\base\Theme',
-                'name' => 'dashboard'
-            ],
-        ],
         'plugins' => [
             'class' => panix\mod\plugins\components\PluginsManager::class,
             'appId' => panix\mod\plugins\BasePlugin::APP_BACKEND,
@@ -273,6 +256,7 @@ $config = [
         ],
         'session' => [
             'class' => '\panix\engine\web\DbSession',
+            'timeout'=>1440
             //'class' => '\yii\web\DbSession',
             //'writeCallback'=>['panix\engine\web\DbSession', 'writeFields']
         ],
@@ -371,29 +355,7 @@ $config = [
         ],
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
         'settings' => ['class' => 'panix\engine\components\Settings'],
-        'urlManager' => [
-            'class' => 'panix\engine\ManagerUrl',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'enableStrictParsing' => true,
-            'baseUrl' => '',
-            'normalizer' => [
-                'class' => 'yii\web\UrlNormalizer',
-                'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
-            ],
-            'rules' => [
-                'placeholder' => 'main/placeholder',
-                ['pattern' => '', 'route' => 'admin/admin/default/index'],
-                ['pattern' => 'auth', 'route' => 'admin/auth/index'],
-                ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
-                ['pattern' => 'app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/admin/<controller>/<action>'],
-                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
-                ['pattern' => '<module:\w+>', 'route' => '<module>/admin/default/index'],
-                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/index'],
-                ['pattern' => '<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>/<page:\d+>', 'route' => '<module>/admin/<controller>/<action>'],
 
-            ],
-        ],
         // 'urlManager' => require(__DIR__ . '/../../frontend/config/urlManager.php'),
         'db' => require($db),
     ],

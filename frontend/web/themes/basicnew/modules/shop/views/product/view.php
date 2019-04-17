@@ -149,10 +149,12 @@ $this->widget('ext.fancybox.Fancybox', array(
                 <?php
 
 
-                if ($prev = $model->objectPrev) {
+
+
+                if ($prev = $model->getPrev()->one()) {
                     echo Html::a('prev ' . $prev->name, $prev->getUrl(), ['class' => 'btn btn-default']);
                 }
-                if ($next = $model->objectNext) {
+                if ($next = $model->getNext()->one()) {
                     echo Html::a($next->name . ' next', $next->getUrl(), ['class' => 'btn btn-default']);
                 }
 

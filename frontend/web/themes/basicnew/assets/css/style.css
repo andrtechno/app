@@ -2386,9 +2386,55 @@ span.highlight-word {
   font-size: 12px;
 }
 
+#filters-container {
+  -webkit-transform: translate(-330px, 0);
+  -ms-transform: translate(-330px, 0);
+  -o-transform: translate(-330px, 0);
+  transform: translate(-330px, 0);
+  -moz-transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 300px;
+  opacity: 0;
+  z-index: 1001;
+  overflow-y: auto;
+  background: #fff;
+}
+@media (min-width: 768px) {
+  #filters-container {
+    opacity: 1;
+    position: static;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+#filters-container.open {
+  opacity: 1;
+  -webkit-transform: translate(0px, 0);
+  -ms-transform: translate(0px, 0);
+  -o-transform: translate(0px, 0);
+  transform: translate(0px, 0);
+}
+#filters-container .close {
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
 #filters {
-  position: relative;
   margin-bottom: 15px;
+  padding: 15px;
+}
+@media (min-width: 768px) {
+  #filters {
+    padding: 0;
+  }
 }
 #filters .filter-block .card-collapse {
   position: relative;
@@ -2398,14 +2444,14 @@ span.highlight-word {
   content: '';
   display: block;
   position: absolute;
-  height: 25px;
+  height: 17px;
   right: 17px;
   /*for scrolling set 17px*/
   left: 0;
   z-index: 1;
 }
 #filters .filter-block .card-collapse:before {
-  top: 0.75rem;
+  top: 0;
   background-image: -moz-linear-gradient(45deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
   background-image: -webkit-gradient(linear, 45deg, 45deg, color-stop(0%, #fff), color-stop(100%, rgba(255, 255, 255, 0)));
   background-image: -webkit-linear-gradient(45deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
@@ -2416,7 +2462,7 @@ span.highlight-word {
   background-repeat: repeat-x;
 }
 #filters .filter-block .card-collapse:after {
-  bottom: 0.75rem;
+  bottom: 0;
   background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
   background-image: -webkit-gradient(linear, 45deg, 45deg, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, #fff));
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
@@ -2432,6 +2478,7 @@ span.highlight-word {
   right: 0;
 }
 #filters .card {
+  width: 100%;
   border: 0;
   border-bottom: 1px solid #E1E1E1;
   position: relative;
@@ -2702,19 +2749,18 @@ ul.current-filter-list > li > ul > li > a {
 @media (min-width: 768px) {
   .catalog-container .catalog-sidebar {
     float: left;
-    width: 250px;
+    width: 300px;
   }
 }
 .catalog-container .catalog-content {
   width: auto;
   margin-bottom: 15px;
-  float: none;
   position: relative;
 }
 @media (min-width: 768px) {
   .catalog-container .catalog-content {
     padding-right: 15px;
-    margin-left: 295px;
+    margin-left: 330px;
   }
 }
 
@@ -2912,6 +2958,14 @@ ul.current-filter-list > li > ul > li > a {
   height: 45px;
   line-height: 45px;
   cursor: pointer;
+  font-family: "Roboto Slab", serif;
+}
+#cart a.cart-info {
+  font-weight: 600;
+  color: #505759;
+}
+#cart a.cart-info:hover {
+  text-decoration: none;
 }
 #cart:before {
   font-family: Pixelion;
@@ -2920,7 +2974,8 @@ ul.current-filter-list > li > ul > li > a {
   position: absolute;
   left: 0;
   top: 0;
-  color: #97c898;
+  font-weight: normal;
+  color: #F66718;
 }
 #cart .dropdown-menu {
   padding: 0;

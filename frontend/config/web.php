@@ -14,15 +14,8 @@ $db = YII_DEBUG ? dirname(__DIR__) . '/../common/config/db_local.php' : dirname(
 $config = [
     //'homeUrl' => '/',
     'id' => 'frontend',
-    'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__).'/../', //if in web dir
     //'basePath' => dirname(__DIR__),
-    'language' => 'ru',
-    'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm' => '@vendor/npm-asset',
-    ],
-    //'sourceLanguage'=>'ru',
     'runtimePath' => '@app/frontend/runtime',
     'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'main/main',
@@ -105,18 +98,12 @@ $config = [
             'siteKey' => '6LfJqpYUAAAAAMKYmNUctjXeTkQrx74R2LHaM0r7',
             'secret' => '6LfJqpYUAAAAAGOItZcYABLTjDilBvgaAJE7vJL0',
         ],
-        'authManager' => [
-            'class' => 'yii\rbac\DbManager',
-            'defaultRoles' => ['guest', 'user'],
-        ],
+
         'sphinx' => [
             'class' => 'yii\sphinx\Connection',
             'dsn' => 'mysql:host=127.0.0.1;port=9306;',
             'username' => '',
             'password' => '',
-        ],
-        'img' => [
-            'class' => 'panix\engine\components\ImageHandler',
         ],
         'fcm' => [
             'class' => 'understeam\fcm\Client',
@@ -210,12 +197,6 @@ $config = [
 
 
         'stats' => ['class' => 'panix\mod\stats\components\Stats'],
-        'curl' => ['class' => 'panix\engine\Curl'],
-        'consoleRunner' => [
-            'class' => 'panix\engine\components\ConsoleRunner',
-            'file' => '@my/path/to/yii' // or an absolute path to console file
-        ],
-        'seo' => ['class' => 'app\modules\seo\components\SeoExt'],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
         'pdf' => [
@@ -225,72 +206,12 @@ $config = [
             'destination' => Pdf::DEST_BROWSER,
             'mode' => Pdf::MODE_UTF8,
         ],
-        'formatter' => [
-            'class' => 'panix\engine\i18n\Formatter'
-        ],
-        'maintenanceMode' => [
-            'class' => 'panix\engine\maintenance\MaintenanceMode',
-            // Allowed roles
-            //'roles' => [
-            //    'admin',
-            //],
-            //Retry-After header
-            // 'retryAfter' => 120 //or Wed, 21 Oct 2015 07:28:00 GMT for example
-        ],
-        'assetManager' => [
-            'forceCopy' => YII_DEBUG,
-            'bundles' => [
-                //'yii\jui\JuiAsset' => ['css' => []],
-                'yii\jui\JuiAsset' => [
-                    //'js' => [
-                    //'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
-                    //]
-                ],
-                'panix\lib\google\maps\MapAsset' => [
-                    'options' => [
-                        'key' => 'AIzaSyB5BYRPxlqTN9GwnZHQbmW-eJxT7ZxyAfM',
-                        'language' => 'ru',
-                        'version' => '3.39'
-                    ]
-                ]
-            ],
-            //'linkAssets' => true,
-            'appendTimestamp' => true
-        ],
         'view' => [
-            // 'class' => 'panix\engine\View',
             'class' => panix\mod\plugins\components\View::class,
             'as Layout' => [
                 'class' => \panix\engine\behaviors\LayoutBehavior::class,
             ],
-
-            /*'renderers' => [
-                'tpl' => [
-                    'class' => 'yii\smarty\ViewRenderer',
-                    'cachePath' => '@runtime/Smarty/cache',
-                ],
-            ],*/
             'theme' => ['class' => 'panix\engine\base\Theme'],
-        ],
-        'i18n' => [
-            'translations' => [
-                'app*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@vendor/panix/engine/messages',
-                    'fileMap' => [
-                        'app' => 'app.php',
-                        'app/admin' => 'admin.php',
-                        'app/month' => 'month.php',
-                        'app/error' => 'error.php',
-                        'app/geoip_country' => 'geoip_country.php',
-                        'app/geoip_city' => 'geoip_city.php',
-                    ],
-                ],
-            ],
-        ],
-        'session' => [
-            'class' => '\panix\engine\web\DbSession',
-            'timeout'=>1440
         ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
@@ -298,15 +219,6 @@ $config = [
             // 'csrfParam' => '_csrf-frontend',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
-        ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache', //DummyCache
-            'cachePath'=>'@common/runtime/cache'
-        ],
-        'user' => [
-            'class' => 'panix\mod\user\components\WebUser',
-            //'enableAutoLogin' => true,
-            //'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
@@ -334,64 +246,10 @@ $config = [
             'errorAction' => 'main/error',
             // 'errorView' => '@webroot/themes/basic/views/layouts/error.php'
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            //'useFileTransport' => true,
-            //'layoutsPath' => '@web/mail/layouts',
-            //'viewsPath' => '@web/mail/views',
-            'messageConfig' => [
-                //    'from' => ['dev@corner-cms.com' => 'Admin'], // this is needed for sending emails
-                'charset' => 'UTF-8',
-            ]
-        ],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                    'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/db.log',
-                    'categories' => ['yii\db\*']
-                ],
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['warning'],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/warning.log',
-                ],
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['info'],
-                    'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/info.log',
-                ],
-                [
-                    'class' => 'yii\log\EmailTarget',
-                    'levels' => ['error'],
-                    'categories' => ['yii\db\*'],
-                    'message' => [
-                        'from' => ['log@pixelion.com.ua'],
-                        'to' => ['dev@pixelion.com.ua'],
-                        'subject' => 'Ошибки базы данных на сайте app',
-                    ],
-                ],
-                /*[
-                    'class' => 'yii\log\DbTarget',
-                    'levels' => ['error', 'warning'],
-                    'logTable' => '{{%log_error}}',
-                    'except' => [
-                        'yii\web\HttpException:404',
-                        'yii\web\HttpException:403',
-                        'yii\web\HttpException:400',
-                        'yii\i18n\PhpMessageSource::loadMessages'
-                    ],
-                ],*/
-            ],
-        ],
-        'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
-        'settings' => ['class' => 'panix\engine\components\Settings'],
+
+
         'urlManager' => require(__DIR__ . '/urlManager.php'),
-        'db' => require($db),
+
     ],
     /*'as access' => [
         'class' => panix\mod\rbac\filters\AccessControl::class,
@@ -405,7 +263,7 @@ $config = [
             // otherwise you may not even take a first step.
         ]
     ],*/
-    'params' => require(dirname(__DIR__) . '/../common/config/params.php'),
+
 ];
 
 if (YII_ENV_DEV) {
