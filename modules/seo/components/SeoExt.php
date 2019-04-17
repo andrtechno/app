@@ -113,9 +113,7 @@ class SeoExt extends \yii\base\Component
             Yii::$app->view->title = $url->title . 'zzz';
             //$this->printMeta('title', Yii::$app->view->title);
         } else {
-            if (isset($controller->title)) {
-                Yii::$app->view->title = $controller->title . 'zzzzzz2';
-            } else {
+            if (!Yii::$app->view->title) {
                 Yii::$app->view->title = Yii::$app->settings->get('app', 'site_name');
             }
         }
