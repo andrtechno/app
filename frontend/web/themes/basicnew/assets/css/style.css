@@ -2053,6 +2053,15 @@ header #header-center {
   border-width: 2px;
   background-color: transparent;
   padding-left: 0;
+  padding-right: 0;
+}
+.card-header h1, .card-header .h1,
+.card-header h2, .card-header .h2,
+.card-header h3, .card-header .h3,
+.card-header h4, .card-header .h4,
+.card-header h5, .card-header .h5,
+.card-header h6, .card-header .h6 {
+  margin-bottom: 0;
 }
 
 .card-body {
