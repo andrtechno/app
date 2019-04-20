@@ -286,6 +286,14 @@ $config = [
             //'useFileTransport' => true,
             //'layoutsPath' => '@web/mail/layouts',
             //'viewsPath' => '@web/mail/views',
+            'transport' => [
+                  'class' => 'Swift_SmtpTransport',
+                  'host' => 'smtp.gmail.com',
+                  'username' => 'andrew.panix',
+                  'password' => '47228960panix',
+                  'port' => '465',
+                  'encryption' => 'ssl',
+              ],
             'messageConfig' => [
                 //    'from' => ['dev@pixelion.com.ua' => 'Admin'], // this is needed for sending emails
                 'charset' => 'UTF-8',

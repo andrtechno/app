@@ -50,15 +50,22 @@ $this->widget('ext.fancybox.Fancybox', array(
         });
     });
 ", CClientScript::POS_END);*/
+
+
+echo \panix\ext\fancybox\Fancybox::widget([
+    'target' => 'a[data-fancybox="gallery"]',
+    'options' => [
+        'onInit' => new \yii\web\JsExpression('function(){
+            console.log("dsad");
+        }')
+    ]
+]);
+
 ?>
 
 <div class="container">
-
-
     <div class="row">
         <div class="col-sm-6 col-md-5">
-
-
             <a id="main-image" href="<?= $model->getMainImage()->url ?>"
                data-fancybox="gallery">
                 <img class="img-fluid" src="<?= $model->getMainImage('400x400')->url ?>" alt=""/>
@@ -151,9 +158,9 @@ $this->widget('ext.fancybox.Fancybox', array(
                 }
 
                 ?>
-
-                <?= panix\mod\discounts\widgets\countdown\Countdown::widget(['model' => $model]) ?>
-
+                <?php if (Yii::$app->hasModule('discounts') && $model->appliedDiscount) { ?>
+                    <?= panix\mod\discounts\widgets\countdown\Countdown::widget(['model' => $model]) ?>
+                <?php } ?>
                 <?= $model->beginCartForm(); ?>
                 <div class="info-container mt-3">
 
@@ -214,21 +221,15 @@ $this->widget('ext.fancybox.Fancybox', array(
                         <div class="col-sm-6">
                             <div class="price-box">
 
-                                <?php
-                                if (Yii::$app->hasModule('discounts')) {
-                                    if ($model->appliedDiscount) {
-                                        ?>
-                                        <div class=" mb-3">
+                                <?php if (Yii::$app->hasModule('discounts') && $model->appliedDiscount) { ?>
+                                    <div class=" mb-3">
                                     <span class="price price-discount">
-                                            <del><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?></del> <sub><?= Yii::$app->currency->active->symbol ?></sub>
-                                        </span>
-                                            <span class="price discount-sum text-warning">-<?= $model->discountSum; ?></span>
-                                        </div>
+                                        <del><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice, $model->currency_id)) ?></del> <sub><?= Yii::$app->currency->active->symbol ?></sub>
+                                    </span>
+                                        <span class="price discount-sum text-warning">-<?= $model->discountSum; ?></span>
+                                    </div>
 
-                                        <?php
-                                    }
-                                }
-                                ?>
+                                <?php } ?>
                                 <div><span class="price price-lg">
                                         <span id="productPrice"><?= Yii::$app->currency->number_format($model->getFrontPrice()); ?></span><sub><?= Yii::$app->currency->active->symbol; ?></sub>
                                 </span></div>
@@ -244,8 +245,13 @@ $this->widget('ext.fancybox.Fancybox', array(
                                                 <span class="price price-sm text-success">
                                                     <span><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($price->value, $model->currency_id)); ?></span>
                                                     <sub><?= Yii::$app->currency->active->symbol; ?>
+
+
                                                         /<?= $model->units[$model->unit]; ?></sub>
+
                                                     </span>
+
+
                                                 при заказе от <?= $price->from; ?> <?= $model->units[$model->unit]; ?>
                                             </div>
                                         <?php } ?>

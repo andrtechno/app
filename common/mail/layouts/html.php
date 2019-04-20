@@ -9,7 +9,7 @@ use yii\helpers\Html;
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body style="width: 600px">
     <?php $this->beginBody() ?>
     <?= $content ?>
     <?php $this->endBody() ?>
