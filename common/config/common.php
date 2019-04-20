@@ -287,7 +287,7 @@ $config = [
             //'layoutsPath' => '@web/mail/layouts',
             //'viewsPath' => '@web/mail/views',
             'messageConfig' => [
-                //    'from' => ['dev@corner-cms.com' => 'Admin'], // this is needed for sending emails
+                //    'from' => ['dev@pixelion.com.ua' => 'Admin'], // this is needed for sending emails
                 'charset' => 'UTF-8',
             ]
         ],

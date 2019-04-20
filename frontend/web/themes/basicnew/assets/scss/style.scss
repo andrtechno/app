@@ -35,7 +35,9 @@ html {
 .no-radius .btn-group-sm > .btn {
   @include border-radius(0);
 }
-
+.table{
+  color:$text-color;
+}
 table {
   &.table td,
   &.table th {

@@ -49,7 +49,7 @@ $block-border: darken($bg-color, 12%);
 $primary_color: #343a40;
 $secondary_color: #f6f6f6;
 $primary_text_color: #b5bcbf;
-$link-color: #499ab2;
+$link-color: $text-color;
 
 //card settings
 $card-bg: lighten($bg-color, 4%);

@@ -49,7 +49,7 @@ $this->registerJs("
                             $count = Html::tag('span', \panix\mod\compare\components\CompareProducts::countSession(), ['class' => 'badge badge-secondary', 'id' => 'countCompare']);
                             ?>
                             <li class="nav-item">
-                                <?= Html::a('<span class="d-none d-md-inline">' . Yii::t('compare/default', 'COMPARE') . '</span> ' . $count, ['/compare'], ['class' => 'top-compare nav-link']) ?>
+                                <?= Html::a('<span class="d-none d-md-inline">' . Yii::t('compare/default', 'MODULE_NAME') . '</span> ' . $count, ['/compare'], ['class' => 'top-compare nav-link']) ?>
                             </li>
                         <?php } ?>
 
@@ -116,13 +116,18 @@ $this->registerJs("
                                 <?= Html::a(Yii::t('user/default', 'BTN_REGISTER'), array('/users/register'), ['class' => 'nav-link']); ?>
                             </li>
                         <?php } else { ?>
+                            <?php
+
+                            $userOrderCount = Yii::$app->getModule('cart')->countByUser;
+
+                            ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false"><?= Yii::$app->user->username; ?>
                                 </a>
                                 <div class="dropdown-menu">
                                     <?= Html::a(Html::icon('icon-user') . ' ' . Yii::t('app', 'PROFILE'), ['/users/profile'], array('class' => 'dropdown-item')); ?>
-                                    <?= Html::a(Html::icon('icon-shopcart') . ' ' . Yii::t('app', 'MY_ORDERS') . ' <span class="badge badge-success">4</span>', ['/cart/orders'], ['class' => 'dropdown-item']); ?>
+                                    <?= Html::a(Html::icon('icon-shopcart') . ' ' . Yii::t('app', 'MY_ORDERS') . ' <span class="badge badge-success">'.$userOrderCount.'</span>', ['/cart/orders'], ['class' => 'dropdown-item']); ?>
 
                                     <?php
                                     if (Yii::$app->user->can('admin')) {

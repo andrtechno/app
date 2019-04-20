@@ -1085,6 +1085,10 @@ html {
   -o-border-radius: 0;
 }
 
+.table {
+  color: #505759;
+}
+
 table.table td, table.table th {
   vertical-align: middle;
   padding: .50rem .25rem;
@@ -1226,7 +1230,7 @@ body footer {
 }
 
 a {
-  color: #499ab2;
+  color: #505759;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -2374,7 +2378,7 @@ p {
   font-size: 12px;
   margin-top: .50rem;
 }*/
-form div.required label:after {
+form div.required > label:after {
   content: " * ";
   color: #fa6557;
 }
