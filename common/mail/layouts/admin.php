@@ -11,20 +11,24 @@ $request = Yii::$app->request;
     <meta http-equiv="Content-Type" content="text/html; charset=<?= Yii::$app->charset ?>"/>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <style type="text/css>">
-        .test{
-            background-color: red;
-        }
+    <style type="text/css">
+        <?= file_get_contents(Yii::getAlias('@common/mail/assets').'/style.css'); ?>
     </style>
 </head>
-<body>
+<body style="width: 600px">
 <?php $this->beginBody() ?>
 <?= $content ?>
 
-<p>------------------------------------------------------</p>
+<hr/>
 <p><strong class="test">IP address:</strong> <?= $request->userIP; ?></p>
 <p><strong>UserAgent:</strong> <?= $request->userAgent; ?></p>
-
+<div class="footer">
+    asdasdasdsadas
+    <a href="#">adssdadsa</a>
+</div>
+<div class="header">
+    asdasdasdsadas
+</div>
 <?php $this->endBody() ?>
 </body>
 </html>

@@ -1,0 +1,23 @@
+.header{
+    background: yellow;
+}
+
+.footer{
+    padding: 1rem;
+    background-color: #343a40;
+    color:#fff;
+}
+.footer a{
+    color:#fff;
+}
+.btn,
+a.btn{
+    padding: 10px 15px;
+    background: #343a40;
+    color:#fff;
+    text-decoration: none;
+}
+hr{
+
+    border-top: 1px dashed #343a40;
+}
