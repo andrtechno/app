@@ -9,7 +9,7 @@ Yii::setAlias('@uploads', dirname(dirname(__DIR__)) . '/frontend/web/uploads');
 $db = YII_DEBUG ? dirname(__DIR__) . '/../common/config/db_local.php' : dirname(__DIR__) . '/../common/config/db.php';
 $config = [
     'id' => 'backend',
-    'homeUrl' => '/admin',
+    'homeUrl' => '/',
     'basePath' => dirname(__DIR__) . '/../',
     'runtimePath' => '@app/backend/runtime',
     'controllerNamespace' => 'panix\engine\controllers',
