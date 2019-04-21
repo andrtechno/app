@@ -6,6 +6,22 @@ use panix\engine\Html;
  * @var $model \panix\mod\shop\models\Product
  */
 $config = Yii::$app->settings->get('shop');
+
+$this->registerJs("
+        $(document).on('click','.thumb',function (e) {
+            $('.thumb').removeClass('active');
+            $(this).addClass('active');
+            var src_bg = $(this).attr('href');
+            var src_middle = $(this).attr('data-img');
+
+            //set params main image
+            $('#main-image').attr('href', src_bg);
+            $('#main-image img').attr('src', src_middle);
+
+            
+            return false;
+        });
+");
 /*
 $this->widget('ext.fancybox.Fancybox', array(
     'target' => '[data-fancybox=gallery]',
@@ -66,78 +82,56 @@ echo \panix\ext\fancybox\Fancybox::widget([
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-5">
-            <a id="main-image" href="<?= $model->getMainImage()->url ?>"
+            <a id="main-image" style="max-height: 400px" class="d-flex align-items-center"
+               href="<?= $model->getMainImage()->url ?>"
                data-fancybox="gallery">
-                <img class="img-fluid" src="<?= $model->getMainImage('400x400')->url ?>" alt=""/>
+                <img class="img-fluid m-auto" src="<?= $model->getMainImage('400x400')->url ?>" alt=""/>
             </a>
 
-
-            <?php
-            if (isset($model->attachments)) { ?>
-
-
-                <?php
-
-                $defaultOptions = array(
-                    'navText' => array('<i class="icon-arrow-left"></i>', '<i class="icon-arrow-right"></i>'),
-                    'responsiveClass' => false,
-                    'margin' => 0,
-                    //'stagePadding'=>15,
-                    'responsive' => array(
-                        0 => array(
+            <?php \panix\ext\owlcarousel\OwlCarouselWidget::begin([
+                'containerOptions' => ['class' => 'owl-carousel-small'],
+                'options' => [
+                    'nav' => true,
+                    'margin' => 5,
+                    'responsiveClass' => true,
+                    'responsive' => [
+                        0 => [
                             'items' => 1,
                             'nav' => false,
-                            'dots' => true,
-                            'center' => true,
-                            'loop' => true,
-                        ),
-                        480 => array(
-                            'items' => 2,
-                            'nav' => false,
                             'dots' => true
-                        ),
-                        768 => array(
+                        ],
+                        426 => [
                             'items' => 2,
-                            'nav' => false,
-                            'dots' => true
-                        ),
-                        992 => array(
+                            'nav' => false
+                        ],
+                        768 => [
                             'items' => 2,
-                            'nav' => false,
-                            'dots' => true
-                        ),
-                        1200 => array(
+                            'nav' => false
+                        ],
+                        1024 => [
                             'items' => 4,
                             'nav' => true,
-                            'loop' => false,
-                            'mouseDrag' => false,
-                        )
-                    )
-                );
-                // $config = CJavaScript::encode($defaultOptions);
-                // $cs = Yii::app()->clientScript;
-                // $cs->registerCoreScript('owl.carousel');
-                // $cs->registerScript('owl-products-smile', "$('#owl-products-smile').owlCarousel($config);", CClientScript::POS_END);
-                ?>
+                            'dots' => true
+                        ]
+                    ]
+                ]
+            ]);
+            ?>
+            <?php
+            foreach ($model->getImages() as $k => $image) {
+                echo Html::a(Html::img($image->getUrl('100x100'), [
+                    'alt' => $image->alt_title,
+                    'class' => 'img-fluid img-thumbnail'
+                ]), $image->getUrl(), [
+                    // 'data-fancybox' => 'gallery',
+                    'data-caption' => Html::encode($model->name),
+                    'data-img' => $image->getUrl('400x400'),
+                    'class' => 'thumb'
+                ]);
+            }
+            ?>
 
-
-                <div id="owl-products-smile" class="owl-products-smile owl-carousel">
-                    <?php foreach ($model->attachments as $k => $image) { ?>
-
-
-                        <a href="<?= $image->getImageUrl() ?>"
-                           data-fancybox="gallery"
-                           data-caption="<?php echo Html::encode($model->name); ?>"
-                           data-img="<?= $image->getImageUrl('400x400') ?>"
-                           class="thumb">
-                            <img class="img-fluid"
-                                 src="<?= $image->getImageUrl('100x100') ?>"
-                                 alt=""/>
-                        </a>
-
-                    <?php } ?>
-                </div>
-            <?php } ?>
+            <?php \panix\ext\owlcarousel\OwlCarouselWidget::end(); ?>
 
 
         </div>

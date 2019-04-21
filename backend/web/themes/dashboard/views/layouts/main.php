@@ -153,31 +153,31 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                             ?>
                             <div class="spinner-my">
                                 <?php
-                               /* echo \yii\jui\Spinner::widget([
-                                    'name' => 'asddsa',
-                                    'attribute' => 'country',
-                                    'clientOptions' => ['step' => 2],
-                                    'options' => ['class' => 'test']
-                                ]);*/
+                                /* echo \yii\jui\Spinner::widget([
+                                     'name' => 'asddsa',
+                                     'attribute' => 'country',
+                                     'clientOptions' => ['step' => 2],
+                                     'options' => ['class' => 'test']
+                                 ]);*/
                                 ?>
                             </div>
 
                             <?php
-                           /* echo \yii\jui\Spinner::widget([
-                                'name' => 'asddsa',
-                                'attribute' => 'country',
-                                'clientOptions' => ['step' => 2],
-                                'options' => ['class' => 'test']
-                            ]);*/
+                            /* echo \yii\jui\Spinner::widget([
+                                 'name' => 'asddsa',
+                                 'attribute' => 'country',
+                                 'clientOptions' => ['step' => 2],
+                                 'options' => ['class' => 'test']
+                             ]);*/
                             ?>
 
                             <?php
-                           /* echo \yii\jui\Slider::widget([
-                                'clientOptions' => [
-                                    'min' => 1,
-                                    'max' => 10,
-                                ],
-                            ]);*/
+                            /* echo \yii\jui\Slider::widget([
+                                 'clientOptions' => [
+                                     'min' => 1,
+                                     'max' => 10,
+                                 ],
+                             ]);*/
                             ?>
 
                             <?php
@@ -221,7 +221,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
 
                             ?>
-<br><br>
+                            <br><br>
                             <?= $content ?>
                         </div>
                     </div>

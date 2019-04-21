@@ -2542,6 +2542,19 @@ span.highlight-word {
   float: left;
 }
 
+.img-thumbnail {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+  -o-border-radius: 0;
+  border-width: 3px;
+}
+
+.thumb.active .img-thumbnail {
+  border-color: #F66718;
+}
+
 /*
 .table-attributes th{
     border-color: #f8e07a;

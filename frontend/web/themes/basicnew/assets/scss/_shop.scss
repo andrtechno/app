@@ -6,6 +6,15 @@
   margin-right: 1rem;
   float: left;
 }
+.img-thumbnail{
+  @include border-radius(0);
+  border-width: 3px;
+}
+.thumb.active {
+  .img-thumbnail {
+    border-color: $color-warning;
+  }
+}
 
 /*
 .table-attributes th{
@@ -616,7 +625,7 @@ input#max_price {
   text-align: center;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, .125);
-  color:$text-color;
+  color: $text-color;
 }
 
 /*.catalog-content{
