@@ -225,7 +225,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
 
                                 <?php } ?>
                                 <div><span class="price price-lg">
-                                        <span id="productPrice"><?= Yii::$app->currency->number_format($model->getFrontPrice()); ?></span><sub><?= Yii::$app->currency->active->symbol; ?></sub>
+                                        <span id="productPrice"><?= Yii::$app->currency->number_format($model->getFrontPrice()); ?></span> <sub><?= Yii::$app->currency->active->symbol; ?></sub>
                                 </span></div>
                                 <?php if ($model->prices) { ?>
                                     <a class="btn btn-sm btn-link" data-toggle="collapse" href="#prices" role="button"
@@ -284,7 +284,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                                     //'icons'=>['down'=> "icon-arrow-up", 'up'=> "custom-up-icon"],
                                     'max' => 999
                                 ],
-                                'options' => ['class' => 'cart-spinner'],
+                                'options' => ['class' => 'cart-spinner','product_id'=>$model->id],
                             ]);
                             ?>
                         </div>
