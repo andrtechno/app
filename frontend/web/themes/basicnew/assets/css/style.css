@@ -2485,8 +2485,12 @@ span.highlight-word {
 }
 
 .ias-noneleft {
-  clear: both;
   margin: 15px;
+}
+
+.ias-spinner,
+.ias-noneleft {
+  clear: both;
 }
 
 .alert-danger,

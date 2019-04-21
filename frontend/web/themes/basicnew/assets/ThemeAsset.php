@@ -1,6 +1,6 @@
 <?php
 
-namespace app\frontend\web\themes\basicnew\assets;
+namespace frontend\web\themes\basicnew\assets;
 
 use panix\engine\web\AssetBundle;
 

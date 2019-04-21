@@ -101,7 +101,6 @@ a:hover {
     border-right: 0;
     border-left: 0;
     border-bottom: 1px solid $block-border;
-    border-top: 1px solid lighten($block-border, 12%);
     color: $tabs-text-color;
 
     @if $tabs-gradient {
@@ -109,7 +108,10 @@ a:hover {
     } @else {
       background-color: $bg-color;
     }
+    &.active{
 
+      border-bottom: 1px solid $block-border;
+    }
     &.active,
     &.active:hover,
     &.active:focus {
@@ -118,34 +120,36 @@ a:hover {
       border-left: 0;
       border-right: 0;
       color: #909090;
-      background: darken($bg-color, 5);
+      background:$bg-color;
+      border-bottom: 1px solid $block-border;
     }
     &:hover {
       background: $tabs-text-color-hover;
-      border-bottom: 1px solid $block-border;
 
     }
 
     @media (min-width: 768px) {
       border: 0;
       border-top: 1px solid #fff;
-      border-bottom: 1px solid $block-border;
+      border-bottom: 0;
       border-right: 1px solid $block-border;
       &.active,
       &.active:hover,
       &.active:focus {
         border-right: 1px solid $block-border;
-        border-bottom: 1px solid $card-bg;
+        border-bottom: 1px solid transparent;
       }
     }
   }
+
+}
+.flex-sm-fill.nav-item{
   &:last-child .nav-link,
   &:last-child:hover .nav-link,
   &:last-child .nav-link.active {
     border-right: 0;
   }
 }
-
 .footer {
   color: lighten($primary_color, 20%);
   font-size: 12px;

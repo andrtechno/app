@@ -1,16 +1,6 @@
 <?php
 
-Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
-Yii::setAlias('@webroot', dirname(__DIR__) . '/web');
 
-Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
-Yii::setAlias('@backend', dirname(dirname(__DIR__)) . '/backend/web');
-Yii::setAlias('@common', dirname(dirname(__DIR__)) . '/common');
-Yii::setAlias('@console', dirname(dirname(__DIR__)) . '/console');
-
-
-$params = require(dirname(__DIR__) . '/../common/config/params.php');
-$db = require(dirname(__DIR__) . '/../common/config/db_local.php');
 
 
 return [
@@ -21,15 +11,22 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app/console/commands',
     'language' => 'ru',
-    'runtimePath' => '@app/console/runtime',
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm' => '@vendor/npm-asset',
+        '@uploads' => dirname(dirname(__DIR__)) . '/frontend/web/uploads',
+        '@backend' => dirname(dirname(__DIR__)) . '/backend',
+        '@frontend' => dirname(dirname(__DIR__)) . '/frontend',
+        '@common' => dirname(dirname(__DIR__)) . '/common',
+        '@console' => dirname(dirname(__DIR__)) . '/console',
+    ],
     'modules' => [
-        //'gii' => ['class' => 'yii\gii\Module'],
         //'shop' => ['class' => 'panix\mod\shop\Module'],
         //'images' => ['class' => 'panix\mod\images\Module'],
         //'cart' => ['class' => 'panix\mod\cart\Module'],
         //'pages' => ['class' => 'panix\mod\pages\Module'],
         //'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
-        //'user' => ['class' => 'panix\mod\user\Module'],
+        'user' => ['class' => 'panix\mod\user\Module'],
         //'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
         //'admin' => ['class' => 'panix\mod\admin\Module'],
     ],
@@ -41,7 +38,7 @@ return [
         'migrate' => [
         // 'class' => 'yii\console\controllers\MigrateController',
         'class' => 'panix\engine\console\controllers\MigrateController',
-        // 'migrationPath' => null,
+         'migrationPath' => '@console/migrations',
         // 'migrationNamespaces' => [
         //  'console\migrations',
         // 'lo\plugins\migrations',
@@ -49,10 +46,6 @@ return [
         ]
     ],
     'components' => [
-        //'authManager' => [
-        //    'class' => 'yii\rbac\DbManager',
-        //    'defaultRoles' => ['guest', 'user'],
-        //],
         'sitemap' => [
             'class' => 'app\modules\sitemap\Sitemap',
             'models' => [
@@ -127,8 +120,9 @@ return [
                 ],
             ],
         ],
-        'db' => $db,
+
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
+        'db' => require(__DIR__ . '/../../common/config/db.php'),
     ],
-    'params' => $params,
+    'params' => require(__DIR__ . '/../../common/config/params.php'),
 ];

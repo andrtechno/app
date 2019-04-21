@@ -70,9 +70,6 @@ $this->registerJs("
             <a class="btn btn-outline-secondary <?php if ($itemView === '_view_list') echo 'active'; ?>"
                href="<?= Yii::$app->urlManager->addUrlParam('/' . Yii::$app->requestedRoute, ['view' => 'list']) ?>"><i
                         class="icon-menu"></i></a>
-            <a class="btn btn-outline-secondary <?php if ($itemView === '_view_table') echo 'active'; ?>"
-               href="<?= Yii::$app->urlManager->addUrlParam('/' . Yii::$app->requestedRoute, ['view' => 'table']) ?>"><i
-                        class="icon-table"></i></a>
         </div>
     </div>
 </div>

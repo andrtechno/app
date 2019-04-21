@@ -65,17 +65,17 @@ $config = [
         ],
 
         'urlManager' => [
-            'class' => 'panix\engine\ManagerUrl',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
+           // 'class' => 'panix\engine\ManagerUrl',
+           // 'enablePrettyUrl' => true,
+           // 'showScriptName' => false,
            // 'enableStrictParsing' => true,
             'baseUrl' => '',
-            'normalizer' => [
-                'class' => 'yii\web\UrlNormalizer',
-                'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
-            ],
+           // 'normalizer' => [
+           //     'class' => 'yii\web\UrlNormalizer',
+           //     'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
+           // ],
             'rules' => [
-                'placeholder' => 'main/placeholder',
+              //  'placeholder' => 'main/placeholder',
                 ['pattern' => '', 'route' => 'admin/admin/default/index'],
                 ['pattern' => 'auth', 'route' => 'admin/auth/index'],
                 ['pattern' => 'app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
@@ -89,14 +89,5 @@ $config = [
         ],
     ],
 ];
-if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
-    $config['modules']['debug']['class'] = 'yii\debug\Module';
-    $config['modules']['debug']['traceLine'] = function ($options, $panel) {
-        $filePath = $options['file'];
-        return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
-    };
-
-}
 
 return $config;

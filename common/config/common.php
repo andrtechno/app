@@ -15,6 +15,7 @@ $config = [
         '@backend' => dirname(dirname(__DIR__)) . '/backend',
         '@frontend' => dirname(dirname(__DIR__)) . '/frontend',
         '@common' => dirname(dirname(__DIR__)) . '/common',
+        '@console' => dirname(dirname(__DIR__)) . '/console',
     ],
     //'sourceLanguage'=>'ru',
     'runtimePath' => '@app/backend/runtime',
@@ -363,7 +364,7 @@ $config = [
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
         'settings' => ['class' => 'panix\engine\components\Settings'],
 
-        // 'urlManager' => require(__DIR__ . '/../../frontend/config/urlManager.php'),
+         'urlManager' => require(__DIR__ . '/urlManager.php'),
         'db' => require($db),
     ],
     /*'as access' => [
@@ -378,7 +379,16 @@ $config = [
             // otherwise you may not even take a first step.
         ]
     ],*/
-    'params' => require(dirname(__DIR__) . '/../common/config/params.php'),
+    'params' => require(__DIR__ . '/params.php'),
 ];
+if (YII_ENV_DEV) {
+    // configuration adjustments for 'dev' environment
+    $config['modules']['debug']['class'] = 'yii\debug\Module';
+    $config['modules']['debug']['traceLine'] = function ($options, $panel) {
+        $filePath = $options['file'];
+        return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
+    };
+    $config['modules']['debug']['dataPath'] = '@common/runtime/debug';
+}
 
 return $config;

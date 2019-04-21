@@ -4,7 +4,7 @@ use panix\engine\Html;
 use panix\engine\widgets\Breadcrumbs;
 
 
-\app\frontend\web\themes\basicnew\assets\ThemeAsset::register($this);
+\frontend\web\themes\basicnew\assets\ThemeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
