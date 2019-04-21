@@ -2,21 +2,12 @@
 
 use panix\engine\pdf\Pdf;
 
-//Yii::setAlias('@runtime', '@webroot/web/runtime');
-Yii::setAlias('@common', dirname(dirname(__DIR__)) . '/common');
-Yii::setAlias('@backend', dirname(__DIR__) . '/../backend/web');
-Yii::setAlias('@frontend', dirname(__DIR__) . '/web');
-Yii::setAlias('@console', dirname(__DIR__) . '/../console/web');
-
-Yii::setAlias('@uploads', dirname(__DIR__) . '/web/uploads');
-
-$db = YII_DEBUG ? dirname(__DIR__) . '/../common/config/db_local.php' : dirname(__DIR__) . '/../common/config/db.php';
 $config = [
     //'homeUrl' => '/',
     'id' => 'frontend',
     'basePath' => dirname(__DIR__).'/../', //if in web dir
-    //'basePath' => dirname(__DIR__),
-    'runtimePath' => '@app/frontend/runtime',
+  //  'basePath' => dirname(__DIR__),
+   // 'runtimePath' => '@app/frontend/runtime',
     'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'main/main',
     'bootstrap' => [

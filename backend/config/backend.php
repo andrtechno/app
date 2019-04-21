@@ -1,17 +1,11 @@
 <?php
 use panix\engine\pdf\Pdf;
 
-Yii::setAlias('@common', dirname(dirname(__DIR__)) . '/common');
-Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
-Yii::setAlias('@backend', dirname(__DIR__) . '/web');
-Yii::setAlias('@uploads', dirname(dirname(__DIR__)) . '/frontend/web/uploads');
-
-$db = YII_DEBUG ? dirname(__DIR__) . '/../common/config/db_local.php' : dirname(__DIR__) . '/../common/config/db.php';
 $config = [
     'id' => 'backend',
     'homeUrl' => '/',
     'basePath' => dirname(__DIR__) . '/../',
-    'runtimePath' => '@app/backend/runtime',
+   // 'runtimePath' => '@app/backend/runtime',
     'controllerNamespace' => 'panix\engine\controllers',
     //'defaultRoute' => 'main/main',
     'modules' => [
@@ -60,11 +54,8 @@ $config = [
             ]
         ],
         'request' => [
-            'class' => 'panix\engine\WebRequest',
-            'baseUrl' => '/admin',
-            'csrfParam' => '_csrf-backend',
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
+        //    'class' => 'panix\engine\WebRequest',
+           'baseUrl' => '/admin',
         ],
 
         'errorHandler' => [
@@ -78,7 +69,7 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
            // 'enableStrictParsing' => true,
-            //'baseUrl' => '',
+            'baseUrl' => '',
             'normalizer' => [
                 'class' => 'yii\web\UrlNormalizer',
                 'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
@@ -100,16 +91,12 @@ $config = [
 ];
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
-    // $config['modules']['debug']['class'] = 'yii\debug\Module';
-    // $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
-    /* $config['modules']['debug']['traceLine'] = function ($options, $panel) {
-         $filePath = $options['file'];
-         // $filePath = str_replace(Yii::$app->basePath, 'file://~/path/to/your/backend', $filePath);
-         // $filePath = str_replace(dirname(Yii::$app->basePath) . '/common', 'file://~/path/to/your/common', $filePath);
-         /// $filePath = str_replace(Yii::$app->vendorPath, 'file://~/path/to/your/vendor', $filePath);
-         return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
-     };*/
-    //$config['bootstrap'][] = 'gii';
-    //$config['modules']['gii'] = 'yii\gii\Module';
+    $config['modules']['debug']['class'] = 'yii\debug\Module';
+    $config['modules']['debug']['traceLine'] = function ($options, $panel) {
+        $filePath = $options['file'];
+        return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
+    };
+
 }
+
 return $config;

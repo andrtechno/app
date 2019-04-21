@@ -1,21 +1,20 @@
 <?php
 use panix\engine\pdf\Pdf;
 
-Yii::setAlias('@common', dirname(dirname(__DIR__)) . '/common');
-Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend/web');
-Yii::setAlias('@backend', dirname(__DIR__) . '/web');
-Yii::setAlias('@uploads', dirname(dirname(__DIR__)) . '/frontend/web/uploads');
-
-$db = YII_DEBUG ? dirname(__DIR__) . '/../common/config/db_local.php' : dirname(__DIR__) . '/../common/config/db.php';
+$db = YII_DEBUG ? dirname(__DIR__) . '/config/db_local.php' : dirname(__DIR__) . '/config/db.php';
 $config = [
     'id' => 'common',
-    'homeUrl' => '/admin',
+    'homeUrl' => '/',
     'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__) . '/../',
     'language' => 'ru',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
+        '@uploads' => dirname(dirname(__DIR__)) . '/frontend/web/uploads',
+        '@backend' => dirname(dirname(__DIR__)) . '/backend',
+        '@frontend' => dirname(dirname(__DIR__)) . '/frontend',
+        '@common' => dirname(dirname(__DIR__)) . '/common',
     ],
     //'sourceLanguage'=>'ru',
     'runtimePath' => '@app/backend/runtime',
@@ -256,14 +255,14 @@ $config = [
         ],
         'session' => [
             'class' => '\panix\engine\web\DbSession',
-            'timeout'=>1440
+            'timeout' => 1440
             //'class' => '\yii\web\DbSession',
             //'writeCallback'=>['panix\engine\web\DbSession', 'writeFields']
         ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
-            'baseUrl' => '/admin',
-            'csrfParam' => '_csrf-backend',
+            //'baseUrl' => '/admin',
+            //'csrfParam' => '_csrf-backend',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
@@ -287,13 +286,13 @@ $config = [
             //'layoutsPath' => '@web/mail/layouts',
             //'viewsPath' => '@web/mail/views',
             'transport' => [
-                  'class' => 'Swift_SmtpTransport',
-                  'host' => 'smtp.gmail.com',
-                  'username' => 'andrew.panix',
-                  'password' => '47228960panix',
-                  'port' => '465',
-                  'encryption' => 'ssl',
-              ],
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'andrew.panix',
+                'password' => '47228960panix',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
             'messageConfig' => [
                 //    'from' => ['dev@pixelion.com.ua' => 'Admin'], // this is needed for sending emails
                 'charset' => 'UTF-8',
