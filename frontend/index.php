@@ -32,5 +32,4 @@ $config = yii\helpers\ArrayHelper::merge(
 
 
 $app = new WebApplication($config);
-//Yii::setAlias('@bower', dirname(__DIR__) . '/vendor/bower-asset');
 $app->run();
