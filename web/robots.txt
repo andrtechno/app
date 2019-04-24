@@ -2,7 +2,6 @@ User-Agent: *
 Disallow: /placeholder
 Disallow: /admin/auth
 Disallow: /assets/
-Disallow: /protected/
 Disallow: /themes/
 Disallow: /upgrade/
 
