@@ -19,6 +19,11 @@ $form = ActiveForm::begin();
             'options' => ['class' => 'text-center nav-item'],
         ];
         $tabs[] = [
+            'label' => $model::t('TAB_GOOGLE'),
+            'content' => $this->render('_google', ['form' => $form, 'model' => $model]),
+            'options' => ['class' => 'text-center nav-item'],
+        ];
+        $tabs[] = [
             'label' => $model::t('TAB_ROBOTS'),
             'content' => $this->render('_files', ['form' => $form, 'model' => $model]),
             'options' => ['class' => 'text-center nav-item'],

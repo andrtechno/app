@@ -1,8 +1,9 @@
 <?php
 return [
     'TAB_MAIN' => 'Основные',
-    'ROBOTS' => 'Содержание robots.txt',
     'TAB_ROBOTS' => 'Robots.txt',
+    'TAB_GOOGLE' => 'Google',
+    'ROBOTS' => 'Содержание robots.txt',
     'TITLE_PREFIX' => 'Разделение Title',
     'CANONICAL' => 'Использовать canonical',
     'GOOGLE_SITE_VERIFICATION' => 'Google Site Verification',
