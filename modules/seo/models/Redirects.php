@@ -1,6 +1,10 @@
 <?php
 namespace app\modules\seo\models;
-class Redirects extends \panix\engine\db\ActiveRecord {
+
+use Yii;
+use panix\engine\db\ActiveRecord;
+
+class Redirects extends ActiveRecord {
 
     const MODULE_ID = 'seo';
     const route = '/seo/admin/default';
@@ -33,49 +37,22 @@ class Redirects extends \panix\engine\db\ActiveRecord {
 
 
     /**
-     * @return string the associated database table name
+     * @inheritdoc
      */
     public static function tableName() {
         return '{{%redirects}}';
     }
 
     /**
-     * @return array validation rules for model attributes.
+     * @inheritdoc
      */
     public function rules() {
-        return array(
-            array('url_from, url_to', 'required'),
-            array('url_from', 'UniqueAttributesValidator', 'with' => 'url_from'),
-            //  array('url_from, url_to', 'length', 'max' => 255),
-            array('url_from, url_to', 'safe', 'on' => 'search'),
-        );
+        return [
+            [['url_from', 'url_to'], 'required'],
+            //array('url_from', 'UniqueAttributesValidator', 'with' => 'url_from'),
+            [['url_from', 'url_to'], 'string', 'max' => 255],
+        ];
     }
 
-    /**
-     * @return array customized attribute labels (name=>label)
-     */
-    public function attributeLabels() {
-        return array(
-            'id' => 'ID',
-            'url_from' => Yii::t('seo/default', 'REDIRECT_FROM'),
-            'url_to' => Yii::t('seo/default', 'REDIRECT_TO'),
-        );
-    }
-
-
-    public function search() {
-        // Warning: Please modify the following code to remove attributes that
-        // should not be searched.
-
-        $criteria = new CDbCriteria;
-
-        $criteria->compare('id', $this->id);
-        $criteria->compare('url_from', $this->url_from, true);
-        $criteria->compare('url_to', $this->url_to, true);
-
-        return new CActiveDataProvider($this, array(
-            'criteria' => $criteria,
-        ));
-    }
 
 }

@@ -5,8 +5,9 @@ namespace app\modules\seo\controllers\admin;
 use Yii;
 use panix\engine\Html;
 use app\modules\seo\models\SettingsForm;
+use panix\engine\controllers\AdminController;
 
-class SettingsController extends \panix\engine\controllers\AdminController {
+class SettingsController extends AdminController {
 
     public function actionIndex() {
         $this->pageName = Yii::t('app', 'SETTINGS');

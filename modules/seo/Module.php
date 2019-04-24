@@ -45,7 +45,7 @@ class Module extends WebModule
             'system' => [
                 'items' => [
                     [
-                        'label' => 'seo',
+                        'label' => Yii::t('seo/default', 'MODULE_NAME'),
                         'url' => ['/admin/seo'],
                         'icon' => $this->icon,
                     ],

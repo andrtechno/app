@@ -1,6 +1,6 @@
 <?php
 return array(
-    'MODULE_NAME' => 'SEO',
+    'MODULE_NAME' => 'SEO-менеджер',
     'MODULE_DESC' => 'Управление seo сайта.',
     'CONTENT' => 'Содержание',
     'ACTIVE' => 'Активировать',

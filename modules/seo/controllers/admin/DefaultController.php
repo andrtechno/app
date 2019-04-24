@@ -7,7 +7,9 @@ use panix\engine\Html;
 use app\modules\seo\models\SeoUrl;
 use app\modules\seo\models\search\SeoUrlSearch;
 use app\modules\seo\models\SeoParams;
-class DefaultController extends \panix\engine\controllers\AdminController {
+use panix\engine\controllers\AdminController;
+
+class DefaultController extends AdminController {
 
     public function actions() {
         return array(
@@ -29,17 +31,12 @@ class DefaultController extends \panix\engine\controllers\AdminController {
             ]
         ];
 
-
-
         $this->breadcrumbs[] = [
             'label' => $this->module->info['label'],
             'url' => $this->module->info['url'],
         ];
 
-
         $this->breadcrumbs[] = $this->pageName;
-
-
 
         $searchModel = new SeoUrlSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());

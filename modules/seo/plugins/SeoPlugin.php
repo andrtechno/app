@@ -22,7 +22,7 @@ class SeoPlugin
         $request = Yii::$app->request->url;
         if (in_array($request, $redirectList)) {
 
-            return Yii::$app->response->redirect(Url::to('/'), 301)->send();
+            return Yii::$app->response->redirect(Url::to('/'), 301);
 
         }
     }

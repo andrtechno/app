@@ -1,5 +1,7 @@
 <?php
+
 namespace app\modules\seo\migrations;
+
 /**
  * Generation migrate by PIXELION CMS
  *
@@ -12,20 +14,22 @@ namespace app\modules\seo\migrations;
 use panix\engine\db\Migration;
 use app\modules\seo\models\Redirects;
 
-class m190330_120130_seo_redirect extends Migration {
+class m190330_120130_seo_redirect extends Migration
+{
 
-    // Use up()/down() to run migration code without a transaction.
-    public function up() {
+    public function up()
+    {
         $this->createTable(Redirects::tableName(), [
             'id' => $this->primaryKey()->unsigned(),
             'url_from' => $this->string(255)->notNull(),
             'url_to' => $this->string(255)->notNull(),
             'switch' => $this->boolean()->defaultValue(1),
         ], $this->tableOptions);
+        $this->createIndex('switch', Redirects::tableName(), 'switch');
     }
 
-    public function down() {
-        echo "m190330_120130_seo_redirect cannot be reverted.\n";
+    public function down()
+    {
         $this->dropTable(Redirects::tableName());
         return false;
     }
