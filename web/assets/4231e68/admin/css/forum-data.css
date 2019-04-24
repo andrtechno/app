@@ -1,0 +1,12 @@
+.forum blockquote,
+blockquote{
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size:13px;
+  border-left: 5px solid #ccc;
+}
+
+.forum blockquote cite,
+blockquote cite{
+    color:#ccc;
+}

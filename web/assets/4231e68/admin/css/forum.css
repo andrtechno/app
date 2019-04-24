@@ -1,0 +1,61 @@
+.edit{
+    color: #999;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 15px;
+}
+.edit .reason{
+    display: block;
+}
+
+.forum .forum-post{
+    margin-bottom: 0;
+    border-radius:0;
+}
+.forum .forum-post{
+    border-bottom-width:0;
+}
+.forum .forum-post:last-child{
+    border-bottom-width: 1px;
+}
+.forum-post > .panel-footer{
+    background-color:transparent;
+}
+.forum .table{
+    margin-bottom: 0;
+}
+.forum .panel .alert{
+    margin-bottom: 0;
+}
+.forum .img-thumbnail{
+    padding:2px;
+    border-radius: 0;
+}
+.forum .last_post_avatar{
+    float:left;
+}
+.forum .last_post_avatar img{
+    margin-top: 4px;
+}
+.forum .last_post {
+    margin-left:40px;
+    font-size:12px;
+}
+
+.forum .table > tbody > tr > td,
+.forum .table > tbody > tr > th,
+.forum .table > tfoot > tr > td,
+.forum .table > tfoot > tr > th,
+.forum .table > thead > tr > td,
+.forum .table > thead > tr > th{
+    vertical-align: middle
+}
+
+.forum .pagination-xs{
+    margin:  0;
+}
+.forum .pagination-xs > li > a,
+.forum .pagination-xs > li > span{
+    padding: 0 6px;
+    font-size:11px;
+}

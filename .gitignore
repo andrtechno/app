@@ -14,5 +14,4 @@ nbproject/
 
 composer.lock
 
-/frontend/web/themes/*/assets/.sass-cache
-/backend/web/themes/*/assets/.sass-cache
+/web/themes/*/assets/.sass-cache

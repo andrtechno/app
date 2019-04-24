@@ -27,7 +27,6 @@
         "panix/mod-rbac": "dev-master",
         "linslin/yii2-curl": "dev-master",
         "panix/wgt-bootstrap-select": "dev-master",
-        "shopium24/mod-user": "dev-master",
         "panix/mod-sendpulse": "dev-master",
         "panix/mod-compare": "dev-master",
         "yiisoft/yii2-swiftmailer": "^2.1.2",

@@ -1,0 +1,14 @@
+.contentProgress { background: #e6e6e6; border: 1px solid #ccc; box-shadow: 0 1px 0 #fff, 0 1px 0 #ddd inset; -webkit-box-shadow: 0 1px 0 #fff, 0 1px 0 #ddd inset; -moz-box-shadow: 0 1px 0 #fff, 0 1px 0 #ddd inset; }
+.contentProgress, .barG, .barB, .barO, .barBl, .barGr, .barR { border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px; height: 4px; }
+.whead .contentProgress, .whead .barG, .whead .barB, .whead .barO, .whead .barBl, .whead .barGr, .whead .barR { height: 3px; }
+
+#sidebar .contentProgress { background: #ccc; box-shadow: 0 1px 0 #eee, 0 1px 0 #c1c1c1 inset; -webkit-box-shadow: 0 1px 0 #eee, 0 1px 0 #c1c1c1 inset; -moz-box-shadow: 0 1px 0 #eee, 0 1px 0 #c1c1c1 inset; border: 1px solid #c1c1c1; }
+#sidebar .contentProgress, #sidebar .barG, #sidebar .barB, #sidebar .barO, #sidebar .barBl, #sidebar .barGr, #sidebar .barR { height: 3px; }
+
+.barG, .barB, .barO, .barBl, .barGr, .barR { background: url(../images/progress.png) repeat-x; width: 0; margin: -1px 0 0 -1px; border: 1px solid; }
+.barG { background-position: 0 0; border-color: #97af32; }
+.barB { background-position: 0 -5px; border-color: #5f9fce; }
+.barO { background-position: 0 -10px; border-color: #d28346; }
+.barBl { background-position: 0 -15px; border-color: #4c4c4c; }
+.barGr { background-position: 0 -20px; border-color: #7b7b7b; }
+.barR { background-position: 0 -25px; border-color: #c8514e; }
