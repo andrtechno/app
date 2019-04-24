@@ -19,6 +19,12 @@ class AdminAsset extends AssetBundle
         // 'css/ui.css',
     ];
 
+
+    public $js = [
+        'js/jquery.cookie.js',
+        'js/dashboard.js',
+    ];
+
     public $depends = [
         'panix\engine\assets\CommonAsset',
         'panix\engine\assets\ClipboardAsset',

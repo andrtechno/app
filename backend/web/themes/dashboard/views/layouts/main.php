@@ -12,11 +12,6 @@ $(document).ready(function () {
         $(this).find(\'i\').toggleClass("fa-chevron-down");
     });
     
-    $("#menu-toggle").click(function (e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("active");
-    });
-    
     //$.widget.bridge(\'uibutton\', $.ui.button);
     //$.widget.bridge(\'uitooltip\', $.ui.tooltip);
     $(\'.fadeOut-time\').delay(2000).fadeOut(2000);
@@ -27,8 +22,8 @@ $(document).ready(function () {
 
 $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : false;
 ?>
-<?php $this->beginPage() ?>
-    <!DOCTYPE html>
+<?php $this->beginPage(); ?>
+<!DOCTYPE html>
     <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=<?= \Yii::$app->charset ?>"/>
@@ -53,11 +48,24 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
             <?php if ($sideBar) { ?>
                 <div id="sidebar-wrapper">
                     <?php
-                    echo \panix\engine\bootstrap\SiderbarNav::widget([
+                    /* echo \panix\mod\admin\widgets\sidebar\SiderbarNav::widget([
+                         'items' => [
+                             [
+                                 'label' => 'Menu',
+                                 'url' => '#',
+                                 'linkOptions' => ['class' => 'sidebar-nav', 'id' => 'menu-toggle'],
+                             ]],
+                         'options' => ['class' => 'flex-column'],
+                     ]);
+ */
+
+                    echo \panix\mod\admin\widgets\sidebar\SiderbarNav::widget([
+                        'encodeLabels' => false,
                         'items' => \yii\helpers\ArrayHelper::merge([
                             [
-                                'label' => 'Menu',
+                                'label' => Html::icon('menu'),
                                 'url' => '#',
+                                // 'encode'=>false,
                                 'linkOptions' => ['class' => 'sidebar-nav', 'id' => 'menu-toggle'],
                             ]], $this->context->module->getAdminSidebar()),
                         'options' => ['class' => 'flex-column'],

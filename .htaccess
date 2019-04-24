@@ -8,7 +8,7 @@ RewriteEngine on
 
 #RewriteCond %{REQUEST_URI} !^/frontend/web/uploads
 
-#RewriteRule ^uploads(.*)$ frontend/web/uploads/$1 [L]
+RewriteRule ^uploads(.*)$ /frontend/web/uploads/$1 [L]
 
 RewriteRule ^(admin)/$ /$1 [R=301,L]
 RewriteCond %{REQUEST_URI} ^/admin

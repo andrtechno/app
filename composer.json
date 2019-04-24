@@ -31,8 +31,7 @@
         "panix/mod-sendpulse": "dev-master",
         "panix/mod-compare": "dev-master",
         "yiisoft/yii2-swiftmailer": "^2.1.2",
-        "panix/wgt-inputmask": "dev-master",
-        "panix/asset-bootstrap-notify": "dev-master"
+        "panix/wgt-inputmask": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2",

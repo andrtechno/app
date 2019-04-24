@@ -1,7 +1,7 @@
 <?php
 use panix\engine\Html;
-use panix\engine\bootstrap\BackendNav;
-use panix\engine\widgets\langSwitcher\LangSwitcher;
+use \panix\mod\admin\widgets\sidebar\BackendNav;
+//use panix\engine\widgets\langSwitcher\LangSwitcher;
 use panix\engine\CMS;
 
 ?>
@@ -15,8 +15,8 @@ use panix\engine\CMS;
         <span></span>
     </button>
     <div id="navbar" class="collapse navbar-collapse mr-auto">
-        <?php
-        echo BackendNav::widget([
+        <?=
+        BackendNav::widget([
             'options' => ['class' => 'nav navbar-nav mr-auto'],
         ]);
         ?>
