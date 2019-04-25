@@ -1,12 +1,11 @@
-﻿@import "../../../../../../vendor/bower-asset/bootstrap/scss/functions";
-@import "../../../../../../vendor/bower-asset/bootstrap/scss/variables";
+﻿@import "../../../../../vendor/bower-asset/bootstrap/scss/functions";
+@import "../../../../../vendor/bower-asset/bootstrap/scss/variables";
 @import "mixins";
 @import "base";
 @import "ui";
 @import "bootstrap";
 
-
-.btn-round{
+.btn-round {
   @include border-radius(30px);
 }
 
@@ -293,9 +292,11 @@ body {
   font-family: $font-family;
   @include transition(.5s, ease);
 }
-a{
+
+a {
 
 }
+
 .form-group {
   position: relative;
 }
@@ -581,7 +582,7 @@ div.tagsinput {
 }
 
 .navbar-right,
-.navbar-nav{
+.navbar-nav {
   i {
     font-size: 16px;
   }
@@ -680,7 +681,7 @@ form .form-group {
 
 .card {
   margin-bottom: 2rem;
-  @include box-shadow(rgba(0,0,0,0.1));
+  @include box-shadow(rgba(0, 0, 0, 0.1));
   position: relative;
   border-width: 1px;
   border-style: solid;
@@ -1078,7 +1079,8 @@ form div.required label:after {
   color: $color-danger;
 
 }
-.table > thead > tr > th{
+
+.table > thead > tr > th {
   font-weight: 600;
 }
 
@@ -1087,11 +1089,10 @@ form div.required label:after {
   font-style: italic;
 }
 
-
 /* add sorting icons to gridview sort links */
 a.asc:after,
 a.desc:after,
-.table > thead > tr > th a:after{
+.table > thead > tr > th a:after {
   position: relative;
   top: 0;
   display: inline-block;
@@ -1415,7 +1416,7 @@ a.desc:after {
   }
 
   .navbar-expand-lg .navbar-nav .nav-link,
-  .navbar .navbar-right .nav-link{
+  .navbar .navbar-right .nav-link {
     padding-top: 13px;
     padding-bottom: 13px;
   }

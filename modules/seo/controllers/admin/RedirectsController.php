@@ -18,9 +18,10 @@ class RedirectsController extends AdminController
                 'class' => 'panix\engine\actions\DeleteAction',
                 'modelClass' => Redirects::class,
             ],
-            'switch' => array(
-                'class' => 'ext.adminList.actions.SwitchAction',
-            ),
+            'switch' => [
+                'class' => 'panix\engine\actions\SwitchAction',
+                'modelClass' => Redirects::class,
+            ],
         ];
     }
 
@@ -33,19 +34,15 @@ class RedirectsController extends AdminController
             'label' => $this->module->info['label'],
             'url' => $this->module->info['url'],
         ];
-
-
         $this->breadcrumbs[] = $this->pageName;
-
 
         $this->buttons = [
             [
                 'label' => Yii::t('seo/default', 'CREATE'),
-                'url' => ['/admin/seo/redirects/create'],
+                'url' => ['create'],
                 'options' => ['class' => 'btn btn-success']
             ]
         ];
-
 
         $searchModel = new RedirectsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
@@ -66,8 +63,6 @@ class RedirectsController extends AdminController
      */
     public function actionUpdate($id=false)
     {
-
-
         $model = Redirects::findModel($id);
 
         $this->pageName = Yii::t('seo/default', 'REDIRECTS');
@@ -83,7 +78,11 @@ class RedirectsController extends AdminController
         if ($model->load($post) && $model->validate()) {
             $model->save();
             Yii::$app->session->setFlash('success', \Yii::t('app', 'SUCCESS_CREATE'));
-            return Yii::$app->getResponse()->redirect(['/admin/seo/redirects']);
+
+            $redirect = (isset($post['redirect'])) ? $post['redirect'] : Yii::$app->request->url;
+            if (!Yii::$app->request->isAjax)
+                return Yii::$app->getResponse()->redirect($redirect);
+
         }
 
         return $this->render('update', [

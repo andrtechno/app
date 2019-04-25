@@ -398,6 +398,11 @@
   box-shadow: none;
 }
 
+.table th,
+.table td {
+  padding: .50rem;
+}
+
 .bg-success {
   background-color: #35cc62 !important;
 }
@@ -547,7 +552,7 @@
   padding-right: 1.5rem;
   padding-left: 1.5rem;
   transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: box-shadow,transform;
+  will-change: box-shadow, transform;
 }
 
 .btn-sm,

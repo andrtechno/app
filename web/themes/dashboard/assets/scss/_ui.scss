@@ -3,8 +3,7 @@ $datepicker-hover-bg: #fff;
 $datepicker-state-bg: $color-light;
 
 /* Common UI */
-$ui-widget-border-color:rgba(0, 0, 0, 0.125);
-
+$ui-widget-border-color: rgba(0, 0, 0, 0.125);
 
 /* Slider */
 $ui-slider-height: 5px;
@@ -13,14 +12,14 @@ $ui-slider-handle-border-size: 1px;
 $ui-slider-handle-border-color: $ui-widget-border-color;
 
 /* Spinner */
-$my-spinner-width-button:30px;
-$ui-spinner-border-width:1px;
-$ui-spinner-button-color:$ui-widget-border-color;
+$my-spinner-width-button: 30px;
+$ui-spinner-border-width: 1px;
+$ui-spinner-button-color: $ui-widget-border-color;
 
-
-.ui-button{
+.ui-button {
   background: none;
 }
+
 .ui-button .ui-icon,
 .ui-widget-header .ui-icon,
 .ui-icon,
@@ -28,7 +27,7 @@ $ui-spinner-button-color:$ui-widget-border-color;
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon,
 .ui-button:hover .ui-icon,
-.ui-button:focus .ui-icon{
+.ui-button:focus .ui-icon {
   background: none;
 }
 
@@ -58,14 +57,14 @@ $ui-spinner-button-color:$ui-widget-border-color;
 }
 
 .ui-widget {
-  .ui-widget{
+  .ui-widget {
     font-size: inherit;
   }
   color: #5f5f5f;
   border: 1px solid rgba(0, 0, 0, 0.125);
   font-size: inherit;
   font-family: inherit;
-  input,select,textarea,button{
+  input, select, textarea, button {
     font-size: inherit;
     font-family: inherit;
   }
@@ -90,22 +89,22 @@ $ui-spinner-button-color:$ui-widget-border-color;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
+
 .ui-widget-header,
 .ui-datepicker .ui-datepicker-header,
-.ui-dialog .ui-dialog-titlebar{
+.ui-dialog .ui-dialog-titlebar {
   font-weight: bold;
   color: $primary_color;
   padding: .50rem 1rem;
   position: relative;
   background: #fff;
-  border:0;
+  border: 0;
   /*@include gradient-x(#f8f8f8, #e8e8e8);*/
 }
 
 .ui-widget-content a.btn {
   color: #fff !important;
 }
-
 
 .ui-state-default,
 .ui-widget-content .ui-state-default,
@@ -116,7 +115,6 @@ $ui-spinner-button-color:$ui-widget-border-color;
   background: $datepicker-state-bg;
 }
 
-
 .ui-state-hover,
 .ui-widget-content .ui-state-hover,
 .ui-widget-header .ui-state-hover,
@@ -124,9 +122,9 @@ $ui-spinner-button-color:$ui-widget-border-color;
 .ui-widget-content .ui-state-focus,
 .ui-widget-header .ui-state-focus,
 .ui-button:hover,
-.ui-button:focus{
+.ui-button:focus {
   background: $datepicker-hover-bg;
-  color:$primary_color;
+  color: $primary_color;
   font-weight: 300;
   border: 0;
 }
@@ -136,7 +134,7 @@ $ui-spinner-button-color:$ui-widget-border-color;
 .ui-widget-header .ui-state-highlight {
   background: $datepicker-active-bg;
   color: $color-light;
-  @include box-shadow($datepicker-active-bg,false);
+  @include box-shadow($datepicker-active-bg, false);
   font-weight: 300;
 }
 
@@ -144,8 +142,8 @@ $ui-spinner-button-color:$ui-widget-border-color;
   padding: 0;
   width: auto;
   text-align: center;
-  @include box-shadow(rgba(0,0,0,0.1));
-  .ui-datepicker-title{
+  @include box-shadow(rgba(0, 0, 0, 0.1));
+  .ui-datepicker-title {
     margin: 0 1.5rem;
   }
   .ui-datepicker-buttonpane {
@@ -163,7 +161,7 @@ $ui-spinner-button-color:$ui-widget-border-color;
   }
   .ui-datepicker-prev,
   .ui-datepicker-next {
-    top:0;
+    top: 0;
     cursor: pointer;
     position: absolute;
     padding: 0 15px;
@@ -171,7 +169,7 @@ $ui-spinner-button-color:$ui-widget-border-color;
     height: 100%;
     &:before {
       top: 0;
-      left:0;
+      left: 0;
       font-weight: 300;
       position: absolute;
       height: 100%;
@@ -202,7 +200,7 @@ $ui-spinner-button-color:$ui-widget-border-color;
   }
   th {
     padding: 1rem 0 .5rem 0;
-    color:rgba($primary_color,0.4);
+    color: rgba($primary_color, 0.4);
   }
   td span,
   td a {
@@ -210,7 +208,6 @@ $ui-spinner-button-color:$ui-widget-border-color;
     padding: .5rem .6rem;
   }
 }
-
 
 .ui-slider-horizontal {
   height: $ui-slider-height;
@@ -255,7 +252,7 @@ $ui-spinner-button-color:$ui-widget-border-color;
       margin-left: $my-spinner-width-button;
       margin-right: $my-spinner-width-button;
     }
-    .ui-button .ui-icon{
+    .ui-button .ui-icon {
       background-image: none;
     }
   }
@@ -263,14 +260,14 @@ $ui-spinner-button-color:$ui-widget-border-color;
     text-align: center;
   }
   a.ui-spinner-button {
-    background-image:none;
+    background-image: none;
     cursor: pointer;
     @include border-radius(0);
     width: $my-spinner-width-button;
-    border:$ui-spinner-border-width solid $ui-spinner-button-color;
+    border: $ui-spinner-border-width solid $ui-spinner-button-color;
     height: 100%;
 
-    &:before{
+    &:before {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -285,13 +282,13 @@ $ui-spinner-button-color:$ui-widget-border-color;
   }
   .ui-spinner-up {
     right: - $my-spinner-width-button;
-    &:before{
+    &:before {
       content: '+';
     }
   }
   .ui-spinner-down {
     left: - $my-spinner-width-button;
-    &:before{
+    &:before {
       content: '-';
     }
   }
@@ -395,7 +392,7 @@ $ui-spinner-button-color:$ui-widget-border-color;
       content: "\f029";
       font-family: Pixelion;
       font-size: 12px;
-      color: lighten($primary_color,20);
+      color: lighten($primary_color, 20);
     }
   }
 }

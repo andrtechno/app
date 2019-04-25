@@ -1,7 +1,7 @@
 sass --watch dark.scss:dark.css --style expanded
 
 
-1. cd backend\web\themes\dashboard\assets
+1. cd web\themes\dashboard\assets
 3. sass --watch scss:css --style expanded
 
 

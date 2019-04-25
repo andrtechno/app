@@ -25,14 +25,14 @@ class SettingsController extends AdminController {
     }
 
     public function getAddonsMenu() {
-        return array(
-            array(
+        return [
+            [
                 'label' => Yii::t('seo/default', 'REDIRECTS'),
                 'url' => array('/admin/seo/redirects'),
                 'icon' => Html::icon('refresh'),
 
-            ),
-        );
+            ],
+        ];
     }
 
 }
