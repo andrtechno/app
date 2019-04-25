@@ -70,7 +70,7 @@ $form = ActiveForm::begin([
 </div>
 
 <div class="form-group text-center">
-    <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'CREATE') : Yii::t('app', 'UPDATE'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    <?= $model->submitButton(); ?>
 </div>
 
 <?php ActiveForm::end(); ?>

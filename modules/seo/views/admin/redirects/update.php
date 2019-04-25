@@ -16,8 +16,7 @@ $form = ActiveForm::begin([
         <?= $form->field($model, 'url_to')->textInput(['maxlength' => 255]) ?>
     </div>
     <div class="card-footer text-center">
-        <?= Html::submitButton(Yii::t('app', 'SAVE'), ['class' => 'btn btn-success']) ?>
-        <?= Html::submitButton(Yii::t('app', 'SAVE_RETURN'), ['class' => 'btn btn-link', 'value' => \yii\helpers\Url::to(['index']), 'name' => 'redirect']) ?>
+        <?= $model->submitButton(); ?>
     </div>
 </div>
 <?php ActiveForm::end(); ?>
