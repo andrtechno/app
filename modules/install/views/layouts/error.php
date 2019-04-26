@@ -4,7 +4,7 @@ use panix\engine\Html;
 use yii\widgets\Breadcrumbs;
 
 
-        \app\modules\install\assets\InstallAsset::register($this);
+\app\modules\install\assets\InstallAsset::register($this);
 \panix\engine\assets\ErrorAsset::register($this);
 ?>
 <?php $this->beginPage() ?>

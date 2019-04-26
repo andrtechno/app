@@ -1,10 +1,10 @@
-LICENSE CORNER CMS
+LICENSE PIXELION CMS
 ===========
 
-The CORNER content management system is free software. It is released under the terms of
+The PIXELION content management system is free software. It is released under the terms of
 the following BSD License.
 
-Copyright © 2014 by CORNER CMS (http://www.corner-cms.com)
+Copyright © 2014 by PIXELION CMS (https://pixelion.com.ua)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -17,7 +17,7 @@ are met:
    notice, this list of conditions and the following disclaimer in
    the documentation and/or other materials provided with the
    distribution.
- * Neither the name of CORNER CMS nor the names of its
+ * Neither the name of PIXELION CMS nor the names of its
    contributors may be used to endorse or promote products derived
    from this software without specific prior written permission.
 

@@ -4,10 +4,20 @@ use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
 use panix\engine\behaviors\wizard\WizardMenu;
 
+
+$this->title = $this->context->getStepLabel($_REQUEST['step']);
+$this->context->process = Yii::t('install/default', 'STEP', array(
+    'current' => $this->context->currentStep,
+    'count' => $this->context->stepCount
+));
 ?>
 <div class="row no-gutters">
     <div class="col-sm-3">
-        <?php echo WizardMenu::widget(); ?>
+        <?php //echo WizardMenu::widget(); ?>
+        <?php
+
+        echo $this->context->renderMenu();
+        ?>
     </div>
     <div class="col-sm-9">
         <div class="form-block clearfix">
@@ -15,8 +25,16 @@ use panix\engine\behaviors\wizard\WizardMenu;
 
             <?php
             $form = ActiveForm::begin([
-                //  'id' => 'form',
-                'options' => ['class' => 'form-horizontal'],
+                'fieldConfig' => [
+                    'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+                    'horizontalCssClasses' => [
+                        'label' => 'col-sm-4 col-lg-4 col-form-label',
+                        'offset' => 'col-sm-offset-4',
+                        'wrapper' => 'col-sm-8 col-lg-8',
+                        'error' => '',
+                        'hint' => '',
+                    ],
+                ],
             ]);
             ?>
 

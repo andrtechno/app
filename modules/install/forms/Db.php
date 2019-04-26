@@ -2,11 +2,11 @@
 
 namespace app\modules\install\forms;
 
+use panix\engine\db\Connection;
 use Yii;
 
-//use panix\engine\db\Connection;
-
-class Db extends \yii\base\Model {
+class Db extends \yii\base\Model
+{
 
     public $db_host = 'localhost';
     public $db_name;
@@ -16,31 +16,38 @@ class Db extends \yii\base\Model {
     public $db_charset = 'utf8';
     public $db_type = 'mysql';
 
-    public function rules() {
+    public function rules()
+    {
         return [
             [['db_host', 'db_name', 'db_user', 'db_prefix', 'db_charset', 'db_type'], 'required'],
             [['db_password'], 'checkDbConnection'],
         ];
     }
 
-    public function checkDbConnection($attribute) {
-        if (!$this->hasErrors()) {
-            $connection = new \yii\db\Connection([
-                'dsn' => $this->getDsn(),
-                'username' => $this->db_user,
-                'password' => $this->db_password,
-            ]);
+    public function checkDbConnection($attribute)
+    {
 
-            var_dump($connection->open());die;
+        if (!$this->hasErrors()) {
+
+
             try {
-                $connection->initConnection();
+                $connection = new Connection([
+                    'dsn' => $this->getDsn(),
+                    'username' => $this->db_user,
+                    'password' => $this->db_password,
+                ]);
+
+                $connection->open();
+
             } catch (\yii\db\Exception $e) {
-                $this->addError($attribute, ($e->getCode()==1045)?$e->getMessage():Yii::t('install/default', 'ERROR_CONNECT_DB')); //
+                $this->addError($attribute, ($e->getCode() == 1045) ? $e->getMessage() : Yii::t('install/default', 'ERROR_CONNECT_DB')); //
             }
+          //  print_r($this->getErrors());die;
         }
     }
 
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return array(
             'db_host' => Yii::t('install/default', 'DB_HOST'),
             'db_name' => Yii::t('install/default', 'DB_NAME'),
@@ -52,7 +59,8 @@ class Db extends \yii\base\Model {
         );
     }
 
-    public function install() {
+    public function install()
+    {
         if ($this->hasErrors())
             return false;
 
@@ -67,11 +75,14 @@ class Db extends \yii\base\Model {
             'charset' => $this->db_charset,
             'tablePrefix' => $this->db_prefix
         ]);
-        $this->writeConnectionSettings();
-        $this->importSqlDump();
+
+
+       $this->writeConnectionSettings();
+        //$this->importSqlDump();
     }
 
-    public function getDbCharset() {
+    public function getDbCharset()
+    {
         return [
             'utf8' => 'UTF-8',
             'cp1251' => 'cp1251',
@@ -79,7 +90,8 @@ class Db extends \yii\base\Model {
         ];
     }
 
-    public function getDbTypes() {
+    public function getDbTypes()
+    {
         return [
             "mysql" => 'MySQL/MariaDB',
             "sqlite" => 'SQLite',
@@ -89,7 +101,8 @@ class Db extends \yii\base\Model {
         ];
     }
 
-    public function getDsn() {
+    public function getDsn()
+    {
         if ($this->db_type == 'pgsql') {
             return strtr('pgsql:host={host};port=5432;dbname={db_name}', array(
                 '{host}' => $this->db_host,
@@ -114,17 +127,23 @@ class Db extends \yii\base\Model {
         }
     }
 
-    private function writeConnectionSettings() {
-        $content = file_get_contents(DB_FILE);
-        $content = preg_replace("/\'dsn\'\s*\=\>\s*\'.*\'/", "'dsn'=>'{$this->getDsn()}'", $content);
-        $content = preg_replace("/\'username\'\s*\=\>\s*\'.*\'/", "'username'=>'{$this->db_user}'", $content);
-        $content = preg_replace("/\'password\'\s*\=\>\s*\'.*\'/", "'password'=>'{$this->db_password}'", $content);
-        $content = preg_replace("/\'tablePrefix\'\s*\=\>\s*\'.*\'/", "'tablePrefix'=>'{$this->db_prefix}'", $content);
-        $content = preg_replace("/\'charset\'\s*\=\>\s*\'.*\'/", "'charset'=>'{$this->db_charset}'", $content);
-        file_put_contents(DB_FILE, $content);
+    private function writeConnectionSettings()
+    {
+        $configFiles[] = Yii::getAlias('@app/config') . DIRECTORY_SEPARATOR . 'db.php';
+        $configFiles[] = Yii::getAlias('@app/config') . DIRECTORY_SEPARATOR . 'db_local.php';
+        foreach ($configFiles as $file) {
+            $content = file_get_contents($file);
+            $content = preg_replace("/\'connectionString\'\s*\=\>\s*\'.*\'/", "'connectionString'=>'{$this->getDsn()}'", $content);
+            $content = preg_replace("/\'username\'\s*\=\>\s*\'.*\'/", "'username'=>'{$this->db_user}'", $content);
+            $content = preg_replace("/\'password\'\s*\=\>\s*\'.*\'/", "'password'=>'{$this->db_password}'", $content);
+            $content = preg_replace("/\'tablePrefix\'\s*\=\>\s*\'.*\'/", "'tablePrefix'=>'{$this->db_prefix}'", $content);
+            $content = preg_replace("/\'charset\'\s*\=\>\s*\'.*\'/", "'charset'=>'{$this->db_charset}'", $content);
+            file_put_contents($file, $content);
+        }
     }
 
-    private function importSqlDump() {
+    private function importSqlDump()
+    {
         $sqlDumpPath = Yii::getAlias('@app/modules/install/migrations') . DIRECTORY_SEPARATOR . 'scheme.sql';
         $sqlRows = preg_split("/--\s*?--.*?\s*--\s*/", file_get_contents($sqlDumpPath));
         Yii::$app->db->createCommand("SET NAMES '" . $this->db_charset . "';");

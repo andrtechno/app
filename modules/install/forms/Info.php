@@ -8,23 +8,23 @@ use Yii;
 class Info extends Model {
 
     public $errors = false;
-    public $writeAble = array(
+    public $writeAble = [
         YII_DEBUG ? 'config/db_local.php' : 'config/db.php',
         'assets',
         'web/uploads',
         'runtime',
-    );
-    public $chmod = array(
+    ];
+    public $chmod = [
         //'web/.htaccess' => 666,
         //'web/robots.txt' => 666,
         'web/uploads' => 750
-    );
+    ];
     public $warning;
 
     public function rules() {
-        return array(
-            array('warning', 'safe'),
-        );
+        return [
+            ['warning', 'safe'],
+        ];
     }
 
     public function isWritable($path) {

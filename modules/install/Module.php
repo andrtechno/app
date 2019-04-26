@@ -15,7 +15,7 @@ class Module extends WebModule implements BootstrapInterface {
     {
         $app->urlManager->addRules(
             [
-                'install' => 'install/default/index',
+                'install' => 'default/index',
             ],
             true
         );

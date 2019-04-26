@@ -4,16 +4,33 @@ use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
 use panix\engine\behaviors\wizard\WizardMenu;
 
-$this->title = $event->sender->getStepLabel($event->step);
+
+$this->registerJs('
+    function makeid() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text.toLowerCase() + "_";
+    }
+',\yii\web\View::POS_END);
+
+//$this->title = $this->context->getStepLabel($event->step);
 $this->context->process = Yii::t('install/default', 'STEP', array(
-    'current' => $event->sender->currentStepIndex,
-    'count' => $event->sender->stepCount
+    'current' => $this->context->currentStep,
+    'count' => $this->context->stepCount
 ));
 ?>
 
 <div class="row no-gutters">
     <div class="col-sm-3">
-        <?php echo WizardMenu::widget(); ?>
+        <?php //echo WizardMenu::widget(); ?>
+        <?php
+
+        echo $this->context->renderMenu();
+        ?>
     </div>
     <div class="col-sm-9">
         <div class="form-block clearfix">
@@ -21,8 +38,16 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
 
             <?php
             $form = ActiveForm::begin([
-                //  'id' => 'form',
-                'options' => ['class' => 'form-horizontal'],
+                'fieldConfig' => [
+                    'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+                    'horizontalCssClasses' => [
+                        'label' => 'col-sm-4 col-lg-4 col-form-label',
+                        'offset' => 'col-sm-offset-4',
+                        'wrapper' => 'col-sm-8 col-lg-8',
+                        'error' => '',
+                        'hint' => '',
+                    ],
+                ],
             ]);
             ?>
 
@@ -38,6 +63,10 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
 
 
             <div class="form-group text-center">
+                <?php
+
+                echo $this->context->renderButtons();
+                ?>
                 <?= Html::a(Yii::t('install/default', 'BACK'), [Yii::$app->controller->id . '/index', 'step' => 'info'], ['class' => 'btn btn-link']) ?>
                 <?= Html::submitButton(Yii::t('install/default', 'NEXT'), ['class' => 'btn btn-success']) ?>
 

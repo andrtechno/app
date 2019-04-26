@@ -2,17 +2,7 @@
 use panix\engine\Html;
 
 \app\modules\install\assets\InstallAsset::register($this);
-$this->registerJs('
-    function makeid() {
-        var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-        for (var i = 0; i < 5; i++)
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-        return text.toLowerCase() + "_";
-    }
-');
 $this->beginPage() ?>
 <!doctype html>
 <html>
@@ -28,6 +18,19 @@ $this->beginPage() ?>
 <body class="no-radius">
 <?php $this->beginBody() ?>
 <div class="content">
+
+    <?php if (Yii::$app->session->hasFlash('notice')) { ?>
+
+            <div class="alert alert-warning"><?= print_r(Yii::$app->session->getFlash('notice')) ?></div>
+
+    <?php } ?>
+    <?php
+
+  //  if($_SESSION){
+        \yii\helpers\VarDumper::dump($_SESSION,10,true);
+  //  }
+
+    ?>
     <div class="text-center auth-logo">
         <a href="//pixelion.com.ua" target="_blank">PIXELION</a>
         <div class="auth-logo-hint"><?= Yii::t('app', 'CMS') ?></div>

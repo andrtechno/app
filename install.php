@@ -32,7 +32,7 @@ $config = [
         '@uploads' => '@app/web/uploads',
     ],
     'controllerNamespace' => 'app\modules\install\controllers',
-    'defaultRoute' => 'main/main',
+    'defaultRoute' => 'default/index',
     'bootstrap' => [
         'log',
        // 'panix\engine\BootstrapModule'
@@ -73,17 +73,18 @@ $config = [
         ],
         'view' => [
             'class' => panix\mod\plugins\components\View::class,
+
             //'theme' => ['class' => 'panix\engine\base\Theme'],
         ],
         'request' => [
-            'class' => 'panix\engine\WebRequest',
+           // 'class' => 'panix\engine\WebRequest',
             'baseUrl' => '',
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
         'errorHandler' => [
             //'class'=>'panix\engine\base\ErrorHandler'
             //'errorAction' => 'site/error',
-            'errorAction' => 'install/error',
+           'errorAction' => 'install/error',
             // 'errorView' => '@webroot/themes/basic/views/layouts/error.php'
         ],
         'settings' => ['class' => 'panix\engine\components\Settings'],
@@ -94,16 +95,17 @@ $config = [
         'db' => require( __DIR__ . '/config/db.php'),
         'urlManager' => [
             'class' => 'panix\engine\ManagerUrl',
-            //'enablePrettyUrl' => true,
-            //'showScriptName' => false,
-            //'enableStrictParsing' => false,
+            //'enablePrettyUrl' => false,
+            'showScriptName' => true,
+            //'enableStrictParsing' => true,
             //'baseUrl' => '',
             'normalizer' => [
                 'class' => 'yii\web\UrlNormalizer',
                 'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
             ],
             'rules' => [
-                '/' => 'install/default',
+
+              //  'install/<step:\w+>' => 'install/default',
             ],
         ],
         'log' => [
