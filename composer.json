@@ -20,7 +20,7 @@
         "panix/mod-stats": "dev-master",
         "panix/mod-delivery": "dev-master",
         "panix/mod-forum": "dev-master",
-        "phpoffice/phppresentation": "dev-master",
+        "phpoffice/phppresentation": "^0.9",
         "phpoffice/phpword": "v0.13.*",
         "panix/wgt-telinput": "dev-master",
         "panix/mod-plugins": "dev-master",
