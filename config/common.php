@@ -4,7 +4,6 @@ use panix\engine\pdf\Pdf;
 $db = YII_DEBUG ? dirname(__DIR__) . '/config/db_local.php' : dirname(__DIR__) . '/config/db.php';
 $config = [
     'id' => 'common',
-    'homeUrl' => '/',
     'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__) . '/../',
     'language' => 'ru',
@@ -277,11 +276,11 @@ $config = [
             'enableAutoLogin' => true,
             // 'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
-        'errorHandler' => [
+       // 'errorHandler' => [
             //'class'=>'panix\engine\base\ErrorHandler'
-            'errorAction' => 'backend/error',
+           // 'errorAction' => 'backend/error',
             // 'errorView' => '@webroot/themes/basic/views/layouts/error.php'
-        ],
+      //  ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             //'useFileTransport' => true,

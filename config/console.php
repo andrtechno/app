@@ -1,128 +1,61 @@
 <?php
 
-
-
-
 return [
     'id' => 'console',
     'name' => 'PIXELION CMS',
-    'basePath' => dirname(__DIR__) . '/../',
+    'basePath' => dirname(__DIR__),
     //'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'controllerNamespace' => 'app/console/commands',
+    'controllerNamespace' => 'app\commands',
     'language' => 'ru',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
-        '@uploads' => dirname(dirname(__DIR__)) . '/frontend/web/uploads',
-        '@backend' => dirname(dirname(__DIR__)) . '/backend',
-        '@frontend' => dirname(dirname(__DIR__)) . '/frontend',
-        '@common' => dirname(dirname(__DIR__)) . '/common',
-        '@console' => dirname(dirname(__DIR__)) . '/console',
+        '@uploads' => '@app/web/uploads',
     ],
     'modules' => [
-        //'shop' => ['class' => 'panix\mod\shop\Module'],
-        //'images' => ['class' => 'panix\mod\images\Module'],
-        //'cart' => ['class' => 'panix\mod\cart\Module'],
-        //'pages' => ['class' => 'panix\mod\pages\Module'],
-        //'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
-        'user' => ['class' => 'panix\mod\user\Module'],
-        //'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
+        'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
+        //'sendpulse' => ['class' => 'panix\mod\sendpulse\Module'],
+        //'seo' => ['class' => 'app\modules\seo\Module'],
+        'plugins' => [
+            'class' => 'panix\mod\plugins\Module',
+            'pluginsDir' => [
+                // '@plugins/core',
+                '@panix/engine/plugins',
+            ]
+        ],
+        //'rbac' => [
+        //    'class' => 'panix\mod\rbac\Module',
+        //    'as access' => [
+        //        'class' => panix\mod\rbac\filters\AccessControl::class
+        //    ],
+       // ],
         //'admin' => ['class' => 'panix\mod\admin\Module'],
+        //'user' => ['class' => 'panix\mod\user\Module'],
     ],
     'controllerMap' => [
-
         'sitemap' => [
-            'class' => 'app\modules\sitemap\console\CreateController',
+            'class' => 'panix\mod\sitemap\console\CreateController',
         ],
-        'migrate' => [
-        // 'class' => 'yii\console\controllers\MigrateController',
-        'class' => 'panix\engine\console\controllers\MigrateController',
-         'migrationPath' => '@console/migrations',
-        // 'migrationNamespaces' => [
-        //  'console\migrations',
-        // 'lo\plugins\migrations',
-        // ],
+        'migrate' => ['class' => 'panix\engine\console\controllers\MigrateController',
+            //'migrationPath' => '@console/migrations',
+            // 'migrationNamespaces' => [
+            //  'console\migrations',
+            // 'lo\plugins\migrations',
+            // ],
         ]
     ],
     'components' => [
-        'sitemap' => [
-            'class' => 'app\modules\sitemap\Sitemap',
-            'models' => [
-                // your models
-                'panix\mod\shop\models\Product',
-                // or configuration for creating a behavior
-                /*[
-                    'class' => 'panix\mod\shop\models\Product',
-                    'behaviors' => [
-                        'sitemap' => [
-                            'class' => '\app\modules\sitemap\behaviors\SitemapBehavior',
-                            'scope' => function ($model) {
-                                $model->select(['seo_alias', 'date_create']);
-                                $model->andWhere(['switch' => 1]);
-                            },
-                            'dataClosure' => function ($model) {
-                                return [
-                                    'loc' => \yii\helpers\Url::to($model->url, true),
-                                    'lastmod' => strtotime($model->date_create),
-                                    'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
-                                    'priority' => 0.8
-                                ];
-                            }
-                        ],
-                    ],
-                ],*/
-            ],
-            'urls' => [
-                // your additional urls
-                [
-                    'loc' => ['/news/default/index'],
-                    //'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
-                    'priority' => 0.8,
-                    'news' => [
-                        'publication' => [
-                            'name' => 'Example Blog',
-                            'language' => 'en',
-                        ],
-                        'access' => 'Subscription',
-                        'genres' => 'Blog, UserGenerated',
-                        'publication_date' => 'YYYY-MM-DDThh:mm:ssTZD',
-                        'title' => 'Example Title',
-                        'keywords' => 'example, keywords, comma-separated',
-                        'stock_tickers' => 'NASDAQ:A, NASDAQ:B',
-                    ],
-                    'images' => [
-                        [
-                            'loc' => 'http://example.com/image.jpg',
-                            'caption' => 'This is an example of a caption of an image',
-                            'geo_location' => 'City, State',
-                            'title' => 'Example image',
-                            'license' => 'http://example.com/license',
-                        ],
-                    ],
-                ],
-            ],
-            'enableGzip' => true, // default is false
-            'cacheExpire' => 1, // 1 second. Default is 24 hours,
-            'sortByPriority' => true, // default is false
-        ],
-        'session' => [
-            'class' => 'yii\web\Session'
-        ],
+        //'session' => [
+        //    'class' => 'yii\web\Session'
+       // ],
+
+        'urlManager' => require(__DIR__ . '/urlManager.php'),
         'settings' => ['class' => 'panix\engine\components\Settings'],
         'cache' => ['class' => 'yii\caching\FileCache'],
-        'log' => [
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'logVars' => [],
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],
-
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
-        'db' => require(__DIR__ . '/../../common/config/db.php'),
+        //'urlManager' => require(__DIR__ . '/urlManager.php'),
+        'db' => require(__DIR__ . '/../config/db.php'),
     ],
-    'params' => require(__DIR__ . '/../../common/config/params.php'),
+    'params' => require(__DIR__ . '/../config/params.php'),
 ];

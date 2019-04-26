@@ -4,12 +4,11 @@ use panix\engine\pdf\Pdf;
 
 //Yii::setAlias('@runtime', '@webroot/web/runtime');
 
-Yii::setAlias('@frontend', dirname(__DIR__) . '/web');
 Yii::setAlias('@console', dirname(__DIR__) . '/../console/web');
 
 $config = [
-    //'homeUrl' => '/',
     'id' => 'frontend',
+    'homeUrl' => '/',
     'basePath' => dirname(__DIR__), //if in web dir
     //'basePath' => dirname(__DIR__),
 
