@@ -32,10 +32,9 @@ class DefaultController extends \yii\web\Controller {
             ),
         );
         if (!empty($config)) {
-            $config['class'] = WizardBehavior::className();
+            $config['class'] = WizardBehavior::class;
             $this->attachBehavior('wizard', $config);
         }
-
 
 
         $this->process($step);
@@ -148,6 +147,8 @@ class DefaultController extends \yii\web\Controller {
                 'model' => $model,
             ]);
         }
+
+
     }
 
 }

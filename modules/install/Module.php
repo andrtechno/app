@@ -2,12 +2,24 @@
 
 namespace app\modules\install;
 
-class Module extends \panix\engine\WebModule {
+use yii\base\BootstrapInterface;
+use panix\engine\WebModule;
+
+class Module extends WebModule implements BootstrapInterface {
 
     public $routes = [
-        'install' => 'install/default/index',
+
     ];
 
+    public function bootstrap($app)
+    {
+        $app->urlManager->addRules(
+            [
+                'install' => 'install/default/index',
+            ],
+            true
+        );
+    }
 
 
 }

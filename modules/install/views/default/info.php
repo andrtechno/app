@@ -3,7 +3,7 @@
 use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
 use panix\engine\behaviors\wizard\WizardMenu;
-use yii\bootstrap\Alert;
+use panix\engine\bootstrap\Alert;
 use panix\engine\CMS;
 
 $this->title = $event->sender->getStepLabel($event->step);
@@ -12,7 +12,7 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
             'count' => $event->sender->stepCount
         ));
 ?>
-
+<div class="row no-gutters">
 <div class="col-sm-3">
     <?php echo WizardMenu::widget(); ?>
 </div>
@@ -137,4 +137,5 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
         <?php ActiveForm::end(); ?>
 
     </div>
+</div>
 </div>

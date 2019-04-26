@@ -2,21 +2,22 @@
 
 namespace app\modules\install\forms;
 
+use panix\engine\base\Model;
 use Yii;
 
-class Info extends \yii\base\Model {
+class Info extends Model {
 
     public $errors = false;
     public $writeAble = array(
-        YII_DEBUG ? 'web/config/db_local.php' : 'web/config/db.php',
-        'web/assets',
+        YII_DEBUG ? 'config/db_local.php' : 'config/db.php',
+        'assets',
         'web/uploads',
         'runtime',
     );
     public $chmod = array(
-        'web/.htaccess' => 666,
-        'web/robots.txt' => 666,
-      //  'web/uploads' => 750
+        //'web/.htaccess' => 666,
+        //'web/robots.txt' => 666,
+        'web/uploads' => 750
     );
     public $warning;
 

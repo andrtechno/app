@@ -1,7 +1,7 @@
 <?php
 
 use panix\engine\Html;
-use yii\widgets\ActiveForm;
+use panix\engine\bootstrap\ActiveForm;
 use panix\engine\behaviors\wizard\WizardMenu;
 
 $this->title = $event->sender->getStepLabel($event->step);
@@ -11,7 +11,7 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
         ));
 ?>
 <?php ?>
-
+<div class="row no-gutters">
 <div class="col-sm-3">
     <?php echo WizardMenu::widget(); ?>
 </div>
@@ -39,12 +39,13 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
         ?>
 
 
-        <div class="panel-footer text-center">
+        <div class="form-group  text-center">
             <?= Html::submitButton(Yii::t('install/default', 'NEXT'), ['class' => 'btn btn-success']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
     </div>
+</div>
 </div>
 
 

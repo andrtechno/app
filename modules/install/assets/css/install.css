@@ -1,9 +1,7 @@
 label .required{
     color:red;
 }
-.form-horizontal .control-label{
-    text-align: left;
-}
+
 label.error{
     color:#ea3934;
 }
@@ -14,13 +12,6 @@ div.errorMessage{
 }
 input.error{
     border-color:#ea3934;
-}
-.license-box{
-    overflow-x: hidden;
-    height:400px;
-        border:1px solid #eee;
-        background:#fff;
-        padding:10px;
 }
 html { height: 100%; }
 body {
@@ -34,9 +25,9 @@ body {
 /**NO BORDER RADIUS**/
 .no-radius .tab-container .ui-tabs-nav,
 .no-radius .tab-container .ui-tabs-nav li,
-.no-radius .panel,
-.no-radius .panel-group .panel,
-.no-radius .panel.with-nav-tabs .nav-tabs > li > a,
+.no-radius .card,
+.no-radius .card-group .panel,
+.no-radius .card.with-nav-tabs .nav-tabs > li > a,
 .no-radius .dropdown-menu,
 .no-radius .list-group,
 .no-radius .list-group-item:last-child,
@@ -51,35 +42,42 @@ body {
 }
 .auth-logo{
     position: relative;
-    width:200px;
+    width:215px;
     margin: 0 auto;
 
 }
 .auth-logo a{
-    font-family: Corner;
+    width:215px;
+    font-family: Pixelion, Montserrat;
     color:#777;
     position: relative;
-    font-size:36px;
+    font-size:30px;
     display: block;
-    line-height: 36px;
-    padding-left: 50px;
-    height: 45px;
+    line-height: 60px;
+    padding-left: 65px;
+    text-align: right;
+    height: 65px;
+    line-height: 65px;
     margin-bottom: 20px;
+    text-decoration: none;
+}
+.auth-logo a:after{
+    font-family: Pixelion;
+    position: absolute;
+    content:"\f001";
+    left:0;
+    top:0;
+    font-size:60px;
+    line-height: 65px;
 }
 .auth-logo a:hover,
 .auth-logo a:focus{
     text-decoration: none;
 }
-.auth-logo a:after{
-    position: absolute;
-    content:"\f002";
-    left:0;
-    top:0;
-    font-size:40px;
-}
+
 .auth-logo .auth-logo-hint{
     position: absolute;
-    bottom:-5px;
+    bottom:5px;
     right:0;
     color:#999;
     font-size:11px;
@@ -131,24 +129,24 @@ a.ua{
 
 
 
-.panel{
+.card{
     margin-bottom: 30px;
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
 }
 
-.panel-default {
+.card-light {
     border: 1px solid #cdcdcd;
     position: relative;
 }
-.panel-default{
+.card-light{
     background: #f7f7f7;
 }
-.panel .panel-footer{
+.card .card-footer{
     border-top: 1px solid #fff;
 }
-.panel-default .panel-heading {
+.card .card-header {
     border-bottom: 1px solid #cdcdcd;
     box-shadow: none;
     -webkit-box-shadow: none;
@@ -156,30 +154,30 @@ a.ua{
     text-shadow: none;
     position: relative;
 }
-.panel-body .panel-group{
+.card-body .panel-group{
     margin-bottom: 0;
 }
-.panel-group .panel-default{
+.panel-group .card-header{
     border:0;
 }
-.panel-default .panel-heading{
+.card .card-header{
     margin-bottom: 0;
 
 }
-.panel-default .panel-heading .btn-xs{
+.card .card-header .btn-xs{
     margin: 7px 6px 0 0;
 }
-.panel-default .panel-heading .label{
+.card .card-header .label{
     display: inline-block;
     font-size: 12px;
     margin: 3px 6px 0 0;
 }
-.panel .panel-heading h3{
+.card .card-header h3{
     padding: 10px 15px;
 }
-.panel .panel-heading,
-ul.nav > li{
-    padding: 0;
+.card .card-header,
+.ui-tabs .ui-tabs-nav li{
+
     color: #636363;
     background: #f8f8f8;
     background: -moz-linear-gradient(top,  #f8f8f8 0%, #e8e8e8 100%);
@@ -190,13 +188,13 @@ ul.nav > li{
     background: linear-gradient(top,  #f8f8f8 0%,#e8e8e8 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8f8f8', endColorstr='#e8e8e8',GradientType=0 );
 }
-.panel .panel-heading .list-inline > li{
+.card .card-header .list-inline > li{
     padding-left: 0;
     padding-right: 0;
 }
 
-.panel-body2 .col-sm-3,
-.panel-body2 .col-sm-9{
+.card-body2 .col-sm-3,
+.card-body2 .col-sm-9{
     padding-left:0;
     padding-right:0;
 }
@@ -207,64 +205,64 @@ ul.nav > li{
 }
 
 
-ul.nav > li.active a{
+ul.nav-step > li.success a{
     color:green;
 
 }
-
-ul.nav > li > a{
+ul.nav-step > li > span{
+    color:#ADADAD;
+}
+ul.nav-step > li > a,
+ul.nav-step > li > span{
     padding:5px 25px 5px 40px;
     border-bottom:1px solid #cdcdcd;
     position:relative;
     display: block;
 }
-div.required label:after {
-    content: " *";
-    color: red;
-}
-ul.nav > li > a:after{
+
+ul.nav-step > li.success a:after,
+ul.nav-step > li > span:after{
     position: absolute;
-    font-family: Corner;
+    font-family: Pixelion;
     left:13px;
     top:5px;
     font-size:16px;
 }
-
-ul.nav > li.success a:after{
+ul.nav-step > li.active > a:after{
+    position: absolute;
+    font-family: Pixelion;
+    left:13px;
+    top:5px;
+    font-size:16px;
+}
+ul.nav-step > li.success a:after{
     content:"\f055";
 }
-ul.nav > li  a i{
-
-    position: absolute;
-    right:10px;
-    
-    top:5px;
-}
-ul.nav > li:nth-child(1) > a:after{
+ul.nav-step > li:nth-child(1) > span:after,
+ul.nav-step > li.active:nth-child(1) > a:after{
     content:"\f024";
 }
-ul.nav > li:nth-child(2) > a:after{
+ul.nav-step > li:nth-child(2) > span:after,
+ul.nav-step > li.active:nth-child(2) > a:after{
     content:"\f025";
 }
-
-ul.nav > li:nth-child(3) > a:after{
+ul.nav-step > li:nth-child(3) > span:after,
+ul.nav-step > li.active:nth-child(3) > a:after{
     content:"\f053";
 }
-
-ul.nav > li:nth-child(4) > a:after{
+ul.nav-step > li:nth-child(4) > span:after,
+ul.nav-step > li.active:nth-child(4) > a:after{
     content:"\f038";
 }
-
-ul.nav > li:nth-child(5) > a:after{
+ul.nav-step > li:nth-child(5) > span:after,
+ul.nav-step > li.active:nth-child(5) > a:after{
     content:"\f011";
 }
-ul.nav > li:nth-child(6) > a:after{
-    content:"\f011";
+ul.nav-step > li:nth-child(6) > span:after{
+    content:"\f055";
 }
 
-ul.nav > li > a[href="#"]{
-    color:#c0c0c0;
-}
+
 
 .alert-danger,
 .alert-success,
@@ -277,11 +275,15 @@ ul.nav > li > a[href="#"]{
     padding: 15px 15px 15px 45px;
     position: relative;
 }
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
 .alert-info:before,
 .alert-success:before,
 .alert-danger:before,
 .alert-warning:before{
-    font-family: Corner;
+    font-family: Pixelion;
     font-style: normal;
     line-height: 1;
     left:13px;

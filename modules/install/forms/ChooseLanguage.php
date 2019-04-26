@@ -1,15 +1,16 @@
 <?php
 
 namespace app\modules\install\forms;
+use panix\engine\base\Model;
 use Yii;
-class ChooseLanguage extends \yii\base\Model {
+class ChooseLanguage extends Model {
 
     public $lang;
 
     public function rules() {
-        return array(
-            array('lang', 'required'),
-        );
+        return [
+            ['lang', 'required'],
+        ];
     }
 
     public function attributeLabels() {

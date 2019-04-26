@@ -1,10 +1,10 @@
-Лицензия CORNER CMS
+Лицензия PIXELION CMS
 ===========
 
-Система управления контентом CORNER является свободным программным обеспечением. Он выпущен в соответствии с условиями
+Система управления контентом PIXELION является свободным программным обеспечением. Он выпущен в соответствии с условиями
 следующие BSD License.
 
-Copyright © 2014 by CORNER CMS (http://www.corner-cms.com)
+Copyright © 2014 by PIXELION CMS (https://pixelion.com.ua)
 Все права защищены.
 
 Redistribution and use in source and binary forms, with or without
