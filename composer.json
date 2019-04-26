@@ -9,7 +9,7 @@
         "issues": "https://github.com/andrtechno/app/issues?state=open",
         "source": "https://github.com/andrtechno/app"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.16",
@@ -20,8 +20,8 @@
         "panix/mod-stats": "dev-master",
         "panix/mod-delivery": "dev-master",
         "panix/mod-forum": "dev-master",
-        "phpoffice/phppresentation": "~0.9.0",
-        "phpoffice/phpword": "~0.13.0",
+        "phpoffice/phppresentation": "^0.9.0",
+        "phpoffice/phpword": "^0.13.0",
         "panix/wgt-telinput": "dev-master",
         "panix/mod-plugins": "dev-master",
         "panix/mod-rbac": "dev-master",
