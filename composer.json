@@ -29,7 +29,7 @@
         "panix/wgt-bootstrap-select": "dev-master",
         "panix/mod-sendpulse": "dev-master",
         "panix/mod-compare": "dev-master",
-        "yiisoft/yii2-swiftmailer": "^2.1.2",
+        "yiisoft/yii2-swiftmailer": "~2.1.0",
         "panix/wgt-inputmask": "dev-master"
     },
     "require-dev": {
