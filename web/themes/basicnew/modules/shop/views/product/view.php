@@ -22,52 +22,6 @@ $this->registerJs("
             return false;
         });
 ");
-/*
-$this->widget('ext.fancybox.Fancybox', array(
-    'target' => '[data-fancybox=gallery]',
-
-    'config' => array(
-        'padding' => 0,
-        'transitionIn' => 'none',
-        'transitionOut' => 'none',
-        'titlePosition' => 'over',
-        'thumbs' => array(
-            'autoStart' => true
-        ),
-        'buttons' => array(
-            //"zoom",
-            "share",
-            "slideShow",
-            //"fullScreen",
-            //"download",
-            "thumbs",
-            "close"
-        ),
-        'infobar' => false,
-        'preventCaptionOverlap' => true,
-        'protect' => true,
-    )
-));*/
-?>
-<?php
-/*Yii::app()->clientScript->registerScript('product-gallery', "
-    $(function () {
-        $('.thumb').click(function () {
-            $('.thumb').removeClass('active');
-            $(this).addClass('active');
-            var src_bg = $(this).attr('href');
-            var src_middle = $(this).attr('data-img');
-
-            //set params main image
-            $('#main-image').attr('href', src_bg);
-            $('#main-image img').attr('src', src_middle);
-
-            return false;
-        });
-    });
-", CClientScript::POS_END);*/
-
-
 echo \panix\ext\fancybox\Fancybox::widget([
     'target' => 'a[data-fancybox="gallery"]',
     'options' => [
