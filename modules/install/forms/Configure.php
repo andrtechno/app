@@ -35,18 +35,21 @@ class Configure extends \yii\base\Model {
         if ($this->hasErrors())
             return false;
 
-      //  $config = require(Yii::getAlias('@webroot/config') . DIRECTORY_SEPARATOR . 'db.php');
-       // $db = $config;
 
-       /* $conn = new Connection([
+        $config = require(Yii::getAlias('@app/config') . DIRECTORY_SEPARATOR . 'db.php');
+        $db = $config;
+
+
+        Yii::$app->set('db', [
+            'class' => 'panix\engine\db\Connection',
             'dsn' => $db['dsn'],
             'username' => $db['username'],
             'password' => $db['password'],
             'charset' => $db['charset'],
             'tablePrefix' => $db['tablePrefix']
-        ]);*/
-        
-                $settings = [];
+        ]);
+
+        $settings = [];
         // Update app settings
         $settings['app'] = [
             'site_name' => $this->site_name,

@@ -55,6 +55,10 @@ $config = [
             'enableAutoLogin' => true,
             // 'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
+        'assetManager' => [
+            'forceCopy' => YII_DEBUG,
+            'appendTimestamp' => true
+        ],
         'i18n' => [
             'translations' => [
                 'app*' => [
@@ -87,7 +91,7 @@ $config = [
            'errorAction' => 'install/error',
             // 'errorView' => '@webroot/themes/basic/views/layouts/error.php'
         ],
-        'settings' => ['class' => 'panix\engine\components\Settings'],
+        //'settings' => ['class' => 'panix\engine\components\Settings'],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -173,7 +177,7 @@ $config = [
     ],
 ];
 
-//use yii\web\Application;
+use yii\web\Application;
 
 
 $app = new WebApplication($config);

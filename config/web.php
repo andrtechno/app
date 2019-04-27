@@ -34,9 +34,9 @@ $config = [
         ],
         'rbac' => [
             'class' => 'panix\mod\rbac\Module',
-            'as access' => [
-                'class' => panix\mod\rbac\filters\AccessControl::class
-            ],
+            //'as access' => [
+            //    'class' => panix\mod\rbac\filters\AccessControl::class
+            //],
         ],
         'admin' => ['class' => 'panix\mod\admin\Module'],
 
@@ -169,7 +169,7 @@ $config = [
         'class' => panix\mod\rbac\filters\AccessControl::class,
         'allowActions' => [
             '/*',
-            'admin/*',
+            //'admin/*',
             // The actions listed here will be allowed to everyone including guests.
             // So, 'admin/*' should not appear here in the production, of course.
             // But in the earlier stages of your development, you may probably want to

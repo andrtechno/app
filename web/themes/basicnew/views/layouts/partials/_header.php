@@ -109,11 +109,11 @@ $this->registerJs("
 
                         <?php if (Yii::$app->user->isGuest) { ?>
                             <li class="nav-item">
-                                <?= Html::a(Html::icon('icon-user') . ' ' . Yii::t('app', 'LOG_IN'), ['/users/login'], ['class' => 'nav-link']); ?>
+                                <?= Html::a(Html::icon('icon-user') . ' ' . Yii::t('app', 'LOG_IN'), ['/user/login'], ['class' => 'nav-link']); ?>
 
                             </li>
                             <li class="nav-item">
-                                <?= Html::a(Yii::t('user/default', 'BTN_REGISTER'), array('/users/register'), ['class' => 'nav-link']); ?>
+                                <?= Html::a(Yii::t('user/default', 'BTN_REGISTER'), ['/user/register'], ['class' => 'nav-link']); ?>
                             </li>
                         <?php } else { ?>
                             <?php
@@ -126,7 +126,7 @@ $this->registerJs("
                                    aria-haspopup="true" aria-expanded="false"><?= Yii::$app->user->username; ?>
                                 </a>
                                 <div class="dropdown-menu">
-                                    <?= Html::a(Html::icon('icon-user') . ' ' . Yii::t('app', 'PROFILE'), ['/users/profile'], array('class' => 'dropdown-item')); ?>
+                                    <?= Html::a(Html::icon('icon-user') . ' ' . Yii::t('app', 'PROFILE'), ['/user/profile'], ['class' => 'dropdown-item']); ?>
                                     <?= Html::a(Html::icon('icon-shopcart') . ' ' . Yii::t('app', 'MY_ORDERS') . ' <span class="badge badge-success">'.$userOrderCount.'</span>', ['/cart/orders'], ['class' => 'dropdown-item']); ?>
 
                                     <?php

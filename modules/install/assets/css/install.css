@@ -22,6 +22,10 @@ body {
     color: #5f5f5f;
     position: relative;
 }
+.license-box{
+max-height: 500px;
+    overflow-x: hidden;
+}
 /**NO BORDER RADIUS**/
 .no-radius .tab-container .ui-tabs-nav,
 .no-radius .tab-container .ui-tabs-nav li,

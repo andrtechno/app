@@ -16,15 +16,10 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
 <div class="row no-gutters">
     <div class="col-sm-3">
         <?php //echo WizardMenu::widget(); ?>
-        <?php
-
-        echo $this->context->renderMenu();
-        ?>
+        <?= $this->context->renderMenu(); ?>
     </div>
     <div class="col-sm-9">
         <div class="form-block clearfix">
-
-
             <?php
             $form = ActiveForm::begin([
                 //  'id' => 'form',
@@ -40,23 +35,15 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
                 ],
             ]);
             ?>
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <div class=" license-box">
-
-                        <?php
-                        $lang = strtoupper(Yii::$app->language);
-                        echo Markdown::process(file_get_contents(Yii::getAlias('@app/modules/install') . DIRECTORY_SEPARATOR . "LICENSE_{$lang}.md"), 'gfm');
-                        ?>
-                    </div>
-                </div>
+            <div class="license-box">
+                <?php
+                $lang = strtoupper(Yii::$app->language);
+                echo Markdown::process(file_get_contents(Yii::getAlias('@app/modules/install') . DIRECTORY_SEPARATOR . "LICENSE_{$lang}.md"), 'gfm');
+                ?>
             </div>
-
             <?=
             $form->field($model, 'license_key')->hint(Yii::t('install/default', 'LICENSE_CHECK_INFO'));
             ?>
-
-
             <div class="form-group text-center">
                 <?php
 
@@ -65,9 +52,7 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
                 <?= Html::a(Yii::t('install/default', 'BACK'), [Yii::$app->controller->id . '/index', 'step' => 'chooseLanguage'], ['class' => 'btn btn-link']) ?>
                 <?= Html::submitButton(Yii::t('install/default', 'NEXT'), ['class' => 'btn btn-success']) ?>
             </div>
-
             <?php ActiveForm::end(); ?>
         </div>
     </div>
-
 </div>

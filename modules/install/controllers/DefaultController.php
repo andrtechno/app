@@ -6,8 +6,9 @@ use panix\engine\controllers\WebController;
 use Yii;
 use panix\engine\behaviors\wizard\WizardBehavior;
 use panix\engine\behaviors\wizard\WizardEvent;
+use yii\web\Controller;
 
-class DefaultController extends WebController
+class DefaultController extends Controller
 {
 
     public $layout = '@app/modules/install/views/layouts/install';
