@@ -1,42 +1,31 @@
 <?php
 
-use yii\helpers\Html;
 use panix\engine\bootstrap\Alert;
 
-$this->title = $name;
+/**
+ * @var $exception \yii\web\HttpException
+ * @var $handler \yii\web\ErrorHandler
+ */
+
 ?>
-
+<div class="heading-gradient text-center">
     <h1><?= $exception->statusCode; ?></h1>
-
+</div>
 <?php
 echo Alert::widget([
     'options' => ['class' => 'alert-danger'],
     'body' => $exception->getMessage(),
     'closeButton' => false
 ]);
+
 ?>
-<?php
-if(YII_DEBUG){
-
-foreach ($exception->getTrace() as $trace) { ?>
-    <?php
-    Alert::begin([
-        'options' => [
-            'class' => 'alert-info',
-        ],
-        'closeButton' => false
-    ]);
-    ?>
-
-    <div class="">Файл: <?= $trace['file'] ?></div>
-    <div class="">Строка: <?= $trace['line'] ?></div>
-    <div class="">Функция: <?= $trace['function'] ?></div>
-    <div class="">class: <?= $trace['class'] ?></div>
-    <?php foreach ($trace['args'] as $args) { ?>
-        <?php //print_r($args); ?>
+<?php if (YII_DEBUG) { ?>
+    <h2 class="text-center">Trace</h2>
+    <?php foreach ($exception->getTrace() as $index => $trace) { ?>
+        <div style="word-break: break-all;">
+            <div><strong><?= $trace['file']; ?></strong> (<?= $trace['line'] ?>)</div>
+            <div class="help-block text-muted"><?= $trace['class'] ?><?= $trace['type'] ?><?= $trace['function'] ?></div>
+            <hr/>
+        </div>
     <?php } ?>
-
-    <?php Alert::end(); ?>
-
-<?php }
-}
+<?php } ?>

@@ -297,6 +297,14 @@ $config = [
             'messageConfig' => [
                 //    'from' => ['dev@pixelion.com.ua' => 'Admin'], // this is needed for sending emails
                 'charset' => 'UTF-8',
+            ],
+            'view'=>[
+                'renderers' => [
+                    'tpl' => [
+                        'class' => 'yii\smarty\ViewRenderer',
+                        //'cachePath' => '@runtime/Smarty/cache',
+                    ],
+                ],
             ]
         ],
         'log' => [

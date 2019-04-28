@@ -1,7 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-
+/**
+ * @var $exception \yii\web\HttpException
+ * @var $handler \yii\web\ErrorHandler
+ */
 ?>
 
 <div class="row">
@@ -16,9 +19,11 @@ use yii\helpers\Html;
     </div>
     <div class="col-12">
         <?php foreach ($exception->getTrace() as $trace) { ?>
-            <div class=""><strong><?= $trace['file'] ?></strong>(<?= $trace['line'] ?>)</div>
-            <div class=""><?= $trace['class'] ?>::<?= $trace['function'] ?></div>
-            <hr/>
+            <div style="word-break: break-all;">
+                <div><strong><?= $trace['file'] ?></strong>(<?= $trace['line'] ?>)</div>
+                <div class="help-block text-muted"><?= $trace['class'] ?><?= $trace['type'] ?><?= $trace['function'] ?></div>
+                <hr/>
+            </div>
         <?php } ?>
     </div>
 </div>
