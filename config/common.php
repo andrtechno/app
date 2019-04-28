@@ -276,36 +276,8 @@ $config = [
             'enableAutoLogin' => true,
             // 'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
-       // 'errorHandler' => [
-            //'class'=>'panix\engine\base\ErrorHandler'
-           // 'errorAction' => 'backend/error',
-            // 'errorView' => '@webroot/themes/basic/views/layouts/error.php'
-      //  ],
         'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            //'useFileTransport' => true,
-            //'layoutsPath' => '@web/mail/layouts',
-            //'viewsPath' => '@web/mail/views',
-            'transport' => [
-                'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',
-                'username' => 'andrew.panix',
-                'password' => '47228960panix',
-                'port' => '465',
-                'encryption' => 'ssl',
-            ],
-            'messageConfig' => [
-                //    'from' => ['dev@pixelion.com.ua' => 'Admin'], // this is needed for sending emails
-                'charset' => 'UTF-8',
-            ],
-            'view'=>[
-                'renderers' => [
-                    'tpl' => [
-                        'class' => 'yii\smarty\ViewRenderer',
-                        //'cachePath' => '@runtime/Smarty/cache',
-                    ],
-                ],
-            ]
+            'class' => 'panix\engine\Mailer',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

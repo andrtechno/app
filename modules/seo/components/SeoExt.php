@@ -14,7 +14,7 @@ class SeoExt extends \yii\base\Component
 {
     /* массив, который будет наполнятся тэгами, что бы исключать уже найденые теги в ссылках выше по иерархии */
 
-    public $exist = array();
+    public $exist = [];
     public $h1;
     public $text;
 
@@ -85,9 +85,7 @@ class SeoExt extends \yii\base\Component
         }
 
         if ($titleFlag) {
-            if (isset(Yii::$app->view->title)) {
-                $this->printMeta('title', Html::encode(Yii::$app->view->title));
-            }
+            $this->printMeta('title', Html::encode(Yii::$app->view->title));
         }
     }
 
@@ -110,12 +108,12 @@ class SeoExt extends \yii\base\Component
                     }
                 }
             }
-            Yii::$app->view->title = $url->title . 'zzz';
+            Yii::$app->view->title = $url->title;
             //$this->printMeta('title', Yii::$app->view->title);
         } else {
-            if (!Yii::$app->view->title) {
-                Yii::$app->view->title = Yii::$app->settings->get('app', 'site_name');
-            }
+           // if (!Yii::$app->view->title) {
+           //     Yii::$app->view->title = Yii::$app->settings->get('app', 'site_name');
+           // }
         }
         $this->printMeta('title', Yii::$app->view->title);
         if ($url->description) {
@@ -144,7 +142,7 @@ class SeoExt extends \yii\base\Component
 
         $content = strip_tags($content);
         if ($name == "title") {
-            echo "<title>{$content} </title>\n";
+            echo "<title>{$content}</title>\n";
         } else {
             Yii::$app->view->registerMetaTag(['name' => $name, 'content' => $content]);
             // echo "<meta name=\"{$name}\" content=\"{$content}\" />\n";
