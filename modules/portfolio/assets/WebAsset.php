@@ -18,8 +18,8 @@ class WebAsset extends \yii\web\AssetBundle {
         'css/ecommerce.css',
     ];
     public $depends = [
-        'panix\mod\cart\assets\CartAsset',
-        'panix\mod\wishlist\assets\WishlistAsset',
+        'panix\mod\cart\CartAsset',
+        'panix\mod\wishlist\WishlistAsset',
     ];
 
 }

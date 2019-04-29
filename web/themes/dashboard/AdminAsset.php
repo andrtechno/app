@@ -1,6 +1,6 @@
 <?php
 
-namespace app\web\themes\dashboard\assets;
+namespace app\web\themes\dashboard;
 
 use panix\engine\web\AssetBundle;
 
@@ -28,12 +28,12 @@ class AdminAsset extends AssetBundle
     public $depends = [
         'panix\engine\assets\CommonAsset',
         'panix\engine\assets\ClipboardAsset',
-        'app\web\themes\dashboard\assets\AdminCountersAsset',
+        'app\web\themes\dashboard\AdminCountersAsset',
     ];
 
     public function init()
     {
-        $this->sourcePath = \Yii::$app->view->theme->basePath . '/assets';
+        $this->sourcePath = __DIR__ . '/assets';
         parent::init();
     }
 }

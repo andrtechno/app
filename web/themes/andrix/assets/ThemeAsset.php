@@ -42,7 +42,7 @@ class ThemeAsset extends AssetBundle {
     public $depends = [
         'panix\engine\assets\CommonAsset',
         'panix\mod\shop\assets\WebAsset',
-        'panix\mod\comments\assets\WebAsset',
+        'panix\mod\comments\WebAsset',
     ];
 
 }

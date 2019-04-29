@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\seo\assets;
+namespace app\modules\seo;
 
 class SeoAsset extends \yii\web\AssetBundle {
 
     public $jsOptions = array(
         'position' => \yii\web\View::POS_HEAD
     );
-    public $sourcePath = '@app/modules/seo/assets';
+    public $sourcePath = __DIR__.'/assets';
     public $js = [
         'js/seo.js',
     ];

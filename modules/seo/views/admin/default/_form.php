@@ -5,7 +5,7 @@ use yii\helpers\ArrayHelper;
 use panix\ext\taginput\TagInput;
 use panix\ext\tinymce\TinyMce;
 
-\app\modules\seo\assets\SeoAsset::register($this);
+\app\modules\seo\SeoAsset::register($this);
 
 ?>
 

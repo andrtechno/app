@@ -3,7 +3,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use panix\mod\shop\widgets\categories\CategoriesWidget;
-use panix\mod\shop\widgets\filters\FiltersWidget;
+use panix\mod\shop\widgets\filtersnew\FiltersWidget;
 
 ?>
 

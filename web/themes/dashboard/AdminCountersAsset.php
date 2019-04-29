@@ -1,6 +1,6 @@
 <?php
 
-namespace app\web\themes\dashboard\assets;
+namespace app\web\themes\dashboard;
 
 use panix\engine\web\AssetBundle;
 
