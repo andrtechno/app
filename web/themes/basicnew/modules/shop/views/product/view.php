@@ -30,7 +30,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
         }')
     ]
 ]);
-
+echo Html::a('back',\yii\helpers\Url::previous());
 ?>
 
 <div class="container">

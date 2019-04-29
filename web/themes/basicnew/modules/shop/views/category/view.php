@@ -22,6 +22,7 @@ use panix\mod\shop\widgets\filtersnew\FiltersWidget;
         echo FiltersWidget::widget([
             'model' => $this->context->dataModel,
             'attributes' => $this->context->eavAttributes,
+
         ]);
 
         ?>
