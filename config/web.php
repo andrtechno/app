@@ -115,7 +115,7 @@ $config = [
             'mode' => Pdf::MODE_UTF8,
         ],
         'view' => [
-            'class' => panix\mod\plugins\components\View::class,
+            'class' => \panix\mod\plugins\components\View::class,
             'as Layout' => [
                 'class' => \panix\engine\behaviors\LayoutBehavior::class,
             ],
