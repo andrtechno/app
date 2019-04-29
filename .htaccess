@@ -13,6 +13,9 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 #RewriteCond %{REQUEST_URI} ^.*$
 
+
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+
 RewriteCond %{REQUEST_URI} !^/(assets|install|uploads|api|info|robots\.txt|mails|sp-push-manifest\.json|sp-push-worker-fb\.js).*$
 
 

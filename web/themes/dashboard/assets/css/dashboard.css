@@ -949,6 +949,11 @@
   right: 0;
 }
 
+code,
+.form-text {
+  font-size: inherit;
+}
+
 /*
 form .form-group input.form-control,
 form .form-group select.form-control,
