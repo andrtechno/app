@@ -23,7 +23,6 @@
         "panix/wgt-telinput": "dev-master",
         "panix/mod-plugins": "dev-master",
         "panix/mod-rbac": "dev-master",
-        "linslin/yii2-curl": "dev-master",
         "panix/wgt-bootstrap-select": "dev-master",
         "panix/mod-sendpulse": "dev-master",
         "panix/mod-compare": "dev-master",
