@@ -21,6 +21,10 @@ $(document).ready(function () {
 
 
 $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : false;
+
+//CREATE user to role
+//Yii::$app->getAuthManager()->assign(Yii::$app->getAuthManager()->getRole('admin'),6);
+
 ?>
 <?php $this->beginPage(); ?>
 <!DOCTYPE html>
