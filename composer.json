@@ -28,7 +28,8 @@
         "panix/mod-compare": "dev-master",
         "panix/wgt-inputmask": "dev-master",
         "panix/wgt-bootstrap-select": "dev-master",
-        "panix/mod-office-presentation": "dev-master"
+        "panix/mod-office-presentation": "dev-master",
+        "yiisoft/yii2-queue": "^2.0@dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2",
