@@ -185,7 +185,6 @@ $config = [
             'class' => 'panix\engine\components\ConsoleRunner',
             'file' => '@my/path/to/yii' // or an absolute path to console file
         ],
-        'seo' => ['class' => 'panix\mod\seo\components\SeoExt'],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'pdf' => [
             'class' => Pdf::class,
