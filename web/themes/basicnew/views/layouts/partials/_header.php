@@ -132,11 +132,11 @@ $this->registerJs("
                                     <?php
                                     if (Yii::$app->user->can('admin')) {
                                         echo '<div class="dropdown-divider"></div>';
-                                        echo Html::a(Html::icon('icon-tools') . ' ' . Yii::t('app', 'ADMIN_PANEL'), ['/admin'], ['class' => 'dropdown-item']);
+                                        echo Html::a(Html::icon('icon-tools') . ' ' . Yii::t('admin/default', 'MODULE_NAME'), ['/admin'], ['class' => 'dropdown-item']);
                                         echo '<div class="dropdown-divider"></div>';
                                     }
                                     ?>
-                                    <?= Html::a(Html::icon('icon-logout') . ' ' . Yii::t('app', 'LOGOUT'), ['/user/logout'], ['class' => 'dropdown-item']); ?>
+                                    <?= Html::a(Html::icon('icon-logout') . ' ' . Yii::t('user/default', 'LOGOUT'), ['/user/logout'], ['class' => 'dropdown-item']); ?>
 
                                 </div>
                             </li>

@@ -134,26 +134,7 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
-        'authClientCollection' => [
-            'class' => 'yii\authclient\Collection',
-            'clients' => [
-                'google' => [
-                    'class' => 'yii\authclient\clients\Google',
-                    'clientId' => '323564730067-0guk795ucs29o9l86db8tocj8sijn130.apps.googleusercontent.com',
-                    'clientSecret' => 'cQp5F8dX5ww0uLnAbAMt9BFu',
-                ],
-                'facebook' => [
-                    'class' => 'yii\authclient\clients\Facebook',
-                    'clientId' => 'facebook_client_id',
-                    'clientSecret' => 'facebook_client_secret',
-                ],
-                'vkontakte' => [
-                    'class' => 'yii\authclient\clients\VKontakte',
-                    'clientId' => '4375462',
-                    'clientSecret' => '0Rr2U4iCdisssqDor1tY',
-                ],
-            ],
-        ],
+
         'errorHandler' => [
             //'class'=>'panix\engine\base\ErrorHandler'
             //'errorAction' => 'site/error',
