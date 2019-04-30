@@ -1,7 +1,5 @@
 <?php
 
-namespace console\migrations;
-
 /**
  * Generation migrate by PIXELION CMS
  *
