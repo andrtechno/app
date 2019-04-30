@@ -10,6 +10,7 @@
  */
 
 use panix\engine\db\Migration;
+use panix\mod\admin\models\SettingsForm;
 
 class m171205_114749_settings extends Migration
 {
@@ -26,17 +27,12 @@ class m171205_114749_settings extends Migration
         ]);
         $this->createIndex('param', $this->tableName, 'param');
         $this->createIndex('category', $this->tableName, 'category');
+        $settings = [];
+        foreach (SettingsForm::defaultSettings() as $key => $value) {
+            $settings[] = [SettingsForm::$category, $key, $value];
+        }
 
-
-
-        $this->batchInsert($this->tableName, ['category', 'param', 'value'], [
-            ['app', 'email', 'dev@pixelion.com.ua'],
-            ['app', 'pagenum', 20],
-            ['app', 'sitename', 'Pixelion'],
-            ['app', 'theme', 'basic'],
-            ['app', 'backup_limit', 10],
-
-        ]);
+        $this->batchInsert($this->tableName, ['category', 'param', 'value'], $settings);
 
     }
 
