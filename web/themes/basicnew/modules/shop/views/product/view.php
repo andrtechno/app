@@ -94,7 +94,7 @@ echo Html::a('back',\yii\helpers\Url::previous());
         <div class='col-sm-6 col-md-7 product-info-block'>
             <div class="product-info">
                 <h1 class="name heading-gradient">
-                    <?= Html::encode((Yii::$app->seo->h1) ? Yii::$app->seo->h1 : $model->name); ?>
+                    <?= Html::encode(($this->h1) ? $this->h1 : $model->name); ?>
                 </h1>
                 <?php
 
