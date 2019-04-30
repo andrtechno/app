@@ -22,7 +22,7 @@ class m171205_122127_session extends Migration
             'user_id' => $this->integer()->null()->unsigned(),
             'expire' => $this->integer()->notNull(),
             'expire_start' => $this->integer()->notNull(),
-            'data' => 'BLOB',
+            'data' => 'LONGBLOB',
             'ip' => $this->string(100),
             'user_type' => $this->string(50)->notNull(),
             'user_name' => $this->string(100)->notNull()
