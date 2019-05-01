@@ -18,14 +18,16 @@ class m171205_114749_settings extends Migration
 
     public function up()
     {
-        $this->createTable(SettingsForm::$tableName, [
-            'id' => $this->primaryKey(),
+        $this->createTable(Settings::$tableName, [
+            'id' => $this->primaryKey()->unsigned(),
             'category' => $this->string(255)->notNull(),
-            'param' => $this->string(5),
+            'param' => $this->string(255),
             'value' => $this->text(),
         ]);
-        $this->createIndex('param', $this->tableName, 'param');
-        $this->createIndex('category', $this->tableName, 'category');
+
+        $this->createIndex('param', Settings::$tableName, 'param');
+        $this->createIndex('category', Settings::$tableName, 'category');
+
         $settings = [];
         foreach (SettingsForm::defaultSettings() as $key => $value) {
             $settings[] = [SettingsForm::$category, $key, $value];
