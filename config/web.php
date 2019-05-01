@@ -39,7 +39,7 @@ $config = [
             //],
         ],
         'admin' => ['class' => 'panix\mod\admin\Module'],
-
+        'docs' => ['class' => 'panix\mod\docs\Module'],
         'presentation' => ['class' => 'panix\mod\presentation\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         'compare' => ['class' => 'panix\mod\compare\Module'],
