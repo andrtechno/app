@@ -11,6 +11,7 @@
 
 use panix\engine\db\Migration;
 use panix\mod\admin\models\SettingsForm;
+use panix\engine\components\Settings;
 
 class m171205_114749_settings extends Migration
 {
@@ -30,7 +31,7 @@ class m171205_114749_settings extends Migration
             $settings[] = [SettingsForm::$category, $key, $value];
         }
 
-        $this->batchInsert(SettingsForm::$tableName, ['category', 'param', 'value'], $settings);
+        $this->batchInsert(Settings::$tableName, ['category', 'param', 'value'], $settings);
 
     }
 
