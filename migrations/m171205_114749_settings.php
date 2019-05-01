@@ -15,11 +15,9 @@ use panix\mod\admin\models\SettingsForm;
 class m171205_114749_settings extends Migration
 {
 
-    public $tableName = '{{%settings}}';
-
     public function up()
     {
-        $this->createTable($this->tableName, [
+        $this->createTable(SettingsForm::$tableName, [
             'id' => $this->primaryKey(),
             'category' => $this->string(255)->notNull(),
             'param' => $this->string(5),
@@ -32,13 +30,13 @@ class m171205_114749_settings extends Migration
             $settings[] = [SettingsForm::$category, $key, $value];
         }
 
-        $this->batchInsert($this->tableName, ['category', 'param', 'value'], $settings);
+        $this->batchInsert(SettingsForm::$tableName, ['category', 'param', 'value'], $settings);
 
     }
 
     public function down()
     {
-        $this->dropTable($this->tableName);
+        $this->dropTable(SettingsForm::$tableName);
     }
 
 }
