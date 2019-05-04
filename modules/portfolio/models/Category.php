@@ -39,20 +39,20 @@ class Category extends \panix\engine\db\ActiveRecord {
     public function behaviors() {
         return [
             'TranslateBehavior' => [ // name it the way you want
-                'class' => TranslateBehavior::className(),
+                'class' => TranslateBehavior::class,
                 'translationAttributes' => [
                     'name',
                     'description'
                 ]
             ],
             'MenuArrayBehavior' => array(
-                'class' => MenuArrayBehavior::className(),
+                'class' => MenuArrayBehavior::class,
                 'labelAttr' => 'name',
                 // 'countProduct'=>false,
                 'urlExpression' => '["/shop/category/view", "seo_alias"=>$model->full_path]',
             ),
             'tree' => [
-                'class' => NestedSetsBehavior::className(),
+                'class' => NestedSetsBehavior::class,
             ],
         ];
     }
@@ -64,18 +64,18 @@ class Category extends \panix\engine\db\ActiveRecord {
     }
 
     public function getCountProducts() {
-        return $this->hasMany(ProductCategoryRef::className(), ['category' => 'id'])
+        return $this->hasMany(ProductCategoryRef::class, ['category' => 'id'])
                         //->where('switch=1')
                         ->count();
     }
 
     public function getProducts() {
-        return $this->hasMany(ShopProduct::className(), ['category' => 'id'])->count();
+        return $this->hasMany(Product::class, ['category' => 'id'])->count();
     }
 
     //'products' => array(self::MANY_MANY, 'ShopProduct', Yii::app()->db->tablePrefix . 'shop_product_category_ref(product, category)'), //array('product' => 'category')
     public function getTranslations() {
-        return $this->hasMany(CategoryTranslate::className(), ['object_id' => 'id']);
+        return $this->hasMany(CategoryTranslate::class, ['object_id' => 'id']);
     }
 
     public static function flatTree() {

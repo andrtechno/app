@@ -3,7 +3,6 @@ AddDefaultCharset UTF-8
 #Options FollowSymlinks
 
 
-
 Options +FollowSymLinks
 IndexIgnore */*
 
