@@ -30,9 +30,13 @@ echo \panix\ext\fancybox\Fancybox::widget([
         }')
     ]
 ]);
-echo Html::a('back',\yii\helpers\Url::previous());
-?>
+//echo Html::a('back',\yii\helpers\Url::previous());
 
+$test = $model->getEavAttribute('material-podkladki');
+print_r($test);
+
+?>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-5">

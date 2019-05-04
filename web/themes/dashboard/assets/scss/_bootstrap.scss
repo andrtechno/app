@@ -60,6 +60,10 @@ $colors: (
   }
 }
 
+.badge {
+  font-weight: normal;
+}
+
 @each $name, $color in $colors {
   .badge-#{$name} {
     background-color: $color;
