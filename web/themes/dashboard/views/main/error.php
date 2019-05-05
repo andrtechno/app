@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 /**
  * @var $exception \yii\web\HttpException
