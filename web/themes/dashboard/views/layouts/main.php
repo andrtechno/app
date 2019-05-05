@@ -149,48 +149,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                             <?php } ?>
 
 
-                            <?php
-                            /*
-                              if (extension_loaded('intl')) {
-                              echo "intl true";
-                              } else {
-                              echo "intl false";
-                              } */
-                            /*echo \panix\engine\jui\DatePicker::widget([
-                                'name' => 'from_date',
-                                'value' => 'dsa',
-                                //'language' => 'ru',
-                                //'dateFormat' => 'yyyy-MM-dd',
-                            ]);*/
-                            ?>
-                            <div class="spinner-my">
-                                <?php
-                                /* echo \yii\jui\Spinner::widget([
-                                     'name' => 'asddsa',
-                                     'attribute' => 'country',
-                                     'clientOptions' => ['step' => 2],
-                                     'options' => ['class' => 'test']
-                                 ]);*/
-                                ?>
-                            </div>
 
-                            <?php
-                            /* echo \yii\jui\Spinner::widget([
-                                 'name' => 'asddsa',
-                                 'attribute' => 'country',
-                                 'clientOptions' => ['step' => 2],
-                                 'options' => ['class' => 'test']
-                             ]);*/
-                            ?>
-
-                            <?php
-                            /* echo \yii\jui\Slider::widget([
-                                 'clientOptions' => [
-                                     'min' => 1,
-                                     'max' => 10,
-                                 ],
-                             ]);*/
-                            ?>
 
                             <?php
                             /*\yii\jui\Dialog::begin([
@@ -233,7 +192,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
 
                             ?>
-                            <br><br>
+
                             <?= $content ?>
                         </div>
                     </div>
@@ -241,7 +200,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
             </div>
 
-            <?php echo \panix\mod\admin\blocks\hosting\Hosting::widget(); ?>
+
         </div>
         <footer class="footer">
             <p class="col-md-12 text-center">
