@@ -515,6 +515,10 @@
   color: #dae0e5;
 }
 
+.badge {
+  font-weight: normal;
+}
+
 .badge-success {
   background-color: #35cc62;
 }

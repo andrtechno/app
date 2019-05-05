@@ -29,7 +29,7 @@ return [
         //['pattern' => 'admin/<module:\w+>', 'route' => '<module>/admin/default/index'],
         //['pattern' => 'admin/<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/index'],
         //['pattern' => 'admin/<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>/<page:\d+>', 'route' => '<module>/admin/<controller>/<action>'],
-
+        'http://test.yii2.pixelion.com.ua/posts' => 'admin/admin/default/index',
         ['pattern' => 'admin', 'route' => 'admin/admin/default/index'],
         ['pattern' => 'admin/auth', 'route' => 'admin/auth/index'],
         ['pattern' => 'admin/app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
