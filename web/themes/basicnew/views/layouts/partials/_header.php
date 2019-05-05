@@ -45,6 +45,12 @@ $this->registerJs("
             <nav class="navbar-expand">
                 <div class="navbar-collapse">
                     <ul class="nav">
+                        <li class="nav-item">
+                            <?= Html::a(Yii::t('compare/default', 'Доставка'), ['/compare'], ['class' => 'nav-link']) ?>
+                        </li>
+                        <li class="nav-item">
+                            <?= Html::a(Yii::t('compare/default', 'Возврат'), ['/compare'], ['class' => 'nav-link']) ?>
+                        </li>
                         <?php if (Yii::$app->hasModule('compare')) {
                             $count = Html::tag('span', \panix\mod\compare\components\CompareProducts::countSession(), ['class' => 'badge badge-secondary', 'id' => 'countCompare']);
                             ?>
@@ -70,7 +76,7 @@ $this->registerJs("
                                    data-toggle="dropdown"
                                    aria-haspopup="true"
                                    aria-expanded="false">
-                                    Язык: <b><?= Yii::$app->languageManager->active->name ?></b></a>
+                                    <span class="d-none d-md-inline">Язык</span> <strong><?= Html::img('/uploads/language/' . Yii::$app->languageManager->active->flag_name, ['alt' => Yii::$app->languageManager->active->name]) ?></strong></a>
                                 <div class="dropdown-menu">
                                     <?php
 
@@ -92,7 +98,7 @@ $this->registerJs("
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
-                                Валюта: <b><?= Yii::$app->currency->active->iso ?></b>
+                                <span class="d-none d-md-inline">Валюта</span> <strong><?= Yii::$app->currency->active->iso ?></strong>
                             </a>
                             <div class="dropdown-menu">
                                 <?php
@@ -150,10 +156,10 @@ $this->registerJs("
     <div class="container" id="header-center">
         <div class="row">
             <div class="col-lg-3 col-md-6 d-flex align-items-center">
-                <a class="navbar-brand   ml-auto mr-auto mb-3" href="/"></a>
+                <a class="navbar-brand ml-auto mr-auto mb-3 mb-md-0" href="/"></a>
             </div>
             <div class="col-lg-2 col-md-6 d-flex align-items-center">
-                <div class="header-phones ml-auto mr-auto mb-3">
+                <div class="header-phones ml-auto mr-auto mb-3 mb-md-0">
                     <?= Html::tel('+38 (063) 489-26-95', ['class' => 'mb-1 phone']); ?>
                     <?= Html::tel('+38 (063) 489-26-95', ['class' => 'mb-1 phone']); ?>
                 </div>

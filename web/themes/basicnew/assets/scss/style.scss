@@ -790,7 +790,7 @@ a[href^="tel:"] {
 .nav-link.top-wishlist,
 .nav-link.top-compare {
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 2rem;
 }
 
 .nav-link.top-wishlist #countWishlist,
@@ -802,7 +802,7 @@ a[href^="tel:"] {
 .top-compare:after {
   font-family: $font-family-icon;
   position: absolute;
-  left: 0;
+  left: 10px;
   top: 7px;
 }
 

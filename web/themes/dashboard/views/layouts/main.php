@@ -241,7 +241,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
             </div>
 
-
+            <?php echo \panix\mod\admin\blocks\hosting\Hosting::widget(); ?>
         </div>
         <footer class="footer">
             <p class="col-md-12 text-center">
