@@ -26,8 +26,8 @@ class m171205_120026_chat extends Migration
     public function up()
     {
         $this->createTable($this->tableName, [
-            'id' => $this->primaryKey(),
-            'user_id' => $this->integer(),
+            'id' => $this->primaryKey()->unsigned(),
+            'user_id' => $this->integer()->unsigned(),
             'message' => $this->text(),
             'date_update' => $this->timestamp()->defaultValue(null)
         ]);
