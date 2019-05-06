@@ -127,7 +127,7 @@ $this->registerJs("
         ?>
         <?= $content ?>
 
-
+<?php echo \panix\mod\shop\widgets\brands\BrandsWidget::widget([]); ?>
     </div>
 </div>
 <?= $this->render('partials/_subscribe'); ?>
