@@ -949,7 +949,7 @@ $carousel-nav-size: 42px;
 
   background: transparent;
   @media (min-width: 768px) {
-    padding: .5rem 100px;
+    padding: .5rem 50px;
     background: #F2F2F2;
   }
   .owl-item {
@@ -964,6 +964,7 @@ $carousel-nav-size: 42px;
   }
   .owl-nav {
     width: 100%;
+    top:0;
     button {
       color: $color-warning;
       width: 42px;
