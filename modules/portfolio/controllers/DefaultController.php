@@ -13,8 +13,8 @@ class DefaultController extends WebController {
         return $this->render('index');
     }
 
-    public function actionView($seo_alias) {
-        $this->findModel($seo_alias);
+    public function actionView($slug) {
+        $this->findModel($slug);
 
 
         
@@ -22,9 +22,9 @@ class DefaultController extends WebController {
     }
 
     
-     protected function findModel($seo_alias) {
+     protected function findModel($slug) {
         $model = new Items;
-        if (($this->dataModel = $model::findOne(['seo_alias' => $seo_alias])) !== null) {
+        if (($this->dataModel = $model::findOne(['slug' => $slug])) !== null) {
             return $this->dataModel;
         } else {
             $this->error404();

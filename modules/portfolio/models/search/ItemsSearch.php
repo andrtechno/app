@@ -18,7 +18,7 @@ class ItemsSearch extends Items {
     public function rules() {
         return [
             [['id'], 'integer'],
-            [['name', 'seo_alias'], 'safe'],
+            [['name', 'slug'], 'safe'],
         ];
     }
 

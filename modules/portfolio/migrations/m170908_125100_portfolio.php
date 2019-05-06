@@ -12,7 +12,7 @@ class m170908_125100_portfolio extends Migration {
 
         $this->createTable('{{%portfolio_item}}', [
             'id' => $this->primaryKey(),
-            'seo_alias' => $this->string(255)->notNull(),
+            'slug' => $this->string(255)->notNull(),
             'user_id' => $this->integer(),
             'date_create' => $this->timestamp()->defaultValue(null),
             'date_update' => $this->timestamp(),
@@ -34,13 +34,13 @@ class m170908_125100_portfolio extends Migration {
         $this->createIndex('switch', '{{%portfolio_item}}', 'switch', 0);
         $this->createIndex('ordern', '{{%portfolio_item}}', 'ordern', 0);
         $this->createIndex('user_id', '{{%portfolio_item}}', 'user_id', 0);
-        $this->createIndex('seo_alias', '{{%portfolio_item}}', 'seo_alias', 0);
+        $this->createIndex('slug', '{{%portfolio_item}}', 'slug', 0);
 
         $this->createIndex('object_id', '{{%portfolio_item_translate}}', 'object_id', 0);
         $this->createIndex('language_id', '{{%portfolio_item_translate}}', 'language_id', 0);
 
 
-        $columns = ['seo_alias', 'user_id', 'ordern', 'date_create'];
+        $columns = ['slug', 'user_id', 'ordern', 'date_create'];
         $this->batchInsert('{{%portfolio_item}}', $columns, [
             ['about', 1, 1, date('Y-m-d H:i:s')],
             ['mypage', 1, 2, date('Y-m-d H:i:s')],

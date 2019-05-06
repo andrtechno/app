@@ -70,7 +70,7 @@ class Items extends \panix\engine\db\ActiveRecord {
     }
 
     public function getUrl() {
-        return ['/shop/default/view', 'seo_alias' => $this->seo_alias];
+        return ['/shop/default/view', 'slug' => $this->slug];
     }
 
     /* public function transactions() {
@@ -87,13 +87,13 @@ class Items extends \panix\engine\db\ActiveRecord {
             [['file'], 'file', 'maxFiles' => 10],
             [['origin_name'], 'string', 'max' => 255],
             [['image'], 'image'],
-            [['name', 'seo_alias'], 'trim'],
+            [['name', 'slug'], 'trim'],
             [['text'], 'string'],
             [['text'], 'default'], // установим ... как NULL, если они пустые
-            [['name', 'seo_alias'], 'required'],
-            [['name', 'seo_alias'], 'string', 'max' => 255],
+            [['name', 'slug'], 'required'],
+            [['name', 'slug'], 'string', 'max' => 255],
             [['manufacturer_id', 'type_id', 'quantity', 'views', 'added_to_cart_count', 'ordern', 'category_id'], 'integer'],
-            [['name', 'seo_alias', 'full_description'], 'safe'],
+            [['name', 'slug', 'full_description'], 'safe'],
                 //  [['c1'], 'required'], // Attribute field
                 // [['c1'], 'string', 'max' => 255], // Attribute field
         ];

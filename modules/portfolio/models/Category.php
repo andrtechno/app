@@ -26,12 +26,12 @@ class Category extends \panix\engine\db\ActiveRecord {
     }
 
     public function getUrl() {
-        return ['/shop/category/view', 'seo_alias' => $this->full_path];
+        return ['/shop/category/view', 'slug' => $this->full_path];
     }
 
     public function rules() {
         return [
-            [['name', 'seo_alias'], 'required'],
+            [['name', 'slug'], 'required'],
             [['name'], 'string', 'max' => 255]
         ];
     }
@@ -49,7 +49,7 @@ class Category extends \panix\engine\db\ActiveRecord {
                 'class' => MenuArrayBehavior::class,
                 'labelAttr' => 'name',
                 // 'countProduct'=>false,
-                'urlExpression' => '["/shop/category/view", "seo_alias"=>$model->full_path]',
+                'urlExpression' => '["/shop/category/view", "slug"=>$model->full_path]',
             ),
             'tree' => [
                 'class' => NestedSetsBehavior::class,
@@ -126,9 +126,9 @@ class Category extends \panix\engine\db\ActiveRecord {
             // }
             $parts = [];
             foreach ($ancestors as $ancestor)
-                $parts[] = $ancestor->seo_alias;
+                $parts[] = $ancestor->slug;
 
-            $parts[] = $this->seo_alias;
+            $parts[] = $this->slug;
             $this->full_path = implode('/', array_filter($parts));
         }
 

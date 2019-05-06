@@ -28,7 +28,7 @@ class Module extends WebModule {
     }
     
     public $routes = [
-        'product/<seo_alias>' => 'shop/default/view',
+        'product/<slug>' => 'shop/default/view',
     ];
     public function init(){
         $this->setIcon('images');
