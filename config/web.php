@@ -76,7 +76,7 @@ $config = [
     'components' => [
         'plugins' => [
             'class' => panix\mod\plugins\components\PluginsManager::class,
-            'appId' => panix\mod\plugins\BasePlugin::APP_FRONTEND,
+            'appId' => panix\mod\plugins\BasePlugin::APP_WEB,
             // by default
             'enablePlugins' => true,
             'shortcodesParse' => true,
