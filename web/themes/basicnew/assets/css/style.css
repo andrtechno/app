@@ -2522,8 +2522,17 @@ span.highlight-word {
 }
 
 .ias-spinner,
-.ias-noneleft {
+.ias-noneleft,
+.ias-trigger {
   clear: both;
+}
+
+.ias-trigger {
+  position: relative;
+}
+.ias-trigger:before {
+  font-family: Pixelion;
+  content: "\f043";
 }
 
 .alert-danger,

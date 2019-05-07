@@ -161,10 +161,17 @@ span.highlight-word{
   margin: 15px;
 }
 .ias-spinner,
-.ias-noneleft{
+.ias-noneleft,
+.ias-trigger{
   clear: both;
 }
-
+.ias-trigger{
+  position: relative;
+  &:before{
+    font-family: $font-family-icon;
+    content:"\f043";
+  }
+}
 .alert-danger,
 .alert-success,
 .alert-info,
