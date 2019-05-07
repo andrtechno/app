@@ -405,7 +405,7 @@ ul.filter-list {
     }
     &:not(.color) input[type="checkbox"] + label:before {
       border: 1px solid #E1E1E1;
-      @include border-radius(2px);
+      @include border-radius(4px);
       content: '';
       top: 0;
       left: 0;

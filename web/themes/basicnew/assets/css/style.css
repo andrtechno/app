@@ -3020,11 +3020,11 @@ ul.filter-list li:not(.color) input[type="checkbox"] + label {
 }
 ul.filter-list li:not(.color) input[type="checkbox"] + label:before {
   border: 1px solid #E1E1E1;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px;
-  -o-border-radius: 2px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  border-radius: 4px;
+  -o-border-radius: 4px;
   content: '';
   top: 0;
   left: 0;
