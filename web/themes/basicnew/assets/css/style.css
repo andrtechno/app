@@ -3651,9 +3651,6 @@ input#max_price {
     transform: rotate(360deg);
   }
 }
-#comment-list .item {
-  margin-bottom: 1rem;
-}
 #comment-list .comment-user-photo {
   width: 100px;
 }
@@ -3663,6 +3660,7 @@ input#max_price {
 }
 #comment-list .card {
   position: relative;
+  margin-bottom: 1rem;
 }
 #comment-list .card p {
   margin: 0;

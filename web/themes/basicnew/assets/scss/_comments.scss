@@ -3,9 +3,7 @@ $comment-arrow-color-border: rgba(0, 0, 0, 0.125);
 $comment-arrow-color-bg: #f7f7f7;
 
 #comment-list {
-  .item {
-    margin-bottom: 1rem;
-  }
+
   .comment-user-photo {
     width: 100px;
   }
@@ -15,6 +13,7 @@ $comment-arrow-color-bg: #f7f7f7;
   }
   .card {
     position: relative;
+    margin-bottom: 1rem;
     p {
       margin: 0;
     }
