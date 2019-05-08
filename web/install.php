@@ -18,8 +18,8 @@ if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
 defined('YII_DEBUG') or define('YII_DEBUG', $debug);
 defined('YII_ENV') or define('YII_ENV', $env);
 
-require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
-require(__DIR__ . '/vendor/autoload.php');
+require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
+require(__DIR__ . '/../vendor/autoload.php');
 
 $config = [
     'id' => 'install',
@@ -53,7 +53,6 @@ $config = [
         'user' => [
             'class' => 'panix\mod\user\components\WebUser',
             'enableAutoLogin' => true,
-            // 'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'assetManager' => [
             'forceCopy' => YII_DEBUG,
@@ -96,7 +95,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
-        'db' => require( __DIR__ . '/config/db.php'),
+        'db' => require( __DIR__ . '/../config/db.php'),
         'urlManager' => [
             'class' => 'panix\engine\ManagerUrl',
             //'enablePrettyUrl' => false,

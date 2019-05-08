@@ -19,6 +19,8 @@ RewriteRule ^(.*)$ /web/$1 [L]
 #RewriteCond %{THE_REQUEST} ^.*/index\.php
 #RewriteRule ^(.*)index.php$ /$1 [R=301,L]
 
+RewriteRule ^install.php$ /web/install.php
+
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

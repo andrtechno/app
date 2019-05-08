@@ -3652,7 +3652,8 @@ input#max_price {
   }
 }
 #comment-list .comment-user-photo {
-  width: 100px;
+  /*border: 1px solid $comment-arrow-color-border;
+  padding: 5px;*/
 }
 #comment-list .comment-user-name {
   margin-top: 3px;
