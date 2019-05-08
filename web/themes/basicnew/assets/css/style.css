@@ -2527,6 +2527,10 @@ span.highlight-word {
   clear: both;
 }
 
+.ias-trigger.ias-trigger-prev {
+  clear: none;
+}
+
 .ias-trigger {
   position: relative;
 }

@@ -165,6 +165,9 @@ span.highlight-word{
 .ias-trigger{
   clear: both;
 }
+.ias-trigger.ias-trigger-prev{
+  clear: none;
+}
 .ias-trigger{
   position: relative;
   &:before{
