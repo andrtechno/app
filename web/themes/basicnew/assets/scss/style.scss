@@ -959,29 +959,29 @@ header {
   }
 }
 
-.card {
+.card.filter-block {
   border: 0;
-
-}
-
-.card-header {
-  border-width: 2px;
-  background-color: transparent;
-  padding-left: 0;
-  padding-right: 0;
-  h1,.h1,
-  h2,.h2,
-  h3,.h3,
-  h4,.h4,
-  h5,.h5,
-  h6,.h6{
-    margin-bottom: 0;
+  .card-header {
+    border-width: 2px;
+    background-color: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    h1,.h1,
+    h2,.h2,
+    h3,.h3,
+    h4,.h4,
+    h5,.h5,
+    h6,.h6{
+      margin-bottom: 0;
+    }
+  }
+  .card-body{
+    padding-right: 0;
+    padding-left: 0;
   }
 }
-.card-body{
-  padding-right: 0;
-  padding-left: 0;
-}
+
+
 #alert-demo {
   animation-name: fadeDemo;
   animation-duration: 500ms;

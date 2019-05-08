@@ -3,7 +3,7 @@ $comment-arrow-color-border: rgba(0, 0, 0, 0.125);
 $comment-arrow-color-bg: #f7f7f7;
 
 #comment-list {
-  .comment-item {
+  .item {
     margin-bottom: 1rem;
   }
   .comment-user-photo {
@@ -19,7 +19,12 @@ $comment-arrow-color-bg: #f7f7f7;
       margin: 0;
     }
     .card-body {
-      padding: 1rem;
+      padding: 1rem 1rem 0 1rem;
+    }
+    .card-footer{
+      background: transparent;
+      padding: .5rem;
+      border:0;
     }
     .card-header {
       padding: .5rem .5rem .5rem 15px;

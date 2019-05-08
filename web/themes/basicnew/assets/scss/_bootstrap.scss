@@ -19,6 +19,7 @@ $colors: (success, $color-success, #fff),
 .page-link {
   color: $text-color;
   margin: 0 5px;
+  line-height: 1;
   @include border-radius(40px);
   border-color: lighten($text-color, 50);
   &:hover {
