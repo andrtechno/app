@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use panix\engine\bootstrap\Alert;
+use yii\bootstrap4\Alert;
 
 $this->title = $name;
 ?>

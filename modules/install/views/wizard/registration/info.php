@@ -1,27 +1,32 @@
 <?php
-
+use yii\bootstrap4\Alert;
 use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
-use panix\engine\behaviors\wizard\WizardMenu;
-use yii\bootstrap\Alert;
+use beastbytes\wizard\WizardMenu;
 use panix\engine\CMS;
 
-$this->title = $event->sender->getStepLabel($event->step);
-$this->context->process = Yii::t('install/default', 'STEP', array(
-            'current' => $event->sender->currentStepIndex,
-            'count' => $event->sender->stepCount
-        ));
-?>
+$this->title = 'Registration Wizard';
 
+
+?>
+<div class="row no-gutters">
 <div class="col-sm-3">
-    <?php echo WizardMenu::widget(); ?>
+    <?php
+    echo WizardMenu::widget([
+        'step' => $event->step,
+        'wizard' => $event->sender,
+        'options' => [
+            'class' => 'list-unstyled nav-step'
+        ]
+    ]);
+    ?>
 </div>
 <div class="col-sm-9">
     <div class="form-block clearfix">
         <?php
         $form = ActiveForm::begin([
-                    //  'id' => 'form',
-                    'options' => ['class' => 'form-horizontal'],
+            //  'id' => 'form',
+            'options' => ['class' => 'form-horizontal'],
         ]);
         ?>
         <div class="form-horizontal">
@@ -122,8 +127,6 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
         </div>
 
 
-
-
         <?=
         $form->field($model, 'warning')->hiddenInput()->label(false);
         ?>
@@ -137,4 +140,5 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
         <?php ActiveForm::end(); ?>
 
     </div>
+</div>
 </div>

@@ -2,7 +2,8 @@ DROP TABLE IF EXISTS `{prefix}modules`;
 CREATE TABLE `{prefix}modules` (
   `id` int(4) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT '',
-  `switch` ENUM('1','0') NOT NULL DEFAULT '1',
+  `className` varchar(255) DEFAULT '',
+  `switch` tinyint(1) NOT NULL DEFAULT '1',
   `access` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)

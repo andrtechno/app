@@ -2,42 +2,32 @@
 
 use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
-use panix\engine\behaviors\wizard\WizardMenu;
+use beastbytes\wizard\WizardMenu;
 
+$this->title = 'Registration Wizard';
 
-$this->registerJs('
-    function makeid() {
-        var text = "";
-        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-        for (var i = 0; i < 5; i++)
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-        return text.toLowerCase() + "_";
-    }
-',\yii\web\View::POS_END);
-
-//$this->title = $this->context->getStepLabel($event->step);
-$this->context->process = Yii::t('install/default', 'STEP', array(
-    'current' => $this->context->currentStep,
-    'count' => $this->context->stepCount
-));
 ?>
 
 <div class="row no-gutters">
     <div class="col-sm-3">
-        <?php //echo WizardMenu::widget(); ?>
         <?php
-
-        echo $this->context->renderMenu();
+        echo WizardMenu::widget([
+            'step' => $event->step,
+            'wizard' => $event->sender,
+            'options' => [
+                'class' => 'list-unstyled nav-step'
+            ]
+        ]);
         ?>
     </div>
     <div class="col-sm-9">
-        <div class="form-block clearfix">
+        <div class="form-block">
 
 
             <?php
             $form = ActiveForm::begin([
+                //  'id' => 'form',
+             //   'options' => ['class' => 'form-horizontal'],
                 'fieldConfig' => [
                     'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
                     'horizontalCssClasses' => [
@@ -47,7 +37,9 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
                         'error' => '',
                         'hint' => '',
                     ],
-                ],
+                ]
+
+
             ]);
             ?>
 
@@ -56,17 +48,12 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
             <?= $form->field($model, 'db_name'); ?>
             <?= $form->field($model, 'db_user'); ?>
             <?= $form->field($model, 'db_password'); ?>
-            <?= $form->field($model, 'db_prefix'); ?>
-            <a href="javascript:void(0)" onClick="$('#db-db_prefix').val(makeid());"><?= Yii::t('install/default', 'AUTO_GEN') ?></a>
+            <?= $form->field($model, 'db_prefix'); ?><a href="javascript:void(0)" onClick="$('#db-db_prefix').val(makeid());"><?= Yii::t('install/default', 'AUTO_GEN') ?></a>
             <?= $form->field($model, 'db_charset')->hint(Yii::t('install/default', 'DB_CHARSET_HINT'))->dropDownList($model->getDbCharset()); ?>
             <?= $form->field($model, 'db_type')->hint(Yii::t('install/default', 'DB_TYPE_HINT'))->dropDownList($model->getDbTypes()); ?>
 
 
-            <div class="form-group text-center">
-                <?php
-
-                echo $this->context->renderButtons();
-                ?>
+            <div class="text-center">
                 <?= Html::a(Yii::t('install/default', 'BACK'), [Yii::$app->controller->id . '/index', 'step' => 'info'], ['class' => 'btn btn-link']) ?>
                 <?= Html::submitButton(Yii::t('install/default', 'NEXT'), ['class' => 'btn btn-success']) ?>
 
@@ -75,5 +62,5 @@ $this->context->process = Yii::t('install/default', 'STEP', array(
             <?php ActiveForm::end(); ?>
         </div>
     </div>
-
 </div>
+

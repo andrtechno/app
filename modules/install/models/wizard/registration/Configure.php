@@ -1,6 +1,7 @@
 <?php
 
-namespace app\modules\install\forms;
+
+namespace app\modules\install\models\wizard\registration;
 
 use panix\mod\user\models\User;
 use Yii;
@@ -23,47 +24,50 @@ class Configure extends \yii\base\Model {
     }
 
     public function attributeLabels() {
-        return array(
+        return [
             'site_name' => Yii::t('install/default', 'SITE_NAME'),
             'admin_login' => Yii::t('install/default', 'ADMIN_LOGIN'),
             'admin_email' => Yii::t('install/default', 'ADMIN_EMAIL'),
             'admin_password' => Yii::t('install/default', 'ADMIN_PASSWORD'),
-        );
+        ];
     }
-
-    public function install($license_key) {
+//$license_key
+    public function install() {
         if ($this->hasErrors())
             return false;
 
-      //  $config = require(Yii::getAlias('@webroot/config') . DIRECTORY_SEPARATOR . 'db.php');
-       // $db = $config;
 
-       /* $conn = new Connection([
+        $config = require(Yii::getAlias('@app/config') . DIRECTORY_SEPARATOR . 'db.php');
+        $db = $config;
+
+
+        Yii::$app->set('db', [
+            'class' => 'panix\engine\db\Connection',
             'dsn' => $db['dsn'],
             'username' => $db['username'],
             'password' => $db['password'],
             'charset' => $db['charset'],
             'tablePrefix' => $db['tablePrefix']
-        ]);*/
-        
-                $settings = [];
+        ]);
+
+        $settings = [];
         // Update app settings
         $settings['app'] = [
             'site_name' => $this->site_name,
             'admin_email' => $this->admin_email,
-            'license_key' => $license_key,
+            'license_key' => $_SESSION['Wizard.stepData']['license'][0]['license_key'],
         ];
         
         if (Yii::$app->settings) {
             foreach (array('\panix\mod\admin\models\SettingsForm', '\panix\mod\admin\models\SettingsDatabaseForm') as $class) {
 
                 if (method_exists(new $class, 'defaultSettings')) {
-                    if (isset($settings[$class::NAME])) {
-                        $array = \yii\helpers\ArrayHelper::mergeArray($class::defaultSettings(), $settings[$class::NAME]);
+                    if (isset($settings[$class::$category])) {
+                        $array = \yii\helpers\ArrayHelper::merge($class::defaultSettings(), $settings[$class::$category]);
                     } else {
                         $array = $class::defaultSettings();
                     }
-                    Yii::$app->settings->set($class::NAME, $array);
+                    Yii::$app->settings->set($class::$category, $array);
                 }
             }
         }

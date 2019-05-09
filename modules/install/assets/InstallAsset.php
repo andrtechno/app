@@ -19,10 +19,10 @@ class InstallAsset extends AssetBundle {
 
     public $css = [
         'css/install.css',
-        //'css/shop.css'
     ];
 
     public $depends = [
+        'yii\bootstrap4\BootstrapPluginAsset',
         'panix\engine\assets\IconAsset',
     ];
 

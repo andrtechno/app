@@ -21,14 +21,18 @@ $this->beginPage() ?>
 
     <?php if (Yii::$app->session->hasFlash('notice')) { ?>
 
-            <div class="alert alert-warning"><?= print_r(Yii::$app->session->getFlash('notice')) ?></div>
+        <div class="alert alert-warning"><?= print_r(Yii::$app->session->getFlash('notice')) ?></div>
 
     <?php } ?>
     <?php
 
-  //  if($_SESSION){
-        \yii\helpers\VarDumper::dump($_SESSION,10,true);
-  //  }
+    //  if($_SESSION){
+    \yii\helpers\VarDumper::dump($_SESSION,10,true);
+   /* unset($_SESSION['Wizard.stepData']);
+    unset($_SESSION['Wizard.index']);
+    unset($_SESSION['Wizard.steps']);
+    unset($_SESSION['Wizard.branches']);*/
+    //  }
 
     ?>
     <div class="text-center auth-logo">
@@ -37,9 +41,14 @@ $this->beginPage() ?>
     </div>
     <div class="card">
         <div class="card-header">
-            <strong><?= $this->context->process; ?></strong>
+            <strong><?php //echo $this->context->stepLabel('db'); ?><?php //echo $this->context->getStepCount(); ?></strong>
         </div>
-        <div class="panel-body clearfix p-0"><?php echo $content ?></div>
+        <div class="card-body p-0">
+
+            <?php echo $content ?>
+
+
+        </div>
     </div>
     <div class="text-center">{copyright}</div>
 </div>

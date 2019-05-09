@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\install\forms;
+namespace app\modules\install\models\wizard\registration;
 
 use panix\engine\db\Connection;
 use Yii;
@@ -42,7 +42,7 @@ class Db extends \yii\base\Model
             } catch (\yii\db\Exception $e) {
                 $this->addError($attribute, ($e->getCode() == 1045) ? $e->getMessage() : Yii::t('install/default', 'ERROR_CONNECT_DB')); //
             }
-          //  print_r($this->getErrors());die;
+            //  print_r($this->getErrors());die;
         }
     }
 
@@ -77,8 +77,8 @@ class Db extends \yii\base\Model
         ]);
 
 
-       $this->writeConnectionSettings();
-        //$this->importSqlDump();
+        $this->writeConnectionSettings();
+        $this->importSqlDump();
     }
 
     public function getDbCharset()
@@ -133,7 +133,7 @@ class Db extends \yii\base\Model
         $configFiles[] = Yii::getAlias('@app/config') . DIRECTORY_SEPARATOR . 'db_local.php';
         foreach ($configFiles as $file) {
             $content = file_get_contents($file);
-            $content = preg_replace("/\'connectionString\'\s*\=\>\s*\'.*\'/", "'connectionString'=>'{$this->getDsn()}'", $content);
+            $content = preg_replace("/\'dsn\'\s*\=\>\s*\'.*\'/", "'dsn'=>'{$this->getDsn()}'", $content);
             $content = preg_replace("/\'username\'\s*\=\>\s*\'.*\'/", "'username'=>'{$this->db_user}'", $content);
             $content = preg_replace("/\'password\'\s*\=\>\s*\'.*\'/", "'password'=>'{$this->db_password}'", $content);
             $content = preg_replace("/\'tablePrefix\'\s*\=\>\s*\'.*\'/", "'tablePrefix'=>'{$this->db_prefix}'", $content);

@@ -203,13 +203,13 @@ a.ua{
     padding-right:0;
 }
 .form-block{
-    padding:15px;
+    padding:15px 0;
     border-left:1px solid #cdcdcd;
     min-height: 250px;
 }
 
 
-ul.nav-step > li.success a{
+ul.nav-step > li.past-step a{
     color:green;
 
 }
@@ -224,7 +224,7 @@ ul.nav-step > li > span{
     display: block;
 }
 
-ul.nav-step > li.success a:after,
+ul.nav-step > li.past-step a:after,
 ul.nav-step > li > span:after{
     position: absolute;
     font-family: Pixelion;
@@ -239,7 +239,7 @@ ul.nav-step > li.active > a:after{
     top:5px;
     font-size:16px;
 }
-ul.nav-step > li.success a:after{
+ul.nav-step > li.past-step a:after{
     content:"\f055";
 }
 ul.nav-step > li:nth-child(1) > span:after,
