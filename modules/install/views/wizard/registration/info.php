@@ -2,7 +2,7 @@
 use yii\bootstrap4\Alert;
 use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
-use beastbytes\wizard\WizardMenu;
+use panix\engine\behaviors\wizard\WizardMenu;
 use panix\engine\CMS;
 
 $this->title = 'Registration Wizard';

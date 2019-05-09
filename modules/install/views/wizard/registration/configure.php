@@ -2,7 +2,7 @@
 
 use panix\engine\Html;
 use panix\engine\bootstrap\ActiveForm;
-use beastbytes\wizard\WizardMenu;
+use panix\engine\behaviors\wizard\WizardMenu;
 
 
 //$this->title = $this->context->getStepLabel($_REQUEST['step']);
