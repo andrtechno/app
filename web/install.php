@@ -24,30 +24,31 @@ require(__DIR__ . '/../vendor/autoload.php');
 $config = [
     'id' => 'install',
     'homeUrl' => '/',
-    'basePath' => __DIR__,
-    'language'=>'ru',
+    'basePath' => dirname(__DIR__),
+    'language' => 'ru',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
         '@uploads' => '@app/web/uploads',
     ],
     'controllerNamespace' => 'app\modules\install\controllers',
-    'defaultRoute' => 'default/index',
+    //'defaultRoute' => 'install/index',
     'bootstrap' => [
         'log',
-       // 'panix\engine\BootstrapModule'
+        // 'panix\engine\BootstrapModule'
     ],
     'controllerMap' => [
         'main' => 'panix\engine\controllers\WebController',
         'install' => 'app\modules\install\controllers\DefaultController',
     ],
+
     'modules' => [
         'install' => ['class' => 'app\modules\install\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         //'presentation' => ['class' => 'panix\mod\presentation\Module'],
         //'user' => ['class' => 'panix\mod\user\Module'],
         //'compare' => ['class' => 'panix\mod\compare\Module'],
-       // 'seo' => ['class' => 'panix\mod\seo\Module'],
+        // 'seo' => ['class' => 'panix\mod\seo\Module'],
     ],
     'components' => [
         'user' => [
@@ -58,6 +59,7 @@ $config = [
             'forceCopy' => YII_DEBUG,
             'appendTimestamp' => true
         ],
+        'settings' => ['class' => 'panix\engine\components\Settings'],
         'i18n' => [
             'translations' => [
                 'app*' => [
@@ -72,22 +74,30 @@ $config = [
                         'app/geoip_city' => 'geoip_city.php',
                     ],
                 ],
+                'install*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/modules/install/messages',
+                    'fileMap' => [
+                        'install/default' => 'default.php',
+                    ],
+                ],
             ],
         ],
         'view' => [
+            //  'class' => 'panix\engine\View',
             'class' => panix\mod\plugins\components\View::class,
 
             //'theme' => ['class' => 'panix\engine\base\Theme'],
         ],
         'request' => [
-           // 'class' => 'panix\engine\WebRequest',
+            // 'class' => 'panix\engine\WebRequest',
             'baseUrl' => '',
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
         'errorHandler' => [
             //'class'=>'panix\engine\base\ErrorHandler'
             //'errorAction' => 'site/error',
-           'errorAction' => 'install/error',
+            'errorAction' => 'install/error',
             // 'errorView' => '@webroot/themes/basic/views/layouts/error.php'
         ],
         //'settings' => ['class' => 'panix\engine\components\Settings'],
@@ -95,7 +105,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
-        'db' => require( __DIR__ . '/../config/db.php'),
+        'db' => require(__DIR__ . '/../config/db.php'),
         'urlManager' => [
             'class' => 'panix\engine\ManagerUrl',
             //'enablePrettyUrl' => false,
@@ -108,7 +118,7 @@ $config = [
             ],
             'rules' => [
 
-              //  'install/<step:\w+>' => 'install/default',
+                //  'install/<step:\w+>' => 'install/default',
             ],
         ],
         'log' => [

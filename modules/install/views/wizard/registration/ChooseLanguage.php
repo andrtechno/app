@@ -25,6 +25,12 @@ $this->title = 'Registration Wizard';
 
 
             <?php
+
+
+            $runner = new \panix\engine\ConsoleCommandRunner();
+            $runner->run('migrate');
+            $output = $runner->getOutput();
+echo $output;
             $form = ActiveForm::begin([
                 //  'id' => 'form',
                 'fieldConfig' => [

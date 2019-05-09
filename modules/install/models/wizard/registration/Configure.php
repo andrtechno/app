@@ -7,14 +7,16 @@ use panix\mod\user\models\User;
 use Yii;
 use panix\engine\db\Connection;
 
-class Configure extends \yii\base\Model {
+class Configure extends \yii\base\Model
+{
 
     public $site_name;
     public $admin_login;
     public $admin_email;
     public $admin_password;
 
-    public function rules() {
+    public function rules()
+    {
         return [
             [['site_name', 'admin_login', 'admin_email', 'admin_password'], 'required'],
             ['admin_email', 'email'],
@@ -23,7 +25,8 @@ class Configure extends \yii\base\Model {
         ];
     }
 
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return [
             'site_name' => Yii::t('install/default', 'SITE_NAME'),
             'admin_login' => Yii::t('install/default', 'ADMIN_LOGIN'),
@@ -31,8 +34,9 @@ class Configure extends \yii\base\Model {
             'admin_password' => Yii::t('install/default', 'ADMIN_PASSWORD'),
         ];
     }
-//$license_key
-    public function install() {
+
+    public function install()
+    {
         if ($this->hasErrors())
             return false;
 
@@ -57,7 +61,7 @@ class Configure extends \yii\base\Model {
             'admin_email' => $this->admin_email,
             'license_key' => $_SESSION['Wizard.stepData']['license'][0]['license_key'],
         ];
-        
+
         if (Yii::$app->settings) {
             foreach (array('\panix\mod\admin\models\SettingsForm', '\panix\mod\admin\models\SettingsDatabaseForm') as $class) {
 
@@ -73,40 +77,50 @@ class Configure extends \yii\base\Model {
         }
 
         foreach (Yii::$app->getModules() as $mod => $data) {
-
             if ($mod != 'install') {
-      
                 $module = Yii::$app->getModule($mod);
-
                 if ($module instanceof \panix\engine\WebModule) {
-                    if (method_exists($module, 'afterInstall')) {
-                        $module->afterInstall();
-                    }
+                    try {
+                        if (method_exists($module, 'afterInstall')) {
+                            $module->afterInstall();
+                        }
+                        Yii::$app->db->createCommand()->insert('{{%modules}}', array(
+                            'name' => $mod,
+                            'className' => get_class($module),
+                            'access' => 0,
+                        ))->execute();
+                    } catch (\yii\db\Exception $e) {
 
-                    Yii::$app->db->createCommand()->insert('{{%modules}}', array(
-                        'name' => $mod,
-                        'access' => 0,
-                    ))->execute();
+                    }
                 }
             }
         }
 
-        $model = User::findOne(1);
 
-        if (!$model)
-            $model = new User;
+        try {
 
-        // Set user data
-        $model->username = $this->admin_login;
-        $model->email = $this->admin_email;
-        $model->password = Yii::$app->security->generatePasswordHash($this->admin_password);
-        // $model->date_registration = date('Y-m-d H:i:s');
-        // $model->last_login = date('Y-m-d H:i:s');
-        $model->status = 2;
-        $model->role_id = 1; // 1 to admin
-        $model->save(false);
+            $tableSchema = Yii::$app->db->schema->getTableSchema(User::tableName());
+            if ($tableSchema) {
+                // Table does not exist
 
+                $model = User::findOne(1);
 
+                if (!$model)
+                    $model = new User;
+
+                // Set user data
+                $model->username = $this->admin_login;
+                $model->email = $this->admin_email;
+                $model->password = Yii::$app->security->generatePasswordHash($this->admin_password);
+                // $model->date_registration = date('Y-m-d H:i:s');
+                // $model->last_login = date('Y-m-d H:i:s');
+                $model->status = 2;
+                $model->role_id = 1; // 1 to admin
+                $model->save(false);
+            }
+        } catch (\yii\db\Exception $e) {
+
+        }
 
 
         /* if (Yii::$app->settings) {
@@ -121,8 +135,6 @@ class Configure extends \yii\base\Model {
           }
           }
           } */
-
-
 
 
         return true;

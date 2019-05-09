@@ -37,7 +37,8 @@
         "yiisoft/yii2-queue": "^2.0@dev",
         "panix/mod-seo": "dev-master",
         "panix/mod-docs": "dev-master",
-        "panix/wgt-telinput": "dev-master"
+        "panix/wgt-telinput": "dev-master",
+        "beastbytes/yii2-wizard": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2",

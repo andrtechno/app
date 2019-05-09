@@ -5,7 +5,7 @@ return [
     'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__),
     //'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'panix\engine\BootstrapModule'],
     'controllerNamespace' => 'app\commands',
     'language' => 'ru',
     'aliases' => [
@@ -29,7 +29,7 @@ return [
         //    'as access' => [
         //        'class' => panix\mod\rbac\filters\AccessControl::class
         //    ],
-       // ],
+        // ],
         //'admin' => ['class' => 'panix\mod\admin\Module'],
         //'user' => ['class' => 'panix\mod\user\Module'],
     ],
@@ -48,7 +48,7 @@ return [
     'components' => [
         //'session' => [
         //    'class' => 'yii\web\Session'
-       // ],
+        // ],
 
         'urlManager' => require(__DIR__ . '/urlManager.php'),
         'settings' => ['class' => 'panix\engine\components\Settings'],

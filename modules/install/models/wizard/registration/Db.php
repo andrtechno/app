@@ -48,7 +48,7 @@ class Db extends \yii\base\Model
 
     public function attributeLabels()
     {
-        return array(
+        return [
             'db_host' => Yii::t('install/default', 'DB_HOST'),
             'db_name' => Yii::t('install/default', 'DB_NAME'),
             'db_user' => Yii::t('install/default', 'DB_USER'),
@@ -56,7 +56,7 @@ class Db extends \yii\base\Model
             'db_password' => Yii::t('install/default', 'DB_PASSWORD'),
             'db_charset' => Yii::t('install/default', 'DB_CHARSET'),
             'db_type' => Yii::t('install/default', 'DB_TYPE'),
-        );
+        ];
     }
 
     public function install()
