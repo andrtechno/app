@@ -5,7 +5,7 @@ return [
     'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__),
     //'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log', 'panix\engine\BootstrapModule'],
+    'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
     'language' => 'ru',
     'aliases' => [
