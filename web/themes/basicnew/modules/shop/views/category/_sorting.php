@@ -54,7 +54,7 @@ $this->registerJs("
         ?>
         <span class=""><?= Yii::t('shop/default', 'OUTPUT_ON'); ?> </span>
         <?php
-        //echo Html::dropDownList('per-page', $active, $limits, ['onChange2' => 'window.location = $(this).val()', 'class' => 'custom-select', 'style' => 'width:auto;']);
+        echo Html::dropDownList('per-page', $active, $limits, ['onChange2' => 'window.location = $(this).val()', 'class' => 'custom-select', 'style' => 'width:auto;']);
         ?>
         <span class=""><?= Yii::t('shop/default', 'товаров'); ?></span>
 

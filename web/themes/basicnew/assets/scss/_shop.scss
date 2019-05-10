@@ -755,7 +755,18 @@ input#max_price {
 
 }
 
-.list-view .product {
+.list-view .ias-trigger,
+.list-view .ias-spinner{
+  float:left;
+  clear:none;
+  height: 500px;
+  border: 3px solid $color-warning;
+  @media (min-width: 768px) {
+    width: 275px;
+
+  }
+}
+.list-view .product{
   @media (min-width: 768px) {
     width: 275px;
 

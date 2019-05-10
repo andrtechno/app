@@ -11,15 +11,15 @@ echo \yii\widgets\ListView::widget([
     'layout' => '{items}{pager}',
     'emptyText' => 'Empty',
     'options' => ['class' => 'list-view clearfix2 '.$itemView],
-    'itemOptions' => ['class' => 'item'],
+    'itemOptions' => ['class' => 'item product'],
     'sorter' => [
         //'class' => \yii\widgets\LinkSorter::class,
         'attributes'=>['price','sku']
     ],
     'pager' => [
         'class' => \panix\wgt\scrollpager\ScrollPager::class,
-        'triggerTemplate' => '<div class="ias-trigger" style="text-align: center; cursor: pointer;width: 100%;">{text}</div>',
-        'spinnerTemplate' => '<div class="ias-spinner" style="text-align: center;width: 100%;"><img src="{src}" alt="" /></div>',
+        'triggerTemplate' => '<div class="ias-trigger" style="text-align: center; cursor: pointer;">{text}</div>',
+        'spinnerTemplate' => '<div class="ias-spinner" style="text-align: center;"><img src="{src}" alt="" /></div>',
         'spinnerSrc'=>$this->context->assetUrl.'/images/ajax.gif'
 
     ],
