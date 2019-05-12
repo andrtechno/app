@@ -15,6 +15,46 @@ $this->registerJs("
 
 
 ", \yii\web\View::POS_END, 'preloader-js');
+
+
+echo \panix\mod\telegram\Telegram::widget();
+
+use Longman\TelegramBot\Request;
+
+try {
+    // Create Telegram API object
+    $telegram = new Longman\TelegramBot\Telegram(Yii::$app->getModule('telegram')->API_KEY, Yii::$app->getModule('telegram')->BOT_NAME);
+
+    // Set webhook
+    $result = $telegram->getBotName();
+
+
+    //  $botan = $telegram->enableBotan(Yii::$app->getModule('telegram')->API_KEY);
+
+    //print_r($ss);
+    // $telegram->enableMySql($mysql_credentials);
+
+    //Yii::$app->telegram->setWebhook([
+    //    'url' => 'https://yii2.pixelion.com.ua/telegram/default/hook',
+    //]);
+
+    $getUpdates = Yii::$app->telegram->getUpdates([
+
+    ]);
+
+    \yii\helpers\VarDumper::dump($getUpdates, 10,true);
+
+    Yii::$app->telegram->sendMessage([
+        'chat_id' => '812367093',
+        'text' => 'Your utf8 text 😜 ...',
+    ]);
+
+
+//print_r($result);
+} catch (Longman\TelegramBot\Exception\TelegramException $e) {
+    // log telegram errors
+    echo $e->getMessage();
+}
 ?>
 
 
@@ -76,7 +116,8 @@ $this->registerJs("
                                    data-toggle="dropdown"
                                    aria-haspopup="true"
                                    aria-expanded="false">
-                                    <span class="d-none d-md-inline">Язык</span> <strong><?= Html::img('/uploads/language/' . Yii::$app->languageManager->active->flag_name, ['alt' => Yii::$app->languageManager->active->name]) ?></strong></a>
+                                    <span class="d-none d-md-inline">Язык</span>
+                                    <strong><?= Html::img('/uploads/language/' . Yii::$app->languageManager->active->flag_name, ['alt' => Yii::$app->languageManager->active->name]) ?></strong></a>
                                 <div class="dropdown-menu">
                                     <?php
 
@@ -98,7 +139,8 @@ $this->registerJs("
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
-                                <span class="d-none d-md-inline">Валюта</span> <strong><?= Yii::$app->currency->active->iso ?></strong>
+                                <span class="d-none d-md-inline">Валюта</span>
+                                <strong><?= Yii::$app->currency->active->iso ?></strong>
                             </a>
                             <div class="dropdown-menu">
                                 <?php
@@ -133,7 +175,7 @@ $this->registerJs("
                                 </a>
                                 <div class="dropdown-menu">
                                     <?= Html::a(Html::icon('icon-user') . ' ' . Yii::t('user/default', 'PROFILE'), ['/user/profile'], ['class' => 'dropdown-item']); ?>
-                                    <?= Html::a(Html::icon('icon-shopcart') . ' ' . Yii::t('app', 'MY_ORDERS') . ' <span class="badge badge-success">'.$userOrderCount.'</span>', ['/cart/orders'], ['class' => 'dropdown-item']); ?>
+                                    <?= Html::a(Html::icon('icon-shopcart') . ' ' . Yii::t('app', 'MY_ORDERS') . ' <span class="badge badge-success">' . $userOrderCount . '</span>', ['/cart/orders'], ['class' => 'dropdown-item']); ?>
 
                                     <?php
                                     if (Yii::$app->user->can('admin')) {
@@ -274,9 +316,9 @@ $this->registerJs("
                 </ul>
             </div>
 
-        <div class="navbar-right">
-            <?php echo \panix\mod\shop\widgets\search\SearchWidget::widget(['skin' => 'navbar']); ?>
-        </div>
+            <div class="navbar-right">
+                <?php echo \panix\mod\shop\widgets\search\SearchWidget::widget(['skin' => 'navbar']); ?>
+            </div>
         </div>
     </nav>
 

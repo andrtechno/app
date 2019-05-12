@@ -29,6 +29,16 @@ $config = [
                // '@plugins/core',
             ]
         ],
+        'telegram' => [
+            'class' => 'panix\mod\telegram\Module',
+            'API_KEY' => '835652742:AAES6NfEgJm7GMWmKzxkOy861ppAHkCezZo',
+            'BOT_NAME' => 'pixelionbot',
+            'hook_url' => 'https://yii2.pixelion.com.ua/telegram/default/hook', // must be https! (if not prettyUrl https://yourhost.com/index.php?r=telegram/default/hook)
+            'PASSPHRASE' => '123',
+            // 'db' => 'db2', //db file name from config dir
+             'userCommandsPath' => '@telegram/commands/UserCommands',
+            // 'timeBeforeResetChatHandler' => 60
+        ],
         'sitemap' => [
             'class' => 'panix\mod\sitemap\Module',
         ],
@@ -74,6 +84,10 @@ $config = [
           ], */
     ],
     'components' => [
+        'telegram' => [
+            'class' => 'panix\engine\Telegram',
+            'botToken' => '835652742:AAES6NfEgJm7GMWmKzxkOy861ppAHkCezZo',
+        ],
         'plugins' => [
             'class' => panix\mod\plugins\components\PluginsManager::class,
             'appId' => panix\mod\plugins\BasePlugin::APP_WEB,
