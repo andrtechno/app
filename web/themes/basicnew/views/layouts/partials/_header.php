@@ -17,16 +17,16 @@ $this->registerJs("
 ", \yii\web\View::POS_END, 'preloader-js');
 
 
-echo \panix\mod\telegram\Telegram::widget();
+echo \panix\mod\telegram\TelegramWidget::widget();
 
 use Longman\TelegramBot\Request;
 
 try {
     // Create Telegram API object
-    $telegram = new Longman\TelegramBot\Telegram(Yii::$app->getModule('telegram')->API_KEY, Yii::$app->getModule('telegram')->BOT_NAME);
+    //$telegram = new Longman\TelegramBot\Telegram(Yii::$app->getModule('telegram')->api_token, Yii::$app->getModule('telegram')->bot_name);
 
     // Set webhook
-    $result = $telegram->getBotName();
+    //$result = $telegram->getBotName();
 
 
     //  $botan = $telegram->enableBotan(Yii::$app->getModule('telegram')->API_KEY);
@@ -38,16 +38,16 @@ try {
     //    'url' => 'https://yii2.pixelion.com.ua/telegram/default/hook',
     //]);
 
-    $getUpdates = Yii::$app->telegram->getUpdates([
+    /*$getUpdates = Yii::$app->telegram->getUpdates([
 
     ]);
 
     \yii\helpers\VarDumper::dump($getUpdates, 10,true);
-
-    Yii::$app->telegram->sendMessage([
+*/
+    /*Yii::$app->telegram->sendMessage([
         'chat_id' => '812367093',
         'text' => 'Your utf8 text 😜 ...',
-    ]);
+    ]);*/
 
 
 //print_r($result);
