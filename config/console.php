@@ -5,7 +5,7 @@ return [
     'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__),
     //'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log','telegram'],
+    'bootstrap' => ['log','telegram','queue'],
     'controllerNamespace' => 'app\commands',
     'language' => 'ru',
     'aliases' => [
@@ -53,6 +53,11 @@ return [
         ]
     ],
     'components' => [
+        'queue' => [
+            'class' => \yii\queue\file\Queue::class,
+            'as log' => \yii\queue\LogBehavior::class,
+            // Индивидуальные настройки драйвера
+        ],
         //'session' => [
         //    'class' => 'yii\web\Session'
         // ],

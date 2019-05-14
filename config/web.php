@@ -180,6 +180,9 @@ if (YII_ENV_DEV) {
         /// $filePath = str_replace(Yii::$app->vendorPath, 'file://~/path/to/your/vendor', $filePath);
         return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
     };
+    $config['modules']['debug']['panels'] = [
+        'queue' => \yii\queue\debug\Panel::class,
+    ];
     //$config['modules']['debug']['dataPath'] = '@runtime/debug';
     //$config['bootstrap'][] = 'gii';
     //$config['modules']['gii'] = 'yii\gii\Module';
