@@ -13,7 +13,7 @@ $config = [
     //'basePath' => dirname(__DIR__),
 
     'controllerNamespace' => 'panix\engine\controllers',
-    'defaultRoute' => 'main/main',
+    'defaultRoute' => 'main/index',
     'bootstrap' => [
         'plugins',
         'panix\engine\plugins\goaway\GoAway'
