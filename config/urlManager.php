@@ -6,7 +6,7 @@ return [
     'class' => 'panix\engine\ManagerUrl',
     'enablePrettyUrl' => true,
     'showScriptName' => false,
-    'enableStrictParsing' => false,
+    'enableStrictParsing' => true,
     'baseUrl' => '',
     //'suffix'=>'.html',
     //'ruleConfig' => [
