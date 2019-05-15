@@ -17,8 +17,8 @@ return [
         'action' => UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
     ],
     'rules' => [
+        '' => 'main/index',
         'placeholder' => 'main/placeholder',
-
 
         //'/admin' => 'admin/admin/default/index',
        // 'admin/auth' => 'admin/auth/index',
