@@ -273,6 +273,7 @@ $price-font-size: 22px;
   overflow-y: auto;
   background: #fff;
   @media (min-width: 768px) {
+    overflow: hidden;
     opacity: 1;
     position: static;
     -webkit-transform: translate(0, 0);
@@ -282,10 +283,10 @@ $price-font-size: 22px;
   }
   &.open {
     opacity: 1;
-    -webkit-transform: translate(0px, 0);
-    -ms-transform: translate(0px, 0);
-    -o-transform: translate(0px, 0);
-    transform: translate(0px, 0);
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   .close {
     margin-right: 1rem;

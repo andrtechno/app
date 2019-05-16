@@ -2873,6 +2873,7 @@ span.highlight-word {
 }
 @media (min-width: 768px) {
   #filters-container {
+    overflow: hidden;
     opacity: 1;
     position: static;
     -webkit-transform: translate(0, 0);
@@ -2883,10 +2884,10 @@ span.highlight-word {
 }
 #filters-container.open {
   opacity: 1;
-  -webkit-transform: translate(0px, 0);
-  -ms-transform: translate(0px, 0);
-  -o-transform: translate(0px, 0);
-  transform: translate(0px, 0);
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
 }
 #filters-container .close {
   margin-right: 1rem;
