@@ -4,28 +4,30 @@ use yii\helpers\Html;
 use panix\engine\bootstrap\ActiveForm;
 use panix\ext\tinymce\TinyMce;
 
-//use Documentation
+$form = ActiveForm::begin([
+    'options' => ['class' => 'form-horizontal'],
+]);
 ?>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title"><?= Html::encode($this->context->pageName) ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h5><?= Html::encode($this->context->pageName) ?></h5>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <?php
-        $form = ActiveForm::begin([
-                    'options' => ['class' => 'form-horizontal'],
-        ]);
+
         echo $form->field($model, 'title')->textInput(['maxlength' => 255]);
         echo $form->field($model, 'price')->textInput(['maxlength' => 255]);
         //echo $form->field($model, 'redaction_id')->dropdownlist(Documentation::flatTree());
         echo $form->field($model, 'type_id')->dropdownlist($model::getTypeList());
-        echo $form->field($model, 'full_text')->widget(TinyMce::className(), [
+        echo $form->field($model, 'full_text')->widget(TinyMce::class, [
             'options' => ['rows' => 6],
         ]);
         ?>
-        <div class="form-group text-center">
-            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'CREATE') : Yii::t('app', 'UPDATE'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        </div>
-        <?php ActiveForm::end(); ?>
+
+
     </div>
+        <div class="card-footer text-center">
+            <?= $model->submitButton() ?>
+        </div>
 </div>
+<?php ActiveForm::end(); ?>

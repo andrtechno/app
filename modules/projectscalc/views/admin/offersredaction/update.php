@@ -9,44 +9,45 @@ $this->registerJs("$('[data-toggle=\"tooltip\"]').tooltip();");
 
 
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-9">
+    <div class="col-sm-12 col-md-9">
+        <?php
+        $form = ActiveForm::begin([
+            'options' => ['class' => 'form-horizontal'],
+            'fieldConfig' => [
+                'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+                'horizontalCssClasses' => [
+                    'label' => 'col-sm-12',
+                    'offset' => '',
+                    'wrapper' => 'col-sm-12',
+                    'error' => '',
+                    'hint' => ''
+                ]
+            ]
+        ]);
+        ?>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?= Html::encode($this->context->pageName) ?></h3>
+        <div class="card">
+            <div class="card-header">
+                <h5><?= Html::encode($this->context->pageName) ?></h5>
             </div>
-            <div class="panel-body">
-                <?php
-                $form = ActiveForm::begin([
-                            'options' => ['class' => 'form-horizontal'],
-                            'fieldConfig' => [
-                                'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
-                                'horizontalCssClasses' => [
-                                    'label' => 'col-sm-12',
-                                    'offset' => '',
-                                    'wrapper' => 'col-sm-12',
-                                    'error' => '',
-                                    'hint' => ''
-                                ]
-                            ]
-                ]);
-                ?>
+            <div class="card-body">
 
 
                 <?=
-                $form->field($model, 'text')->widget(TinyMce::className(), [
+                $form->field($model, 'text')->widget(TinyMce::class, [
                     'options' => ['rows' => 6],
                 ]);
                 ?>
 
-                <div class="form-group text-center">
-                    <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'CREATE') : Yii::t('app', 'UPDATE'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-                </div>
-                <?php ActiveForm::end(); ?>
+
+
 
             </div>
+            <div class="card-footer text-center">
+                <?= $model->submitButton() ?>
+            </div>
         </div>
-
+        <?php ActiveForm::end(); ?>
     </div>
 
 

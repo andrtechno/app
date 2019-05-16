@@ -1,8 +1,8 @@
 <?php
 $config = Yii::$app->settings->get('contacts');
 $app = Yii::$app->settings->get('contacts');
-$phones = explode(',', $config['phone']);
-$emails = explode(',', $app['email']);
+$phones = explode(',', $config->phone);
+$emails = explode(',', $app->email);
 
 ?>
 

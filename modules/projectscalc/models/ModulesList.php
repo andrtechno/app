@@ -3,7 +3,7 @@
 namespace app\modules\projectscalc\models;
 
 use Yii;
-use yii\bootstrap\Html;
+use panix\engine\Html;
 use panix\engine\behaviors\TranslateBehavior;
 use app\modules\projectscalc\models\translate\ModulesListTranslate;
 

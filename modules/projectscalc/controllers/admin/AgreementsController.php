@@ -78,7 +78,7 @@ class AgreementsController extends AdminController
         $table->addCell(null,['valign' => 'center'])->addText($model->customer_name." ____________________________");
         $table->addCell(null,['valign' => 'center'])->addText($model->redaction->performer." ____________________________",[], ['alignment' => 'right']);
         $table->addRow(500);
-        $table->addCell(null,['valign' => 'center'])->addText();
+        //$table->addCell(null,['valign' => 'center'])->addText();
         $table->addCell(null,['valign' => 'center'])->addText('М.П. ____________________________',[], ['alignment' => 'right']);
 
 

@@ -5,7 +5,7 @@ namespace app\modules\projectscalc\models\translate;
 class AgreementsRedactionTranslate extends \yii\db\ActiveRecord {
 
     public static function tableName() {
-        return '{{%agreements_redaction_translate}}';
+        return '{{%agreements__redaction_translate}}';
     }
 
 }

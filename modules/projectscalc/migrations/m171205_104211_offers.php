@@ -1,41 +1,46 @@
 <?php
 
-class m171205_103329_agreements extends \panix\engine\db\Migration {
+use panix\engine\db\Migration;
+use app\modules\projectscalc\models\Offers;
+use app\modules\projectscalc\models\OffersRedaction;
+use app\modules\projectscalc\models\translate\OffersRedactionTranslate;
+
+class m171205_104211_offers extends Migration {
 
     public function up() {
-        $this->createTable('{{%offers}}', [
-            'id' => $this->primaryKey(),
-            'redaction_id' => $this->integer(),
-            'calc_id' => $this->integer(),
+        $this->createTable(Offers::tableName(), [
+            'id' => $this->primaryKey()->unsigned(),
+            'redaction_id' => $this->integer()->unsigned(),
+            'calc_id' => $this->integer()->unsigned(),
             'date_create' => $this->timestamp()->defaultValue(null),
             'date_update' => $this->timestamp()
         ]);
 
-        $this->createTable('{{%offers_redaction}}', [
-            'id' => $this->primaryKey(),
+        $this->createTable(OffersRedaction::tableName(), [
+            'id' => $this->primaryKey()->unsigned(),
             'date_create' => $this->timestamp()->defaultValue(null),
             'date_update' => $this->timestamp()
         ]);
 
-        $this->createTable('{{%offers_redaction_translate}}', [
-            'id' => $this->primaryKey(),
-            'language_id' => $this->string(2),
-            'object_id' => $this->integer(),
+        $this->createTable(OffersRedactionTranslate::tableName(), [
+            'id' => $this->primaryKey()->unsigned(),
+            'language_id' => $this->tinyInteger()->unsigned(),
+            'object_id' => $this->integer()->unsigned(),
             'text' => $this->text(),
         ]);
 
         
-        $this->createIndex('redaction_id', '{{%agreements}}', 'redaction_id');
-        $this->createIndex('calc_id', '{{%agreements}}', 'calc_id');
+        $this->createIndex('redaction_id', Offers::tableName(), 'redaction_id');
+        $this->createIndex('calc_id', Offers::tableName(), 'calc_id');
         
-        $this->createIndex('language_id', '{{%offers_redaction_translate}}', 'language_id');
-        $this->createIndex('object_id', '{{%offers_redaction_translate}}', 'object_id');
+        $this->createIndex('language_id', OffersRedactionTranslate::tableName(), 'language_id');
+        $this->createIndex('object_id', OffersRedactionTranslate::tableName(), 'object_id');
     }
 
     public function down() {
-        $this->dropTable('{{%offers}}');
-        $this->dropTable('{{%offers_redaction}}');
-        $this->dropTable('{{%offers_redaction_translate}}');
+        $this->dropTable(Offers::tableName());
+        $this->dropTable(OffersRedaction::tableName());
+        $this->dropTable(OffersRedactionTranslate::tableName());
     }
 
 }

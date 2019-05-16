@@ -5,8 +5,8 @@ class m171205_103329_agreements extends \panix\engine\db\Migration {
     public function up() {
         $this->createTable('{{%agreements}}', [
             'id' => $this->primaryKey(),
-            'redaction_id' => $this->integer(),
-            'calc_id' => $this->integer(),
+            'redaction_id' => $this->integer()->unsigned(),
+            'calc_id' => $this->integer()->unsigned(),
             'price' => 'float(10,2) DEFAULT NULL',
             'course' => 'float(10,2) DEFAULT NULL',
             'customer_is' => $this->boolean()->defaultValue(0),
@@ -27,9 +27,9 @@ class m171205_103329_agreements extends \panix\engine\db\Migration {
         ]);
 
         $this->createTable('{{%agreements__redaction_translate}}', [
-            'id' => $this->primaryKey(),
-            'language_id' => $this->string(2),
-            'object_id' => $this->integer(),
+            'id' => $this->primaryKey()->unsigned(),
+            'language_id' => $this->tinyInteger()->unsigned(),
+            'object_id' => $this->integer()->unsigned(),
             'text' => $this->text(),
         ]);
         
