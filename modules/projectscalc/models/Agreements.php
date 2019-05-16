@@ -2,6 +2,8 @@
 
 namespace app\modules\projectscalc\models;
 
+use app\modules\projectscalc\models\translate\AgreementsRedactionTranslate;
+use panix\engine\behaviors\TranslateBehavior;
 use Yii;
 use panix\engine\Html;
 use app\modules\projectscalc\components\ProjectHelper;
@@ -11,7 +13,7 @@ class Agreements extends \panix\engine\db\ActiveRecord {
     const MODULE_ID = 'projectscalc';
     const route = '/projectscalc/admin/agreements';
 
-    //
+    public $translationClass = AgreementsRedactionTranslate::class;
 
     public function getGridName() {
         return Yii::t('projectscalc/default', 'AGREEMENTS_NAME', array(
@@ -112,42 +114,33 @@ class Agreements extends \panix\engine\db\ActiveRecord {
     }
 
     public function getRedaction() {
-        return $this->hasOne(AgreementsRedaction::className(), ['id' => 'redaction_id']);
+        return $this->hasOne(AgreementsRedaction::class, ['id' => 'redaction_id']);
     }
 
     public function getCalc() {
-        return $this->hasOne(ProjectsCalc::className(), ['id' => 'calc_id']);
+        return $this->hasOne(ProjectsCalc::class, ['id' => 'calc_id']);
     }
-
-    /**
-     * @return array relational rules.
-     */
-    public function relations2() {
-        return array(
-            'redaction' => array(self::BELONGS_TO, 'AgreementsRedaction', 'redaction_id'),
-            'calc' => array(self::BELONGS_TO, 'ProjectsCalc', 'id'),
-        );
+    public function getTranslations() {
+        return $this->hasMany($this->translationClass, ['object_id' => 'id']);
+    }
+    public function getTranslation()
+    {
+        return $this->hasOne($this->translationClass, ['object_id' => 'id']);
     }
 
     /**
      * @return array
      */
-    public function behaviors2() {
-        $a = array();
-        $a['timezone'] = array(
-            'class' => 'app.behaviors.TimezoneBehavior',
-            'attributes' => array('date_create', 'date_update'),
-        );
-        /* $a['TranslateBehavior'] = array(
-          'class' => 'app.behaviors.TranslateBehavior',
-          'translateAttributes' => array(
-          'text',
-          ),
-          );
-         */
-        return $a;
+    public function behaviors() {
+        return \yii\helpers\ArrayHelper::merge([
+            'translate' => [
+                'class' => TranslateBehavior::class,
+                'translationAttributes' => [
+                    'text'
+                ]
+            ],
+        ], parent::behaviors());
     }
-
 
     public function getDataRender(){
         if ($this->date) {
