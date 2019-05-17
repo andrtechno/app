@@ -31,6 +31,9 @@ return [
             'userCommandsPath' => '@telegram/commands/UserCommands',
             // 'timeBeforeResetChatHandler' => 60
         ],
+        'banner' => [
+            'class' => 'panix\mod\banner\Module',
+        ],
         //'rbac' => [
         //    'class' => 'panix\mod\rbac\Module',
         //    'as access' => [

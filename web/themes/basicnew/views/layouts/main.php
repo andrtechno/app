@@ -14,6 +14,14 @@ $this->registerJs("
         var price_thousand = " . $c->price_thousand . ";
         var price_decimal = " . $c->price_decimal . ";
      ", yii\web\View::POS_HEAD, 'numberformat');*/
+
+//add
+//Yii::$app->authManager->assign(Yii::$app->authManager->createRole('Manager'),2);
+
+//remove
+//Yii::$app->authManager->revoke(Yii::$app->authManager->createRole('Manager'),2);
+
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -22,16 +30,6 @@ $this->registerJs("
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
-
-    <?php ?>
-    <?php
-    /*if (is_null(Yii::$app->seo->block('title'))) {
-        echo '<title>' . Html::encode($this->title) . '</title>';
-    } else {
-        echo '<title>' . Html::encode(Yii::$app->seo->block('title')) . '</title>';
-    }*/
-    ?>
-
     <script charset="UTF-8" src="//cdn.sendpulse.com/js/push/3e9c33d0f25795d8e0a72d77af9e38c6_0.js" async></script>
 </head>
 <body>
@@ -41,7 +39,6 @@ $this->registerJs("
     Hello, world!
     main
     lox poc
-    Hello, world!
     <a href="http://google.com">google.com</a>
 
     <pre>dsasda Hello, world!</pre>

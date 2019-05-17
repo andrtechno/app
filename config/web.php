@@ -39,6 +39,9 @@ $config = [
         'sitemap' => [
             'class' => 'panix\mod\sitemap\Module',
         ],
+        'banner' => [
+            'class' => 'panix\mod\banner\Module',
+        ],
         'rbac' => [
             'class' => 'panix\mod\rbac\Module',
             //'as access' => [
