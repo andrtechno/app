@@ -18,12 +18,12 @@ $config = yii\helpers\ArrayHelper::merge(
     require __DIR__ . '/../../config/console.php',
     [
         'components' => [
-            'db' => require __DIR__ . '/../../config/test_db.php'
+            'db' => require __DIR__ . '/../../config/db_test.php'
         ]
     ]
 );
 
 
-$application = new yii\console\Application($config);
+$application = new \panix\engine\console\Application($config);
 $exitCode = $application->run();
 exit($exitCode);
