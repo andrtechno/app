@@ -1,0 +1,10 @@
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver:
+            url: http://yii2.pixelion.com.ua/
+            browser: firefox
+        - Yii2:
+            part: orm
+            entryScript: index.php
+            cleanup: false
