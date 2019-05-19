@@ -18,7 +18,7 @@ $config = [
         //'@console' => dirname(dirname(__DIR__)) . '/console',
     ],
     //'sourceLanguage'=>'ru',
-   // 'runtimePath' => '@app/backend/runtime',
+    // 'runtimePath' => '@app/backend/runtime',
     'controllerNamespace' => 'panix\engine\controllers',
     //'defaultRoute' => 'main/main',
     'bootstrap' => [
@@ -139,7 +139,7 @@ $config = [
                                 return [
                                     'loc' => \yii\helpers\Url::to($model->url, true),
                                     'lastmod' => strtotime($model->lastmod),
-                                    'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
+                                    'changefreq' => \panix\mod\sitemap\Module::DAILY,
                                     'priority' => 0.8
                                 ];
                             }
@@ -268,7 +268,7 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache', //DummyCache
-           // 'cachePath' => '@common/runtime/cache'
+            // 'cachePath' => '@common/runtime/cache'
         ],
         'user' => [
             'class' => 'panix\mod\user\components\WebUser',
@@ -343,7 +343,7 @@ $config = [
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
         'settings' => ['class' => 'panix\engine\components\Settings'],
 
-         'urlManager' => require(__DIR__ . '/urlManager.php'),
+        'urlManager' => require(__DIR__ . '/urlManager.php'),
         'db' => require($db),
     ],
     /*'as access' => [
