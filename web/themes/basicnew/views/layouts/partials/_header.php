@@ -232,7 +232,7 @@ try {
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown megamenu-down">
                         <a class="nav-link dropdown-toggle btn btn-secondary" href="#" id="dropdown08"
-                           data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">Каталог</a>
+                           data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">Каталог товаров</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown08">
                             <div class="container pr-0 pl-0">
                                 <div class="row">
