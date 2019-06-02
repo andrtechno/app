@@ -3385,7 +3385,8 @@ input#max_price {
   padding-left: 0;
   color: #d2d5d6;
 }
-._view_grid .product .btn-compare:hover,
+._view_grid .product .btn-compare.added, ._view_grid .product .btn-compare:hover,
+._view_grid .product .btn-wishlist.added,
 ._view_grid .product .btn-wishlist:hover {
   color: #F66718;
 }

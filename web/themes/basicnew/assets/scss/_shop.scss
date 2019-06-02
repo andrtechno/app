@@ -185,6 +185,7 @@ $price-font-size: 22px;
   }
 
 }
+
 .discount-sum {
   color: $color-warning;
   text-decoration: none;
@@ -192,6 +193,7 @@ $price-font-size: 22px;
   font-weight: 700;
   margin-left: 10px;
 }
+
 .filters-container {
   margin-bottom: 1rem;
 }
@@ -669,7 +671,6 @@ input#max_price {
   }
 }
 
-
 ._view_grid .owl-stage-outer {
   padding-top: 30px;
 }
@@ -741,12 +742,13 @@ input#max_price {
       content: '';
     }
   }
-  .btn{
+  .btn {
     padding-right: 1rem;
     padding-left: 1rem;
   }
 
 }
+
 ._view_grid .product .btn-compare,
 ._view_grid .product .btn-wishlist {
   background: none;
@@ -758,6 +760,7 @@ input#max_price {
   padding-right: 0;
   padding-left: 0;
   color: lighten($text-color, 50);
+  &.added,
   &:hover {
     color: $color-warning;
   }
