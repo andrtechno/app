@@ -30,7 +30,7 @@ use panix\engine\widgets\Breadcrumbs;
 <div class="wrap">
 
     <?= $this->render('@theme/views/layouts/partials/_header'); ?>
-    <div class="container-fluid">
+    <div class="container">
         <?php
         if (isset($this->context->breadcrumbs)) {
             echo Breadcrumbs::widget([

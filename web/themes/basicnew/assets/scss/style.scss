@@ -35,9 +35,11 @@ html {
 .no-radius .btn-group-sm > .btn {
   @include border-radius(0);
 }
-.table{
-  color:$text-color;
+
+.table {
+  color: $text-color;
 }
+
 table {
   &.table td,
   &.table th {
@@ -849,7 +851,7 @@ $header-height-center-desktop: 150px;
 .navbar-nav .nav-link {
   color: #fff;
   &:hover {
-    color: $link-color-hover;
+    color: $text-color;
   }
 }
 
@@ -966,21 +968,20 @@ header {
     background-color: transparent;
     padding-left: 0;
     padding-right: 0;
-    h1,.h1,
-    h2,.h2,
-    h3,.h3,
-    h4,.h4,
-    h5,.h5,
-    h6,.h6{
+    h1, .h1,
+    h2, .h2,
+    h3, .h3,
+    h4, .h4,
+    h5, .h5,
+    h6, .h6 {
       margin-bottom: 0;
     }
   }
-  .card-body{
+  .card-body {
     padding-right: 0;
     padding-left: 0;
   }
 }
-
 
 #alert-demo {
   animation-name: fadeDemo;
@@ -988,6 +989,7 @@ header {
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
+
 /*
 .alert {
   position: relative;
@@ -1150,15 +1152,6 @@ p {
     transition: all 0.3s ease-in-out;
     visibility: hidden;
     opacity: 0;
-    &:before {
-      height: 4px;
-      @include gradient($gradient-color-start, $gradient-color-end);
-
-      display: block;
-      width: 100%;
-      content: '';
-
-    }
   }
   .navbar-nav .dropdown:hover .dropdown-menu {
     top: 100%;
@@ -1183,6 +1176,18 @@ p {
 
 .social-share ul > li > a:hover {
   text-decoration: none;
+}
+
+//todo no work placeholder
+.navbar .form-control {
+  border-color: #fff;
+  color: #fff;
+  &:-moz-placeholder,
+  &:-ms-input-placeholder,
+  &::-moz-placeholder,
+  &::-webkit-input-placeholder {
+    color: #fff;
+  }
 }
 
 .form-control {

@@ -271,13 +271,13 @@ try {
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <?= Html::a(Yii::t('compare/default', 'Доставка и оплата'), ['/compare'], ['class' => 'nav-link']) ?>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <?= Html::a(Yii::t('compare/default', 'Возврат'), ['/compare'], ['class' => 'nav-link']) ?>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
+                        <?= Html::a(Yii::t('compare/default', 'Контакты'), ['/contacts'], ['class' => 'nav-link']) ?>
                     </li>
                     <li class="nav-item dropdown megamenu-down">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown07"

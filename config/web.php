@@ -16,8 +16,9 @@ $config = [
     'defaultRoute' => 'main/index',
     'bootstrap' => [
         'plugins',
-        'panix\engine\plugins\goaway\GoAway'
-    ], //'webcontrol',
+        'panix\engine\plugins\goaway\GoAway',
+        //'webcontrol'
+    ],
     'controllerMap' => [
         'main' => 'panix\engine\controllers\WebController',
     ],
@@ -114,10 +115,9 @@ $config = [
             'class' => 'understeam\fcm\Client',
             'apiKey' => 'AIzaSyAbeTCpxK7OGu_lXZDSnJjV1ItkUwPOBbc', // Server API Key (you can get it here: https://firebase.google.com/docs/server/setup#prerequisites)
         ],
-
         'stats' => ['class' => 'panix\mod\stats\components\Stats'],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
-        'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
+        //'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
         'pdf' => [
             'class' => Pdf::class,
             'format' => Pdf::FORMAT_A4,

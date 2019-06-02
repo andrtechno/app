@@ -1984,7 +1984,7 @@ a[href^="tel:"] {
   color: #fff;
 }
 .navbar-nav .nav-link:hover {
-  color: #F66718;
+  color: #505759;
 }
 
 @media (min-width: 992px) {
@@ -2284,20 +2284,6 @@ p {
     visibility: hidden;
     opacity: 0;
   }
-  .navbar-nav .dropdown-menu:before {
-    height: 4px;
-    background-image: -moz-linear-gradient(45deg, #49aeb2 0%, #99c997 100%);
-    background-image: -webkit-gradient(linear, 45deg, 45deg, color-stop(0%, #49aeb2), color-stop(100%, #99c997));
-    background-image: -webkit-linear-gradient(45deg, #49aeb2 0%, #99c997 100%);
-    background-image: -o-linear-gradient(45deg, #49aeb2 0%, #99c997 100%);
-    background-image: -ms-linear-gradient(45deg, #49aeb2 0%, #99c997 100%);
-    background-image: linear-gradient(45deg, #49aeb2 0%, #99c997 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#49aeb2', endColorstr=#99c997, GradientType=1);
-    background-repeat: repeat-x;
-    display: block;
-    width: 100%;
-    content: '';
-  }
 
   .navbar-nav .dropdown:hover .dropdown-menu {
     top: 100%;
@@ -2320,6 +2306,14 @@ p {
 
 .social-share ul > li > a:hover {
   text-decoration: none;
+}
+
+.navbar .form-control {
+  border-color: #fff;
+  color: #fff;
+}
+.navbar .form-control:-moz-placeholder, .navbar .form-control:-ms-input-placeholder, .navbar .form-control::-moz-placeholder, .navbar .form-control::-webkit-input-placeholder {
+  color: #fff;
 }
 
 .form-control {
@@ -2348,6 +2342,13 @@ p {
 /* End Validate form style*/
 .items .alert {
   width: 100%;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  background: none;
 }
 
 .delivery-subscribe {
@@ -3572,10 +3573,6 @@ input#max_price {
   align-items: center; //middle*/
 }
 
-.owl-brands .item a {
-  display: block;
-}
-
 .owl-brands {
   background: transparent;
 }
@@ -3590,6 +3587,10 @@ input#max_price {
 }
 .owl-brands .owl-item .image {
   display: inline-block;
+}
+.owl-brands .owl-item:hover a, .owl-brands .owl-item:hover a:hover {
+  color: #F66718;
+  text-decoration: none;
 }
 .owl-brands .owl-nav {
   width: 100%;
