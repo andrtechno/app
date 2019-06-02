@@ -9,9 +9,7 @@ input:-webkit-autofill:active  {
 .delivery-subscribe {
   color: #fff;
   padding: 1rem 0;
-  .form-control{
-    color: #fff;
-  }
+
   .text {
     display: inline-block;
     position: relative;
@@ -37,7 +35,17 @@ input:-webkit-autofill:active  {
 
   }
 }
-
+.navbar .form-control,
+.delivery-subscribe .form-control{
+  border-color: #fff;
+  color: #fff;
+  &:-moz-placeholder,
+  &:-ms-input-placeholder,
+  &::-moz-placeholder,
+  &::-webkit-input-placeholder {
+    color: #fff;
+  }
+}
 .gradient {
   @include gradient($gradient-color-start, $gradient-color-end);
 }

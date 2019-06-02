@@ -1178,18 +1178,6 @@ p {
   text-decoration: none;
 }
 
-//todo no work placeholder
-.navbar .form-control {
-  border-color: #fff;
-  color: #fff;
-  &:-moz-placeholder,
-  &:-ms-input-placeholder,
-  &::-moz-placeholder,
-  &::-webkit-input-placeholder {
-    color: #fff;
-  }
-}
-
 .form-control {
   background-color: transparent;
   @include border-radius(0);

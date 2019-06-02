@@ -2308,14 +2308,6 @@ p {
   text-decoration: none;
 }
 
-.navbar .form-control {
-  border-color: #fff;
-  color: #fff;
-}
-.navbar .form-control:-moz-placeholder, .navbar .form-control:-ms-input-placeholder, .navbar .form-control::-moz-placeholder, .navbar .form-control::-webkit-input-placeholder {
-  color: #fff;
-}
-
 .form-control {
   background-color: transparent;
   -webkit-border-radius: 0;
@@ -2355,9 +2347,6 @@ input:-webkit-autofill:active {
   color: #fff;
   padding: 1rem 0;
 }
-.delivery-subscribe .form-control {
-  color: #fff;
-}
 .delivery-subscribe .text {
   display: inline-block;
   position: relative;
@@ -2380,6 +2369,19 @@ input:-webkit-autofill:active {
   font-size: 40px;
   position: absolute;
   font-family: Pixelion;
+}
+
+.navbar .form-control,
+.delivery-subscribe .form-control {
+  border-color: #fff;
+  color: #fff;
+}
+.navbar .form-control:-moz-placeholder, .navbar .form-control:-ms-input-placeholder, .navbar .form-control::-moz-placeholder, .navbar .form-control::-webkit-input-placeholder,
+.delivery-subscribe .form-control:-moz-placeholder,
+.delivery-subscribe .form-control:-ms-input-placeholder,
+.delivery-subscribe .form-control::-moz-placeholder,
+.delivery-subscribe .form-control::-webkit-input-placeholder {
+  color: #fff;
 }
 
 .gradient {
@@ -2718,9 +2720,22 @@ span.highlight-word {
 .price-discount {
   color: #6c757d;
 }
-
 .price-discount span {
-  text-decoration: line-through;
+  position: relative;
+}
+.price-discount span:before {
+  width: 130%;
+  height: 2px;
+  position: absolute;
+  left: -7px;
+  top: 13px;
+  content: '';
+  background-color: #F66718;
+  -moz-transform: rotate(-18deg);
+  -ms-transform: rotate(-18deg);
+  -webkit-transform: rotate(-18deg);
+  -o-transform: rotate(-18deg);
+  transform: rotate(-18deg);
 }
 
 .price {
@@ -2756,7 +2771,8 @@ span.highlight-word {
 .price.price-discount sub {
   color: rgba(102, 108, 110, 0.5);
 }
-.price .discount-sum {
+
+.discount-sum {
   color: #F66718;
   text-decoration: none;
   font-size: 14px;
@@ -3271,38 +3287,6 @@ input#max_price {
   -o-border-radius: 3px;
 }
 
-.btn-compare,
-.btn-wishlist {
-  background: none;
-  position: relative;
-  width: 42px;
-  height: 42px;
-  padding: 5px;
-  line-height: 1;
-  font-size: 30px;
-  color: #d2d5d6;
-}
-.btn-compare:hover,
-.btn-wishlist:hover {
-  color: #F66718;
-}
-.btn-compare.added:after,
-.btn-wishlist.added:after {
-  content: '\2713';
-  background-color: #35cc62;
-  position: absolute;
-  top: 0;
-  font-size: 12px;
-  color: #fff;
-  right: 0;
-  padding: 3px 5px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
-  -o-border-radius: 50%;
-}
-
 ._view_grid .owl-stage-outer {
   padding-top: 30px;
 }
@@ -3337,9 +3321,9 @@ input#max_price {
   /*-webkit-transform: scale(-1, 1);
   -moz-transform: scale(-1, 1);
   transform: scale(-1, 1);*/
-  -webkit-transform: scale(0.98);
-  -moz-transform: scale(0.98);
-  transform: scale(0.98);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  transform: scale(1.1);
 }
 ._view_grid .product .product-image {
   text-align: center;
@@ -3361,7 +3345,7 @@ input#max_price {
   display: inline-block;
   position: relative;
   margin-bottom: 10px;
-  height: 60px;
+  height: 65px;
   color: #505759;
   font-size: 15px;
   font-weight: 600;
@@ -3383,6 +3367,43 @@ input#max_price {
   position: absolute;
   bottom: 0;
   content: '';
+}
+._view_grid .product .btn {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+._view_grid .product .btn-compare,
+._view_grid .product .btn-wishlist {
+  background: none;
+  position: relative;
+  width: 42px;
+  height: 42px;
+  line-height: 1;
+  font-size: 30px;
+  padding-right: 0;
+  padding-left: 0;
+  color: #d2d5d6;
+}
+._view_grid .product .btn-compare:hover,
+._view_grid .product .btn-wishlist:hover {
+  color: #F66718;
+}
+._view_grid .product .btn-compare.added:after,
+._view_grid .product .btn-wishlist.added:after {
+  content: '\2713';
+  background-color: #35cc62;
+  position: absolute;
+  top: 0;
+  font-size: 12px;
+  color: #fff;
+  right: 0;
+  padding: 3px 5px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  -o-border-radius: 50%;
 }
 
 .list-view .ias-trigger,
