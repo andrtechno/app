@@ -37,9 +37,6 @@ use panix\engine\Html;
             </div>
 
         </div>
-        <div class="text-center">
-        <small class="text-muted"><?= Yii::$app->pageGen() ?></small>
-        </div>
     </div>
 </footer>
 
