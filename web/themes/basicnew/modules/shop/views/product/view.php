@@ -230,39 +230,46 @@ print_r($test);
                 </div><!-- /.price-container -->
 
                 <div class="quantity-container info-container">
-                    <div class="row">
+                    <?php if ($model->isAvailable) { ?>
+                        <div class="row">
 
-                        <div class="col-sm-4">
-                            <?php
-                            echo yii\jui\Spinner::widget([
-                                'name' => "quantity",
-                                'value' => 1,
-                                'clientOptions' => [
-                                    'numberFormat' => "n",
-                                    //'icons'=>['down'=> "icon-arrow-up", 'up'=> "custom-up-icon"],
-                                    'max' => 999
-                                ],
-                                'options' => ['class' => 'cart-spinner','product_id'=>$model->id],
-                            ]);
-                            ?>
-                        </div>
+                            <div class="col-sm-4">
+                                <?php
 
-                        <div class="col-sm-8">
-                            <?php
-                            if (Yii::$app->hasModule('cart')) {
-                                if ($model->isAvailable) {
+                                echo yii\jui\Spinner::widget([
+                                    'name' => "quantity",
+                                    'value' => 1,
+                                    'clientOptions' => [
+                                        'numberFormat' => "n",
+                                        //'icons'=>['down'=> "icon-arrow-up", 'up'=> "custom-up-icon"],
+                                        'max' => 999
+                                    ],
+                                    'options' => ['class' => 'cart-spinner', 'product_id' => $model->id],
+                                ]);
+
+                                ?>
+                            </div>
+
+                            <div class="col-sm-8">
+                                <?php
+
+
+                                if (Yii::$app->hasModule('cart')) {
                                     //  $this->widget('mod.cart.widgets.buyOneClick.BuyOneClickWidget', array('pk' => $model->id));
                                     // Yii::import('mod.cart.CartModule');
                                     // CartModule::registerAssets();
                                     echo panix\mod\cart\widgets\buyOneClick\BuyOneClickWidget::widget(['pk' => $model->id]);
                                     echo Html::a(Yii::t('cart/default', 'BUY'), 'javascript:cart.add(' . $model->id . ')', array('class' => 'btn btn-primary'));
-                                } else {
-                                    echo Html::a(Yii::t('app', 'NOT_AVAILABLE'), 'javascript:cart.notifier(' . $model->id . ');', array('class' => 'btn btn-link'));
                                 }
-                            }
-                            ?>
+
+
+                                ?>
+                            </div>
                         </div>
-                    </div>
+                    <?php } else {
+                        \panix\mod\shop\bundles\NotifyAsset::register($this);
+                        echo Html::a(Yii::t('shop/default', 'NOT_AVAILABLE'), 'javascript:notify(' . $model->id . ');', array('class' => 'btn btn-link'));
+                    } ?>
                 </div>
 
 

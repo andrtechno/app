@@ -87,7 +87,8 @@ use yii\helpers\HtmlPurifier;
                 if ($model->isAvailable) {
                     echo Html::a(Yii::t('cart/default', 'BUY'), 'javascript:cart.add(' . $model->id . ')', array('class' => 'btn btn-warning btn-buy'));
                 } else {
-                    echo Html::a($model::t('NOT_AVAILABLE'), 'javascript:cart.notifier(' . $model->id . ');', array('class' => 'text-danger'));
+                    \panix\mod\shop\bundles\NotifyAsset::register($this);
+                    echo Html::a(Yii::t('shop/default','NOT_AVAILABLE'), 'javascript:notify(' . $model->id . ');', array('class' => 'text-danger'));
                 }
                 ?>
             </div>
