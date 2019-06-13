@@ -87,6 +87,17 @@ print_r($test);
                     'class' => 'thumb'
                 ]);
             }
+            if ($model->video) {
+                echo Html::a(Html::img($model->getVideoPreview(), [
+                    'alt' => $model->name,
+                    'class' => 'img-fluid img-thumbnail'
+                ]), $model->video, [
+                    // 'data-fancybox' => 'gallery',
+                    'data-caption' => Html::encode($model->name),
+                    'data-img' => $model->getVideoPreview(),
+                    'class' => 'thumb thumb-video'
+                ]);
+            }
             ?>
 
             <?php \panix\ext\owlcarousel\OwlCarouselWidget::end(); ?>
