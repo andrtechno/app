@@ -2326,10 +2326,6 @@ p {
   background-color: transparent;
   box-shadow: none;
 }
-.form-control:-moz-placeholder, .form-control:-ms-input-placeholder, .form-control::-moz-placeholder, .form-control::-webkit-input-placeholder {
-  /*color: rgba(255,255,255,0.6);*/
-  color: #fff;
-}
 
 /* End Validate form style*/
 .items .alert {
@@ -2376,12 +2372,21 @@ input:-webkit-autofill:active {
   border-color: #fff;
   color: #fff;
 }
-.navbar .form-control:-moz-placeholder, .navbar .form-control:-ms-input-placeholder, .navbar .form-control::-moz-placeholder, .navbar .form-control::-webkit-input-placeholder,
-.delivery-subscribe .form-control:-moz-placeholder,
-.delivery-subscribe .form-control:-ms-input-placeholder,
-.delivery-subscribe .form-control::-moz-placeholder,
+
 .delivery-subscribe .form-control::-webkit-input-placeholder {
-  color: #fff;
+  color: #fff !important;
+}
+
+.delivery-subscribe .form-control:-moz-placeholder {
+  color: #fff !important;
+}
+
+.delivery-subscribe .form-control::-moz-placeholder {
+  color: #fff !important;
+}
+
+.delivery-subscribe .form-control:-ms-input-placeholder {
+  color: #fff !important;
 }
 
 .gradient {
@@ -2607,7 +2612,7 @@ span.highlight-word {
   font-family: Pixelion;
   position: absolute;
   font-size: 70px;
-  color: #fff;
+  color: #F66718;
   text-align: center;
   width: 100%;
 }
@@ -2621,7 +2626,7 @@ span.highlight-word {
   position: absolute;
   font-size: 30px;
   line-height: 66px;
-  color: #fff;
+  color: #dee2e6;
   text-align: center;
   width: 100%;
 }

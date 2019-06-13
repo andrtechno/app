@@ -1192,14 +1192,6 @@ p {
     box-shadow: none;
     //border-color: #fff;
   }
-  &:-moz-placeholder, /* Firefox 18- */
-  &:-ms-input-placeholder, /* IE 10+ */
-  &::-moz-placeholder, /* Firefox 19+ */
-  &::-webkit-input-placeholder /* Chrome/Opera/Safari */
-  {
-    /*color: rgba(255,255,255,0.6);*/
-    color: #fff;
-  }
 }
 
 @media (min-width: 576px) {

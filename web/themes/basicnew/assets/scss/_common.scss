@@ -39,13 +39,26 @@ input:-webkit-autofill:active  {
 .delivery-subscribe .form-control{
   border-color: #fff;
   color: #fff;
-  &:-moz-placeholder,
-  &:-ms-input-placeholder,
-  &::-moz-placeholder,
-  &::-webkit-input-placeholder {
-    color: #fff;
-  }
 }
+
+
+.delivery-subscribe .form-control::-webkit-input-placeholder {
+  color: #fff !important;
+}
+
+.delivery-subscribe .form-control:-moz-placeholder {
+  color: #fff !important;
+}
+
+.delivery-subscribe .form-control::-moz-placeholder {
+  color: #fff !important;
+}
+
+.delivery-subscribe .form-control:-ms-input-placeholder {
+  color: #fff !important;
+}
+
+
 .gradient {
   @include gradient($gradient-color-start, $gradient-color-end);
 }
