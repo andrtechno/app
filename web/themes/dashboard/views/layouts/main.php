@@ -27,7 +27,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
 ?>
 <?php $this->beginPage(); ?>
-<!DOCTYPE html>
+    <!DOCTYPE html>
     <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=<?= \Yii::$app->charset ?>"/>
@@ -104,7 +104,9 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                             <div class="float-right">
                                 <?php
                                 if (!isset($this->context->buttons)) {
-                                    echo Html::a(Yii::t('app', 'CREATE'), ['create'], ['title' => Yii::t('app', 'CREATE'), 'class' => 'btn btn-success']);
+                                    if (method_exists($this->context, 'actionCreate')) {
+                                        echo Html::a(Yii::t('app', 'CREATE'), ['create'], ['title' => Yii::t('app', 'CREATE'), 'class' => 'btn btn-success']);
+                                    }
                                 } else {
                                     if ($this->context->buttons == true) {
                                         if (is_array($this->context->buttons)) {
@@ -206,8 +208,6 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
             <p class="col-md-12 text-center">
                 <?= Yii::$app->powered() ?> -
                 <?= Yii::$app->version ?>
-                <br/>
-                <?= Yii::$app->pageGen() ?>
             </p>
         </footer>
         <?php echo \panix\engine\widgets\scrollTop\ScrollTop::widget(); ?>
