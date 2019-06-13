@@ -2599,6 +2599,36 @@ span.highlight-word {
   border-width: 3px;
 }
 
+#main-image.video {
+  position: relative;
+}
+#main-image.video:before {
+  content: "\f051";
+  font-family: Pixelion;
+  position: absolute;
+  font-size: 70px;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+
+.thumb-video {
+  position: relative;
+}
+.thumb-video:before {
+  content: "\f051";
+  font-family: Pixelion;
+  position: absolute;
+  font-size: 30px;
+  line-height: 66px;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+.thumb-video.active:before {
+  color: #F66718;
+}
+
 .thumb.active .img-thumbnail {
   border-color: #F66718;
 }

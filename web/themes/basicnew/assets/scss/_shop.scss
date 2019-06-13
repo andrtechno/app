@@ -11,17 +11,41 @@
   @include border-radius(0);
   border-width: 3px;
 }
-.thumb-video{
 
+#main-image.video {
+  position: relative;
+  &:before {
+    content: "\f051";
+    font-family: $font-family-icon;
+    position: absolute;
+    font-size: 70px;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+  }
 }
+
+.thumb-video {
+  position: relative;
+  &:before {
+    content: "\f051";
+    font-family: $font-family-icon;
+    position: absolute;
+    font-size: 30px;
+    line-height: 66px;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+  }
+  &.active:before {
+    color: $color-warning;
+  }
+}
+
 .thumb.active {
   .img-thumbnail {
     border-color: $color-warning;
   }
-}
-
-#search-box {
-
 }
 
 /*

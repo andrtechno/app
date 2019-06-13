@@ -12,7 +12,15 @@ $this->registerJs("
             $('.thumb').removeClass('active');
             $(this).addClass('active');
             var src_bg = $(this).attr('href');
-            var src_middle = $(this).attr('data-img');
+            var src_middle = $(this).data('img');
+            var cls = $(this).data('class');
+
+            $('#main-image').removeClass('video');
+            if(cls !== undefined){
+                if(cls == 'video'){
+                    $('#main-image').addClass('video');
+                }
+            }
 
             //set params main image
             $('#main-image').attr('href', src_bg);
@@ -94,7 +102,8 @@ print_r($test);
                 ]), $model->video, [
                     // 'data-fancybox' => 'gallery',
                     'data-caption' => Html::encode($model->name),
-                    'data-img' => $model->getVideoPreview(),
+                    'data-class'=>'video',
+                    'data-img' => $model->getVideoPreview('maxresdefault'),
                     'class' => 'thumb thumb-video'
                 ]);
             }
