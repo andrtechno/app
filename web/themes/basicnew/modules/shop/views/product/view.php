@@ -40,8 +40,10 @@ echo \panix\ext\fancybox\Fancybox::widget([
 ]);
 //echo Html::a('back',\yii\helpers\Url::previous());
 
-$test = $model->getEavAttribute('material-podkladki');
-print_r($test);
+
+echo \panix\engine\widgets\like\LikeWidget::widget([
+    'model' => $model
+])
 
 ?>
 <br>
@@ -102,7 +104,7 @@ print_r($test);
                 ]), $model->video, [
                     // 'data-fancybox' => 'gallery',
                     'data-caption' => Html::encode($model->name),
-                    'data-class'=>'video',
+                    'data-class' => 'video',
                     'data-img' => $model->getVideoPreview('maxresdefault'),
                     'class' => 'thumb thumb-video'
                 ]);
