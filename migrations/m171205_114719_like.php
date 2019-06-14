@@ -22,13 +22,14 @@ class m171205_114719_like extends Migration
             'id' => $this->primaryKey()->unsigned(),
             'user_id' => $this->integer()->unsigned(),
             'object_id' => $this->integer()->unsigned(),
-            'model' => $this->string(100)->notNull(),
-
+            'handler_hash' => $this->string(8)->notNull(),
+            'value' => $this->tinyInteger()->unsigned()->null(),
+            'created_at' => $this->integer(),
         ]);
 
         $this->createIndex('user_id', Like::tableName(), 'user_id');
         $this->createIndex('object_id', Like::tableName(), 'object_id');
-
+        $this->createIndex('handler_hash', Like::tableName(), 'handler_hash');
 
     }
 
