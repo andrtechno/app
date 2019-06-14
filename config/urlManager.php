@@ -22,6 +22,7 @@ return [
 
         //'/admin' => 'admin/admin/default/index',
        // 'admin/auth' => 'admin/auth/index',
+        ['pattern' => 'like/<type:(up|down)>/<id:\d+>', 'route' => 'main/like'],
 
        // ['pattern' => 'admin/app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
         //['pattern' => 'admin/app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/admin/<controller>/<action>'],
