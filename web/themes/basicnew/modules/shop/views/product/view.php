@@ -47,6 +47,7 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
 
 ?>
 <br>
+<span class="badge badge-info">Код товара: <strong><?= $model->id; ?></strong></span>
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-5">
@@ -115,8 +116,6 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
 
 
         </div>
-
-
         <div class='col-sm-6 col-md-7 product-info-block'>
             <div class="product-info">
                 <h1 class="name heading-gradient">
@@ -137,17 +136,16 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
                 <?php } ?>
                 <?= $model->beginCartForm(); ?>
                 <div class="info-container mt-3">
-
                     <div class="row">
-
                         <div class="col-sm-3 mb-2">
                             <?php //$this->widget('ext.rating.StarRating', array('model' => $model)); ?>
                             rating
                         </div>
                         <div class="col-sm-9 mb-2">
                             <div class="reviews">
-                                <a href="<?= \yii\helpers\Url::to($model->getUrl()); ?>#comments_tab"
-                                   class="">(<?= Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]) ?>)</a>
+                                <a href="#w1-tab1" data-tabid="#comments"
+                                   data-toggle="tab">(<?= Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]) ?>
+                                    )</a>
                             </div>
                         </div>
 
@@ -304,7 +302,6 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
                 ?>
                 <?php echo $model->endCartForm(); ?>
 
-
                 <div class="row product-info-ext-title">
                     <div class="col-12 col-md-4">
                         <div class="product-info-ext product-info-ext__payment">Удобные варианты оплаты</div>
@@ -316,11 +313,8 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
                         <div class="product-info-ext product-info-ext__guarantee">Гарантия от магазина</div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
 </div>
 <div class="line-title"></div>
@@ -328,8 +322,6 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
     <div class="product-tabs">
         <div class="row">
             <div class="col-sm-12">
-
-
                 <?php
                 $tabs = [];
                 if (!empty($model->full_description)) {
@@ -353,6 +345,12 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
                         'content' => $this->render('tabs/_comments', ['model' => $model]),
                         'options' => ['id' => 'comments'],
                     ];
+                    /* $tabs[] = [
+                         'label' => Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]),
+                         //'url' => ['/shop/product/comments', 'slug' => $model->slug,'tab'=>'comments'],
+                         'content' => 'empty',
+                         'options' => ['id' => 'comments','data-url'=>\yii\helpers\Url::to(['/shop/product/comments', 'slug' => $model->slug,'tab'=>'comments'])],
+                     ];*/
                 }
                 if ($model->relatedProducts) {
                     $tabs[] = [
@@ -373,16 +371,40 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
                 echo \panix\engine\bootstrap\Tabs::widget(['items' => $tabs, 'navType' => 'nav-pills justify-content-center']);
                 ?>
             </div>
-
-
         </div>
     </div>
-
-
 </div>
 
 
 <?php
+
+$this->registerJs("
+$('.reviews a').click(function(){
+    $($(this).data('tabid')).tab('show');
+    
+   // $(this).tab('show');
+});
+");
+
+/*
+$this->registerJs("
+$(document).on('click', '.nav .nav-link', function(e){
+    e.preventDefault();
+    var self = $(this);
+    $.get(
+        self.parent().data('url'),
+        {
+            what: self.attr('data-value')
+        },
+        function(data){
+            $('#w1-tab2').html(data);
+        }
+    );
+    $(this).tab('show');
+    return false;
+});
+");*/
+
 //$this->widget('mod.shop.widgets.sessionView.SessionViewWidget',array('current_id'=>$model->id));
 ?>
 

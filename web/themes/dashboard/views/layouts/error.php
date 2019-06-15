@@ -175,8 +175,6 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
             <p class="col-md-12 text-center">
                 <?= Yii::$app->powered() ?> -
                 <?= Yii::$app->version ?>
-                <br/>
-                <?= Yii::$app->pageGen() ?>
             </p>
         </footer>
         <?php echo \panix\engine\widgets\scrollTop\ScrollTop::widget(); ?>
