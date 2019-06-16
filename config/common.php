@@ -1,5 +1,4 @@
 <?php
-use panix\engine\pdf\Pdf;
 
 $db = YII_DEBUG ? dirname(__DIR__) . '/config/db_local.php' : dirname(__DIR__) . '/config/db.php';
 $config = [
