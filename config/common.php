@@ -186,13 +186,6 @@ $config = [
             'file' => '@my/path/to/yii' // or an absolute path to console file
         ],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
-        'pdf' => [
-            'class' => Pdf::class,
-            'format' => Pdf::FORMAT_A4,
-            'orientation' => Pdf::ORIENT_PORTRAIT,
-            'destination' => Pdf::DEST_BROWSER,
-            'mode' => Pdf::MODE_UTF8,
-        ],
         'formatter' => [
             'class' => 'panix\engine\i18n\Formatter'
         ],
