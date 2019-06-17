@@ -116,7 +116,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                                             }
                                             foreach ($this->context->buttons as $button) {
                                                 if (isset($button['icon'])) {
-                                                    $icon = '<i class="' . $button['icon'] . '"></i> ';
+                                                    $icon = Html::icon($button['icon']).' ';
                                                 } else {
                                                     $icon = '';
                                                 }
@@ -205,10 +205,10 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
         </div>
         <footer class="footer">
-            <p class="col-md-12 text-center">
+            <div class="col-md-12 text-center">
                 <?= Yii::$app->powered() ?> -
                 <?= Yii::$app->version ?>
-            </p>
+            </div>
         </footer>
         <?php echo \panix\engine\widgets\scrollTop\ScrollTop::widget(); ?>
     </div>
