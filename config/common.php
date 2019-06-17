@@ -269,6 +269,7 @@ $config = [
         ],
         'mailer' => [
             'class' => 'panix\engine\Mailer',
+          //  'class' => 'yii\swiftmailer\Mailer',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -279,6 +280,13 @@ $config = [
                     'logVars' => [],
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/db.log',
                     'categories' => ['yii\db\*']
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/error.log',
+                   // 'categories' => ['yii\db\*']
                 ],
                 [
                     'class' => 'yii\log\FileTarget',
