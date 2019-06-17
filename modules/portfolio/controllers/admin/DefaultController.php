@@ -30,7 +30,7 @@ class DefaultController extends AdminController {
         $this->pageName = Yii::t('shop/admin', 'PRODUCTS');
         $this->buttons = [
             [
-                'icon' => 'icon-add',
+                'icon' => 'add',
                 'label' => Yii::t('shop/admin', 'CREATE_PRODUCT'),
                 'url' => ['create'],
                 'options' => ['class' => 'btn btn-success']
@@ -64,7 +64,7 @@ class DefaultController extends AdminController {
 
         if (!$model->isNewRecord) {
             $this->buttons[] = [
-                'icon' => 'icon-eye',
+                'icon' => 'eye',
                 'label' => Yii::t('shop/admin', 'VIEW_PRODUCT'),
                 'url' => $model->getUrl(),
                 'options' => ['class' => 'btn btn-info', 'target' => '_blank']
@@ -72,7 +72,7 @@ class DefaultController extends AdminController {
         }
 
         $this->buttons[] = [
-            'icon' => 'icon-add',
+            'icon' => 'add',
             'label' => Yii::t('shop/admin', 'CREATE_PRODUCT'),
             'url' => ['create'],
             'options' => ['class' => 'btn btn-success']
