@@ -1284,7 +1284,7 @@ body {
   position: absolute;
   z-index: 0;
   bottom: 0;
-  height: 50px;
+  height: 30px;
   width: 100%;
   text-align: right;
   -webkit-transition: ease-in 0.3s padding-left;
@@ -1406,7 +1406,7 @@ input.loading {
 
 #wrapper-tpl {
   padding-top: 51px;
-  margin-bottom: 51px;
+  margin-bottom: 50px;
 }
 
 .lofiversion #wrapper-tpl {
