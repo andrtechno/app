@@ -273,43 +273,46 @@ $config = [
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
+            'flushInterval'=>1000*10,
             'targets' => [
-                [
+                'file1'=>[
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                     'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/db.log',
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/db_error.log',
                     'categories' => ['yii\db\*']
                 ],
-                [
+                'file2'=>[
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                     'logVars' => [],
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/error.log',
                    // 'categories' => ['yii\db\*']
                 ],
-                [
+                'file3'=>[
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['warning'],
+                    'logVars' => [],
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/warning.log',
                 ],
-                [
+                'file4'=>[
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['info'],
+                    'logVars' => [],
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/info.log',
                 ],
-                [
+                /*[
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['profile'],
                     'logVars' => [],
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/profile.log',
-                ],
-                [
+                ],*/
+                /*[
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['trace'],
                     'logVars' => [],
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/trace.log',
-                ],
+                ],*/
                 [
                     'class' => 'panix\engine\log\EmailTarget',
                     'levels' => ['error', 'warning'],

@@ -5,7 +5,7 @@ return [
     'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__),
     //'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log','telegram','queue'],
+    'bootstrap' => ['log','telegram','queue','panix\engine\BootstrapModule'],
     'controllerNamespace' => 'app\commands',
     'language' => 'ru',
     'aliases' => [
@@ -71,6 +71,50 @@ return [
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
         //'urlManager' => require(__DIR__ . '/urlManager.php'),
         'db' => require(__DIR__ . '/../config/db.php'),
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'flushInterval'=>1000*10,
+            'targets' => [
+                'file1'=>[
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/db_error.log',
+                    'categories' => ['yii\db\*']
+                ],
+                'file2'=>[
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/error.log',
+                    // 'categories' => ['yii\db\*']
+                ],
+                'file3'=>[
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['warning'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/warning.log',
+                ],
+                'file4'=>[
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['info'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/info.log',
+                ],
+                /*[
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['profile'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/profile.log',
+                ],*/
+                /*[
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['trace'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/trace.log',
+                ],*/
+            ],
+        ],
     ],
     'params' => require(__DIR__ . '/../config/params.php'),
 ];
