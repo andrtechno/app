@@ -17,7 +17,7 @@ use panix\engine\Html;
                         if(isset($btn['icon'])){
                             $icon = Html::icon($btn['icon']);
                         }
-                        echo Html::a($icon.' '.$btn['label'], $btn['url'], isset($btn['options']) ? $btn['options'] : ['class'=>'btn btn-sm btn-success']);
+                        echo Html::a($icon.' '.$btn['label'], $btn['url'], isset($btn['options']) ? $btn['options'] : ['class'=>'btn btn-sm btn-success','data-pjax'=>0]);
                     }
                     ?>
                 </span>
