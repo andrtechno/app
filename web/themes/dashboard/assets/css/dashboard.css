@@ -1128,6 +1128,45 @@ a:hover,
   padding: 0;
 }
 
+.pjax-loader {
+  position: relative;
+  /*&:before{
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    margin: 0 auto;
+    -webkit-animation: loader 1.2s infinite ease-in-out;
+    animation: loader 1.2s infinite ease-in-out;
+  }*/
+}
+.pjax-loader:before {
+  background-color: rgba(255, 255, 255, 0.5);
+  content: '';
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+.pjax-loader:after {
+  width: 42px;
+  height: 42px;
+  background-color: #343a40;
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 50%;
+  z-index: 1;
+  margin: 0 auto;
+  -webkit-animation: loader 1.2s infinite ease-in-out;
+  animation: loader 1.2s infinite ease-in-out;
+}
+
 .common-ajax-loading {
   position: fixed;
   top: 20px;
