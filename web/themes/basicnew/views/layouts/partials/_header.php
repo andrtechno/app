@@ -155,13 +155,13 @@ $config = Yii::$app->settings->get('contacts');
     </div>
     <div class="container" id="header-center">
         <div class="row">
-            <div class="col-lg-2 col-md-6 d-flex align-items-center">
+            <div class="col-lg-3 col-md-6 d-flex align-items-center">
                 <a class="navbar-brand ml-auto mr-auto mb-3 mb-md-0" href="/"></a>
             </div>
-            <div class="col-lg-3 col-md-6 d-flex align-items-center">
+            <div class="col-lg-2 col-md-6 d-flex align-items-center">
                 <div class="header-phones ml-auto mr-auto mb-3 mb-md-0">
                     <?php foreach ($config->phone as $phone) { ?>
-                        <?= Html::tel($phone['number'], ['class' => 'mb-1 phone '.CMS::slug(CMS::phoneOperator($phone['number']))]); ?>
+                        <?= Html::tel($phone['number'], ['class' => 'mb-1 mt-1 phone '.CMS::slug(CMS::phoneOperator($phone['number']))],'($2) $3-$4-$5'); ?>
                     <?php } ?>
                 </div>
             </div>
