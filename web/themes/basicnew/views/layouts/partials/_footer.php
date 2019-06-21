@@ -1,15 +1,15 @@
 <?php
 use panix\engine\Html;
-
+$config = Yii::$app->settings->get('contacts');
 ?>
 
 <footer id="footer">
 
     <div class="container">
         <div class="row no-gutters">
-            <div class="col-xl-3 col-lg-3 col-sm-6 col-md-6 mb-4 mb-lg-0">
+            <div class="col-xl-3 col-lg-3 col-sm-6 col-md-6 mb-4 mb-lg-0 text-center text-md-left">
                 <div class="footer-contact">
-                    <?= Html::tel('+38 (063) 489-26-95', array('class' => 'phone')); ?>
+                    <?= Html::tel($config->phone[0]['number'], ['class' => 'phone']); ?>
                     <div>Бесплатно со всех номеров</div>
                 </div>
             </div>

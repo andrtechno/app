@@ -23,7 +23,7 @@ html {
     width: 100%;
     height: 100%;
     left: 0;
-    right:0;
+    right: 0;
     position: absolute;
     z-index: 2;
   }
@@ -711,18 +711,40 @@ footer ul.footer-payments > li {
 */
 a.phone {
   font-size: 22px;
-  font-weight: bold;
   font-family: $font-family-second;
   color: $text-color;
-
 }
 
 a.phone:link,
 a.phone:visited {
   text-decoration: none;
-
 }
-
+.lifecell-life,
+.vodafone-mts,
+.kievstar{
+  padding-left: 30px;
+  position: relative;
+  &:before{
+    position: absolute;
+    content:'';
+    height: 20px;
+    left:0;
+    top:0;
+    width: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+  }
+}
+.lifecell-life:before{
+  background-image: url(../images/life-logo.svg);
+}
+.vodafone-mts:before{
+  background-image: url(../images/vodafone-logo.svg);
+}
+.kievstar:before{
+  background-image: url(../images/kyivstar-logo.svg);
+}
 a#pixelion {
   color: #505759;
   font-size: 14px;

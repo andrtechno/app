@@ -4,7 +4,6 @@ use yii\helpers\Url;
 use panix\engine\CMS;
 
 $this->registerJs("
-
     $(window).on('load', function () {
         var preloader = $('.loaderArea'),
             loader = preloader.find('.loader');
@@ -12,53 +11,12 @@ $this->registerJs("
         preloader.delay(350).fadeOut('slow');
     });
 
-
-
 ", \yii\web\View::POS_END, 'preloader-js');
 
+$config = Yii::$app->settings->get('contacts');
 
-echo \panix\mod\telegram\TelegramWidget::widget();
-
-use Longman\TelegramBot\Request;
-
-try {
-    // Create Telegram API object
-    //$telegram = new Longman\TelegramBot\Telegram(Yii::$app->getModule('telegram')->api_token, Yii::$app->getModule('telegram')->bot_name);
-
-    // Set webhook
-    //$result = $telegram->getBotName();
-
-
-    //  $botan = $telegram->enableBotan(Yii::$app->getModule('telegram')->API_KEY);
-
-    //print_r($ss);
-    // $telegram->enableMySql($mysql_credentials);
-
-    //Yii::$app->telegram->setWebhook([
-    //    'url' => 'https://yii2.pixelion.com.ua/telegram/default/hook',
-    //]);
-
-    /*$getUpdates = Yii::$app->telegram->getUpdates([
-
-    ]);
-
-    \yii\helpers\VarDumper::dump($getUpdates, 10,true);
-*/
-    /*Yii::$app->telegram->sendMessage([
-        'chat_id' => '812367093',
-        'text' => 'Your utf8 text 😜 ...',
-    ]);*/
-
-
-//print_r($result);
-} catch (Longman\TelegramBot\Exception\TelegramException $e) {
-    // log telegram errors
-    echo $e->getMessage();
-}
 ?>
 
-
-<!--ПРЕЛОАДЕР-->
 <div class="loaderArea d-none">
     <div class="loader">
         <div class="cssload-inner cssload-one"></div>
@@ -197,13 +155,14 @@ try {
     </div>
     <div class="container" id="header-center">
         <div class="row">
-            <div class="col-lg-3 col-md-6 d-flex align-items-center">
+            <div class="col-lg-2 col-md-6 d-flex align-items-center">
                 <a class="navbar-brand ml-auto mr-auto mb-3 mb-md-0" href="/"></a>
             </div>
-            <div class="col-lg-2 col-md-6 d-flex align-items-center">
+            <div class="col-lg-3 col-md-6 d-flex align-items-center">
                 <div class="header-phones ml-auto mr-auto mb-3 mb-md-0">
-                    <?= Html::tel('+38 (063) 489-26-95', ['class' => 'mb-1 phone']); ?>
-                    <?= Html::tel('+38 (063) 489-26-95', ['class' => 'mb-1 phone']); ?>
+                    <?php foreach ($config->phone as $phone) { ?>
+                        <?= Html::tel($phone['number'], ['class' => 'mb-1 phone '.CMS::slug(CMS::phoneOperator($phone['number']))]); ?>
+                    <?php } ?>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 d-flex align-items-center">

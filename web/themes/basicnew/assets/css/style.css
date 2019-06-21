@@ -1844,7 +1844,6 @@ footer ul.footer-payments > li {
 */
 a.phone {
   font-size: 22px;
-  font-weight: bold;
   font-family: "Roboto Slab", serif;
   color: #505759;
 }
@@ -1852,6 +1851,38 @@ a.phone {
 a.phone:link,
 a.phone:visited {
   text-decoration: none;
+}
+
+.lifecell-life,
+.vodafone-mts,
+.kievstar {
+  padding-left: 30px;
+  position: relative;
+}
+.lifecell-life:before,
+.vodafone-mts:before,
+.kievstar:before {
+  position: absolute;
+  content: '';
+  height: 20px;
+  left: 0;
+  top: 0;
+  width: 25px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.lifecell-life:before {
+  background-image: url(../images/life-logo.svg);
+}
+
+.vodafone-mts:before {
+  background-image: url(../images/vodafone-logo.svg);
+}
+
+.kievstar:before {
+  background-image: url(../images/kyivstar-logo.svg);
 }
 
 a#pixelion {
@@ -2348,7 +2379,6 @@ input:-webkit-autofill:active {
 .delivery-subscribe .text {
   display: inline-block;
   position: relative;
-  padding-left: 55px;
   font-weight: 300;
   font-size: 14px;
 }
@@ -2357,16 +2387,21 @@ input:-webkit-autofill:active {
   font-size: 20px;
   font-weight: 900;
 }
-.delivery-subscribe .text:before {
-  width: 50px;
-  height: 50px;
-  left: 0;
-  top: 0;
-  content: '\f063';
-  color: #fff;
-  font-size: 40px;
-  position: absolute;
-  font-family: Pixelion;
+@media (min-width: 768px) {
+  .delivery-subscribe .text {
+    padding-left: 55px;
+  }
+  .delivery-subscribe .text:before {
+    width: 50px;
+    height: 50px;
+    left: 0;
+    top: 0;
+    content: '\f063';
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    font-family: Pixelion;
+  }
 }
 
 .navbar .form-control,

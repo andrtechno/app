@@ -9,11 +9,10 @@ input:-webkit-autofill:active  {
 .delivery-subscribe {
   color: #fff;
   padding: 1rem 0;
-
   .text {
     display: inline-block;
     position: relative;
-    padding-left: 55px;
+
     font-weight: 300;
     font-size:14px;
     strong{
@@ -21,18 +20,23 @@ input:-webkit-autofill:active  {
       font-size:20px;
       font-weight: 900;
     }
-    &:before {
-      width: 50px;
-      height: 50px;
-      left: 0;
-      top: 0;
-      content:'\f063';
-      color:#fff;
-      font-size:40px;
-      position: absolute;
-      font-family: $font-family-icon;
-    }
 
+  }
+  @media (min-width: 768px) {
+    .text {
+      padding-left: 55px;
+      &:before {
+        width: 50px;
+        height: 50px;
+        left: 0;
+        top: 0;
+        content:'\f063';
+        color:#fff;
+        font-size:40px;
+        position: absolute;
+        font-family: $font-family-icon;
+      }
+    }
   }
 }
 .navbar .form-control,

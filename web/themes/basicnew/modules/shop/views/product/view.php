@@ -317,6 +317,12 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
         </div>
     </div>
 </div>
+
+<?php
+echo $this->render('_sets',['model'=>$model]);
+?>
+
+
 <div class="line-title"></div>
 <div class="container">
     <div class="product-tabs">
@@ -381,8 +387,7 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
 $this->registerJs("
 $('.reviews a').click(function(){
     $($(this).data('tabid')).tab('show');
-    
-   // $(this).tab('show');
+    // $(this).tab('show');
 });
 ");
 
