@@ -41,13 +41,8 @@ echo \panix\ext\fancybox\Fancybox::widget([
 //echo Html::a('back',\yii\helpers\Url::previous());
 
 
-echo \panix\engine\widgets\like\LikeWidget::widget([
-    'model' => $model
-])
-
 ?>
-<br>
-<span class="badge badge-info">Код товара: <strong><?= $model->id; ?></strong></span>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-6 col-md-5">
@@ -115,12 +110,24 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
             <?php \panix\ext\owlcarousel\OwlCarouselWidget::end(); ?>
 
 
+            <?php
+            $np = new \panix\mod\cart\widgets\delivery\novaposhta\api\NovaPoshtaApi('ec12098e557d0025887b4c93fc43c114');
+            $np->InternetDocument();
+
+            print_r($np);
+
+            ?>
+
         </div>
         <div class='col-sm-6 col-md-7 product-info-block'>
             <div class="product-info">
-                <h1 class="name heading-gradient">
-                    <?= Html::encode(($this->h1) ? $this->h1 : $model->name); ?>
-                </h1>
+
+                <span class="badge badge-light">Код товара: <strong><?= $model->id; ?></strong></span>
+                <div class="heading-gradient">
+                    <h1>
+                        <?= Html::encode(($this->h1) ? $this->h1 : $model->name); ?>
+                    </h1>
+                </div>
                 <?php
 
                 if ($prev = $model->getPrev()->one()) {
@@ -135,6 +142,11 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
                     <?= panix\mod\discounts\widgets\countdown\Countdown::widget(['model' => $model]) ?>
                 <?php } ?>
                 <?= $model->beginCartForm(); ?>
+                <?php
+                echo \panix\engine\widgets\like\LikeWidget::widget([
+                    'model' => $model
+                ]);
+                ?>
                 <div class="info-container mt-3">
                     <div class="row">
                         <div class="col-sm-3 mb-2">
@@ -319,7 +331,7 @@ echo \panix\engine\widgets\like\LikeWidget::widget([
 </div>
 
 <?php
-echo $this->render('_sets',['model'=>$model]);
+echo $this->render('_sets', ['model' => $model]);
 ?>
 
 

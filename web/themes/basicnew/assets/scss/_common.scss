@@ -1,9 +1,19 @@
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active  {
+input:-webkit-autofill:active {
   background: none;
 
+}
+// yii\widgets\LinkSorter
+ul.sorter {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  .asc,
+  .desc {
+
+  }
 }
 
 .delivery-subscribe {
@@ -14,10 +24,10 @@ input:-webkit-autofill:active  {
     position: relative;
 
     font-weight: 300;
-    font-size:14px;
-    strong{
+    font-size: 14px;
+    strong {
       font-family: $font-family-second;
-      font-size:20px;
+      font-size: 20px;
       font-weight: 900;
     }
 
@@ -30,21 +40,21 @@ input:-webkit-autofill:active  {
         height: 50px;
         left: 0;
         top: 0;
-        content:'\f063';
-        color:#fff;
-        font-size:40px;
+        content: '\f063';
+        color: #fff;
+        font-size: 40px;
         position: absolute;
         font-family: $font-family-icon;
       }
     }
   }
 }
+
 .navbar .form-control,
-.delivery-subscribe .form-control{
+.delivery-subscribe .form-control {
   border-color: #fff;
   color: #fff;
 }
-
 
 .delivery-subscribe .form-control::-webkit-input-placeholder {
   color: #fff !important;
@@ -61,7 +71,6 @@ input:-webkit-autofill:active  {
 .delivery-subscribe .form-control:-ms-input-placeholder {
   color: #fff !important;
 }
-
 
 .gradient {
   @include gradient($gradient-color-start, $gradient-color-end);
@@ -90,19 +99,22 @@ form div.required > label:after {
   color: $color-danger;
 
 }
+
 .has-error label,
 span.required {
   color: $color-danger !important;
 }
-span.highlight-word{
+
+span.highlight-word {
   background: $color-danger;
-  color:#fff;
+  color: #fff;
 }
-.list-view-loading{
+
+.list-view-loading {
   position: relative;
 }
 
-.list-view-loading:before{
+.list-view-loading:before {
   width: 100%;
   height: 100%;
   padding: 15px;
@@ -125,10 +137,12 @@ span.highlight-word{
   top: 50%;
   z-index: 1002;
 }
-.has-error .help-block{
+
+.has-error .help-block {
   color: $color-danger;
   font-size: 80%;
 }
+
 .has-error textarea::-webkit-input-placeholder,
 .has-error input::-webkit-input-placeholder {
   color: $color-danger;
@@ -187,26 +201,28 @@ span.highlight-word{
   border-color: $color-success;
 }
 
-
-
-.ias-noneleft{
+.ias-noneleft {
   margin: 15px;
 }
+
 .ias-spinner,
 .ias-noneleft,
-.ias-trigger{
+.ias-trigger {
   clear: both;
 }
-.ias-trigger.ias-trigger-prev{
+
+.ias-trigger.ias-trigger-prev {
   clear: none;
 }
-.ias-trigger{
+
+.ias-trigger {
   position: relative;
-  &:before{
+  &:before {
     font-family: $font-family-icon;
-    content:"\f043";
+    content: "\f043";
   }
 }
+
 .alert-danger,
 .alert-success,
 .alert-info,
@@ -217,7 +233,7 @@ span.highlight-word{
   text-shadow: none;
   padding-left: 45px;
   position: relative;
-  ul{
+  ul {
     padding-left: 0;
   }
   &:before {

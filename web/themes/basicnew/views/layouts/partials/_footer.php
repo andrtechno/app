@@ -9,7 +9,7 @@ $config = Yii::$app->settings->get('contacts');
         <div class="row no-gutters">
             <div class="col-xl-3 col-lg-3 col-sm-6 col-md-6 mb-4 mb-lg-0 text-center text-md-left">
                 <div class="footer-contact">
-                    <?= Html::tel($config->phone[0]['number'], ['class' => 'phone']); ?>
+                    <?= Html::tel($config->phone[0]['number'], ['class' => 'phone h3 font-weight-normal']); ?>
                     <div>Бесплатно со всех номеров</div>
                 </div>
             </div>

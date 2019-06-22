@@ -1843,7 +1843,6 @@ footer ul.footer-payments > li {
 }
 */
 a.phone {
-  font-size: 22px;
   font-family: "Roboto Slab", serif;
   color: #505759;
 }
@@ -1937,7 +1936,6 @@ ul.social-list {
 .header-phones a[href^="tel:"] {
   color: #505759;
   font-weight: 600;
-  font-size: 16px;
   display: block;
 }
 .header-phones a[href^="tel:"]:hover {
@@ -2370,6 +2368,12 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   background: none;
+}
+
+ul.sorter {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .delivery-subscribe {

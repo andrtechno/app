@@ -161,7 +161,7 @@ $config = Yii::$app->settings->get('contacts');
             <div class="col-lg-2 col-md-6 d-flex align-items-center">
                 <div class="header-phones ml-auto mr-auto mb-3 mb-md-0">
                     <?php foreach ($config->phone as $phone) { ?>
-                        <?= Html::tel($phone['number'], ['class' => 'mb-1 mt-1 phone '.CMS::slug(CMS::phoneOperator($phone['number']))],'($2) $3-$4-$5'); ?>
+                        <?= Html::tel($phone['number'], ['class' => 'mb-2 mt-2 phone h5 '.CMS::slug(CMS::phoneOperator($phone['number']))],'($2) $3-$4-$5'); ?>
                     <?php } ?>
                 </div>
             </div>
@@ -175,7 +175,16 @@ $config = Yii::$app->settings->get('contacts');
             </div>
         </div>
     </div>
+    <?php
+    echo Yii::getAlias('@app');
+    //echo CMS::fileSize(CMS::dirSize(Yii::getAlias('@app')));
 
+    //print_r(CMS::dir_size(Yii::getAlias('@app')));
+    $dss = CMS::dir_size(Yii::getAlias('@app'));
+
+    echo CMS::fileSize($dss['size']);
+
+    ?>
 
     <nav class="navbar navbar-expand-lg">
         <div class="container megamenu">

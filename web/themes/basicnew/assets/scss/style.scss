@@ -710,7 +710,6 @@ footer ul.footer-payments > li {
 }
 */
 a.phone {
-  font-size: 22px;
   font-family: $font-family-second;
   color: $text-color;
 }
@@ -797,7 +796,6 @@ ul.social-list {
   a[href^="tel:"] {
     color: $text-color;
     font-weight: 600;
-    font-size: 16px;
     display: block;
     &:hover {
       color: $link-color-hover;
