@@ -721,28 +721,29 @@ a.phone:visited {
 .lifecell-life,
 .vodafone-mts,
 .kievstar{
-  padding-left: 30px;
+  padding-left: 25px;
   position: relative;
   &:before{
     position: absolute;
-    content:'';
     height: 100%;
     left:0;
-    top:0;
-    width: 25px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
+    top:1px;
+    font-family: $font-family-icon;
+    font-size: 16px;
+    font-weight: normal;
   }
 }
 .lifecell-life:before{
-  background-image: url(../images/life-logo.svg);
+  content:"\f173";
+  color:#fccf00;
 }
 .vodafone-mts:before{
-  background-image: url(../images/vodafone-logo.svg);
+  content:"\f174";
+  color:#e60000;
 }
 .kievstar:before{
-  background-image: url(../images/kyivstar-logo.svg);
+  content:"\f175";
+  color:#229fff;
 }
 a#pixelion {
   color: #505759;

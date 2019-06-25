@@ -175,17 +175,6 @@ $config = Yii::$app->settings->get('contacts');
             </div>
         </div>
     </div>
-    <?php
-    echo Yii::getAlias('@app');
-    //echo CMS::fileSize(CMS::dirSize(Yii::getAlias('@app')));
-
-    //print_r(CMS::dir_size(Yii::getAlias('@app')));
-    $dss = CMS::dir_size(Yii::getAlias('@app'));
-
-    echo CMS::fileSize($dss['size']);
-
-    ?>
-
     <nav class="navbar navbar-expand-lg">
         <div class="container megamenu">
 

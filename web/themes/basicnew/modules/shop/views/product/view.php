@@ -111,10 +111,10 @@ echo \panix\ext\fancybox\Fancybox::widget([
 
 
             <?php
-            $np = new \panix\mod\cart\widgets\delivery\novaposhta\api\NovaPoshtaApi('ec12098e557d0025887b4c93fc43c114');
-            $np->InternetDocument();
+           // $np = new \panix\mod\cart\widgets\delivery\novaposhta\api\NovaPoshtaApi('ec12098e557d0025887b4c93fc43c114');
+           // $np->InternetDocument();
 
-            print_r($np);
+           // print_r($np);
 
             ?>
 
@@ -393,14 +393,114 @@ echo $this->render('_sets', ['model' => $model]);
     </div>
 </div>
 
-
 <?php
+$this->registerCss('
+    .swiper-container {
+      width: 100%;
+      height: 300px;
+    }
+    .swiper-slide {
+      text-align: center;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+    .swiper-container-v {
+      background: #eee;
+    }
+    .swiper-button-up,
+    .swiper-button-down{
+        width:30px;
+        height:30px;
+        position: absolute;
+        text-align: center;
+        z-index: 10;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+    .swiper-button-up:before,
+    .swiper-button-down:before{
+        font-family:Pixelion;
+        position: absolute;
+        width:30px;
+        height:30px;
+        top:0;
+        left:0;
+        font-size:24px
+    }
 
+    
+    .swiper-button-up:before{
+        content:"\f007";
+    }
+
+    .swiper-button-down:before{
+        content:"\f008";
+    }
+    .swiper-button-up{
+        top: 0;
+    }
+    .swiper-button-down{
+        bottom:0; 
+    }
+    
+
+    .swiper-container-horizontal>.swiper-pagination-bullets,
+    .swiper-pagination-custom,
+    .swiper-pagination-fraction{
+        bottom: 37px;
+    }
+    
+    .swiper-button-up.swiper-button-disabled,
+    .swiper-button-down.swiper-button-disabled{
+        color:rgba(0,0,0,0.025);
+    }
+');
 $this->registerJs("
 $('.reviews a').click(function(){
     $($(this).data('tabid')).tab('show');
     // $(this).tab('show');
 });
+
+
+
+    var swiperH = new Swiper('.swiper-container-h', {
+        spaceBetween: 50,
+        //allowTouchMove:false,
+        pagination: {
+            el: '.swiper-pagination-h',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+    
+    var swiperV = new Swiper('.swiper-container-v', {
+        direction: 'vertical',
+        spaceBetween: 50,
+        pagination: {
+            el: '.swiper-pagination-v',
+            clickable: true,
+            type:'fraction',
+        },
+        navigation: {
+            nextEl: '.swiper-button-down',
+            prevEl: '.swiper-button-up',
+        },
+    });
 ");
 
 /*
