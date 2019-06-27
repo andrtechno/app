@@ -16,6 +16,11 @@ RewriteRule ^uploads/(.*)$ web/uploads/$1 [L]
 RewriteRule ^(.*)$ /web/$1 [L]
 
 
+
+RewriteCond %{REQUEST_URI} !^/(api)
+RewriteRule ^(.*)$ /api/$1 [L]
+
+
 #RewriteCond %{THE_REQUEST} ^.*/index\.php
 #RewriteRule ^(.*)index.php$ /$1 [R=301,L]
 
