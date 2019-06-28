@@ -1,7 +1,7 @@
-app
+Web application
 ===========
 
-PIXELION CMS Web application [PIXELION CMS](https://pixelion.com.ua)
+[PIXELION CMS](https://pixelion.com.ua)
 
 [![Latest Stable Version](https://poser.pugx.org/panix/app/v/stable)](https://packagist.org/packages/panix/app)
 [![Total Downloads](https://poser.pugx.org/panix/app/downloads)](https://packagist.org/packages/panix/app)
@@ -30,11 +30,3 @@ php composer create-project panix/app . "dev-master"
 ```
 php composer create-project --prefer-dist --no-dev --stability=dev panix/app . "dev-master"
 ```
-
-
-
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
