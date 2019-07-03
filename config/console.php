@@ -41,7 +41,7 @@ return [
         //    ],
         // ],
         //'admin' => ['class' => 'panix\mod\admin\Module'],
-        //'user' => ['class' => 'panix\mod\user\Module'],
+        'user' => ['class' => 'panix\mod\user\Module'],
     ],
     'controllerMap' => [
         'sitemap' => [
