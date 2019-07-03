@@ -70,7 +70,7 @@ return [
         'cache' => ['class' => 'yii\caching\FileCache'],
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
         //'urlManager' => require(__DIR__ . '/urlManager.php'),
-        'db' => require(__DIR__ . '/../config/db.php'),
+        'db' => require(__DIR__ . '/../config/db_local.php'),
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'flushInterval'=>1000*10,

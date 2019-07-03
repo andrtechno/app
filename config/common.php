@@ -264,7 +264,6 @@ $config = [
         ],
         'user' => [
             'class' => 'panix\mod\user\components\WebUser',
-            'enableAutoLogin' => true,
             // 'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
         ],
         'mailer' => [
