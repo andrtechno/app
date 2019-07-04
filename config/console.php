@@ -16,7 +16,9 @@ return [
     'modules' => [
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
         //'sendpulse' => ['class' => 'panix\mod\sendpulse\Module'],
-        //'seo' => ['class' => 'app\modules\seo\Module'],
+        'seo' => ['class' => 'panix\mod\seo\Module'],
+        'shop' => ['class' => 'panix\mod\shop\Module'],
+        'cart' => ['class' => 'panix\mod\cart\Module'],
         'plugins' => [
             'class' => 'panix\mod\plugins\Module',
             'pluginsDir' => [
@@ -31,9 +33,7 @@ return [
             'userCommandsPath' => '@telegram/commands/UserCommands',
             // 'timeBeforeResetChatHandler' => 60
         ],
-        'banner' => [
-            'class' => 'panix\mod\banner\Module',
-        ],
+        'banner' => ['class' => 'panix\mod\banner\Module'],
         //'rbac' => [
         //    'class' => 'panix\mod\rbac\Module',
         //    'as access' => [

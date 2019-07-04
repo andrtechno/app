@@ -52,6 +52,8 @@ $config = [
         'presentation' => ['class' => 'panix\mod\presentation\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         'compare' => ['class' => 'panix\mod\compare\Module'],
+        'shop' => ['class' => 'panix\mod\shop\Module'],
+        'cart' => ['class' => 'panix\mod\cart\Module'],
         //'stats' => ['class' => 'panix\mod\stats\Module'],
         //'hosting' => ['class' => 'app\modules\hosting\Module'],
         /* 'seo' => ['class' => 'app\modules\seo\Module'],
