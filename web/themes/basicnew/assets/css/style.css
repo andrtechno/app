@@ -2659,6 +2659,57 @@ span.highlight-word {
   width: 100%;
 }
 
+#catalog-container button {
+  position: relative;
+  text-indent: -999999px;
+  border: 0;
+  background: none;
+  margin-left: 1rem;
+  width: 30px;
+  height: 30px;
+}
+#catalog-container button:focus {
+  outline: none;
+}
+#catalog-container button:after {
+  font-family: Pixelion;
+  font-size: 16px;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  line-height: 1;
+  text-indent: 0;
+}
+#catalog-container button[aria-expanded="true"]:after {
+  content: '\f007';
+}
+#catalog-container button[aria-expanded="false"]:after {
+  content: '\f008';
+}
+#catalog-container .collapse > a {
+  position: relative;
+}
+#catalog-container .collapse > a:after {
+  content: '-';
+  font-size: 22px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+#catalog-container .collapse > a.collapsed {
+  position: relative;
+}
+#catalog-container .collapse > a.collapsed:after {
+  content: '+';
+  font-size: 22px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .thumb-video {
   position: relative;
 }
