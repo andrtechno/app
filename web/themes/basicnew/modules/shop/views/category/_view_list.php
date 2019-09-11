@@ -23,13 +23,13 @@ use panix\engine\Html;
                                 <?php //$this->widget('ext.rating.StarRating', array('model' => $model, 'readOnly' => true)); ?>
                             </div>
                             <div class="product-price clearfix">	
-                                <span class="price"><?= $model->priceRange() ?> <?= Yii::$app->currency->active->symbol ?></span>
+                                <span class="price"><?= $model->priceRange() ?> <?= Yii::$app->currency->active['symbol'] ?></span>
 
                                 <?php
                                 if (Yii::$app->hasModule('discounts')) {
                                     if ($model->appliedDiscount) {
                                         ?>
-                                        <span class="price-before-discount"><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?> <sup><?= Yii::$app->currency->active->symbol ?></sup></span>
+                                        <span class="price-before-discount"><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?> <sup><?= Yii::$app->currency->active['symbol'] ?></sup></span>
                                         <?php
                                     }
                                 }

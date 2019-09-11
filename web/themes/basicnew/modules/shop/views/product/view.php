@@ -208,14 +208,14 @@ echo \panix\ext\fancybox\Fancybox::widget([
                                 <?php if (Yii::$app->hasModule('discounts') && $model->appliedDiscount) { ?>
                                     <div class=" mb-3">
                                     <span class="price price-discount">
-                                        <del><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice, $model->currency_id)) ?></del> <sub><?= Yii::$app->currency->active->symbol ?></sub>
+                                        <del><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice, $model->currency_id)) ?></del> <sub><?= Yii::$app->currency->active['symbol'] ?></sub>
                                     </span>
                                         <span class="price discount-sum text-warning">-<?= $model->discountSum; ?></span>
                                     </div>
 
                                 <?php } ?>
                                 <div><span class="price price-lg">
-                                        <span id="productPrice"><?= Yii::$app->currency->number_format($model->getFrontPrice()); ?></span> <sub><?= Yii::$app->currency->active->symbol; ?></sub>
+                                        <span id="productPrice"><?= Yii::$app->currency->number_format($model->getFrontPrice()); ?></span> <sub><?= Yii::$app->currency->active['symbol']; ?></sub>
                                 </span></div>
                                 <?php if ($model->prices) { ?>
                                     <a class="btn btn-sm btn-link" data-toggle="collapse" href="#prices" role="button"
@@ -228,7 +228,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                                             <div>
                                                 <span class="price price-sm text-success">
                                                     <span><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($price->value, $model->currency_id)); ?></span>
-                                                    <sub><?= Yii::$app->currency->active->symbol; ?>
+                                                    <sub><?= Yii::$app->currency->active['symbol']; ?>
 
 
                                                         /<?= $model->units[$model->unit]; ?></sub>

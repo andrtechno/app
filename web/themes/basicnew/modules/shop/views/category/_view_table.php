@@ -58,7 +58,7 @@ use panix\engine\Html;
 
     <span class="price">
         <span><?php echo $model->priceRange() ?></span>
-        <small><?= Yii::$app->currency->active->symbol ?></small>
+        <small><?= Yii::$app->currency->active['symbol'] ?></small>
     </span>
 
     <?php
@@ -68,7 +68,7 @@ use panix\engine\Html;
             <div>
                 <span class="price price-xs price-through">
                     <span><?= $model->toCurrentCurrency('originalPrice') ?></span>
-                    <small><?= Yii::$app->currency->active->symbol ?></small>
+                    <small><?= Yii::$app->currency->active['symbol'] ?></small>
                 </span>
             </div>
             <?php
