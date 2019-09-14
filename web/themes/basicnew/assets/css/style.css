@@ -3102,6 +3102,8 @@ span.highlight-word {
 }
 #filters .card .card-header {
   border-bottom: 0;
+  margin: 0;
+  cursor: pointer;
   position: relative;
   /*border-bottom: 1px solid rgba($c1-color, .5);*/
   background: transparent;
@@ -3120,10 +3122,6 @@ span.highlight-word {
 }
 #filters .card .card-header.collapsed:before {
   content: '\f008';
-}
-#filters .card .card-header h5 {
-  margin: 0;
-  cursor: pointer;
 }
 #filters .card .card-body {
   margin: 0.75rem 1rem 0.75rem 1rem;

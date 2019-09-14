@@ -10,8 +10,8 @@ echo \yii\widgets\ListView::widget([
     //'layout' => '{sorter}{summary}{items}{pager}',
     'layout' => '{sorter}{items}{pager}',
     'emptyText' => 'Empty',
-    'options' => ['class' => 'list-view clearfix2 ' . $itemView],
-    'itemOptions' => ['class' => 'item product'],
+    'options' => ['class' => 'list-view clearfix ' . $itemView],
+    'itemOptions' => ['class' => 'item'],
     'sorter' => [
         'class' => 'yii\widgets\LinkSorter',
         'attributes' => ['price', 'sku', 'created_at']

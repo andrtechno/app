@@ -5,7 +5,7 @@ use yii\helpers\HtmlPurifier;
 
 ?>
 
-
+<div class="product">
 <div class="product-label-container">
 
     <div><span class="product-label-tag danger"><span>asds</span></span></div>
@@ -104,5 +104,5 @@ use yii\helpers\HtmlPurifier;
 
     <?php echo $model->endCartForm(); ?>
 </div>
-
+</div>
 
