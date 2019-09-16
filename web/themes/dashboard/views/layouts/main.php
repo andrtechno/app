@@ -116,7 +116,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                                             }
                                             foreach ($this->context->buttons as $button) {
                                                 if (isset($button['icon'])) {
-                                                    $icon = Html::icon($button['icon']).' ';
+                                                    $icon = Html::icon($button['icon']) . ' ';
                                                 } else {
                                                     $icon = '';
                                                 }
@@ -146,7 +146,14 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                                 <?php foreach (Yii::$app->session->allFlashes as $key => $message) {
                                     $key = ($key == 'error') ? 'danger' : $key;
                                     ?>
-                                    <div class="alert alert-<?= $key ?> fadeOut2-time"><?= $message ?></div>
+                                    <?php if (is_array($message)) { ?>
+                                        <?php foreach ($message as $msg) { ?>
+                                            <div class="alert alert-<?= $key ?> fadeOut2-time"><?= $msg ?></div>
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                        <div class="alert alert-<?= $key ?> fadeOut2-time"><?= $message ?></div>
+                                    <?php } ?>
+
                                 <?php } ?>
                             <?php } ?>
 
