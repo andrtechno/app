@@ -160,8 +160,10 @@ $config = Yii::$app->settings->get('contacts');
             </div>
             <div class="col-lg-2 col-md-6 d-flex align-items-center">
                 <div class="header-phones ml-auto mr-auto mb-3 mb-md-0">
-                    <?php foreach ($config->phone as $phone) { ?>
-                        <?= Html::tel($phone['number'], ['class' => 'mb-2 mt-2 phone h5 '.CMS::slug(CMS::phoneOperator($phone['number']))],'($2) $3-$4-$5'); ?>
+                    <?php if ($config->phone) { ?>
+                        <?php foreach ($config->phone as $phone) { ?>
+                            <?= Html::tel($phone['number'], ['class' => 'mb-2 mt-2 phone h5 ' . CMS::slug(CMS::phoneOperator($phone['number']))], '($2) $3-$4-$5'); ?>
+                        <?php } ?>
                     <?php } ?>
                 </div>
             </div>
