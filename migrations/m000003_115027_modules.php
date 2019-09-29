@@ -6,11 +6,11 @@
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
  *
- * Class m171205_115027_modules
+ * Class m000003_115027_modules
  */
 use panix\engine\db\Migration;
 
-class m171205_115027_modules extends Migration
+class m000003_115027_modules extends Migration
 {
 
     public $tableName = '{{%modules}}';

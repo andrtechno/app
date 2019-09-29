@@ -34,9 +34,7 @@ class m190505_154133_desktop extends Migration
 
     public function down()
     {
-        echo "m190505_154133_desktop cannot be reverted.\n";
         $this->dropTable(Desktop::tableName());
-        return false;
     }
 
 }
