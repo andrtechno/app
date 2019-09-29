@@ -6,12 +6,12 @@
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
  * 
- * Class m171204_202402_grid_columns
+ * Class m000004_202402_grid_columns
  */
 
 use panix\engine\db\Migration;
 
-class m171204_202402_grid_columns extends Migration {
+class m000004_202402_grid_columns extends Migration {
 
     public $tableName = '{{%grid_columns}}';
 

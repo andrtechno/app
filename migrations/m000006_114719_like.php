@@ -6,14 +6,14 @@
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
  *
- * Class m171205_114719_like
+ * Class m000006_114719_like
  */
 
 use panix\engine\db\Migration;
 use panix\engine\widgets\like\models\Like;
 
 
-class m171205_114719_like extends Migration
+class m000006_114719_like extends Migration
 {
 
     public function up()

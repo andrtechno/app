@@ -6,11 +6,11 @@
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
  *
- * Class m171205_114613_language
+ * Class m000005_114613_language
  */
 use panix\engine\db\Migration;
 
-class m171205_114613_language extends Migration
+class m000005_114613_language extends Migration
 {
 
     public $tableName = '{{%language}}';

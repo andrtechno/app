@@ -17,7 +17,7 @@ class m171205_115302_role extends Migration
 
     public function up()
     {
-        $this->createTable($this->tableName, [
+        /*$this->createTable($this->tableName, [
             'id' => $this->primaryKey(),
             'name' => $this->string(255),
             'create_time' => $this->timestamp()->defaultValue(null),
@@ -27,12 +27,12 @@ class m171205_115302_role extends Migration
         $this->batchInsert($this->tableName, ['name', 'can_admin'], [
             ['Admin', 1],
             ['User', 0],
-        ]);
+        ]);*/
     }
 
     public function down()
     {
-        $this->dropTable($this->tableName);
+      //  $this->dropTable($this->tableName);
     }
 
 }

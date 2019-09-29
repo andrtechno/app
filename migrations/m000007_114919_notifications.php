@@ -6,12 +6,12 @@
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
  *
- * Class m171205_114919_notifications
+ * Class m000007_114919_notifications
  */
 use panix\engine\db\Migration;
 use panix\mod\admin\models\Notifications;
 
-class m171205_114919_notifications extends Migration
+class m000007_114919_notifications extends Migration
 {
 
     public function up()
