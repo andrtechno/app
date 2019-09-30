@@ -35,7 +35,7 @@ return [
         ],*/
 
         'rbac' => [
-            'class' => 'panix\mod\rbac\ConsoleModule',
+            'class' => 'panix\mod\rbac\Module',
             //'as access' => [
             //    'class' => panix\mod\rbac\filters\AccessControl::class
             //],
@@ -62,7 +62,7 @@ return [
                 //'app\migrations',
                 // 'yii\rbac\migrations'
             ],
-            'migrationPath' => ['@app/migrations', '@yii/rbac/migrations'],
+            'migrationPath' => ['@app/migrations', '@yii/rbac/migrations'], //,'@vendor/panix/mod-rbac/migrations'
         ]
     ],
     'components' => [

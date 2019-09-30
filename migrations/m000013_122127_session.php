@@ -6,11 +6,11 @@
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
  *
- * Class m171205_122127_session
+ * Class m000013_122127_session
  */
 use panix\engine\db\Migration;
 
-class m171205_122127_session extends Migration
+class m000013_122127_session extends Migration
 {
 
     public $tableName = '{{%session}}';

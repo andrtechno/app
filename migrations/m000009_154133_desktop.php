@@ -5,14 +5,13 @@
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
  *
- * Class m190505_154133_desktop
+ * Class m000009_154133_desktop
  */
 
-use yii\db\Schema;
 use panix\engine\db\Migration;
 use panix\mod\admin\models\Desktop;
 
-class m190505_154133_desktop extends Migration
+class m000009_154133_desktop extends Migration
 {
 
     // Use up()/down() to run migration code without a transaction.

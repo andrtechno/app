@@ -6,11 +6,11 @@
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
  *
- * Class m171205_120026_chat
+ * Class m000012_120026_chat
  */
 use panix\engine\db\Migration;
 
-class m171205_120026_chat extends Migration
+class m000012_120026_chat extends Migration
 {
 
     public $tableName = '{{%chat}}';

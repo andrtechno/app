@@ -6,13 +6,13 @@
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  * @link http://pixelion.com.ua PIXELION CMS
  *
- * Class m171335_150526_tags
+ * Class m000011_150526_tags
  */
 use panix\engine\db\Migration;
 use panix\mod\admin\models\Tag;
 use panix\mod\admin\models\TagAssign;
 
-class m171335_150526_tags extends Migration
+class m000011_150526_tags extends Migration
 {
 
 
