@@ -15,7 +15,7 @@ return [
     ],
     'modules' => [
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
-        //'sendpulse' => ['class' => 'panix\mod\sendpulse\Module'],
+        'sendpulse' => ['class' => 'panix\mod\sendpulse\Module'],
         'seo' => ['class' => 'panix\mod\seo\Module'],
         'shop' => ['class' => 'panix\mod\shop\Module'],
         'cart' => ['class' => 'panix\mod\cart\Module'],
@@ -41,13 +41,7 @@ return [
             //],
         ],
         'banner' => ['class' => 'panix\mod\banner\Module'],
-        //'rbac' => [
-        //    'class' => 'panix\mod\rbac\Module',
-        //    'as access' => [
-        //        'class' => panix\mod\rbac\filters\AccessControl::class
-        //    ],
-        // ],
-        //'admin' => ['class' => 'panix\mod\admin\Module'],
+        'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
     ],
     'controllerMap' => [
@@ -71,9 +65,6 @@ return [
             'as log' => \yii\queue\LogBehavior::class,
             // Индивидуальные настройки драйвера
         ],
-        //'session' => [
-        //    'class' => 'yii\web\Session'
-        //],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['guest', 'user'],
