@@ -9,7 +9,6 @@ $config = [
     'homeUrl' => '/',
     'basePath' => dirname(__DIR__), //if in web dir
     //'basePath' => dirname(__DIR__),
-
     'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'main/index',
     'bootstrap' => [
@@ -21,57 +20,21 @@ $config = [
         'main' => 'panix\engine\controllers\WebController',
     ],
     'modules' => [
-        'plugins' => [
-            'class' => 'panix\mod\plugins\Module',
-            'pluginsDir' => [
-                '@panix/engine/plugins',
-               // '@plugins/core',
-            ]
-        ],
-        'telegram' => [
+        /*'telegram' => [
             'class' => 'panix\mod\telegram\Module',
             'hook_url' => 'https://yii2.pixelion.com.ua/telegram/default/hook', // must be https! (if not prettyUrl https://yourhost.com/index.php?r=telegram/default/hook)
             // 'db' => 'db2', //db file name from config dir
              'userCommandsPath' => '@telegram/commands/UserCommands',
             // 'timeBeforeResetChatHandler' => 60
-        ],
-        'sitemap' => [
-            'class' => 'panix\mod\sitemap\Module',
-        ],
-        'banner' => [
-            'class' => 'panix\mod\banner\Module',
-        ],
-        'rbac' => [
-            'class' => 'panix\mod\rbac\Module',
-            //'as access' => [
-            //    'class' => panix\mod\rbac\filters\AccessControl::class
-            //],
-        ],
-        'admin' => ['class' => 'panix\mod\admin\Module'],
-        'docs' => ['class' => 'panix\mod\docs\Module'],
-        'presentation' => ['class' => 'panix\mod\presentation\Module'],
-        'user' => ['class' => 'panix\mod\user\Module'],
-        'compare' => ['class' => 'panix\mod\compare\Module'],
-        'shop' => ['class' => 'panix\mod\shop\Module'],
-        'cart' => ['class' => 'panix\mod\cart\Module'],
+        ],*/
+
+        //'docs' => ['class' => 'panix\mod\docs\Module'],
+
         //'stats' => ['class' => 'panix\mod\stats\Module'],
         //'hosting' => ['class' => 'app\modules\hosting\Module'],
-        /* 'seo' => ['class' => 'app\modules\seo\Module'],
+/*
 
 
-          'pages' => ['class' => 'panix\mod\pages\Module'],
-          'shop' => ['class' => 'panix\mod\shop\Module'],
-          'contacts' => ['class' => 'panix\mod\contacts\Module'],
-          // 'cart' => ['class' => 'panix\mod\cart\Module'],
-          'discounts' => ['class' => 'panix\mod\discounts\Module'],
-          'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
-          'comments' => ['class' => 'panix\mod\comments\Module'],
-          'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
-          'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
-          'csv' => ['class' => 'panix\mod\csv\Module'],
-          //'csv' => ['class' => 'panix\mod\csv\Module'],
-          'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
-          'delivery' => ['class' => 'panix\mod\delivery\Module'],
           'forum' => ['class' => 'panix\mod\forum\Module'],
           // 'portfolio' => ['class' => 'app\modules\portfolio\Module'],
           'images' => [
@@ -85,7 +48,6 @@ $config = [
           ], */
     ],
     'components' => [
-
         'plugins' => [
             'class' => panix\mod\plugins\components\PluginsManager::class,
             'appId' => panix\mod\plugins\BasePlugin::APP_WEB,
@@ -129,7 +91,9 @@ $config = [
                     //'cachePath' => '@runtime/Smarty/cache',
                 ],
             ],
-            'theme' => ['class' => 'panix\engine\base\Theme'],
+            'theme' => [
+                'class' => 'panix\engine\base\Theme'
+            ],
         ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
@@ -150,11 +114,12 @@ $config = [
         'urlManager' => require(__DIR__ . '/urlManager.php'),
 
     ],
+    //'on beforeRequest' => ['class' => 'panix\engine\base\ThemeView']
     /*'as access' => [
         'class' => panix\mod\rbac\filters\AccessControl::class,
         'allowActions' => [
             '/*',
-            //'admin/*',
+            'admin/*',
             // The actions listed here will be allowed to everyone including guests.
             // So, 'admin/*' should not appear here in the production, of course.
             // But in the earlier stages of your development, you may probably want to

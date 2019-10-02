@@ -30,9 +30,6 @@ $config = [
         'backend' => 'panix\engine\controllers\AdminController',
     ],
     'modules' => [
-        //'sitemap' => ['class' => 'app\modules\sitemap\Module'],
-        'sendpulse' => ['class' => 'panix\mod\sendpulse\Module'],
-        //'documentation' => ['class' => 'app\modules\documentation\Module'],
         'plugins' => [
             'class' => 'panix\mod\plugins\Module',
             'pluginsDir' => [
@@ -42,39 +39,28 @@ $config = [
         ],
         'rbac' => [
             'class' => 'panix\mod\rbac\Module',
-            'as access' => [
-                'class' => panix\mod\rbac\filters\AccessControl::class
-            ],
+            //'as access' => [
+            //    'class' => panix\mod\rbac\filters\AccessControl::class
+            //],
         ],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
-        //'stats' => ['class' => 'panix\mod\stats\Module'],
-        //'hosting' => ['class' => 'app\modules\hosting\Module'],
-        /* 'seo' => ['class' => 'app\modules\seo\Module'],
-          'pages' => ['class' => 'panix\mod\pages\Module'],
-          'shop' => ['class' => 'panix\mod\shop\Module'],
-          'contacts' => ['class' => 'panix\mod\contacts\Module'],
-          // 'cart' => ['class' => 'panix\mod\cart\Module'],
-          'discounts' => ['class' => 'panix\mod\discounts\Module'],
-          'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
-          'comments' => ['class' => 'panix\mod\comments\Module'],
-          'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
-          'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
-          'csv' => ['class' => 'panix\mod\csv\Module'],
-          //'csv' => ['class' => 'panix\mod\csv\Module'],
-          'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
-          'delivery' => ['class' => 'panix\mod\delivery\Module'],
-          'forum' => ['class' => 'panix\mod\forum\Module'],
-          // 'portfolio' => ['class' => 'app\modules\portfolio\Module'],
-          'images' => [
-          'class' => 'panix\mod\images\Module',
-          'imagesStorePath' => 'uploads/store', //path to origin images
-          'imagesCachePath' => 'uploads/cache', //path to resized copies
-          'graphicsLibrary' => 'GD', //but really its better to use 'Imagick'
-          'placeHolderPath' => '@webroot/uploads/watermark.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
-          'imageCompressionQuality' => 100, // Optional. Default value is 85.
-          'waterMark' => '@webroot/uploads/watermark.png'
-          ], */
+        'presentation' => ['class' => 'panix\mod\presentation\Module'],
+        'compare' => ['class' => 'panix\mod\compare\Module'],
+        'shop' => ['class' => 'panix\mod\shop\Module'],
+        'cart' => ['class' => 'panix\mod\cart\Module'],
+        'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
+        'banner' => ['class' => 'panix\mod\banner\Module'],
+        'sendpulse' => ['class' => 'panix\mod\sendpulse\Module'],
+        'contacts' => ['class' => 'panix\mod\contacts\Module'],
+        'seo' => ['class' => 'panix\mod\seo\Module'],
+        'discounts' => ['class' => 'panix\mod\discounts\Module'],
+        'comments' => ['class' => 'panix\mod\comments\Module'],
+        'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
+        'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
+        'csv' => ['class' => 'panix\mod\csv\Module'],
+        'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
+        'delivery' => ['class' => 'panix\mod\delivery\Module'],
     ],
     'components' => [
         'reCaptcha' => [
