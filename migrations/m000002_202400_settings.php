@@ -15,7 +15,7 @@ use panix\engine\components\Settings;
 
 class m000002_202400_settings extends Migration
 {
-
+    public $settingsForm = SettingsForm::class;
     public function up()
     {
         $this->createTable(Settings::tableName(), [
@@ -27,14 +27,7 @@ class m000002_202400_settings extends Migration
 
         $this->createIndex('param', Settings::tableName(), 'param');
         $this->createIndex('category', Settings::tableName(), 'category');
-
-        $settings = [];
-        foreach (SettingsForm::defaultSettings() as $key => $value) {
-            $settings[] = [SettingsForm::$category, $key, $value];
-        }
-
-        $this->batchInsert(Settings::tableName(), ['category', 'param', 'value'], $settings);
-
+        $this->loadSettings();
     }
 
     public function down()
