@@ -1,6 +1,6 @@
 <?php
 
-namespace panix\mod\shop\models;
+namespace panix\mod\portfolio\models;
 
 use Yii;
 use panix\engine\behaviors\TranslateBehavior;
