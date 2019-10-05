@@ -21,7 +21,7 @@ $this->registerJs("
 //remove
 //Yii::$app->authManager->revoke(Yii::$app->authManager->createRole('Manager'),2);
 
-
+echo $this->theme->alert('dasdsa','success');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -42,7 +42,12 @@ $this->registerJs("
     <a href="http://google.com">google.com</a>
 
     <pre>dsasda Hello, world!</pre>
-    <div class=" tester content test">dsasda Hello, world!
+    <div class=" tester content test">
+        Hello, world!
+        main
+        lox poc
+
+        dsasda Hello, world!
         [container]
         [row]
         [col]col[/col]

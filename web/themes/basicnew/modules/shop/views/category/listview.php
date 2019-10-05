@@ -3,13 +3,12 @@
  * @var $provider
  * @var $itemView
  */
-echo \yii\widgets\ListView::widget([
+echo \panix\engine\widgets\ListView::widget([
     //'id'=>'list-product',
     'dataProvider' => $provider,
     'itemView' => $itemView,
     //'layout' => '{sorter}{summary}{items}{pager}',
     'layout' => '{sorter}{items}{pager}',
-    'emptyText' => 'Empty',
     'options' => ['class' => 'list-view clearfix ' . $itemView],
     'itemOptions' => ['class' => 'item'],
     'sorter' => [
@@ -23,6 +22,4 @@ echo \yii\widgets\ListView::widget([
         'spinnerSrc' => $this->context->assetUrl . '/images/ajax.gif'
 
     ],
-    'emptyTextOptions' => ['class' => 'alert alert-info']
 ]);
-?>

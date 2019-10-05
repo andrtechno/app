@@ -38,8 +38,6 @@ $config = Yii::$app->settings->get('contacts');
 <header>
     <div id="header-top">
         <div class="container">
-
-
             <nav class="navbar-expand">
                 <div class="navbar-collapse">
                     <ul class="nav">
@@ -160,7 +158,7 @@ $config = Yii::$app->settings->get('contacts');
             </div>
             <div class="col-lg-2 col-md-6 d-flex align-items-center">
                 <div class="header-phones ml-auto mr-auto mb-3 mb-md-0">
-                    <?php if ($config->phone) { ?>
+                    <?php if (isset($config->phone)) { ?>
                         <?php foreach ($config->phone as $phone) { ?>
                             <?= Html::tel($phone['number'], ['class' => 'mb-2 mt-2 phone h5 ' . CMS::slug(CMS::phoneOperator($phone['number']))], '($2) $3-$4-$5'); ?>
                         <?php } ?>
@@ -233,7 +231,7 @@ $config = Yii::$app->settings->get('contacts');
                         <?= Html::a(Yii::t('compare/default', 'Доставка и оплата'), ['/compare'], ['class' => 'nav-link']) ?>
                     </li>
                     <li class="nav-item">
-                        <?= Html::a(Yii::t('compare/default', 'Возврат'), ['/compare'], ['class' => 'nav-link']) ?>
+                        <?= Html::a(Yii::t('shop/default', 'MANUFACTURER'), ['/manufacturer'], ['class' => 'nav-link active']) ?>
                     </li>
                     <li class="nav-item">
                         <?= Html::a(Yii::t('compare/default', 'Контакты'), ['/contacts'], ['class' => 'nav-link']) ?>
