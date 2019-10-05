@@ -52,6 +52,7 @@ return [
         'csv' => ['class' => 'panix\mod\csv\Module'],
         'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
         'delivery' => ['class' => 'panix\mod\delivery\Module'],
+        'images' => ['class' => 'panix\mod\images\Module'],
     ],
     'controllerMap' => [
         'sitemap' => [
