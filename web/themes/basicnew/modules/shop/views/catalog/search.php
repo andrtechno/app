@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use panix\mod\shop\widgets\filters\FiltersWidget;
+use panix\mod\shop\widgets\filtersnew\FiltersWidget;
 
 if (($q = Yii::$app->request->get('q')))
     $result = Html::encode($q);
@@ -20,20 +20,23 @@ if (($q = Yii::$app->request->get('q')))
             ?>
         </div>
         <div class="col-md-8">
-            <h1><?=
-                Yii::t('shop/default', 'SEARCH_RESULT', [
-                    'query' => $result,
-                    'count' => $provider->totalCount,
-                   // 'count' => $provider->totalCount
-                ]);
-                ?></h1>
+            <div class="heading-gradient">
+                <h1><?=
+                    Yii::t('shop/default', 'SEARCH_RESULT', [
+                        'query' => $result,
+                        'count' => $provider->totalCount,
+                        // 'count' => $provider->totalCount
+                    ]);
+                    ?>
+                </h1>
+            </div>
 
             <div class="col">
 
                 <?php echo $this->render('_sorting', ['itemView' => $itemView]); ?>
                 <div id="listview-ajax">
                     <?php
-                    echo $this->render('listview',[
+                    echo $this->render('listview', [
                         'itemView' => $itemView,
                         'provider' => $provider,
                     ]);
