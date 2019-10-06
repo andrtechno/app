@@ -25,20 +25,18 @@ if (($q = Yii::$app->request->get('q')))
                     Yii::t('shop/default', 'SEARCH_RESULT', [
                         'query' => $result,
                         'count' => $provider->totalCount,
-                        // 'count' => $provider->totalCount
                     ]);
                     ?>
-
                 </h1>
             </div>
 
             <div class="col">
 
-                <?php echo $this->render('_sorting', ['itemView' => $itemView]); ?>
+                <?php echo $this->render('@shop/views/catalog/_sorting', ['itemView' => $this->context->itemView]); ?>
                 <div id="listview-ajax">
                     <?php
-                    echo $this->render('listview', [
-                        'itemView' => $itemView,
+                    echo $this->render('@shop/views/catalog/listview', [
+                        'itemView' => $this->context->itemView,
                         'provider' => $provider,
                     ]);
                     ?>
