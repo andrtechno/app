@@ -3,6 +3,7 @@
 use panix\engine\Html;
 use panix\engine\widgets\Breadcrumbs;
 
+
 \app\web\themes\basicnew\ThemeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -12,6 +13,16 @@ use panix\engine\widgets\Breadcrumbs;
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
+
+    <?php ?>
+    <?php
+    /*if (is_null(Yii::$app->seo->block('title'))) {
+        echo '<title>' . Html::encode($this->title) . '</title>';
+    } else {
+        echo '<title>' . Html::encode(Yii::$app->seo->block('title')) . '</title>';
+    }*/
+    ?>
+
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -26,6 +37,7 @@ use panix\engine\widgets\Breadcrumbs;
         }
         ?>
 
+
         <?php
         if (Yii::$app->session->allFlashes) {
             foreach (Yii::$app->session->allFlashes as $key => $message) {
@@ -38,6 +50,7 @@ use panix\engine\widgets\Breadcrumbs;
         }
         ?>
         <?= $content ?>
+
 
     </div>
 </div>

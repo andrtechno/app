@@ -7,7 +7,6 @@ use panix\mod\shop\widgets\filtersnew\FiltersWidget;
 
 ?>
 
-
 <div class="catalog-container">
     <div class="catalog-sidebar">
         <?= CategoriesWidget::widget([]) ?>

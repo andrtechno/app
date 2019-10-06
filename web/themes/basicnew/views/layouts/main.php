@@ -21,7 +21,7 @@ $this->registerJs("
 //remove
 //Yii::$app->authManager->revoke(Yii::$app->authManager->createRole('Manager'),2);
 
-echo $this->theme->alert('dasdsa','success');
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

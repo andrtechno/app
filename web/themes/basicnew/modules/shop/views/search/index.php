@@ -3,8 +3,7 @@
 use yii\helpers\Html;
 use panix\mod\shop\widgets\filtersnew\FiltersWidget;
 
-if (($q = Yii::$app->request->get('q')))
-    $result = Html::encode($q);
+
 ?>
 
 <div class="container-fluid">
@@ -21,13 +20,7 @@ if (($q = Yii::$app->request->get('q')))
         </div>
         <div class="col-md-8">
             <div class="heading-gradient">
-                <h1><?=
-                    Yii::t('shop/default', 'SEARCH_RESULT', [
-                        'query' => $result,
-                        'count' => $provider->totalCount,
-                    ]);
-                    ?>
-                </h1>
+                <h1><?= $this->context->pageName; ?></h1>
             </div>
 
             <div class="col">
