@@ -22,6 +22,7 @@ class m000007_114919_notifications extends Migration
             'type' => "ENUM('default', 'info', 'success', 'danger', 'warning')",
             'text' => $this->text(),
             'url' => $this->string(255),
+            'sound' => $this->string(100)->defaultValue(NULL),
             'is_read' => $this->boolean()->defaultValue(0),
             'user_id_read' => $this->integer(),
             'date_create' => $this->timestamp()->defaultValue(null),
