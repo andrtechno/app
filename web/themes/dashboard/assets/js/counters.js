@@ -39,7 +39,15 @@ $(function () {
                         align: "left"
                     },
                     onShow: function () {
-                        $.playSound('http://' + window.location.hostname + '/uploads/notification.mp3');
+                        var sound = notification.sound;
+                        var soundPath;
+                        console.log(sound,'SOUND');
+                        if(sound){
+                            soundPath='http://' + window.location.hostname + '/'+sound;
+                        }else{
+                            soundPath='http://' + window.location.hostname + '/uploads/notification.mp3';
+                        }
+                        $.playSound(soundPath);
                     },
                     onClose: function (s) {
                         console.log(s);
