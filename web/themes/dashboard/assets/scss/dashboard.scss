@@ -13,10 +13,12 @@
   position: absolute;
   right: 0;
 }
+
 code,
-.form-text{
+.form-text {
   font-size: inherit;
 }
+
 /*
 form .form-group input.form-control,
 form .form-group select.form-control,
@@ -107,18 +109,30 @@ a:hover,
 }
 
 /*fix for mobile dropdown */
-.grid-view .table-responsive .dropdown-menu {
-  z-index: 1001;
-}
-
-.grid-view .badge {
-  font-size: 100%;
-  margin: 2px;
-  a {
-    text-decoration: none;
-    font-weight: normal;
-    &:hover {
-      color: #fff;
+.grid-view {
+  .table-responsive .dropdown-menu {
+    z-index: 1001;
+  }
+  .summary {
+    text-align: left;
+    font-size: 12px;
+    margin: .50rem;
+  }
+  .badge {
+    font-size: 100%;
+    margin: 2px;
+    a {
+      text-decoration: none;
+      font-weight: normal;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+  .has-error {
+    .badge {
+      position: absolute;
+      z-index: 1;
     }
   }
 }
@@ -183,7 +197,8 @@ a:hover,
   margin-left: 15px;
   padding: 0;
 }
-.pjax-loader{
+
+.pjax-loader {
   position: relative;
   /*&:before{
     width: 25px;
@@ -197,15 +212,15 @@ a:hover,
     -webkit-animation: loader 1.2s infinite ease-in-out;
     animation: loader 1.2s infinite ease-in-out;
   }*/
-  &:before{
-    background-color: rgba(255,255,255,0.5);
+  &:before {
+    background-color: rgba(255, 255, 255, 0.5);
     content: '';
     position: absolute;
     z-index: 1;
     width: 100%;
     height: 100%;
   }
-  &:after{
+  &:after {
     width: 42px;
     height: 42px;
     background-color: $color-dark;
@@ -221,6 +236,7 @@ a:hover,
     animation: loader 1.2s infinite ease-in-out;
   }
 }
+
 .common-ajax-loading {
   position: fixed;
   top: 20px;
@@ -1174,12 +1190,6 @@ a.desc:after {
   padding: 0;
 }
 
-.grid-view .summary {
-  text-align: left;
-  font-size: 12px;
-  margin: .50rem;
-}
-
 .o-hidden {
   overflow: hidden !important;
 }
@@ -1468,9 +1478,11 @@ a.desc:after {
   }
 
 }
-#dropdown-notification{
+
+#dropdown-notification {
   min-width: 300px;
 }
+
 .navbar .navbar-right {
   margin-right: 15px;
   position: absolute;
@@ -1503,12 +1515,14 @@ table .alert {
 .card-body form .alert {
   margin: 15px;
 }
-.alert{
-  .progress{
+
+.alert {
+  .progress {
     height: .5rem;
     margin-top: .5rem;
   }
 }
+
 #wrapper {
   padding-left: 50px;
   @include transition(.5s, ease);

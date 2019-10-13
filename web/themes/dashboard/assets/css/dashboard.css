@@ -1054,7 +1054,11 @@ a:hover,
 .grid-view .table-responsive .dropdown-menu {
   z-index: 1001;
 }
-
+.grid-view .summary {
+  text-align: left;
+  font-size: 12px;
+  margin: .50rem;
+}
 .grid-view .badge {
   font-size: 100%;
   margin: 2px;
@@ -1065,6 +1069,10 @@ a:hover,
 }
 .grid-view .badge a:hover {
   color: #fff;
+}
+.grid-view .has-error .badge {
+  position: absolute;
+  z-index: 1;
 }
 
 .btn.load {
@@ -2117,12 +2125,6 @@ a.desc:after {
 
 #dialog_edit_columns {
   padding: 0;
-}
-
-.grid-view .summary {
-  text-align: left;
-  font-size: 12px;
-  margin: .50rem;
 }
 
 .o-hidden {
