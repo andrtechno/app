@@ -63,8 +63,22 @@ use panix\engine\CMS;
 
     // print_r($langItems);die;
 
-    echo \panix\engine\bootstrap\Nav::widget([
+
+    $notifications = \panix\mod\admin\models\Notifications::find()->read(0)->limit(5)->all();
+
+    $notificationsCount = \panix\mod\admin\models\Notifications::find()->read(0)->count();
+
+
+    $notificationItems = [];
+    foreach ($notifications as $notification) {
+        $notificationItems[] = [
+            'label' => $notification->text,
+        ];
+    }
+    echo BackendNav::widget([
+        'enableDefaultItems' => false,
         'encodeLabels' => false,
+
         'items' => [
             [
                 'label' => Html::icon('user') . ' ' . Yii::$app->user->displayName,
@@ -73,22 +87,13 @@ use panix\engine\CMS;
             [
                 'label' => Html::icon('notification'),
                 'url' => '#',
-                'items' => [
-                    [
-                        'label' => 'asdasd',
-                    ],
-                    [
-                        'label' => 'asdasd22',
-                    ],
-                    [
-                        'label' => 'asdasd22',
-                    ],
-
-                ]
+                'badgeOptions'=>['id'=>'navbar-badge-notifications'],
+                'badge' => $notificationsCount,
+                'items' => $notificationItems,
             ],
             [
                 'label' => Html::icon('home'),
-                'url' => '/',
+                'url' => ['/'],
                 'options' => ['class' => "d-none d-md-block"]
             ],
             [
@@ -100,7 +105,7 @@ use panix\engine\CMS;
                 'label' => Html::img('/uploads/language/' . $langManager->active->code . '.png', ['alt' => '']),
                 'url' => '#',
                 'items' => $langItems,
-                'dropdownOptions' => ['class' => 'dropdown-menu-right'],
+
             ],
         ],
         'options' => ['class' => 'navbar-right'],

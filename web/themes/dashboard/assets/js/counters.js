@@ -2,29 +2,27 @@ var xhr_notify;
 $(function () {
 
     setInterval(function () {
-            reloadCounters();
+        reloadCounters();
     }, 10000); //10000
 
     function reloadCounters() {
-        var notifaction_list = [];
-        console.log(notifaction_list.length);
+        var notification_list = [];
+        console.log(notification_list.length);
 
-        if(xhr_notify !== undefined)
+        if (xhr_notify !== undefined)
             xhr_notify.abort();
-        //   if (notifaction_list.length === 0) {
-        xhr_notify = $.getJSON('/admin/app/default/ajax-counters', function (data) { //'/admin/default/ajax-counters?' + Math.random()
-            $.each(data.count, function (i, c) {
 
-                if (c > 0) {
-                    $('.counter-cart').html(c).show();
+        xhr_notify = $.getJSON('/admin/app/default/ajax-counters', function (data) {
+            $.each(data.count, function (index, value) {
+                if (value > 0) {
+                    $('#navbar-badge-' + index).html(value).show();
                 } else {
-                    $('.circle-orders .label').hide();
+                    $('#navbar-badge-' + index).html(value).hide();
                 }
             });
-            //console.log(Object.keys(data.notify));
             $.each(data.notify, function (id, notification) {
 
-                notifaction_list[id] = $.notify({message: notification.text}, {
+                notification_list[id] = $.notify({message: notification.text}, {
                     type: notification.type,
                     showProgressbar: true,
                     allow_duplicates: false,
@@ -41,22 +39,20 @@ $(function () {
                     onShow: function () {
                         var sound = notification.sound;
                         var soundPath;
-                        console.log(sound,'SOUND');
-                        if(sound){
-                            soundPath='http://' + window.location.hostname + '/'+sound;
-                        }else{
-                            soundPath='http://' + window.location.hostname + '/uploads/notification.mp3';
+                        if (sound) {
+                            soundPath = 'http://' + window.location.hostname + '/' + sound;
+                        } else {
+                            soundPath = 'http://' + window.location.hostname + '/uploads/notification.mp3';
                         }
                         $.playSound(soundPath);
                     },
                     onClose: function (s) {
-                        console.log(s);
-                            $.getJSON('/admin/app/default/ajax-read-notification', {id: id}, function (data) {
+                        // $.getJSON('/admin/app/default/ajax-read-notification', {id: id}, function (data) {
 
-                        });
+                        //});
                         $.stopSound();
-                        // delete notifaction_list[notifaction.id];
-                        //notifaction_list.splice(notifaction, []);
+                        // delete notification_list[notifaction.id];
+                        //notification_list.splice(notifaction, []);
                     }
                 });
 
