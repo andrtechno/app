@@ -1238,6 +1238,7 @@ form .col-form-label {
 .has-success .checkbox-inline,
 .has-success .control-label,
 .has-success .text-muted,
+.has-success .help-block,
 .has-success .radio,
 .has-success .radio-inline,
 .has-success.checkbox label,
@@ -1251,6 +1252,7 @@ form .col-form-label {
 .has-error .checkbox-inline,
 .has-error .control-label,
 .has-error .text-muted,
+.has-error .help-block,
 .has-error .radio,
 .has-error .radio-inline,
 .has-error.checkbox label,
@@ -2399,6 +2401,10 @@ a.desc:after {
     padding: 5px 10px;
   }
 }
+#dropdown-notification {
+  min-width: 300px;
+}
+
 .navbar .navbar-right {
   margin-right: 15px;
   position: absolute;
@@ -2411,7 +2417,7 @@ a.desc:after {
 .navbar .navbar-right > li:last-child {
   margin-right: 0;
 }
-.navbar .navbar-right > li a span {
+.navbar .navbar-right > li > a span {
   position: absolute;
   top: 5px;
   right: 2px;
@@ -2428,6 +2434,11 @@ table .alert {
 .tab-pane .alert,
 .card-body form .alert {
   margin: 15px;
+}
+
+.alert .progress {
+  height: .5rem;
+  margin-top: .5rem;
 }
 
 #wrapper {
