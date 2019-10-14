@@ -779,9 +779,23 @@ form .form-group {
 .card-header {
   padding: 0;
   position: relative;
-  h5 {
+  > h5 {
     margin: 0;
     padding: 7px 15px;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    margin: 0;
   }
 }
 
@@ -1637,6 +1651,11 @@ table .alert {
   width: 250px;
 }
 
+h1,
+.h1 {
+  font-size: 30px;
+}
+
 @media (min-width: 768px) {
   .module-header .btn span {
     display: inline;
@@ -1657,11 +1676,6 @@ table .alert {
     width: 140px;
     padding-left: 40px;
     font-size: 19px;
-  }
-
-  h1,
-  .h1 {
-    font-size: 30px;
   }
 
   .footer {

@@ -1,28 +1,39 @@
 <?php
 
 use panix\engine\Html;
+
 ?>
 <div class="card grid">
     <div class="grid-loading"></div>
     <div class="card-header">
-        <h5 class="clearfix">
+        <div class="container-fluid pt-2 pb-2">
+            <div class="row">
+                <div class="col-sm-6 d-none d-sm-block">
+                    <h5><?php if (isset($title)) echo $title; ?></h5>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <?php if (isset($buttons)) { ?>
 
-            <span class="float-left"><?php if (isset($title)) echo $title; ?></span>
+                        <?php
+                        foreach ($buttons as $btn) {
+                            $icon = '';
+                            if (!isset($options['class']))
+                                $options['class'] = 'btn btn-sm btn-success';
+                            if (!isset($options['data-pjax']))
+                                $options['data-pjax'] = 1;
 
-            <?php if (isset($buttons)) { ?>
-                <span class="float-right">
-                    <?php
-                    foreach ($buttons as $btn) {
-                        $icon='';
-                        if(isset($btn['icon'])){
-                            $icon = Html::icon($btn['icon']);
+                            if (isset($btn['icon'])) {
+                                $icon = Html::icon($btn['icon']);
+                            }
+                            echo Html::a($icon . ' ' . $btn['label'], $btn['url'], $options);
                         }
-                        echo Html::a($icon.' '.$btn['label'], $btn['url'], isset($btn['options']) ? $btn['options'] : ['class'=>'btn btn-sm btn-success','data-pjax'=>0]);
-                    }
-                    ?>
-                </span>
-            <?php } ?>
-        </h5>
+                        ?>
+
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+
 
 
     </div>
