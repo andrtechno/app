@@ -4,15 +4,18 @@ namespace app\web\themes\basicnew;
 
 use panix\engine\web\AssetBundle;
 
-class ThemeAsset extends AssetBundle {
+class ThemeAsset extends AssetBundle
+{
 
     private $_theme;
 
-    public function init() {
+    public function init()
+    {
         $this->_theme = \Yii::$app->settings->get('app', 'theme');
-        $this->sourcePath = __DIR__."/assets";
+        $this->sourcePath = __DIR__ . "/assets";
         parent::init();
     }
+
     public $js = [
         'swiper/js/swiper.min.js',
     ];
@@ -26,6 +29,7 @@ class ThemeAsset extends AssetBundle {
 
     public $depends = [
         'panix\engine\assets\JqueryCookieAsset',
+        'panix\engine\assets\TouchPunchAsset',
         'panix\engine\assets\CommonAsset',
         'panix\mod\shop\bundles\WebAsset',
         'panix\mod\comments\WebAsset',
