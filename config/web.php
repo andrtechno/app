@@ -49,7 +49,7 @@ $config = [
     ],
     'components' => [
         'plugins' => [
-            'class' => panix\mod\plugins\components\PluginsManager::class,
+            'class' => 'panix\mod\plugins\components\PluginsManager',
             'appId' => panix\mod\plugins\BasePlugin::APP_WEB,
             // by default
             'enablePlugins' => true,
@@ -60,13 +60,6 @@ $config = [
                // '<div class="content[^>]*>' => '<\/div>',
             ]
         ],
-        'reCaptcha' => [
-            'name' => 'reCaptcha',
-            'class' => 'panix\engine\widgets\recaptcha\ReCaptcha',
-            'siteKey' => '6LfJqpYUAAAAAMKYmNUctjXeTkQrx74R2LHaM0r7',
-            'secret' => '6LfJqpYUAAAAAGOItZcYABLTjDilBvgaAJE7vJL0',
-        ],
-
         'sphinx' => [
             'class' => 'yii\sphinx\Connection',
             'dsn' => 'mysql:host=127.0.0.1;port=9306;',
@@ -81,9 +74,9 @@ $config = [
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         //'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
         'view' => [
-            'class' => \panix\mod\plugins\components\View::class,
+            'class' => 'panix\mod\plugins\components\View',
             'as Layout' => [
-                'class' => \panix\engine\behaviors\LayoutBehavior::class,
+                'class' => 'panix\engine\behaviors\LayoutBehavior',
             ],
             'renderers' => [
                 'tpl' => [

@@ -1,5 +1,13 @@
 <?php
 
+
+$date = new \DateTime(date('Y-m-d', time()), new \DateTimeZone('Europe/Kiev'));
+$logDate= $date->format('Y-m-d');
+
+
+
+
+
 $db = YII_DEBUG ? dirname(__DIR__) . '/config/db_local.php' : dirname(__DIR__) . '/config/db.php';
 $config = [
     'id' => 'common',
@@ -64,12 +72,6 @@ $config = [
         'images' => ['class' => 'panix\mod\images\Module'],
     ],
     'components' => [
-        'reCaptcha' => [
-            'name' => 'reCaptcha',
-            'class' => 'panix\engine\widgets\recaptcha\ReCaptcha',
-            'siteKey' => '6LfJqpYUAAAAAMKYmNUctjXeTkQrx74R2LHaM0r7',
-            'secret' => '6LfJqpYUAAAAAGOItZcYABLTjDilBvgaAJE7vJL0',
-        ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
             'defaultRoles' => ['guest', 'user'],
@@ -247,7 +249,6 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache', //DummyCache
-            // 'cachePath' => '@common/runtime/cache'
         ],
         'user' => [
             'class' => 'panix\mod\user\components\WebUser',
@@ -255,37 +256,37 @@ $config = [
         ],
         'mailer' => [
             'class' => 'panix\engine\Mailer',
-          //  'class' => 'yii\swiftmailer\Mailer',
+            'htmlLayout'=>'layouts/html'
+            //  'class' => 'yii\swiftmailer\Mailer',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
-            'flushInterval'=>1000*10,
+            'flushInterval' => 1000 * 10,
             'targets' => [
-                'file1'=>[
+                'db_error' => [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                    'categories' => ['yii\db\*'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/' . $logDate . '/db_error.log',
+                ],
+                'error' => [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                     'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/db_error.log',
-                    'categories' => ['yii\db\*']
+                    'logFile' => '@runtime/logs/' . $logDate . '/error.log',
                 ],
-                'file2'=>[
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                    'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/error.log',
-                   // 'categories' => ['yii\db\*']
-                ],
-                'file3'=>[
+                'warning' => [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['warning'],
                     'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/warning.log',
+                    'logFile' => '@runtime/logs/' . $logDate . '/warning.log',
                 ],
-                'file4'=>[
+                'info' => [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['info'],
                     'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/info.log',
+                    'logFile' => '@runtime/logs/' . $logDate . '/info.log',
                 ],
                 /*[
                     'class' => 'yii\log\FileTarget',
