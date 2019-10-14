@@ -58,20 +58,39 @@ ul.sorter {
 
 .delivery-subscribe .form-control::-webkit-input-placeholder {
   color: #fff !important;
+  font-style: italic !important;
 }
 
 .delivery-subscribe .form-control:-moz-placeholder {
   color: #fff !important;
+  font-style: italic !important;
 }
 
 .delivery-subscribe .form-control::-moz-placeholder {
   color: #fff !important;
+  font-style: italic !important;
 }
 
 .delivery-subscribe .form-control:-ms-input-placeholder {
   color: #fff !important;
+  font-style: italic !important;
 }
-
+.form-control::-webkit-input-placeholder {
+  font-style: italic;
+  color:rgba(0, 0, 0, 0.250);
+}
+.form-control:-moz-placeholder {
+  font-style: italic;
+  color:rgba(0, 0, 0, 0.250);
+}
+.form-control::-moz-placeholder {
+  font-style: italic;
+  color:rgba(0, 0, 0, 0.250);
+}
+.form-control:-ms-input-placeholder {
+  font-style: italic;
+  color:rgba(0, 0, 0, 0.250);
+}
 .gradient {
   @include gradient($gradient-color-start, $gradient-color-end);
 }

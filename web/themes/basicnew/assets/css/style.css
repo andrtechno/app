@@ -2115,6 +2115,15 @@ header #header-center {
   color: #BEBEBE;
 }
 
+.card-header h1, .card-header .h1,
+.card-header h2, .card-header .h2,
+.card-header h3, .card-header .h3,
+.card-header h4, .card-header .h4,
+.card-header h5, .card-header .h5,
+.card-header h6, .card-header .h6 {
+  margin-bottom: 0;
+}
+
 .card.filter-block {
   border: 0;
 }
@@ -2123,14 +2132,6 @@ header #header-center {
   background-color: transparent;
   padding-left: 0;
   padding-right: 0;
-}
-.card.filter-block .card-header h1, .card.filter-block .card-header .h1,
-.card.filter-block .card-header h2, .card.filter-block .card-header .h2,
-.card.filter-block .card-header h3, .card.filter-block .card-header .h3,
-.card.filter-block .card-header h4, .card.filter-block .card-header .h4,
-.card.filter-block .card-header h5, .card.filter-block .card-header .h5,
-.card.filter-block .card-header h6, .card.filter-block .card-header .h6 {
-  margin-bottom: 0;
 }
 .card.filter-block .card-body {
   padding-right: 0;
@@ -2417,18 +2418,42 @@ ul.sorter {
 
 .delivery-subscribe .form-control::-webkit-input-placeholder {
   color: #fff !important;
+  font-style: italic !important;
 }
 
 .delivery-subscribe .form-control:-moz-placeholder {
   color: #fff !important;
+  font-style: italic !important;
 }
 
 .delivery-subscribe .form-control::-moz-placeholder {
   color: #fff !important;
+  font-style: italic !important;
 }
 
 .delivery-subscribe .form-control:-ms-input-placeholder {
   color: #fff !important;
+  font-style: italic !important;
+}
+
+.form-control::-webkit-input-placeholder {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.form-control:-moz-placeholder {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.form-control::-moz-placeholder {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.form-control:-ms-input-placeholder {
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.25);
 }
 
 .gradient {

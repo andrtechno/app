@@ -983,7 +983,16 @@ header {
     }
   }
 }
-
+.card-header {
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
+    margin-bottom: 0;
+  }
+}
 .card.filter-block {
   border: 0;
   .card-header {
@@ -991,14 +1000,6 @@ header {
     background-color: transparent;
     padding-left: 0;
     padding-right: 0;
-    h1, .h1,
-    h2, .h2,
-    h3, .h3,
-    h4, .h4,
-    h5, .h5,
-    h6, .h6 {
-      margin-bottom: 0;
-    }
   }
   .card-body {
     padding-right: 0;
