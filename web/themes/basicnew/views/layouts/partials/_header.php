@@ -2,6 +2,7 @@
 use panix\engine\Html;
 use yii\helpers\Url;
 use panix\engine\CMS;
+use panix\mod\shop\models\Category;
 
 $this->registerJs("
     $(window).on('load', function () {
@@ -184,7 +185,35 @@ $config = Yii::$app->settings->get('contacts');
                 <span></span>
                 <span></span>
             </button>
+            <?php
 
+            /** @var Category|\panix\engine\behaviors\nestedsets\NestedSetsBehavior $model */
+            $model = Category::findOne(1)->children()->all();
+            $categories = [];
+            foreach ($model as $item) {
+                /** @var Category|\panix\engine\behaviors\nestedsets\NestedSetsBehavior $item */
+                $categories[$item->id] = [
+                    'id' => $item->id,
+                    'name' => $item->name,
+                    'slug' => $item->slug,
+                    'url' => $item->getUrl(),
+                    'productsCount' => $item->countItems,
+                    'child' => []
+                ];
+
+                foreach ($item->children()->all() as $child) {
+                    /** @var Category|\panix\engine\behaviors\nestedsets\NestedSetsBehavior $child */
+                    $categories[$item->id]['child'][] = [
+                        'id' => $child->id,
+                        'name' => $child->name,
+                        'slug' => $child->slug,
+                        'url' => $child->getUrl(),
+                        'productsCount' => $child->countItems,
+                    ];
+                }
+             //   $categories[$item->id]['productsCount'] = $item->countItems + $categories[$item->id]['child']['productsCount'];
+            }
+            ?>
             <div class="collapse navbar-collapse mr-auto" id="navbar">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown megamenu-down">
@@ -194,31 +223,40 @@ $config = Yii::$app->settings->get('contacts');
                             <div class="container pr-0 pl-0">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                                        <div class="nav flex-column nav-pills" id="pills-tab" role="tablist"
                                              aria-orientation="vertical">
-                                            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill"
-                                               href="#v-pills-home" role="tab" aria-controls="v-pills-home"
-                                               aria-selected="true">Home</a>
-                                            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"
-                                               href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
-                                               aria-selected="false">Profile</a>
-
+                                            <?php foreach ($categories as $id => $data) { ?>
+                                                <?= Html::a($data['name'] . ' (' . $data['productsCount'] . ')', '#pills-' . $data['id'], [
+                                                    'class' => 'nav-link ' . (($id == 2) ? 'active' : ''),
+                                                    'id' => 'pills-tab-' . $data['id'],
+                                                    'data-toggle' => 'pill',
+                                                    'aria-controls' => 'pills-' . $data['id'],
+                                                    'aria-selected' => ($id == 2) ? 'true' : 'false',
+                                                ]); ?>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                     <div class="col-md-9">
-                                        <div class="tab-content" id="v-pills-tabContent">
-                                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                                                 aria-labelledby="v-pills-home-tab">1
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                                                 aria-labelledby="v-pills-profile-tab">2
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                                 aria-labelledby="v-pills-messages-tab">3
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                                                 aria-labelledby="v-pills-settings-tab">4
-                                            </div>
+                                        <?php
+                                        //print_r($categories);
+
+                                        ?>
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <?php foreach ($categories as $index => $data) { ?>
+                                                <?php $class = ($index == 2) ? ' show active' : ''; ?>
+                                                <div class="tab-pane fade <?= $class; ?>"
+                                                     id="pills-<?= $data['id']; ?>" role="tabpanel"
+                                                     aria-labelledby="pills-tab-<?= $data['id']; ?>">
+
+                                                    <?php if ($data['child']) { ?>
+                                                        <?php foreach ($data['child'] as $item) { ?>
+                                                            <?= Html::a($item['name'] . ' (' . $item['productsCount'] . ')', $item['url'], [
+                                                                'class' => 'dropdown-item',
+                                                            ]); ?>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>

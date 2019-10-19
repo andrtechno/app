@@ -2422,9 +2422,14 @@ a.desc:after {
 }
 
 .navbar .navbar-right {
-  margin-right: 15px;
+  margin-right: 0;
   position: absolute;
   right: 15px;
+}
+@media (min-width: 768px) {
+  .navbar .navbar-right .navbar .navbar-right {
+    margin-right: 15px;
+  }
 }
 .navbar .navbar-right > li {
   float: left;

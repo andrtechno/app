@@ -2018,6 +2018,12 @@ a[href^="tel:"] {
 .navbar-nav .nav-link:hover {
   color: #505759;
 }
+.navbar-nav .nav a,
+.navbar-nav .nav .nav-link,
+.navbar-nav .tab-content a,
+.navbar-nav .tab-content .nav-link {
+  color: #505759;
+}
 
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-nav .nav-link {

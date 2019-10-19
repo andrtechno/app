@@ -718,33 +718,38 @@ a.phone:link,
 a.phone:visited {
   text-decoration: none;
 }
+
 .lifecell-life,
 .vodafone-mts,
-.kievstar{
+.kievstar {
   padding-left: 25px;
   position: relative;
-  &:before{
+  &:before {
     position: absolute;
     height: 100%;
-    left:0;
-    top:1px;
+    left: 0;
+    top: 1px;
     font-family: $font-family-icon;
     font-size: 16px;
     font-weight: normal;
   }
 }
-.lifecell-life:before{
-  content:"\f173";
-  color:#fccf00;
+
+.lifecell-life:before {
+  content: "\f173";
+  color: #fccf00;
 }
-.vodafone-mts:before{
-  content:"\f174";
-  color:#e60000;
+
+.vodafone-mts:before {
+  content: "\f174";
+  color: #e60000;
 }
-.kievstar:before{
-  content:"\f175";
-  color:#229fff;
+
+.kievstar:before {
+  content: "\f175";
+  color: #229fff;
 }
+
 a#pixelion {
   color: #505759;
   font-size: 14px;
@@ -871,13 +876,21 @@ $header-height-center-desktop: 150px;
   }
 }
 
-.navbar-nav .nav-link {
-  color: #fff;
-  &:hover {
-    color: $text-color;
+.navbar-nav {
+  .nav-link {
+    color: #fff;
+    &:hover {
+      color: $text-color;
+    }
+  }
+  .nav,
+  .tab-content{
+    a,
+    .nav-link{
+      color: $text-color;
+    }
   }
 }
-
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 1rem;
@@ -983,6 +996,7 @@ header {
     }
   }
 }
+
 .card-header {
   h1, .h1,
   h2, .h2,
@@ -993,6 +1007,7 @@ header {
     margin-bottom: 0;
   }
 }
+
 .card.filter-block {
   border: 0;
   .card-header {
