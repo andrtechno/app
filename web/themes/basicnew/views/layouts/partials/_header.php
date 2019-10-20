@@ -187,32 +187,10 @@ $config = Yii::$app->settings->get('contacts');
             </button>
             <?php
 
-            /** @var Category|\panix\engine\behaviors\nestedsets\NestedSetsBehavior $model */
-            $model = Category::findOne(1)->children()->all();
-            $categories = [];
-            foreach ($model as $item) {
-                /** @var Category|\panix\engine\behaviors\nestedsets\NestedSetsBehavior $item */
-                $categories[$item->id] = [
-                    'id' => $item->id,
-                    'name' => $item->name,
-                    'slug' => $item->slug,
-                    'url' => $item->getUrl(),
-                    'productsCount' => $item->countItems,
-                    'child' => []
-                ];
 
-                foreach ($item->children()->all() as $child) {
-                    /** @var Category|\panix\engine\behaviors\nestedsets\NestedSetsBehavior $child */
-                    $categories[$item->id]['child'][] = [
-                        'id' => $child->id,
-                        'name' => $child->name,
-                        'slug' => $child->slug,
-                        'url' => $child->getUrl(),
-                        'productsCount' => $child->countItems,
-                    ];
-                }
-             //   $categories[$item->id]['productsCount'] = $item->countItems + $categories[$item->id]['child']['productsCount'];
-            }
+            $categories = Category::find()->tree(1);
+
+
             ?>
             <div class="collapse navbar-collapse mr-auto" id="navbar">
                 <ul class="navbar-nav">
@@ -226,31 +204,27 @@ $config = Yii::$app->settings->get('contacts');
                                         <div class="nav flex-column nav-pills" id="pills-tab" role="tablist"
                                              aria-orientation="vertical">
                                             <?php foreach ($categories as $id => $data) { ?>
-                                                <?= Html::a($data['name'] . ' (' . $data['productsCount'] . ')', '#pills-' . $data['id'], [
-                                                    'class' => 'nav-link ' . (($id == 2) ? 'active' : ''),
-                                                    'id' => 'pills-tab-' . $data['id'],
+                                                <?= Html::a($data['title'] . ' (' . $data['totalCount'] . ')', '#pills-' . $data['key'], [
+                                                    'class' => 'nav-link ' . (($id == 0) ? 'active' : ''),
+                                                    'id' => 'pills-tab-' . $data['key'],
                                                     'data-toggle' => 'pill',
-                                                    'aria-controls' => 'pills-' . $data['id'],
-                                                    'aria-selected' => ($id == 2) ? 'true' : 'false',
+                                                    'aria-controls' => 'pills-' . $data['key'],
+                                                    'aria-selected' => ($id == 0) ? 'true' : 'false',
                                                 ]); ?>
                                             <?php } ?>
                                         </div>
                                     </div>
                                     <div class="col-md-9">
-                                        <?php
-                                        //print_r($categories);
-
-                                        ?>
                                         <div class="tab-content" id="pills-tabContent">
                                             <?php foreach ($categories as $index => $data) { ?>
-                                                <?php $class = ($index == 2) ? ' show active' : ''; ?>
+                                                <?php $class = ($index == 0) ? ' show active' : ''; ?>
                                                 <div class="tab-pane fade <?= $class; ?>"
-                                                     id="pills-<?= $data['id']; ?>" role="tabpanel"
-                                                     aria-labelledby="pills-tab-<?= $data['id']; ?>">
+                                                     id="pills-<?= $data['key']; ?>" role="tabpanel"
+                                                     aria-labelledby="pills-tab-<?= $data['key']; ?>">
 
-                                                    <?php if ($data['child']) { ?>
-                                                        <?php foreach ($data['child'] as $item) { ?>
-                                                            <?= Html::a($item['name'] . ' (' . $item['productsCount'] . ')', $item['url'], [
+                                                    <?php if ($data['children']) { ?>
+                                                        <?php foreach ($data['children'] as $item) { ?>
+                                                            <?= Html::a($item['title'] . ' (' . $item['totalCount'] . ')', $item['url'], [
                                                                 'class' => 'dropdown-item',
                                                             ]); ?>
                                                         <?php } ?>
