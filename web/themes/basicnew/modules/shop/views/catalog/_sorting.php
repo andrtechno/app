@@ -14,7 +14,7 @@ echo Html::beginForm($this->context->currentUrl, 'GET', array('id' => 'sorting-f
 ?>
 
 
-    <div class="row" id="sorter-block">
+    <div class="row">
         <span class="d-md-none">
         <a class="btn-filter" href="#"
            onclick="$('#filters-container').toggleClass('open'); return false;"><?= Yii::t('shop/default', 'Фильтры'); ?></a>
@@ -25,7 +25,7 @@ echo Html::beginForm($this->context->currentUrl, 'GET', array('id' => 'sorting-f
             $sorter['price'] = Yii::t('shop/default', 'SORT_BY_PRICE_ASC');
             $sorter['-price'] = Yii::t('shop/default', 'SORT_BY_PRICE_DESC');
             $sorter['-date_create'] = Yii::t('shop/default', 'SORT_BY_DATE_DESC');
-          //  $active = Yii::$app->urlManager->addUrlParam('/' . Yii::$app->requestedRoute, ['sort' => Yii::$app->request->get('sort')]);
+            //  $active = Yii::$app->urlManager->addUrlParam('/' . Yii::$app->requestedRoute, ['sort' => Yii::$app->request->get('sort')]);
 
             echo Html::dropDownList('sorter', Yii::$app->request->get('sort'), $sorter, ['class' => 'custom-select', 'style' => 'width:auto;']);
             ?>
@@ -52,15 +52,11 @@ echo Html::beginForm($this->context->currentUrl, 'GET', array('id' => 'sorting-f
         <div class="col-sm-6 col-md-3 col-lg-3 mb-3 text-right">
 
             <div class="btn-group btn-group-sm">
-                <a class="btn btn-outline-secondary ajax-catalog <?php if ($itemView === '_view_grid') echo 'active'; ?>"
-                   href="<?= Yii::$app->urlManager->removeUrlParam('/' . Yii::$app->requestedRoute, 'view') ?>"><i
-                            class="icon-grid"></i></a>
-                <a class="btn btn-outline-secondary ajax-catalog <?php if ($itemView === '_view_list') echo 'active'; ?>"
-                   href="<?= Yii::$app->urlManager->addUrlParam('/' . Yii::$app->requestedRoute, ['view' => 'list']) ?>"><i
-                            class="icon-menu"></i></a>
+                <?php
+                echo Html::submitButton('<i class="icon-grid"></i>', ['class' => 'btn btn-outline-secondary', 'name' => 'view', 'value' => NULL]);
+                echo Html::submitButton('<i class="icon-menu"></i>', ['class' => 'btn btn-outline-secondary', 'name' => 'view', 'value' => 'list']);
+                ?>
 
-                <button name="view" class="btn btn-outline-secondary" value="list"><i class="icon-menu"></i></button>
-                <button name="view" class="btn btn-outline-secondary" value=""><i class="icon-grid"></i></button>
             </div>
         </div>
     </div>
