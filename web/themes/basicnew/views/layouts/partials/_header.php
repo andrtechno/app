@@ -101,8 +101,9 @@ $config = Yii::$app->settings->get('contacts');
                             </a>
                             <div class="dropdown-menu">
                                 <?php
+
                                 foreach (Yii::$app->currency->currencies as $currency) {
-                                    echo Html::a($currency['iso'], ['/shop/ajax/currency', 'id' => $currency['id']], [
+                                    echo Html::a($currency['iso'].$currency['symbol'], ['/shop/ajax/currency', 'id' => $currency['id']], [
                                         'class' => Yii::$app->currency->active['id'] === $currency['id'] ? 'dropdown-item active' : 'dropdown-item',
                                         'id' => 'sw' . $currency['id'],
                                         'onClick' => 'switchCurrency(' . $currency['id'] . '); return false;'
@@ -115,7 +116,6 @@ $config = Yii::$app->settings->get('contacts');
                         <?php if (Yii::$app->user->isGuest) { ?>
                             <li class="nav-item">
                                 <?= Html::a(Html::icon('icon-user') . ' ' . Yii::t('user/default', 'LOGIN'), ['/user/login'], ['class' => 'nav-link']); ?>
-
                             </li>
                             <li class="nav-item">
                                 <?= Html::a(Yii::t('user/default', 'REGISTER'), ['/user/register'], ['class' => 'nav-link']); ?>

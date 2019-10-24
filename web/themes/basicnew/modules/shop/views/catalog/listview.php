@@ -3,8 +3,9 @@
  * @var $provider
  * @var $itemView
  */
+
 echo \panix\engine\widgets\ListView::widget([
-    //'id'=>'list-product',
+    'id'=>'shop-products',
     'dataProvider' => $provider,
     'itemView' => $itemView,
     //'layout' => '{sorter}{summary}{items}{pager}',
