@@ -31,6 +31,7 @@ $config = [
     'bootstrap' => [
         'log',
         'maintenanceMode',
+        'panix\engine\widgets\webcontrol\WebInlineControl',
         'panix\engine\BootstrapModule'
     ],
     'controllerMap' => [
@@ -70,6 +71,7 @@ $config = [
         'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
         'delivery' => ['class' => 'panix\mod\delivery\Module'],
         'images' => ['class' => 'panix\mod\images\Module'],
+        'forum' => ['class' => 'panix\mod\forum\Module'],
     ],
     'components' => [
         'authManager' => [
@@ -236,7 +238,7 @@ $config = [
         ],
         'session' => [
             'class' => '\panix\engine\web\DbSession',
-            'timeout' => 1440
+            'timeout' => 3600
             //'class' => '\yii\web\DbSession',
             //'writeCallback'=>['panix\engine\web\DbSession', 'writeFields']
         ],
@@ -248,6 +250,8 @@ $config = [
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
         'cache' => [
+            'directoryLevel'=>0,
+            'keyPrefix'=>'',
             'class' => 'yii\caching\FileCache', //DummyCache
         ],
         'user' => [
