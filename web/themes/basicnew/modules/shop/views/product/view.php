@@ -121,8 +121,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
         </div>
         <div class='col-sm-6 col-md-7 product-info-block'>
             <div class="product-info">
-
-                <span class="badge badge-light">Код товара: <strong><?= $model->id; ?></strong></span>
+                <span class="badge badge-light">Код товара: <strong><?= \panix\engine\CMS::idToNumber($model->id); ?></strong></span>
                 <div class="heading-gradient">
                     <h1>
                         <?= Html::encode(($this->h1) ? $this->h1 : $model->name); ?>

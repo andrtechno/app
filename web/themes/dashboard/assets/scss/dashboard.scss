@@ -635,10 +635,6 @@ div.tagsinput {
   }
 }
 
-.badge > a {
-  color: #fff;
-}
-
 .navbar-right,
 .navbar-nav {
   i {
@@ -2141,16 +2137,10 @@ h1,
   padding-left: 1rem;
 }
 
-
-
-
-
-
-
-
-
-
-
+$badge-color-light: #e0e6ea;
+.badge-light {
+  background-color: $badge-color-light;
+}
 
 
 

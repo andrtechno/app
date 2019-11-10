@@ -4,6 +4,7 @@ use panix\engine\Html;
 use app\web\themes\dashboard\AdminAsset;
 
 AdminAsset::register($this);
+
 $this->registerJs('
 $(document).ready(function () {
 
@@ -30,7 +31,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
     <!DOCTYPE html>
     <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=<?= \Yii::$app->charset ?>"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=<?php echo \Yii::$app->charset; ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <title><?= Yii::t('app/admin', 'ADMIN_PANEL'); ?></title>
         <?= Html::csrfMetaTags() ?>

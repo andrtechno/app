@@ -6,7 +6,7 @@ $datepicker-state-bg: $color-light;
 $ui-widget-border-color: rgba(0, 0, 0, 0.125);
 
 /* Slider */
-$ui-slider-height: 5px;
+$ui-slider-height: 7px;
 $ui-slider-handle-size: 15px;
 $ui-slider-handle-border-size: 1px;
 $ui-slider-handle-border-color: $ui-widget-border-color;
@@ -362,6 +362,9 @@ $ui-spinner-button-color: $ui-widget-border-color;
   padding: 0;
   &.no-padding .ui-dialog-content {
     padding: 0;
+  }
+  &.ui-widget-content{
+    border:0;
   }
   .ui-dialog-content {
     padding: 0;

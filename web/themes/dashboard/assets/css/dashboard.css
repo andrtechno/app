@@ -191,7 +191,7 @@
 }
 
 .ui-slider-horizontal {
-  height: 5px;
+  height: 7px;
 }
 
 .ui-slider-horizontal .ui-slider-handle {
@@ -201,7 +201,7 @@
 
 .ui-slider {
   position: relative;
-  height: 5px;
+  height: 7px;
   margin: 0;
   background: #f6f6f6;
   border: 0;
@@ -341,6 +341,9 @@
 }
 .ui-dialog.no-padding .ui-dialog-content {
   padding: 0;
+}
+.ui-dialog.ui-widget-content {
+  border: 0;
 }
 .ui-dialog .ui-dialog-content {
   padding: 0;
@@ -1577,10 +1580,6 @@ div.tagsinput input {
 div.tagsinput div {
   display: block;
   float: left;
-}
-
-.badge > a {
-  color: #fff;
 }
 
 .navbar-right i,
@@ -3033,6 +3032,10 @@ h1,
 .errorSummary ul {
   margin: 0;
   padding-left: 1rem;
+}
+
+.badge-light {
+  background-color: #e0e6ea;
 }
 
 /*# sourceMappingURL=dashboard.css.map */

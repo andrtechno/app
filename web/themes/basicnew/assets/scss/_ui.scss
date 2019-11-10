@@ -13,6 +13,7 @@ $ui-slider-handle-border-size: 3px;
 $ui-slider-handle-bg-color: #fff;
 
 /* Spinner */
+$ui-spinner-bg-color: #fff;
 $my-spinner-width-button: 30px;
 $ui-spinner-border-width: 1px;
 $ui-spinner-button-color: $ui-widget-border-color;
@@ -209,20 +210,23 @@ $ui-spinner-button-color: $ui-widget-border-color;
     padding: .5rem .6rem;
   }
 }
-.ui-slider-horizontal{
+
+.ui-slider-horizontal {
   height: $ui-slider-size;
   .ui-slider-handle {
     top: - ($ui-slider-handle-size / 2) + ($ui-slider-handle-border-size / 2);
     margin-left: - ($ui-slider-handle-size / 2) + ($ui-slider-handle-border-size / 2);
   }
 }
-.ui-slider-vertical{
+
+.ui-slider-vertical {
   width: $ui-slider-size;
   height: 100%;
   .ui-slider-handle {
     left: - ($ui-slider-handle-size / 2) + ($ui-slider-handle-border-size / 2);
   }
 }
+
 .ui-slider {
   position: relative;
   margin: 0;
@@ -257,27 +261,40 @@ $ui-spinner-button-color: $ui-widget-border-color;
   }
 }
 
-.spinner-my {
-  .ui-spinner {
-    &.ui-widget-content {
-      margin-left: $my-spinner-width-button;
-      margin-right: $my-spinner-width-button;
-    }
-    .ui-button .ui-icon {
-      background-image: none;
-    }
+.ui-spinner-input {
+  text-align: center;
+}
+
+.ui-spinner-up {
+  right: - $my-spinner-width-button;
+  &:before {
+    content: '+';
   }
-  .ui-spinner-input {
-    text-align: center;
+}
+
+.ui-spinner-down {
+  left: - $my-spinner-width-button;
+  &:before {
+    content: '-';
+  }
+}
+
+.ui-spinner {
+  overflow: inherit;
+  width: 60px;
+  .ui-button .ui-icon {
+    background-image: none;
   }
   a.ui-spinner-button {
+    top: 0;
+    text-indent: -99999px;
     background-image: none;
     cursor: pointer;
     @include border-radius(0);
+    background: $ui-spinner-bg-color;
     width: $my-spinner-width-button;
     border: $ui-spinner-border-width solid $ui-spinner-button-color;
     height: 100%;
-
     &:before {
       position: absolute;
       width: 100%;
@@ -286,35 +303,30 @@ $ui-spinner-button-color: $ui-widget-border-color;
       left: 0;
       top: 0;
       text-align: center;
-      line-height: 30px;
+      line-height: 34px;
       font-weight: bold;
-      font-size: 15px;
+      font-size: 20px;
+    }
+    &.ui-spinner-up {
+      border-left: 0;
+    }
+    &.ui-spinner-down {
+      border-right: 0;
     }
   }
-  .ui-spinner-up {
-    right: - $my-spinner-width-button;
-    &:before {
-      content: '+';
-    }
-  }
-  .ui-spinner-down {
-    left: - $my-spinner-width-button;
-    &:before {
-      content: '-';
-    }
-  }
-}
-
-.ui-spinner {
-  overflow: inherit;
 
   &.ui-widget-content {
+    margin-left: $my-spinner-width-button;
+    margin-right: $my-spinner-width-button;
     background: #fff;
-    border: $ui-spinner-border-width solid $ui-spinner-button-color;
+    border: 0;
+    //border: $ui-spinner-border-width solid $ui-spinner-button-color;
   }
   .ui-spinner-input {
-    padding: 0.375rem 0.75rem;
     margin: 0;
+    padding: 6px 5px;
+    width: 100%;
+    border: 1px solid $ui-widget-border-color;
     &:focus {
       outline: none;
     }
