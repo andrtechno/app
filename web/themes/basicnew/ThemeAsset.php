@@ -4,6 +4,10 @@ namespace app\web\themes\basicnew;
 
 use panix\engine\web\AssetBundle;
 
+/**
+ * Class ThemeAsset
+ * @package app\web\themes\basicnew
+ */
 class ThemeAsset extends AssetBundle
 {
 

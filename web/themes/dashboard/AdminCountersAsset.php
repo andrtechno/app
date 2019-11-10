@@ -6,7 +6,7 @@ use panix\engine\web\AssetBundle;
 
 /**
  * Class AdminCountersAsset
- * @package app\backend\themes\dashboard\assets
+ * @package app\web\themes\dashboard
  */
 class AdminCountersAsset extends AssetBundle
 {

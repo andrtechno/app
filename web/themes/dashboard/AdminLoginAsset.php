@@ -4,6 +4,10 @@ namespace app\web\themes\dashboard;
 
 use yii\web\AssetBundle;
 
+/**
+ * Class AdminLoginAsset
+ * @package app\web\themes\dashboard
+ */
 class AdminLoginAsset extends AssetBundle {
 
 
