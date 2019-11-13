@@ -57,7 +57,7 @@ $config = [
         'presentation' => ['class' => 'panix\mod\presentation\Module'],
         'compare' => ['class' => 'panix\mod\compare\Module'],
         'shop' => ['class' => 'panix\mod\shop\Module'],
-        'cart' => ['class' => 'panix\mod\cart\Module'],
+
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
         'banner' => ['class' => 'panix\mod\banner\Module'],
         'sendpulse' => ['class' => 'panix\mod\sendpulse\Module'],
@@ -72,6 +72,7 @@ $config = [
         'delivery' => ['class' => 'panix\mod\delivery\Module'],
         'images' => ['class' => 'panix\mod\images\Module'],
         'forum' => ['class' => 'panix\mod\forum\Module'],
+        'cart' => ['class' => 'panix\mod\cart\Module'],
     ],
     'components' => [
         'authManager' => [
@@ -84,29 +85,6 @@ $config = [
         'fcm' => [
             'class' => 'understeam\fcm\Client',
             'apiKey' => 'AIzaSyAbeTCpxK7OGu_lXZDSnJjV1ItkUwPOBbc', // Server API Key (you can get it here: https://firebase.google.com/docs/server/setup#prerequisites)
-        ],
-        'robotsTxt' => [
-            'class' => 'app\modules\sitemap\RobotsTxt',
-            'userAgent' => [
-                // Disallow url for all bots
-                '*' => [
-                    'Disallow' => [
-                        ['/api/default/index'],
-                    ],
-                    'Allow' => [
-                        ['/api/doc/index'],
-                    ],
-                ],
-                // Block a specific image from Google Images
-                'Googlebot-Image' => [
-                    'Disallow' => [
-                        // All images on your site from Google Images
-                        '/',
-                        // Files of a specific file type (for example, .gif)
-                        '/*.gif$',
-                    ],
-                ],
-            ],
         ],
         'sitemap' => [
             'class' => 'app\modules\sitemap\Sitemap',
@@ -176,9 +154,7 @@ $config = [
             'file' => '@my/path/to/yii' // or an absolute path to console file
         ],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
-        'formatter' => [
-            'class' => 'panix\engine\i18n\Formatter'
-        ],
+        'formatter' => ['class' => 'panix\engine\i18n\Formatter'],
         'maintenanceMode' => [
             'class' => 'panix\engine\maintenance\MaintenanceMode',
             // Allowed roles
@@ -229,7 +205,7 @@ $config = [
                         'app' => 'app.php',
                         'app/admin' => 'admin.php',
                         'app/month' => 'month.php',
-                        'app/error' => 'error.php',
+                        //'app/error' => 'error.php',
                         'app/geoip_country' => 'geoip_country.php',
                         'app/geoip_city' => 'geoip_city.php',
                     ],
