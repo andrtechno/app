@@ -329,7 +329,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
     </div>
 </div>
 
-<?= $this->render('_sets', ['model' => $model]); ?>
+<?= $this->render('_kit', ['model' => $model]); ?>
 
 
 <div class="line-title"></div>
