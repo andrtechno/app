@@ -10,7 +10,7 @@ $this->registerJs("
         });
     });
 ", \yii\web\View::POS_END);
-echo Html::beginForm($this->context->currentUrl, 'GET', array('id' => 'sorting-form'));
+echo Html::beginForm($this->context->currentUrl, 'GET', ['id' => 'sorting-form']);
 ?>
 
 

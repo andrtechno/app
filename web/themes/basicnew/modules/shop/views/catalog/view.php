@@ -9,8 +9,6 @@ use panix\mod\shop\widgets\filtersnew\FiltersWidget;
 
 <div class="catalog-container">
     <div class="catalog-sidebar">
-        <?= CategoriesWidget::widget([]) ?>
-
         <div id="filters-container">
             <a class="d-md-none btn-filter-close close" href="javascript:void(0)"
                onclick="$('#filters-container').toggleClass('open'); return false;">
