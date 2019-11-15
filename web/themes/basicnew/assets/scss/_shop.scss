@@ -207,7 +207,7 @@ $price-sizes: (
         xl: 120px
 );
 $price-color: #666C6E;
-$price-font-size: 22px;
+$price-font-size: 19px;
 @each $name, $value in $price-sizes {
   .testprice#{$name} {
     font-size: $value;
@@ -224,14 +224,15 @@ $price-font-size: 22px;
   span {
     position: relative;
     &:before {
-      width: 130%;
+      width: 110%;
       height: 2px;
       position: absolute;
-      left: -7px;
+      left: -5px;
       top: 13px;
       content: '';
       background-color: $color-warning;
-      @include rotate(-18deg);
+      @include rotate(-15deg);
+      opacity: 0.8;
     }
   }
 }
@@ -625,6 +626,7 @@ ul.current-filter-list > li > ul > li > a {
   padding: 1px 7px;
   font-size: 13px;
   display: inline-block;
+  line-height: inherit;
   &.success {
     background: $color-success;
     color: #fff;
@@ -757,16 +759,10 @@ input#max_price {
 ._view_grid .owl-stage-outer {
   padding-top: 30px;
 }
-
-._view_grid .product {
-  border: 3px solid transparent;
-  padding: 15px;
-  margin-bottom: 1rem;
-  width: 100%;
-  float: left;
-  position: relative;
+._view_grid .product{
   height: 500px;
-  @include transition(.2s);
+  float: left;
+  padding: 15px;
   &:hover,
   &:focus {
     border: 3px solid $color-warning;
@@ -788,6 +784,17 @@ input#max_price {
     }
 
   }
+}
+.product {
+  border: 3px solid transparent;
+
+  margin-bottom: 1rem;
+  width: 100%;
+
+  position: relative;
+
+  @include transition(.2s);
+
   //tablet
 
   .product-image {
