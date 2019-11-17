@@ -124,6 +124,9 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                                                 if (!isset($button['options']['class'])) {
                                                     $button['options']['class'] = ['btn btn-secondary'];
                                                 }
+                                                if(!empty($icon))
+                                                    $button['label']='<span class="d-none d-sm-inline">'.$button['label'].'</span>';
+                                                $button['options']['title'] = $button['label'];
                                                 echo Html::a($icon . $button['label'], $button['url'], $button['options']);
                                             }
                                             if (count($this->context->buttons) > 1) {

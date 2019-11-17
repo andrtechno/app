@@ -11,7 +11,11 @@ html {
 .btn-round {
   @include border-radius(30px);
 }
-
+.controlUI{
+  background-color: #fff;
+  margin: 10px;
+  cursor: pointer;
+}
 .loading {
   position: relative;
   &:before {
