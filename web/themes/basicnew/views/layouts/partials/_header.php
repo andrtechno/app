@@ -92,7 +92,7 @@ $config = Yii::$app->settings->get('contacts');
                                 </div>
                             </li>
                         <?php } ?>
-
+                        <?php if (count(Yii::$app->currency->currencies) > 1) { ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
@@ -112,6 +112,7 @@ $config = Yii::$app->settings->get('contacts');
                                 ?>
                             </div>
                         </li>
+                        <?php } ?>
 
                         <?php if (Yii::$app->user->isGuest) { ?>
                             <li class="nav-item">

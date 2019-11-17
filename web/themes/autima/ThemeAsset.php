@@ -21,10 +21,13 @@ class ThemeAsset extends AssetBundle
     }
 
     public $js = [
+        'slick/slick.min.js',
+        'js/main.js',
         'swiper/js/swiper.min.js',
     ];
 
     public $css = [
+        'slick/slick.css',
         //'//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Roboto+Slab:400,700&amp;subset=cyrillic',
         'css/app.css',
         'css/style.css',
@@ -39,7 +42,8 @@ class ThemeAsset extends AssetBundle
         'panix\mod\comments\WebAsset',
         'panix\mod\cart\CartAsset',
         'panix\mod\wishlist\WishlistAsset',
-        'panix\mod\sendpulse\SendpulseAsset'
+        'panix\mod\sendpulse\SendpulseAsset',
+        'panix\ext\owlcarousel\OwlCarouselAsset',
     ];
 
 }

@@ -5,112 +5,85 @@ use yii\helpers\HtmlPurifier;
 
 ?>
 
-<div class="product">
-    <div class="product-label-container">
-        <?php
-        foreach ($model->labels() as $label) {
-            echo '<div>';
-            echo Html::tag('span', $label['value'], [
-                'class' => 'product-label-tag badge badge-' . $label['class'],
-                'data-toggle' => 'tooltip',
-                // 'title' => $label['tooltip']
-            ]);
-            echo '</div>';
-        }
-        ?>
+<div class="single_product">
+    <div class="product_name grid_name">
+        <h3><?= Html::a(Html::encode($model->name), $model->getUrl(), []) ?></h3>
+        <p class="manufacture_product"><a href="#">Accessories</a></p>
     </div>
-
-
-    <div class="product-image d-flex justify-content-center align-items-center">
+    <div class="product_thumb">
         <?php
-        echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => 'img-fluid loading']), $model->getUrl(), []);
-        //echo Html::link(Html::image(Yii::app()->createUrl('/site/attachment',array('id'=>33)), $data->name, array('class' => 'img-fluid')), $data->getUrl(), array());
-        ?>
-    </div>
-    <div class="product-info">
-        <?= Html::a(Html::encode($model->name), $model->getUrl(), ['class' => 'product-title']) ?>
-    </div>
-    <div class="">
+        echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'primary_img']);
+        echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'secondary_img']);
 
-        <?php
-        echo $model->beginCartForm();
         ?>
 
+        <div class="label_product">
+            <span class="label_sale">-47%</span>
+            <span class="label_sale">-47%</span>
+        </div>
+        <div class="action_links">
+            <ul>
+                <li class="wishlist">
+                    <a href="wishlist.html" title="Add to Wishlist"><span
+                                class="icon-heart"></span></a>
+                </li>
+                <li class="compare"><a href="compare.html" title="compare"><span class="icon-compare"></span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <?= $model->beginCartForm(); ?>
+    <div class="product_content grid_content">
+        <div class="content_inner">
+            <div class="product_ratings">
+                <ul>
+                    <li><a href="#"><i class="icon-star"></i></a></li>
+                    <li><a href="#"><i class="icon-star"></i></a></li>
+                    <li><a href="#"><i class="icon-star"></i></a></li>
+                    <li><a href="#"><i class="icon-star"></i></a></li>
+                    <li><a href="#"><i class="icon-star"></i></a></li>
+                </ul>
+            </div>
+            <div class="product_footer d-flex align-items-center">
+                <div class="price_box">
 
-        <div class="product-data">
-            <div class="row no-gutters">
-                <div class="col-6 col-sm-6 col-lg-6 d-flex align-items-center">
-                    <?php //$this->widget('ext.rating.StarRating', array('model' => $model, 'readOnly' => true)); ?>
-                    <br/>
-                    <span class="product-review">
-                <a href="<?= \yii\helpers\Url::to($model->getUrl()) ?>#comments_tab">(<?= Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]); ?>
-                    )</a>
-            </span>
-                </div>
-                <div class="col-6 col-sm-6 col-lg-6 text-right">
                     <?php
-                    if (Yii::$app->hasModule('compare')) {
-                        echo \panix\mod\compare\widgets\CompareWidget::widget([
-                            'pk' => $model->id,
-                            'skin' => 'icon',
-                            'linkOptions' => ['class' => 'btn btn-compare']
-                        ]);
-                    }
-                    if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
-                        echo \panix\mod\wishlist\widgets\WishlistWidget::widget([
-                            'pk' => $model->id,
-                            'skin' => 'icon',
-                            'linkOptions' => ['class' => 'btn btn-wishlist']
-                        ]);
+                    $priceClass = ($model->appliedDiscount) ? 'old_price' : 'current_price';
+                    if (Yii::$app->hasModule('discounts')) {
+                        if ($model->appliedDiscount) {
+                            ?>
+
+                            <div>
+                                    <span class="current_price">
+                                            <?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?>
+                                        <sub><?= Yii::$app->currency->active['symbol'] ?></sub>
+                                    </span>
+                            </div>
+                            <?php
+                        }
                     }
                     ?>
-                </div>
-            </div>
-            <div class="row no-gutters mt-2">
-                <div class="col-6 col-sm-6 col-lg-7 d-flex align-items-center">
-                    <div class="product-price">
-
-                        <?php
-                        if (Yii::$app->hasModule('discounts')) {
-                            if ($model->appliedDiscount) {
-                                ?>
-                                <span class="price price-discount">
-                                <span><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?></span>
-                                <sub><?= Yii::$app->currency->active['symbol'] ?></sub>
-                            </span>
-                                <span class="discount-sum">-<?= $model->discountSum; ?></span>
-                                <?php
-                            }
-                        }
-                        ?>
-                        <div>
-                            <span class="price"><span><?= $model->priceRange() ?></span> <sub><?= Yii::$app->currency->active['symbol'] ?></sub></span>
-                        </div>
-
-
+                    <div>
+                        <span class="<?= $priceClass; ?>"><?= $model->priceRange() ?> <?= Yii::$app->currency->active['symbol'] ?></span>
                     </div>
+
+
                 </div>
-                <div class="col-6 col-sm-6 col-lg-5 text-right">
+                <div class="add_to_cart">
                     <?php
                     if ($model->isAvailable) {
-                        echo Html::a(Yii::t('cart/default', 'BUY'), 'javascript:cart.add(' . $model->id . ')', ['class' => 'btn btn-warning btn-buy']);
+                        echo Html::a('<span class="icon-cart"></span>', 'javascript:cart.add(' . $model->id . ')', ['class' => '', 'title' => Yii::t('cart/default', 'BUY')]);
                     } else {
                         \panix\mod\shop\bundles\NotifyAsset::register($this);
                         echo Html::a(Yii::t('shop/default', 'NOT_AVAILABLE'), 'javascript:notify(' . $model->id . ');', ['class' => 'text-danger']);
                     }
                     ?>
+
                 </div>
             </div>
-
         </div>
-
-        <div class="action btn-group2">
-            <?php print_r($model->eav_box); ?>
-
-        </div>
-
-
-        <?php echo $model->endCartForm(); ?>
     </div>
+    <?= $model->endCartForm(); ?>
 </div>
+
 

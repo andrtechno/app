@@ -1,7 +1,7 @@
 (function ($) {
     "use strict";
 
-    new WOW().init();
+    //new WOW().init();
 
     /*---background image---*/
     function dataBackgroundImage() {
@@ -392,31 +392,6 @@
 
     });
 
-    /*--- Magnific Popup Video---*/
-    $('.video_popup').magnificPopup({
-        type: 'iframe',
-        removalDelay: 300,
-        mainClass: 'mfp-fade'
-    });
-
-    /*--- Magnific Popup Video---*/
-    $('.new_vidio_play').magnificPopup({
-        type: 'iframe',
-        removalDelay: 300,
-        mainClass: 'mfp-fade'
-    });
-
-    /*--- Magnific Popup Video---*/
-    $('.port_popup').magnificPopup({
-        type: 'image',
-        gallery: {
-            enabled: true
-        }
-    });
-
-    /*--- niceSelect---*/
-    $('.select_option').niceSelect();
-
     /*---  Accordion---*/
     $(".faequently-accordion").collapse({
         accordion:true,
@@ -428,19 +403,6 @@
         }
     });
 
-    /*--- counterup activation ---*/
-    $('.counter_number').counterUp({
-        delay: 10,
-        time: 1000
-    });
-
-    /*---  ScrollUp Active ---*/
-    $.scrollUp({
-        scrollText: '<i class="fa fa-angle-double-up"></i>',
-        easingType: 'linear',
-        scrollSpeed: 900,
-        animation: 'fade'
-    });
 
     /*---countdown activation---*/
 
@@ -466,39 +428,8 @@
     $( "#amount" ).val( "$" + $sliderRange.slider( "values", 0 ) +
         " - $" + $sliderRange.slider( "values", 1 ) );
 
-    /*---niceSelect---*/
-    $('.niceselect_option').niceSelect();
 
-    /*---elevateZoom---*/
-    $("#zoom1").elevateZoom({
-        gallery:'gallery_01',
-        responsive : true,
-        cursor: 'crosshair',
-        zoomType : 'inner'
 
-    });
-
-    /*---portfolio Isotope activation---*/
-    $('.portfolio_gallery').imagesLoaded( function() {
-
-        var $grid = $('.portfolio_gallery').isotope({
-            itemSelector: '.gird_item',
-            percentPosition: true,
-            masonry: {
-                columnWidth: '.gird_item'
-            }
-        });
-
-        /*---ilter items on button click---*/
-        $('.portfolio_button').on( 'click', 'button', function() {
-            var filterValue = $(this).attr('data-filter');
-            $grid.isotope({ filter: filterValue });
-
-            $(this).siblings('.active').removeClass('active');
-            $(this).addClass('active');
-        });
-
-    });
 
     /*---slide toggle activation---*/
     $('.mini_cart_wrapper > a').on('click', function(){
@@ -519,27 +450,6 @@
         $(this).toggleClass('open').next('.categorie_sub').toggleClass('open');
         $(this).parents().siblings().find('#cat_toggle.has-sub > a').removeClass('open');
     });
-
-
-    /*---MailChimp---*/
-    $('#mc-form').ajaxChimp({
-        language: 'en',
-        callback: mailChimpResponse,
-        // ADD YOUR MAILCHIMP URL BELOW HERE!
-        url: 'http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef'
-
-    });
-    function mailChimpResponse(resp) {
-        var $mailchimpSuccess = $('.mailchimp-success'),
-            $mailchimpError = $('.mailchimp-error');
-        if (resp.result === 'success') {
-            $mailchimpSuccess.addClass('active').html('' + resp.msg).fadeIn(900);
-            $mailchimpError.fadeOut(400);
-
-        } else if(resp.result === 'error') {
-            $mailchimpError.html('' + resp.msg).fadeIn(900);
-        }
-    }
 
 
     /* ---------------------
@@ -616,7 +526,7 @@
         });
         //transition effect
         if($.cookie("shownewsletter") !== 1){
-            $('.newletter-popup').bPopup();
+          //  $('.newletter-popup').bPopup();
         }
         $('#newsletter_popup_dont_show_again').on('change', function(){
             if($.cookie("shownewsletter") !== 1){
@@ -666,12 +576,12 @@
     });
 
 
-    /*js ripples activation*/
+    /*js ripples activation
     $('.js-ripples').ripples({
         resolution: 512,
         dropRadius: 20,
         perturbance: 0.04
-    });
+    });*/
 
 
 })(jQuery);	

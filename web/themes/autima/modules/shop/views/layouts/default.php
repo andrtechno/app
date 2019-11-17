@@ -15,26 +15,34 @@ use panix\engine\widgets\Breadcrumbs;
 </head>
 <body>
 <?php $this->beginBody() ?>
-<div class="wrap">
-    <?= $this->render('@theme/views/layouts/partials/_header'); ?>
-    <div class="container-fluid">
-        <?= $this->render('@theme/views/layouts/partials/_breadcrumbs'); ?>
 
-        <?php
-        if (Yii::$app->session->allFlashes) {
-            foreach (Yii::$app->session->allFlashes as $key => $message) {
-                echo \panix\engine\bootstrap\Alert::widget([
-                    'options' => ['class' => 'alert alert-' . $key],
-                    'closeButton' => false,
-                    'body' => $message
-                ]);
-            }
-        }
-        ?>
-        <?= $content ?>
+<?= $this->render('@theme/views/layouts/partials/_header'); ?>
+<?= $this->render('@theme/views/layouts/partials/_breadcrumbs'); ?>
 
+
+<?php
+if (Yii::$app->session->allFlashes) {
+    foreach (Yii::$app->session->allFlashes as $key => $message) {
+        echo \panix\engine\bootstrap\Alert::widget([
+            'options' => ['class' => 'alert alert-' . $key],
+            'closeButton' => false,
+            'body' => $message
+        ]);
+    }
+}
+?>
+
+<!--shop  area start-->
+<div class="shop_area shop_reverse">
+    <div class="container">
+        <div class="row">
+            <?= $content ?>
+        </div>
     </div>
 </div>
+<!--shop  area end-->
+
+
 <?= $this->render('@theme/views/layouts/partials/_subscribe'); ?>
 <?= $this->render('@theme/views/layouts/partials/_footer'); ?>
 <?php $this->endBody() ?>
