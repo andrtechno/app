@@ -1,0 +1,12 @@
+sass --watch dark.scss:dark.css --style expanded
+sass --watch dark.scss:dark.css --style expanded dark.scss:dark.min.css --style compressed
+
+1. cd web\themes\basicnew\assets
+2. sass --watch scss:css --style expanded
+
+
+style:
+nested
+compact
+expanded
+compressed
