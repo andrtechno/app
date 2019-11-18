@@ -17,7 +17,7 @@ use panix\engine\widgets\Breadcrumbs;
 <?php $this->beginBody() ?>
 
 <?= $this->render('@theme/views/layouts/partials/_header'); ?>
-<?= $this->render('@theme/views/layouts/partials/_breadcrumbs'); ?>
+
 
 
 <?php
@@ -31,7 +31,13 @@ if (Yii::$app->session->allFlashes) {
     }
 }
 ?>
-
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <?= $this->render('@theme/views/layouts/partials/_breadcrumbs'); ?>
+        </div>
+    </div>
+</div>
 <!--shop  area start-->
 <div class="shop_area shop_reverse">
     <div class="container">

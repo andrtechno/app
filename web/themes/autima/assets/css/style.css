@@ -5140,36 +5140,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .canvas_padding {
   margin-bottom: 0;
 }
-
+.breadcrumb{
+  background: transparent;
+  padding:0;
+}
 .breadcrumb_content {
   padding: 22px 0;
-}
-.breadcrumb_content ul li {
-  display: inline-block;
-  text-transform: capitalize;
-  font-size: 14px;
-  margin-right: 3px;
-  padding-right: 13px;
-  position: relative;
-}
-.breadcrumb_content ul li::before {
-  position: absolute;
-  content: "/";
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.breadcrumb_content ul li:last-child {
-  margin-right: 0;
-}
-.breadcrumb_content ul li:last-child::before {
-  display: none;
-}
-.breadcrumb_content ul li a {
-  color: #999;
-}
-.breadcrumb_content ul li a:hover {
-  color: #ffd54c;
 }
 
 .sidebar_widget .single_banner {
