@@ -234,7 +234,7 @@ $config = Yii::$app->settings->get('contacts');
                                             </li>
                                         </ul>
                                         <div class="banner_static_menu">
-                                            <a href="shop.html"><img src="assets/img/bg/banner1.jpg" alt=""></a>
+                                            banner
                                         </div>
                                     </div>
                                 </li>

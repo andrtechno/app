@@ -414,21 +414,6 @@
         });
     });
 
-    /*---slider-range here---*/
-    var $sliderRange = $( "#slider-range" );
-    $sliderRange.slider({
-        range: true,
-        min: 0,
-        max: 500,
-        values: [ 0, 500 ],
-        slide: function( event, ui ) {
-            $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-        }
-    });
-    $( "#amount" ).val( "$" + $sliderRange.slider( "values", 0 ) +
-        " - $" + $sliderRange.slider( "values", 1 ) );
-
-
 
 
     /*---slide toggle activation---*/
@@ -483,61 +468,8 @@
     categorySubMenuToggle();
 
 
-    /*---shop grid activation---*/
-    $('.shop_toolbar_btn > button').on('click', function (e) {
-        e.preventDefault();
-        $(this).addClass('active').siblings().removeClass('active');
-
-        var parentsDiv = $('.shop_wrapper'),
-            viewMode = $(this).data('role');
-
-        parentsDiv.removeClass('grid_3 grid_4 grid_5 grid_list').addClass(viewMode);
-
-        if(viewMode === 'grid_3'){
-            parentsDiv.children().addClass('col-lg-4 col-md-4 col-sm-6').removeClass('col-lg-3 col-cust-5 col-12');
-        }
-        if(viewMode === 'grid_4'){
-            parentsDiv.children().addClass('col-lg-3 col-md-4 col-sm-6').removeClass('col-lg-4 col-cust-5 col-12');
-        }
-        if(viewMode === 'grid_list'){
-            parentsDiv.children().addClass('col-12').removeClass('col-lg-3 col-lg-4 col-md-4 col-sm-6 col-cust-5');
-        }
-    });
 
 
-
-    /*---Newsletter Popup activation---*/
-
-    setTimeout(function() {
-        var $inputEmail = $('#subscribe_pemail'),
-            $inputName = $('#subscribe_pname');
-        if($.cookie('shownewsletter')===1) $('.newletter-popup').hide();
-        $inputEmail.keypress(function(e) {
-            if(e.which === 13) {
-                e.preventDefault();
-                email_subscribepopup();
-            }
-            var name= $(this).val();
-            $inputName.val(name);
-        });
-        $inputEmail.change(function() {
-            var name= $(this).val();
-            $inputName.val(name);
-        });
-        //transition effect
-        if($.cookie("shownewsletter") !== 1){
-          //  $('.newletter-popup').bPopup();
-        }
-        $('#newsletter_popup_dont_show_again').on('change', function(){
-            if($.cookie("shownewsletter") !== 1){
-                $.cookie("shownewsletter",'1')
-            }else{
-                $.cookie("shownewsletter",'0')
-            }
-        });
-    }, 2500);
-
-    /*---canvas menu activation---*/
 
     /*---canvas menu activation---*/
     $('.canvas_open').on('click', function(){

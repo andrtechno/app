@@ -10,15 +10,7 @@ use panix\mod\shop\widgets\filtersnew\FiltersWidget;
     <!--sidebar widget start-->
     <aside class="sidebar_widget">
         <div class="widget_inner">
-            <div class="widget_list widget_filter">
-                <h2>Filter by price</h2>
-                <form action="#">
-                    <div id="slider-range"></div>
-                    <button type="submit">Filter</button>
-                    <input type="text" name="text" id="amount"/>
 
-                </form>
-            </div>
             <div id="filters-container">
                 <a class="d-md-none btn-filter-close close" href="javascript:void(0)"
                    onclick="$('#filters-container').toggleClass('open'); return false;">
@@ -68,17 +60,6 @@ use panix\mod\shop\widgets\filtersnew\FiltersWidget;
     </div>
 
 
-    <div class="shop_toolbar t_bottom">
-        <div class="pagination">
-            <ul>
-                <li class="current">1</li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li class="next"><a href="#">next</a></li>
-                <li><a href="#">>></a></li>
-            </ul>
-        </div>
-    </div>
     <!--shop toolbar end-->
     <!--shop wrapper end-->
 </div>

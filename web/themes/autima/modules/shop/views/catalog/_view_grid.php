@@ -8,12 +8,14 @@ use yii\helpers\HtmlPurifier;
 <div class="single_product">
     <div class="product_name grid_name">
         <h3><?= Html::a(Html::encode($model->name), $model->getUrl(), []) ?></h3>
-        <p class="manufacture_product"><a href="#">Accessories</a></p>
+        <?php if($model->manufacturer){ ?>
+        <p class="manufacture_product"><?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), []) ?></p>
+        <?php } ?>
     </div>
     <div class="product_thumb">
         <?php
         echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'primary_img']);
-        echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'secondary_img']);
+        echo Html::a(Html::img('/uploads/new-image1.jpg', ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'secondary_img']);
 
         ?>
 
@@ -23,27 +25,34 @@ use yii\helpers\HtmlPurifier;
         </div>
         <div class="action_links">
             <ul>
-                <li class="wishlist">
-                    <a href="wishlist.html" title="Add to Wishlist"><span
-                                class="icon-heart"></span></a>
-                </li>
-                <li class="compare"><a href="compare.html" title="compare"><span class="icon-compare"></span></a>
-                </li>
+                <?php
+                if (Yii::$app->hasModule('compare')) {
+                    echo '<li class="compare">';
+                    echo \panix\mod\compare\widgets\CompareWidget::widget([
+                        'pk' => $model->id,
+                        'skin' => 'icon',
+                        'linkOptions' => ['class' => 'btn2 btn-compare2']
+                    ]);
+                    echo '</li>';
+                }
+                if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
+                    echo '<li class="wishlist">';
+                    echo \panix\mod\wishlist\widgets\WishlistWidget::widget([
+                        'pk' => $model->id,
+                        'skin' => 'icon',
+                        'linkOptions' => ['class' => 'btn2 btn-wishlist2']
+                    ]);
+                    echo '</li>';
+                }
+                ?>
+
             </ul>
         </div>
     </div>
     <?= $model->beginCartForm(); ?>
     <div class="product_content grid_content">
         <div class="content_inner">
-            <div class="product_ratings">
-                <ul>
-                    <li><a href="#"><i class="icon-star"></i></a></li>
-                    <li><a href="#"><i class="icon-star"></i></a></li>
-                    <li><a href="#"><i class="icon-star"></i></a></li>
-                    <li><a href="#"><i class="icon-star"></i></a></li>
-                    <li><a href="#"><i class="icon-star"></i></a></li>
-                </ul>
-            </div>
+
             <div class="product_footer d-flex align-items-center">
                 <div class="price_box">
 
