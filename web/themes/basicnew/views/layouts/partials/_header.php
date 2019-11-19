@@ -116,7 +116,7 @@ $config = Yii::$app->settings->get('contacts');
 
                         <?php if (Yii::$app->user->isGuest) { ?>
                             <li class="nav-item">
-                                <?= Html::a(Html::icon('icon-user') . ' ' . Yii::t('user/default', 'LOGIN'), ['/user/login'], ['class' => 'nav-link']); ?>
+                                <?= Html::a(Html::icon('user') . ' ' . Yii::t('user/default', 'LOGIN'), ['/user/login'], ['class' => 'nav-link']); ?>
                             </li>
                             <li class="nav-item">
                                 <?= Html::a(Yii::t('user/default', 'REGISTER'), ['/user/register'], ['class' => 'nav-link']); ?>
@@ -132,17 +132,17 @@ $config = Yii::$app->settings->get('contacts');
                                    aria-haspopup="true" aria-expanded="false"><?= Yii::$app->user->username; ?>
                                 </a>
                                 <div class="dropdown-menu">
-                                    <?= Html::a(Html::icon('icon-user') . ' ' . Yii::t('user/default', 'PROFILE'), ['/user/profile'], ['class' => 'dropdown-item']); ?>
-                                    <?= Html::a(Html::icon('icon-shopcart') . ' ' . Yii::t('app', 'MY_ORDERS') . ' <span class="badge badge-success">' . $userOrderCount . '</span>', ['/cart/orders'], ['class' => 'dropdown-item']); ?>
+                                    <?= Html::a(Html::icon('user') . ' ' . Yii::t('user/default', 'PROFILE'), ['/user/profile'], ['class' => 'dropdown-item']); ?>
+                                    <?= Html::a(Html::icon('shopcart') . ' ' . Yii::t('cart/default', 'MY_ORDERS') . ' <span class="badge badge-success">' . $userOrderCount . '</span>', ['/cart/orders'], ['class' => 'dropdown-item']); ?>
 
                                     <?php
                                     if (Yii::$app->user->can('admin')) {
                                         echo '<div class="dropdown-divider"></div>';
-                                        echo Html::a(Html::icon('icon-tools') . ' ' . Yii::t('admin/default', 'MODULE_NAME'), ['/admin'], ['class' => 'dropdown-item']);
+                                        echo Html::a(Html::icon('tools') . ' ' . Yii::t('admin/default', 'MODULE_NAME'), ['/admin'], ['class' => 'dropdown-item']);
                                         echo '<div class="dropdown-divider"></div>';
                                     }
                                     ?>
-                                    <?= Html::a(Html::icon('icon-logout') . ' ' . Yii::t('user/default', 'LOGOUT'), ['/user/logout'], ['class' => 'dropdown-item']); ?>
+                                    <?= Html::a(Html::icon('logout') . ' ' . Yii::t('user/default', 'LOGOUT'), ['/user/logout'], ['class' => 'dropdown-item']); ?>
 
                                 </div>
                             </li>

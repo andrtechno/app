@@ -178,11 +178,11 @@ echo \panix\ext\fancybox\Fancybox::widget([
                                 if (!empty($model->manufacturer->description)) {
                                     echo $model->manufacturer->description;
                                 }
-                                echo Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), array('class' => "btn btn-link"));
+                                echo Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), ['class' => "btn btn-link"]);
                                 ?>
                             </div>
                             <div class="col-sm-3 mb-2"><?= $model->getAttributeLabel('manufacturer_id') ?>:</div>
-                            <div class="col-sm-9 mb-2"><?= Html::a(Html::encode($model->manufacturer->name), 'javascript:void(0)', array('title' => $model->getAttributeLabel('manufacturer_id'), 'class' => "manufacturer-popover")); ?></div>
+                            <div class="col-sm-9 mb-2"><?= Html::a(Html::encode($model->manufacturer->name), 'javascript:void(0)', ['title' => $model->getAttributeLabel('manufacturer_id'), 'class' => "manufacturer-popover"]); ?></div>
                         <?php } ?>
                         <div class="col-sm-3 mb-2">Наличие:</div>
                         <div class="col-sm-9 mb-2">
@@ -196,7 +196,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                         </div>
                     </div>
                     <?php
-                    echo $this->render('_configurations', array('model' => $model));
+                    echo $this->render('_configurations', ['model' => $model]);
                     ?>
                 </div>
                 <div class="price-container info-container">
@@ -290,7 +290,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                                     // Yii::import('mod.cart.CartModule');
                                     // CartModule::registerAssets();
                                     echo panix\mod\cart\widgets\buyOneClick\BuyOneClickWidget::widget(['pk' => $model->id]);
-                                    echo Html::a(Yii::t('cart/default', 'BUY'), 'javascript:cart.add(' . $model->id . ')', array('class' => 'btn btn-primary'));
+                                    echo Html::a(Yii::t('cart/default', 'BUY'), 'javascript:cart.add(' . $model->id . ')', ['class' => 'btn btn-primary']);
                                 }
 
 
@@ -299,7 +299,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                         </div>
                     <?php } else {
                         \panix\mod\shop\bundles\NotifyAsset::register($this);
-                        echo Html::a(Yii::t('shop/default', 'NOT_AVAILABLE'), 'javascript:notify(' . $model->id . ');', array('class' => 'btn btn-link'));
+                        echo Html::a(Yii::t('shop/default', 'NOT_AVAILABLE'), 'javascript:notify(' . $model->id . ');', ['class' => 'btn btn-link']);
                     } ?>
                 </div>
 
@@ -349,7 +349,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                 }
                 if ($model->eavAttributes) {
                     $tabs[] = [
-                        'label' => 'Характеристики',
+                        'label' => Yii::t('shop/default', 'SPECIFICATION'),
                         'content' => $this->render('tabs/_attributes', ['model' => $model]),
                         'options' => ['id' => 'attributes'],
                     ];

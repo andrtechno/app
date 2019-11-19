@@ -34,7 +34,7 @@
 
 
 -----------------------------------------------------------------------------------*/
-@import url("https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,400i,700,700i,900,900i|Open+Sans:300,400,400i,600,600i,700,700i,800,800i");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800,800i");
 * {
   box-sizing: border-box;
 }
@@ -897,7 +897,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   position: absolute;
   background: #fff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  min-width: 130px;
+  min-width: 150px;
   text-align: left;
   top: 125%;
   right: 0;
@@ -1008,7 +1008,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .search_box {
   position: relative;
-  width: 540px;
+  width: 500px;
   background: #fff;
   border-radius: 5px;
 }
@@ -1116,12 +1116,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .header_wishlist a:hover {
   color: #fd5018;
 }
-.header_wishlist a span {
+.header_wishlist a span,
+.header_wishlist a i{
   font-size: 32px;
   padding-right: 4px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .header_wishlist a span {
+  .header_wishlist a span,
+  .header_wishlist a i{
     font-size: 27px;
     padding-right: 3px;
   }
@@ -1151,12 +1153,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-transform: capitalize;
   display: block;
 }
-.mini_cart_wrapper > a span {
+.mini_cart_wrapper > a span,
+.mini_cart_wrapper > a i{
   font-size: 32px;
   padding-right: 5px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .mini_cart_wrapper > a span {
+  .mini_cart_wrapper > a span,
+  .mini_cart_wrapper > a i{
     font-size: 27px;
     padding-right: 2px;
   }
@@ -1347,8 +1351,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-size: 14px;
   line-height: 24px;
   text-transform: uppercase;
-  font-weight: 700;
-  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-family: "Open Sans", sans-serif;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .main_menu nav > ul > li > a {
@@ -1383,7 +1387,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: block;
   line-height: 30px;
   text-transform: uppercase;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 13px;
 }
 .main_menu nav > ul > li ul.sub_menu li a:hover {
@@ -1434,7 +1438,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 24px;
   text-transform: uppercase;
   font-weight: 700;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   display: block;
   margin-bottom: 8px;
 }
@@ -1540,22 +1544,22 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .categories_title::before {
-  content: "\f394";
+  content: "\f009";
   color: #fff;
   display: inline-block;
-  font-family: Ionicons;
+  font-family: Pixelion;
   position: absolute;
-  font-size: 25px;
+  font-size: 20px;
   line-height: 0px;
   left: 20px;
   top: 50%;
   transform: translatey(-50%);
 }
 .categories_title::after {
-  content: "\f3d0";
+  content: "\f008";
   color: #fff;
   display: inline-block;
-  font-family: Ionicons;
+  font-family: Pixelion;
   position: absolute;
   font-size: 14px;
   line-height: 0px;
@@ -1576,7 +1580,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   cursor: pointer;
   margin-bottom: 0;
   display: inline-block;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .categories_menu_toggle {
@@ -2387,7 +2391,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 48px;
   font-weight: 700;
   margin-bottom: 0;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   max-width: 355px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2405,7 +2409,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .slider_content h2 {
   margin-bottom: 10px;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-style: italic;
   font-size: 24px;
@@ -2445,7 +2449,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 47px;
   padding: 0 25px;
   display: inline-block;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   border-radius: 5px;
 }
 .slider_content a:hover {
@@ -2545,7 +2549,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 1;
   font-weight: 700;
   margin-bottom: 0;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   max-width: 355px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2562,7 +2566,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .slider_six .slider_content h2 {
   margin-bottom: 10px;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-style: italic;
   font-size: 22px;
@@ -2601,7 +2605,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 47px;
   padding: 0 25px;
   display: inline-block;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   border-radius: 5px;
 }
 .slider_six .slider_content a:hover {
@@ -2732,7 +2736,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-weight: 700;
   text-transform: capitalize;
   margin-bottom: 21px;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   width: 220px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -2762,7 +2766,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   font-weight: 400;
   text-transform: capitalize;
   margin-bottom: 3px;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner_text h3 {
@@ -2787,7 +2791,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 5px;
   -webkit-border-radius: 5px;
   pointer-events: visible;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .banner_text a {
@@ -2882,7 +2886,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .banner_fullwidth .banner_text p {
   font-size: 18px;
   line-height: 25px;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 300;
   margin-bottom: 35px;
 }
@@ -3134,7 +3138,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   display: inline-block;
   margin-bottom: 0;
   position: relative;
-  text-transform: capitalize;
+
 }
 @media only screen and (max-width: 767px) {
   .section_title h2 {
@@ -3202,7 +3206,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   position: relative;
   display: block;
   padding: 0 15px;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 @media only screen and (max-width: 767px) {
   .section_title ul.product_tab_button li a {
@@ -3856,7 +3860,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .product_tab_button.tab_button2 li a {
   font-size: 26px;
   line-height: 33px;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #333;
   background: #f6f6f6;
   position: relative;
@@ -4113,7 +4117,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .color_scheme_2 .modal_social ul li.linkedin a:hover {
   background: #b2e515;
 }
-.color_scheme_2 .product_navactive.owl-carousel .owl-nav div:hover {
+.color_scheme_2 .product_navactive.owl-carousel .owl-nav button:hover {
   background: #b2e515;
 }
 
@@ -6084,7 +6088,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-left: 10px;
   }
 }
-.product_variant.quantity button {
+.product_variant.quantity button,
+.product_variant.quantity .btn-buy{
   border: 0;
   font-size: 16px;
   margin-left: 20px;
@@ -6095,22 +6100,26 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   min-width: 270px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .product_variant.quantity button {
+  .product_variant.quantity button,
+  .product_variant.quantity .btn-buy {
     min-width: 240px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .product_variant.quantity button {
+  .product_variant.quantity button,
+  .product_variant.quantity .btbtn-buyn {
     min-width: 170px;
   }
 }
 @media only screen and (max-width: 767px) {
-  .product_variant.quantity button {
+  .product_variant.quantity button,
+  .product_variant.quantity .btn-buy {
     min-width: inherit;
     margin-left: 10px;
   }
 }
-.product_variant.quantity button:hover {
+.product_variant.quantity button:hover,
+.product_variant.quantity .btn-buy:hover {
   background: #3E444A;
 }
 .product_variant.color {
@@ -6418,13 +6427,16 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-transform: uppercase;
   font-weight: 500;
   color: #333;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
-
+.s-tab-zoom.owl-carousel .owl-item a{
+  display: inline-block;
+  height: 100px;
+}
 .s-tab-zoom.owl-carousel .owl-nav {
   display: block;
 }
-.s-tab-zoom.owl-carousel .owl-nav div {
+.s-tab-zoom.owl-carousel .owl-nav button {
   position: absolute;
   background: #f2f2f2;
   border-radius: 3px;
@@ -6442,11 +6454,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   opacity: 0;
   visibility: hidden;
 }
-.s-tab-zoom.owl-carousel .owl-nav div:hover {
+.s-tab-zoom.owl-carousel .owl-nav button:hover {
   background: #ffd54c;
   color: #ffffff;
 }
-.s-tab-zoom.owl-carousel .owl-nav div.owl-next {
+.s-tab-zoom.owl-carousel .owl-nav button.owl-next {
   right: -7px;
   left: auto;
 }
@@ -6456,7 +6468,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     margin-bottom: 47px;
   }
 }
-.product-details-tab:hover .s-tab-zoom.owl-carousel .owl-nav div {
+.product-details-tab:hover .s-tab-zoom.owl-carousel .owl-nav button {
   opacity: 1;
   visibility: visible;
 }
@@ -9300,7 +9312,7 @@ textarea.form-control{
 .product_navactive.owl-carousel .owl-nav {
   display: block;
 }
-.product_navactive.owl-carousel .owl-nav div {
+.product_navactive.owl-carousel .owl-nav button {
   position: absolute;
   background: #f2f2f2;
   border-radius: 3px;
@@ -9318,11 +9330,11 @@ textarea.form-control{
   opacity: 0;
   visibility: hidden;
 }
-.product_navactive.owl-carousel .owl-nav div:hover {
+.product_navactive.owl-carousel .owl-nav button:hover {
   background: #ffd54c;
   color: #ffffff;
 }
-.product_navactive.owl-carousel .owl-nav div.owl-next {
+.product_navactive.owl-carousel .owl-nav button.owl-next {
   right: -7px;
   left: auto;
 }

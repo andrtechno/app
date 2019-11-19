@@ -108,7 +108,7 @@ use panix\mod\admin\models\Notifications;
                 'options' => ['class' => "d-none d-md-block"]
             ],
             [
-                'label' => Html::icon('locked'),
+                'label' => Html::icon('logout'),
                 'url' => ['/user/logout'],
                 'options' => ['data-method' => "post"]
             ],

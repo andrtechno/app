@@ -42,6 +42,327 @@ echo \panix\ext\fancybox\Fancybox::widget([
 
 
 ?>
+<!--product details start-->
+<div class="product_details mt-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="product-details-tab">
+
+
+                    <a id="main-image" style="max-height: 400px" class="d-flex align-items-center"
+                       href="<?= $model->getMainImage()->url ?>"
+                       data-fancybox="gallery">
+                        <img class="img-fluid m-auto" src="<?= $model->getMainImage('400x400')->url ?>" alt=""/>
+                    </a>
+
+                    <?php
+
+                    echo \panix\ext\fancybox\Fancybox::widget([
+                        'target' => 'a[data-fancybox="gallery"]',
+                        'options' => [
+                            'onInit' => new \yii\web\JsExpression('function(){
+            console.log("dsad");
+        }')
+                        ]
+                    ]);
+                    ?>
+                    <div class="single-zoom-thumb">
+                        <?php
+                        \panix\ext\owlcarousel\OwlCarouselWidget::begin([
+                            'containerOptions' => [
+                                'class' => 's-tab-zoom'
+                            ],
+                            'options' => [
+                                'nav' => true,
+                                'margin' => 5,
+                                'responsiveClass' => true,
+                                'navText' => ['<i class="icon-arrow-left"></i>', '<i class="icon-arrow-right"></i>'],
+                                'responsive' => [
+                                    0 => [
+                                        'items' => 1,
+                                        'nav' => false,
+                                        'dots' => true
+                                    ],
+                                    426 => [
+                                        'items' => 2,
+                                        'nav' => false
+                                    ],
+                                    768 => [
+                                        'items' => 2,
+                                        'nav' => false
+                                    ],
+                                    1024 => [
+                                        'items' => 4,
+                                        'nav' => true,
+                                        'dots' => true
+                                    ]
+                                ]
+                            ]
+                        ]);
+                        ?>
+                        <?php
+                        foreach ($model->getImages() as $k => $image) {
+                            echo Html::a(Html::img($image->getUrl('150x150'), [
+                                'alt' => $image->alt_title,
+                                'class' => 'img-fluid img-thumbnail'
+                            ]), $image->getUrl(), [
+                                // 'data-fancybox' => 'gallery',
+                                'data-caption' => Html::encode($model->name),
+                                'data-img' => $image->getUrl('400x400'),
+                                'class' => 'thumb'
+                            ]);
+                        }
+                        if ($model->video) {
+                            echo Html::a(Html::img($model->getVideoPreview(), [
+                                'alt' => $model->name,
+                                'class' => 'img-fluid img-thumbnail'
+                            ]), $model->video, [
+                                // 'data-fancybox' => 'gallery',
+                                'data-caption' => Html::encode($model->name),
+                                'data-class' => 'video',
+                                'data-img' => $model->getVideoPreview('maxresdefault'),
+                                'class' => 'thumb thumb-video'
+                            ]);
+                        }
+                        ?>
+                    </div>
+                    <?php \panix\ext\owlcarousel\OwlCarouselWidget::end(); ?>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="product_d_right">
+                    <?= $model->beginCartForm(); ?>
+
+                    <h1><?= Html::encode(($this->h1) ? $this->h1 : $model->name); ?></h1>
+                    <div class="product_nav">
+                        <ul>
+                            <?php
+
+                            if ($prev = $model->getPrev()->one()) {
+                                echo '<li class="prev">';
+                                echo Html::a(Html::icon('arrow-left'), $prev->getUrl(), ['class' => '']);
+                                echo '</li>';
+                            }
+                            if ($next = $model->getNext()->one()) {
+                                echo '<li class="next">';
+                                echo Html::a(Html::icon('arrow-right'), $next->getUrl(), ['class' => '']);
+                                echo '</li>';
+                            }
+
+                            ?>
+
+                        </ul>
+                    </div>
+                    <div class=" product_ratting">
+                        <?php
+                        echo \panix\engine\widgets\like\LikeWidget::widget([
+                            'model' => $model
+                        ]);
+                        ?>
+                        <ul>
+                            <li class="review"><a href="#"> (customer review ) </a></li>
+                        </ul>
+
+
+                    </div>
+                    <div class="price_box">
+                        <span class="current_price">
+                            <span id="productPrice"><?= Yii::$app->currency->number_format($model->getFrontPrice()); ?></span>
+                        </span>
+                        <span class="old_price">$80.00</span>
+
+                    </div>
+
+                    <div class="product_variant color">
+                        <h3>Available Options</h3>
+                        <label>color</label>
+                        <ul>
+                            <li class="color1"><a href="#"></a></li>
+                            <li class="color2"><a href="#"></a></li>
+                            <li class="color3"><a href="#"></a></li>
+                            <li class="color4"><a href="#"></a></li>
+                        </ul>
+                    </div>
+
+                    <?php if ($model->isAvailable) { ?>
+
+
+                        <div class="product_variant quantity">
+                            <label>quantity</label>
+                            <?php
+
+                            echo yii\jui\Spinner::widget([
+                                'name' => "quantity",
+                                'value' => 1,
+                                'clientOptions' => [
+                                    'numberFormat' => "n",
+                                    //'icons'=>['down'=> "icon-arrow-up", 'up'=> "custom-up-icon"],
+                                    'max' => 999
+                                ],
+                                'options' => [
+                                    'class' => 'cart-spinner',
+                                    'product_id' => $model->id
+                                ],
+                            ]);
+
+                            ?>
+
+
+
+                            <?php
+                            if (Yii::$app->hasModule('cart')) {
+                                echo panix\mod\cart\widgets\buyOneClick\BuyOneClickWidget::widget(['pk' => $model->id]);
+                                echo Html::button(Yii::t('cart/default', 'BUY'), ['class' => 'button', 'onClick' => 'javascript:cart.add(' . $model->id . ')']);
+                            }
+                            ?>
+                        </div>
+                    <?php } else {
+                        \panix\mod\shop\bundles\NotifyAsset::register($this);
+                        echo Html::a(Yii::t('shop/default', 'NOT_AVAILABLE'), 'javascript:notify(' . $model->id . ');', array('class' => 'btn btn-link'));
+                    } ?>
+
+
+                    <div class=" product_d_action">
+                        <ul>
+                            <?php
+                            if (Yii::$app->hasModule('compare')) {
+                                echo '<li class="compare">';
+                                echo \panix\mod\compare\widgets\CompareWidget::widget([
+                                    'pk' => $model->id,
+                                    'skin' => 'icon',
+                                    'linkOptions' => ['class' => '']
+                                ]);
+                                echo '</li>';
+                            }
+                            if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
+                                echo '<li class="wishlist">';
+                                echo \panix\mod\wishlist\widgets\WishlistWidget::widget([
+                                    'pk' => $model->id,
+                                    'skin' => 'icon',
+                                    'linkOptions' => ['class' => '']
+                                ]);
+                                echo '</li>';
+                            }
+                            ?>
+                            <li><a href="#" title="Add to wishlist">+ Add to Wishlist</a></li>
+                            <li><a href="#" title="Add to wishlist">+ Compare</a></li>
+                        </ul>
+                    </div>
+                    <div class="product_meta">
+                        <?php if ($model->sku) { ?>
+                            <span><?= $model->getAttributeLabel('sku') ?>: <a
+                                        href="#"><?= Html::encode($model->sku); ?></a></span>
+                        <?php } ?>
+                        <?php if ($model->manufacturer) { ?>
+                            <span><?= $model->getAttributeLabel('manufacturer_id') ?>:
+                                <?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), ['title' => $model->getAttributeLabel('manufacturer_id'), 'class' => "manufacturer-popover"]); ?></span>
+                        <?php } ?>
+                    </div>
+                    <?php
+                    echo $this->render('_configurations', ['model' => $model]);
+                    ?>
+
+                    <?php if ($model->prices) { ?>
+                        <a class="btn btn-sm btn-link" data-toggle="collapse" href="#prices" role="button"
+                           aria-expanded="false" aria-controls="prices">
+                            Показать все оптовые цены
+                        </a>
+                        <div class="collapse" id="prices">
+                            <?php foreach ($model->prices as $price) { ?>
+
+                                <div>
+<span class="price price-sm text-success">
+<span><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($price->value, $model->currency_id)); ?></span>
+<?= Yii::$app->currency->active['symbol']; ?>/<?= $model->units[$model->unit]; ?>
+</span>
+                                    при заказе от <?= $price->from; ?> <?= $model->units[$model->unit]; ?>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
+
+                    <?php echo $model->endCartForm(); ?>
+                    <div class="priduct_social">
+                        <ul>
+                            <li><a class="facebook" href="#" title="facebook"><i class="icon-facebook"></i> Like</a>
+                            </li>
+                            <li><a class="twitter" href="#" title="twitter"><i class="icon-twitter"></i> tweet</a></li>
+                            <li><a class="pinterest" href="#" title="pinterest"><i class="icon-pinterest"></i> save</a>
+                            </li>
+                            <li><a class="google-plus" href="#" title="google +"><i class="icon-google-plus"></i> share</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--product details end-->
+
+<!--product info start-->
+<div class="product_d_info">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="product_d_inner">
+                    <div class="product_info_button">
+                        <ul class="nav" role="tablist">
+                            <?php if (!empty($model->full_description)) { ?>
+                                <li>
+                                    <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info"
+                                       aria-selected="false"><?= $model->getAttributeLabel('full_description'); ?></a>
+                                </li>
+                            <?php } ?>
+
+                            <li>
+                                <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet"
+                                   aria-selected="false"><?= Yii::t('shop/default', 'SPECIFICATION'); ?></a>
+                            </li>
+                            <?php if (Yii::$app->hasModule('comments')) { ?>
+                                <li>
+                                    <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
+                                       aria-selected="false"><?= Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]); ?></a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <?php $activePanel = (!empty($model->full_description)) ? '' : ' show active'; ?>
+                        <?php if (!empty($model->full_description)) { ?>
+                            <div class="tab-pane fade show active" id="info" role="tabpanel">
+                                <div class="product_info_content"><?= $model->full_description; ?></div>
+                            </div>
+                        <?php } ?>
+
+
+                        <?php if ($model->eavAttributes) { ?>
+                            <div class="tab-pane fade<?= $activePanel; ?>" id="sheet" role="tabpanel">
+                                <?php echo $this->render('tabs/_attributes', ['model' => $model]); ?>
+                            </div>
+                        <?php } ?>
+                        <div class="tab-pane fade" id="reviews" role="tabpanel">
+                            <div class="reviews_wrapper">
+                                <?= $this->render('tabs/_comments', ['model' => $model]); ?>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--product info end-->
+
+<?php
+
+echo $this->render('@theme/modules/shop/views/product/_related', ['model' => $model]);
+?>
+
 
 <div class="container">
     <div class="row">
@@ -52,69 +373,11 @@ echo \panix\ext\fancybox\Fancybox::widget([
                 <img class="img-fluid m-auto" src="<?= $model->getMainImage('400x400')->url ?>" alt=""/>
             </a>
 
-            <?php \panix\ext\owlcarousel\OwlCarouselWidget::begin([
-                'containerOptions' => ['class' => 'owl-carousel-small'],
-                'options' => [
-                    'nav' => true,
-                    'margin' => 5,
-                    'responsiveClass' => true,
-                    'responsive' => [
-                        0 => [
-                            'items' => 1,
-                            'nav' => false,
-                            'dots' => true
-                        ],
-                        426 => [
-                            'items' => 2,
-                            'nav' => false
-                        ],
-                        768 => [
-                            'items' => 2,
-                            'nav' => false
-                        ],
-                        1024 => [
-                            'items' => 4,
-                            'nav' => true,
-                            'dots' => true
-                        ]
-                    ]
-                ]
-            ]);
-            ?>
             <?php
-            foreach ($model->getImages() as $k => $image) {
-                echo Html::a(Html::img($image->getUrl('100x100'), [
-                    'alt' => $image->alt_title,
-                    'class' => 'img-fluid img-thumbnail'
-                ]), $image->getUrl(), [
-                    // 'data-fancybox' => 'gallery',
-                    'data-caption' => Html::encode($model->name),
-                    'data-img' => $image->getUrl('400x400'),
-                    'class' => 'thumb'
-                ]);
-            }
-            if ($model->video) {
-                echo Html::a(Html::img($model->getVideoPreview(), [
-                    'alt' => $model->name,
-                    'class' => 'img-fluid img-thumbnail'
-                ]), $model->video, [
-                    // 'data-fancybox' => 'gallery',
-                    'data-caption' => Html::encode($model->name),
-                    'data-class' => 'video',
-                    'data-img' => $model->getVideoPreview('maxresdefault'),
-                    'class' => 'thumb thumb-video'
-                ]);
-            }
-            ?>
+            // $np = new \panix\mod\cart\widgets\delivery\novaposhta\api\NovaPoshtaApi('ec12098e557d0025887b4c93fc43c114');
+            // $np->InternetDocument();
 
-            <?php \panix\ext\owlcarousel\OwlCarouselWidget::end(); ?>
-
-
-            <?php
-           // $np = new \panix\mod\cart\widgets\delivery\novaposhta\api\NovaPoshtaApi('ec12098e557d0025887b4c93fc43c114');
-           // $np->InternetDocument();
-
-           // print_r($np);
+            // print_r($np);
 
             ?>
 
@@ -124,28 +387,15 @@ echo \panix\ext\fancybox\Fancybox::widget([
                 <span class="badge badge-light">Код товара: <strong><?= \panix\engine\CMS::idToNumber($model->id); ?></strong></span>
                 <div class="heading-gradient">
                     <h1>
-                        <?= Html::encode(($this->h1) ? $this->h1 : $model->name); ?>
+
                     </h1>
                 </div>
-                <?php
 
-                if ($prev = $model->getPrev()->one()) {
-                    echo Html::a('prev ' . $prev->name, $prev->getUrl(), ['class' => 'btn btn-secondary']);
-                }
-                if ($next = $model->getNext()->one()) {
-                    echo Html::a($next->name . ' next', $next->getUrl(), ['class' => 'btn btn-secondary']);
-                }
-
-                ?>
                 <?php if (Yii::$app->hasModule('discounts') && $model->appliedDiscount) { ?>
                     <?= panix\mod\discounts\widgets\countdown\Countdown::widget(['model' => $model]) ?>
                 <?php } ?>
-                <?= $model->beginCartForm(); ?>
-                <?php
-                echo \panix\engine\widgets\like\LikeWidget::widget([
-                    'model' => $model
-                ]);
-                ?>
+
+
                 <div class="info-container mt-3">
                     <div class="row">
                         <div class="col-sm-3 mb-2">
@@ -160,30 +410,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                             </div>
                         </div>
 
-                        <?php if ($model->sku) { ?>
-                            <div class="col-sm-3 mb-2"><?= $model->getAttributeLabel('sku') ?>:</div>
-                            <div class="col-sm-9 mb-2"><?= Html::encode($model->sku); ?></div>
-                        <?php } ?>
-                        <?php if ($model->manufacturer) { ?>
-                            <?php /*Yii::app()->clientScript->registerScript('popover.manufacturer', "$('.manufacturer-popover').popover({
-                                    html: true,
-                                    trigger: 'focus',
-                                    content: function () {
-                                        return $('#manufacturer-image').html();
-                                        }
-                                    });"); */ ?>
-                            <div id="manufacturer-image" class="d-none">
-                                <?php //echo Html::img($model->manufacturer->getImageUrl('image','300x300'), array('alt'=>$model->manufacturer->name,'class' => 'img-fluid')) ?>
-                                <?php
-                                if (!empty($model->manufacturer->description)) {
-                                    echo $model->manufacturer->description;
-                                }
-                                echo Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), array('class' => "btn btn-link"));
-                                ?>
-                            </div>
-                            <div class="col-sm-3 mb-2"><?= $model->getAttributeLabel('manufacturer_id') ?>:</div>
-                            <div class="col-sm-9 mb-2"><?= Html::a(Html::encode($model->manufacturer->name), 'javascript:void(0)', array('title' => $model->getAttributeLabel('manufacturer_id'), 'class' => "manufacturer-popover")); ?></div>
-                        <?php } ?>
+
                         <div class="col-sm-3 mb-2">Наличие:</div>
                         <div class="col-sm-9 mb-2">
                             <?php if ($model->availability == 1) { ?>
@@ -195,9 +422,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                             <?php } ?>
                         </div>
                     </div>
-                    <?php
-                    echo $this->render('_configurations', array('model' => $model));
-                    ?>
+
                 </div>
                 <div class="price-container info-container">
                     <div class="row">
@@ -216,114 +441,15 @@ echo \panix\ext\fancybox\Fancybox::widget([
                                 <div><span class="price price-lg">
                                         <span id="productPrice"><?= Yii::$app->currency->number_format($model->getFrontPrice()); ?></span> <sub><?= Yii::$app->currency->active['symbol']; ?></sub>
                                 </span></div>
-                                <?php if ($model->prices) { ?>
-                                    <a class="btn btn-sm btn-link" data-toggle="collapse" href="#prices" role="button"
-                                       aria-expanded="false" aria-controls="prices">
-                                        Показать все оптовые цены
-                                    </a>
-                                    <div class="collapse" id="prices">
-                                        <?php foreach ($model->prices as $price) { ?>
 
-                                            <div>
-                                                <span class="price price-sm text-success">
-                                                    <span><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($price->value, $model->currency_id)); ?></span>
-                                                    <sub><?= Yii::$app->currency->active['symbol']; ?>
-
-
-                                                        /<?= $model->units[$model->unit]; ?></sub>
-
-                                                    </span>
-
-
-                                                при заказе от <?= $price->from; ?> <?= $model->units[$model->unit]; ?>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                <?php } ?>
                             </div>
                         </div>
 
-                        <div class="col-sm-6">
-                            <div class="favorite-button">
-                                <?php
-                                if (Yii::$app->hasModule('compare')) {
-                                    // $this->widget('mod.compare.widgets.CompareWidget', array('pk' => $model->id));
-                                }
-                                echo '<br/>';
-                                if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
-                                    // $this->widget('mod.wishlist.widgets.WishlistWidget', array('pk' => $model->id));
-                                }
-                                ?>
-                            </div>
-                        </div>
 
                     </div><!-- /.row -->
                 </div><!-- /.price-container -->
 
-                <div class="quantity-container info-container">
-                    <?php if ($model->isAvailable) { ?>
-                        <div class="row">
 
-                            <div class="col-sm-4">
-                                <?php
-
-                                echo yii\jui\Spinner::widget([
-                                    'name' => "quantity",
-                                    'value' => 1,
-                                    'clientOptions' => [
-                                        'numberFormat' => "n",
-                                        //'icons'=>['down'=> "icon-arrow-up", 'up'=> "custom-up-icon"],
-                                        'max' => 999
-                                    ],
-                                    'options' => ['class' => 'cart-spinner', 'product_id' => $model->id],
-                                ]);
-
-                                ?>
-                            </div>
-
-                            <div class="col-sm-8">
-                                <?php
-
-
-                                if (Yii::$app->hasModule('cart')) {
-                                    //  $this->widget('mod.cart.widgets.buyOneClick.BuyOneClickWidget', array('pk' => $model->id));
-                                    // Yii::import('mod.cart.CartModule');
-                                    // CartModule::registerAssets();
-                                    echo panix\mod\cart\widgets\buyOneClick\BuyOneClickWidget::widget(['pk' => $model->id]);
-                                    echo Html::a(Yii::t('cart/default', 'BUY'), 'javascript:cart.add(' . $model->id . ')', array('class' => 'btn btn-primary'));
-                                }
-
-
-                                ?>
-                            </div>
-                        </div>
-                    <?php } else {
-                        \panix\mod\shop\bundles\NotifyAsset::register($this);
-                        echo Html::a(Yii::t('shop/default', 'NOT_AVAILABLE'), 'javascript:notify(' . $model->id . ');', array('class' => 'btn btn-link'));
-                    } ?>
-                </div>
-
-
-                <?php
-                /*$this->widget('ext.share.ShareWidget', array(
-                    'model' => $model,
-                    'image' => $model->getMainImageUrl('original'),
-                    'title' => $model->name
-                ));*/
-                ?>
-                <?php echo $model->endCartForm(); ?>
-
-                <div class="row product-info-ext-title">
-                    <div class="col-12 col-md-4">
-                        <div class="product-info-ext product-info-ext__payment">Удобные варианты оплаты</div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="product-info-ext product-info-ext__delivery">Отправка по всей стране</div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="product-info-ext product-info-ext__guarantee">Гарантия от магазина</div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -332,63 +458,6 @@ echo \panix\ext\fancybox\Fancybox::widget([
 <?= $this->render('_kit', ['model' => $model]); ?>
 
 
-<div class="line-title"></div>
-<div class="container">
-    <div class="product-tabs">
-        <div class="row">
-            <div class="col-sm-12">
-                <?php
-                $tabs = [];
-                if (!empty($model->full_description)) {
-                    $tabs[] = [
-                        'label' => $model->getAttributeLabel('full_description'),
-                        'content' => $model->full_description,
-                        //   'active' => true,
-                        'options' => ['id' => 'description'],
-                    ];
-                }
-                if ($model->eavAttributes) {
-                    $tabs[] = [
-                        'label' => 'Характеристики',
-                        'content' => $this->render('tabs/_attributes', ['model' => $model]),
-                        'options' => ['id' => 'attributes'],
-                    ];
-                }
-                if (Yii::$app->hasModule('comments')) {
-                    $tabs[] = [
-                        'label' => Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]),
-                        'content' => $this->render('tabs/_comments', ['model' => $model]),
-                        'options' => ['id' => 'comments'],
-                    ];
-                    /* $tabs[] = [
-                         'label' => Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]),
-                         //'url' => ['/shop/product/comments', 'slug' => $model->slug,'tab'=>'comments'],
-                         'content' => 'empty',
-                         'options' => ['id' => 'comments','data-url'=>\yii\helpers\Url::to(['/shop/product/comments', 'slug' => $model->slug,'tab'=>'comments'])],
-                     ];*/
-                }
-                if ($model->relatedProducts) {
-                    $tabs[] = [
-                        'label' => 'Связи',
-                        'content' => $this->render('tabs/_related', ['model' => $model]),
-                        'options' => ['id' => 'related'],
-                    ];
-                }
-                if ($model->video) {
-                    $tabs[] = [
-                        'label' => 'Видео',
-                        'content' => $this->render('tabs/_video', ['model' => $model]),
-                        'options' => ['id' => 'video'],
-                    ];
-                }
-
-
-                echo \panix\engine\bootstrap\Tabs::widget(['items' => $tabs, 'navType' => 'nav-pills justify-content-center']);
-                ?>
-            </div>
-        </div>
-    </div>
-</div>
 
 <?php
 
@@ -399,26 +468,6 @@ $('.reviews a').click(function(){
 });
 ");
 
-/*
-$this->registerJs("
-$(document).on('click', '.nav .nav-link', function(e){
-    e.preventDefault();
-    var self = $(this);
-    $.get(
-        self.parent().data('url'),
-        {
-            what: self.attr('data-value')
-        },
-        function(data){
-            $('#w1-tab2').html(data);
-        }
-    );
-    $(this).tab('show');
-    return false;
-});
-");*/
-
-//$this->widget('mod.shop.widgets.sessionView.SessionViewWidget',array('current_id'=>$model->id));
 ?>
 
 

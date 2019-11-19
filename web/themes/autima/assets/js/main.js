@@ -49,7 +49,7 @@
         items: 5,
         margin:20,
         dots:false,
-        navText: ['<i class="ion-ios-arrow-thin-left"></i>','<i class="ion-ios-arrow-thin-right"></i>'],
+        navText: ['<i class="icon-arrow-left"></i>','<i class="icon-arrow-right"></i>'],
         responsiveClass:true,
         responsive:{
             0:{
@@ -72,7 +72,7 @@
         }
     });
 
-    /*---product column4 activation---*/
+    /*---product column4 activation---
     $('.product_column4').on('changed.owl.carousel initialized.owl.carousel', function (event) {
         $(event.target).find('.owl-item').removeClass('last').eq(event.item.index + event.page.size - 1).addClass('last')}).owlCarousel({
         autoplay: true,
@@ -82,7 +82,7 @@
         items: 4,
         margin:20,
         dots:false,
-        navText: ['<i class="ion-ios-arrow-thin-left"></i>','<i class="ion-ios-arrow-thin-right"></i>'],
+        navText: ['<i class="icon-arrow-left"></i>','<i class="icon-arrow-right"></i>'],
         responsiveClass:true,
         responsive:{
             0:{
@@ -100,7 +100,7 @@
 
 
         }
-    });
+    });*/
 
 
     /*---product column4 activation---*/
@@ -113,7 +113,7 @@
         items: 4,
         margin:20,
         dots:false,
-        navText: ['<i class="ion-ios-arrow-thin-left"></i>','<i class="ion-ios-arrow-thin-right"></i>'],
+        navText: ['<i class="icon-arrow-left"></i>','<i class="icon-arrow-right"></i>'],
         responsiveClass:true,
         responsive:{
             0:{
@@ -166,7 +166,7 @@
         items: 3,
         margin:20,
         dots:false,
-        navText: ['<i class="ion-ios-arrow-thin-left"></i>','<i class="ion-ios-arrow-thin-right"></i>'],
+        navText: ['<i class="icon-arrow-left"></i>','<i class="icon-arrow-right"></i>'],
         responsiveClass:true,
         responsive:{
             0:{
@@ -191,7 +191,7 @@
         items: 2,
         margin:20,
         dots:false,
-        navText: ['<i class="ion-ios-arrow-thin-left"></i>','<i class="ion-ios-arrow-thin-right"></i>'],
+        navText: ['<i class="icon-arrow-left"></i>','<i class="icon-arrow-right"></i>'],
         responsiveClass:true,
         responsive:{
             0:{
@@ -218,7 +218,7 @@
         items: 4,
         margin:20,
         dots:false,
-        navText: ['<i class="ion-ios-arrow-thin-left"></i>','<i class="ion-ios-arrow-thin-right"></i>'],
+        navText: ['<i class="icon-arrow-left"></i>','<i class="icon-arrow-right"></i>'],
         responsiveClass:true,
         responsive:{
             0:{
@@ -318,7 +318,7 @@
         items: 4,
         margin:15,
         dots:false,
-        navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+        navText: ['<i class="icon-arrow-left"></i>','<i class="icon-arrow-right"></i>'],
         responsiveClass:true,
         responsive:{
             0:{
@@ -356,7 +356,7 @@
         autoplayTimeout: 8000,
         items: 4,
         dots:false,
-        navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+        navText: ['<i class="icon-arrow-left"></i>','<i class="icon-arrow-right"></i>'],
         responsiveClass:true,
         responsive:{
             0:{
