@@ -5401,7 +5401,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .shop_title h1 {
   font-size: 33px;
-  text-transform: capitalize;
   margin-bottom: 0;
   font-weight: 500;
 }

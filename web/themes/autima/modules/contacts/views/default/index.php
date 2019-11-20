@@ -40,11 +40,11 @@ $config = Yii::$app->settings->get('contacts');
                             <li><i class="icon-location"></i> <?= $config->address[Yii::$app->language]; ?></li>
                         <?php } ?>
                         <?php if (isset($config->phone)) { ?>
-                            <li><i class="icon-phone"></i>
+
                                 <?php foreach ($config->phone as $phone) { ?>
-                                    <?= Html::tel($phone['number'], ['class' => 'phone ' . CMS::slug(CMS::phoneOperator($phone['number']))]); ?> <?= $phone['name']; ?>
+                                <li><i class="icon-phone"></i><?= Html::tel($phone['number'], ['class' => 'phone ' . CMS::slug(CMS::phoneOperator($phone['number']))]); ?> <?= $phone['name']; ?></li>
                                 <?php } ?>
-                            </li>
+
                         <?php } ?>
 
                         <?php if (isset($config->email)) { ?>

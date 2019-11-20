@@ -41,51 +41,29 @@ $this->registerJs("
     <!--slider area start-->
     <section class="slider_section slider_two mb-50">
         <div class="slider_area owl-carousel">
+            <?php
+
+            $banners = \panix\mod\banner\models\Banner::find()->published()->all();
+            foreach ($banners as $banner){
+                /** @var \panix\mod\banner\models\Banner $banner */
+            ?>
             <div class="single_slider d-flex align-items-center"
-                 data-bgimg="<?= $this->context->assetUrl; ?>/images/slider4.jpg">
+                 data-bgimg="<?= $banner->getImageUrl('image'); ?>">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="slider_content">
                                 <h2>HP Racer Skutex</h2>
-                                <h1>Feel The Greatest Oil Power With Best One Oil</h1>
-                                <a class="button" href="shop.html">shopping now</a>
+                                <h1><?= $banner->content; ?></h1>
+                                <?php if($banner->url){ ?>
+                                    <?= Html::a($banner->url_name,$banner->url,['class'=>'button']); ?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-            <div class="single_slider d-flex align-items-center"
-                 data-bgimg="<?= $this->context->assetUrl; ?>/images/slider5.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="slider_content">
-                                <h2>Special Offer</h2>
-                                <h1>Get &250 In Total Discount On A New Set Of Tries</h1>
-                                <a class="button" href="shop.html">shopping now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="single_slider d-flex align-items-center"
-                 data-bgimg="<?= $this->context->assetUrl; ?>/images/slider6.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="slider_content">
-                                <h2>Over 15,000</h2>
-                                <h1>Remanufactured Low Milage Used Engines For Sale</h1>
-                                <a class="button" href="shop.html">shopping now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            <?php } ?>
         </div>
     </section>
 

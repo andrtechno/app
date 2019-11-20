@@ -33,11 +33,13 @@ $this->registerJs("
         <?php
         if (Yii::$app->session->allFlashes) {
             foreach (Yii::$app->session->allFlashes as $key => $message) {
+                if(is_string($message)){
                 echo \panix\engine\bootstrap\Alert::widget([
                     'options' => ['class' => 'alert alert-' . $key],
                     'closeButton' => false,
                     'body' => $message
                 ]);
+                }
             }
         }
         ?>
