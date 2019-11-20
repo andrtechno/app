@@ -63,8 +63,7 @@ $newProducts = Product::find()
 
 $discountProducts = Product::find()
     ->published()
-    ->andWhere(['IS NOT', 'discount', null])
-    ->andWhere(['!=', 'discount', ''])
+    ->isNotEmpty('discount')
     ->all();
 ?>
 <section class="product_area mb-50">

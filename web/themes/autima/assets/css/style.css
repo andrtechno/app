@@ -70,22 +70,22 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   margin-top: 0;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 38px;
   line-height: 1;
   font-weight: 700;
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 30px;
   line-height: 36px;
 }
 
 h3 {
-  font-size: 30px;
+  font-size: 26px;
   line-height: 30px;
 }
 
@@ -7401,7 +7401,6 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .contact_message h3 {
   font-size: 21px;
-  text-transform: capitalize;
   font-weight: 600;
   line-height: 20px;
   margin-bottom: 25px;
