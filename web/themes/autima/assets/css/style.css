@@ -1685,7 +1685,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     padding: 0;
   }
 }
-.categories_menu_toggle > ul > li > a i.fa-angle-right {
+.categories_menu_toggle > ul > li > a i.icon-arrow-right {
   float: right;
   font-size: 15px;
   line-height: 35px;
@@ -1693,12 +1693,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   -webkit-transition: .3s;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .categories_menu_toggle > ul > li > a i.fa-angle-right {
+  .categories_menu_toggle > ul > li > a i.icon-arrow-right {
     display: none;
   }
 }
 @media only screen and (max-width: 767px) {
-  .categories_menu_toggle > ul > li > a i.fa-angle-right {
+  .categories_menu_toggle > ul > li > a i.icon-arrow-right {
     display: none;
   }
 }
