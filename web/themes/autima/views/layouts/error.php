@@ -32,7 +32,6 @@ use panix\engine\widgets\Breadcrumbs;
     </div>
 </div>
 <!--error section area end-->
-
 </div>
 
 <?php $this->endBody() ?>

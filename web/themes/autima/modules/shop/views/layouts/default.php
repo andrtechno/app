@@ -49,7 +49,6 @@ if (Yii::$app->session->allFlashes) {
 <!--shop  area end-->
 
 
-<?= $this->render('@theme/views/layouts/partials/_subscribe'); ?>
 <?= $this->render('@theme/views/layouts/partials/_footer'); ?>
 <?php $this->endBody() ?>
 </body>

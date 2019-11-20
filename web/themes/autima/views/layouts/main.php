@@ -98,7 +98,6 @@ $this->registerJs("
         <?php echo \panix\mod\shop\widgets\brands\BrandsWidget::widget([]); ?>
     </div>
 </div>
-<?= $this->render('partials/_subscribe'); ?>
 <?= $this->render('partials/_footer'); ?>
 <?php $this->endBody() ?>
 </body>
