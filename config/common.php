@@ -2,10 +2,7 @@
 
 
 $date = new \DateTime(date('Y-m-d', time()), new \DateTimeZone('Europe/Kiev'));
-$logDate= $date->format('Y-m-d');
-
-
-
+$logDate = $date->format('Y-m-d');
 
 
 $db = YII_DEBUG ? dirname(__DIR__) . '/config/db_local.php' : dirname(__DIR__) . '/config/db.php';
@@ -57,7 +54,7 @@ $config = [
         'presentation' => ['class' => 'panix\mod\presentation\Module'],
         'compare' => ['class' => 'panix\mod\compare\Module'],
         'shop' => ['class' => 'panix\mod\shop\Module'],
-
+        //'shop' => ['class' => 'app\modules\shop\Module'],
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
         'banner' => ['class' => 'panix\mod\banner\Module'],
         'sendpulse' => ['class' => 'panix\mod\sendpulse\Module'],
@@ -73,6 +70,7 @@ $config = [
         'images' => ['class' => 'panix\mod\images\Module'],
         'forum' => ['class' => 'panix\mod\forum\Module'],
         'cart' => ['class' => 'panix\mod\cart\Module'],
+        'pages' => ['class' => 'panix\mod\pages\Module'],
     ],
     'components' => [
         'authManager' => [
@@ -174,13 +172,11 @@ $config = [
                     //'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
                     //]
                 ],
-                'panix\lib\google\maps\MapAsset' => [
+                /*'panix\lib\google\maps\MapAsset' => [
                     'options' => [
-                        'key' => 'AIzaSyB5BYRPxlqTN9GwnZHQbmW-eJxT7ZxyAfM',
-                        'language' => 'ru',
-                        'version' => '3.39'
+                        'key' => '...',
                     ]
-                ]
+                ]*/
             ],
             //'linkAssets' => true,
             'appendTimestamp' => true
@@ -205,7 +201,7 @@ $config = [
                         'app' => 'app.php',
                         'app/admin' => 'admin.php',
                         'app/month' => 'month.php',
-                        //'app/error' => 'error.php',
+                        'app/error' => 'error.php',
                         'app/geoip_country' => 'geoip_country.php',
                         'app/geoip_city' => 'geoip_city.php',
                     ],
@@ -220,14 +216,17 @@ $config = [
         ],
         'request' => [
             'class' => 'panix\engine\WebRequest',
+            //'parsers' => [
+            //    'application/json' => 'yii\web\JsonParser',
+            //],
             //'baseUrl' => '/admin',
             //'csrfParam' => '_csrf-backend',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
         'cache' => [
-            'directoryLevel'=>0,
-            'keyPrefix'=>'',
+            'directoryLevel' => 0,
+            'keyPrefix' => '',
             'class' => 'yii\caching\FileCache', //DummyCache
         ],
         'user' => [
@@ -236,50 +235,57 @@ $config = [
         ],
         'mailer' => [
             'class' => 'panix\engine\Mailer',
-            'htmlLayout'=>'layouts/html'
+            'htmlLayout' => 'layouts/html'
             //  'class' => 'yii\swiftmailer\Mailer',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'flushInterval' => 1000 * 10,
             'targets' => [
-                'db_error' => [
+                [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
-                    'categories' => ['yii\db\*'],
+                    'categories' => ['yii\db\*','panix\engine\db\*'],
                     'logVars' => [],
                     'logFile' => '@runtime/logs/' . $logDate . '/db_error.log',
                 ],
-                'error' => [
+                [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error'],
                     'logVars' => [],
                     'logFile' => '@runtime/logs/' . $logDate . '/error.log',
                 ],
-                'warning' => [
+                [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['warning'],
                     'logVars' => [],
                     'logFile' => '@runtime/logs/' . $logDate . '/warning.log',
                 ],
-                'info' => [
+                [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['info'],
                     'logVars' => [],
                     'logFile' => '@runtime/logs/' . $logDate . '/info.log',
                 ],
-                /*[
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'categories' => ['panix\engine\db\*'],
+                    'levels' => ['info', 'trace'],
+                    'logVars' => [],
+                    'logFile' => '@runtime/logs/' . $logDate . '/trace_core_db.log',
+                ],
+                [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['profile'],
                     'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/profile.log',
-                ],*/
-                /*[
+                    'logFile' => '@runtime/logs/' . $logDate . '/profile.log',
+                ],
+                [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['trace'],
                     'logVars' => [],
                     'logFile' => '@runtime/logs/' . date('Y-m-d') . '/trace.log',
-                ],*/
+                ],
                 [
                     'class' => 'panix\engine\log\EmailTarget',
                     'levels' => ['error', 'warning'],
@@ -297,7 +303,7 @@ $config = [
                         'subject' => 'Ошибки базы данных на сайте app',
                     ],*/
                 ],
-                /*[
+                [
                     'class' => 'yii\log\DbTarget',
                     'levels' => ['error', 'warning'],
                     'logTable' => '{{%log_error}}',
@@ -307,7 +313,7 @@ $config = [
                         'yii\web\HttpException:400',
                         'yii\i18n\PhpMessageSource::loadMessages'
                     ],
-                ],*/
+                ],
             ],
         ],
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],

@@ -54,6 +54,7 @@ return [
         'delivery' => ['class' => 'panix\mod\delivery\Module'],
         'images' => ['class' => 'panix\mod\images\Module'],
         'forum' => ['class' => 'panix\mod\forum\Module'],
+        'pages' => ['class' => 'panix\mod\pages\Module'],
     ],
     'controllerMap' => [
         'sitemap' => [
