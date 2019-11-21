@@ -66,9 +66,13 @@ echo \panix\ext\fancybox\Fancybox::widget([
         }')
                         ]
                     ]);
+                    if(count($model->getImages()) > 1){
                     ?>
                     <div class="single-zoom-thumb">
                         <?php
+
+
+
                         \panix\ext\owlcarousel\OwlCarouselWidget::begin([
                             'containerOptions' => [
                                 'class' => 's-tab-zoom'
@@ -127,7 +131,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                         }
                         ?>
                     </div>
-                    <?php \panix\ext\owlcarousel\OwlCarouselWidget::end(); ?>
+                    <?php \panix\ext\owlcarousel\OwlCarouselWidget::end();    } ?>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
@@ -174,7 +178,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
 
                     </div>
 
-                    <div class="product_variant color">
+                    <div class="product_variant color d-none">
                         <h3>Available Options</h3>
                         <label>color</label>
                         <ul>

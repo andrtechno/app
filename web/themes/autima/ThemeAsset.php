@@ -42,7 +42,6 @@ class ThemeAsset extends AssetBundle
         'panix\mod\comments\WebAsset',
         'panix\mod\cart\CartAsset',
         'panix\mod\wishlist\WishlistAsset',
-        'panix\mod\sendpulse\SendpulseAsset',
         'panix\ext\owlcarousel\OwlCarouselAsset',
     ];
 

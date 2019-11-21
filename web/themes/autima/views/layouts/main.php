@@ -5,7 +5,11 @@ use yii\widgets\Breadcrumbs;
 
 
 \app\web\themes\autima\ThemeAsset::register($this);
-
+$this->registerJsFile('//cdn.sendpulse.com/js/push/3e9c33d0f25795d8e0a72d77af9e38c6_0.js',[
+    'position' => \yii\web\View::POS_HEAD,
+    'charset' => Yii::$app->charset,
+    'async' => 'async'
+]);
 /*$c = Yii::$app->settings->get('shop');
 
 

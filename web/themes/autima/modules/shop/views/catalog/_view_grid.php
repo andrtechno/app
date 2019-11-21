@@ -9,24 +9,34 @@ use yii\helpers\HtmlPurifier;
     <div class="product_name grid_name">
         <h3><?= Html::a(Html::encode($model->name), $model->getUrl(), []) ?></h3>
         <?php if($model->manufacturer){ ?>
-        <p class="manufacture_product"><?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), []) ?></p>
+            <p class="manufacture_product"><?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), []) ?></p>
         <?php } ?>
     </div>
-    <div class="product_thumb">
+    <div class="product_thumb text-center">
         <?php
         echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'primary_img']);
-        echo Html::a(Html::img('/uploads/new-image1.jpg', ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'secondary_img']);
+        //echo Html::a(Html::img('/uploads/new-image1.jpg', ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'secondary_img']);
 
         ?>
 
         <div class="label_product">
-            <span class="label_sale">-47%</span>
-            <span class="label_sale">-47%</span>
+            <?php
+            foreach ($model->labels() as $label) {
+                echo '<div>';
+                echo Html::tag('span', $label['value'], [
+                    'class' => 'label_sale badge2 badge2-' . $label['class'],
+                    'data-toggle' => 'tooltip',
+                    // 'title' => $label['tooltip']
+                ]);
+                echo '</div>';
+            }
+            ?>
+            <!--<span class="label_sale">-47%</span>-->
         </div>
         <div class="action_links">
             <ul>
                 <?php
-                if (Yii::$app->hasModule('compare')) {
+               /* if (Yii::$app->hasModule('compare')) {
                     echo '<li class="compare">';
                     echo \panix\mod\compare\widgets\CompareWidget::widget([
                         'pk' => $model->id,
@@ -34,7 +44,7 @@ use yii\helpers\HtmlPurifier;
                         'linkOptions' => ['class' => 'btn2 btn-compare2']
                     ]);
                     echo '</li>';
-                }
+                }*/
                 if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
                     echo '<li class="wishlist">';
                     echo \panix\mod\wishlist\widgets\WishlistWidget::widget([

@@ -2,6 +2,7 @@
 use panix\engine\bootstrap\Alert;
 
 $component = Yii::$app->wishlist;
+
 ?>
 
     <h1><?= $this->context->pageName; ?></h1>
