@@ -169,14 +169,8 @@ $formOrder = ActiveForm::begin([
                     <?php } ?>
                     </tbody>
                     <tfoot>
-                    <td colspan="2" class="text-right">
-                        <label class="control-label h5" for="ordercreateform-promocode_id" style="margin-bottom: 0">
-                            Введите промо-код
-                        </label>
-                    </td>
-                    <td colspan="3">
-                        <?php
-                        echo panix\mod\cart\widgets\promocode\PromoCodeWidget::widget([
+                    <td colspan="5" class="cart_submit">
+                        <?= panix\mod\cart\widgets\promocode\PromoCodeWidget::widget([
                             'model' => $this->context->form,
                             'attribute' => 'promocode_id'
                         ]);
@@ -184,12 +178,7 @@ $formOrder = ActiveForm::begin([
                     </td>
                     </tfoot>
                 </table>
-
-
             </div>
-            <?php
-            // Yii::$app->tpl->alert('info', Yii::t('cart/default', 'ALERT_CART'))
-            ?>
         </div>
     </div>
 </div>

@@ -38,10 +38,10 @@ $config = Yii::$app->settings->get('contacts');
 
                                 <?php if (Yii::$app->user->isGuest) { ?>
                                     <li class="top_links">
-                                        <?= Html::a(Html::icon('user') . ' ' . Yii::t('user/default', 'LOGIN'), ['/user/login'], ['class' => 'nav-link']); ?>
+                                        <?= Html::a(Html::icon('user') . ' ' . Yii::t('user/default', 'LOGIN'), ['/user/login'], ['class' => '']); ?>
                                     </li>
                                     <li class="top_links">
-                                        <?= Html::a(Yii::t('user/default', 'REGISTER'), ['/user/register'], ['class' => 'nav-link']); ?>
+                                        <?= Html::a(Yii::t('user/default', 'REGISTER'), ['/user/register'], ['class' => '']); ?>
                                     </li>
                                 <?php } else { ?>
                                     <?php
