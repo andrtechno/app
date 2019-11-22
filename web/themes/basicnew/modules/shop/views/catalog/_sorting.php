@@ -17,7 +17,7 @@ echo Html::beginForm($this->context->currentUrl, 'GET', ['id' => 'sorting-form']
     <div class="row">
         <span class="d-md-none">
         <a class="btn-filter" href="#"
-           onclick="$('#filters-container').toggleClass('open'); return false;"><?= Yii::t('shop/default', 'Фильтры'); ?></a>
+           onclick="$('#filters-container').toggleClass('open'); return false;"><?= Yii::t('shop/default', 'FILTERS'); ?></a>
         </span>
         <div class="col-sm-12 col-md-5 col-lg-5 mb-3">
             <?php

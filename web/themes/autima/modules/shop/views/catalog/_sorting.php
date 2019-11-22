@@ -1,11 +1,12 @@
 <?php
 
-use yii\helpers\Html;
+use panix\engine\Html;
 
 $this->registerJs("
     $(function () {
         $('.ajax-catalog').click(function (e) {
             filter_ajax($(this).attr('href'));
+            //filter_ajax($(this).val());
             return false;
         });
     });
@@ -14,18 +15,39 @@ echo Html::beginForm($this->context->currentUrl, 'GET', ['id' => 'sorting-form']
 ?>
     <span class="d-md-none">
         <a class="btn-filter" href="#"
-           onclick="$('#filters-container').toggleClass('open'); return false;"><?= Yii::t('shop/default', 'Фильтры'); ?></a>
+           onclick="$('#filters-container').toggleClass('open'); return false;"><?= Yii::t('shop/default', 'FILTERS'); ?></a>
         </span>
     <div class="container">
         <div class="row">
             <div class="col-sm-3 text-center text-md-left">
                 <?php
-                echo Html::submitButton('<i class="icon-grid"></i>', ['class' => 'btn btn-link', 'name' => 'view', 'value' => NULL]);
-                echo Html::submitButton('<i class="icon-menu"></i>', ['class' => 'btn btn-link', 'name' => 'view', 'value' => 'list']);
+                echo Html::a(Html::icon('grid'),Yii::$app->urlManager->removeUrlParam('/' . Yii::$app->requestedRoute, 'view'),[
+                    'class' => 'btn btn-link ajax-catalog ' . (($this->context->itemView == '_view_grid') ? 'active' : ''),
+                    'name' => 'view',
+                ]);
+
+                echo Html::a(Html::icon('menu'),Yii::$app->urlManager->addUrlParam('/' . Yii::$app->requestedRoute, ['view' => 'list']),[
+                    'class' => 'btn btn-link ajax-catalog ' . (($this->context->itemView == '_view_grid') ? 'active' : ''),
+                    'name' => 'view',
+                ]);
+
+               /* echo Html::button(Html::icon('grid'), [
+                    'class' => 'btn btn-link ajax-catalog ' . (($this->context->itemView == '_view_grid') ? 'active' : ''),
+                    'name' => 'view',
+                   // 'onClick'=>'$("#sorting-form").submit();',
+                    'value' => NULL
+                ]);
+                echo Html::button(Html::icon('menu'), [
+                    'class' => 'btn btn-link ajax-catalog ' . (($this->context->itemView == '_view_list') ? 'active' : ''),
+                    'name' => 'view',
+                    //'onClick'=>'$("#sorting-form").submit();',
+                    'value' => 'list'
+                ]);*/
                 ?>
             </div>
             <div class="col-sm-4 text-center">
                 <?php
+                $sorter = [];
                 $sorter[NULL] = Yii::t('shop/default', 'SORT');
                 $sorter['price'] = Yii::t('shop/default', 'SORT_BY_PRICE_ASC');
                 $sorter['-price'] = Yii::t('shop/default', 'SORT_BY_PRICE_DESC');

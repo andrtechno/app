@@ -28,18 +28,12 @@ use panix\mod\shop\widgets\filtersnew\FiltersWidget;
                 ?>
             </div>
         </div>
-        <div class="shop_sidebar_banner">
-            banner
-        </div>
     </aside>
     <!--sidebar widget end-->
 </div>
 <div class="col-lg-9 col-md-12">
     <!--shop wrapper start-->
     <!--shop toolbar start-->
-    <div class="shop_banner">
-        banner
-    </div>
     <div class="shop_title">
         <h1><?= Html::encode(($this->h1) ? $this->h1 : $this->context->pageName); ?></h1>
     </div>

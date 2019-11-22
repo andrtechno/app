@@ -165,38 +165,51 @@ echo \panix\ext\fancybox\Fancybox::widget([
                         ]);
                         ?>
                         <ul>
-                            <li class="review"><a href="#"> (customer review ) </a></li>
+                            <li class="review">
+
+                                <div class="reviews">
+                                    <a href="#w1-tab1" data-tabid="#comments"
+                                       data-toggle="tab">(<?= Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]) ?>
+                                        )</a>
+                                </div>
+                            </li>
                         </ul>
 
 
                     </div>
                     <div class="price_box">
-                        <span class="current_price">
-                            <span id="productPrice"><?= Yii::$app->currency->number_format($model->getFrontPrice()); ?></span>
-                        </span>
-                        <span class="old_price">$80.00</span>
+
+                        <?php
+                        $priceClass = ($model->appliedDiscount) ? 'current_price' : 'old_price';
+                        if ($model->appliedDiscount) {
+                            ?>
+
+                            <div>
+                            <span class="old_price">
+                                <?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?>
+                                <?= Yii::$app->currency->active['symbol'] ?>
+                            </span>
+                            </div>
+                        <?php } ?>
+                        <div>
+                            <span class="current_price"><?= $model->priceRange() ?> <?= Yii::$app->currency->active['symbol'] ?></span>
+                        </div>
+
 
                     </div>
 
-                    <div class="product_variant color d-none">
-                        <h3>Available Options</h3>
-                        <label>color</label>
-                        <ul>
-                            <li class="color1"><a href="#"></a></li>
-                            <li class="color2"><a href="#"></a></li>
-                            <li class="color3"><a href="#"></a></li>
-                            <li class="color4"><a href="#"></a></li>
-                        </ul>
-                    </div>
+
 
                     <?php if ($model->isAvailable) { ?>
 
 
                         <div class="product_variant quantity">
-                            <label>quantity</label>
                             <?php
-
-                            echo yii\jui\Spinner::widget([
+echo Html::textInput('quantity',1,[
+    'class' => 'cart-spinner',
+    'product_id' => $model->id
+]);
+                           /* echo yii\jui\Spinner::widget([
                                 'name' => "quantity",
                                 'value' => 1,
                                 'clientOptions' => [
@@ -208,7 +221,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                                     'class' => 'cart-spinner',
                                     'product_id' => $model->id
                                 ],
-                            ]);
+                            ]);*/
 
                             ?>
 
@@ -230,7 +243,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                     <div class=" product_d_action">
                         <ul>
                             <?php
-                            if (Yii::$app->hasModule('compare')) {
+                            /*if (Yii::$app->hasModule('compare')) {
                                 echo '<li class="compare">';
                                 echo \panix\mod\compare\widgets\CompareWidget::widget([
                                     'pk' => $model->id,
@@ -238,7 +251,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                                     'linkOptions' => ['class' => '']
                                 ]);
                                 echo '</li>';
-                            }
+                            }*/
                             if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
                                 echo '<li class="wishlist">';
                                 echo \panix\mod\wishlist\widgets\WishlistWidget::widget([
@@ -249,11 +262,20 @@ echo \panix\ext\fancybox\Fancybox::widget([
                                 echo '</li>';
                             }
                             ?>
-                            <li><a href="#" title="Add to wishlist">+ Add to Wishlist</a></li>
-                            <li><a href="#" title="Add to wishlist">+ Compare</a></li>
+
                         </ul>
                     </div>
                     <div class="product_meta">
+                        <div><?= $model->getAttributeLabel('availability') ?>:
+
+                            <?php if ($model->availability == 1) { ?>
+                                <span class="text-success"><?= $model::getAvailabilityItems()[$model->availability]; ?></span>
+                            <?php } elseif ($model->availability == 3) { ?>
+                                <span class="text-warning"><?= $model::getAvailabilityItems()[$model->availability] ?></span>
+                            <?php } else { ?>
+                                <span class="text-danger"><?= $model::getAvailabilityItems()[$model->availability] ?></span>
+                            <?php } ?>
+                        </div>
                         <?php if ($model->sku) { ?>
                             <span><?= $model->getAttributeLabel('sku') ?>: <a
                                         href="#"><?= Html::encode($model->sku); ?></a></span>
@@ -293,8 +315,6 @@ echo \panix\ext\fancybox\Fancybox::widget([
                             </li>
                             <li><a class="twitter" href="#" title="twitter"><i class="icon-twitter"></i> tweet</a></li>
                             <li><a class="pinterest" href="#" title="pinterest"><i class="icon-pinterest"></i> save</a>
-                            </li>
-                            <li><a class="google-plus" href="#" title="google +"><i class="icon-google-plus"></i> share</a>
                             </li>
                         </ul>
                     </div>
@@ -407,24 +427,11 @@ echo $this->render('@theme/modules/shop/views/product/_related', ['model' => $mo
                             rating
                         </div>
                         <div class="col-sm-9 mb-2">
-                            <div class="reviews">
-                                <a href="#w1-tab1" data-tabid="#comments"
-                                   data-toggle="tab">(<?= Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]) ?>
-                                    )</a>
-                            </div>
+
                         </div>
 
 
-                        <div class="col-sm-3 mb-2">Наличие:</div>
-                        <div class="col-sm-9 mb-2">
-                            <?php if ($model->availability == 1) { ?>
-                                <span class="text-success"><?= $model::getAvailabilityItems()[$model->availability]; ?></span>
-                            <?php } elseif ($model->availability == 3) { ?>
-                                <span class="text-warning"><?= $model::getAvailabilityItems()[$model->availability] ?></span>
-                            <?php } else { ?>
-                                <span class="text-danger"><?= $model::getAvailabilityItems()[$model->availability] ?></span>
-                            <?php } ?>
-                        </div>
+
                     </div>
 
                 </div>

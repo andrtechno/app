@@ -3,12 +3,15 @@
 use panix\engine\Html;
 use yii\helpers\HtmlPurifier;
 
+/**
+ * @var \panix\mod\shop\models\Product $model
+ */
 ?>
 
 <div class="single_product">
     <div class="product_name grid_name">
         <h3><?= Html::a(Html::encode($model->name), $model->getUrl(), []) ?></h3>
-        <?php if($model->manufacturer){ ?>
+        <?php if ($model->manufacturer) { ?>
             <p class="manufacture_product"><?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), []) ?></p>
         <?php } ?>
     </div>
@@ -24,27 +27,26 @@ use yii\helpers\HtmlPurifier;
             foreach ($model->labels() as $label) {
                 echo '<div>';
                 echo Html::tag('span', $label['value'], [
-                    'class' => 'label_sale badge2 badge2-' . $label['class'],
+                    'class' => 'badge badge-' . $label['class'],
                     'data-toggle' => 'tooltip',
                     // 'title' => $label['tooltip']
                 ]);
                 echo '</div>';
             }
             ?>
-            <!--<span class="label_sale">-47%</span>-->
         </div>
         <div class="action_links">
             <ul>
                 <?php
-               /* if (Yii::$app->hasModule('compare')) {
-                    echo '<li class="compare">';
-                    echo \panix\mod\compare\widgets\CompareWidget::widget([
-                        'pk' => $model->id,
-                        'skin' => 'icon',
-                        'linkOptions' => ['class' => 'btn2 btn-compare2']
-                    ]);
-                    echo '</li>';
-                }*/
+                /* if (Yii::$app->hasModule('compare')) {
+                     echo '<li class="compare">';
+                     echo \panix\mod\compare\widgets\CompareWidget::widget([
+                         'pk' => $model->id,
+                         'skin' => 'icon',
+                         'linkOptions' => ['class' => 'btn2 btn-compare2']
+                     ]);
+                     echo '</li>';
+                 }*/
                 if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
                     echo '<li class="wishlist">';
                     echo \panix\mod\wishlist\widgets\WishlistWidget::widget([
@@ -67,23 +69,19 @@ use yii\helpers\HtmlPurifier;
                 <div class="price_box">
 
                     <?php
-                    $priceClass = ($model->appliedDiscount) ? 'old_price' : 'current_price';
-                    if (Yii::$app->hasModule('discounts')) {
-                        if ($model->appliedDiscount) {
-                            ?>
+                    $priceClass = ($model->appliedDiscount) ? 'current_price' : 'old_price';
+                    if ($model->appliedDiscount) {
+                        ?>
 
-                            <div>
-                                    <span class="current_price">
-                                            <?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?>
-                                        <sub><?= Yii::$app->currency->active['symbol'] ?></sub>
-                                    </span>
-                            </div>
-                            <?php
-                        }
-                    }
-                    ?>
+                        <div>
+                            <span class="old_price">
+                                <?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?>
+                                <?= Yii::$app->currency->active['symbol'] ?>
+                            </span>
+                        </div>
+                        <?php } ?>
                     <div>
-                        <span class="<?= $priceClass; ?>"><?= $model->priceRange() ?> <?= Yii::$app->currency->active['symbol'] ?></span>
+                        <span class="current_price"><?= $model->priceRange() ?> <?= Yii::$app->currency->active['symbol'] ?></span>
                     </div>
 
 
@@ -91,7 +89,7 @@ use yii\helpers\HtmlPurifier;
                 <div class="add_to_cart">
                     <?php
                     if ($model->isAvailable) {
-                        echo Html::a('<span class="icon-cart"></span>', 'javascript:cart.add(' . $model->id . ')', ['class' => '', 'title' => Yii::t('cart/default', 'BUY')]);
+                        echo Html::a(Html::icon('cart'), 'javascript:cart.add(' . $model->id . ')', ['class' => '', 'title' => Yii::t('cart/default', 'BUY')]);
                     } else {
                         \panix\mod\shop\bundles\NotifyAsset::register($this);
                         echo Html::a(Yii::t('shop/default', 'NOT_AVAILABLE'), 'javascript:notify(' . $model->id . ');', ['class' => 'text-danger']);
