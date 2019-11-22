@@ -12,7 +12,7 @@ echo \panix\engine\widgets\ListView::widget([
     'itemView' => $itemView,
     //'layout' => '{sorter}{summary}{items}{pager}',
     'layout' => '{items}{pager}',
-    'options' => ['class' => 'list-view clearfix row shop_wrapper ' . $itemView], //row shop_wrapper
+    'options' => ['class' => 'list-view clearfix row shop_wrapper ' . $itemView],
     'itemOptions' => ['class' => 'item '.$itemClass],
     /*'sorter' => [
         'class' => 'yii\widgets\LinkSorter',

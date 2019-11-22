@@ -6922,7 +6922,7 @@ button.btn-link.active{
   margin-bottom: 20px;
 }
 .coupon_inner button {
-  background: #333;
+
   border: 0;
   color: #ffffff;
   display: inline-block;
@@ -6936,11 +6936,12 @@ button.btn-link.active{
   -webkit-transition: 0.3s;
   transition: 0.3s;
   border-radius: 3px;
-}
-.coupon_inner button:hover {
   background: #ffd54c;
 }
-.coupon_inner input {
+.coupon_inner button:hover{
+  background: #333;
+}
+.coupon_inner input[type="text"] {
   border: 1px solid #f0f0f0;
   height: 42px;
   background: none;
@@ -6950,29 +6951,16 @@ button.btn-link.active{
   color: #333;
 }
 @media only screen and (max-width: 767px) {
-  .coupon_inner input {
+  .coupon_inner input[type="text"] {
     margin-bottom: 24px;
     width: 100%;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-  .coupon_inner input {
+  .coupon_inner input[type="text"] {
     margin-bottom: 24px;
     width: 100%;
   }
-}
-.coupon_inner a {
-  display: block;
-  text-align: right;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 20px;
-  border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 10px;
-  border-radius: 3px;
-}
-.coupon_inner a:hover {
-  color: #ffd54c;
 }
 
 .coupon_code {
