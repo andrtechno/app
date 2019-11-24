@@ -4,3 +4,7 @@
     transition: none;
     display: none;
 }
+.required label:after{
+    content: ' *';
+    color:red;
+}

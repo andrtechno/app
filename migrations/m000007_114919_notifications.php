@@ -27,7 +27,7 @@ class m000007_114919_notifications extends Migration
             'user_id_read' => $this->integer(),
             'created_at' => $this->integer(11)->null(),
         ]);
-        $this->createIndex('is_read', $this->tableName, 'is_read');
+        $this->createIndex('user_id_read', $this->tableName, 'user_id_read');
     }
 
     public function down()
