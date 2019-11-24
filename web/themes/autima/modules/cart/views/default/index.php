@@ -64,7 +64,7 @@ $formOrder = ActiveForm::begin([
             <i class="icon-shopcart" style="font-size:130px"></i>
             <h2><?= Yii::t('cart/default', 'CART_EMPTY_HINT') ?></h2>
 
-            <?= Html::a(Yii::t('cart/default', 'CART_EMPTY_BTN'), ['/'], array('class' => 'btn btn-lg btn-outline-secondary')); ?>
+            <?= Html::a(Yii::t('cart/default', 'CART_EMPTY_BTN'), ['/'], ['class' => 'btn btn-lg btn-outline-secondary']); ?>
         </div>
         <?php return;
     }
@@ -81,10 +81,10 @@ $formOrder = ActiveForm::begin([
                     <tr>
 
                         <th colspan="2" class="product_name"
-                            style="width:30%"><?= Yii::t('cart/default', 'TABLE_PRODUCT') ?></th>
-                        <th class="product_quantity" style="width:30%"><?= Yii::t('cart/default', 'QUANTITY') ?></th>
-                        <th class="product_total" style="width:30%">Сумма</th>
-                        <th class="product_remove"></th>
+                            style="width:80%"><?= Yii::t('cart/default', 'TABLE_PRODUCT') ?></th>
+                        <th class="product_quantity" style="width:5%"><?= Yii::t('cart/default', 'QUANTITY') ?></th>
+                        <th class="product_total" style="width:10%">Сумма</th>
+                        <th class="product_remove" style="width:5%"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -93,18 +93,37 @@ $formOrder = ActiveForm::begin([
                         $price = Product::calculatePrices($product['model'], $product['variant_models'], $product['configurable_id']);
                         ?>
                         <tr id="product-<?= $index ?>">
-                            <td width="110px" align="center">
+                            <td align="center" style="width:20%">
 
+                                <?= Html::a(Html::img(Url::to($product['model']->getMainImage('x100')->url), ['alt' => $product['model']->name]), $product['model']->getUrl(), ['target' => '_blank']); ?>
                                 <?php
 
-                                echo Html::img(Url::to($product['model']->getMainImage('100x')->url), ['alt' => $product['model']->name]);
+                                ?>
+                            </td>
+                            <td class="text-left">
+                                <h5><?= Html::a(Html::encode($product['model']->name), $product['model']->getUrl(), ['target' => '_blank']); ?></h5>
+                                <?php
+                                //  foreach ($product['model']->loadEavAttributes(['konstrukcia']) as $test){
+                                //  print_r($test);
+                                //  }
+                                //    print_r($product['model']->getFindByEavAttributes2(['konstrukcia']));
+                                $s = 'eav_konstrukcia';
+                                //echo $product['model']->$s;
+
+
+                                $query = \panix\mod\shop\models\Attribute::find();
+                                $query->where(['IN', 'name', array_keys($product['model']->eavAttributes)]);
+                                $query->displayOnList();
+                                $query->sort();
+                                $result = $query->all();
+                                // print_r($query);
+                                $s = $product['model']->eavAttributes;
+                                foreach ($result as $q) {
+                                    echo $q->title .' ';
+                                    echo $q->renderValue($s[$q->name]).' <br>';
+                                }
 
                                 ?>
-
-                            </td>
-                            <td>
-                                <h5><?= Html::a(Html::encode($product['model']->name), $product['model']->getUrl()); ?></h5>
-
                                 <?php
                                 // Display variant options
                                 if (!empty($product['variant_models'])) {
@@ -114,11 +133,15 @@ $formOrder = ActiveForm::begin([
                                     echo Html::endTag('small');
                                 }
                                 ?>
-                                <span class="price price-sm  text-warning">
-                                <?= Yii::$app->currency->number_format($price); ?>
-                                    <sub><?= Yii::$app->currency->active['symbol']; ?>
-                                        /<?= $product['model']->units[$product['model']->unit]; ?></sub>
-                            </span>
+
+                                <div class="price_box">
+                                    <span class="current_price">
+                                        <span><?= Yii::$app->currency->number_format($price); ?></span>
+                                        <?= Yii::$app->currency->active['symbol'] ?>
+                                        / <?= $product['model']->units[$product['model']->unit]; ?>
+                                    </span>
+                                </div>
+
 
                                 <?php
 
@@ -149,18 +172,15 @@ $formOrder = ActiveForm::begin([
                             </td>
                             <td id="price-<?= $index ?>" class="text-center">
 
-                            <span class="price text-warning">
-                                <span class="cart-sub-total-price" id="row-total-price<?= $index ?>">
-                                    <?= Yii::$app->currency->number_format($price * $product['quantity']); ?>
-                                </span>
-                                <sub><?= Yii::$app->currency->active['symbol']; ?></sub>
-                            </span>
 
+                                <div class="price_box">
+                                    <span class="current_price">
+                                        <span class="cart-sub-total-price"
+                                              id="row-total-price<?= $index ?>"><?= Yii::$app->currency->number_format($price * $product['quantity']); ?></span>
+                                        <?= Yii::$app->currency->active['symbol'] ?>
+                                    </span>
+                                </div>
 
-                                <?php
-
-
-                                ?>
                             </td>
                             <td width="20px" class="remove-item">
                                 <?= Html::a(Html::icon('delete'), ['/cart/default/remove', 'id' => $index], ['class' => 'btn btn-sm text-danger remove']) ?>
@@ -168,15 +188,17 @@ $formOrder = ActiveForm::begin([
                         </tr>
                     <?php } ?>
                     </tbody>
-                    <tfoot>
-                    <td colspan="5" class="cart_submit">
-                        <?= panix\mod\cart\widgets\promocode\PromoCodeWidget::widget([
-                            'model' => $this->context->form,
-                            'attribute' => 'promocode_id'
-                        ]);
-                        ?>
-                    </td>
-                    </tfoot>
+                    <?php if (YII_DEBUG) { ?>
+                        <tfoot>
+                        <td colspan="5" class="cart_submit">
+                            <?= panix\mod\cart\widgets\promocode\PromoCodeWidget::widget([
+                                'model' => $this->context->form,
+                                'attribute' => 'promocode_id'
+                            ]);
+                            ?>
+                        </td>
+                        </tfoot>
+                    <?php } ?>
                 </table>
             </div>
         </div>
@@ -240,8 +262,16 @@ $formOrder = ActiveForm::begin([
                     <div class="cart_subtotal">
                         <p><?= Yii::t('cart/default', 'ORDER_PRICE'); ?></p>
                         <p class="cart_amount">
-                            <span class="" id="total"><?= Yii::$app->currency->number_format($totalPrice) ?></span>
-                            <?php echo Yii::$app->currency->active['symbol']; ?>
+                        <div class="price_box mt-2">
+
+                            <span class="total-price current_price">
+                                <span id="total"><?= Yii::$app->currency->number_format($totalPrice) ?></span>
+                                <?php echo Yii::$app->currency->active['symbol']; ?>
+                            </span>
+
+                        </div>
+
+
                         </p>
                     </div>
                     <div class="checkout_btn">

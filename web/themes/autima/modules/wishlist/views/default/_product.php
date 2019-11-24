@@ -15,18 +15,25 @@ use yii\helpers\HtmlPurifier;
     <div class="product_thumb">
         <?php
         echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'primary_img']);
-        echo Html::a(Html::img('/uploads/new-image1.jpg', ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'secondary_img']);
-
         ?>
 
         <div class="label_product">
-            <span class="label_sale">-47%</span>
-            <span class="label_sale">-47%</span>
+            <?php
+            foreach ($model->labels() as $label) {
+                echo '<div>';
+                echo Html::tag('span', $label['value'], [
+                    'class' => 'badge badge-' . $label['class'],
+                    'data-toggle' => 'tooltip',
+                    // 'title' => $label['tooltip']
+                ]);
+                echo '</div>';
+            }
+            ?>
         </div>
         <div class="action_links">
             <ul>
                 <?php
-                if (Yii::$app->hasModule('compare')) {
+                /*if (Yii::$app->hasModule('compare')) {
                     echo '<li class="compare">';
                     echo \panix\mod\compare\widgets\CompareWidget::widget([
                         'pk' => $model->id,
@@ -34,7 +41,7 @@ use yii\helpers\HtmlPurifier;
                         'linkOptions' => ['class' => 'btn2 btn-compare2']
                     ]);
                     echo '</li>';
-                }
+                }*/
                 if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
                     echo '<li class="wishlist">';
                     echo \panix\mod\wishlist\widgets\WishlistWidget::widget([
@@ -57,25 +64,20 @@ use yii\helpers\HtmlPurifier;
                 <div class="price_box">
 
                     <?php
-                    $priceClass = ($model->appliedDiscount) ? 'old_price' : 'current_price';
-                    if (Yii::$app->hasModule('discounts')) {
-                        if ($model->appliedDiscount) {
-                            ?>
+                    $priceClass = ($model->appliedDiscount) ? 'current_price' : 'old_price';
+                    if ($model->appliedDiscount) {
+                        ?>
 
-                            <div>
-                                    <span class="current_price">
-                                            <?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?>
-                                        <sub><?= Yii::$app->currency->active['symbol'] ?></sub>
-                                    </span>
-                            </div>
-                            <?php
-                        }
-                    }
-                    ?>
+                        <div>
+                            <span class="old_price">
+                                <?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?>
+                                <?= Yii::$app->currency->active['symbol'] ?>
+                            </span>
+                        </div>
+                    <?php } ?>
                     <div>
-                        <span class="<?= $priceClass; ?>"><?= $model->priceRange() ?> <?= Yii::$app->currency->active['symbol'] ?></span>
+                        <span class="current_price"><?= $model->priceRange() ?> <?= Yii::$app->currency->active['symbol'] ?></span>
                     </div>
-
 
                 </div>
                 <div class="add_to_cart">

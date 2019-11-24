@@ -38,6 +38,8 @@ echo \panix\ext\fancybox\Fancybox::widget([
         }')
     ]
 ]);
+
+$images = $model->getImages();
 //echo Html::a('back',\yii\helpers\Url::previous());
 
 
@@ -66,72 +68,72 @@ echo \panix\ext\fancybox\Fancybox::widget([
         }')
                         ]
                     ]);
-                    if(count($model->getImages()) > 1){
-                    ?>
-                    <div class="single-zoom-thumb">
-                        <?php
+                    if (count($images) > 1) {
+                        ?>
+                        <div class="single-zoom-thumb">
+                            <?php
 
 
-
-                        \panix\ext\owlcarousel\OwlCarouselWidget::begin([
-                            'containerOptions' => [
-                                'class' => 's-tab-zoom'
-                            ],
-                            'options' => [
-                                'nav' => true,
-                                'margin' => 5,
-                                'responsiveClass' => true,
-                                'navText' => ['<i class="icon-arrow-left"></i>', '<i class="icon-arrow-right"></i>'],
-                                'responsive' => [
-                                    0 => [
-                                        'items' => 1,
-                                        'nav' => false,
-                                        'dots' => true
-                                    ],
-                                    426 => [
-                                        'items' => 2,
-                                        'nav' => false
-                                    ],
-                                    768 => [
-                                        'items' => 2,
-                                        'nav' => false
-                                    ],
-                                    1024 => [
-                                        'items' => 4,
-                                        'nav' => true,
-                                        'dots' => true
+                            \panix\ext\owlcarousel\OwlCarouselWidget::begin([
+                                'containerOptions' => [
+                                    'class' => 's-tab-zoom'
+                                ],
+                                'options' => [
+                                    'margin' => 5,
+                                    'center' => false,
+                                    'responsiveClass' => true,
+                                    'navText' => ['<i class="icon-arrow-left"></i>', '<i class="icon-arrow-right"></i>'],
+                                    'responsive' => [
+                                        0 => [
+                                            'items' => 1,
+                                            'nav' => false,
+                                            'dots' => true
+                                        ],
+                                        426 => [
+                                            'items' => 2,
+                                            'nav' => false
+                                        ],
+                                        768 => [
+                                            'items' => 2,
+                                            'nav' => false
+                                        ],
+                                        1024 => [
+                                            'items' => 3,
+                                            'nav' => true,
+                                            'dots' => (count($images) > 3) ? true : true
+                                        ]
                                     ]
                                 ]
-                            ]
-                        ]);
-                        ?>
-                        <?php
-                        foreach ($model->getImages() as $k => $image) {
-                            echo Html::a(Html::img($image->getUrl('150x150'), [
-                                'alt' => $image->alt_title,
-                                'class' => 'img-fluid img-thumbnail'
-                            ]), $image->getUrl(), [
-                                // 'data-fancybox' => 'gallery',
-                                'data-caption' => Html::encode($model->name),
-                                'data-img' => $image->getUrl('400x400'),
-                                'class' => 'thumb'
                             ]);
-                        }
-                        if ($model->video) {
-                            echo Html::a(Html::img($model->getVideoPreview(), [
-                                'alt' => $model->name,
-                                'class' => 'img-fluid img-thumbnail'
-                            ]), $model->video, [
-                                // 'data-fancybox' => 'gallery',
-                                'data-caption' => Html::encode($model->name),
-                                'data-class' => 'video',
-                                'data-img' => $model->getVideoPreview('maxresdefault'),
-                                'class' => 'thumb thumb-video'
-                            ]);
-                        }
-                        ?>
-                    </div>
-                    <?php \panix\ext\owlcarousel\OwlCarouselWidget::end();    } ?>
+                            ?>
+                            <?php
+                            foreach ($images as $k => $image) {
+                                echo Html::a(Html::img($image->getUrl('150x100'), [
+                                    'alt' => $image->alt_title,
+                                    'class' => 'img-fluid img-thumbnail'
+                                ]), $image->getUrl(), [
+                                    // 'data-fancybox' => 'gallery',
+                                    'data-caption' => Html::encode($model->name),
+                                    'data-img' => $image->getUrl('400x400'),
+                                    'class' => 'thumb'
+                                ]);
+                            }
+                            if ($model->video) {
+                                echo Html::a(Html::img($model->getVideoPreview(), [
+                                    'alt' => $model->name,
+                                    'class' => 'img-fluid img-thumbnail'
+                                ]), $model->video, [
+                                    // 'data-fancybox' => 'gallery',
+                                    'data-caption' => Html::encode($model->name),
+                                    'data-class' => 'video',
+                                    'data-img' => $model->getVideoPreview('maxresdefault'),
+                                    'class' => 'thumb thumb-video'
+                                ]);
+                            }
+                            ?>
+                        </div>
+                        <?php \panix\ext\owlcarousel\OwlCarouselWidget::end();
+                    } ?>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
@@ -199,32 +201,30 @@ echo \panix\ext\fancybox\Fancybox::widget([
                     </div>
 
 
-
                     <?php if ($model->isAvailable) { ?>
 
 
                         <div class="product_variant quantity">
                             <?php
-echo Html::textInput('quantity',1,[
-    'class' => 'cart-spinner',
-    'product_id' => $model->id
-]);
-                           /* echo yii\jui\Spinner::widget([
-                                'name' => "quantity",
-                                'value' => 1,
-                                'clientOptions' => [
-                                    'numberFormat' => "n",
-                                    //'icons'=>['down'=> "icon-arrow-up", 'up'=> "custom-up-icon"],
-                                    'max' => 999
-                                ],
-                                'options' => [
-                                    'class' => 'cart-spinner',
-                                    'product_id' => $model->id
-                                ],
-                            ]);*/
+                            echo Html::textInput('quantity', 1, [
+                                'class' => 'cart-spinner',
+                                'product_id' => $model->id
+                            ]);
+                            /* echo yii\jui\Spinner::widget([
+                                 'name' => "quantity",
+                                 'value' => 1,
+                                 'clientOptions' => [
+                                     'numberFormat' => "n",
+                                     //'icons'=>['down'=> "icon-arrow-up", 'up'=> "custom-up-icon"],
+                                     'max' => 999
+                                 ],
+                                 'options' => [
+                                     'class' => 'cart-spinner',
+                                     'product_id' => $model->id
+                                 ],
+                             ]);*/
 
                             ?>
-
 
 
                             <?php
@@ -266,6 +266,9 @@ echo Html::textInput('quantity',1,[
                         </ul>
                     </div>
                     <div class="product_meta">
+                        <?php if (Yii::$app->hasModule('discounts') && $model->appliedDiscount) { ?>
+                            <?= panix\mod\discounts\widgets\countdown\Countdown::widget(['model' => $model]) ?>
+                        <?php } ?>
                         <div><?= $model->getAttributeLabel('availability') ?>:
 
                             <?php if ($model->availability == 1) { ?>
@@ -300,7 +303,7 @@ echo Html::textInput('quantity',1,[
                                 <div>
 <span class="price price-sm text-success">
 <span><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($price->value, $model->currency_id)); ?></span>
-<?= Yii::$app->currency->active['symbol']; ?>/<?= $model->units[$model->unit]; ?>
+    <?= Yii::$app->currency->active['symbol']; ?>/<?= $model->units[$model->unit]; ?>
 </span>
                                     при заказе от <?= $price->from; ?> <?= $model->units[$model->unit]; ?>
                                 </div>
@@ -383,90 +386,13 @@ echo Html::textInput('quantity',1,[
 <!--product info end-->
 
 <?php
-
 echo $this->render('@theme/modules/shop/views/product/_related', ['model' => $model]);
 ?>
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-md-5">
-            <a id="main-image" style="max-height: 400px" class="d-flex align-items-center"
-               href="<?= $model->getMainImage()->url ?>"
-               data-fancybox="gallery">
-                <img class="img-fluid m-auto" src="<?= $model->getMainImage('400x400')->url ?>" alt=""/>
-            </a>
-
-            <?php
-            // $np = new \panix\mod\cart\widgets\delivery\novaposhta\api\NovaPoshtaApi('ec12098e557d0025887b4c93fc43c114');
-            // $np->InternetDocument();
-
-            // print_r($np);
-
-            ?>
-
-        </div>
-        <div class='col-sm-6 col-md-7 product-info-block'>
-            <div class="product-info">
-                <span class="badge badge-light">Код товара: <strong><?= \panix\engine\CMS::idToNumber($model->id); ?></strong></span>
-                <div class="heading-gradient">
-                    <h1>
-
-                    </h1>
-                </div>
-
-                <?php if (Yii::$app->hasModule('discounts') && $model->appliedDiscount) { ?>
-                    <?= panix\mod\discounts\widgets\countdown\Countdown::widget(['model' => $model]) ?>
-                <?php } ?>
 
 
-                <div class="info-container mt-3">
-                    <div class="row">
-                        <div class="col-sm-3 mb-2">
-                            <?php //$this->widget('ext.rating.StarRating', array('model' => $model)); ?>
-                            rating
-                        </div>
-                        <div class="col-sm-9 mb-2">
-
-                        </div>
-
-
-
-                    </div>
-
-                </div>
-                <div class="price-container info-container">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="price-box">
-
-                                <?php if (Yii::$app->hasModule('discounts') && $model->appliedDiscount) { ?>
-                                    <div class=" mb-3">
-                                    <span class="price price-discount">
-                                        <del><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice, $model->currency_id)) ?></del> <sub><?= Yii::$app->currency->active['symbol'] ?></sub>
-                                    </span>
-                                        <span class="price discount-sum text-warning">-<?= $model->discountSum; ?></span>
-                                    </div>
-
-                                <?php } ?>
-                                <div><span class="price price-lg">
-                                        <span id="productPrice"><?= Yii::$app->currency->number_format($model->getFrontPrice()); ?></span> <sub><?= Yii::$app->currency->active['symbol']; ?></sub>
-                                </span></div>
-
-                            </div>
-                        </div>
-
-
-                    </div><!-- /.row -->
-                </div><!-- /.price-container -->
-
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<?= $this->render('_kit', ['model' => $model]); ?>
+<?php //echo $this->render('_kit', ['model' => $model]); ?>
 
 
 

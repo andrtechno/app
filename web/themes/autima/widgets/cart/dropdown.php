@@ -17,23 +17,20 @@ use panix\mod\shop\models\Product;
 
 
         <div class="mini_cart">
-            <?php foreach ($items as $product) { ?>
-
-                <?php
+            <?php foreach ($items as $product) {
                 $price = Product::calculatePrices($product['model'], $product['variant_models'], $product['configurable_id']);
                 ?>
 
                 <div class="cart_item">
-                    <div class="cart_img">
+                    <div class="cart_img text-center">
                         <?php echo Html::a(Html::img($product['model']->getMainImage('50x50')->url, ['class' => 'img-thumbnail']), $product['model']->getUrl()) ?>
-
                     </div>
                     <div class="cart_info">
                         <?php echo Html::a($product['model']->name, $product['model']->getUrl()) ?>
-                        <span class="quantity">Qty: <?php echo $product['quantity'] ?></span>
+                        <span class="quantity">Кол.: <?= $product['quantity'] ?></span>
                         <span class="price_cart"><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($price)) ?> <?= $currency['symbol']; ?></span>
                     </div>
-                    <div class="cart_remove">
+                    <div class="cart_remove d-none">
                         <a href="#"><i class="icon-delete"></i></a>
                     </div>
                 </div>
@@ -43,8 +40,11 @@ use panix\mod\shop\models\Product;
 
             <div class="mini_cart_footer">
                 <div class="cart_button">
-                         <span class="total-price pull-left"><span
-                                     class="label label-success"><?= $total ?></span> <?= $currency['symbol']; ?></span>
+                    <div class="price_box mt-2">
+                        <div>
+                            <span class="total-price current_price"><?= $total ?> <?= $currency['symbol']; ?></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="cart_button">
                     <?= Html::a(Yii::t('cart/default', 'BUTTON_CHECKOUT'), ['/cart'], ['class' => '']) ?>
@@ -57,7 +57,7 @@ use panix\mod\shop\models\Product;
 
     <?php } else { ?>
     <a href="javascript:void(0)">
-        <span class="icon-cart"></span>  <?= Yii::t('cart/default', 'CART_EMPTY') ?>
+        <span class="icon-cart"></span> <?= Yii::t('cart/default', 'CART_EMPTY') ?>
     </a>
         <span class="cart_quantity"><?= $count ?></span>
     <?php } ?>

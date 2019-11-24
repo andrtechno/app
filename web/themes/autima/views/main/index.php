@@ -66,6 +66,7 @@ $discountProducts = Product::find()
     ->isNotEmpty('discount')
     ->all();
 ?>
+<?php if ($newProducts || $discountProducts) { ?>
 <section class="product_area mb-50">
     <div class="container">
         <div class="row">
@@ -73,118 +74,126 @@ $discountProducts = Product::find()
                 <div class="section_title">
                     <h2><span>Товары</span></h2>
                     <ul class="product_tab_button nav" role="tablist">
-                        <li>
-                            <a class="active" data-toggle="tab" href="#brake" role="tab" aria-controls="brake"
-                               aria-selected="true">Новые</a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#wheels" role="tab" aria-controls="wheels"
-                               aria-selected="false">Скидки</a>
-                        </li>
+                        <?php if ($newProducts) { ?>
+                            <li>
+                                <a class="active" data-toggle="tab" href="#brake" role="tab" aria-controls="brake"
+                                   aria-selected="true">Новые</a>
+                            </li>
+                        <?php } ?>
+                        <?php if ($discountProducts) { ?>
+                            <li>
+                                <a data-toggle="tab" href="#wheels" role="tab" aria-controls="wheels"
+                                   aria-selected="false">Скидки</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
 
             </div>
         </div>
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="brake" role="tabpanel">
+            <?php if ($newProducts) { ?>
+                <div class="tab-pane fade show active" id="brake" role="tabpanel">
 
 
-                <?php
-                OwlCarouselWidget::begin([
-                    'containerTag' => 'div',
-                    'containerOptions' => [
-                        'class' => 'product_carousel'
-                    ],
-                    'options' => [
-                        'margin' => 20,
-                        'navText' => ['<i class="icon-arrow-left"></i>', '<i class="icon-arrow-right"></i>'],
-                        'autoplay' => true,
-                        'autoplayTimeout' => 8000,
-                        'items' => 5,
-                        'loop' => false,
-                        'nav' => true,
-                        'responsiveClass' => true,
-                        'responsive' => [
-                            0 => [
-                                'items' => 1,
-                                'nav' => false,
-                                'dots' => true,
-                                'center' => true,
-                            ],
-                            426 => [
-                                'items' => 2,
-                                'nav' => false
-                            ],
-                            768 => [
-                                'items' => 2,
-                                'nav' => false
-                            ],
-                            1024 => [
-                                'items' => 5,
-                                'dots' => false
+                    <?php
+                    OwlCarouselWidget::begin([
+                        'containerTag' => 'div',
+                        'containerOptions' => [
+                            'class' => 'product_carousel'
+                        ],
+                        'options' => [
+                            'margin' => 20,
+                            'navText' => ['<i class="icon-arrow-left"></i>', '<i class="icon-arrow-right"></i>'],
+                            'autoplay' => true,
+                            'autoplayTimeout' => 8000,
+                            'items' => 5,
+                            'loop' => false,
+                            'nav' => true,
+                            'responsiveClass' => true,
+                            'responsive' => [
+                                0 => [
+                                    'items' => 1,
+                                    'nav' => false,
+                                    'dots' => true,
+                                    'center' => true,
+                                ],
+                                426 => [
+                                    'items' => 2,
+                                    'nav' => false
+                                ],
+                                768 => [
+                                    'items' => 2,
+                                    'nav' => false
+                                ],
+                                1024 => [
+                                    'items' => 5,
+                                    'dots' => false
+                                ]
                             ]
                         ]
-                    ]
-                ]);
-                foreach ($newProducts as $index => $product) {
-                    echo $this->render('@theme/modules/shop/views/catalog/_view_grid', ['model' => $product]);
-                }
-                OwlCarouselWidget::end();
-                ?>
+                    ]);
+                    foreach ($newProducts as $index => $product) {
+                        echo $this->render('@theme/modules/shop/views/catalog/_view_grid', ['model' => $product]);
+                    }
+                    OwlCarouselWidget::end();
+                    ?>
 
 
-            </div>
-            <div class="tab-pane fade" id="wheels" role="tabpanel">
+                </div>
+            <?php } ?>
+            <?php if ($discountProducts) { ?>
+                <div class="tab-pane fade" id="wheels" role="tabpanel">
 
-                <?php
-                OwlCarouselWidget::begin([
-                    'containerTag' => 'div',
-                    'containerOptions' => [
-                        'class' => 'product_carousel'
-                    ],
-                    'options' => [
-                        'margin' => 20,
-                        'navText' => ['<i class="icon-arrow-left"></i>', '<i class="icon-arrow-right"></i>'],
-                        'autoplay' => true,
-                        'autoplayTimeout' => 8000,
-                        'items' => 5,
-                        'loop' => false,
-                        'nav' => true,
-                        'responsiveClass' => true,
-                        'responsive' => [
-                            0 => [
-                                'items' => 1,
-                                'nav' => false,
-                                'dots' => true,
-                                'center' => true,
-                            ],
-                            426 => [
-                                'items' => 2,
-                                'nav' => false
-                            ],
-                            768 => [
-                                'items' => 2,
-                                'nav' => false
-                            ],
-                            1024 => [
-                                'items' => 5,
-                                'dots' => false
+                    <?php
+                    OwlCarouselWidget::begin([
+                        'containerTag' => 'div',
+                        'containerOptions' => [
+                            'class' => 'product_carousel'
+                        ],
+                        'options' => [
+                            'margin' => 20,
+                            'navText' => ['<i class="icon-arrow-left"></i>', '<i class="icon-arrow-right"></i>'],
+                            'autoplay' => true,
+                            'autoplayTimeout' => 8000,
+                            'items' => 5,
+                            'loop' => false,
+                            'nav' => true,
+                            'responsiveClass' => true,
+                            'responsive' => [
+                                0 => [
+                                    'items' => 1,
+                                    'nav' => false,
+                                    'dots' => true,
+                                    'center' => true,
+                                ],
+                                426 => [
+                                    'items' => 2,
+                                    'nav' => false
+                                ],
+                                768 => [
+                                    'items' => 2,
+                                    'nav' => false
+                                ],
+                                1024 => [
+                                    'items' => 5,
+                                    'dots' => false
+                                ]
                             ]
                         ]
-                    ]
-                ]);
-                foreach ($discountProducts as $index => $product) {
-                    echo $this->render('@theme/modules/shop/views/catalog/_view_grid', ['model' => $product]);
-                }
-                OwlCarouselWidget::end();
-                ?>
+                    ]);
+                    foreach ($discountProducts as $index => $product) {
+                        echo $this->render('@theme/modules/shop/views/catalog/_view_grid', ['model' => $product]);
+                    }
+                    OwlCarouselWidget::end();
+                    ?>
 
-            </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </section>
-
+<?php } ?>
 <?php
 $views = Product::find()
     ->where(['id' => Yii::$app->session->get('views')])

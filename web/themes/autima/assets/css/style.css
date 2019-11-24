@@ -954,7 +954,9 @@ button.btn-link.active{
 .dropdown_links {
   left: 0;
 }
-
+.logo img{
+  height: 60px;
+}
 /*header top css end*/
 /* 2.2 header middel css here */
 @media only screen and (max-width: 767px) {
@@ -971,16 +973,16 @@ button.btn-link.active{
 
 .header_middle {
   background: #ffd54c;
-  padding: 25px 0;
+  padding: 15px 0;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header_middle {
-    padding: 21px 0;
+    padding: 11px 0;
   }
 }
 @media only screen and (max-width: 767px) {
   .header_middle {
-    padding: 22px 0 20px;
+    padding: 12px 0 20px;
   }
 }
 
@@ -1215,12 +1217,12 @@ button.btn-link.active{
 }
 
 .cart_img {
-  width: 32%;
+  width: 20%;
   margin-right: 10px;
 }
 
 .cart_info {
-  width: 52%;
+  width: 75%;
 }
 .cart_info a {
   font-weight: 400;
@@ -6455,9 +6457,12 @@ button.btn-link.active{
   color: #333;
   font-family: "Open Sans", sans-serif;
 }
+.s-tab-zoom.owl-carousel .owl-item{
+  text-align: center;
+}
 .s-tab-zoom.owl-carousel .owl-item a{
   display: inline-block;
-  height: 100px;
+  /*height: 100px;*/
 }
 .s-tab-zoom.owl-carousel .owl-nav {
   display: block;
@@ -6494,6 +6499,7 @@ button.btn-link.active{
     margin-bottom: 47px;
   }
 }
+
 .product-details-tab:hover .s-tab-zoom.owl-carousel .owl-nav button {
   opacity: 1;
   visibility: visible;
@@ -9956,7 +9962,9 @@ textarea.form-control{
   background: #333;
   color: #ffffff;
 }
-
+.filter-count{
+  margin-left: 4px;
+}
 .countdown_number {
   font-size: 26px;
   font-weight: 500;
@@ -9979,5 +9987,8 @@ textarea.form-control{
   font-size: 13px;
   color: #ffffff;
 }
-
+.custom-control-input:checked ~ .custom-control-label::before{
+  border-color: #ffd54c;
+  background-color: #ffd54c;
+}
 /*# sourceMappingURL=style.css.map */
