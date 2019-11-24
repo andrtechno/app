@@ -7,8 +7,6 @@ Desktop.ini
 
 vendor/
 nbproject/
-/config/db.php
-/config/db_local.php
 .idea
 
 
