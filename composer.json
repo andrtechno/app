@@ -74,7 +74,7 @@
                     "runtime": "0777",
                     "web/assets": "0777",
                     "web/uploads": "0755",
-                    "yii": "0755"
+                    "cmd": "0755"
                 }
             ]
         },
