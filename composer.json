@@ -24,7 +24,6 @@
         "panix/mod-shop": "dev-master",
         "panix/mod-pages": "dev-master",
         "panix/mod-images": "dev-master",
-        "panix/mod-contacts": "dev-master",
         "panix/mod-forum": "dev-master",
         "panix/mod-plugins": "dev-master",
         "panix/mod-rbac": "dev-master",
@@ -37,11 +36,15 @@
         "yiisoft/yii2-queue": "^2.0@dev",
         "panix/mod-seo": "dev-master",
         "panix/mod-docs": "dev-master",
-        "panix/wgt-telinput": "dev-master",
         "panix/mod-telegram": "dev-master",
         "panix/mod-projects-calc": "dev-master",
         "tinymce/tinymce": "4.9.4",
-        "panix/mod-banner": "dev-master"
+        "panix/mod-banner": "dev-master",
+        "giggsey/libphonenumber-for-php": "^8.0@dev",
+        "panix/wgt-multiple-input": "dev-master",
+        "panix/mod-contacts": "dev-master",
+        "panix/wgt-telinput": "dev-master",
+        "bower-asset/codemirror": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2",

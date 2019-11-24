@@ -3,7 +3,7 @@ AddDefaultCharset UTF-8
 #Options FollowSymlinks
 
 
-Options +FollowSymLinks
+#Options +FollowSymLinks
 IndexIgnore */*
 
 RewriteEngine on
