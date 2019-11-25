@@ -31,6 +31,7 @@ class ThemeAsset extends AssetBundle
         //'//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Roboto+Slab:400,700&amp;subset=cyrillic',
         'css/app.css',
         'css/style.css',
+        'css/tinymce.css',
         'swiper/css/swiper.min.css',
     ];
 
