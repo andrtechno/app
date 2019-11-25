@@ -1,6 +1,6 @@
 <?php
 use panix\engine\Html;
-
+use panix\engine\CMS;
 $config = Yii::$app->settings->get('contacts');
 ?>
 <!--call to action start-->
@@ -38,13 +38,17 @@ $config = Yii::$app->settings->get('contacts');
                 <div class="col-lg-4 col-md-6">
                     <div class="widgets_container contact_us">
                         <div class="footer_logo">
-                            <a href="#"><img src="<?= $this->context->assetUrl; ?>/images/logo.png" alt=""></a>
+                            <?= Html::a(Html::img($this->context->assetUrl . '/images/logo.png', ['alt' => Yii::$app->settings->get('app', 'sitename')]), ['/']); ?>
                         </div>
                         <div class="footer_contact">
-                            <p>We are a team of designers and developers that
-                                create high quality Magento, Prestashop, Opencart...</p>
-                            <p><span>Address</span> 4710-4890 Breckinridge St, UK Burlington, VT 05401</p>
-                            <p><span>Need Help?</span>Call: <a href="tel:1-800-345-6789">1-800-345-6789</a></p>
+                            <?php if (isset($config->address) && isset($config->address[Yii::$app->language])) { ?>
+                                <p><i class="icon-location"></i> <?= $config->address[Yii::$app->language]; ?></p>
+                            <?php } ?>
+                            <?php if (isset($config->phone)) { ?>
+                                <?php foreach ($config->phone as $phone) { ?>
+                                    <p><i class="icon-phone"></i><?= Html::tel($phone['number'], ['class' => 'phone ' . CMS::slug(CMS::phoneOperator($phone['number']))]); ?> <?= $phone['name']; ?></p>
+                                <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
