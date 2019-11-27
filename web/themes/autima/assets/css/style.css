@@ -955,7 +955,7 @@ button.btn-link.active{
   left: 0;
 }
 .logo img{
-  height: 60px;
+
 }
 /*header top css end*/
 /* 2.2 header middel css here */
@@ -1158,7 +1158,6 @@ button.btn-link.active{
 .mini_cart_wrapper > a {
   font-size: 13px;
   font-weight: 400;
-  text-transform: capitalize;
   display: block;
 }
 .mini_cart_wrapper > a span,
@@ -2424,17 +2423,6 @@ button.btn-link.active{
   line-height: 24px;
   display: inline-block;
   position: relative;
-}
-.slider_content h2::before {
-  position: absolute;
-  content: "";
-  height: 1px;
-  width: 70px;
-  background: #333;
-  right: -88px;
-  opacity: 0.5;
-  top: 50%;
-  transform: translatey(-50%);
 }
 @media only screen and (max-width: 767px) {
   .slider_content h2::before {
@@ -4725,7 +4713,7 @@ button.btn-link.active{
 
 }
 .footer_logo img{
-  height: 60px;
+
 }
 @media only screen and (max-width: 767px) {
   .footer_logo a img {
@@ -4838,7 +4826,6 @@ button.btn-link.active{
   }
 }
 .copyright_area p {
-  text-transform: capitalize;
   line-height: 30px;
   font-size: 14px;
 }
@@ -5942,7 +5929,6 @@ button.btn-link.active{
 }
 
 .product_d_right h1 {
-  text-transform: capitalize;
   line-height: 20px;
   font-size: 22px;
   font-weight: 400;

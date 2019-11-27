@@ -6,7 +6,7 @@ use yii\helpers\Inflector;
 //var_dump($attributes);
 
 foreach ($attributes as $attrData) {
-    if (count($attrData['filters']) > 1) {
+    if ($attrData['totalCount'] > 1) {
         ?>
         <div class="widget_list widget_categories" id="filter-attributes-<?= Inflector::slug($attrData['title']); ?>">
 
@@ -25,36 +25,36 @@ foreach ($attributes as $attrData) {
                     foreach ($attrData['filters'] as $filter) {
 
 
-                        // if ($filter['count'] > 0) {
-                        $url = Yii::$app->urlManager->addUrlParam('/' . Yii::$app->requestedRoute, [$filter['queryKey'] => $filter['queryParam']], $attrData['selectMany']);
-                        //} else {
-                        //     $url = 'javascript:void(0)';
-                        // }
+                        if ($filter['count'] > 0) {
+                            $url = Yii::$app->urlManager->addUrlParam('/' . Yii::$app->requestedRoute, [$filter['queryKey'] => $filter['queryParam']], $attrData['selectMany']);
+                            //} else {
+                            //     $url = 'javascript:void(0)';
+                            // }
 
-                        $queryData = explode(',', Yii::$app->request->getQueryParam($filter['queryKey']));
+                            $queryData = explode(',', Yii::$app->request->getQueryParam($filter['queryKey']));
 
-                        echo Html::beginTag('li');
-                        // Filter link was selected.
+                            echo Html::beginTag('li');
+                            // Filter link was selected.
 
-                        if (in_array($filter['queryParam'], $queryData)) {
-                            $checked = true;
-                            // Create link to clear current filter
-                            $url = Yii::$app->urlManager->removeUrlParam('/' . Yii::$app->requestedRoute, $filter['queryKey'], $filter['queryParam']);
-                            //echo Html::a($filter['title'], $url, array('class' => 'active'));
-                        } else {
-                            $checked = false;
-                            //echo Html::a($filter['title'], $url);
+                            if (in_array($filter['queryParam'], $queryData)) {
+                                $checked = true;
+                                // Create link to clear current filter
+                                $url = Yii::$app->urlManager->removeUrlParam('/' . Yii::$app->requestedRoute, $filter['queryKey'], $filter['queryParam']);
+                                //echo Html::a($filter['title'], $url, array('class' => 'active'));
+                            } else {
+                                $checked = false;
+                                //echo Html::a($filter['title'], $url);
+                            }
+                            //var_dump($checked);
+
+
+                            echo '<div class="custom-control custom-checkbox">';
+                            echo Html::checkBox('filter[' . $filter['queryKey'] . '][]', $checked, ['class' => 'custom-control-input', 'value' => $filter['queryParam'], 'id' => 'filter_' . $filter['queryKey'] . '_' . $filter['queryParam']]);
+                            echo Html::label($filter['title'], 'filter_' . $filter['queryKey'] . '_' . $filter['queryParam'], ['class' => 'custom-control-label']);
+                            echo $this->context->getCount($filter);
+                            echo '</div>';
+                            echo Html::endTag('li');
                         }
-                        //var_dump($checked);
-
-
-
-                        echo '<div class="custom-control custom-checkbox">';
-                        echo Html::checkBox('filter[' . $filter['queryKey'] . '][]', $checked, ['class'=>'custom-control-input','value' => $filter['queryParam'], 'id' => 'filter_' . $filter['queryKey'] . '_' . $filter['queryParam']]);
-                        echo Html::label($filter['title'], 'filter_' . $filter['queryKey'] . '_' . $filter['queryParam'],['class'=>'custom-control-label']);
-                        echo $this->context->getCount($filter);
-echo '</div>';
-                        echo Html::endTag('li');
                     }
                     ?>
                 </ul>

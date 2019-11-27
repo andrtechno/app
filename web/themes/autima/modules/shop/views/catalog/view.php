@@ -19,6 +19,8 @@ use panix\mod\shop\widgets\filtersnew\FiltersWidget;
 
 
                 <?php
+
+
                 echo FiltersWidget::widget([
                     'model' => $this->context->dataModel,
                     'attributes' => $this->context->eavAttributes,
@@ -44,7 +46,7 @@ use panix\mod\shop\widgets\filtersnew\FiltersWidget;
     <!--shop toolbar end-->
 
 
-    <div id="listview-ajax">
+    <div id="listview-ajax" class="">
         <?php
         echo $this->render('listview', [
             'itemView' => $itemView,

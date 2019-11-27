@@ -19,18 +19,6 @@ use panix\engine\widgets\Breadcrumbs;
 <?= $this->render('@theme/views/layouts/partials/_header'); ?>
 <div class="container">
     <?= $this->render('@theme/views/layouts/partials/_breadcrumbs'); ?>
-
-    <?php
-    if (Yii::$app->session->allFlashes) {
-        foreach (Yii::$app->session->allFlashes as $key => $message) {
-            echo \panix\engine\bootstrap\Alert::widget([
-                'options' => ['class' => 'alert alert-' . $key],
-                'closeButton' => false,
-                'body' => $message
-            ]);
-        }
-    }
-    ?>
 </div>
 <?= $content ?>
 

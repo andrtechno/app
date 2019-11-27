@@ -50,23 +50,22 @@ $this->registerJs("
             $banners = \panix\mod\banner\models\Banner::find()->published()->all();
             foreach ($banners as $banner){
                 /** @var \panix\mod\banner\models\Banner $banner */
-            ?>
-            <div class="single_slider d-flex align-items-center"
-                 data-bgimg="<?= $banner->getImageUrl('image'); ?>">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="slider_content">
-                                <h2>HP Racer Skutex</h2>
-                                <h1><?= $banner->content; ?></h1>
-                                <?php if($banner->url){ ?>
-                                    <?= Html::a($banner->url_name,$banner->url,['class'=>'button']); ?>
-                                <?php } ?>
+                ?>
+                <div class="single_slider d-flex align-items-center"
+                     data-bgimg="<?= $banner->getImageUrl('image','1920x'); ?>">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="slider_content">
+                                    <h2><?= $banner->content; ?></h2>
+                                    <?php if($banner->url){ ?>
+                                        <?= Html::a($banner->url_name,$banner->url,['class'=>'button']); ?>
+                                    <?php } ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             <?php } ?>
         </div>
     </section>

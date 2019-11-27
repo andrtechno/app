@@ -94,26 +94,17 @@ if ($getDefaultMin != $getDefaultMax) {
                 ],
             ]);
             ?>
-            <div class="row">
+            <div class="row min-max">
                 <div class="col-6 text-left">
                     от
                     <span id="mn" class="price price-sm"><?= Yii::$app->currency->number_format($getMin); ?></span>
+                    (<?= Yii::$app->currency->active['symbol'] ?>)
                 </div>
                 <div class="col-6 text-right">
                     до <span id="mx" class="price price-sm"><?= Yii::$app->currency->number_format($getMax); ?></span>
                     (<?= Yii::$app->currency->active['symbol'] ?>)</span>
                 </div>
             </div>
-            <span class="min-max">
-        Цена от
-        <span id="mn" class="price price-sm"><?= Yii::$app->currency->number_format($getMin); ?></span>
-        до   <span id="mx" class="price price-sm"><?= Yii::$app->currency->number_format($getMax); ?></span>
-        (<?= Yii::$app->currency->active['symbol'] ?>)</span>
-
-            <?php //echo Html::submitButton('OK', ['class' => 'btn btn-sm btn-warning']);
-            ?>
-            <?php //echo Html::endForm();
-            ?>
         </div>
 
     </div>

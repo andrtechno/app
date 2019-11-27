@@ -112,7 +112,7 @@ $config = Yii::$app->settings->get('contacts');
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="footer_payment text-right">
-                        <a href="#"><img src="<?= $this->context->assetUrl; ?>/images/payment.png" alt=""></a>
+                        <img src="<?= $this->context->assetUrl; ?>/images/payment.png" alt="">
                     </div>
                 </div>
             </div>
