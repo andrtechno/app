@@ -19,7 +19,11 @@ defined('STDOUT') or define('STDOUT', fopen('php://stdout', 'w'));
 require(__DIR__ . '/vendor/autoload.php');
 require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
 
-$config = require(__DIR__ . '/config/console.php');
+
+$config = yii\helpers\ArrayHelper::merge(
+    require __DIR__ . '/config/common.php',
+    require __DIR__ . '/config/console.php'
+);
 
 $application = new panix\engine\console\Application($config);
 //$application = new \yii\console\Application($config);

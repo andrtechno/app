@@ -14,38 +14,11 @@ $config = [
     'bootstrap' => [
         'plugins',
         'panix\engine\plugins\goaway\GoAway',
+        'panix\engine\widgets\webcontrol\WebInlineControl',
         //'webcontrol'
     ],
     'controllerMap' => [
         'main' => 'panix\engine\controllers\WebController',
-    ],
-    'modules' => [
-        /*'telegram' => [
-            'class' => 'panix\mod\telegram\Module',
-            'hook_url' => 'https://yii2.pixelion.com.ua/telegram/default/hook', // must be https! (if not prettyUrl https://yourhost.com/index.php?r=telegram/default/hook)
-            // 'db' => 'db2', //db file name from config dir
-             'userCommandsPath' => '@telegram/commands/UserCommands',
-            // 'timeBeforeResetChatHandler' => 60
-        ],*/
-
-        //'docs' => ['class' => 'panix\mod\docs\Module'],
-
-        //'stats' => ['class' => 'panix\mod\stats\Module'],
-        //'hosting' => ['class' => 'app\modules\hosting\Module'],
-/*
-
-
-          'forum' => ['class' => 'panix\mod\forum\Module'],
-          // 'portfolio' => ['class' => 'app\modules\portfolio\Module'],
-          'images' => [
-          'class' => 'panix\mod\images\Module',
-          'imagesStorePath' => 'uploads/store', //path to origin images
-          'imagesCachePath' => 'uploads/cache', //path to resized copies
-          'graphicsLibrary' => 'GD', //but really its better to use 'Imagick'
-          'placeHolderPath' => '@webroot/uploads/watermark.png', // if you want to get placeholder when image not exists, string will be processed by Yii::getAlias
-          'imageCompressionQuality' => 100, // Optional. Default value is 85.
-          'waterMark' => '@webroot/uploads/watermark.png'
-          ], */
     ],
     'components' => [
         'plugins' => [
@@ -74,7 +47,8 @@ $config = [
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         //'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
         'view' => [
-            'class' => 'panix\mod\plugins\components\View',
+            //'class' => 'panix\mod\plugins\components\View',
+            'class' => 'app\engine\View',
             'as Layout' => [
                 'class' => 'panix\engine\behaviors\LayoutBehavior',
             ],
