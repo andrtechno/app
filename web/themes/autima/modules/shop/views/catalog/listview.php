@@ -11,6 +11,7 @@ echo \panix\engine\widgets\ListView::widget([
     'id' => 'shop-products',
     'dataProvider' => $provider,
     'itemView' => $itemView,
+    'emptyTextOptions'=>['class'=>'col alert alert-info text-center'],
     //'layout' => '{sorter}{summary}{items}{pager}',
     'layout' => '{items}{pager}',
     'options' => ['class' => 'list-view clearfix row shop_wrapper ' . $itemView],
