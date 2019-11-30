@@ -92,21 +92,24 @@ $config = Yii::$app->settings->get('contacts');
                         echo $form->field($model, 'phone')->widget(\panix\ext\inputmask\InputMask::class);
                     ?>
                     <?= $form->field($model, 'text')->textArea(['rows' => 6]) ?>
-                    <?php if ($config->feedback_captcha || Yii::$app->user->isGuest) { ?>
+                    <?php if (Yii::$app->settings->get('app','captcha_class') && $config->feedback_captcha && Yii::$app->user->isGuest) { ?>
                         <?php
                         /*echo $form->field($model, 'verifyCode')->widget(yii\captcha\Captcha::class, [
                             'captchaAction' => 'default/captcha',
                             'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
                         ])*/
+                        $captchaConfig= \panix\mod\admin\models\SettingsForm::captchaConfig();
+
+
                         ?>
+
+
+
+
+
+                    <?php echo $form->field($model, 'verifyCode')->widget(Yii::$app->settings->get('app', 'captcha_class'),$captchaConfig[Yii::$app->settings->get('app', 'captcha_class')]); ?>
+
                     <?php } ?>
-
-
-
-
-                    <?php echo $form->field($model, 'verifyCode')->widget(Yii::$app->settings->get('app', 'captcha_class'),['captchaAction'=>'/captcha']); ?>
-
-
                     <div class="form-group text-center">
                         <?= Html::submitButton(Yii::t('app', 'SEND'), ['class' => 'btn btn-warning', 'name' => 'contact-button']) ?>
                     </div>

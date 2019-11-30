@@ -40,7 +40,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
     <body class="no-radius1">
     <?php $this->beginBody() ?>
     <div id="wrapper-tpl">
-        <?php echo $this->render('partials/_navbar'); ?>
+        <?= $this->render('partials/_navbar'); ?>
         <?php
         $class = '';
         $class .= (!$sideBar) ? ' full-page' : '';
@@ -53,17 +53,6 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
             <?php if ($sideBar) { ?>
                 <div id="sidebar-wrapper">
                     <?php
-                    /* echo \panix\mod\admin\widgets\sidebar\SiderbarNav::widget([
-                         'items' => [
-                             [
-                                 'label' => 'Menu',
-                                 'url' => '#',
-                                 'linkOptions' => ['class' => 'sidebar-nav', 'id' => 'menu-toggle'],
-                             ]],
-                         'options' => ['class' => 'flex-column'],
-                     ]);
- */
-
                     echo \panix\mod\admin\widgets\sidebar\SiderbarNav::widget([
                         'encodeLabels' => false,
                         'items' => \yii\helpers\ArrayHelper::merge([
@@ -72,7 +61,8 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                                 'url' => '#',
                                 // 'encode'=>false,
                                 'linkOptions' => ['class' => 'sidebar-nav', 'id' => 'menu-toggle'],
-                            ]], $this->context->module->getAdminSidebar()),
+                            ]
+                        ], $this->context->module->getAdminSidebar()),
                         'options' => ['class' => 'flex-column'],
                     ]);
                     ?>
@@ -82,10 +72,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
             <!-- Page Content -->
             <div id="page-content-wrapper">
                 <div class="container-fluid">
-
                     <div class="row">
-
-
                         <div class="col-lg-12 clearfix module-header">
                             <div class="float-left">
                                 <h1 class="d-none d-md-block d-sm-block d-lg-block">
@@ -124,9 +111,12 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                                                 if (!isset($button['options']['class'])) {
                                                     $button['options']['class'] = ['btn btn-secondary'];
                                                 }
-                                                if(!empty($icon))
-                                                    $button['label']='<span class="d-none d-sm-inline">'.$button['label'].'</span>';
-                                                $button['options']['title'] = $button['label'];
+                                                if (!empty($icon))
+                                                    $button['label'] = '<span class="d-none d-sm-inline">' . $button['label'] . '</span>';
+
+                                                if (empty($icon))
+                                                    $button['options']['title'] = $button['label'];
+
                                                 echo Html::a($icon . $button['label'], $button['url'], $button['options']);
                                             }
                                             if (count($this->context->buttons) > 1) {
@@ -140,11 +130,11 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                         </div>
                         <div class="clearfix"></div>
                         <div id="container-breadcrumbs">
-                            <?php echo $this->render('partials/_breadcrumbs', ['breadcrumbs' => $this->context->breadcrumbs]); ?>
-                            <?php echo $this->render('partials/_addonsMenu'); ?>
+                            <?= $this->render('partials/_breadcrumbs', ['breadcrumbs' => $this->context->breadcrumbs]); ?>
+                            <?= $this->render('partials/_addonsMenu'); ?>
                         </div>
 
-                        <div class="col-lg-12">
+                        <div class="col-12">
 
                             <?php if (Yii::$app->session->allFlashes) { ?>
                                 <?php foreach (Yii::$app->session->allFlashes as $key => $message) {
@@ -161,51 +151,6 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                                 <?php } ?>
                             <?php } ?>
 
-
-
-
-                            <?php
-                            /*\yii\jui\Dialog::begin([
-                                'clientOptions' => [
-                                    'modal' => true,
-                                ],
-                            ]);
-
-                            echo 'Dialog contents here...';
-
-                            \yii\jui\Dialog::end();*/
-
-                            /*
-                              use panix\hosting\Api;
-
-                              $api = new Api('hosting_database','info');
-
-
-                              print_r($api); */
-
-
-                            /* use yii\helpers\FileHelper;
-                              $files = FileHelper::findFiles(Yii::getAlias('@shop'),[
-                              'only'=>['*.md'],
-                              'recursive'=>false,
-                              'caseSensitive'=>false
-                              ]);
-                              foreach($files as $file){
-                              echo basename($file,'.md');
-                              }
-                              print_r($files); */
-
-
-                            //use yii\helpers\Markdown;
-                            //$myText = file_get_contents(Yii::getAlias('@shop').DIRECTORY_SEPARATOR.'README.md');
-                            //$myHtml = Markdown::process($myText); // use original markdown flavor
-                            //$myHtml = Markdown::process($myText, 'gfm'); // use github flavored markdown
-                            //$myHtml = Markdown::process($myText, 'extra'); // use markdown extra
-                            //echo $myHtml;
-
-
-                            ?>
-
                             <?= $content ?>
                         </div>
                     </div>
@@ -217,8 +162,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
         </div>
         <footer class="footer">
             <div class="col-md-12 text-center">
-                <?= Yii::$app->powered() ?> -
-                <?= Yii::$app->version ?>
+                <?= Yii::$app->powered() ?> &mdash; <?= Yii::$app->version ?>
             </div>
         </footer>
         <?php echo \panix\engine\widgets\scrollTop\ScrollTop::widget(); ?>
