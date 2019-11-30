@@ -20,13 +20,6 @@ $config = Yii::$app->settings->get('contacts');
 <!--contact map end-->
 
 
-
-<?php if (Yii::$app->session->hasFlash('success')) { ?>
-    <div class="alert alert-success">
-        <?= Yii::$app->session->getFlash('success') ?>
-    </div>
-<?php } ?>
-
 <!--contact area start-->
 <div class="contact_area">
     <div class="container">
@@ -111,7 +104,7 @@ $config = Yii::$app->settings->get('contacts');
 
 
 
-                    <?php echo $form->field($model, 'verifyCode')->widget(Yii::$app->settings->get('app', 'captcha_class')); ?>
+                    <?php echo $form->field($model, 'verifyCode')->widget(Yii::$app->settings->get('app', 'captcha_class'),['captchaAction'=>'/captcha']); ?>
 
 
                     <div class="form-group text-center">

@@ -4694,7 +4694,7 @@ button.btn-link.active{
   font-size: 17px;
   line-height: 24px;
   margin-bottom: 18px;
-  text-transform: capitalize;
+
   font-weight: 700;
   font-family: "Open Sans", sans-serif;
 }
@@ -4801,7 +4801,7 @@ button.btn-link.active{
   right: 0;
   top: 0;
   height: 100%;
-  background: #ffd54c;
+  background: #333;
   font-weight: 400;
   padding: 0 18px;
   border: 0;
@@ -4831,7 +4831,6 @@ button.btn-link.active{
 }
 .copyright_area p a:hover {
   text-decoration: underline;
-  color: #ffd54c;
 }
 
 .footer_bottom {
@@ -4929,7 +4928,6 @@ button.btn-link.active{
 .collection_content h4 {
   font-size: 18px;
   font-weight: 500;
-  text-transform: capitalize;
   margin-bottom: 23px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -5109,7 +5107,6 @@ button.btn-link.active{
   }
 }
 .categories_content a {
-  text-transform: capitalize;
   font-size: 16px;
   font-weight: 600;
   padding-bottom: 5px;
@@ -5348,7 +5345,6 @@ button.btn-link.active{
   height: 30px;
   line-height: 30px;
   padding: 0 20px;
-  text-transform: capitalize;
   color: #ffffff;
   background: #333;
   border: 0;
@@ -5695,7 +5691,6 @@ button.btn-link.active{
 }
 .text_available p {
   font-size: 14px;
-  text-transform: capitalize;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .text_available p {
@@ -5715,7 +5710,6 @@ button.btn-link.active{
   font-size: 15px;
   font-weight: 400;
   color: #333;
-  text-transform: capitalize;
   background: #ffd54c;
   display: block;
   text-align: center;
@@ -6004,7 +5998,6 @@ button.btn-link.active{
   line-height: 24px;
   padding: 0 8px;
   border-radius: 3px;
-  text-transform: capitalize;
   display: block;
 }
 @media only screen and (max-width: 767px) {
@@ -6077,7 +6070,6 @@ button.btn-link.active{
 }
 .product_variant.quantity label {
   font-weight: 500;
-  text-transform: capitalize;
   font-size: 14px;
   margin-bottom: 0;
 }
@@ -6114,7 +6106,6 @@ button.btn-link.active{
   background: #ffd54c;
   height: 42px;
   line-height: 42px;
-  text-transform: capitalize;
   min-width: 270px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -6150,7 +6141,6 @@ button.btn-link.active{
 }
 .product_variant.color h3 {
   font-weight: 500;
-  text-transform: capitalize;
   font-size: 18px;
   margin-bottom: 0;
   margin-right: 40px;
@@ -6158,7 +6148,6 @@ button.btn-link.active{
 .product_variant.color label {
   font-size: 15px;
   font-weight: 500;
-  text-transform: capitalize;
 }
 .product_variant.color ul li {
   display: inline-block;
@@ -6195,7 +6184,6 @@ button.btn-link.active{
 .product_variant.size label {
   font-size: 15px;
   font-weight: 500;
-  text-transform: capitalize;
 }
 .product_variant.size .niceselect_option {
   float: inherit;
@@ -6243,7 +6231,6 @@ button.btn-link.active{
 .product_info_button ul li a {
   display: block;
   float: left;
-  text-transform: capitalize;
   font-size: 20px;
   color: #a9a9a9;
   font-weight: 600;
@@ -6357,7 +6344,6 @@ button.btn-link.active{
 .reviews_wrapper .product_ratting h3 {
   font-size: 14px;
   font-weight: 700;
-  text-transform: capitalize;
 }
 
 .comment_title {
@@ -6822,7 +6808,6 @@ button.btn-link.active{
   border-right: 1px solid #f0f0f0;
   font-size: 16px;
   font-weight: 600;
-  text-transform: capitalize;
   padding: 10px;
   text-align: center;
 }

@@ -4,7 +4,7 @@ use panix\engine\CMS;
 $config = Yii::$app->settings->get('contacts');
 ?>
 <!--call to action start-->
-<section class="call_to_action">
+<section class="call_to_action d-none">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -31,7 +31,7 @@ $config = Yii::$app->settings->get('contacts');
 </section>
 <!--call to action end-->
 <!--footer area start-->
-<footer class="footer_widgets">
+<footer class="footer_widgets call_to_action p-0">
     <div class="container">
         <div class="footer_top">
             <div class="row">
@@ -54,65 +54,46 @@ $config = Yii::$app->settings->get('contacts');
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="widgets_container widget_menu">
-                        <h3>Information</h3>
+                        <h3>Мы доставляем</h3>
                         <div class="footer_menu">
+                            <?php
+                            $deliveries = \panix\mod\cart\models\Delivery::find()->all();
+                            ?>
                             <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="#">Delivery Information</a></li>
-                                <li><a href="privacy-policy.html">privacy policy</a></li>
-                                <li><a href="coming-soon.html">Coming Soon</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="#">Gift Certificates</a></li>
+                                <?php foreach ($deliveries as $data){ ?>
+                                <li><?= $data->name; ?></li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 col-sm-6">
                     <div class="widgets_container widget_menu">
-                        <h3>Extras</h3>
+                        <h3>Мы принимаем</h3>
                         <div class="footer_menu">
+                            <?php
+                            $payments = \panix\mod\cart\models\Payment::find()->all();
+                            ?>
                             <ul>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="#">Order History</a></li>
-                                <li><a href="wishlist.html">Wish List</a></li>
-                                <li><a href="#">Newsletter</a></li>
-                                <li><a href="#">Affiliate</a></li>
-                                <li><a href="#">Specials</a></li>
+                                <?php foreach ($payments as $data){ ?>
+                                    <li><?= $data->name; ?></li>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="widgets_container">
-                        <h3>Newsletter Subscribe</h3>
-                        <p>We’ll never share your email address with a third-party.</p>
-                        <div class="subscribe_form">
-                            <form id="mc-form" class="mc-form footer-newsletter">
-                                <input id="mc-email" type="email" autocomplete="off" placeholder="Enter you email address here..." />
-                                <button id="mc-submit">Subscribe</button>
-                            </form>
-                            <!-- mailchimp-alerts Start -->
-                            <div class="mailchimp-alerts text-centre">
-                                <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                                <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                            </div><!-- mailchimp-alerts end -->
-                        </div>
+                        <?= \panix\mod\delivery\widgets\subscribe\SubscribeWidget::widget(); ?>
                     </div>
                 </div>
             </div>
         </div>
         <div class="footer_bottom">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-12 text-center">
                     <div class="copyright_area">
                         <p>{copyright}</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="footer_payment text-right">
-                        <img src="<?= $this->context->assetUrl; ?>/images/payment.png" alt="">
                     </div>
                 </div>
             </div>

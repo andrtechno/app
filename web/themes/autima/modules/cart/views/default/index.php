@@ -53,7 +53,7 @@ $formOrder = ActiveForm::begin([
     'enableAjaxValidation' => true,
     'action' => ['/cart'],
     'id' => 'cart-form',
-    'options' => ['class' => 'form-horizontal'],
+    'options' => ['class' => ''],
 ]) ?>
 
 <?php //echo Html::beginForm(['/cart'], 'post', array('id' => 'cart-form', 'name' => 'cartform')) ?>
@@ -74,7 +74,7 @@ $formOrder = ActiveForm::begin([
 
 
     <div class="col-12">
-        <div class=" table_desc">
+        <div class="table_desc">
             <div class="cart_page table-responsive">
                 <table id="cart-table" class="">
                     <thead>
@@ -113,21 +113,21 @@ $formOrder = ActiveForm::begin([
 
                                 $query = \panix\mod\shop\models\Attribute::find();
                                 $query->where(['IN', 'name', array_keys($product['model']->eavAttributes)]);
-                                $query->displayOnList();
+                                $query->displayOnCart();
                                 $query->sort();
                                 $result = $query->all();
                                 // print_r($query);
                                 $s = $product['model']->eavAttributes;
                                 foreach ($result as $q) {
-                                    echo $q->title .' ';
-                                    echo $q->renderValue($s[$q->name]).' <br>';
+                                    echo $q->title . ' ';
+                                    echo $q->renderValue($s[$q->name]) . ' <br>';
                                 }
 
                                 ?>
                                 <?php
                                 // Display variant options
                                 if (!empty($product['variant_models'])) {
-                                    echo Html::beginTag('small', array('class' => 'cartProductOptions'));
+                                    echo Html::beginTag('small', ['class' => 'cartProductOptions']);
                                     foreach ($product['variant_models'] as $variant)
                                         echo ' - ' . $variant->productAttribute->title . ': <strong>' . $variant->option->value . '</strong><br/>';
                                     echo Html::endTag('small');
@@ -208,7 +208,6 @@ $formOrder = ActiveForm::begin([
     <div class="col-12">
         <?= Html::errorSummary($this->context->form, ['class' => 'alert alert-danger']) ?>
     </div>
-
 </div>
 <!--coupon code area start-->
 <div class="coupon_area">
