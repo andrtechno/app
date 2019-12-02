@@ -55,6 +55,13 @@ use panix\mod\shop\widgets\filtersnew\FiltersWidget;
         ?>
     </div>
 
+    <?php
+    if($this->description){
+        echo $this->description;
+    }else{
+        echo $this->text;
+    }
+    ?>
 
     <!--shop toolbar end-->
     <!--shop wrapper end-->

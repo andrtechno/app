@@ -3367,7 +3367,6 @@ button.btn-link.active{
 .label_product {
   position: absolute;
   top: 0;
-  left: 0;
   height: 22px;
   line-height: 20px;
   /*background: #ffd54c;
@@ -4423,7 +4422,7 @@ button.btn-link.active{
 .single_shipping {
   display: flex;
   justify-content: center;
-  padding: 15px 0;
+  padding: 15px;
   border-left: 1px solid #f0f0f0;
   width: 25%;
   float: left;

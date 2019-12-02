@@ -4,7 +4,7 @@ use panix\engine\Html;
 
 <tr data-image="<?= $model->getMainImageUrl('270x347') ?>" class="grid-table-row">
     <td>
-        <div class="photo"><?= Html::img($model->getMainImageUrl('270x347'), array('alt'=>$model->name)) ?></div>
+        <div class="photo"><?= Html::img($model->getMainImageUrl('270x347'), ['alt'=>$model->name]) ?></div>
         <div class="btn-group-vertical">
             <a href="#" class="btn btn-default btn-xs view_table_image">
                 <i class="fa fa-image"></i>

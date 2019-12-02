@@ -136,7 +136,8 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
 
                         <div class="col-12">
 
-                            <?php if (Yii::$app->session->allFlashes) { ?>
+                            <?php
+                            if (Yii::$app->session->allFlashes) { ?>
                                 <?php foreach (Yii::$app->session->allFlashes as $key => $message) {
                                     $key = ($key == 'error') ? 'danger' : $key;
                                     ?>

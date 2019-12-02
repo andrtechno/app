@@ -10,14 +10,14 @@ use yii\helpers\HtmlPurifier;
 
 <div class="single_product">
     <div class="product_name grid_name">
-        <h3><?= Html::a(Html::encode($model->name), $model->getUrl(), []) ?></h3>
+        <h3><?= Html::a(Html::encode($model->name), $model->getUrl(), ['data-pjax'=>0]) ?></h3>
         <?php if ($model->manufacturer) { ?>
-            <p class="manufacture_product"><?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), []) ?></p>
+            <p class="manufacture_product"><?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), ['data-pjax'=>0]) ?></p>
         <?php } ?>
     </div>
     <div class="product_thumb text-center">
         <?php
-        echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'primary_img']);
+        echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'primary_img','data-pjax'=>0]);
         //echo Html::a(Html::img('/uploads/new-image1.jpg', ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'secondary_img']);
 
         ?>

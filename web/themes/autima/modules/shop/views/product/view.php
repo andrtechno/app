@@ -50,7 +50,21 @@ $images = $model->getImages();
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div class="product-details-tab">
+                    <div class="label_product">
+                        <?php
+                        foreach ($model->labels() as $key => $label) {
+                            $options['class'] = 'badge badge-' . $label['class'].' '.$key;
+                            if (isset($label['title'])) {
+                                $options['data-toggle'] = 'tooltip';
+                                $options['title'] = $label['title'];
+                            }
 
+                            echo '<div>';
+                            echo Html::tag('span', $label['value'], $options);
+                            echo '</div>';
+                        }
+                        ?>
+                    </div>
 
                     <a id="main-image" style="max-height: 400px" class="d-flex align-items-center"
                        href="<?= $model->getMainImage()->url ?>"
@@ -161,6 +175,7 @@ $images = $model->getImages();
                         </ul>
                     </div>
                     <div class=" product_ratting">
+
                         <?php
                         echo \panix\engine\widgets\like\LikeWidget::widget([
                             'model' => $model

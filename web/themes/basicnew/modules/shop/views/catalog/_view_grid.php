@@ -23,12 +23,12 @@ use yii\helpers\HtmlPurifier;
 
     <div class="product-image d-flex justify-content-center align-items-center">
         <?php
-        echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => 'img-fluid loading']), $model->getUrl(), []);
+        echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => 'img-fluid loading']), $model->getUrl(), ['data-pjax'=>0]);
         //echo Html::link(Html::image(Yii::app()->createUrl('/site/attachment',array('id'=>33)), $data->name, array('class' => 'img-fluid')), $data->getUrl(), array());
         ?>
     </div>
     <div class="product-info">
-        <?= Html::a(Html::encode($model->name), $model->getUrl(), ['class' => 'product-title']) ?>
+        <?= Html::a(Html::encode($model->name), $model->getUrl(), ['class' => 'product-title','data-pjax'=>0]) ?>
     </div>
     <div class="">
 

@@ -6,31 +6,36 @@ use yii\helpers\HtmlPurifier;
 /**
  * @var \panix\mod\shop\models\Product $model
  */
+
+
 ?>
 
 <div class="single_product">
     <div class="product_name grid_name">
-        <h3><?= Html::a(Html::encode($model->name), $model->getUrl(), []) ?></h3>
+        <h3><?= Html::a(Html::encode($model->name), $model->getUrl(), ['data-pjax' => 0]) ?></h3>
         <?php if ($model->manufacturer) { ?>
-            <p class="manufacture_product"><?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), []) ?></p>
+            <p class="manufacture_product"><?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), ['data-pjax' => 0]) ?></p>
         <?php } ?>
     </div>
     <div class="product_thumb text-center">
         <?php
-        echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'primary_img']);
+        echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'primary_img', 'data-pjax' => 0]);
         //echo Html::a(Html::img('/uploads/new-image1.jpg', ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'secondary_img']);
 
         ?>
 
         <div class="label_product">
             <?php
-            foreach ($model->labels() as $label) {
+            // \panix\engine\CMS::dump($model->labels());die;
+            foreach ($model->labels() as $key => $label) {
+                $options['class'] = 'badge badge-' . $label['class'].' '.$key;
+                if (isset($label['title'])) {
+                    $options['data-toggle'] = 'tooltip';
+                    $options['title'] = $label['title'];
+                }
+
                 echo '<div>';
-                echo Html::tag('span', $label['value'], [
-                    'class' => 'badge badge-' . $label['class'],
-                    'data-toggle' => 'tooltip',
-                    // 'title' => $label['tooltip']
-                ]);
+                echo Html::tag('span', $label['value'], $options);
                 echo '</div>';
             }
             ?>
@@ -79,7 +84,7 @@ use yii\helpers\HtmlPurifier;
                                 <?= Yii::$app->currency->active['symbol'] ?>
                             </span>
                         </div>
-                        <?php } ?>
+                    <?php } ?>
                     <div>
                         <span class="current_price"><?= $model->priceRange() ?> <?= Yii::$app->currency->active['symbol'] ?></span>
                     </div>

@@ -9,14 +9,14 @@ zzzzzzzzzzzzz
             <div class="product-image">
                 <div class="image">
                     <?php
-                    echo Html::a(Html::img($model->getMainImage('340x265')->url, array('alt' => $model->name, 'class' => '2img-responsive')), $model->getUrl(), array('class' => ''));
+                    echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '2img-responsive']), $model->getUrl(), ['data-pjax'=>0]);
                     ?>
                 </div>
             </div>
         </div>
         <div class="col-sm-5">
             <div class="product-info">
-                <?= Html::a(Html::encode($model->name), $model->getUrl(), array('class' => 'product-title')) ?>
+                <?= Html::a(Html::encode($model->name), $model->getUrl(), ['class' => 'product-title','data-pjax'=>0]) ?>
             </div>
 
             <span class="product-review">
