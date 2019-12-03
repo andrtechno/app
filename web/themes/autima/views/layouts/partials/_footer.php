@@ -2,6 +2,9 @@
 use panix\engine\Html;
 use panix\engine\CMS;
 $config = Yii::$app->settings->get('contacts');
+
+
+
 ?>
 <!--call to action start-->
 <section class="call_to_action d-none">
@@ -94,6 +97,7 @@ $config = Yii::$app->settings->get('contacts');
                 <div class="col-12 text-center">
                     <div class="copyright_area">
                         <p>{copyright}</p>
+                        <p><?= number_format(Yii::getLogger()->elapsedTime * 1000) . ' ms';; ?></p>
                     </div>
                 </div>
             </div>

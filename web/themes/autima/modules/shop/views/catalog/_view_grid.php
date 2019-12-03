@@ -19,6 +19,7 @@ use yii\helpers\HtmlPurifier;
     </div>
     <div class="product_thumb text-center">
         <?php
+        //$model->getMainImage('340x265')->url
         echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'primary_img', 'data-pjax' => 0]);
         //echo Html::a(Html::img('/uploads/new-image1.jpg', ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'secondary_img']);
 
@@ -54,10 +55,10 @@ use yii\helpers\HtmlPurifier;
                  }*/
                 if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
                     echo '<li class="wishlist">';
-                    echo \panix\mod\wishlist\widgets\WishlistWidget::widget([
+                    echo \panix\mod\wishlist\widgets\WishListWidget::widget([
                         'pk' => $model->id,
                         'skin' => 'icon',
-                        'linkOptions' => ['class' => 'btn2 btn-wishlist2']
+                        'linkOptions' => ['class' => 'btn2 btn-wishlist']
                     ]);
                     echo '</li>';
                 }

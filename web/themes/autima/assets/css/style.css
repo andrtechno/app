@@ -35,10 +35,17 @@
 
 -----------------------------------------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800,800i");
+@import url("app.css");
 * {
   box-sizing: border-box;
 }
-
+/*.ui-menu .ui-menu-item-wrapper{
+  border:1px solid transparent;
+}
+.ui-menu .ui-state-focus,
+.ui-menu .ui-state-active{
+  margin: 0;
+}*/
 /* transition */
 /* flex */
 /* transform */
@@ -5509,9 +5516,10 @@ button.btn-link.active{
   background: #ffd54c;
   color: #ffffff;
 }
-.pagination ul li.current {
+.page-item.active .page-link {
   background: #ffd54c;
   color: #ffffff;
+  border-color: #ffd54c;
 }
 .pagination ul li.next {
   width: 40px;

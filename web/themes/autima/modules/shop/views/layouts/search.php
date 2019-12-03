@@ -3,7 +3,6 @@
 use panix\engine\Html;
 use panix\engine\widgets\Breadcrumbs;
 
-
 \app\web\themes\autima\ThemeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -16,16 +15,25 @@ use panix\engine\widgets\Breadcrumbs;
 </head>
 <body>
 <?php $this->beginBody() ?>
-<div class="wrap">
-    <?= $this->render('@theme/views/layouts/partials/_header'); ?>
-    <div class="container-fluid">
-        <?= $this->render('@theme/views/layouts/partials/_breadcrumbs'); ?>
 
-        <?= $content ?>
-
-
+<?= $this->render('@theme/views/layouts/partials/_header'); ?>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <?= $this->render('@theme/views/layouts/partials/_breadcrumbs'); ?>
+        </div>
     </div>
 </div>
+<!--shop  area start-->
+<div class="shop_area shop_reverse">
+    <div class="container">
+        <div class="row">
+            <?= $content ?>
+        </div>
+    </div>
+</div>
+<!--shop  area end-->
+
 
 <?= $this->render('@theme/views/layouts/partials/_footer'); ?>
 <?php $this->endBody() ?>

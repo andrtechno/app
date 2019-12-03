@@ -3,6 +3,10 @@
 
     //new WOW().init();
 
+    //$(function() {
+    //    $('img[data-src]').lazy();
+    //});
+
     /*---background image---*/
     function dataBackgroundImage() {
         $('[data-bgimg]').each(function () {

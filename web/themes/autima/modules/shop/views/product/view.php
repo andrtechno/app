@@ -53,7 +53,7 @@ $images = $model->getImages();
                     <div class="label_product">
                         <?php
                         foreach ($model->labels() as $key => $label) {
-                            $options['class'] = 'badge badge-' . $label['class'].' '.$key;
+                            $options['class'] = 'badge badge-' . $label['class'] . ' ' . $key;
                             if (isset($label['title'])) {
                                 $options['data-toggle'] = 'tooltip';
                                 $options['title'] = $label['title'];
@@ -78,8 +78,8 @@ $images = $model->getImages();
                         'target' => 'a[data-fancybox="gallery"]',
                         'options' => [
                             'onInit' => new \yii\web\JsExpression('function(){
-            console.log("dsad");
-        }')
+                                console.log("dsad");
+                            }')
                         ]
                     ]);
                     if (count($images) > 1) {
@@ -126,7 +126,7 @@ $images = $model->getImages();
                                     'alt' => $image->alt_title,
                                     'class' => 'img-fluid img-thumbnail'
                                 ]), $image->getUrl(), [
-                                    // 'data-fancybox' => 'gallery',
+                                    'data-fancybox' => 'gallery',
                                     'data-caption' => Html::encode($model->name),
                                     'data-img' => $image->getUrl('400x400'),
                                     'class' => 'thumb'
@@ -137,7 +137,7 @@ $images = $model->getImages();
                                     'alt' => $model->name,
                                     'class' => 'img-fluid img-thumbnail'
                                 ]), $model->video, [
-                                    // 'data-fancybox' => 'gallery',
+                                    'data-fancybox' => 'gallery',
                                     'data-caption' => Html::encode($model->name),
                                     'data-class' => 'video',
                                     'data-img' => $model->getVideoPreview('maxresdefault'),
@@ -269,7 +269,7 @@ $images = $model->getImages();
                             }*/
                             if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
                                 echo '<li class="wishlist">';
-                                echo \panix\mod\wishlist\widgets\WishlistWidget::widget([
+                                echo \panix\mod\wishlist\widgets\WishListWidget::widget([
                                     'pk' => $model->id,
                                     'skin' => 'icon',
                                     'linkOptions' => ['class' => '']

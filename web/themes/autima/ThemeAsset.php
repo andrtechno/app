@@ -22,6 +22,7 @@ class ThemeAsset extends AssetBundle
 
     public $js = [
         'slick/slick.min.js',
+        //'js/lazy/jquery.lazy.min.js',
         'js/main.js',
         'swiper/js/swiper.min.js',
     ];

@@ -120,7 +120,7 @@ use yii\helpers\HtmlPurifier;
                     <?php
                     if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
                         echo '<li class="wishlist">';
-                        echo \panix\mod\wishlist\widgets\WishlistWidget::widget([
+                        echo \panix\mod\wishlist\widgets\WishListWidget::widget([
                             'pk' => $model->id,
                             'skin' => 'icon',
                             'linkOptions' => ['class' => 'btn2 btn-wishlist2']

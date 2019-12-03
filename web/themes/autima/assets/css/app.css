@@ -12,3 +12,31 @@
     color:red;
     font-size: 80%;
 }
+
+#search-input-search{
+    position: absolute;
+    background: #fff;
+    border: 1px solid red;
+    z-index: 99999;
+    width: 100%;
+    display: none;
+}
+
+.loading,
+.pjax-loader{
+    position: relative;
+}
+.loading:before,
+.pjax-loader:before{
+    content: '';
+    background-image: url("../images/ajax.gif");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+}

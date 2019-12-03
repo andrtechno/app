@@ -13,21 +13,22 @@ echo \panix\engine\widgets\ListView::widget([
     'itemView' => $itemView,
     'emptyTextOptions'=>['class'=>'col alert alert-info text-center'],
     //'layout' => '{sorter}{summary}{items}{pager}',
-    'layout' => '{items}{pager}',
+    'layout' => '{items}<div class="col-12">{pager}</div>',
     'options' => ['class' => 'list-view clearfix row shop_wrapper ' . $itemView],
     'itemOptions' => ['class' => 'item '.$itemClass],
     /*'sorter' => [
         'class' => 'yii\widgets\LinkSorter',
         'attributes' => ['price', 'sku', 'created_at']
     ],*/
-    /*'pager' => [
-        'class' => \panix\wgt\scrollpager\ScrollPager::class,
-        'prevTemplate' => '<div class="'.$itemClass.' ias-trigger ias-trigger-prev" style="text-align: center; cursor: pointer;"><div class="single_product">{text}</div></div>',
-        'triggerTemplate' => '<div class="col-12 ias-trigger" style="text-align: center; cursor: pointer;"><div class="single_product">{text}</div></div>',
-        'spinnerTemplate' => '<div class="col-12 ias-spinner" style="text-align: center;"><div class="single_product"><img src="{src}" alt="" /></div>',
-        'noneLeftTemplate' => '<div class="'.$itemClass.' ias-noneleft" style="text-align: center;"><div class="single_product">{text}</div></div></div>',
-        'spinnerSrc' => $this->context->assetUrl . '/images/ajax.gif'
+    'pager' => [
+        'options'=>['class'=>'pagination justify-content-center']
+        //'class' => \panix\wgt\scrollpager\ScrollPager::class,
+        //'prevTemplate' => '<div class="'.$itemClass.' ias-trigger ias-trigger-prev" style="text-align: center; cursor: pointer;"><div class="single_product">{text}</div></div>',
+        //'triggerTemplate' => '<div class="col-12 ias-trigger" style="text-align: center; cursor: pointer;"><div class="single_product">{text}</div></div>',
+        //'spinnerTemplate' => '<div class="col-12 ias-spinner" style="text-align: center;"><div class="single_product"><img src="{src}" alt="" /></div>',
+        //'noneLeftTemplate' => '<div class="'.$itemClass.' ias-noneleft" style="text-align: center;"><div class="single_product">{text}</div></div></div>',
+        //'spinnerSrc' => $this->context->assetUrl . '/images/ajax.gif'
 
-    ],*/
+    ],
 ]);
 Pjax::end();
