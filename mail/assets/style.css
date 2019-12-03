@@ -1,13 +1,14 @@
-.header{
-    background: yellow;
-}
 
-.footer{
-    padding: 1rem;
+
+.footer-center{
     background-color: #343a40;
-    color:#fff;
+    padding: 1rem;
 }
-.footer a{
+.footer-bottom{
+    color: #fff;
+    padding: 1rem;
+}
+.footer-center a{
     color:#fff;
 }
 .btn,
@@ -16,6 +17,9 @@ a.btn{
     background: #343a40;
     color:#fff;
     text-decoration: none;
+}
+.btn-primary{
+    background: navy;
 }
 hr{
 

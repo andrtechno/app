@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+
 $request = Yii::$app->request;
 ?>
 <?php $this->beginPage() ?>
@@ -13,20 +14,32 @@ $request = Yii::$app->request;
             <?= file_get_contents(Yii::getAlias('@app/mail/assets').'/style.css'); ?>
         </style>
     </head>
-    <body style="width: 600px">
+    <body style="width: 100%">
     <?php $this->beginBody() ?>
-    <?= $content ?>
+    <table border="0" width="100%">
+<tr>
+    <td>
 
-    <hr/>
-    <p><strong class="test">IP address:</strong> <?= $request->userIP; ?></p>
-    <p><strong>UserAgent:</strong> <?= $request->userAgent; ?></p>
-    <div class="footer">
-        asdasdasdsadas
-        <a href="#">adssdadsa</a>
-    </div>
-    <div class="header">
-        asdasdasdsadas
-    </div>
+
+
+        <?= $content ?>
+
+        <hr/>
+        <p><strong class="test">IP address:</strong> <?= $request->userIP; ?></p>
+        <p><strong>UserAgent:</strong> <?= $request->userAgent; ?></p>
+        <div class="footer">
+
+            <div class="footer-center">
+                asdasdasdsadas
+                <a href="#">adssdadsa</a>
+            </div>
+            <div class="footer-bottom">
+                asdasdasdsadas
+            </div>
+        </div>
+    </td>
+</tr>
+    </table>
     <?php $this->endBody() ?>
     </body>
     </html>
