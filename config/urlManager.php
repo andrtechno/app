@@ -13,20 +13,33 @@ return [
     //    'class' => 'panix\engine\LanguageUrlRule' see ___LanguageUrlRule
     //],
     'normalizer' => [
-       'class' => 'yii\web\UrlNormalizer',
+        'class' => 'yii\web\UrlNormalizer',
         'action' => UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
     ],
     'rules' => [
-        '' => 'main/index',
-        'placeholder' => 'main/placeholder',
+        '' => 'site/index',
+        'placeholder' => 'site/placeholder',
+        'captcha' => 'site/captcha',
+        [
+            'pattern' => 'favicon',
+            'route' => 'site/favicon',
+            'suffix' => '.ico'
+        ],
+        [
+            'pattern' => 'favicon-<size:\d+>',
+            'route' => 'site/favicon',
+            'suffix' => '.png'
+        ],
+
+
 
         //'/admin' => 'admin/admin/default/index',
-       // 'admin/auth' => 'admin/auth/index',
-        ['pattern' => 'like/<type:(up|down)>/<id:\d+>', 'route' => 'main/like'],
+        // 'admin/auth' => 'admin/auth/index',
+        ['pattern' => 'like/<type:(up|down)>/<id:\d+>', 'route' => 'site/like'],
 
-       // ['pattern' => 'admin/app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
+        // ['pattern' => 'admin/app/<controller:\w+>', 'route' => 'admin/admin/<controller>/index'],
         //['pattern' => 'admin/app/<controller:\w+>/<action:[0-9a-zA-Z_\-]+>', 'route' => 'admin/admin/<controller>/<action>'],
-      //  ['pattern' => 'admin/<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
+        //  ['pattern' => 'admin/<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/<action>'],
         //['pattern' => 'admin/<module:\w+>', 'route' => '<module>/admin/default/index'],
         //['pattern' => 'admin/<module:\w+>/<controller:[0-9a-zA-Z_\-]+>', 'route' => '<module>/admin/<controller>/index'],
         //['pattern' => 'admin/<module:\w+>/<controller:[0-9a-zA-Z_\-]+>/<action:[0-9a-zA-Z_\-]+>/<page:\d+>', 'route' => '<module>/admin/<controller>/<action>'],

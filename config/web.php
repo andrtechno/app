@@ -10,7 +10,7 @@ $config = [
     'basePath' => dirname(__DIR__), //if in web dir
     //'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'panix\engine\controllers',
-    'defaultRoute' => 'main/index',
+    'defaultRoute' => 'site/index',
     'bootstrap' => [
         'plugins',
         'panix\engine\plugins\goaway\GoAway',
@@ -18,7 +18,7 @@ $config = [
         //'webcontrol'
     ],
     'controllerMap' => [
-        'main' => 'panix\engine\controllers\WebController',
+        'site' => 'panix\engine\controllers\WebController',
     ],
     'components' => [
         'plugins' => [
@@ -73,7 +73,7 @@ $config = [
         'errorHandler' => [
             //'class'=>'panix\engine\base\ErrorHandler'
             //'errorAction' => 'site/error',
-            'errorAction' => 'main/error',
+            'errorAction' => 'site/error',
             // 'errorView' => '@webroot/themes/basic/views/layouts/error.php'
         ],
 
