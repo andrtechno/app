@@ -3,7 +3,7 @@ Disallow: /placeholder
 Disallow: /admin/auth
 Disallow: /assets/
 Disallow: /themes/
-Disallow: /upgrade/
+Disallow: /cart/*
 
 Host: http://yii2.pixelion.com.ua
 
