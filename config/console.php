@@ -4,7 +4,7 @@ return [
     'id' => 'console',
     'basePath' => dirname(__DIR__),
     //'basePath' => dirname(__DIR__),
-    'bootstrap' => ['queue'], //'telegram',
+    //'bootstrap' => ['queue'], //'telegram',
     'controllerNamespace' => 'app\commands',
     'controllerMap' => [
         'sitemap' => [
