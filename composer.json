@@ -9,7 +9,7 @@
         "issues": "https://github.com/andrtechno/app/issues?state=open",
         "source": "https://github.com/andrtechno/app"
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "^2.0.16",
@@ -25,27 +25,19 @@
         "panix/mod-shop": "dev-master",
         "panix/mod-pages": "dev-master",
         "panix/mod-images": "dev-master",
-        "panix/mod-forum": "dev-master",
         "panix/mod-plugins": "dev-master",
         "panix/mod-rbac": "dev-master",
-        "panix/mod-sendpulse": "dev-master",
         "panix/mod-compare": "dev-master",
         "panix/mod-user": "dev-master",
         "panix/wgt-inputmask": "dev-master",
         "panix/wgt-bootstrap-select": "dev-master",
-        "panix/mod-office-presentation": "dev-master",
-        "yiisoft/yii2-queue": "^2.0@dev",
         "panix/mod-seo": "dev-master",
         "panix/mod-docs": "dev-master",
-        "panix/mod-telegram": "dev-master",
-        "panix/mod-projects-calc": "dev-master",
-        "tinymce/tinymce": "4.9.4",
         "panix/mod-banner": "dev-master",
         "giggsey/libphonenumber-for-php": "^8.0@dev",
         "panix/wgt-multiple-input": "dev-master",
         "panix/mod-contacts": "dev-master",
-        "panix/wgt-telinput": "dev-master",
-        "bower-asset/codemirror": "dev-master"
+        "panix/wgt-telinput": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2",
