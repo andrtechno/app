@@ -1,9 +1,5 @@
 <?php
 
-
-
-
-
 $db = YII_DEBUG ? dirname(__DIR__) . '/config/db_local.php' : dirname(__DIR__) . '/config/db.php';
 $config = [
     'id' => 'common',
@@ -41,13 +37,11 @@ $config = [
         ],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
-        'presentation' => ['class' => 'panix\mod\presentation\Module'],
         'compare' => ['class' => 'panix\mod\compare\Module'],
         'shop' => ['class' => 'panix\mod\shop\Module'],
         //'shop' => ['class' => 'app\modules\shop\Module'],
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
         'banner' => ['class' => 'panix\mod\banner\Module'],
-        'sendpulse' => ['class' => 'panix\mod\sendpulse\Module'],
         'contacts' => ['class' => 'panix\mod\contacts\Module'],
         'seo' => ['class' => 'panix\mod\seo\Module'],
         'discounts' => ['class' => 'panix\mod\discounts\Module'],
@@ -58,7 +52,6 @@ $config = [
         'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
         'delivery' => ['class' => 'panix\mod\delivery\Module'],
         'images' => ['class' => 'panix\mod\images\Module'],
-        'forum' => ['class' => 'panix\mod\forum\Module'],
         'cart' => ['class' => 'panix\mod\cart\Module'],
         'pages' => ['class' => 'panix\mod\pages\Module'],
     ],
