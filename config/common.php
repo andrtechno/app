@@ -22,8 +22,9 @@ $config = [
         'panix\engine\BootstrapModule'
     ],
     'controllerMap' => [
-        'main' => 'panix\engine\controllers\WebController',
+        'site' => 'panix\engine\controllers\WebController',
         'backend' => 'panix\engine\controllers\AdminController',
+        'maintenance'=>'panix\engine\maintenance\controllers\MaintenanceController'
     ],
     'modules' => [
         'plugins' => [
@@ -69,15 +70,10 @@ $config = [
         'img' => [
             'class' => 'panix\engine\components\ImageHandler',
         ],
-        'fcm' => [
-            'class' => 'understeam\fcm\Client',
-            'apiKey' => 'AIzaSyAbeTCpxK7OGu_lXZDSnJjV1ItkUwPOBbc', // Server API Key (you can get it here: https://firebase.google.com/docs/server/setup#prerequisites)
-        ],
-
         'curl' => ['class' => 'panix\engine\Curl'],
         'consoleRunner' => [
             'class' => 'panix\engine\components\ConsoleRunner',
-            'file' => '@my/path/to/yii' // or an absolute path to console file
+            'file' => '@app/cmd' // or an absolute path to console file
         ],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         'formatter' => ['class' => 'panix\engine\i18n\Formatter'],
@@ -92,21 +88,14 @@ $config = [
         ],
         'assetManager' => [
             'forceCopy' => YII_DEBUG,
-            // 'basePath'=>'@webroot/web/assets',
-            'bundles' => [
+           // 'bundles' => [
                 //'yii\jui\JuiAsset' => ['css' => []],
-                'yii\jui\JuiAsset' => [
+               // 'yii\jui\JuiAsset' => [
                     //'js' => [
                     //'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
                     //]
-                ],
-                /*'panix\lib\google\maps\MapAsset' => [
-                    'options' => [
-                        'key' => '...',
-                    ]
-                ]*/
-            ],
-            //'linkAssets' => true,
+              //  ],
+           // ],
             'appendTimestamp' => true
         ],
         'plugins' => [
@@ -138,7 +127,8 @@ $config = [
         ],
         'session' => [
             'class' => '\panix\engine\web\DbSession',
-            'timeout' => 3600
+            'timeout' => 3600,
+            'cookieParams' => ['httponly' => true, 'lifetime' => 3600 * 4],
             //'class' => '\yii\web\DbSession',
             //'writeCallback'=>['panix\engine\web\DbSession', 'writeFields']
         ],

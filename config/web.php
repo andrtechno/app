@@ -17,9 +17,22 @@ $config = [
         'panix\engine\widgets\webcontrol\WebInlineControl',
         //'webcontrol'
     ],
-    'controllerMap' => [
-        'site' => 'panix\engine\controllers\WebController',
-    ],
+
+    'on beforeRequest' => function () {
+
+        if (false) {
+            Yii::$app->catchAll = [
+                'maintenance/expired',
+                'message' => 'Закончился период аренды интернет-магазина'
+            ];
+        }
+        if (Yii::$app->settings->get('app','site_close') && false) {
+            Yii::$app->catchAll = [
+                'maintenance/index',
+            //    'message' => 'Закончился период аренды интернет-магазина'
+            ];
+        }
+    },
     'components' => [
         'plugins' => [
             'class' => 'panix\mod\plugins\components\PluginsManager',
@@ -30,7 +43,7 @@ $config = [
             'shortcodesIgnoreBlocks' => [
                 '<pre[^>]*>' => '<\/pre>',
                 '<a[^>]*>' => '<\/a>',
-               // '<div class="content[^>]*>' => '<\/div>',
+                // '<div class="content[^>]*>' => '<\/div>',
             ]
         ],
         'sphinx' => [
@@ -72,14 +85,10 @@ $config = [
 
         'errorHandler' => [
             //'class'=>'panix\engine\base\ErrorHandler'
-            //'errorAction' => 'site/error',
             'errorAction' => 'site/error',
             // 'errorView' => '@webroot/themes/basic/views/layouts/error.php'
         ],
-
-
         'urlManager' => require(__DIR__ . '/urlManager.php'),
-
     ],
     //'on beforeRequest' => ['class' => 'panix\engine\base\ThemeView']
     /*'as access' => [
@@ -98,14 +107,9 @@ $config = [
 ];
 
 if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
     $config['modules']['debug']['class'] = 'yii\debug\Module';
-    // $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
     $config['modules']['debug']['traceLine'] = function ($options, $panel) {
         $filePath = $options['file'];
-        // $filePath = str_replace(Yii::$app->basePath, 'file://~/path/to/your/backend', $filePath);
-        // $filePath = str_replace(dirname(Yii::$app->basePath) . '/common', 'file://~/path/to/your/common', $filePath);
-        /// $filePath = str_replace(Yii::$app->vendorPath, 'file://~/path/to/your/vendor', $filePath);
         return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
     };
     $config['modules']['debug']['panels'] = [
