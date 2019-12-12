@@ -26,10 +26,10 @@ $config = [
                 'message' => 'Закончился период аренды интернет-магазина'
             ];
         }
-        if (Yii::$app->settings->get('app','site_close') && false) {
+        if (Yii::$app->settings->get('app', 'site_close') && false) {
             Yii::$app->catchAll = [
                 'maintenance/index',
-            //    'message' => 'Закончился период аренды интернет-магазина'
+                //    'message' => 'Закончился период аренды интернет-магазина'
             ];
         }
     },
@@ -112,9 +112,9 @@ if (YII_ENV_DEV) {
         $filePath = $options['file'];
         return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
     };
-    $config['modules']['debug']['panels'] = [
-        'queue' => \yii\queue\debug\Panel::class,
-    ];
+    //$config['modules']['debug']['panels'] = [
+    //    'queue' => \yii\queue\debug\Panel::class,
+    //];
     //$config['modules']['debug']['dataPath'] = '@runtime/debug';
     //$config['bootstrap'][] = 'gii';
     //$config['modules']['gii'] = 'yii\gii\Module';
