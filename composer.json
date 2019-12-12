@@ -30,7 +30,6 @@
         "panix/mod-compare": "dev-master",
         "panix/mod-user": "dev-master",
         "panix/mod-seo": "dev-master",
-        "panix/mod-docs": "dev-master",
         "panix/mod-banner": "dev-master",
         "giggsey/libphonenumber-for-php": "^8.0@dev",
         "panix/mod-contacts": "dev-master"
