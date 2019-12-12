@@ -22,10 +22,6 @@ return [
         ]
     ],
     'components' => [
-        'queue' => [
-            'class' => \yii\queue\file\Queue::class,
-            'as log' => \yii\queue\LogBehavior::class,
-        ],
         'sitemap' => [
             'class' => 'app\modules\sitemap\Sitemap',
             'models' => [
