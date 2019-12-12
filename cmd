@@ -3,7 +3,7 @@
 
 date_default_timezone_set("UTC");
 
-if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1') {
+if ($_SERVER['REMOTE_ADDR'] == '127.0.0.12') {
     defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_ENV') or define('YII_ENV', 'dev');
 } else {
