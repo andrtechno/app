@@ -29,15 +29,11 @@
         "panix/mod-rbac": "dev-master",
         "panix/mod-compare": "dev-master",
         "panix/mod-user": "dev-master",
-        "panix/wgt-inputmask": "dev-master",
-        "panix/wgt-bootstrap-select": "dev-master",
         "panix/mod-seo": "dev-master",
         "panix/mod-docs": "dev-master",
         "panix/mod-banner": "dev-master",
         "giggsey/libphonenumber-for-php": "^8.0@dev",
-        "panix/wgt-multiple-input": "dev-master",
-        "panix/mod-contacts": "dev-master",
-        "panix/wgt-telinput": "dev-master"
+        "panix/mod-contacts": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2",
