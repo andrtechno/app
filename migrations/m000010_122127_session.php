@@ -24,6 +24,7 @@ class m000010_122127_session extends Migration
             'ip' => $this->string(100),
             'user_type' => $this->string(50)->notNull(),
             'user_name' => $this->string(100)->notNull(),
+            'user_agent' => $this->string(255)->null(),
             'created_at' => $this->timestamp('CURRENT_TIMESTAMP')
         ]);
         $this->createIndex('user_id', Yii::$app->session->sessionTable, 'user_id');
