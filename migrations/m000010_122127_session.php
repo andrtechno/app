@@ -13,11 +13,9 @@ use panix\engine\db\Migration;
 class m000010_122127_session extends Migration
 {
 
-    public $tableName = '{{%session}}';
-
     public function up()
     {
-        $this->createTable($this->tableName, [
+        $this->createTable(Yii::$app->session->sessionTable, [
             'id' => \yii\db\Schema::TYPE_CHAR . '(40) NOT NULL',
             'user_id' => $this->integer()->null()->unsigned(),
             'expire' => $this->integer()->notNull(),
@@ -25,15 +23,16 @@ class m000010_122127_session extends Migration
             'data' => 'LONGBLOB',
             'ip' => $this->string(100),
             'user_type' => $this->string(50)->notNull(),
-            'user_name' => $this->string(100)->notNull()
+            'user_name' => $this->string(100)->notNull(),
+            'created_at' => $this->timestamp('CURRENT_TIMESTAMP')
         ]);
         //$this->createIndex('id', $this->tableName, 'id');
-        $this->addPrimaryKey('id',$this->tableName,'id');
+        $this->addPrimaryKey('id', Yii::$app->session->sessionTable, 'id');
     }
 
     public function down()
     {
-        $this->dropTable($this->tableName);
+        $this->dropTable(Yii::$app->session->sessionTable);
     }
 
 }
