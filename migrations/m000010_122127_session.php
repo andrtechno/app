@@ -26,7 +26,7 @@ class m000010_122127_session extends Migration
             'user_name' => $this->string(100)->notNull(),
             'created_at' => $this->timestamp('CURRENT_TIMESTAMP')
         ]);
-        //$this->createIndex('id', $this->tableName, 'id');
+        $this->createIndex('user_id', Yii::$app->session->sessionTable, 'user_id');
         $this->addPrimaryKey('id', Yii::$app->session->sessionTable, 'id');
     }
 
