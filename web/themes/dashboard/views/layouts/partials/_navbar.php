@@ -8,7 +8,7 @@ use panix\mod\admin\models\Notifications;
 ?>
 <nav class="navbar navbar-expand-lg fixed-top bg-dark">
 
-    <a class="navbar-brand" href="/admin"><span class="d-none d-md-block"><?= strtoupper(Yii::$app->name); ?></span></a>
+    <?= Html::a('<span class="d-none d-md-block">PIXELION</span>', ['/admin'], ['class' => 'navbar-brand']); ?>
 
     <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar">
         <span></span>
@@ -99,7 +99,7 @@ use panix\mod\admin\models\Notifications;
                 'badgeOptions' => ['class' => 'navbar-badge-notifications badge badge-success'],
                 'badge' => $notificationsCount,
                 //'items' => $notificationItems,
-                'items' => '<div id="dropdown-notification" class="dropdown-menu dropdown-menu-right">'.$this->render('@admin/views/admin/default/notifications', ['notifications' => $notifications]).'</div>',
+                'items' => '<div id="dropdown-notification" class="dropdown-menu dropdown-menu-right">' . $this->render('@admin/views/admin/default/notifications', ['notifications' => $notifications]) . '</div>',
                 'dropdownOptions' => ['id' => 'dropdown-notification']
             ],
             [
