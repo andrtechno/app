@@ -15,7 +15,7 @@ class m000010_122127_session extends Migration
 
     public function up()
     {
-        $this->createTable(Yii::$app->session->sessionTable, [
+        $this->createTable('{{%session}}', [
             'id' => \yii\db\Schema::TYPE_CHAR . '(40) NOT NULL',
             'user_id' => $this->integer()->null()->unsigned(),
             'expire' => $this->integer()->notNull(),
@@ -25,15 +25,15 @@ class m000010_122127_session extends Migration
             'user_type' => $this->string(50)->notNull(),
             'user_name' => $this->string(100)->notNull(),
             'user_agent' => $this->string(255)->null(),
-            'created_at' => $this->timestamp('CURRENT_TIMESTAMP')
+            'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')
         ]);
-        $this->createIndex('user_id', Yii::$app->session->sessionTable, 'user_id');
-        $this->addPrimaryKey('id', Yii::$app->session->sessionTable, 'id');
+        $this->createIndex('user_id', '{{%session}}', 'user_id');
+        $this->addPrimaryKey('id', '{{%session}}', 'id');
     }
 
     public function down()
     {
-        $this->dropTable(Yii::$app->session->sessionTable);
+        $this->dropTable('{{%session}}');
     }
 
 }
