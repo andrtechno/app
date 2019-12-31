@@ -20,17 +20,17 @@ return [
         '' => 'site/index',
         'placeholder' => 'site/placeholder',
         'captcha' => 'site/captcha',
-        [
-            'pattern' => 'favicon',
-            'route' => 'site/favicon',
-            'suffix' => '.ico'
-        ],
+
         [
             'pattern' => 'favicon-<size:\d+>',
             'route' => 'site/favicon',
             'suffix' => '.png'
         ],
-
+        [
+            'pattern' => 'favicon',
+            'route' => 'site/favicon',
+            'suffix' => '.ico'
+        ],
 
 
         //'/admin' => 'admin/admin/default/index',
