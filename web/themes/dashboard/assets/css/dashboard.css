@@ -113,6 +113,11 @@
   border: 0;
 }
 
+.ui-button:hover,
+.ui-button:focus {
+  border: 1px solid #999999;
+}
+
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
@@ -353,7 +358,7 @@
   text-align: right;
 }
 .ui-dialog .ui-dialog-buttonset button {
-  margin-left: 1rem;
+  margin: .2rem;
 }
 .ui-dialog .ui-dialog-buttonpane {
   margin: 0;
