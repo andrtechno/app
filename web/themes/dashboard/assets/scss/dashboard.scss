@@ -18,6 +18,23 @@ code,
 .form-text {
   font-size: inherit;
 }
+@media (min-width: 992px) {
+
+  .table-responsive{
+    max-height:600px;
+  }
+  .table-responsive thead tr th,
+  .table-responsive thead tr td{
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .table-responsive thead tr td{
+    top: 32px;
+  }
+}
 
 /*
 form .form-group input.form-control,

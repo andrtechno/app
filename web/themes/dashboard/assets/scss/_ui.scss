@@ -20,14 +20,7 @@ $ui-spinner-button-color: $ui-widget-border-color;
   background: none;
 }
 
-.ui-button .ui-icon,
-.ui-widget-header .ui-icon,
-.ui-icon,
-.ui-widget-content .ui-icon,
-.ui-state-hover .ui-icon,
-.ui-state-focus .ui-icon,
-.ui-button:hover .ui-icon,
-.ui-button:focus .ui-icon {
+.ui-dialog-titlebar-close .ui-button-icon{
   background: none;
 }
 
@@ -128,10 +121,7 @@ $ui-spinner-button-color: $ui-widget-border-color;
   font-weight: 300;
   border: 0;
 }
-.ui-button:hover,
-.ui-button:focus{
-  border: 1px solid #999999;
-}
+
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
@@ -376,7 +366,7 @@ $ui-spinner-button-color: $ui-widget-border-color;
     padding: 0;
     text-align: right;
     button {
-      margin: .2rem;
+      margin-left: 1rem;
     }
   }
 
