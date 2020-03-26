@@ -17,6 +17,7 @@ $config = [
         'maintenanceMode',
         'panix\engine\BootstrapModule'
     ],
+
     'controllerMap' => [
         'site' => 'panix\engine\controllers\WebController',
         'backend' => 'panix\engine\controllers\AdminController',
@@ -35,6 +36,7 @@ $config = [
             //    'class' => panix\mod\rbac\filters\AccessControl::class
             //],
         ],
+        'stats' => ['class' => 'panix\mod\stats\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         'compare' => ['class' => 'panix\mod\compare\Module'],
@@ -54,6 +56,7 @@ $config = [
         'images' => ['class' => 'panix\mod\images\Module'],
         'cart' => ['class' => 'panix\mod\cart\Module'],
         'pages' => ['class' => 'panix\mod\pages\Module'],
+        'news' => ['class' => 'panix\mod\news\Module'],
     ],
     'components' => [
         'authManager' => [
@@ -126,6 +129,7 @@ $config = [
             ],
         ],
         'session' => [
+
             'class' => '\panix\engine\web\DbSession',
             'timeout' => 3600,
             'cookieParams' => ['httponly' => true, 'lifetime' => 3600 * 4],
@@ -145,7 +149,6 @@ $config = [
         'mailer' => [
             'class' => 'panix\engine\Mailer',
             'htmlLayout' => 'layouts/html'
-            //  'class' => 'yii\swiftmailer\Mailer',
         ],
         'log' => ['class'=>'panix\engine\log\Dispatcher'],
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],

@@ -26,6 +26,7 @@ $config = [
                 'message' => 'Закончился период аренды интернет-магазина'
             ];
         }
+
         if (Yii::$app->settings->get('app', 'site_close') && false) {
             Yii::$app->catchAll = [
                 'maintenance/index',
