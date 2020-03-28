@@ -3,8 +3,11 @@ use panix\engine\Html;
 use \panix\mod\admin\widgets\sidebar\BackendNav;
 //use panix\engine\widgets\langSwitcher\LangSwitcher;
 use panix\engine\CMS;
-use panix\mod\admin\models\Notifications;
+use panix\mod\admin\models\Notification;
 
+/**
+ * @var \yii\web\View $this
+ */
 ?>
 <nav class="navbar navbar-expand-lg fixed-top bg-dark">
 
@@ -65,10 +68,10 @@ use panix\mod\admin\models\Notifications;
     // print_r($langItems);die;
 
 
-    $notifications = Notifications::find()->read([Notifications::STATUS_NO_READ, Notifications::STATUS_NOTIFY])->limit(5)->all();
+    $notifications = Notification::find()->limit(5)->orderBy(['id'=>SORT_DESC])->all();
 
-    $notificationsCount = Notifications::find()
-        ->read([Notifications::STATUS_NO_READ, Notifications::STATUS_NOTIFY])
+    $notificationsCount = Notification::find()
+        ->read([Notification::STATUS_NO_READ, Notification::STATUS_NOTIFY])
         ->count();
 
 
@@ -90,17 +93,18 @@ use panix\mod\admin\models\Notifications;
         ],
         'items' => [
             [
-                'label' => Html::icon('user') . ' ' . Yii::$app->user->displayName,
+                'label' => Html::icon('user-outline') . ' ' . Yii::$app->user->displayName,
                 'url' => ['/site/index']
             ],
             [
-                'label' => Html::icon('notification'),
+                'label' => Html::icon('notification-outline'),
                 'url' => '#',
+                'options'=>['id'=>'dropdown-notification'],
                 'badgeOptions' => ['class' => 'navbar-badge-notifications badge badge-success'],
                 'badge' => $notificationsCount,
                 //'items' => $notificationItems,
-                'items' => '<div id="dropdown-notification" class="dropdown-menu dropdown-menu-right">' . $this->render('@admin/views/admin/default/notifications', ['notifications' => $notifications]) . '</div>',
-                'dropdownOptions' => ['id' => 'dropdown-notification']
+                'items' => '<div id="dropdown-notification-container" class="dropdown-menu dropdown-menu-right">' . $this->render('@admin/views/admin/notification/_notifications', ['notifications' => $notifications]) . '</div>',
+                'dropdownOptions' => ['id' => 'dropdown-notification-container']
             ],
             [
                 'label' => Html::icon('home'),
@@ -123,10 +127,11 @@ use panix\mod\admin\models\Notifications;
     ]);
     ?>
 
-
+    <span class="wave wave-danger"></span>
+    <span class="dot"></span>
     <!--<ul class="navbar-right nav">
         <li class="nav-item">
-            <?= Html::a(Html::icon('user') . ' ' . Yii::$app->user->displayName, '/', ['class' => 'nav-link']); ?>
+            <?= Html::a(Html::icon('user-outline') . ' ' . Yii::$app->user->displayName, '/', ['class' => 'nav-link']); ?>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" aria-haspopup="true"
@@ -162,3 +167,15 @@ use panix\mod\admin\models\Notifications;
     </ul>-->
 
 </nav>
+<?php
+$this->registerJs("
+$('#dropdown-notification').on('show.bs.dropdown', function () {
+    $.ajax({
+        url:'/admin/app/notification/read',
+        type:'POST',
+        success:function(){
+        
+        }
+    });
+})
+");

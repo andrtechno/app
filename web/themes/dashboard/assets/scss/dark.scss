@@ -288,7 +288,13 @@ a:hover {
   color: lighten($primary_text_color, 15%);
   background-color: lighten(rgba(0, 0, 0, 0.2), 10);
 }
-
+.navbar-nav > li > a{
+  border-bottom: 3px solid transparent;
+}
+.navbar-nav > li:hover > a,
+.navbar-nav > li.show > a{
+  border-bottom: 3px solid red;
+}
 .sidebar-nav li.active a:hover i,
 .sidebar-nav li a:focus i {
   color: $primary_text_color;

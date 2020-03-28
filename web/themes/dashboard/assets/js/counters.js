@@ -17,13 +17,13 @@ $(function () {
 
 
 
-            $('#dropdown-notification').html(data.content);
+            $('#dropdown-notification-container').html(data.content);
 
             $.each(data.count, function (index, value) {
                 if (value > 0) {
-                    $('.navbar-badge-' + index).html(value).show();
+                    $('.navbar-badge-' + index).html(value);
                 } else {
-                    $('.navbar-badge-' + index).html(value).hide();
+                    $('.navbar-badge-' + index).html(value);
                 }
             });
             if (data.notify) {
