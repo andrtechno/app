@@ -103,7 +103,7 @@ $this->registerJs("
       echo Nav::widget([
       'options' => ['class' => 'navbar-nav navbar-right'],
       'items' => [
-      ['label' => Yii::t('app','HOME'), 'url' => ['/site/index']],
+      ['label' => Yii::t('app/default','HOME'), 'url' => ['/site/index']],
       ['label' => 'About', 'url' => ['/site/about']],
       ['label' => 'Contact', 'url' => ['/site/contact']],
       ['label' => 'User', 'url' => ['/user']],

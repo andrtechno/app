@@ -43,7 +43,7 @@ use yii\helpers\HtmlPurifier;
                     <?php //$this->widget('ext.rating.StarRating', array('model' => $model, 'readOnly' => true)); ?>
                     <br/>
                     <span class="product-review">
-                <a href="<?= \yii\helpers\Url::to($model->getUrl()) ?>#comments_tab">(<?= Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]); ?>
+                <a href="<?= \yii\helpers\Url::to($model->getUrl()) ?>#comments_tab">(<?= Yii::t('app/default', 'REVIEWS', ['n' => $model->commentsCount]); ?>
                     )</a>
             </span>
                 </div>
@@ -72,7 +72,7 @@ use yii\helpers\HtmlPurifier;
 
                         <?php
                         if (Yii::$app->hasModule('discounts')) {
-                            if ($model->appliedDiscount) {
+                            if ($model->hasDiscount) {
                                 ?>
                                 <span class="price price-discount">
                                 <span><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?></span>

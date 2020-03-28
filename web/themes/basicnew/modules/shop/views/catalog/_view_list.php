@@ -20,13 +20,13 @@ zzzzzzzzzzzzz
             </div>
 
             <span class="product-review">
-                <a href="<?= \yii\helpers\Url::to($model->getUrl()) ?>#comments_tab">(<?= Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]); ?>
+                <a href="<?= \yii\helpers\Url::to($model->getUrl()) ?>#comments_tab">(<?= Yii::t('app/default', 'REVIEWS', ['n' => $model->commentsCount]); ?>
                     )</a>
             </span>
 
             <div class="product-label">
                 <?php
-                if ($model->appliedDiscount) {
+                if ($model->hasDiscount) {
                     ?>
                     <div class="product-label-tag sale"><span>- <?= $model->discountSum ?></span></div>
 
@@ -39,7 +39,7 @@ zzzzzzzzzzzzz
             <div class="product-price">
                 <?php
                 if (Yii::$app->hasModule('discounts')) {
-                    if ($model->appliedDiscount) {
+                    if ($model->hasDiscount) {
                         ?>
                         <span class="price price-discount">
                                 <span><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?></span>

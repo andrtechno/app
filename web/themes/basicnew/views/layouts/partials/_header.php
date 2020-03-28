@@ -162,7 +162,7 @@ $config = Yii::$app->settings->get('contacts');
                 <div class="header-phones ml-auto mr-auto mb-3 mb-md-0">
                     <?php if (isset($config->phone)) { ?>
                         <?php foreach ($config->phone as $phone) { ?>
-                            <?= Html::tel($phone['number'], ['class' => 'mb-2 mt-2 phone h5 ' . CMS::slug(CMS::phoneOperator($phone['number']))], '($2) $3-$4-$5'); ?>
+                            <?= Html::tel($phone['number'], ['class' => 'mb-2 mt-2 phone h5 ' . CMS::slug(CMS::phoneOperator($phone['number']))]); ?>
                         <?php } ?>
                     <?php } ?>
                 </div>
@@ -223,7 +223,7 @@ $config = Yii::$app->settings->get('contacts');
                                                      id="pills-<?= $data['key']; ?>" role="tabpanel"
                                                      aria-labelledby="pills-tab-<?= $data['key']; ?>">
 
-                                                    <?php if ($data['children']) { ?>
+                                                    <?php if (isset($data['children'])) { ?>
                                                         <?php foreach ($data['children'] as $item) { ?>
                                                             <?= Html::a($item['title'] . ' (' . $item['totalCount'] . ')', $item['url'], [
                                                                 'class' => 'dropdown-item',

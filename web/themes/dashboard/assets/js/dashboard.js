@@ -1,7 +1,7 @@
 function footerCssPadding(selector) {
     $('.footer').css({'padding-left': ($(selector).hasClass('active')) ? 250 : 0});
 }
-function changeCSS(cssFile, cssLinkIndex) {
+function changeCSS2(cssFile, cssLinkIndex) {
 
     var oldlink = document.getElementsByTagName("link").item(cssLinkIndex);
 
@@ -9,8 +9,15 @@ function changeCSS(cssFile, cssLinkIndex) {
     newlink.setAttribute("rel", "stylesheet");
     newlink.setAttribute("type", "text/css");
     newlink.setAttribute("href", cssFile);
-
+    console.log(oldlink);
+    $.each($('head').find("link"),function(i,o){
+        console.log(o);
+    });
     document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+}
+
+function changeCSS(cssFile) {
+    $('head').find("link[data-theme='1']").last().attr('href',cssFile);
 }
 $(function () {
     $('[data-toggle="popover"]').popover({

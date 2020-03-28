@@ -134,8 +134,8 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                             <?= $this->render('partials/_addonsMenu'); ?>
                         </div>
 
-                        <a href="#" onclick="changeCSS('<?= $asset->baseUrl;?>/css/dark.css', 8);">dark</a>
-                        <a href="#" onclick="changeCSS('<?= $asset->baseUrl;?>/css/light.css', 8);">light</a>
+                        <a href="#" onclick="changeCSS('<?= $asset->baseUrl;?>/css/dark.css');">dark</a>
+                        <a href="#" onclick="changeCSS('<?= $asset->baseUrl;?>/css/light.css');">light</a>
                         <div class="col-12">
 
                             <?php

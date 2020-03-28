@@ -30,9 +30,11 @@ class AdminAsset extends AssetBundle
         'app\web\themes\dashboard\AdminCountersAsset',
 
     ];
+    public $cssOptions = ['data-theme' => 1];
 
     public function init()
     {
+
         $this->sourcePath = __DIR__ . '/assets';
         parent::init();
     }

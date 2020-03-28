@@ -127,17 +127,23 @@ echo \panix\ext\fancybox\Fancybox::widget([
                         <?= Html::encode(($this->h1) ? $this->h1 : $model->name); ?>
                     </h1>
                 </div>
+
+
                 <?php
 
-                if ($prev = $model->getPrev()->one()) {
-                    echo Html::a('prev ' . $prev->name, $prev->getUrl(), ['class' => 'btn btn-secondary']);
+                /**
+                 * @var $prev \panix\mod\shop\models\Product
+                 * @var $next \panix\mod\shop\models\Product
+                 */
+                if ($prev = $model->getPrev(['switch'=>1, 'main_category_id' => $model->main_category_id])->one()) {
+                    echo Html::a(Html::icon('arrow-left'), $prev->getUrl(), ['title' => $prev->name]);
                 }
-                if ($next = $model->getNext()->one()) {
-                    echo Html::a($next->name . ' next', $next->getUrl(), ['class' => 'btn btn-secondary']);
+                if ($next = $model->getNext(['switch'=>1, 'main_category_id' => $model->main_category_id])->one()) {
+                    echo Html::a(Html::icon('arrow-right'), $next->getUrl(), ['title' => $next->name]);
                 }
-
                 ?>
-                <?php if (Yii::$app->hasModule('discounts') && $model->appliedDiscount) { ?>
+
+                <?php if (Yii::$app->hasModule('discounts') && $model->hasDiscount) { ?>
                     <?= panix\mod\discounts\widgets\countdown\Countdown::widget(['model' => $model]) ?>
                 <?php } ?>
                 <?= $model->beginCartForm(); ?>
@@ -155,7 +161,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                         <div class="col-sm-9 mb-2">
                             <div class="reviews">
                                 <a href="#w1-tab1" data-tabid="#comments"
-                                   data-toggle="tab">(<?= Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]) ?>
+                                   data-toggle="tab">(<?= Yii::t('app/default', 'REVIEWS', ['n' => $model->commentsCount]) ?>
                                     )</a>
                             </div>
                         </div>
@@ -164,7 +170,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                             <div class="col-sm-3 mb-2"><?= $model->getAttributeLabel('sku') ?>:</div>
                             <div class="col-sm-9 mb-2"><?= Html::encode($model->sku); ?></div>
                         <?php } ?>
-                        <?php if ($model->manufacturer) { ?>
+                        <?php if ($model->manufacturer_id) { ?>
                             <?php /*Yii::app()->clientScript->registerScript('popover.manufacturer', "$('.manufacturer-popover').popover({
                                     html: true,
                                     trigger: 'focus',
@@ -204,7 +210,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
                         <div class="col-sm-6">
                             <div class="price-box">
 
-                                <?php if (Yii::$app->hasModule('discounts') && $model->appliedDiscount) { ?>
+                                <?php if (Yii::$app->hasModule('discounts') && $model->hasDiscount) { ?>
                                     <div class=" mb-3">
                                     <span class="price price-discount">
                                         <del><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice, $model->currency_id)) ?></del> <sub><?= Yii::$app->currency->active['symbol'] ?></sub>
@@ -356,12 +362,12 @@ echo \panix\ext\fancybox\Fancybox::widget([
                 }
                 if (Yii::$app->hasModule('comments')) {
                     $tabs[] = [
-                        'label' => Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]),
+                        'label' => Yii::t('app/default', 'REVIEWS', ['n' => $model->commentsCount]),
                         'content' => $this->render('tabs/_comments', ['model' => $model]),
                         'options' => ['id' => 'comments'],
                     ];
                     /* $tabs[] = [
-                         'label' => Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]),
+                         'label' => Yii::t('app/default', 'REVIEWS', ['n' => $model->commentsCount]),
                          //'url' => ['/shop/product/comments', 'slug' => $model->slug,'tab'=>'comments'],
                          'content' => 'empty',
                          'options' => ['id' => 'comments','data-url'=>\yii\helpers\Url::to(['/shop/product/comments', 'slug' => $model->slug,'tab'=>'comments'])],
