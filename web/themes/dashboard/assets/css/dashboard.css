@@ -515,6 +515,10 @@
   font-weight: normal;
 }
 
+.navbar .badge {
+  border-radius: 10px;
+}
+
 .badge-success {
   background-color: #35cc62;
 }
@@ -1130,6 +1134,12 @@ a:hover,
 .grid-view .has-error .badge {
   position: absolute;
   z-index: 1;
+}
+
+.navbar .badge {
+  width: 1rem;
+  height: 1rem;
+  padding: 3px 5px !important;
 }
 
 .btn.load {
@@ -3096,6 +3106,251 @@ h1,
 
 .badge-light {
   background-color: #e0e6ea;
+}
+
+.badge:hover {
+  animation: none;
+}
+
+.badge-pulse-success {
+  position: absolute;
+  animation: badge-pulse-success 2s infinite;
+}
+
+@-webkit-keyframes badge-pulse-success {
+  0% {
+    -webkit-box-shadow: 0 0 0 rgba(53, 204, 98, 0.6);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(53, 204, 98, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(53, 204, 98, 0);
+  }
+}
+@keyframes badge-pulse-success {
+  0% {
+    -moz-box-shadow: 0 0 0 rgba(53, 204, 98, 0.6);
+    box-shadow: 0 0 0 rgba(53, 204, 98, 0.6);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(53, 204, 98, 0);
+    box-shadow: 0 0 0 10px rgba(53, 204, 98, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(53, 204, 98, 0);
+    box-shadow: 0 0 0 0 rgba(53, 204, 98, 0);
+  }
+}
+.badge-pulse-danger {
+  position: absolute;
+  animation: badge-pulse-danger 2s infinite;
+}
+
+@-webkit-keyframes badge-pulse-danger {
+  0% {
+    -webkit-box-shadow: 0 0 0 rgba(250, 101, 87, 0.6);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(250, 101, 87, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(250, 101, 87, 0);
+  }
+}
+@keyframes badge-pulse-danger {
+  0% {
+    -moz-box-shadow: 0 0 0 rgba(250, 101, 87, 0.6);
+    box-shadow: 0 0 0 rgba(250, 101, 87, 0.6);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(250, 101, 87, 0);
+    box-shadow: 0 0 0 10px rgba(250, 101, 87, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(250, 101, 87, 0);
+    box-shadow: 0 0 0 0 rgba(250, 101, 87, 0);
+  }
+}
+.badge-pulse-info {
+  position: absolute;
+  animation: badge-pulse-info 2s infinite;
+}
+
+@-webkit-keyframes badge-pulse-info {
+  0% {
+    -webkit-box-shadow: 0 0 0 rgba(14, 204, 204, 0.6);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(14, 204, 204, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(14, 204, 204, 0);
+  }
+}
+@keyframes badge-pulse-info {
+  0% {
+    -moz-box-shadow: 0 0 0 rgba(14, 204, 204, 0.6);
+    box-shadow: 0 0 0 rgba(14, 204, 204, 0.6);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(14, 204, 204, 0);
+    box-shadow: 0 0 0 10px rgba(14, 204, 204, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(14, 204, 204, 0);
+    box-shadow: 0 0 0 0 rgba(14, 204, 204, 0);
+  }
+}
+.badge-pulse-primary {
+  position: absolute;
+  animation: badge-pulse-primary 2s infinite;
+}
+
+@-webkit-keyframes badge-pulse-primary {
+  0% {
+    -webkit-box-shadow: 0 0 0 rgba(0, 123, 255, 0.6);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+  }
+}
+@keyframes badge-pulse-primary {
+  0% {
+    -moz-box-shadow: 0 0 0 rgba(0, 123, 255, 0.6);
+    box-shadow: 0 0 0 rgba(0, 123, 255, 0.6);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+  }
+}
+.badge-pulse-secondary {
+  position: absolute;
+  animation: badge-pulse-secondary 2s infinite;
+}
+
+@-webkit-keyframes badge-pulse-secondary {
+  0% {
+    -webkit-box-shadow: 0 0 0 rgba(108, 117, 125, 0.6);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(108, 117, 125, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(108, 117, 125, 0);
+  }
+}
+@keyframes badge-pulse-secondary {
+  0% {
+    -moz-box-shadow: 0 0 0 rgba(108, 117, 125, 0.6);
+    box-shadow: 0 0 0 rgba(108, 117, 125, 0.6);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(108, 117, 125, 0);
+    box-shadow: 0 0 0 10px rgba(108, 117, 125, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(108, 117, 125, 0);
+    box-shadow: 0 0 0 0 rgba(108, 117, 125, 0);
+  }
+}
+.badge-pulse-warning {
+  position: absolute;
+  animation: badge-pulse-warning 2s infinite;
+}
+
+@-webkit-keyframes badge-pulse-warning {
+  0% {
+    -webkit-box-shadow: 0 0 0 rgba(255, 181, 76, 0.6);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(255, 181, 76, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(255, 181, 76, 0);
+  }
+}
+@keyframes badge-pulse-warning {
+  0% {
+    -moz-box-shadow: 0 0 0 rgba(255, 181, 76, 0.6);
+    box-shadow: 0 0 0 rgba(255, 181, 76, 0.6);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(255, 181, 76, 0);
+    box-shadow: 0 0 0 10px rgba(255, 181, 76, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(255, 181, 76, 0);
+    box-shadow: 0 0 0 0 rgba(255, 181, 76, 0);
+  }
+}
+.badge-pulse-dark {
+  position: absolute;
+  animation: badge-pulse-dark 2s infinite;
+}
+
+@-webkit-keyframes badge-pulse-dark {
+  0% {
+    -webkit-box-shadow: 0 0 0 rgba(52, 58, 64, 0.6);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(52, 58, 64, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(52, 58, 64, 0);
+  }
+}
+@keyframes badge-pulse-dark {
+  0% {
+    -moz-box-shadow: 0 0 0 rgba(52, 58, 64, 0.6);
+    box-shadow: 0 0 0 rgba(52, 58, 64, 0.6);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(52, 58, 64, 0);
+    box-shadow: 0 0 0 10px rgba(52, 58, 64, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(52, 58, 64, 0);
+    box-shadow: 0 0 0 0 rgba(52, 58, 64, 0);
+  }
+}
+.badge-pulse-light {
+  position: absolute;
+  animation: badge-pulse-light 2s infinite;
+}
+
+@-webkit-keyframes badge-pulse-light {
+  0% {
+    -webkit-box-shadow: 0 0 0 rgba(248, 249, 250, 0.6);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 10px rgba(248, 249, 250, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(248, 249, 250, 0);
+  }
+}
+@keyframes badge-pulse-light {
+  0% {
+    -moz-box-shadow: 0 0 0 rgba(248, 249, 250, 0.6);
+    box-shadow: 0 0 0 rgba(248, 249, 250, 0.6);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 10px rgba(248, 249, 250, 0);
+    box-shadow: 0 0 0 10px rgba(248, 249, 250, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(248, 249, 250, 0);
+    box-shadow: 0 0 0 0 rgba(248, 249, 250, 0);
+  }
 }
 
 /*# sourceMappingURL=dashboard.css.map */

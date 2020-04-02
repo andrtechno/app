@@ -100,7 +100,7 @@ use panix\mod\admin\models\Notification;
                 'label' => Html::icon('notification-outline'),
                 'url' => '#',
                 'options'=>['id'=>'dropdown-notification'],
-                'badgeOptions' => ['class' => 'navbar-badge-notifications badge badge-success'],
+                'badgeOptions' => ['class' => 'navbar-badge-notifications badge badge-success badge-pulse-success'],
                 'badge' => $notificationsCount,
                 //'items' => $notificationItems,
                 'items' => '<div id="dropdown-notification-container" class="dropdown-menu dropdown-menu-right">' . $this->render('@admin/views/admin/notification/_notifications', ['notifications' => $notifications]) . '</div>',
@@ -127,8 +127,7 @@ use panix\mod\admin\models\Notification;
     ]);
     ?>
 
-    <span class="wave wave-danger"></span>
-    <span class="dot"></span>
+
     <!--<ul class="navbar-right nav">
         <li class="nav-item">
             <?= Html::a(Html::icon('user-outline') . ' ' . Yii::$app->user->displayName, '/', ['class' => 'nav-link']); ?>
@@ -167,6 +166,41 @@ use panix\mod\admin\models\Notification;
     </ul>-->
 
 </nav>
+<?php
+//  \machour\yii2\notifications\components\Notification::notify(\machour\yii2\notifications\components\Notification::KEY_NEW_MESSAGE, 1, 2);
+
+
+
+\machour\yii2\notifications\widgets\NotificationsWidget::widget([
+    'theme' => \machour\yii2\notifications\widgets\NotificationsWidget::THEME_NOTIFY,
+    'clientOptions' => [
+        'location' => 'br',
+    ],
+    'counters' => [
+        '.notifications-header-count',
+        '.notifications-icon-count'
+    ],
+    'markAllSeenSelector' => '#notification-seen-all',
+    'listSelector' => '#notifications',
+]);
+
+?>
+
+    <li class="dropdown notifications-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-bell-o"></i>
+            <span class="label label-warning notifications-icon-count">0</span>
+        </a>
+        <ul class="dropdown-menu">
+            <li class="header">You have <span class="notifications-header-count">0</span> notifications</li>
+            <li>
+                <ul class="menu">
+                    <div id="notifications"></div>
+                </ul>
+            </li>
+            <li class="footer"><a href="#">View all</a> / <a href="#" id="notification-seen-all">Mark all as seen</a></li>
+        </ul>
+    </li>
 <?php
 $this->registerJs("
 $('#dropdown-notification').on('show.bs.dropdown', function () {

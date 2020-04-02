@@ -9,7 +9,7 @@ $colors: (
         light:$color-light,
 );
 .fixed-top {
-  z-index: 1000;
+  z-index: 1070;
 }
 
 .invalid-feedback {
@@ -62,8 +62,11 @@ $colors: (
 
 .badge {
   font-weight: normal;
-}
 
+}
+.navbar .badge{
+  border-radius: 10px;
+}
 @each $name, $color in $colors {
   .badge-#{$name} {
     background-color: $color;
