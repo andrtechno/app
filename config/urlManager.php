@@ -32,7 +32,6 @@ return [
             'suffix' => '.ico'
         ],
 
-
         //'/admin' => 'admin/admin/default/index',
         // 'admin/auth' => 'admin/auth/index',
         ['pattern' => 'like/<type:(up|down)>/<id:\d+>', 'route' => 'site/like'],

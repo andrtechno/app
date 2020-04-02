@@ -11,17 +11,15 @@ $config = [
         '@npm' => '@vendor/npm-asset',
         '@uploads' => '@app/web/uploads',
     ],
-    'controllerNamespace' => 'panix\engine\controllers',
     'bootstrap' => [
         'log',
         'maintenanceMode',
         'panix\engine\BootstrapModule'
     ],
-
     'controllerMap' => [
         'site' => 'panix\engine\controllers\WebController',
         'backend' => 'panix\engine\controllers\AdminController',
-        'maintenance'=>'panix\engine\maintenance\controllers\MaintenanceController'
+        'maintenance' => 'panix\engine\maintenance\controllers\MaintenanceController'
     ],
     'modules' => [
         'plugins' => [
@@ -84,15 +82,15 @@ $config = [
         ],
         'assetManager' => [
             'forceCopy' => YII_DEBUG,
-           // 'bundles' => [
-                //'yii\jui\JuiAsset' => ['css' => []],
-               // 'yii\jui\JuiAsset' => [
-                    //'js' => [
-                    //'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
-                    //]
-              //  ],
-           // ],
-            'appendTimestamp' => true
+            // 'bundles' => [
+            //'yii\jui\JuiAsset' => ['css' => []],
+            // 'yii\jui\JuiAsset' => [
+            //'js' => [
+            //'https://code.jquery.com/ui/1.12.1/jquery-ui.min.js'
+            //]
+            //  ],
+            // ],
+            //'appendTimestamp' => true
         ],
         'plugins' => [
             'class' => panix\mod\plugins\components\PluginsManager::class,
@@ -150,7 +148,7 @@ $config = [
             'class' => 'panix\engine\Mailer',
             'htmlLayout' => 'layouts/html'
         ],
-        'log' => ['class'=>'panix\engine\log\Dispatcher'],
+        'log' => ['class' => 'panix\engine\log\Dispatcher'],
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
         'settings' => ['class' => 'panix\engine\components\Settings'],
         'urlManager' => require(__DIR__ . '/urlManager.php'),

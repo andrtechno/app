@@ -8,7 +8,6 @@ $config = [
     'id' => 'web',
     'homeUrl' => '/',
     'basePath' => dirname(__DIR__), //if in web dir
-    //'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'panix\engine\controllers',
     'defaultRoute' => 'site/index',
     'bootstrap' => [
@@ -17,7 +16,6 @@ $config = [
         'panix\engine\widgets\webcontrol\WebInlineControl',
         //'webcontrol'
     ],
-
     'on beforeRequest' => function () {
 
         if (false) {
@@ -26,7 +24,15 @@ $config = [
                 'message' => 'Закончился период аренды интернет-магазина'
             ];
         }
+        if (!Yii::$app->user->isGuest) {
 
+            if (strtotime(Yii::$app->user->banTime) >= time()) {
+                Yii::$app->catchAll = [
+                    'maintenance/banned',
+                    'message' => Yii::$app->user->banReason,
+                ];
+            }
+        }
         if (Yii::$app->settings->get('app', 'site_close') && false) {
             Yii::$app->catchAll = [
                 'maintenance/index',

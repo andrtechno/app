@@ -88,6 +88,10 @@ return [
             'class' => 'yii\console\Request',
             //'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
         ],
+        'user' => [
+            'enableSession' => false,
+            'enableAutoLogin' => false,
+        ],
         /*'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'flushInterval' => 1000 * 10,
