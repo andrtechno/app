@@ -368,7 +368,7 @@
 }
 
 .fixed-top {
-  z-index: 1000;
+  z-index: 1070;
 }
 
 .invalid-feedback {
@@ -951,6 +951,124 @@
 #form-signin .input-group-append {
   position: absolute;
   right: 0;
+}
+
+.fancybox-content {
+  padding: 44px 15px 15px 15px;
+}
+@media (min-width: 992px) {
+  .fancybox-content .fancybox-content {
+    padding: 44px;
+  }
+}
+
+.rate {
+  cursor: pointer;
+  float: left;
+  text-align: left;
+  height: 15px;
+  width: 85px;
+}
+
+.rate div {
+  height: 15px;
+}
+
+.rate div.hover {
+  background: url(../images/rating.gif) no-repeat left -30px;
+}
+
+.rate div.active {
+  background: url(../images/rating.gif) no-repeat left -30px;
+}
+
+.rate div.noactive {
+  background: url(../images/rating.gif) no-repeat left 0;
+}
+
+.urating {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  width: 85px;
+  height: 15px;
+  position: relative;
+  background: url(../images/rating.gif) top left repeat-x;
+}
+
+.urating li {
+  text-indent: -90000px;
+  padding: 0px;
+  margin: 0px;
+  float: left;
+}
+
+.urating li.crating {
+  background: url(../images/rating.gif) left bottom;
+  position: absolute;
+  height: 15px;
+  display: block;
+  text-indent: -9000px;
+  z-index: 1;
+}
+
+.urating li div.over1, .urating li div.over2, .urating li div.over3, .urating li div.over4, .urating li div.over5 {
+  z-index: 2;
+  left: 0px;
+  cursor: pointer;
+  background: url(../images/rating.gif) left center;
+}
+
+.urating li div {
+  outline: none;
+  display: block;
+  width: 17px;
+  height: 15px;
+  text-decoration: none;
+  text-indent: -9000px;
+  z-index: 20;
+  position: absolute;
+  padding: 0px;
+}
+
+.urating li div.over1 {
+  width: 16px;
+}
+
+.urating li div.over2 {
+  width: 33px;
+}
+
+.urating li div.over3 {
+  width: 50px;
+}
+
+.urating li div.over4 {
+  width: 67px;
+}
+
+.urating li div.over5 {
+  width: 85px;
+}
+
+.urating div.out1 {
+  left: 0px;
+}
+
+.urating div.out2 {
+  left: 16px;
+}
+
+.urating div.out3 {
+  left: 33px;
+}
+
+.urating div.out4 {
+  left: 50px;
+}
+
+.urating div.out5 {
+  left: 67px;
 }
 
 a {
@@ -2914,6 +3032,7 @@ h1,
     padding: 6px 12px;
   }
 }
+/*
 @media screen and (max-width: 767px) {
   .table-responsive {
     width: 100%;
@@ -2925,6 +3044,7 @@ h1,
     border: 1px solid #ddd;
   }
 }
+*/
 @-webkit-keyframes loader {
   0% {
     -webkit-transform: perspective(120px);

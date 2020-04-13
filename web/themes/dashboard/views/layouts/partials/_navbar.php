@@ -166,41 +166,7 @@ use panix\mod\admin\models\Notification;
     </ul>-->
 
 </nav>
-<?php
-//  \machour\yii2\notifications\components\Notification::notify(\machour\yii2\notifications\components\Notification::KEY_NEW_MESSAGE, 1, 2);
 
-
-
-\machour\yii2\notifications\widgets\NotificationsWidget::widget([
-    'theme' => \machour\yii2\notifications\widgets\NotificationsWidget::THEME_NOTIFY,
-    'clientOptions' => [
-        'location' => 'br',
-    ],
-    'counters' => [
-        '.notifications-header-count',
-        '.notifications-icon-count'
-    ],
-    'markAllSeenSelector' => '#notification-seen-all',
-    'listSelector' => '#notifications',
-]);
-
-?>
-
-    <li class="dropdown notifications-menu">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-bell-o"></i>
-            <span class="label label-warning notifications-icon-count">0</span>
-        </a>
-        <ul class="dropdown-menu">
-            <li class="header">You have <span class="notifications-header-count">0</span> notifications</li>
-            <li>
-                <ul class="menu">
-                    <div id="notifications"></div>
-                </ul>
-            </li>
-            <li class="footer"><a href="#">View all</a> / <a href="#" id="notification-seen-all">Mark all as seen</a></li>
-        </ul>
-    </li>
 <?php
 $this->registerJs("
 $('#dropdown-notification').on('show.bs.dropdown', function () {

@@ -54,5 +54,25 @@ $(function () {
         dashboard.saveMenuCookie($(toggle_selector).hasClass('active'));
         e.preventDefault();
     });
+
+
+
+    $('.geo[data-type="ajax"]').fancybox({
+        //fullScreen: {
+        //    autoStart: false
+        //},
+        autoSize : false,
+        //width    : "50%",
+       // height   : "80%",
+        afterLoad : function(instance, current) {
+            if (window.innerWidth > 480) {
+                this.width = '70%'; // or whatever
+                this.height = '90%';
+            } else {
+                this.width = '90%';
+                this.height = '90%';
+            }
+        }
+    });
 });
 
