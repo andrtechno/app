@@ -9,15 +9,14 @@
  * Class m000007_114919_notifications
  */
 use panix\engine\db\Migration;
-use panix\mod\admin\models\Notifications;
+use panix\mod\admin\models\Notification;
 
 class m000007_114919_notifications extends Migration
 {
 
     public function up()
     {
-        $this->tableName = Notifications::tableName();
-        $this->createTable($this->tableName, [
+        $this->createTable(Notification::tableName(), [
             'id' => $this->primaryKey(),
             'type' => "ENUM('default', 'info', 'success', 'danger', 'warning')",
             'text' => $this->text(),
@@ -27,13 +26,12 @@ class m000007_114919_notifications extends Migration
             'user_id_read' => $this->integer(),
             'created_at' => $this->integer(11)->null(),
         ]);
-        $this->createIndex('user_id_read', $this->tableName, 'user_id_read');
+        $this->createIndex('user_id_read', Notification::tableName(), 'user_id_read');
     }
 
     public function down()
     {
-        $this->tableName = Notifications::tableName();
-        $this->dropTable($this->tableName);
+        $this->dropTable(Notification::tableName());
     }
 
 }
