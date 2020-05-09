@@ -89,7 +89,7 @@ $config = Yii::$app->settings->get('contacts');
 
                     <?php
                     if (!Yii::$app->user->phone)
-                        echo $form->field($model, 'phone')->widget(\panix\ext\inputmask\InputMask::class);
+                        echo $form->field($model, 'phone')->widget(\panix\ext\telinput\PhoneInput::class);
                     ?>
                     <?= $form->field($model, 'text')->textArea(['rows' => 6]) ?>
                     <?php if (Yii::$app->settings->get('app','captcha_class') && $config->feedback_captcha && Yii::$app->user->isGuest) { ?>
@@ -111,7 +111,7 @@ $config = Yii::$app->settings->get('contacts');
 
                     <?php } ?>
                     <div class="form-group text-center">
-                        <?= Html::submitButton(Yii::t('app', 'SEND'), ['class' => 'btn btn-warning', 'name' => 'contact-button']) ?>
+                        <?= Html::submitButton(Yii::t('app/default', 'SEND'), ['class' => 'btn btn-warning', 'name' => 'contact-button']) ?>
                     </div>
                     <?php ActiveForm::end(); ?>
 

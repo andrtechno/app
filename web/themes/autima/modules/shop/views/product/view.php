@@ -41,7 +41,7 @@ echo \panix\ext\fancybox\Fancybox::widget([
 
 $images = $model->getImages();
 //echo Html::a('back',\yii\helpers\Url::previous());
-
+$commentsCount = $model->commentsCount;
 
 ?>
 <!--product details start-->
@@ -159,17 +159,20 @@ $images = $model->getImages();
                         <ul>
                             <?php
 
-                            if ($prev = $model->getPrev()->one()) {
+                            /**
+                             * @var $prev \panix\mod\shop\models\Product
+                             * @var $next \panix\mod\shop\models\Product
+                             */
+                            if ($prev = $model->getPrev(['switch'=>1, 'main_category_id' => $model->main_category_id])->one()) {
                                 echo '<li class="prev">';
-                                echo Html::a(Html::icon('arrow-left'), $prev->getUrl(), ['class' => '']);
+                                echo Html::a(Html::icon('arrow-left'), $prev->getUrl(), ['title' => $prev->name]);
                                 echo '</li>';
                             }
-                            if ($next = $model->getNext()->one()) {
+                            if ($next = $model->getNext(['switch'=>1, 'main_category_id' => $model->main_category_id])->one()) {
                                 echo '<li class="next">';
-                                echo Html::a(Html::icon('arrow-right'), $next->getUrl(), ['class' => '']);
+                                echo Html::a(Html::icon('arrow-right'), $next->getUrl(), ['title' => $next->name]);
                                 echo '</li>';
                             }
-
                             ?>
 
                         </ul>
@@ -177,6 +180,7 @@ $images = $model->getImages();
                     <div class=" product_ratting">
 
                         <?php
+
                         echo \panix\engine\widgets\like\LikeWidget::widget([
                             'model' => $model
                         ]);
@@ -186,7 +190,7 @@ $images = $model->getImages();
 
                                 <div class="reviews">
                                     <a href="#w1-tab1" data-tabid="#comments"
-                                       data-toggle="tab">(<?= Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]) ?>
+                                       data-toggle="tab">(<?= Yii::t('app/default', 'REVIEWS', ['n' => $commentsCount]) ?>
                                         )</a>
                                 </div>
                             </li>
@@ -197,8 +201,8 @@ $images = $model->getImages();
                     <div class="price_box">
 
                         <?php
-                        $priceClass = ($model->appliedDiscount) ? 'current_price' : 'old_price';
-                        if ($model->appliedDiscount) {
+                        $priceClass = ($model->hasDiscount) ? 'current_price' : 'old_price';
+                        if ($model->hasDiscount) {
                             ?>
 
                             <div>
@@ -212,14 +216,31 @@ $images = $model->getImages();
                             <span class="current_price"><?= $model->priceRange() ?> <?= Yii::$app->currency->active['symbol'] ?></span>
                         </div>
 
+                    <?php if ($model->prices) { ?>
+                        <a class="btn btn-sm btn-link pl-0 pr-0" data-toggle="collapse" href="#prices" role="button"
+                           aria-expanded="false" aria-controls="prices">
+                            Показать все оптовые цены
+                        </a>
+                        <div class="collapse" id="prices">
+                            <?php foreach ($model->prices as $price) { ?>
 
+                                <div>
+<span class="price price-sm text-success">
+<span><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($price->value, $model->currency_id)); ?></span>
+    <?= Yii::$app->currency->active['symbol']; ?>/<?= $model->units[$model->unit]; ?>
+</span>
+                                    при заказе от <?= $price->from; ?> <?= $model->units[$model->unit]; ?>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
                     </div>
 
 
                     <?php if ($model->isAvailable) { ?>
 
 
-                        <div class="product_variant quantity">
+                        <div class="product_variant quantity2">
                             <?php
                             echo Html::textInput('quantity', 1, [
                                 'class' => 'cart-spinner',
@@ -281,7 +302,7 @@ $images = $model->getImages();
                         </ul>
                     </div>
                     <div class="product_meta">
-                        <?php if (Yii::$app->hasModule('discounts') && $model->appliedDiscount) { ?>
+                        <?php if (Yii::$app->hasModule('discounts') && $model->hasDiscount) { ?>
                             <?= panix\mod\discounts\widgets\countdown\Countdown::widget(['model' => $model]) ?>
                         <?php } ?>
                         <div><?= $model->getAttributeLabel('availability') ?>:
@@ -295,10 +316,10 @@ $images = $model->getImages();
                             <?php } ?>
                         </div>
                         <?php if ($model->sku) { ?>
-                            <span><?= $model->getAttributeLabel('sku') ?>: <a
-                                        href="#"><?= Html::encode($model->sku); ?></a></span>
+                            <div><?= $model->getAttributeLabel('sku') ?>: <span><?= Html::encode($model->sku); ?></span>
+                            </div>
                         <?php } ?>
-                        <?php if ($model->manufacturer) { ?>
+                        <?php if ($model->manufacturer_id) { ?>
                             <span><?= $model->getAttributeLabel('manufacturer_id') ?>:
                                 <?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), ['title' => $model->getAttributeLabel('manufacturer_id'), 'class' => "manufacturer-popover"]); ?></span>
                         <?php } ?>
@@ -307,43 +328,27 @@ $images = $model->getImages();
                     echo $this->render('_configurations', ['model' => $model]);
                     ?>
 
-                    <?php if ($model->prices) { ?>
-                        <a class="btn btn-sm btn-link" data-toggle="collapse" href="#prices" role="button"
-                           aria-expanded="false" aria-controls="prices">
-                            Показать все оптовые цены
-                        </a>
-                        <div class="collapse" id="prices">
-                            <?php foreach ($model->prices as $price) { ?>
 
-                                <div>
-<span class="price price-sm text-success">
-<span><?= Yii::$app->currency->number_format(Yii::$app->currency->convert($price->value, $model->currency_id)); ?></span>
-    <?= Yii::$app->currency->active['symbol']; ?>/<?= $model->units[$model->unit]; ?>
-</span>
-                                    при заказе от <?= $price->from; ?> <?= $model->units[$model->unit]; ?>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    <?php } ?>
 
                     <?php echo $model->endCartForm(); ?>
                     <div class="priduct_social">
-                        <ul>
-                            <li><a class="facebook" href="#" title="facebook"><i class="icon-facebook"></i> Like</a>
-                            </li>
-                            <li><a class="twitter" href="#" title="twitter"><i class="icon-twitter"></i> tweet</a></li>
-                            <li><a class="pinterest" href="#" title="pinterest"><i class="icon-pinterest"></i> save</a>
-                            </li>
-                        </ul>
+                        <?php echo \panix\engine\widgets\share\ShareWidget::widget([
+                            'name' => $model->name,
+                            'facebook' => true,
+                            'url' => yii\helpers\Url::to($model->getUrl(), true),
+                            'image' => yii\helpers\Url::to($model->getMainImage()->url, true)
+                        ]); ?>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!--product details end-->
+<?php
 
+
+?>
 <!--product info start-->
 <div class="product_d_info">
     <div class="container">
@@ -366,7 +371,7 @@ $images = $model->getImages();
                             <?php if (Yii::$app->hasModule('comments')) { ?>
                                 <li>
                                     <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
-                                       aria-selected="false"><?= Yii::t('app', 'REVIEWS', ['n' => $model->commentsCount]); ?></a>
+                                       aria-selected="false"><?= Yii::t('app/default', 'REVIEWS', ['n' => $commentsCount]); ?></a>
                                 </li>
                             <?php } ?>
                         </ul>
@@ -407,7 +412,7 @@ echo $this->render('@theme/modules/shop/views/product/_related', ['model' => $mo
 
 
 
-<?php //echo $this->render('_kit', ['model' => $model]); ?>
+<?php echo $this->render('_kit', ['model' => $model]); ?>
 
 
 

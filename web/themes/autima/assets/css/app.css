@@ -4,16 +4,18 @@
     transition: none;
     display: none;
 }
-.required > label:after{
+
+.required > label:after {
     content: ' *';
-    color:red;
+    color: red;
 }
-.has-error .help-block{
-    color:red;
+
+.has-error .help-block {
+    color: red;
     font-size: 80%;
 }
 
-#search-input-search{
+#search-input-search {
     position: absolute;
     background: #fff;
     border: 1px solid red;
@@ -22,12 +24,52 @@
     display: none;
 }
 
+
+#filters-container .card-collapse {
+    max-height: 280px;
+    overflow-x: hidden;
+}
+#filters-container input[name="search-filter"]{
+    padding: 5px;
+    margin-bottom: 1rem;
+    height: auto;
+}
+#filters-container input[name="search-filter"].form-control:focus{
+    box-shadow:none;
+}
+.filter-color {
+    float: left;
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: relative;
+    outline: 1px solid #000;
+    background-color: transparent;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.filter-color .filter-color-checked,
+.filter-color:hover span {
+    border: 2px solid #000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.filter-color input {
+    display: none;
+}
+
 .loading,
-.pjax-loader{
+.pjax-loader {
     position: relative;
 }
+
 .loading:before,
-.pjax-loader:before{
+.pjax-loader:before {
     content: '';
     background-image: url("../images/ajax.gif");
     background-repeat: no-repeat;
@@ -39,4 +81,66 @@
     right: 0;
     position: absolute;
     z-index: 2;
+}
+
+#filters a[data-toggle="collapse"] {
+    display: block;
+    position: relative;
+    padding-right: 18px;
+}
+
+#filters a[data-toggle="collapse"]:after,
+#filters a[data-toggle="collapse"].collapsed:after {
+    font-family: Pixelion;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+}
+
+#filters a[data-toggle="collapse"]:after {
+    content: "\f007";
+}
+
+#filters a[data-toggle="collapse"].collapsed:after {
+    content: "\f008";
+}
+body > .alert {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.95);
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 5px;
+    border-right: 0;
+    border-style: solid;
+    font-size: 14px;
+    width: 320px;
+}
+
+body > .alert a {
+    color: #fff;
+    text-decoration: underline;
+}
+body > .alert{
+    color: #fff;
+}
+body > .alert.alert-success {
+    border-color: #30c959;
+}
+body > .alert.alert-danger {
+    border-color: red;
+}
+.btn-wishlist {
+    font-size: 25px;
+}
+
+.btn-wishlist:before {
+    font-family: Pixelion;
+    content: "\f013";
+}
+
+.btn-wishlist.added:before {
+    content: "\f014";
 }

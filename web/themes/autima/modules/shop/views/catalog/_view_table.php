@@ -84,9 +84,9 @@ use panix\engine\Html;
         <div class="btn-group btn-group-sm">
             <?php
             if ($model->isAvailable) {
-                echo Html::a(Yii::t('app', 'BUY'), 'javascript:cart.add("#form-add-cart-' . $model->id . '")', array('class' => 'btn btn-success'));
+                echo Html::a(Yii::t('app/default', 'BUY'), 'javascript:cart.add("#form-add-cart-' . $model->id . '")', array('class' => 'btn btn-success'));
             } else {
-                echo Html::a(Yii::t('app', 'NOT_AVAILABLE'), 'javascript:cart.notifier(' . $model->id . ');', array('class' => 'btn btn-link'));
+                echo Html::a(Yii::t('app/default', 'NOT_AVAILABLE'), 'javascript:cart.notifier(' . $model->id . ');', array('class' => 'btn btn-link'));
             }
             ?>
         </div>

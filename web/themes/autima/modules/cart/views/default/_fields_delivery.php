@@ -25,6 +25,7 @@ use panix\engine\Html;
                 'value' => $delivery->id,
                 'data-price' => Yii::$app->currency->convert($delivery->price),
                 'data-free-from' => Yii::$app->currency->convert($delivery->free_from),
+                'data-system' => $delivery->system,
                 'onClick' => 'cart.recountTotalPrice(this); ',
                 'data-value' => Html::encode($delivery->name),
                 //'id' => 'delivery_id_' . $delivery->id,
@@ -50,7 +51,25 @@ use panix\engine\Html;
              }
          ]);*/
         ?>
+        <?php
+       /* echo $form->field($model, 'delivery_city')
+            ->dropDownList(['test', 'test2'])
+            ->widget(panix\ext\bootstrapselect\BootstrapSelect::class, [
+                'jsOptions' => [
+                    'liveSearch' => true
+                ],
+                'items' => ['test', 'test2']
+            ]);*/
+        /*echo \panix\ext\bootstrapselect\BootstrapSelect::widget([
+            'model' => $form,
+            'attribute' => 'city',
+            'items' => ['test','test2'],
+            'jsOptions' => [
+                'liveSearch' => true
+            ]
+        ]);*/
 
+        ?>
 
         <?= Html::error($model, 'delivery_id', ['class' => 'help-block']); ?>
 
@@ -65,4 +84,7 @@ use panix\engine\Html;
     echo 'Необходимо добавить способ доставки!';
 }
 ?>
+<div id="test"></div>
+<div id="delivery-form"></div>
+
 

@@ -11,12 +11,7 @@ use yii\helpers\HtmlPurifier;
 ?>
 
 <div class="single_product">
-    <div class="product_name grid_name">
-        <h3><?= Html::a(Html::encode($model->name), $model->getUrl(), ['data-pjax' => 0]) ?></h3>
-        <?php if ($model->manufacturer) { ?>
-            <p class="manufacture_product"><?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), ['data-pjax' => 0]) ?></p>
-        <?php } ?>
-    </div>
+
     <div class="product_thumb text-center">
         <?php
         //$model->getMainImage('340x265')->url
@@ -53,7 +48,7 @@ use yii\helpers\HtmlPurifier;
                      ]);
                      echo '</li>';
                  }*/
-                if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
+                if (Yii::$app->hasModule('wishlist')) {
                     echo '<li class="wishlist">';
                     echo \panix\mod\wishlist\widgets\WishListWidget::widget([
                         'pk' => $model->id,
@@ -67,6 +62,12 @@ use yii\helpers\HtmlPurifier;
             </ul>
         </div>
     </div>
+	    <div class="product_name grid_name">
+        <h3><?= Html::a(Html::encode($model->name), $model->getUrl(), ['data-pjax' => 0]) ?></h3>
+        <?php if ($model->manufacturer_id) { ?>
+            <p class="manufacture_product"><?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), ['data-pjax' => 0]) ?></p>
+        <?php } ?>
+    </div>
     <?= $model->beginCartForm(); ?>
     <div class="product_content grid_content">
         <div class="content_inner">
@@ -75,13 +76,13 @@ use yii\helpers\HtmlPurifier;
                 <div class="price_box">
 
                     <?php
-                    $priceClass = ($model->appliedDiscount) ? 'current_price' : 'old_price';
-                    if ($model->appliedDiscount) {
+                    $priceClass = ($model->hasDiscount) ? 'current_price' : 'old_price';
+                    if ($model->hasDiscount) {
                         ?>
 
                         <div>
                             <span class="old_price">
-                                <?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice)) ?>
+                                <?= Yii::$app->currency->number_format(Yii::$app->currency->convert($model->originalPrice,$model->currency_id)) ?>
                                 <?= Yii::$app->currency->active['symbol'] ?>
                             </span>
                         </div>

@@ -81,18 +81,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 38px;
-  line-height: 1;
+  font-size: 30px;
   font-weight: 700;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 26px;
   line-height: 36px;
 }
 
 h3 {
-  font-size: 26px;
+  font-size: 22px;
   line-height: 30px;
 }
 
@@ -178,6 +177,29 @@ ul {
   .container {
     max-width: 970px;
   }
+  h1 {
+  font-size: 34px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 26px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 12px;
+}
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .container {
@@ -680,7 +702,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   right: 13px;
 }
 .canvas_close a {
-  font-size: 22px;
+  font-size: 13px;
   text-transform: uppercase;
   font-weight: 500;
   width: 35px;
@@ -1072,6 +1094,7 @@ button.btn-link.active{
   background: #333;
   width: 60px;
   height: 100%;
+  line-height:1;
   color: #fff;
   font-weight: 500;
   font-size: 25px;
@@ -6075,38 +6098,41 @@ button.btn-link.active{
     margin-bottom: 16px;
   }
 }
-.product_variant.quantity label {
+.product_variant label {
   font-weight: 500;
   font-size: 14px;
   margin-bottom: 0;
 }
-.product_variant.quantity input {
-  width: 130px;
-  border: 1px solid #ebebeb;
-  background: none;
-  height: 42px;
-  padding: 0 12px;
-  border-radius: 5px;
-  margin-left: 15px;
+.ui-spinner{
+  position: relative;
+  height: 40px;
 }
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .product_variant.quantity input {
-    width: 110px;
-  }
+.ui-spinner-button{
+  position: absolute;
+  top:0;
+  height: 100%;
+  width: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
 }
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .product_variant.quantity input {
-    width: 80px;
-  }
+.ui-spinner-up{
+  right:0;
 }
-@media only screen and (max-width: 767px) {
-  .product_variant.quantity input {
-    width: 65px;
-    margin-left: 10px;
-  }
+.ui-spinner-down{
+  left:0;
 }
-.product_variant.quantity button,
-.product_variant.quantity .btn-buy{
+.ui-spinner-input{
+  margin: 0 35px;
+  text-align: center;
+  width: 90px;
+  height: 100%;
+}
+
+
+.product_variant button,
+.product_variant .btn-buy{
   border: 0;
   font-size: 16px;
   margin-left: 20px;
@@ -7472,6 +7498,9 @@ textarea.form-control{
 }
 .contact_message button:hover {
   background: #ffd54c;
+}
+.content{
+	margin-top:15px;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .contact_message.content {

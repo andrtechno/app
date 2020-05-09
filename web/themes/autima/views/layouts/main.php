@@ -5,7 +5,7 @@ use yii\widgets\Breadcrumbs;
 
 
 \app\web\themes\autima\ThemeAsset::register($this);
-$this->registerJsFile('//cdn.sendpulse.com/js/push/3e9c33d0f25795d8e0a72d77af9e38c6_0.js',[
+$this->registerJsFile('//cdn.sendpulse.com/js/push/3e9c33d0f25795d8e0a72d77af9e38c6_0.js', [
     'position' => \yii\web\View::POS_HEAD,
     'charset' => Yii::$app->charset,
     'async' => 'async'
@@ -24,9 +24,8 @@ $this->registerJs("
 
 //remove
 //Yii::$app->authManager->revoke(Yii::$app->authManager->createRole('Manager'),2);
+ ?>
 
-
-?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -48,18 +47,18 @@ $this->registerJs("
             <?php
 
             $banners = \panix\mod\banner\models\Banner::find()->published()->all();
-            foreach ($banners as $banner){
+            foreach ($banners as $banner) {
                 /** @var \panix\mod\banner\models\Banner $banner */
                 ?>
                 <div class="single_slider d-flex align-items-center"
-                     data-bgimg="<?= $banner->getImageUrl('image','1920x'); ?>">
+                     data-bgimg="<?= $banner->getImageUrl('image', '1920x'); ?>">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
                                 <div class="slider_content">
                                     <h2><?= $banner->content; ?></h2>
-                                    <?php if($banner->url){ ?>
-                                        <?= Html::a($banner->url_name,$banner->url,['class'=>'button']); ?>
+                                    <?php if ($banner->url) { ?>
+                                        <?= Html::a($banner->url_name, $banner->url, ['class' => 'button']); ?>
                                     <?php } ?>
                                 </div>
                             </div>
@@ -69,8 +68,6 @@ $this->registerJs("
             <?php } ?>
         </div>
     </section>
-
-
 
     <div class="container">
         <?= $this->render('@theme/views/layouts/partials/_breadcrumbs'); ?>

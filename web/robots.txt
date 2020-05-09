@@ -4,6 +4,10 @@ Disallow: /admin/auth
 Disallow: /assets/
 Disallow: /themes/
 Disallow: /cart/*
+Disallow: /like/*
+Disallow: /compare
+Disallow: /wishlist
+Disallow: /
 
 Host: http://yii2.pixelion.com.ua
 

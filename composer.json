@@ -18,21 +18,7 @@
         "yiisoft/yii2-bootstrap4": "^2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.1.0",
         "yiisoft/yii2-debug": "~2",
-        "panix/engine": "dev-master",
-        "panix/mod-stats": "dev-master",
-        "panix/mod-delivery": "dev-master",
-        "panix/mod-admin": "dev-master",
-        "panix/mod-shop": "dev-master",
-        "panix/mod-pages": "dev-master",
-        "panix/mod-images": "dev-master",
-        "panix/mod-plugins": "dev-master",
-        "panix/mod-rbac": "dev-master",
-        "panix/mod-compare": "dev-master",
-        "panix/mod-user": "dev-master",
-        "panix/mod-seo": "dev-master",
-        "panix/mod-banner": "dev-master",
-        "giggsey/libphonenumber-for-php": "^8.0@dev",
-        "panix/mod-contacts": "dev-master"
+        "panix/engine": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2",

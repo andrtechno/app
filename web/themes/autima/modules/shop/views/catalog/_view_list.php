@@ -82,15 +82,15 @@ use yii\helpers\HtmlPurifier;
                     <span><?= $model->getAttributeLabel('sku') ?>: <a
                                 href="#"><?= Html::encode($model->sku); ?></a></span>
                 <?php } ?>
-                <?php if ($model->manufacturer) { ?>
+                <?php if ($model->manufacturer_id) { ?>
                     <span><?= $model->getAttributeLabel('manufacturer_id') ?>:
                         <?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), ['title' => $model->getAttributeLabel('manufacturer_id'), 'class' => "manufacturer-popover"]); ?></span>
                 <?php } ?>
             </div>
             <div class="price_box">
                 <?php
-                $priceClass = ($model->appliedDiscount) ? 'current_price' : 'old_price';
-                if ($model->appliedDiscount) {
+                $priceClass = ($model->hasDiscount) ? 'current_price' : 'old_price';
+                if ($model->hasDiscount) {
                     ?>
 
                     <div>

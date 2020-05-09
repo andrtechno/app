@@ -54,7 +54,7 @@ echo Html::beginForm($this->context->currentUrl, 'GET', ['id' => 'sorting-form']
                 $sorter['-date_create'] = Yii::t('shop/default', 'SORT_BY_DATE_DESC');
                 //  $active = Yii::$app->urlManager->addUrlParam('/' . Yii::$app->requestedRoute, ['sort' => Yii::$app->request->get('sort')]);
 
-                echo Html::dropDownList('sorter', Yii::$app->request->get('sort'), $sorter, ['class' => 'custom-select', 'style' => 'width:auto;']);
+                echo Html::dropDownList('sort', Yii::$app->request->get('sort'), $sorter, ['class' => 'custom-select', 'style' => 'width:auto;']);
                 ?>
 
             </div>

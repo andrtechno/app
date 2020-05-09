@@ -16,7 +16,7 @@ use panix\engine\widgets\Breadcrumbs;
 </head>
 <body>
 <?php $this->beginBody() ?>
-<?= $this->render('@theme/views/layouts/partials/_header'); ?>
+<?php echo $this->render('@theme/views/layouts/partials/_header'); ?>
 <div class="container">
     <?= $this->render('@theme/views/layouts/partials/_breadcrumbs'); ?>
 </div>

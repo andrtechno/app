@@ -12,7 +12,7 @@ use yii\helpers\HtmlPurifier;
             <p class="manufacture_product"><?= Html::a(Html::encode($model->manufacturer->name), $model->manufacturer->getUrl(), []) ?></p>
         <?php } ?>
     </div>
-    <div class="product_thumb">
+    <div class="product_thumb text-center">
         <?php
         echo Html::a(Html::img($model->getMainImage('340x265')->url, ['alt' => $model->name, 'class' => '']), $model->getUrl(), ['class' => 'primary_img']);
         ?>
@@ -30,31 +30,6 @@ use yii\helpers\HtmlPurifier;
             }
             ?>
         </div>
-        <div class="action_links">
-            <ul>
-                <?php
-                /*if (Yii::$app->hasModule('compare')) {
-                    echo '<li class="compare">';
-                    echo \panix\mod\compare\widgets\CompareWidget::widget([
-                        'pk' => $model->id,
-                        'skin' => 'icon',
-                        'linkOptions' => ['class' => 'btn2 btn-compare2']
-                    ]);
-                    echo '</li>';
-                }*/
-                if (Yii::$app->hasModule('wishlist') && !Yii::$app->user->isGuest) {
-                    echo '<li class="wishlist">';
-                    echo \panix\mod\wishlist\widgets\WishlistWidget::widget([
-                        'pk' => $model->id,
-                        'skin' => 'icon',
-                        'linkOptions' => ['class' => 'btn2 btn-wishlist2']
-                    ]);
-                    echo '</li>';
-                }
-                ?>
-
-            </ul>
-        </div>
     </div>
     <?= $model->beginCartForm(); ?>
     <div class="product_content grid_content">
@@ -64,8 +39,8 @@ use yii\helpers\HtmlPurifier;
                 <div class="price_box">
 
                     <?php
-                    $priceClass = ($model->appliedDiscount) ? 'current_price' : 'old_price';
-                    if ($model->appliedDiscount) {
+                    $priceClass = ($model->hasDiscount) ? 'current_price' : 'old_price';
+                    if ($model->hasDiscount) {
                         ?>
 
                         <div>
@@ -93,7 +68,7 @@ use yii\helpers\HtmlPurifier;
                 </div>
                 <?php
                 if ($component->getUserId() === Yii::$app->user->id) {
-                    echo Html::a(Yii::t('app', 'DELETE'), ['remove', 'id' => $model->id], [
+                    echo Html::a(Yii::t('app/default', 'DELETE'), ['remove', 'id' => $model->id], [
                         'class' => 'btn btn-danger remove',
                     ]);
                 } else {

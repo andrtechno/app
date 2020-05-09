@@ -16,20 +16,22 @@ $pages = \panix\mod\pages\models\Pages::find()->published()->all();
 
 
 <!--header area start-->
-<header class="header_area header_padding">
+<header class="header_area header_padding" id="header">
     <!--header top start-->
     <div class="header_top top_two">
         <div class="container">
             <div class="top_inner">
                 <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-6">
+                    <div class="col-lg-6 col-md-6 d-none2">
                         <div class="follow_us">
-                            <label>Follow Us:</label>
-                            <ul class="follow_link">
-                                <li><a href="#"><i class="icon-facebook"></i></a></li>
-                                <li><a href="#"><i class="icon-twitter"></i></a></li>
-                                <li><a href="#"><i class="icon-google-plus"></i></a></li>
-                                <li><a href="#"><i class="icon-youtube-play"></i></a></li>
+                            <ul>
+                                <?php if (isset($config->phone)) { ?>
+                                    <?php foreach ($config->phone as $phone) { ?>
+                                        <li>
+                                            <i class="icon-phone"></i><?= Html::tel($phone['number'], ['class' => 'phone ' . CMS::slug(CMS::phoneOperator($phone['number']))]); ?> <?= $phone['name']; ?>
+                                        </li>
+                                    <?php } ?>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
@@ -149,12 +151,12 @@ $pages = \panix\mod\pages\models\Pages::find()->published()->all();
                         </div>
                         <div class="middel_right_info">
                             <?php if (Yii::$app->hasModule('wishlist')) {
-                                $count = (new \panix\mod\wishlist\components\WishListComponent)->count();
+                                $count = Yii::$app->wishlist->count();
                                 ?>
                                 <div class="header_wishlist">
                                     <?= Html::a(Html::icon('heart') . '' . Yii::t('wishlist/default', 'WISHLIST'), ['/wishlist'], ['class' => '']) ?>
 
-                                    <span class="wishlist_quantity" id="countWishlist"><?= $count; ?></span>
+                                    <span class="wishlist_quantity countWishList"><?= $count; ?></span>
                                 </div>
 
                             <?php } ?>
@@ -185,47 +187,45 @@ $pages = \panix\mod\pages\models\Pages::find()->published()->all();
                             </div>
                             <div class="categories_menu_toggle">
                                 <ul>
-
-
-                                    <?php
+                                       <?php
                                     //$categories = Category::find()->excludeRoot()->all();
                                     $categories = Category::findOne(1);
                                     $children = $categories->children()->published()->all();
                                     if ($children) {
-                                    ?>
+                                        ?>
 
-                                    <?php foreach ($children as $category) { ?>
-                                        <?php
-                                        $children = $category->children()->published()->all();
-                                        if ($children) {
-                                            ?>
-                                            <li class="menu_item_children categorie_list">
-                                                <?php echo Html::a($category->name . ' ' . Html::icon('arrow-right'), '#', []); ?>
-                                                <ul class="categories_mega_menu">
-                                                    <?php foreach ($children as $category) { ?>
-                                                        <li class="menu_item_children">
-                                                            <?php echo Html::a($category->name, $category->getUrl(), []); ?>
-                                                            <?php
-                                                            $children = $category->children()->published()->all();
-                                                            if ($children) {
-                                                                ?>
-                                                                <ul class="categorie_sub_menu">
-                                                                    <?php foreach ($children as $category) { ?>
-                                                                        <li><?php echo Html::a($category->name, $category->getUrl(), []); ?></li>
-                                                                    <?php } ?>
-                                                                </ul>
-                                                            <?php } ?>
-                                                        </li>
-                                                    <?php } ?>
-                                                </ul>
-                                            </li>
-                                        <?php } else { ?>
-                                            <li class="menu_item_children categorie_list">
-                                                <?php echo Html::a($category->name, $category->getUrl(), []); ?>
+                                        <?php foreach ($children as $category) { ?>
+                                            <?php
+                                            $children = $category->children()->published()->all();
+                                            if ($children) {
+                                                ?>
+                                                <li class="menu_item_children categorie_list">
+                                                    <?php echo Html::a($category->name . ' ' . Html::icon('arrow-right'), '#', []); ?>
+                                                    <ul class="categories_mega_menu">
+                                                        <?php foreach ($children as $category) { ?>
+                                                            <li class="menu_item_children">
+                                                                <?php echo Html::a($category->name, $category->getUrl(), []); ?>
+                                                                <?php
+                                                                $children = $category->children()->published()->all();
+                                                                if ($children) {
+                                                                    ?>
+                                                                    <ul class="categorie_sub_menu">
+                                                                        <?php foreach ($children as $category) { ?>
+                                                                            <li><?php echo Html::a($category->name, $category->getUrl(), []); ?></li>
+                                                                        <?php } ?>
+                                                                    </ul>
+                                                                <?php } ?>
+                                                            </li>
+                                                        <?php } ?>
+                                                    </ul>
+                                                </li>
+                                            <?php } else { ?>
+                                                <li class="">
+                                                    <?php echo Html::a($category->name, $category->getUrl(), []); ?>
 
-                                            </li>
+                                                </li>
+                                            <?php } ?>
                                         <?php } ?>
-                                    <?php } ?>
                                     <?php } ?>
                                 </ul>
                             </div>
@@ -233,8 +233,10 @@ $pages = \panix\mod\pages\models\Pages::find()->published()->all();
                         <div class="main_menu">
                             <nav>
                                 <ul>
-
-                                    <?php foreach($pages as $page){ ?>
+                                 <li>
+                                        <?php echo Html::a(Yii::t('news/default','MODULE_NAME'), ['/news/default/index']); ?>
+                                    </li>
+                                    <?php foreach ($pages as $page) { ?>
                                         <li><?= Html::a($page->name, $page->getUrl()); ?></li>
                                     <?php } ?>
                                     <!--<li><?= Html::a(Yii::t('shop/default', 'MANUFACTURER'), ['/manufacturer']); ?></li>-->
@@ -271,7 +273,7 @@ $pages = \panix\mod\pages\models\Pages::find()->published()->all();
                     </div>
 
 
-                    <div class="top_right text-right">
+                    <div class="top_right text-right  d-none">
                         <ul>
                             <li class="top_links"><a href="#"><i class="icon-user"></i> My Account<i
                                             class="ion-ios-arrow-down"></i></a>
@@ -319,7 +321,7 @@ $pages = \panix\mod\pages\models\Pages::find()->published()->all();
 
                         </ul>
                     </div>
-                    <div class="Offcanvas_follow">
+                    <div class="Offcanvas_follow d-none">
                         <label>Follow Us:</label>
                         <ul class="follow_link">
                             <li><a href="#"><i class="icon-facebook"></i></a></li>
@@ -333,7 +335,10 @@ $pages = \panix\mod\pages\models\Pages::find()->published()->all();
                     </div>
                     <div id="menu" class="text-left ">
                         <ul class="offcanvas_main_menu">
-                            <?php foreach($pages as $page){ ?>
+						       <li class="menu-item-has-children">
+                                        <?php echo Html::a(Yii::t('news/default','MODULE_NAME'), ['/news/default/index']); ?>
+                                    </li>
+                            <?php foreach ($pages as $page) { ?>
                                 <li class="menu-item-has-children"><?= Html::a($page->name, $page->getUrl()); ?></li>
                             <?php } ?>
                             <!--<li class="menu-item-has-children"><?= Html::a(Yii::t('shop/default', 'MANUFACTURER'), ['/manufacturer']); ?></li>-->

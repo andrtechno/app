@@ -90,7 +90,8 @@ $formOrder = ActiveForm::begin([
                     <tbody>
                     <?php foreach ($items as $index => $product) { ?>
                         <?php
-                        $price = Product::calculatePrices($product['model'], $product['variant_models'], $product['configurable_id']);
+                        $priceOne = Product::calculatePrices($product['model'], $product['variant_models'], $product['configurable_id']);
+                        $price = Product::calculatePrices($product['model'], $product['variant_models'], $product['configurable_id'],$product['quantity']);
                         ?>
                         <tr id="product-<?= $index ?>">
                             <td align="center" style="width:20%">
@@ -136,7 +137,7 @@ $formOrder = ActiveForm::begin([
 
                                 <div class="price_box">
                                     <span class="current_price">
-                                        <span><?= Yii::$app->currency->number_format($price); ?></span>
+                                        <span><?= Yii::$app->currency->number_format($priceOne); ?></span>
                                         <?= Yii::$app->currency->active['symbol'] ?>
                                         / <?= $product['model']->units[$product['model']->unit]; ?>
                                     </span>
@@ -240,7 +241,7 @@ $formOrder = ActiveForm::begin([
                     echo $this->render('_fields_payment', array(
                             'model' => $this->context->form,
                             'form' => $formOrder,
-                            'paymenyMethods' => $paymenyMethods)
+                            'paymentMethods' => $paymentMethods)
                     );
                     ?>
                 </div>

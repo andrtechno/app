@@ -34,7 +34,7 @@ $config = Yii::$app->settings->get('contacts');
 </section>
 <!--call to action end-->
 <!--footer area start-->
-<footer class="footer_widgets call_to_action p-0">
+<footer class="footer_widgets call_to_action p-0 mt-4">
     <div class="container">
         <div class="footer_top">
             <div class="row">
@@ -97,7 +97,12 @@ $config = Yii::$app->settings->get('contacts');
                 <div class="col-12 text-center">
                     <div class="copyright_area">
                         <p>{copyright}</p>
-                        <p><?= number_format(Yii::getLogger()->elapsedTime * 1000) . ' ms';; ?></p>
+                        <?php
+                        print_r(Yii::getLogger()->elapsedTime);
+                        ?>
+                            <p><?= number_format(Yii::getLogger()->elapsedTime * 1000) . ' ms'; ?></p>
+
+
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ use panix\mod\shop\models\Product;
 ?>
 
 
-<div class="container">
+
     <div class="row">
         <div class="col-12">
             <div class="shipping_area mb-50">
@@ -47,27 +47,49 @@ use panix\mod\shop\models\Product;
 
         </div>
     </div>
-</div>
+
 
 <?php
-//time() - (86400 * Yii::$app->settings->get('shop', 'label_expire_new')
+$products = Product::find()
+    ->published()
+    ->limit(12)
+    ->sort()
+    ->all();
 
+?>
+<div class="container">
+    <h2><span>Последние товары</span></h2>
+    <div class="row">
+        <?php
+        foreach ($products as $index => $product) { ?>
+            <div class="col-sm-3">
+                <?php
+                echo $this->render('@theme/modules/shop/views/catalog/_view_grid', ['model' => $product]); ?>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+</div>
+<?php
 $new = Product::find()->published();
 if (Yii::$app->settings->get('shop', 'label_expire_new')) {
     $new->int2between(time(), time() - (86400 * Yii::$app->settings->get('shop', 'label_expire_new')));
 } else {
     $new->int2between(-1, -1);
 }
-$newProducts = $new->all();
+$newProducts = $new->limit(20)->all();
 
 
 $discountProducts = Product::find()
     ->published()
     ->isNotEmpty('discount')
+    ->limit(20)
+    ->sort()
     ->all();
 ?>
 <?php if ($newProducts || $discountProducts) { ?>
-    <section class="product_area mb-50">
+    <section class="product_area mb-50 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">

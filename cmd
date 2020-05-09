@@ -3,13 +3,13 @@
 
 date_default_timezone_set("UTC");
 
-if ($_SERVER['REMOTE_ADDR'] == '127.0.0.12') {
+
     defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_ENV') or define('YII_ENV', 'dev');
-} else {
-    defined('YII_DEBUG') or define('YII_DEBUG', false);
-    defined('YII_ENV') or define('YII_ENV', 'prod');
-}
+
+    //defined('YII_DEBUG') or define('YII_DEBUG', false);
+    //defined('YII_ENV') or define('YII_ENV', 'prod');
+
 
 
 // fcgi doesn't have STDIN and STDOUT defined by default

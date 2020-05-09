@@ -2,8 +2,8 @@
 use yii\helpers\Html;
 use panix\mod\shop\models\Product;
 
-/** @var $currency \panix\mod\shop\components\CurrencyManager */
-/** @var $items [] \panix\mod\shop\models\Product */
+/** @var \panix\mod\shop\components\CurrencyManager $currency */
+/** @var \panix\mod\shop\models\Product[] $items */
 ?>
 
 
@@ -11,10 +11,9 @@ use panix\mod\shop\models\Product;
 
     <?php if ($count > 0) { ?>
         <a href="javascript:void(0)">
-            <span class="icon-cart"></span> <?= mb_strtolower(Yii::t('shop/default', 'PRODUCTS_COUNTER', $count)); ?>
+            <span class="icon-cart"></span> <?= Yii::t('shop/default', 'PRODUCTS_COUNTER', $count); ?>
         </a>
         <span class="cart_quantity"><?= $count ?></span>
-
 
         <div class="mini_cart">
             <?php foreach ($items as $product) {
@@ -56,9 +55,9 @@ use panix\mod\shop\models\Product;
         </div>
 
     <?php } else { ?>
-    <a href="javascript:void(0)">
-        <span class="icon-cart"></span> <?= Yii::t('cart/default', 'CART_EMPTY') ?>
-    </a>
+        <a href="javascript:void(0)">
+            <span class="icon-cart"></span> <?= Yii::t('cart/default', 'CART_EMPTY') ?>
+        </a>
         <span class="cart_quantity"><?= $count ?></span>
     <?php } ?>
 </div>
