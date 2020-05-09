@@ -20,6 +20,7 @@
         "yiisoft/yii2-debug": "~2",
         "panix/engine": "dev-master",
         "panix/mod-admin": "dev-master",
+        "panix/mod-pages": "dev-master",
         "panix/mod-user": "dev-master"
     },
     "require-dev": {
