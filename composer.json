@@ -19,6 +19,7 @@
         "yiisoft/yii2-swiftmailer": "~2.1.0",
         "yiisoft/yii2-debug": "~2",
         "panix/engine": "dev-master",
+        "panix/mod-admin": "dev-master",
         "panix/mod-user": "dev-master"
     },
     "require-dev": {
