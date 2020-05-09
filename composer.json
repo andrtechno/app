@@ -21,7 +21,8 @@
         "panix/engine": "dev-master",
         "panix/mod-admin": "dev-master",
         "panix/mod-pages": "dev-master",
-        "panix/mod-user": "dev-master"
+        "panix/mod-user": "dev-master",
+		"panix/mod-plugins": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2",

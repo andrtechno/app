@@ -67,8 +67,7 @@ $config = [
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         //'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
         'view' => [
-            //'class' => 'panix\mod\plugins\components\View',
-            'class' => 'app\engine\View',
+            'class' => 'panix\mod\plugins\components\View',
             'as Layout' => [
                 'class' => 'panix\engine\behaviors\LayoutBehavior',
             ],
