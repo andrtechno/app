@@ -22,6 +22,7 @@
         "panix/mod-admin": "dev-master",
         "panix/mod-pages": "dev-master",
         "panix/mod-user": "dev-master",
+        "panix/mod-seo": "dev-master",
 		"panix/mod-plugins": "dev-master"
     },
     "require-dev": {
