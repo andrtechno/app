@@ -19,7 +19,7 @@ class m000010_122127_session extends Migration
             'id' => \yii\db\Schema::TYPE_CHAR . '(40) NOT NULL',
             'user_id' => $this->integer()->null()->unsigned(),
             'expire' => $this->integer()->notNull(),
-            'expire_start' => $this->integer()->notNull(),
+            'expire_start' => $this->integer()->null(),
             'data' => 'LONGBLOB',
             'ip' => $this->string(100),
             'user_type' => $this->string(50)->notNull(),
