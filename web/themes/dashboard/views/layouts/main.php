@@ -130,7 +130,7 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                         </div>
                         <div class="clearfix"></div>
                         <div id="container-breadcrumbs">
-                            <?= $this->render('partials/_breadcrumbs', ['breadcrumbs' => $this->context->breadcrumbs]); ?>
+                            <?= $this->render('partials/_breadcrumbs'); ?>
                             <?= $this->render('partials/_addonsMenu'); ?>
                         </div>
 

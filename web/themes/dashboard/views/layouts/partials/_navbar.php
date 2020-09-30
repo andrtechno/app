@@ -43,7 +43,7 @@ use panix\mod\admin\models\Notification;
     if (count($languages) > 0) {
         foreach ($languages as $lang) {
 
-            $link = ($lang->is_default) ? CMS::currentUrl() : '/' . $lang->code . CMS::currentUrl();
+            $link = ($lang->is_default) ? CMS::currentUrl() : '/' . $lang->slug . CMS::currentUrl();
 
             $langItems[] = [
                 'label' => Html::img($lang->getFlagUrl(), ['alt' => $lang->name]) . ' ' . $lang->name,
