@@ -87,6 +87,10 @@ $config = [
             // 'csrfParam' => '_csrf-frontend',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
+			
+			'csrfCookie' => [
+                'sameSite' => PHP_VERSION_ID >= 70300 ? yii\web\Cookie::SAME_SITE_LAX : null,
+            ],
         ],
 
         'errorHandler' => [
@@ -113,17 +117,16 @@ $config = [
 ];
 
 if (YII_ENV_DEV) {
-    $config['modules']['debug']['class'] = 'yii\debug\Module';
-    $config['modules']['debug']['traceLine'] = function ($options, $panel) {
-        $filePath = $options['file'];
-        return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
-    };
-    //$config['modules']['debug']['panels'] = [
-    //    'queue' => \yii\queue\debug\Panel::class,
-    //];
-    //$config['modules']['debug']['dataPath'] = '@runtime/debug';
-    //$config['bootstrap'][] = 'gii';
-    //$config['modules']['gii'] = 'yii\gii\Module';
+    $config['bootstrap'][] = 'debug';
+    $config['modules']['debug'] = [
+        'class' => 'yii\debug\Module',
+        'allowedIPs' => ['127.0.0.1', '*'],
+        'dataPath'=>'@runtime/debug',
+        'traceLine'=>function ($options, $panel) {
+            $filePath = $options['file'];
+            return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
+        }
+    ];
 }
 
 return $config;

@@ -14,7 +14,8 @@ $config = [
     'bootstrap' => [
         'log',
         'maintenanceMode',
-        'panix\engine\BootstrapModule'
+        'panix\engine\BootstrapModule',
+      //  'telegram'
     ],
     'controllerMap' => [
         'site' => 'panix\engine\controllers\WebController',
@@ -22,6 +23,11 @@ $config = [
         'maintenance' => 'panix\engine\maintenance\controllers\MaintenanceController'
     ],
     'modules' => [
+        /*'mailchimp' => [
+            'class' => 'panix\mod\mailchimp\Module',
+            'showFirstname' => true,
+            'showLastname' => true
+        ],*/
         'plugins' => [
             'class' => 'panix\mod\plugins\Module',
             'pluginsDir' => [
@@ -34,27 +40,48 @@ $config = [
             //    'class' => panix\mod\rbac\filters\AccessControl::class
             //],
         ],
-        'stats' => ['class' => 'panix\mod\stats\Module'],
+
+       // 'telegram' => [
+       //     'class' => 'panix\mod\telegram\Module',
+            /*'class' => 'app\modules\telega\Module',
+            'token' => '835652742:AAEBdMpPg9TgakFa2o8eduRSkynAZxipg-c',
+            'commands' => [
+                'help' => 'app\modules\telega\commands\HelpCommand',
+                'test' => 'app\modules\telega\commands\TestCommand',
+            ],*/
+           // 'API_KEY' => 'forexample241875489:AdfgdfFuVJdsKa1cycuxra36g4dfgt66',
+           // 'BOT_NAME' => 'YourBotName_bot',
+           // 'hook_url' => 'https://yourhost.com/telegram/default/hook', // must be https! (if not prettyUrl https://yourhost.com/index.php?r=telegram/default/hook)
+           // 'PASSPHRASE' => 'passphrase for login',
+            // 'db' => 'db2', //db file name from config dir
+            // 'userCommandsPath' => '@app/modules/telegram/UserCommands',
+            // 'timeBeforeResetChatHandler' => 60
+      //  ],
+
+
+      //  'stats' => ['class' => 'panix\mod\stats\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         'compare' => ['class' => 'panix\mod\compare\Module'],
         'shop' => ['class' => 'panix\mod\shop\Module'],
         //'shop' => ['class' => 'app\modules\shop\Module'],
         'sitemap' => ['class' => 'panix\mod\sitemap\Module'],
-        'banner' => ['class' => 'panix\mod\banner\Module'],
-        'contacts' => ['class' => 'panix\mod\contacts\Module'],
+        //'banner' => ['class' => 'panix\mod\banner\Module'],
+       // 'contacts' => ['class' => 'panix\mod\contacts\Module'],
         'seo' => ['class' => 'panix\mod\seo\Module'],
         'discounts' => ['class' => 'panix\mod\discounts\Module'],
         'comments' => ['class' => 'panix\mod\comments\Module'],
         'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
-        'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
+       // 'exchange1c' => ['class' => 'panix\mod\exchange1c\Module'],
         'csv' => ['class' => 'panix\mod\csv\Module'],
-        'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
-        'delivery' => ['class' => 'panix\mod\delivery\Module'],
+       // 'yandexmarket' => ['class' => 'panix\mod\yandexmarket\Module'],
+      //  'delivery' => ['class' => 'panix\mod\delivery\Module'],
         'images' => ['class' => 'panix\mod\images\Module'],
         'cart' => ['class' => 'panix\mod\cart\Module'],
         'pages' => ['class' => 'panix\mod\pages\Module'],
-        'news' => ['class' => 'panix\mod\news\Module'],
+       // 'news' => ['class' => 'panix\mod\news\Module'],
+        'novaposhta' => ['class' => 'panix\mod\novaposhta\Module'],
+       // 'markup' => ['class' => 'panix\mod\markup\Module'],
     ],
     'components' => [
         'authManager' => [
@@ -82,6 +109,21 @@ $config = [
         ],
         'assetManager' => [
             'forceCopy' => YII_DEBUG,
+            'bundles' => [
+                'yii\web\JqueryAsset' => [
+                    'js' => [YII_ENV_DEV ? 'jquery.js' : 'jquery.min.js']
+                ],
+                'yii\jui\JuiAsset' => [
+                    'js' => [YII_ENV_DEV ? 'jquery-ui.js' : 'jquery-ui.min.js'],
+                    'css' => [YII_ENV_DEV ? 'themes/smoothness/jquery-ui.css' : 'themes/smoothness/jquery-ui.min.css']
+                ],
+                'yii\bootstrap4\BootstrapAsset' => [
+                    'css' => [YII_ENV_DEV ? 'css/bootstrap.css' : 'css/bootstrap.min.css']
+                ],
+                'yii\bootstrap4\BootstrapPluginAsset' => [
+                    'js' => [YII_ENV_DEV ? 'js/bootstrap.bundle.js' : 'js/bootstrap.bundle.min.js']
+                ],
+            ],
             // 'bundles' => [
             //'yii\jui\JuiAsset' => ['css' => []],
             // 'yii\jui\JuiAsset' => [
@@ -130,7 +172,11 @@ $config = [
 
             'class' => '\panix\engine\web\DbSession',
             'timeout' => 3600,
-            'cookieParams' => ['httponly' => true, 'lifetime' => 3600 * 4],
+            'cookieParams' => [
+				'httponly' => true,
+				'lifetime' => 3600 * 4,
+				'sameSite' => PHP_VERSION_ID >= 70300 ? yii\web\Cookie::SAME_SITE_LAX : null,
+			],
             //'class' => '\yii\web\DbSession',
             //'writeCallback'=>['panix\engine\web\DbSession', 'writeFields']
         ],
@@ -142,11 +188,15 @@ $config = [
         ],
         'user' => [
             'class' => 'panix\mod\user\components\WebUser',
-            // 'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+             'identityCookie' => [
+				'name' => '_identity',
+				'sameSite' => PHP_VERSION_ID >= 70300 ? yii\web\Cookie::SAME_SITE_LAX : null,
+				//'httpOnly' => true
+			 ],
         ],
         'mailer' => [
             'class' => 'panix\engine\Mailer',
-            'htmlLayout' => 'layouts/html'
+            'htmlLayout' => 'layouts/empty'
         ],
         'log' => ['class' => 'panix\engine\log\Dispatcher'],
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
