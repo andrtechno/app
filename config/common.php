@@ -128,10 +128,8 @@ $config = [
         'session' => [
 
             'class' => '\panix\engine\web\DbSession',
-            'timeout' => 3600,
             'cookieParams' => [
 				'httponly' => true,
-				'lifetime' => 3600 * 4,
 				'sameSite' => PHP_VERSION_ID >= 70300 ? yii\web\Cookie::SAME_SITE_LAX : null,
 			],
             //'class' => '\yii\web\DbSession',
