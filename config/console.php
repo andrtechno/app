@@ -92,6 +92,7 @@ return [
             'enableSession' => false,
             'enableAutoLogin' => false,
         ],
+		        'urlManager' => array_merge(require(__DIR__ . '/urlManager.php'),['hostInfo'=>'example.loc']),
         /*'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'flushInterval' => 1000 * 10,

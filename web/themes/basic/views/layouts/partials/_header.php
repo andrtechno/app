@@ -80,8 +80,8 @@ $config = Yii::$app->settings->get('contacts');
 
                                     foreach (Yii::$app->languageManager->getLanguages() as $lang) {
 
-                                        $classLi = ($lang->code == Yii::$app->language) ? $lang->code . ' active' : $lang->code;
-                                        $link = ($lang->is_default) ? CMS::currentUrl() : '/' . $lang->code . CMS::currentUrl();
+                                        $classLi = ($lang->code == Yii::$app->language) ? $lang->slug . ' active' : $lang->code;
+                                        $link = ($lang->is_default) ? CMS::currentUrl() : '/' . $lang->slug . CMS::currentUrl();
                                         //Html::link(Html::image('/uploads/language/' . $lang->flag_name, $lang->name), $link, array('title' => $lang->name));
 
                                         echo Html::a(Html::img('/uploads/language/' . $lang->flag_name, ['alt' => $lang->name]) . ' ' . $lang->name, $link, ['class' => 'dropdown-item']);
@@ -102,13 +102,14 @@ $config = Yii::$app->settings->get('contacts');
                             <div class="dropdown-menu">
                                 <?php
 
-                                foreach (Yii::$app->currency->currencies as $currency) {
-                                    echo Html::a($currency['iso'].$currency['symbol'], ['/shop/ajax/currency', 'id' => $currency['id']], [
-                                        'class' => Yii::$app->currency->active['id'] === $currency['id'] ? 'dropdown-item active' : 'dropdown-item',
-                                        'id' => 'sw' . $currency['id'],
-                                        'onClick' => 'switchCurrency(' . $currency['id'] . '); return false;'
-                                    ]);
-                                }
+                                    foreach (Yii::$app->currency->currencies as $currency) {
+                                        $rate = (Yii::$app->currency->active['id'] !== $currency['id']) ? '<small class="text-muted">'.$currency['rate'].'</small>' : '';
+                                        echo Html::a($currency['iso'] . ' ' . $rate, ['/shop/ajax/currency', 'id' => $currency['id']], [
+                                            'class' => Yii::$app->currency->active['id'] === $currency['id'] ? 'dropdown-item active' : 'dropdown-item',
+                                            'id' => 'sw' . $currency['id'],
+                                            'onClick' => 'switchCurrency(' . $currency['id'] . '); return false;'
+                                        ]);
+                                    }
                                 ?>
                             </div>
                         </li>
@@ -116,7 +117,7 @@ $config = Yii::$app->settings->get('contacts');
 
                         <?php if (Yii::$app->user->isGuest) { ?>
                             <li class="nav-item">
-                                <?= Html::a(Html::icon('user') . ' ' . Yii::t('user/default', 'LOGIN'), ['/user/login'], ['class' => 'nav-link']); ?>
+                                <?= Html::a(Html::icon('user-outline') . ' ' . Yii::t('user/default', 'LOGIN'), ['/user/login'], ['class' => 'nav-link']); ?>
                             </li>
                             <li class="nav-item">
                                 <?= Html::a(Yii::t('user/default', 'REGISTER'), ['/user/register'], ['class' => 'nav-link']); ?>
@@ -129,10 +130,10 @@ $config = Yii::$app->settings->get('contacts');
                             ?>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false"><?= Yii::$app->user->username; ?>
+                                   aria-haspopup="true" aria-expanded="false"><?= Html::icon('user-outline'); ?> <?= Yii::$app->user->username; ?>
                                 </a>
                                 <div class="dropdown-menu">
-                                    <?= Html::a(Html::icon('user') . ' ' . Yii::t('user/default', 'PROFILE'), ['/user/profile'], ['class' => 'dropdown-item']); ?>
+                                    <?= Html::a(Html::icon('user-outline') . ' ' . Yii::t('user/default', 'PROFILE'), ['/user/profile'], ['class' => 'dropdown-item']); ?>
                                     <?= Html::a(Html::icon('shopcart') . ' ' . Yii::t('cart/default', 'MY_ORDERS') . ' <span class="badge badge-success">' . $userOrderCount . '</span>', ['/cart/orders'], ['class' => 'dropdown-item']); ?>
 
                                     <?php

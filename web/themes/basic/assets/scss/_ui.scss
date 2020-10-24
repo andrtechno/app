@@ -263,6 +263,7 @@ $ui-spinner-button-color: $ui-widget-border-color;
 
 .ui-spinner-input {
   text-align: center;
+  border-radius: 0;
 }
 
 .ui-spinner-up {
@@ -281,7 +282,7 @@ $ui-spinner-button-color: $ui-widget-border-color;
 
 .ui-spinner {
   overflow: inherit;
-  width: 60px;
+  @include border-radius(3px);
   .ui-button .ui-icon {
     background-image: none;
   }
@@ -309,15 +310,17 @@ $ui-spinner-button-color: $ui-widget-border-color;
     }
     &.ui-spinner-up {
       border-left: 0;
+      right:0;
     }
     &.ui-spinner-down {
       border-right: 0;
+      left:0;
     }
   }
 
   &.ui-widget-content {
-    margin-left: $my-spinner-width-button;
-    margin-right: $my-spinner-width-button;
+    padding-left: $my-spinner-width-button;
+    padding-right: $my-spinner-width-button;
     background: #fff;
     border: 0;
     //border: $ui-spinner-border-width solid $ui-spinner-button-color;
@@ -325,7 +328,7 @@ $ui-spinner-button-color: $ui-widget-border-color;
   .ui-spinner-input {
     margin: 0;
     padding: 6px 5px;
-    width: 100%;
+    width: 60px;
     border: 1px solid $ui-widget-border-color;
     &:focus {
       outline: none;

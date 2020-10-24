@@ -5,16 +5,17 @@ use panix\engine\bootstrap\Alert;
 /**
  * @var $exception \yii\web\HttpException
  * @var $handler \yii\web\ErrorHandler
+ * @var $message string
  */
 
 ?>
-<div class="heading-gradient text-center">
-    <h1><?= $exception->statusCode; ?></h1>
-</div>
+    <div class="heading-gradient text-center">
+        <h1><?= $exception->statusCode; ?></h1>
+    </div>
 <?php
 echo Alert::widget([
     'options' => ['class' => 'alert-danger'],
-    'body' => $exception->getMessage(),
+    'body' => $message,
     'closeButton' => false
 ]);
 
