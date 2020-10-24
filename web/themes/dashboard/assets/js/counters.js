@@ -14,7 +14,9 @@ $(function () {
             xhr_notify.abort();
 
         xhr_notify = $.getJSON('/admin/app/default/ajax-counters', function (data) {
-
+            if(data.count.cart){
+                $('#navbar-badge-cart').html(data.count.cart);
+            }
 
 
             $('#dropdown-notification-container').html(data.content);

@@ -135,8 +135,8 @@ $sideBar = (method_exists($this->context->module, 'getAdminSidebar')) ? true : f
                         </div>
 
 
-                        <a href="#" onclick="changeCSS('<?= $asset->baseUrl;?>/css/dark.css');">dark</a>
-                        <a href="#" onclick="changeCSS('<?= $asset->baseUrl;?>/css/light.css');">light</a>
+                        <a href="#" class="d-none" onclick="changeCSS('<?= $asset->baseUrl;?>/css/dark.css');">dark</a>
+                        <a href="#" class="d-none" onclick="changeCSS('<?= $asset->baseUrl;?>/css/light.css');">light</a>
                         <div class="col-12">
 
                             <?php
