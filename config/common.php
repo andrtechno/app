@@ -173,14 +173,5 @@ $config = [
     ],*/
     'params' => require(__DIR__ . '/params.php'),
 ];
-if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
-    $config['modules']['debug']['class'] = 'yii\debug\Module';
-    $config['modules']['debug']['traceLine'] = function ($options, $panel) {
-        $filePath = $options['file'];
-        return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
-    };
-    //$config['modules']['debug']['dataPath'] = '@common/runtime/debug';
-}
 
 return $config;
