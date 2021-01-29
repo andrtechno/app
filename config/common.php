@@ -39,6 +39,10 @@ $config = [
         'user' => ['class' => 'panix\mod\user\Module'],
         'seo' => ['class' => 'panix\mod\seo\Module'],
         'pages' => ['class' => 'panix\mod\pages\Module'],
+        'shop' => ['class' => 'panix\mod\shop\Module'],
+        'cart' => ['class' => 'panix\mod\cart\Module'],
+        'wishlist' => ['class' => 'panix\mod\wishlist\Module'],
+        'contacts' => ['class' => 'panix\mod\contacts\Module'],
     ],
     'components' => [
         'authManager' => [
