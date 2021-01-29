@@ -18,12 +18,19 @@
         "yiisoft/yii2-bootstrap4": "^2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.1.0",
         "yiisoft/yii2-debug": "~2",
+        "panix/composer": "~1.0",
+        "panix/theme-basic": "dev-master",
+        "panix/theme-dashboard": "dev-master",
         "panix/engine": "dev-master",
         "panix/mod-admin": "dev-master",
         "panix/mod-pages": "dev-master",
         "panix/mod-user": "dev-master",
         "panix/mod-seo": "dev-master",
-	"panix/mod-plugins": "dev-master"
+        "panix/mod-shop": "dev-master",
+        "panix/mod-cart": "dev-master",
+        "panix/mod-wishlist": "dev-master",
+        "panix/mod-contacts": "dev-master",
+		"panix/mod-plugins": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2",
@@ -34,7 +41,11 @@
         "symfony/browser-kit": ">=2.7 <=4.2.4"
     },
     "config": {
-        "process-timeout": 1800
+        "process-timeout": 1800,
+        "preferred-install": {
+            "*/theme-*": "dist",
+            "panix/composer": "dist"
+        }
     },
     "scripts": {
         "post-install-cmd": [
