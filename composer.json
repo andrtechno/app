@@ -45,7 +45,7 @@
         "preferred-install": {
             "*/theme-*": "dist",
             "panix/composer": "dist",
-            "yiisoft/": "dist"
+            "yiisoft/*": "dist"
         }
     },
     "scripts": {
