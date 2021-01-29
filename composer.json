@@ -44,7 +44,8 @@
         "process-timeout": 1800,
         "preferred-install": {
             "*/theme-*": "dist",
-            "panix/composer": "dist"
+            "panix/composer": "dist",
+            "yiisoft/": "dist"
         }
     },
     "scripts": {
