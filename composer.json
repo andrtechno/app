@@ -30,7 +30,7 @@
         "panix/mod-cart": "dev-master",
         "panix/mod-wishlist": "dev-master",
         "panix/mod-contacts": "dev-master",
-		"panix/mod-plugins": "dev-master"
+        "panix/mod-plugins": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-gii": "~2",
