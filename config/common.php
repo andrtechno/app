@@ -10,6 +10,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
         '@uploads' => '@app/web/uploads',
+	'@panix' => '@vendor/panix',
     ],
     'bootstrap' => [
         'log',
