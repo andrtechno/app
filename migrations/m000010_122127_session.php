@@ -18,8 +18,8 @@ class m000010_122127_session extends Migration
         $this->createTable('{{%session}}', [
             'id' => \yii\db\Schema::TYPE_CHAR . '(40) NOT NULL',
             'user_id' => $this->integer()->null()->unsigned(),
-            'expire' => $this->integer()->notNull(),
-            'expire_start' => $this->integer()->notNull(),
+            'expire' => $this->integer()->null(),
+            'expire_start' => $this->integer()->null(),
             'data' => 'LONGBLOB',
             'ip' => $this->string(100),
             'user_type' => $this->string(50)->null(),
