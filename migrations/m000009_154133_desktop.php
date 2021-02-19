@@ -25,17 +25,17 @@ class m000009_154133_desktop extends Migration
             'addons' => $this->tinyInteger(1)->defaultValue(1),
             'columns' => $this->tinyInteger(3),
             'private' => $this->tinyInteger(1)->defaultValue(0),
-            'created_at' => $this->timestamp()->defaultValue(null),
-            'updated_at' => $this->timestamp()->defaultValue(null),
+            'created_at' => $this->integer(11)->null(),
+            'updated_at' => $this->integer(11)->null(),
             'ordern' => $this->integer()->unsigned(),
         ]);
 
         $this->createTable(DesktopWidgets::tableName(), [
             'id' => $this->primaryKey()->unsigned(),
             'desktop_id' => $this->integer()->unsigned()->notNull(),
-            'widget' => $this->string(100)->notNull(),
+            'widget' => $this->string(100)->null(),
             'col' => $this->tinyInteger(1)->defaultValue(1),
-            'title' => $this->string(255)->notNull(),
+            'title' => $this->string(255)->null(),
         ]);
 
         $this->createIndex('user_id', Desktop::tableName(), 'user_id');

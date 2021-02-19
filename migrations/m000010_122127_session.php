@@ -19,11 +19,11 @@ class m000010_122127_session extends Migration
             'id' => \yii\db\Schema::TYPE_CHAR . '(40) NOT NULL',
             'user_id' => $this->integer()->null()->unsigned(),
             'expire' => $this->integer()->notNull(),
-            'expire_start' => $this->integer()->null(),
+            'expire_start' => $this->integer()->notNull(),
             'data' => 'LONGBLOB',
             'ip' => $this->string(100),
-            'user_type' => $this->string(50)->notNull(),
-            'user_name' => $this->string(100)->notNull(),
+            'user_type' => $this->string(50)->null(),
+            'user_name' => $this->string(100)->null(),
             'user_agent' => $this->string(255)->null(),
             'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')
         ]);
