@@ -10,6 +10,7 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
         '@uploads' => '@app/web/uploads',
+	'@panix' => '@vendor/panix',
     ],
     'bootstrap' => [
         'log',
@@ -105,6 +106,21 @@ $config = [
                 '<pre[^>]*>' => '<\/pre>',
                 // '<div class="content[^>]*>' => '<\/div>',
             ]
+        ],
+	'view' => [
+            'class' => 'panix\mod\plugins\components\View',
+            'as Layout' => [
+                'class' => 'panix\engine\behaviors\LayoutBehavior',
+            ],
+            'renderers' => [
+                'tpl' => [
+                    'class' => 'yii\smarty\ViewRenderer',
+                    //'cachePath' => '@runtime/Smarty/cache',
+                ],
+            ],
+            'theme' => [
+                'class' => 'panix\engine\base\Theme'
+            ],
         ],
         'i18n' => [
             'translations' => [

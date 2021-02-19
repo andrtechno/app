@@ -18,6 +18,7 @@ return [
     ],
     'rules' => [
         '' => 'site/index',
+        'picture' => 'site/picture',
         'placeholder' => 'site/placeholder',
         'captcha' => 'site/captcha',
 

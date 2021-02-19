@@ -66,21 +66,7 @@ $config = [
         'stats' => ['class' => 'panix\mod\stats\components\Stats'],
         'geoip' => ['class' => 'panix\engine\components\geoip\GeoIP'],
         //'webcontrol' => ['class' => 'panix\engine\widgets\webcontrol\WebInlineControl'],
-        'view' => [
-            'class' => 'panix\mod\plugins\components\View',
-            'as Layout' => [
-                'class' => 'panix\engine\behaviors\LayoutBehavior',
-            ],
-            'renderers' => [
-                'tpl' => [
-                    'class' => 'yii\smarty\ViewRenderer',
-                    //'cachePath' => '@runtime/Smarty/cache',
-                ],
-            ],
-            'theme' => [
-                'class' => 'panix\engine\base\Theme'
-            ],
-        ],
+
         'request' => [
             'class' => 'panix\engine\WebRequest',
             'baseUrl' => '',
