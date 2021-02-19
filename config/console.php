@@ -6,6 +6,10 @@ return [
     //'basePath' => dirname(__DIR__),
     //'bootstrap' => ['queue'], //'telegram',
     'controllerNamespace' => 'app\commands',
+    'aliases' => [
+        '@webroot' => dirname(dirname(__FILE__)) . '/web',
+        '@web' => dirname(dirname(__FILE__)) . '/web',
+    ],
     'controllerMap' => [
         'sitemap' => [
             'class' => 'panix\mod\sitemap\console\CreateController',
