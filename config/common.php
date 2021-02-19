@@ -107,6 +107,21 @@ $config = [
                 // '<div class="content[^>]*>' => '<\/div>',
             ]
         ],
+	'view' => [
+            'class' => 'panix\mod\plugins\components\View',
+            'as Layout' => [
+                'class' => 'panix\engine\behaviors\LayoutBehavior',
+            ],
+            'renderers' => [
+                'tpl' => [
+                    'class' => 'yii\smarty\ViewRenderer',
+                    //'cachePath' => '@runtime/Smarty/cache',
+                ],
+            ],
+            'theme' => [
+                'class' => 'panix\engine\base\Theme'
+            ],
+        ],
         'i18n' => [
             'translations' => [
                 '*' => [
