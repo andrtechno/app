@@ -10,22 +10,12 @@ $request = Yii::$app->request;
         <meta http-equiv="Content-Type" content="text/html; charset=<?= Yii::$app->charset ?>"/>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
-        <style type="text/css">
-            <?= file_get_contents(Yii::getAlias('@app/mail/assets').'/style.css'); ?>
-        </style>
     </head>
     <body style="width: 100%">
     <?php $this->beginBody() ?>
-    <table border="0" width="100%">
-        <tr>
-            <td>
-                <?= $content ?>
-                <hr/>
-                <p><strong class="test">IP address:</strong> <?= $request->userIP; ?></p>
-                <p><strong>UserAgent:</strong> <?= $request->userAgent; ?></p>
-            </td>
-        </tr>
-    </table>
+
+    <?= $content ?>
+
     <?php $this->endBody() ?>
     </body>
     </html>
