@@ -20,7 +20,7 @@
         "yiisoft/yii2-debug": "~2",
         "panix/composer": "~1.0",
         "panix/theme-basic": "dev-main",
-        "panix/theme-dashboard": "dev-main",
+        "panix/theme-dashboard": "~1",
         "panix/engine": "dev-master",
         "panix/mod-admin": "dev-master",
         "panix/mod-pages": "dev-master",
