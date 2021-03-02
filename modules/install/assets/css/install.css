@@ -1,8 +1,8 @@
-label .required{
-    color:red;
-}
-
 label.error{
+    color:#ea3934;
+}
+.required label:after{
+    content: ' *';
     color:#ea3934;
 }
 div.errorMessage{
@@ -17,7 +17,7 @@ html { height: 100%; }
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #eee;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 22px;
     color: #5f5f5f;
     position: relative;
@@ -26,24 +26,8 @@ body {
 max-height: 500px;
     overflow-x: hidden;
 }
-/**NO BORDER RADIUS**/
-.no-radius .tab-container .ui-tabs-nav,
-.no-radius .tab-container .ui-tabs-nav li,
-.no-radius .card,
-.no-radius .card-group .panel,
-.no-radius .card.with-nav-tabs .nav-tabs > li > a,
-.no-radius .dropdown-menu,
-.no-radius .list-group,
-.no-radius .list-group-item:last-child,
-.no-radius .list-group-item:first-child,
-.no-radius .form-control,
-.no-radius .btn,
-.no-radius .alert,
-.no-radius .progress{
-    border-radius: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-}
+
+
 .auth-logo{
     position: relative;
     width:215px;
@@ -57,7 +41,6 @@ max-height: 500px;
     position: relative;
     font-size:30px;
     display: block;
-    line-height: 60px;
     padding-left: 65px;
     text-align: right;
     height: 65px;
@@ -203,7 +186,6 @@ a.ua{
     padding-right:0;
 }
 .form-block{
-    padding:15px 0;
     border-left:1px solid #cdcdcd;
     min-height: 250px;
 }
@@ -224,47 +206,48 @@ ul.nav-step > li > span{
     display: block;
 }
 
-ul.nav-step > li.past-step a:after,
-ul.nav-step > li > span:after{
+ul.nav-step  li.past-step a:after,
+ul.nav-step li a:after{
     position: absolute;
     font-family: Pixelion;
     left:13px;
     top:5px;
     font-size:16px;
 }
-ul.nav-step > li.active > a:after{
+ul.nav-step .active:after{
     position: absolute;
     font-family: Pixelion;
     left:13px;
     top:5px;
     font-size:16px;
 }
-ul.nav-step > li.past-step a:after{
-    content:"\f055";
+ul.nav-step li.future-step a{
+    color:#cdcdcd;
 }
-ul.nav-step > li:nth-child(1) > span:after,
-ul.nav-step > li.active:nth-child(1) > a:after{
+ul.nav-step li:nth-child(1) a:after{
     content:"\f024";
 }
-ul.nav-step > li:nth-child(2) > span:after,
-ul.nav-step > li.active:nth-child(2) > a:after{
+ul.nav-step li:nth-child(2) a:after{
     content:"\f025";
 }
-ul.nav-step > li:nth-child(3) > span:after,
-ul.nav-step > li.active:nth-child(3) > a:after{
+ul.nav-step li:nth-child(3) a:after{
     content:"\f053";
 }
-ul.nav-step > li:nth-child(4) > span:after,
-ul.nav-step > li.active:nth-child(4) > a:after{
+ul.nav-step li:nth-child(4) a:after{
     content:"\f038";
 }
-ul.nav-step > li:nth-child(5) > span:after,
-ul.nav-step > li.active:nth-child(5) > a:after{
+ul.nav-step li:nth-child(5) a:after{
     content:"\f011";
 }
-ul.nav-step > li:nth-child(6) > span:after{
+ul.nav-step li:nth-child(6) a:after{
     content:"\f055";
 }
+ul.nav-step li.past-step a:after{
+     content:"\f055";
+ }
+
+
+
 
 
 

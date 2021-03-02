@@ -16,7 +16,9 @@ class InstallAsset extends AssetBundle {
    // public $jsOptions = array(
    //     'position' => \yii\web\View::POS_HEAD
    // );
-
+    public $js = [
+        'js/script.js',
+    ];
     public $css = [
         'css/install.css',
     ];

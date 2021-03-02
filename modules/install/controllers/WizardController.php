@@ -1,16 +1,20 @@
 <?php
+
 namespace app\modules\install\controllers;
 
+use panix\engine\behaviors\wizard\WizardEvent;
+use panix\engine\CMS;
 use Yii;
+use yii\console\controllers\MigrateController;
 use yii\web\Controller;
 use panix\engine\behaviors\wizard\WizardBehavior;
+use yii\web\Response;
 
 class WizardController extends Controller
 {
 
 
     public $layout = '@app/modules/install/views/layouts/install';
-
 
 
     public function getViewPath()
@@ -22,12 +26,12 @@ class WizardController extends Controller
     {
         $config = [];
         switch ($action->id) {
-            case 'registration':
+            case 'install':
                 $config = [
-                    'steps' => ['chooseLanguage', 'license', 'info', 'db', 'configure'],
+                    'steps' => ['chooseLanguage', 'license', 'info', 'db', 'dbImport', 'configure'],
                     'events' => [
-                        WizardBehavior::EVENT_WIZARD_STEP => [$this, $action->id.'WizardStep'],
-                        WizardBehavior::EVENT_AFTER_WIZARD => [$this, $action->id.'AfterWizard'],
+                        WizardBehavior::EVENT_WIZARD_STEP => [$this, $action->id . 'WizardStep'],
+                        WizardBehavior::EVENT_AFTER_WIZARD => [$this, $action->id . 'AfterWizard'],
                         WizardBehavior::EVENT_INVALID_STEP => [$this, 'invalidStep']
                     ]
                 ];
@@ -41,6 +45,12 @@ class WizardController extends Controller
         if (!empty($config)) {
             $config['class'] = WizardBehavior::class;
             $this->attachBehavior('wizard', $config);
+            $lang = $this->read('chooseLanguage');
+            if ($lang) {
+                //  CMS::dump($lang[0]['lang']);die;
+                Yii::$app->language = $lang[0]['lang'];
+            }
+
         }
 
         return parent::beforeAction($action);
@@ -51,21 +61,22 @@ class WizardController extends Controller
         return $this->render('index');
     }
 
-    public function actionRegistration($step = null)
+    public function actionInstall($step = null)
     {
+
         //if ($step===null) $this->resetWizard();
         return $this->step($step);
     }
 
     /**
-    * Process wizard steps.
-    * The event handler must set $event->handled=true for the wizard to continue
-    * @param WizardEvent The event
-    */
-    public function registrationWizardStep($event)
+     * Process wizard steps.
+     * The event handler must set $event->handled=true for the wizard to continue
+     * @param WizardEvent The event
+     */
+    public function installWizardStep($event)
     {
         if (empty($event->stepData)) {
-            $modelName = 'app\\modules\\install\\models\\wizard\\registration\\'.ucfirst($event->step);
+            $modelName = 'app\\modules\\install\\models\\' . ucfirst($event->step);
             $model = new $modelName();
         } else {
             $model = $event->stepData;
@@ -74,17 +85,18 @@ class WizardController extends Controller
         $post = Yii::$app->request->post();
 
 
-
         if (isset($post['cancel'])) {
             $event->continue = false;
         } elseif (isset($post['prev'])) {
             $event->nextStep = WizardBehavior::DIRECTION_BACKWARD;
-            $event->handled  = true;
-        } elseif ($model->load($post) && $model->validate()) {
-            $event->data    = $model;
             $event->handled = true;
-            if(method_exists($model, 'install')){
-              //  print_r($event->data);
+        } elseif ($model->load($post) && $model->validate()) {
+            $event->data = $model;
+            $event->handled = true;
+
+            if (method_exists($model, 'install')) {
+
+                //  print_r($event->data);
                 $model->install();
             }
 
@@ -94,26 +106,36 @@ class WizardController extends Controller
                 $event->nextStep = WizardBehavior::DIRECTION_REPEAT;
             }
         } else {
-            $event->data = $this->render('registration\\'.$event->step, compact('event', 'model'));
+            $event->data = $this->render('install\\' . $event->step, compact('event', 'model'));
         }
     }
 
     /**
-    * @param WizardEvent The event
-    */
+     * @param WizardEvent The event
+     */
     public function invalidStep($event)
     {
         $event->data = $this->render('invalidStep', compact('event'));
         $event->continue = false;
     }
 
+    public function actionMigrate($migrate)
+    {
+
+
+
+       // $migration = new MigrateController('migrate', Yii::$app);
+       // $migration->run('up', ['migrationPath' => $migrate, 'interactive' => false]);
+        return $this->render('install\\dbInstall', ['migrate'=>$migrate]);
+    }
+
     /**
-    * Registration wizard has ended; the reason can be determined by the
-    * step parameter: TRUE = wizard completed, FALSE = wizard did not start,
-    * <string> = the step the wizard stopped at
-    * @param WizardEvent The event
-    */
-    public function registrationAfterWizard($event)
+     * Registration wizard has ended; the reason can be determined by the
+     * step parameter: TRUE = wizard completed, FALSE = wizard did not start,
+     * <string> = the step the wizard stopped at
+     * @param WizardEvent The event
+     */
+    public function installAfterWizard($event)
     {
         if (is_string($event->step)) {
             $uuid = sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
@@ -124,7 +146,7 @@ class WizardController extends Controller
                 mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
             );
 
-            $registrationDir = Yii::getAlias('@runtime/registration');
+            $registrationDir = Yii::getAlias('@runtime/install');
             $registrationDirReady = true;
             if (!file_exists($registrationDir)) {
                 if (!mkdir($registrationDir) || !chmod($registrationDir, 0775)) {
@@ -132,41 +154,40 @@ class WizardController extends Controller
                 }
             }
             if ($registrationDirReady && file_put_contents(
-                $registrationDir.DIRECTORY_SEPARATOR.$uuid,
-                $event->sender->pauseWizard()
-            )) {
-                $event->data = $this->render('registration\\paused', compact('uuid'));
+                    $registrationDir . DIRECTORY_SEPARATOR . $uuid,
+                    $event->sender->pauseWizard()
+                )) {
+                $event->data = $this->render('install\\paused', compact('uuid'));
             } else {
-                $event->data = $this->render('registration\\notPaused');
+                $event->data = $this->render('install\\notPaused');
             }
         } elseif ($event->step === null) {
-            $event->data = $this->render('registration\\cancelled');
+            $event->data = $this->render('install\\cancelled');
         } elseif ($event->step) {
-            $event->data = $this->render('registration\\complete', [
+            $event->data = $this->render('install\\complete', [
                 'data' => $event->stepData
             ]);
         } else {
-            $event->data = $this->render('registration\\notStarted');
+            $event->data = $this->render('install\\notStarted');
         }
     }
 
     /**
-    * Method description
-    *
-    * @return mixed The return value
-    */
+     * Method description
+     *
+     * @return mixed The return value
+     */
     public function actionResume($uuid)
     {
-        $registrationFile = Yii::getAlias('@runtime/registration').DIRECTORY_SEPARATOR.$uuid;
+        $registrationFile = Yii::getAlias('@runtime/install') . DIRECTORY_SEPARATOR . $uuid;
         if (file_exists($registrationFile)) {
             $this->resumeWizard(@file_get_contents($registrationFile));
             unlink($registrationFile);
-            $this->redirect(['registration']);
+            $this->redirect(['install']);
         } else {
-            return $this->render('registration\\notResumed');
+            return $this->render('install\\notResumed');
         }
     }
-
 
 
 }

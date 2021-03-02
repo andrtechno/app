@@ -1,4 +1,5 @@
 <?php
+
 use panix\engine\Html;
 
 \app\modules\install\assets\InstallAsset::register($this);
@@ -15,7 +16,7 @@ $this->beginPage() ?>
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
 </head>
-<body class="no-radius">
+<body>
 <?php $this->beginBody() ?>
 <div class="content">
 
@@ -27,27 +28,24 @@ $this->beginPage() ?>
     <?php
 
     //  if($_SESSION){
-    \yii\helpers\VarDumper::dump($_SESSION,10,true);
-   /* unset($_SESSION['Wizard.stepData']);
-    unset($_SESSION['Wizard.index']);
-    unset($_SESSION['Wizard.steps']);
-    unset($_SESSION['Wizard.branches']);*/
+    //\yii\helpers\VarDumper::dump($_SESSION,10,true);
+    /* unset($_SESSION['Wizard.stepData']);
+     unset($_SESSION['Wizard.index']);
+     unset($_SESSION['Wizard.steps']);
+     unset($_SESSION['Wizard.branches']);*/
     //  }
 
     ?>
     <div class="text-center auth-logo">
         <a href="//pixelion.com.ua" target="_blank">PIXELION</a>
-        <div class="auth-logo-hint"><?= Yii::t('app', 'CMS') ?></div>
+        <div class="auth-logo-hint"><?= Yii::t('install/default', 'CMS') ?></div>
     </div>
     <div class="card">
         <div class="card-header">
-            <strong><?php //echo $this->context->stepLabel('db'); ?><?php //echo $this->context->getStepCount(); ?></strong>
+            <strong><?= $this->title; ?></strong>
         </div>
         <div class="card-body p-0">
-
             <?php echo $content ?>
-
-
         </div>
     </div>
     <div class="text-center">{copyright}</div>
