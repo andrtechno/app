@@ -9,8 +9,8 @@
  * Class m000011_150526_tags
  */
 use panix\engine\db\Migration;
-use panix\mod\admin\models\Tag;
-use panix\mod\admin\models\TagAssign;
+use panix\engine\taggable\Tag;
+use panix\engine\taggable\TagAssign;
 
 class m000011_150526_tags extends Migration
 {
