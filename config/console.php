@@ -12,7 +12,7 @@ return [
     ],
     'controllerMap' => [
         'sitemap' => [
-            'class' => 'panix\mod\sitemap\console\CreateController',
+            'class' => 'panix\mod\sitemap\commands\CreateController',
         ],
         'migrate' => ['class' => 'panix\engine\console\controllers\MigrateController',
             //'migrationPath' => '@console/migrations',
