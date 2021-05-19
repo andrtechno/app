@@ -34,9 +34,9 @@ class m000005_114613_language extends Migration
 
         $this->batchInsert(Languages::tableName(), ['name', 'code', 'slug', 'locale', 'flag_name', 'is_default', 'switch', 'ordern'], [
             ['Русский', 'ru', 'ru', 'ru-RU', 'ru.png', 1, 1, 1],
-            ['English', 'en', 'ru', 'en-US', 'en.png', 0, 0, 2],
-            ['Український', 'uk', 'ru', 'uk-UA', 'ua.png', 0, 0, 3],
-            ['Deutsch', 'de', 'ru', 'de', 'de.png', 0, 0, 4],
+            ['English', 'en', 'en', 'en-US', 'en.png', 0, 0, 2],
+            ['Український', 'uk', 'ua', 'uk-UA', 'ua.png', 0, 0, 3],
+            ['Deutsch', 'de', 'de', 'de', 'de.png', 0, 0, 4],
         ]);
 
     }
