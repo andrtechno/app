@@ -18,7 +18,7 @@
         "yiisoft/yii2-bootstrap4": "^2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.1.0",
         "yiisoft/yii2-debug": "~2",
-        "panix/composer": "~1.0",
+        "panix/composer": "dev-main",
         "panix/theme-basic": "dev-main",
         "panix/theme-dashboard": "~1",
         "panix/engine": "dev-master",
