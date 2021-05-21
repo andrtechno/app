@@ -58,6 +58,13 @@
         ]
     },
     "extra": {
+        "panix\\composer\\Installer\\Installer::postCreateProject": {
+            "createDir": [
+                {
+                    "web/uploads/content": "0755"
+                }
+            ]
+        },
         "yii\\composer\\Installer::postCreateProject": {
             "setPermission": [
                 {
