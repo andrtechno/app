@@ -53,6 +53,7 @@
             "yii\\composer\\Installer::postInstall"
         ],
         "post-create-project-cmd": [
+            "Pixelion\\Composer\\Installers\\Installer::postCreateProject",
             "yii\\composer\\Installer::postCreateProject",
             "yii\\composer\\Installer::postInstall"
         ]
