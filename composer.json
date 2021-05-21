@@ -80,6 +80,14 @@
             "generateCookieValidationKey": [
                 "config/web.php"
             ]
+        },
+        "Pixelion\\Composer\\Installers\\Installer::postCreateProject": {
+            "settingsDb": [
+                {
+                    "config/db.php",
+                    "config/db_local.php",
+                }
+            ]
         }
     },
     "repositories": [
