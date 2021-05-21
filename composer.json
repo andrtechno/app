@@ -83,10 +83,8 @@
         },
         "Pixelion\\Composer\\Installers\\Installer::postCreateProject": {
             "settingsDb": [
-                {
-                    "config/db.php",
-                    "config/db_local.php",
-                }
+                "config/db.php",
+                "config/db_local.php"
             ]
         }
     },
