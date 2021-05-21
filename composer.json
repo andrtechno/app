@@ -52,6 +52,9 @@
         "post-install-cmd": [
             "yii\\composer\\Installer::postInstall"
         ],
+		"post-db-config": [
+            "Pixelion\\Composer\\Installers\\Installer::settingsDb"
+        ],
         "post-create-project-cmd": [
             "Pixelion\\Composer\\Installers\\Installer::postCreateProject",
             "yii\\composer\\Installer::postCreateProject",
