@@ -58,7 +58,7 @@
         ]
     },
     "extra": {
-        "Pixelion\Composer\Installers\\Installer::postCreateProject": {
+        "Pixelion\\Composer\\Installers\\Installer::postCreateProject": {
             "createDir": [
                 {
                     "web/uploads/content": "0755"
