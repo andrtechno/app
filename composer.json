@@ -67,6 +67,10 @@
                 {
                     "web/uploads/content": "0755"
                 }
+            ],
+	    "settingsDb": [
+                "config/db.php",
+                "config/db_local.php"
             ]
         },
         "yii\\composer\\Installer::postCreateProject": {
@@ -82,12 +86,6 @@
         "yii\\composer\\Installer::postInstall": {
             "generateCookieValidationKey": [
                 "config/web.php"
-            ]
-        },
-        "Pixelion\\Composer\\Installers\\Installer::postCreateProject": {
-            "settingsDb": [
-                "config/db.php",
-                "config/db_local.php"
             ]
         }
     },
