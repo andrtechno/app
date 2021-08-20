@@ -53,6 +53,21 @@ $config = [
                 // '<div class="content[^>]*>' => '<\/div>',
             ]
         ],
+	'view' => [
+            'class' => 'panix\mod\plugins\components\View',
+            'as Layout' => [
+                'class' => 'panix\engine\behaviors\LayoutBehavior',
+            ],
+            'renderers' => [
+                'tpl' => [
+                    'class' => 'yii\smarty\ViewRenderer',
+                    //'cachePath' => '@runtime/Smarty/cache',
+                ],
+            ],
+            'theme' => [
+                'class' => 'panix\engine\base\Theme'
+            ],
+        ],
         'sphinx' => [
             'class' => 'yii\sphinx\Connection',
             'dsn' => 'mysql:host=127.0.0.1;port=9306;',
