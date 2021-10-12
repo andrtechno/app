@@ -36,7 +36,6 @@ $config = [
             //    'class' => panix\mod\rbac\filters\AccessControl::class
             //],
         ],
-        'images' => ['class' => 'panix\mod\images\Module'],
         'admin' => ['class' => 'panix\mod\admin\Module'],
         'user' => ['class' => 'panix\mod\user\Module'],
         'seo' => ['class' => 'panix\mod\seo\Module'],
