@@ -4,7 +4,7 @@
  * Generation migrate by PIXELION CMS
  * @author PIXELION CMS development team <dev@pixelion.com.ua>
  *
- * Class m170908_125100_pages
+ * Class m000016_202321_block
  */
 
 use panix\engine\db\Migration;
