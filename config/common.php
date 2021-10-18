@@ -63,9 +63,7 @@ $config = [
         'maintenanceMode' => [
             'class' => 'panix\engine\maintenance\MaintenanceMode',
             // Allowed roles
-            //'roles' => [
-            //    'admin',
-            //],
+            'roles' => ['admin'],
             //Retry-After header
             // 'retryAfter' => 120 //or Wed, 21 Oct 2015 07:28:00 GMT for example
         ],
