@@ -16,7 +16,7 @@ class m000010_122127_session extends Migration
     public function up()
     {
         $this->createTable('{{%session}}', [
-            'id' => \yii\db\Schema::TYPE_CHAR . '(40) NOT NULL',
+            'id' => \yii\db\Schema::TYPE_CHAR . '(50) NOT NULL',
             'user_id' => $this->integer()->null()->unsigned(),
             'expire' => $this->integer()->null(),
             'expire_start' => $this->integer()->null(),
