@@ -25,6 +25,7 @@ class m000010_122127_session extends Migration
             'user_type' => $this->string(50)->null(),
             'user_name' => $this->string(100)->null(),
             'user_agent' => $this->string(255)->null(),
+            'url' => $this->string(255)->null(),
             'created_at' => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP')
         ]);
         $this->createIndex('user_id', '{{%session}}', 'user_id');
