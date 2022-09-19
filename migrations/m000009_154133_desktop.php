@@ -36,10 +36,12 @@ class m000009_154133_desktop extends Migration
             'widget' => $this->string(100)->null(),
             'col' => $this->tinyInteger(1)->defaultValue(1),
             'title' => $this->string(255)->null(),
+            'ordern' => $this->integer()->unsigned(),
         ]);
 
         $this->createIndex('user_id', Desktop::tableName(), 'user_id');
         $this->createIndex('desktop_id', DesktopWidgets::tableName(), 'desktop_id');
+        $this->createIndex('ordern', DesktopWidgets::tableName(), 'ordern');
     }
 
     public function down()
