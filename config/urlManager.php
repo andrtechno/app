@@ -22,17 +22,6 @@ return [
         'placeholder' => 'site/placeholder',
         'captcha' => 'site/captcha',
 
-        [
-            'pattern' => 'favicon-<size:\d+>',
-            'route' => 'site/favicon',
-            'suffix' => '.png'
-        ],
-        [
-            'pattern' => 'favicon',
-            'route' => 'site/favicon',
-            'suffix' => '.ico'
-        ],
-
         //'/admin' => 'admin/admin/default/index',
         // 'admin/auth' => 'admin/auth/index',
         ['pattern' => 'like/<type:(up|down)>/<id:\d+>', 'route' => 'site/like'],
