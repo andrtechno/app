@@ -24,8 +24,7 @@ $config = [
                 'message' => 'Закончился период аренды интернет-магазина'
             ];
         }
-        if (!Yii::$app->user->isGuest) {
-
+        if (!Yii::$app->user->isGuest && Yii::$app->user->banTime) {
             if (strtotime(Yii::$app->user->banTime) >= time()) {
                 Yii::$app->catchAll = [
                     'maintenance/banned',
