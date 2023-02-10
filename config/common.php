@@ -53,7 +53,6 @@ $config = [
         'img' => [
             'class' => 'panix\engine\components\ImageHandler',
         ],
-        'curl' => ['class' => 'panix\engine\Curl'],
         'consoleRunner' => [
             'class' => 'panix\engine\components\ConsoleRunner',
             'file' => '@app/cmd' // or an absolute path to console file
