@@ -4,10 +4,11 @@ $config = [
     'id' => 'api',
     'name' => 'PIXELION CMS',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
-    // 'controllerNamespace' => 'app\commands',
+    'bootstrap' => [
+        'log',
+        'panix\mod\shop\api\Bootstrap'
+    ],
     'language' => 'ru',
-    //'sourceLanguage'=>'',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -17,8 +18,7 @@ $config = [
     ],
     'modules' => [
         'shop' => [
-            'basePath' => '@vendor/panix/mod-shop/api/v1',
-            'class' => 'panix\mod\shop\api\v1\Module',
+            'class' => 'panix\mod\shop\api\Module'
         ],
         //'user' => ['class' => 'panix\mod\user\Module'],
     ],
@@ -32,18 +32,14 @@ $config = [
             'enableSession' => false,
         ],
         'request' => [
-            // 'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
-            'parsers' => [
-                'application/json' => 'yii\web\JsonParser',
-            ],
+            'parsers' => ['application/json' => 'yii\web\JsonParser'],
             'enableCsrfCookie' => false,
         ],
-
         'response' => [
             'class' => 'yii\web\Response',
             'charset' => 'UTF-8',
             'format' => yii\web\Response::FORMAT_JSON,
-            //'acceptParams'=>['version'=>'v1'],
+            'acceptParams'=>['version'=>'v1'],
             'on beforeSend' => function ($event) {
                 $response = $event->sender;
                 if ($response->data !== null && Yii::$app->request->get('suppress_response_code')) {
@@ -79,43 +75,19 @@ $config = [
             ],
         ],
         'errorHandler' => [
+            'class' => 'panix\engine\api\ErrorHandler',
             'errorAction' => 'api/error',
         ],
         'urlManager' => [
-            // 'class' => 'panix\engine\ManagerUrl',
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            //'enableStrictParsing' => true,
-            'baseUrl' => '/api',
+            'enableStrictParsing' => true,
+            'showScriptName'  => false,
             'normalizer' => [
                 'class' => 'yii\web\UrlNormalizer',
                 'action' => \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
             ],
             'rules' => [
-                // [
-                //'PUT,PATCH v1/country/<id>' => 'v1/update',
-                // 'DELETE users/<id>' => 'user/delete',
-                // 'GET,HEAD users/<id>' => 'user/view',
-                // 'POST api/v1/country' => 'v1/country/new',
-                //   'GET,HEAD api/v1/country' => 'v1/country/new',
-                // 'users/<id>' => 'user/options',
-                // 'users' => 'user/options',
-                // ]
-                /*[
-                    'class' => yii\rest\UrlRule::class,
-                    'controller' => 'v1/country',
-                   // 'pluralize'=>false,
-                    //'prefix'=>'api',
-                    'extraPatterns' => [
-                        'GET /new' => 'new',
-                        'POST /login'=>'login',
-                    ],
-                    'tokens' => [
-                        '{id}' => '<id:\\w+>'
-                    ]
-
-                ]*/
-
+                '/' => 'api/index',
             ],
         ],
         'settings' => ['class' => 'panix\engine\components\Settings'],
@@ -126,31 +98,31 @@ $config = [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'flushInterval' => 1000 * 10,
             'targets' => [
-                'file1' => [
+                [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                     'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/db_error.log',
+                    'logFile' => '@runtime/logs/api/' . date('Y-m-d') . '/db_error.log',
                     'categories' => ['yii\db\*']
                 ],
-                'file2' => [
+                [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error'],
                     'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/error.log',
+                    'logFile' => '@runtime/logs/api/' . date('Y-m-d') . '/error.log',
                     // 'categories' => ['yii\db\*']
                 ],
-                'file3' => [
+                [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['warning'],
                     'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/warning.log',
+                    'logFile' => '@runtime/logs/api/' . date('Y-m-d') . '/warning.log',
                 ],
-                'file4' => [
+                [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['info'],
                     'logVars' => [],
-                    'logFile' => '@runtime/logs/' . date('Y-m-d') . '/info.log',
+                    'logFile' => '@runtime/logs/api/' . date('Y-m-d') . '/info.log',
                 ],
                 /*[
                     'class' => 'yii\log\FileTarget',
@@ -169,37 +141,5 @@ $config = [
     ],
     'params' => require(__DIR__ . '/../config/params.php'),
 ];
-/*
-if (YII_ENV_DEV) {
-    // configuration adjustments for 'dev' environment
-    $config['modules']['debug']['class'] = 'yii\debug\Module';
-    // $config['modules']['debug']['traceLine'] = '<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>';
-    $config['modules']['debug']['traceLine'] = function ($options, $panel) {
-        $filePath = $options['file'];
-        // $filePath = str_replace(Yii::$app->basePath, 'file://~/path/to/your/backend', $filePath);
-        // $filePath = str_replace(dirname(Yii::$app->basePath) . '/common', 'file://~/path/to/your/common', $filePath);
-        /// $filePath = str_replace(Yii::$app->vendorPath, 'file://~/path/to/your/vendor', $filePath);
-        return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
-    };
-    $config['modules']['debug']['panels'] = [
-        'queue' => \yii\queue\debug\Panel::class,
-    ];
-    //$config['modules']['debug']['dataPath'] = '@runtime/debug';
-    //$config['bootstrap'][] = 'gii';
-    //$config['modules']['gii'] = 'yii\gii\Module';
-}
-*/
 
-if (YII_ENV_DEV) {
-    // $config['bootstrap'][] = 'debug';
-    /* $config['modules']['debug'] = [
-         'class' => 'yii\debug\Module',
-         'allowedIPs' => ['127.0.0.1', '*'],
-         'dataPath'=>'@runtime/debug',
-         'traceLine'=>function ($options, $panel) {
-             $filePath = $options['file'];
-             return strtr('<a href="phpstorm://open?url={file}&line={line}">{file}:{line}</a>', ['{file}' => $filePath]);
-         }
-     ];*/
-}
 return $config;
