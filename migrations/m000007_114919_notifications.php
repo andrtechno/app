@@ -22,7 +22,7 @@ class m000007_114919_notifications extends Migration
             'text' => $this->text(),
             'url' => $this->string(255),
             'sound' => $this->string(100)->defaultValue(NULL),
-            'status' => $this->boolean()->defaultValue(0)->notNull(),
+            'status' => $this->integer()->defaultValue(0)->notNull(),
             'user_id_read' => $this->integer(),
             'created_at' => $this->integer(11)->null(),
         ]);
