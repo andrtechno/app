@@ -24,8 +24,8 @@ class m000005_114613_language extends Migration
             'slug' => $this->string(4)->notNull(),
             'locale' => $this->string(5)->notNull(),
             'flag_name' => $this->string(10)->null(),
-            'is_default' => $this->boolean()->defaultValue(0),
-            'switch' => $this->boolean()->defaultValue(1),
+            'is_default' => $this->boolean()->defaultValue(false),
+            'switch' => $this->boolean()->defaultValue(true),
             'ordern' => $this->integer(),
         ], $this->tableOptions);
         $this->createIndex('switch', Languages::tableName(), 'switch');
