@@ -20,7 +20,7 @@ class m000010_122127_session extends Migration
             'user_id' => $this->integer()->null()->unsigned(),
             'expire' => $this->integer()->null(),
             'expire_start' => $this->integer()->null(),
-            'data' => ($this->db->driverName === 'pgsql') ? 'bytea':'LONGBLOB',
+            'data' => $this->binary()->notNull(),
             'ip' => $this->string(100),
             'user_type' => $this->string(50)->null(),
             'user_name' => $this->string(100)->null(),
