@@ -4,8 +4,8 @@ return [
     'adminEmail' => 'dev@pixelion.com.ua',
     'plan_id' => 2,
     'maxUploadImageSize' => [
-        'width' => 1200,
-        'height' => 1200
+        'width' => 2400,
+        'height' => 2400
     ],
     'plan' => [
         2 => [
