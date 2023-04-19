@@ -19,7 +19,7 @@ class m000012_120026_chat extends Migration
     {
         parent::init();
         if ($this->db->driverName === 'mysql') {
-            $this->tableOptions = 'CHARACTER SET utf8mb4 ENGINE=InnoDB';
+            $this->tableOptions = 'CHARACTER SET utf8mb4_general_ci ENGINE=InnoDB';
         }
     }
 
