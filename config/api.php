@@ -62,9 +62,16 @@ $config = [
             'translations' => [
                 '*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'fileMap' => [
+                        'default' => 'default.php',
+                    ],
+                ],
+                'app/*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@vendor/panix/engine/messages',
                     'fileMap' => [
-                        'app' => 'app.php',
+                        'app/default' => 'default.php',
                         'app/admin' => 'admin.php',
                         'app/month' => 'month.php',
                         'app/error' => 'error.php',
