@@ -98,7 +98,11 @@ $config = [
             ],
         ],
         'settings' => ['class' => 'panix\engine\components\Settings'],
-        'cache' => ['class' => 'yii\caching\FileCache'],
+        'cache' => [
+            'directoryLevel' => 0,
+            'keyPrefix' => '',
+            'class' => 'yii\caching\FileCache'
+        ],
         'languageManager' => ['class' => 'panix\engine\ManagerLanguage'],
         'db' => require(__DIR__ . '/../config/db.php'),
         'log' => [
