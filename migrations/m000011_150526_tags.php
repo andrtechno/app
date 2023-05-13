@@ -15,7 +15,6 @@ use panix\engine\taggable\TagAssign;
 class m000011_150526_tags extends Migration
 {
 
-
     public function up()
     {
         $this->createTable(Tag::tableName(), [
@@ -29,14 +28,8 @@ class m000011_150526_tags extends Migration
             'tag_id' => $this->integer()->unsigned()->notNull(),
         ]);
 
-        $this->addPrimaryKey('', TagAssign::tableName(), ['post_id', 'tag_id']);
-
-
-
+        $this->addPrimaryKey('{{%tag_assign}}', TagAssign::tableName(), ['post_id', 'tag_id']);
     }
-
-
-
 
     public function down()
     {
