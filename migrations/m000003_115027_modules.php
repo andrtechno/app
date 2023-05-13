@@ -21,7 +21,7 @@ class m000003_115027_modules extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(15),
             'className' => $this->string(100),
-            'switch' => $this->boolean()->defaultValue(1),
+            'switch' => $this->boolean()->defaultValue(true),
             'access' => $this->smallInteger(8),
         ]);
         $this->createIndex('name', $this->tableName, 'name');
