@@ -18,7 +18,7 @@ class m000007_114919_notifications extends Migration
     {
         $this->createTable(Notification::tableName(), [
             'id' => $this->primaryKey(),
-            'type' => "ENUM('default', 'info', 'success', 'danger', 'warning')",
+            'type' => ($this->db->driverName == 'pgsql') ? $this->string(10) : "ENUM ('default', 'info', 'success', 'danger', 'warning')",
             'text' => $this->text(),
             'url' => $this->string(255),
             'sound' => $this->string(100)->defaultValue(NULL),
