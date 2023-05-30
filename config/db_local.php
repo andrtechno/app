@@ -5,6 +5,7 @@ return [
     'dsn' => 'mysql:host=localhost;dbname=',
     'username' => '',
     'password' => '',
+    //if mysql drive "pgsql" charset set to "utf8"
     'charset' => 'utf8mb4', //utf8 на utf8mb4. FOR Emoji
     'tablePrefix' => 'cms_',
     'serverStatusCache' => YII_DEBUG ? 0 : 3600,
