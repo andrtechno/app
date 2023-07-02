@@ -24,66 +24,13 @@ return [
     ],
     'components' => [
         'sitemap' => [
-            'class' => 'app\modules\sitemap\Sitemap',
+            'class' => 'panix\mod\sitemap\components\Sitemap',
             'models' => [
-                // your models
-                'app\modules\news\models\News',
-                // or configuration for creating a behavior
-                /*[
-                    'class' => 'app\modules\news\models\News',
-                    'behaviors' => [
-                        'sitemap' => [
-                            'class' => '\app\modules\sitemap\behaviors\SitemapBehavior',
-                            'scope' => function ($model) {
-
-                                $model->select(['url', 'lastmod']);
-                                $model->andWhere(['is_deleted' => 0]);
-                            },
-                            'dataClosure' => function ($model) {
-
-                                return [
-                                    'loc' => \yii\helpers\Url::to($model->url, true),
-                                    'lastmod' => strtotime($model->lastmod),
-                                    'changefreq' => \panix\mod\sitemap\Module::DAILY,
-                                    'priority' => 0.8
-                                ];
-                            }
-                        ],
-                    ],
-                ],*/
+                'panix\mod\shop\models\Product',
+                'panix\mod\shop\models\Category',
+                'panix\mod\pages\models\Page',
             ],
-            'urls' => [
-                // your additional urls
-                [
-                    'loc' => ['/news/default/index'],
-                    //'changefreq' => \app\modules\sitemap\Sitemap::DAILY,
-                    'priority' => 0.8,
-                    'news' => [
-                        'publication' => [
-                            'name' => 'Example Blog',
-                            'language' => 'en',
-                        ],
-                        'access' => 'Subscription',
-                        'genres' => 'Blog, UserGenerated',
-                        'publication_date' => 'YYYY-MM-DDThh:mm:ssTZD',
-                        'title' => 'Example Title',
-                        'keywords' => 'example, keywords, comma-separated',
-                        'stock_tickers' => 'NASDAQ:A, NASDAQ:B',
-                    ],
-                    'images' => [
-                        [
-                            'loc' => 'http://example.com/image.jpg',
-                            'caption' => 'This is an example of a caption of an image',
-                            'geo_location' => 'City, State',
-                            'title' => 'Example image',
-                            'license' => 'http://example.com/license',
-                        ],
-                    ],
-                ],
-            ],
-            'enableGzip' => true, // default is false
-            'cacheExpire' => 1, // 1 second. Default is 24 hours,
-            'sortByPriority' => true, // default is false
+
         ],
         'request' => [
             'class' => 'yii\console\Request',
@@ -93,7 +40,7 @@ return [
             'enableSession' => false,
             'enableAutoLogin' => false,
         ],
-		        'urlManager' => array_merge(require(__DIR__ . '/urlManager.php'),['hostInfo'=>'example.loc']),
+	'urlManager' => array_merge(require(__DIR__ . '/urlManager.php'),['hostInfo'=>'https://example.loc/']),
         /*'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'flushInterval' => 1000 * 10,
