@@ -128,16 +128,16 @@ $config = [
             ],
         ],
         'session' => [
-
             'class' => '\panix\engine\web\DbSession',
             'cookieParams' => [
-				'httponly' => true,
-				'sameSite' => PHP_VERSION_ID >= 70300 ? yii\web\Cookie::SAME_SITE_LAX : null,
-			],
+                'secure' => true,
+                'lifetime' => 86400 * 30,
+                'httponly' => true,
+                'sameSite' => PHP_VERSION_ID >= 70300 ? yii\web\Cookie::SAME_SITE_LAX : null,
+            ],
             //'class' => '\yii\web\DbSession',
             //'writeCallback'=>['panix\engine\web\DbSession', 'writeFields']
         ],
-
         'cache' => [
             'directoryLevel' => 0,
             'keyPrefix' => '',
