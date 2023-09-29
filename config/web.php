@@ -40,6 +40,15 @@ $config = [
         }
     },
     'components' => [
+        'response' => [
+            'formatters' => [
+                \yii\web\Response::FORMAT_JSON => [
+                    'class' => 'yii\web\JsonResponseFormatter',
+                    'prettyPrint' => YII_DEBUG, // use "pretty" output in debug mode
+                    'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
+                ],
+            ],
+        ],
         'plugins' => [
             'class' => 'panix\mod\plugins\components\PluginsManager',
             'appId' => panix\mod\plugins\BasePlugin::APP_WEB,
