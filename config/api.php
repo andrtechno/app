@@ -34,6 +34,10 @@ $config = [
         'request' => [
             'parsers' => ['application/json' => 'yii\web\JsonParser'],
             'enableCsrfCookie' => false,
+            'cookieValidationKey' => 'fpsiKaSs1Mcb6zwlsUZwuhqScBs5UgPQ',
+            'csrfCookie' => [
+                'sameSite' => PHP_VERSION_ID >= 70300 ? yii\web\Cookie::SAME_SITE_LAX : null,
+            ],
         ],
         'response' => [
             'class' => 'yii\web\Response',
