@@ -29,7 +29,7 @@ $config = [
         'user' => [
             'identityClass' => 'panix\mod\user\models\User',
             'enableAutoLogin' => true,
-            'enableSession' => false,
+            //'enableSession' => false,
         ],
         'request' => [
             'parsers' => ['application/json' => 'yii\web\JsonParser'],
