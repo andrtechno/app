@@ -27,9 +27,15 @@ $config = [
     ],
     'components' => [
         'user' => [
+            'class' => 'panix\mod\user\components\WebUser',
             'identityClass' => 'panix\mod\user\models\User',
             'enableAutoLogin' => true,
-            'enableSession' => false,
+            'enableSession' => true,
+            'identityCookie' => [
+                'name' => '_identity',
+                'sameSite' => PHP_VERSION_ID >= 70300 ? yii\web\Cookie::SAME_SITE_LAX : null,
+                //'httpOnly' => true
+            ],
         ],
         'session' => [
             'class' => '\panix\engine\web\DbSession',
