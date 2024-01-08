@@ -24,8 +24,7 @@ class m000016_202422_timeline extends Migration
         $this->createTable(Timeline::tableName(), [
             'id' => $this->primaryKey()->unsigned(),
             'user_id' => $this->integer()->null(),
-            'action' => $this->string(50)->null(),
-            'text' => $this->string(255)->null(),
+            'event_data'=>$this->binary()->notNull(),
             'created_at' => $this->integer()->null(),
         ], $tableOptions);
 
